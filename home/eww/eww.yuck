@@ -1,0 +1,69 @@
+(defwindow powermenu
+  :stacking "fg"
+  :windowtype "normal"
+  :wm-ignore true
+  :geometry (geometry :width "100%" :height "100%")
+  (powermenu_layout))
+
+(defpoll time :interval "5s"
+  :initial `date +'{"hour":"%H","min":"%M"}'`
+  `date +'{"hour":"%H","min":"%M"}'`)
+(defpoll net :interval "100s"
+  :initial `N/A`
+  `nmcli -t -f SIGNAL,ACTIVE device wifi \
+    | awk -F':' '{if($2=="yes")print$1}'`)
+
+(defwidget powermenu_layout []
+  (box :class "layout-box" :space-evenly false :orientation "vertical"
+    (box :valign "start" :space-evenly false :spacing 25
+      (_battery :status {EWW_BATTERY.BAT0.status}
+                :battery {EWW_BATTERY.BAT0.capacity}
+                :charge "" :one "" :two "" :three "" :four ""
+                :five "" :six "" :seven "")
+      (_network :strength net :offline "" :excellent "" :good ""
+                :okay "" :slow "")
+      (label :text "|" :class "sep")
+      (button :onclick "eww close powermenu" :class "close-btn" ""))
+    (box :space-evenly false :hexpand true :vexpand true
+      (box :spacing 15 :class "tm-box" :space-evenly false
+            :valign "end" :halign "start"
+        (label :text "")
+        (label :text "${time.hour}  ${time.min}"))
+      (_buttons :shutdown "poweroff" :reboot "reboot"
+                :logout "loginctl kill-session self"
+                :shutdown_icon "" :reboot_icon ""
+                :logout_icon ""))))
+
+(defwidget _battery [battery status one two three
+                    four five six seven charge]
+  (box :class "bat-box" :space-evenly false :spacing 8
+    (label :text {status == 'Charging' ? charge :
+      battery < 15 ? seven :
+        battery < 30 ? six :
+          battery < 45 ? five :
+            battery < 60 ? four :
+              battery < 75 ? three :
+                battery < 95 ? two : one})))
+
+(defwidget _network [strength offline excellent
+                    good okay slow]
+  (box :class "net-box"
+       :space-evenly false
+       :spacing 8
+    (label :text {strength == "" ? offline :
+      strength < 26 ? slow :
+        strength < 51 ? okay :
+          strength < 76 ? good : excellent})))
+
+(defwidget _buttons [shutdown shutdown_icon reboot
+                    reboot_icon logout logout_icon]
+  (box :class "btns-box" :spacing 5
+       :vexpand true :hexpand true
+       :valign "end" :halign "end"
+       :space-evenly false
+    (button :onclick shutdown shutdown_icon)
+    (button :onclick reboot reboot_icon)
+    (button :onclick logout logout_icon)))
+
+
+

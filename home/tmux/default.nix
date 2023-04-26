@@ -1,0 +1,79 @@
+{ pkgs, ... }:
+{
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+    shortcut = "a";
+    keyMode = "vi";
+    customPaneNavigationAndResize = true;
+    aggressiveResize = true;
+    historyLimit = 10000;
+    resizeAmount = 5;
+    escapeTime = 0;
+    sensibleOnTop = true;
+
+    plugins = with pkgs.tmuxPlugins; [
+      {
+        plugin = yank;
+        extraConfig = ''
+          set -g @yank_selection 'clipboard'
+          set -g @yank_action 'copy-pipe'
+          set -g @shell_mode 'vi'
+        '';
+      }
+      {
+        plugin = copycat;
+        extraConfig = ''set -g @override_copy_command "(xsel -cb && xsel -bi)"'';
+      }
+    ];
+
+    extraConfig = ''
+      # turn of mouse
+      set -g mouse off
+      
+      set -g status off
+
+      # improve default name of windows
+      set-option -g automatic-rename-format '#{b:pane_current_path}: #{b:pane_current_command}'
+      
+      # fix coloring for tmux
+      set -g default-terminal "screen-256color"
+
+      # vim like pane movement
+      bind-key C-h select-pane -t '{left-of}'
+      bind-key C-l select-pane -t '{right-of}'
+      bind-key C-k select-pane -t '{up-of}'
+      bind-key C-n select-pane -t '{down-of}'
+      
+      # resize with arrow keys
+      bind-key Right resize-pane -R 20
+      bind-key Left resize-pane -L 20
+      bind-key Up resize-pane -U 20
+      bind-key Down resize-pane -D 20
+      
+      # Similar split to screen
+      bind-key | split-window -h -c "#{pane_current_path}"
+      bind-key - split-window -v -c "#{pane_current_path}"
+      
+      # ensure all window are in same working dir
+      bind-key c new-window -c "#{pane_current_path}"
+      bind-key % split-window -h -c "#{pane_current_path}"
+      bind-key '"' split-window -v -c "#{pane_current_path}"
+      
+      # use v to select line and r for rectangle selection
+      bind-key -T copy-mode-vi v send-keys -X begin-selection
+      bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
+      # easy scrolling
+      bind-key -T copy-mode-vi C-k send-keys -X scroll-up
+      bind-key -T copy-mode-vi C-n send-keys -X scroll-down
+      bind-key -T copy-mode-vi C-l send-keys -X end-of-line
+      bind-key -T copy-mode-vi C-h send-keys -X start-of-line
+      bind-key -T copy-mode-vi n send-keys -X cursor-down
+      bind-key -T copy-mode-vi k send-keys -X cursor-up
+      bind-key -T copy-mode-vi h send-keys -X cursor-left
+      bind-key -T copy-mode-vi l send-keys -X cursor-right
+      bind-key -T copy-mode-vi j send-keys -X search-again
+      bind-key -T copy-mode-vi J send-keys -X search-reverse
+    '';
+  };
+}
