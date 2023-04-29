@@ -178,6 +178,9 @@ in
     logind = {
       lidSwitch = "lock";
       lidSwitchExternalPower = "ignore";
+      extraConfig = ''
+        HandlePowerKey=ignore
+      '';
     };
 
     pipewire = {
