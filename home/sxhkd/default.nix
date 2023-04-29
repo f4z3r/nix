@@ -12,6 +12,7 @@
 
       # quit / powermenu
       "${mod} + q" = "${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
+      "${mod} + shift + q" = "${pkgs.xsecurelock}/bin/xsecurelock";
 
       # fullscreen
       "${mod} + f" = "${pkgs.bspwm}/bin/bspc node -t fullscreen";
@@ -68,7 +69,7 @@
       # launchers
       "${mod} + ${alt} + w" = "${pkgs.brave}/bin/brave";
       "${mod} + ${alt} + p" = "${pkgs.uair}/bin/uairctl toggle";
-      "${mod} + ${alt} + b" = ''${pkgs.rofi-rbw}/bin/rofi-rbw --keybindings="Enter:type:password'';
+      "${mod} + ${alt} + Enter" = ''${pkgs.rofi-rbw}/bin/rofi-rbw -a copy -t password'';
     };
   };
 
