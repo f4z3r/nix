@@ -3,7 +3,18 @@
 {
   programs.git = {
     enable = true;
-    delta.enable = true;
+    delta = {
+      enable = true;
+      options = {
+        syntax-theme = "gruvbox-dark";
+        true-color = "always";
+        plus-style = "syntax #012800";
+        minus-style = "syntax #340001";
+        navigate = true;
+        line-numbers = true;
+        side-by-side = true;
+      };
+    };
 
     userName = "Jakob Beckmann";
     userEmail = "jakobbeckmann@pm.me";

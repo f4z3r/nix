@@ -38,6 +38,7 @@
       
       # fix coloring for tmux
       set -g default-terminal "screen-256color"
+      set -ga terminal-overrides ",xterm-256color:Tc"
 
       # vim like pane movement
       bind-key C-h select-pane -t '{left-of}'
