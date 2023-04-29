@@ -32,7 +32,7 @@
         ];
       };
       settings = {
-        border_width = 3;
+        border_width = 5;
         normal_border_color = "";
         active_border_color = "\#145f9d";
         focused_border_color = "\#145f9d";
