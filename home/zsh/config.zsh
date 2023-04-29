@@ -48,3 +48,13 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
   zle -N zle-line-init
   zle -N zle-line-finish
 fi
+
+# do not add stuff to history containing "password"
+function zshaddhistory() {
+  emulate -L zsh
+  if [[ $1 = *"password"* ]]; then
+    return 1
+  fi
+}
+
+umask 027

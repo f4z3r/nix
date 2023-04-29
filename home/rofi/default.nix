@@ -5,8 +5,8 @@
     enable = true;
     cycle = true;
     location = "center";
-    terminal = "wezterm";
-    font = "FuraMono Nerd Font Mono 20";
+    terminal = "${pkgs.wezterm}/bin/wezterm";
+    font = "FiraCode Nerd Font Mono 20";
     theme = "rounded-gray-dark";
     plugins = with pkgs; [
       #rofi-power-menu

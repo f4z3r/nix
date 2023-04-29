@@ -11,18 +11,18 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }:
-    let
-      hostname = "revenge-nix";
-      system = "x86_64-linux";
-      pgks = import nixpkgs {
-        inherit system;
-  config.allowUnfree = true;
-      };
+  let
+    hostname = "revenge-nix";
+    system = "x86_64-linux";
+    pgks = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
 
-      lib = nixpkgs.lib;
-    in {
-      nixosConfigurations = {
-        ${hostname} = lib.nixosSystem {
+    lib = nixpkgs.lib;
+  in {
+    nixosConfigurations = {
+      ${hostname} = lib.nixosSystem {
         inherit system;
         modules = [
           ./configuration.nix

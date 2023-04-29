@@ -11,15 +11,19 @@
         config = wezterm.config_builder()
       end
 
+      config.audible_bell = "Disabled"
+
       config.color_scheme = 'Gruvbox Material (Gogh)'
       config.hide_tab_bar_if_only_one_tab = true
       config.warn_about_missing_glyphs = false
-      config.font = wezterm.font('FuraMono Nerd Font Mono', {weight = 'Medium'})
+      config.font = wezterm.font('FiraCode Nerd Font Mono', {weight = 'DemiBold', stretch = 'Expanded'})
       config.font_size = 17
       config.keys = {
         { key = 'UpArrow', mods = 'CTRL', action = wezterm.action.IncreaseFontSize },
         { key = 'DownArrow', mods = 'CTRL', action = wezterm.action.DecreaseFontSize },
       }
+
+      config.harfbuzz_features = { "dlig" }
 
       return config
     '';

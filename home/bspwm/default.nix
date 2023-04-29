@@ -5,10 +5,25 @@
     windowManager.bspwm = {
       enable = true;
       startupPrograms = [
-        "feh --bg-scale ~/.config/bspwm/wallpaper.png"
+        "${pkgs.feh}/bin/feh --bg-scale ~/.config/bspwm/wallpaper.png"
+        "${pkgs.polybar}/bin/polybar main"
       ];
       monitors = {
         "eDP-1" = [
+          "I"
+          "II"
+          "III"
+          "IV"
+          "V"
+        ];
+        "DP-1" = [
+          "I"
+          "II"
+          "III"
+          "IV"
+          "V"
+        ];
+        "DP-2" = [
           "I"
           "II"
           "III"
