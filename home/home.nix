@@ -98,6 +98,7 @@
       rsync
       curlie
       dog
+      fend
 
       gtk-engine-murrine
 
@@ -106,12 +107,12 @@
       xsel
 
       rofi-power-menu
+      wmctrl
       bsp-layout
       alsa-utils
       mpc-cli
       uair
       libnotify
-      bc
 
       protonvpn-cli
 

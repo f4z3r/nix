@@ -31,6 +31,13 @@
           "V"
         ];
       };
+      rules = {
+        "quake" = {
+          state = "floating";
+          center = true;
+          rectangle = "2560x1600+0+0";
+        };
+      };
       settings = {
         border_width = 5;
         normal_border_color = "";

@@ -3,42 +3,29 @@
 {
   services.picom = {
     enable = true;
-    backend = "glx";                              # Rendering either with glx or xrender. You'll know if you need to switch this.
-    vSync = true;                                 # Should fix screen tearing
+    backend = "glx";
+    vSync = true;
 
-    #activeOpacity = 0.93;                         # Node transparency
-    #inactiveOpacity = 0.93;
-    #menuOpacity = 0.93;
-
-    shadow = false;                               # Shadows
+    shadow = false;
     shadowOpacity = 0.75;
-    fade = true;                                  # Fade
+    fade = true;
     fadeDelta = 5;
-    opacityRules = [                              # Opacity rules if transparency is prefered
-    #  "100:name = 'Picture in picture'"
-    #  "100:name = 'Picture-in-Picture'"
-    #  "85:class_i ?= 'rofi'"
-      "80:class_i *= 'discord'"
-      "80:class_i *= 'emacs'"
-      "80:class_i *= 'Alacritty'"
-    #  "100:fullscreen"
-    ];                                            # Find with $ xprop | grep "WM_CLASS"
 
     settings = {
       daemon = true;
-      use-damage = false;                         # Fixes flickering and visual bugs with borders
+      use-damage = false;
       resize-damage = 1;
       refresh-rate = 0;
-      corner-radius = 15;                          # Corners
+      corner-radius = 15;
       round-borders = 15;
 
       # Animations Pijulius
-      animations = true;                          # All Animations
+      animations = true;
       animation-window-mass = 0.5;
       animation-for-open-window = "zoom";
       animation-stiffness = 350;
       animation-clamping = false;
-      fade-out-step = 1;                          # Will fix random border dots from not disappearing
+      fade-out-step = 1;
 
       # Animations Jonaburg
       transition-length = 300;
@@ -49,7 +36,7 @@
       size-transition = true;
 
       # Extras
-      detect-rounded-corners = true;              # Below should fix multiple issues
+      detect-rounded-corners = true;
       detect-client-opacity = false;
       detect-transient = true;
       detect-client-leader = false;
@@ -58,6 +45,6 @@
       unredir-if-possible = true;
       glx-no-stencil = true;
       glx-no-rebind-pixmap = true;
-    };                                           # Extra options for picom.conf (mostly for pijulius fork)
+    };
   };
 }

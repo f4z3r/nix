@@ -17,7 +17,7 @@
       "${mod} + q" = "${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
 
       # fullscreen
-      "${mod} + f" = "${pkgs.bspwm}/bin/bspc desktop -l next";
+      "${mod} + f" = "${pkgs.bspwm}/bin/bspc node -t fullscreen";
 
 
       # open clipboard selector
@@ -52,7 +52,7 @@
       '';
 
       # quake
-      # TODO(@jakob): 
+      "${alt} + Return" = ''~/.config/sxhkd/scripts/bspwm-scratchpad "quake" "wezterm start --class quake -- tmux"'';
 
       # brightness control
       "XF86MonBrightnessDown" = "${pkgs.brightnessctl}/bin/brightnessctl -c 'backlight' -d '*backlight*' s 5%-";
@@ -74,6 +74,13 @@
 
       # help
       "${mod} + slash" = "${pkgs.sxhkd}/bin/sxhkd-help";
+    };
+  };
+
+  home.file = {
+    ".config/sxhkd/scripts/bspwm-scratchpad" = {
+      source = ./scripts/bspwm-scratchpad;
+      executable = true;
     };
   };
 }
