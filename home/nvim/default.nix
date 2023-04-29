@@ -1,5 +1,36 @@
 { pkgs, ... }:
 
+let
+  fern-renderer-nerdfont-vim = pkgs.vimUtils.buildVimPlugin {
+    name = "fern-renderer-nerdfont-vim";
+    src = pkgs.fetchFromGitHub {
+      owner = "lambdalisue";
+      repo = "fern-renderer-nerdfont.vim";
+      rev = "1e90a78ab5510fbcedc85abeb9a251d978726935";
+      sha256 = "sha256-foX/RguLMKVs0TvBcnfH9m3hkDQmfokzuESrb4iUmw8=";
+    };
+  };
+
+  nerdfont-vim = pkgs.vimUtils.buildVimPlugin {
+    name = "nerdfont-vim";
+    src = pkgs.fetchFromGitHub {
+      owner = "lambdalisue";
+      repo = "nerdfont.vim";
+      rev = "3daf10116daad5da257486c9043c658cced4dd31";
+      sha256 = "sha256-FKjjuPk8aQaAB+Jlwa3X8SByFd4WIsthDoqAnX+EJP0=";
+    };
+  };
+
+  fern-git-status = pkgs.vimUtils.buildVimPlugin {
+    name = "fern-git-status";
+    src = pkgs.fetchFromGitHub {
+      owner = "lambdalisue";
+      repo = "fern-git-status.vim";
+      rev = "151336335d3b6975153dad77e60049ca7111da8e";
+      sha256 = "sha256-9N+T/MB+4hKcxoKRwY8F7iwmTsMtNmHCHiVZfcsADcc=";
+    };
+  };
+in
 {
   programs.neovim = {
     enable = true;
@@ -29,7 +60,13 @@
         plugin = ale;
         config = builtins.readFile ./plugin/ale.vim;
       }
-      fern-vim
+      {
+        plugin = fern-vim;
+        config = builtins.readFile ./plugin/fern.vim;
+      }
+      fern-renderer-nerdfont-vim
+      nerdfont-vim
+      fern-git-status
       vim-repeat
       gruvbox-material
       nerdcommenter

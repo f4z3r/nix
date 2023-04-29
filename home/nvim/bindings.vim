@@ -341,19 +341,7 @@ nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').git_files()<cr>
 " (f)iles (c)ontent
 nnoremap <leader>fc <cmd>lua require('telescope.builtin').live_grep()<cr>
-" nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-" nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
-" " (f)iles in git files in (P)roject
-" nnoremap <leader>fP :GFiles<cr>
-" " (f)iles in (c)urrent working directory (not same as project)
-" nnoremap <leader>fc :Files<cr>
-" " (f)ind (f)ile (in buffer's dir)
-" nnoremap <leader>ff :Files %:p:h<cr>
-" " (f)iles in (h)ome
-" nnoremap <leader>fh :Files ~/<cr>
-" " (f)iles (a)ll
-" nnoremap <leader>fa :Files /<cr>
 " (f)ile (r)efresh
 nnoremap <leader>fr :checktime %<cr>
 " (f)ile new (t)emp
@@ -404,7 +392,7 @@ nnoremap <leader>bd :Bd<cr>
 " fast switch buffer
 nnoremap <leader><tab> :b#<cr>
 " (b)uffer fuzzy search
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>bb <cmd>lua require('telescope.builtin').buffers()<cr>
 " close all buffers except current
 command! Bk execute '%bdelete|edit #|normal `"'
 " (b)uffer only (k)eep current
