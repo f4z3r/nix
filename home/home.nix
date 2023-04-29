@@ -91,6 +91,8 @@
       dawnTime = "06:00";
       duskTime = "19:00";
     };
+
+    flameshot.enable = true;
   };
 
   home = {
