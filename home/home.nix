@@ -126,6 +126,12 @@
       python311
       ruff
     ];
+
+    file = {
+      ".config/ruff/pyproject.toml" = {
+        source = ./files/ruff.toml;
+      };
+    };
   };
 
   gtk = {
