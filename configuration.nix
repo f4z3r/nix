@@ -162,6 +162,7 @@ in
     };
 
     dconf.enable = true;
+    thunar.enable = true;
   };
 
   environment.systemPackages = with pkgs; [

@@ -21,6 +21,7 @@
 
   programs = {
     home-manager.enable = true;
+
     tealdeer = {
       enable = true;
       settings = {
