@@ -47,7 +47,6 @@
         "$swift"
         "$terraform"
         "$zig"
-        "$nix_shell"
         "$conda"
         "$aws"
         "$gcloud"
@@ -112,7 +111,7 @@
 
       nix_shell = {
         disabled = false;
-        format = "╱ [$symbol$state( \\($name\\))]($style)";
+        format = "╱ [$symbol$state]($style)";
         impure_msg = "[ ](bold red)";
         pure_msg = "[ ](bold green)";
         unknown_msg = "[ ](bold yellow)";

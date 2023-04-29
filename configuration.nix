@@ -41,7 +41,11 @@ in
 
   nix = {
     package = pkgs.nixFlakes;
-    extraOptions = "experimental-features = nix-command flakes";
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
+      '';
     gc = {
       automatic = true;
       dates = "weekly";

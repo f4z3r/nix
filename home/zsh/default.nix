@@ -11,6 +11,18 @@
       save = 10000;
       share = true;
     };
+    plugins = [
+      {
+        name = "zsh-nix-shell";
+        file = "nix-shell.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "chisui";
+          repo = "zsh-nix-shell";
+          rev = "v0.5.0";
+          sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
+        };
+      }
+    ];
     defaultKeymap = "viins";
     dirHashes = {
       "docs" = "$HOME/Documents";
@@ -18,6 +30,7 @@
     };
     initExtraFirst = builtins.readFile ./config.zsh;
     initExtra = ''
+      eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
       eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
       eval "$(${pkgs.starship}/bin/starship init zsh)"
     '';
