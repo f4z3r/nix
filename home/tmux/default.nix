@@ -31,14 +31,26 @@
       # turn of mouse
       set -g mouse off
       
-      set -g status off
+      set -g status on
 
       # improve default name of windows
       set-option -g automatic-rename-format '#{b:pane_current_path}: #{b:pane_current_command}'
+
+      # minimal status bar
+      set-option -g status-style bg=colour237,fg=colour223
+      set-option -g status-left ""
+      set-option -g status-right ""
+      set -g status-justify centre
+      set-window-option -g window-status-separator "    "
+      set-window-option -g window-status-current-format "#{?window_zoomed_flag,#[fg=colour214],}"
+      set-window-option -g window-status-format ""
       
       # fix coloring for tmux
       set -g default-terminal "screen-256color"
       set -ga terminal-overrides ",xterm-256color:Tc"
+
+      # override suspend
+      bind-key C-z resize-pane -Z
 
       # vim like pane movement
       bind-key C-h select-pane -t '{left-of}'
