@@ -68,7 +68,7 @@
       # launchers
       "${mod} + ${alt} + w" = "${pkgs.brave}/bin/brave";
       "${mod} + ${alt} + p" = "${pkgs.uair}/bin/uairctl toggle";
-      "${mod} + ${alt} + b" = "${pkgs.rofi-rbw}/bin/rofi-rbw";
+      "${mod} + ${alt} + b" = ''${pkgs.rofi-rbw}/bin/rofi-rbw --keybindings="Enter:type:password'';
     };
   };
 

@@ -126,6 +126,7 @@
       protonvpn-cli
 
       python311
+      ruff
     ];
   };
 
