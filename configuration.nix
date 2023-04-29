@@ -175,6 +175,11 @@ in
     thermald.enable = true;
     tlp.enable = true;
 
+    locate = {
+      enable = true;
+      interval = "hourly";
+    };
+
     logind = {
       lidSwitch = "lock";
       lidSwitchExternalPower = "ignore";

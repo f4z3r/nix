@@ -56,8 +56,6 @@
   };
 
   services = {
-    locate.enable = true;
-
     dunst = {
       enable = true;
       # TODO(@jakob): configure
