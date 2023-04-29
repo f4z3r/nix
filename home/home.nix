@@ -56,6 +56,8 @@
   };
 
   services = {
+    locate.enable = true;
+
     dunst = {
       enable = true;
       # TODO(@jakob): configure
@@ -98,6 +100,8 @@
       curlie
       dog
 
+      gtk-engine-murrine
+
       rnix-lsp
 
       xsel
@@ -118,8 +122,8 @@
 
   gtk = {
     theme = {
-      package = pkgs.sweet;
-      name = "Sweet";
+      package = pkgs.gruvbox-gtk-theme;
+      name = "Gruvbox-Dark-BL";
     };
   };
 }
