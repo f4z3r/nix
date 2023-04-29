@@ -24,6 +24,7 @@ sudo nixos-rebuild switch --flake .#
 Download configurations from Proton to get the CAs, Keys, etc. All VPN information is then stored
 under `/root/vpn` to ensure they are not world readable. Store them as:
 
-- `/root/vpn/ca`
-- `/root/vpn/tls-auth`
-- `/root/vpn/jakobbeckmann-proton.cred`
+- `/root/vpn/ca`: Proton's CA, theoretically public
+- `/root/vpn/tls-auth`: Proton's TLS key, theoretically not too problematic
+- `/root/vpn/jakobbeckmann-proton.cred`: your credentials (with `+f2` attached to the username for
+  NetShield protection), with username on first line and password on second.
