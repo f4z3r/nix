@@ -20,9 +20,9 @@
       "${mod} + f" = "${pkgs.bspwm}/bin/bspc desktop -l next";
 
       # layouts
-      "${mod} + l; t" = "${pkgs.bsp-layout}/bin/bsp-layout set tall";
-      "${mod} + l; w" = "${pkgs.bsp-layout}/bin/bsp-layout set wide";
-      "${mod} + l; e" = "${pkgs.bsp-layout}/bin/bsp-layout set grid";
+      "${mod} + l : t" = "${pkgs.bsp-layout}/bin/bsp-layout set tall";
+      "${mod} + l : w" = "${pkgs.bsp-layout}/bin/bsp-layout set wide";
+      "${mod} + l : e" = "${pkgs.bsp-layout}/bin/bsp-layout set grid";
 
       # open clipboard selector
       "${mod} + c" = ''${pkgs.rofi}/bin/rofi -modi "clipboard:greenclip print" -show clipboard '{cmd}' '';
