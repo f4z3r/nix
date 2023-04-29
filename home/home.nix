@@ -125,6 +125,7 @@
 
       python311
       ruff
+      black
     ];
 
     file = {

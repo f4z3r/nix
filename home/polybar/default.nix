@@ -45,7 +45,7 @@
         font-0 = monospace;2
 
         modules-left = xworkspaces xwindow
-        modules-right = pomo backlight red alsa filesystem memory cpu wlan bat date
+        modules-right = pomo backlight red alsa filesystem memory cpu wlan vpn bat date
 
         cursor-click = pointer
         cursor-scroll = ns-resize
@@ -153,6 +153,14 @@
         interface = wlp0s20f3
         label-connected = %{F#F0C674}%ifname%%{F-} %essid% %local_ip%
 
+        [module/vpn]
+        type = custom/script
+        exec-if = systemctl is-active openvpn-*
+        exec = ~/.local/bin/vpn.py
+        tail = false
+        label = %{F#F0C674}VPN%{F-} %output%
+        interval = 60
+
         [module/bat]
         type = internal/battery
         full-at = 99
@@ -189,14 +197,14 @@
       source = ./scripts/redshift.sh;
       executable = true;
     };
-  };
-  home.file = {
     ".local/bin/volume.sh" = {
       source = ./scripts/volume.sh;
       executable = true;
     };
-  };
-  home.file = {
+    ".local/bin/vpn.py" = {
+      source = ./scripts/vpn.py;
+      executable = true;
+    };
     ".config/uair/uair.toml" = {
       source = ./uair.toml;
     };
