@@ -30,6 +30,14 @@
       };
     };
 
+    rbw = {
+      enable = true;
+      settings = {
+        email = "jakobbeckmann@pm.me";
+        pinentry = "curses";
+      };
+    };
+
     skim = {
       enable = true;
       enableZshIntegration = true;
@@ -107,6 +115,7 @@
       xsel
 
       rofi-power-menu
+      rofi-rbw
       wmctrl
       bsp-layout
       alsa-utils

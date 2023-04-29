@@ -10,9 +10,6 @@
       # launch terminal
       "${mod} + Return" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.tmux}/bin/tmux";
 
-      # reload configuration
-      "${mod} + ${alt} + r" = "pkill -USR1 -x sxhkd";
-
       # quit / powermenu
       "${mod} + q" = "${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
 
@@ -71,9 +68,7 @@
       # launchers
       "${mod} + ${alt} + w" = "${pkgs.brave}/bin/brave";
       "${mod} + ${alt} + p" = "${pkgs.uair}/bin/uairctl toggle";
-
-      # help
-      "${mod} + slash" = "${pkgs.sxhkd}/bin/sxhkd-help";
+      "${mod} + ${alt} + b" = "${pkgs.rofi-rbw}/bin/rofi-rbw";
     };
   };
 
