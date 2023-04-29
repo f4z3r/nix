@@ -10,6 +10,7 @@ in
     [
       ./hardware-configuration.nix
       ./nixos/zsh.nix
+      ./nixos/openvpn/default.nix
       ./nixos/kanata.nix
     ];
 

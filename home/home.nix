@@ -123,8 +123,6 @@
       uair
       libnotify
 
-      protonvpn-cli
-
       python311
       ruff
     ];
