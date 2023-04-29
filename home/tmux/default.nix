@@ -69,6 +69,7 @@
       bind-key - split-window -v -c "#{pane_current_path}"
       
       # ensure all window are in same working dir
+      bind-key a last-window
       bind-key c new-window -c "#{pane_current_path}"
       bind-key % split-window -h -c "#{pane_current_path}"
       bind-key '"' split-window -v -c "#{pane_current_path}"
