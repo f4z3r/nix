@@ -153,12 +153,15 @@ in
       enable = true;
       lockerCommand = "${pkgs.xsecurelock}/bin/xsecurelock";
     };
+
     gnupg = {
       agent = {
         enable = true;
         pinentryFlavor = "curses";
       };
     };
+
+    dconf.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
