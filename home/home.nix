@@ -90,6 +90,7 @@
       ctags
       neofetch
       mupdf
+      ripgrep
       silver-searcher
       procs
       tree

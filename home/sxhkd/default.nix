@@ -19,10 +19,6 @@
       # fullscreen
       "${mod} + f" = "${pkgs.bspwm}/bin/bspc desktop -l next";
 
-      # layouts
-      "${mod} + l : t" = "${pkgs.bsp-layout}/bin/bsp-layout set tall";
-      "${mod} + l : w" = "${pkgs.bsp-layout}/bin/bsp-layout set wide";
-      "${mod} + l : e" = "${pkgs.bsp-layout}/bin/bsp-layout set grid";
 
       # open clipboard selector
       "${mod} + c" = ''${pkgs.rofi}/bin/rofi -modi "clipboard:greenclip print" -show clipboard '{cmd}' '';
@@ -42,8 +38,14 @@
       # move to other monitor (and follow)
       "${mod} + m" = "${pkgs.bspwm}/bin/bspc node -m last --follow";
 
+      # layouts
+      "${mod} + s : t" = "${pkgs.bsp-layout}/bin/bsp-layout set tall";
+      "${mod} + s : w" = "${pkgs.bsp-layout}/bin/bsp-layout set wide";
+      "${mod} + s : e" = "${pkgs.bsp-layout}/bin/bsp-layout set grid";
+      "${mod} + s : o" = "${pkgs.bsp-layout}/bin/bsp-layout set tiled";
+
       # resize
-      "${mod} + s : {h,j,k,l}" = ''
+      "${mod} + r : {h,j,k,l}" = ''
         STEP=20; SELECTION={1,2,3,4}; \
         ${pkgs.bspwm}/bin/bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
         ${pkgs.bspwm}/bin/bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
