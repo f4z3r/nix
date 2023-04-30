@@ -111,7 +111,7 @@
 
       nix_shell = {
         disabled = false;
-        format = "╱ [$symbol$state]($style)";
+        format = "╱ [$symbol$state(\\($name\\)) ]($style)";
         impure_msg = "[ ](bold red)";
         pure_msg = "[ ](bold green)";
         unknown_msg = "[ ](bold yellow)";

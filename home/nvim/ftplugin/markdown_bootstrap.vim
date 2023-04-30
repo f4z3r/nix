@@ -33,12 +33,3 @@ setlocal nojoinspaces
 " ==== Spelling =========================================================={{{
 setlocal spell
 " }}}
-
-
-" ==== Obsidian =========================================================={{{
-augroup ObsidianPath
-  autocmd!
-  autocmd BufNewFile,BufRead,VimEnter /home/jakob/data/obsidian/* lcd! /home/jakob/data/obsidian/
-  autocmd BufNewFile,BufRead,VimEnter /home/jakob/data/obsidian/* setlocal path+=/home/jakob/data/obsidian/** suffixesadd+=.md
-augroup END
-" }}}
