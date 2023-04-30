@@ -6,6 +6,39 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     settings = {
+      imports = [
+        "verbs.hjson"
+        {file = "dark-gruvbox.hjson"; luma = ["dark" "unknown"];}
+      ];
+      true_colors = true;
+      show_selection_mark = true;
+      default_flags = "gip";
+      ext_colors = {
+        rs = "rgb(255, 128, 75)";
+        js = "rgb(255, 128, 75)";
+        py = "rgb(255, 128, 75)";
+        go = "rgb(255, 128, 75)";
+        ts = "rgb(255, 128, 75)";
+        sh = "rgb(255, 128, 75)";
+        vim = "rgb(255, 128, 75)";
+        lua = "rgb(255, 128, 75)";
+        rb = "rgb(255, 128, 75)";
+        rockspec = "rgb(255, 128, 75)";
+        log = "red";
+        png = "blue";
+        jpeg = "blue";
+        jpg = "blue";
+        gif = "blue";
+        yaml = "yellow";
+        json = "yellow";
+        hjson = "yellow";
+        conf = "yellow";
+        md = "green";
+        txt = "green";
+        cheat = "green";
+        css = "green";
+        html = "green";
+      };
       verbs = [
         {
           name = "touch";
