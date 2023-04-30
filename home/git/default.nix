@@ -41,6 +41,10 @@
       };
     };
 
+    hooks = {
+      commit-msg = ./hooks/commit-msg;
+    };
+
     ignores = [
       "tags"
       "tags.temp"
@@ -54,6 +58,8 @@
       ".nvimlog"
       ".tool-versions"
       "/worktrees/"
+      "/.envrc"
+      "/shell.nix"
     ];
 
     aliases = {
