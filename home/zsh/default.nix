@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, theme, ... }:
 
 {
   programs.zsh = {
@@ -47,7 +47,7 @@
       "rt" = ''cd $( if git rev-parse --show-toplevel &> /dev/null; then; git rev-parse --show-toplevel; else; echo "."; fi; )'';
       "ag" = ''ag --hidden --ignore .git --ignore .cache --color'';
       "sk" = ''sk -m --color=dark,hl:3,spiller:2,fg+:9,hl+:3,selected:6,query:5,matched_bg:-1'';
-      "ska" = ''sk -m --color=dark,hl:3,spiller:2,fg+:9,hl+:3,selected:6,query:5,matched_bg:-1 --ansi -i -c 'ag "{}\"' '';
+      "ska" = ''sk -m --color=dark,hl:3,spiller:2,fg+:9,hl+:3,selected:6,query:5,matched_bg:-1 --ansi -i -c 'ag "{}"' '';
       "ck" = ''cd "$(fd -t d -c always -L -H . ./ | sk --ansi)"'';
       "l" = ''exa -Fa'';
       "ll" = ''exa -alF --git'';
@@ -66,7 +66,8 @@
     };
     sessionVariables = {
       GREP_COLORS = "mt=01;33:ms=01;33:mc=01;33:sl=:cx=:fn=35:ln=32:bn=32:se=36";
-      MANPAGER = "sh -c 'col -bx | bat --theme=gruvbox-dark -l man -p'";
+      MANPAGER = "sh -c 'col -bx | bat --theme=default -l man -p'";
+      NIX_THEME = "${theme}";
     };
   };
 }

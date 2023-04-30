@@ -1,4 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, theme, ... }:
+let
+  fg_colour = (if theme == "dark" then "colour230" else "colour236");
+  bg_colour = (if theme == "dark" then "colour236" else "colour180");
+  focous_colour = "colour214";
+in
+
 {
   programs.tmux = {
     enable = true;
@@ -37,12 +43,12 @@
       set-option -g automatic-rename-format '#{b:pane_current_path}: #{b:pane_current_command}'
 
       # minimal status bar
-      set-option -g status-style bg=colour237,fg=colour223
+      set-option -g status-style bg=${bg_colour},fg=${fg_colour}
       set-option -g status-left ""
       set-option -g status-right ""
       set -g status-justify centre
       set-window-option -g window-status-separator "    "
-      set-window-option -g window-status-current-format "#{?window_zoomed_flag,#[fg=colour214],}"
+      set-window-option -g window-status-current-format "#{?window_zoomed_flag,#[fg=${focous_colour}],}"
       set-window-option -g window-status-format ""
       
       # fix coloring for tmux

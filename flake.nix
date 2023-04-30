@@ -13,8 +13,10 @@
   outputs = { self, nixpkgs, home-manager, ... }:
   let
     hostname = "revenge-nix";
+    username = "f4z3r";
+    theme = "dark";  # one of "light" or "dark"
     system = "x86_64-linux";
-    pgks = import nixpkgs {
+    pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
     };
@@ -24,16 +26,17 @@
     nixosConfigurations = {
       ${hostname} = lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit system username hostname; };
         modules = [
           ./configuration.nix
 
           home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.f4z3r = {
-              imports = [
-                ./home/home.nix
-              ];
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users = {
+                ${username} = import ./home/home.nix { inherit pkgs lib username theme; };
+              };
             };
           }
         ];

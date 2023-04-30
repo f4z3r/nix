@@ -1,9 +1,4 @@
-{ config, pkgs, ... }:
-
-let
-  username = "f4z3r";
-  hostname = "revenge-nix";
-in
+{ config, pkgs, system, username, hostname, ... }:
 
 {
   imports =

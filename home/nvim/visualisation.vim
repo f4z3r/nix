@@ -12,7 +12,7 @@ set t_Co=256
 
 
 " ==== Theme ============================================================={{{
-if $KITTY_THEME ==# 'light'
+if $NIX_THEME ==# 'light'
   set background=light
 else
   set background=dark
@@ -62,4 +62,9 @@ augroup LineNumberGroup
 augroup END
 " set signs to be displayed in number column
 set signcolumn=number
+" }}}
+
+
+" ==== Folding ==========================================================={{{
+set nofoldenable
 " }}}

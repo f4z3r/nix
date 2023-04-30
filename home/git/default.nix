@@ -1,12 +1,27 @@
-{ pkgs, ... }:
+{ pkgs, theme, ... }:
 
 {
   programs.git = {
     enable = true;
+
+    userName = "Jakob Beckmann";
+    userEmail = "jakobbeckmann@pm.me";
+
+    lfs = {
+      enable = true;
+      skipSmudge = true;
+    };
+
+    signing = {
+      gpgPath = "${pkgs.gnupg}/bin/gpg";
+      signByDefault = true;
+      key = "jakobbeckmann@pm.me";
+    };
+
     delta = {
       enable = true;
       options = {
-        syntax-theme = "gruvbox-dark";
+        syntax-theme = "gruvbox-${theme}";
         true-color = "always";
         plus-style = "syntax #012800";
         minus-style = "syntax #340001";
@@ -15,9 +30,6 @@
         side-by-side = true;
       };
     };
-
-    userName = "Jakob Beckmann";
-    userEmail = "jakobbeckmann@pm.me";
 
     extraConfig = {
       core = {

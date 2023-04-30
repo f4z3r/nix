@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, theme, ... }:
 
 {
   programs.bat = {
     enable = true;
     config = {
-      theme = "gruvbox-dark";
+      theme = "gruvbox-${theme}";
       style = "numbers,changes,header";
     };
   };

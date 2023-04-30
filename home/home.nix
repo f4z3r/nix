@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, lib, username, theme ? "dark", ... }:
+
+assert lib.asserts.assertOneOf "theme" theme [
+  "dark"
+  "light"
+];
 
 {
   imports = [
@@ -8,15 +13,15 @@
     ./polybar/default.nix
     ./picom/default.nix
     ./rofi/default.nix
-    ./git/default.nix
-    ./wezterm/default.nix
-    ./tmux/default.nix
-    ./zsh/default.nix
+    (import ./git/default.nix { inherit pkgs theme; })
+    (import ./wezterm/default.nix { inherit pkgs theme; })
+    (import ./tmux/default.nix {inherit pkgs theme; })
+    (import ./zsh/default.nix { inherit pkgs theme; })
     ./starship/default.nix
     ./gpg/default.nix
     ./nvim/default.nix
     ./broot/default.nix
-    ./bat/default.nix
+    (import ./bat/default.nix { inherit pkgs theme; })
   ];
 
   programs = {
@@ -82,7 +87,7 @@
 
     mpd = {
       enable = true;
-      musicDirectory = /home/f4z3r/Music;
+      musicDirectory = /home/${username}/Music;
       # TODO(@jakob): configure
     };
 
@@ -96,8 +101,8 @@
   };
 
   home = {
-    username = "f4z3r";
-    homeDirectory = "/home/f4z3r";
+    username = "${username}";
+    homeDirectory = "/home/${username}";
     stateVersion = "22.11";
     packages = with pkgs; [
       gimp
@@ -148,7 +153,7 @@
     enable = true;
     theme = {
       package = pkgs.gruvbox-gtk-theme;
-      name = "Gruvbox-Dark-BL";
+      name = (if theme == "dark" then "Gruvbox-Dark-BL" else "Gruvbox-Light-BL");
     };
   };
 }

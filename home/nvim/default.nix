@@ -194,4 +194,8 @@ in
     source = ./ftplugin;
     recursive = true;
   };
+  home.file.".config/nvim/after" = {
+    source = ./after;
+    recursive = true;
+  };
 }

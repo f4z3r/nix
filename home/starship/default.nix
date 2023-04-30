@@ -272,6 +272,7 @@
       };
 
       jobs = {
+        symbol = "󰣏";
         format = "╱ [$symbol$number ]($style)";
       };
 

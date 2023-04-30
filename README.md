@@ -6,7 +6,17 @@ TODO(@jakob):
 
 ## Standard Software Used
 
-TODO(@jakob): 
+- Channel: NixOS unstable
+- Window Manager: `bspwm`
+- Bar: `polybar`
+- Launcher: `rofi`
+- Compositor: `picom`
+- GTK Theme: `Gruvbox Material Dark`
+- Terminal: `wezterm`
+- Multiplexer: `tmux`
+- Shell: `zsh`
+- Editor: `neovim`
+- Prompt: `starship`
 
 ## Update
 
@@ -18,6 +28,19 @@ nix flake update
 # rebuild system
 sudo nixos-rebuild switch --flake .#
 ```
+
+## Dynamic Theming
+
+Themes cannot be implemented fully dynamically, as Nix's filesystems are read-only. Instead, you can
+choose to switch between themes (`dark` or `light`) in `./flake.nix` and rebuild. You will need to
+reload the tmux configurations if a tmux instance is already running:
+
+```sh
+:source ~/.config/tmux/tmux.conf
+```
+
+and export `NIX_THEME="..."` for NeoVim to take over the theme if you do not which to restart
+shells. WezTerm will take over the theme dynmically. GTK themes reloads require a new login.
 
 ## OpenVPN
 
