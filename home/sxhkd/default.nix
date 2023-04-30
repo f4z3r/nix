@@ -6,6 +6,8 @@
     keybindings = let mod = "alt"; alt = "control"; in {
       # rofi launcher
       "${mod} + space" = "${pkgs.rofi}/bin/rofi -combi-modi window,drun -show combi";
+      "${mod} + c" = ''${pkgs.rofi}/bin/rofi -modi "clipboard:greenclip print" -show clipboard '{cmd}' '';
+      "${mod} + s" = ''${pkgs.rofi-rbw}/bin/rofi-rbw -a copy -t password'';
 
       # launch terminal
       "${mod} + Return" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.tmux}/bin/tmux";
@@ -16,10 +18,6 @@
 
       # fullscreen
       "${mod} + f" = "${pkgs.bspwm}/bin/bspc node -t fullscreen";
-
-
-      # open clipboard selector
-      "${mod} + c" = ''${pkgs.rofi}/bin/rofi -modi "clipboard:greenclip print" -show clipboard '{cmd}' '';
 
       # close / kill client
       "${mod} + {_,shift + }w" = "${pkgs.bspwm}/bin/bspc node -{c,k}";
@@ -35,12 +33,6 @@
 
       # move to other monitor (and follow)
       "${mod} + m" = "${pkgs.bspwm}/bin/bspc node -m last --follow";
-
-      # layouts
-      "${mod} + s : t" = "${pkgs.bsp-layout}/bin/bsp-layout set tall";
-      "${mod} + s : w" = "${pkgs.bsp-layout}/bin/bsp-layout set wide";
-      "${mod} + s : e" = "${pkgs.bsp-layout}/bin/bsp-layout set grid";
-      "${mod} + s : o" = "${pkgs.bsp-layout}/bin/bsp-layout set tiled";
 
       # resize
       "${mod} + r : {h,j,k,l}" = ''
@@ -69,7 +61,6 @@
       # launchers
       "${mod} + ${alt} + w" = "${pkgs.brave}/bin/brave";
       "${mod} + ${alt} + p" = "${pkgs.uair}/bin/uairctl toggle";
-      "${mod} + ${alt} + Enter" = ''${pkgs.rofi-rbw}/bin/rofi-rbw -a copy -t password'';
     };
   };
 
