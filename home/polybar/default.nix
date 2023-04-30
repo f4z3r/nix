@@ -45,7 +45,6 @@
         font-0 = monospace;2
 
         modules-left = xworkspaces xwindow
-        modules-right = pomo backlight red alsa filesystem memory cpu wlan vpn bat date
 
         cursor-click = pointer
         cursor-scroll = ns-resize
@@ -55,14 +54,22 @@
         [bar/main]
         inherit = base
         monitor = eDP-1
+        modules-right = pomo backlight red alsa filesystem memory cpu wlan vpn bat date
 
-        [bar/external_1]
+        [bar/e1]
         inherit = base
         monitor = DP-1
+        modules-right = backlight red alsa filesystem memory cpu wlan vpn bat date
 
-        [bar/external_2]
+        [bar/e2]
         inherit = base
         monitor = DP-2
+        modules-right = backlight red alsa filesystem memory cpu wlan vpn bat date
+
+        [bar/e3]
+        inherit = base
+        monitor = DP-2
+        modules-right = backlight red alsa filesystem memory cpu wlan vpn bat date
 
         [module/xworkspaces]
         type = internal/xworkspaces

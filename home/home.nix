@@ -115,6 +115,7 @@
       curlie
       dog
       fend
+      autorandr
 
       gtk-engine-murrine
 
