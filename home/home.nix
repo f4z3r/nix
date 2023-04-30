@@ -121,6 +121,7 @@ assert lib.asserts.assertOneOf "theme" theme [
       dog
       fend
       autorandr
+      ouch
 
       gtk-engine-murrine
 
