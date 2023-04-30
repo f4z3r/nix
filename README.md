@@ -17,6 +17,7 @@ TODO(@jakob):
 - Shell: `zsh`
 - Editor: `neovim`
 - Prompt: `starship`
+- Audio: `pipewire`
 
 ## Update
 

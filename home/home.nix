@@ -107,6 +107,7 @@ assert lib.asserts.assertOneOf "theme" theme [
     packages = with pkgs; [
       gimp
       brave
+      helvum
 
       ctags
       neofetch
