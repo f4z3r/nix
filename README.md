@@ -1,14 +1,16 @@
 # f4z3r's NixOS Flake
 
-## Screenshots
+<!--## Screenshots-->
 
-TODO(@jakob):
+<!--TODO(@jakob):-->
 
 ## Standard Software Used
 
 - Channel: NixOS unstable
 - Window Manager: `bspwm`
 - Bar: `polybar`
+- Shortcut Daemon: `sxhkd`
+- Keyboard Remapper: `kanata`
 - Launcher: `rofi`
 - Compositor: `picom`
 - GTK Theme: `Gruvbox Material Dark`
