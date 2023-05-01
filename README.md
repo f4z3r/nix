@@ -7,6 +7,11 @@
 
 ![](./assets/desktop.jpeg)
 
+
+With the light theme, for working outside in the sun:
+
+![](./assets/shell-quake-light.jpeg)
+
 ## Standard Software Used
 
 - Channel: NixOS unstable
@@ -46,7 +51,8 @@ reload the tmux configurations if a tmux instance is already running:
 ```
 
 and export `NIX_THEME="..."` for NeoVim to take over the theme if you do not which to restart
-shells. WezTerm will take over the theme dynmically. GTK themes reloads require a new login.
+shells. WezTerm will take over the theme dynmically. GTK themes typically reload only on application
+restart.
 
 ## OpenVPN
 
