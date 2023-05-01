@@ -1,8 +1,11 @@
 # f4z3r's NixOS Flake
 
-<!--## Screenshots-->
+## Screenshots
 
-<!--TODO(@jakob):-->
+![](./assets/shell-quake.jpeg)
+
+
+![](./assets/desktop.jpeg)
 
 ## Standard Software Used
 
