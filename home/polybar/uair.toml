@@ -4,4 +4,4 @@ format = "{time}\n"
 [[sessions]]
 name = "Work"
 duration = "25m"
-command = "notify-send 'Work Done!'"
+command = "notify-send 'Pomodorro' 'Timer completed, work done!' -t 10000 -u critical"

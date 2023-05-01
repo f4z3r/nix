@@ -40,6 +40,7 @@ in
       set -g status on
 
       # improve default name of windows
+      set-option -g automatic-rename on
       set-option -g automatic-rename-format '#{b:pane_current_path}: #{b:pane_current_command}'
 
       # minimal status bar

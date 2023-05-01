@@ -119,7 +119,7 @@ assert lib.asserts.assertOneOf "theme" theme [
       jq
       rsync
       curlie
-      dog
+      dogdns
       fend
       autorandr
       ouch

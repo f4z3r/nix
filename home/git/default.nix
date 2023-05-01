@@ -75,6 +75,7 @@
     ];
 
     aliases = {
+      "t" = ''tag -n1'';
       "f" = ''fetch -q'';
       "b" = ''branch -vv'';
       "ba" = ''branch -vva'';
