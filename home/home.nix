@@ -7,7 +7,6 @@ assert lib.asserts.assertOneOf "theme" theme [
 
 {
   imports = [
-    ./bluetooth/default.nix
     ./bspwm/default.nix
     ./sxhkd/default.nix
     ./polybar/default.nix

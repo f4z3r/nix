@@ -68,6 +68,7 @@
       GREP_COLORS = "mt=01;33:ms=01;33:mc=01;33:sl=:cx=:fn=35:ln=32:bn=32:se=36";
       MANPAGER = "sh -c 'col -bx | bat --theme=default -l man -p'";
       NIX_THEME = "${theme}";
+      NIXPKGS_ALLOW_UNFREE = 1;
     };
   };
 }

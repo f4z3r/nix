@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./nixos/tlp.nix
       ./nixos/zsh.nix
       ./nixos/openvpn/default.nix
       ./nixos/kanata.nix
@@ -108,6 +109,7 @@
   services.xserver = {
     enable = true;
     dpi = 192;
+    videoDrivers = [ "nvidia" ];
     
     libinput = {
       enable = true;
@@ -175,9 +177,7 @@
   services = {
     blueman.enable = true;
     timesyncd.enable = true;
-    greenclip.enable = true;
     thermald.enable = true;
-    tlp.enable = true;
 
     locate = {
       enable = true;

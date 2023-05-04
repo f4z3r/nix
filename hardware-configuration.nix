@@ -1,5 +1,13 @@
 { config, lib, pkgs, modulesPath, ... }:
-
+let
+  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+    export __NV_PRIME_RENDER_OFFLOAD=1
+    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export __VK_LAYER_NV_optimus=NVIDIA_only
+    exec "$@"
+  '';
+in
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
@@ -35,8 +43,18 @@
     cpuFreqGovernor = lib.mkDefault "powersave";
   };
 
+  environment.systemPackages = [
+    nvidia-offload
+  ];
   hardware = {
+    opengl.enable = true;
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+    nvidia.prime = {
+      offload.enable = true;
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
 
     bluetooth = {
       enable = true;
