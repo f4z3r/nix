@@ -201,6 +201,13 @@
       pulse.enable = true;
       jack.enable = true;
     };
+
+    printing = {
+      enable = true;
+      stateless = true;
+      startWhenNeeded = true;
+      webInterface = false;
+    };
   };
 
   system.stateVersion = "22.11";
