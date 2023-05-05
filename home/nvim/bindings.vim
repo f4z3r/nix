@@ -466,6 +466,9 @@ inoremap <c-r> <c-r>"
 xnoremap <silent> p p:let @"=@0<cr>
 " Copy default register contents to system copy clipboard
 nnoremap <silent> <leader>yy :call Copy_to_clipboard()<cr>
+" List yank stack
+nnoremap <silent> <leader>yl  :<C-u>CocList -A --normal yank<cr>
+
 " change last written word to UPPER_CASE
 inoremap <M-l> <esc>bviwUea
 " Start interactive EasyAlign in visual mode (e.g. vipga)
