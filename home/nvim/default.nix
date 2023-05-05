@@ -128,6 +128,8 @@ in
       vim-dispatch
       coc-yank
       coc-go
+      coc-pairs
+      coc-docker
       coc-sh
       coc-toml
       coc-lua
@@ -140,53 +142,53 @@ in
     coc = {
       enable = true;
       pluginConfig = builtins.readFile ./plugin/coc.vim;
-      settings = ''
-      {
-              "diagnostic.errorSign" = "";
-              "diagnostic.warningSign" = "";
-              "diagnostic.infoSign" = "כֿ";
-              "diagnostic.hintSign" = "";
-              "diagnostic.displayByAle" = true;
-              "suggest.completionItemKindLabels" = {
-                "text" = "";
-                "function" = "";
-                "method" = "";
-                "constructor" = "";
-                "field" = "羅";
-                "variable" = "";
-                "class" = "";
-                "interface" = "";
-                "module" = "";
-                "property" = "";
-                "unit" = "";
-                "value" = "";
-                "enum" = "";
-                "keyword" = "";
-                "snippet" = "";
-                "color" = "";
-                "file" = "";
-                "reference" = "";
-                "folder" = "";
-                "enumMember" = "";
-                "constant" = "";
-                "struct" = "";
-                "event" = "";
-                "operator" = "";
-                "typeParameter" = "tp";
-                "default" = "v;
-              }
-              "python.jediEnabled" = false;
-              "python.linting.enabled"  = false;
-              "languageserver" = {
-                "nix" = {
-                  "command" = "rnix-lsp";
-                  "filetypes" = [
-                    "nix"
-                  ];
-                };
-              };
-            };
-      '';
+      settings = {
+        "diagnostic.errorSign" = "";
+        "diagnostic.warningSign" = "";
+        "diagnostic.infoSign" = "כֿ";
+        "diagnostic.hintSign" = "";
+        "diagnostic.displayByAle" = true;
+        "yank.limit" = 5;
+        "codeLens.enable" = true;
+        "suggest.completionItemKindLabels" = {
+          "text" = "";
+          "function" = "";
+          "method" = "";
+          "constructor" = "";
+          "field" = "羅";
+          "variable" = "";
+          "class" = "";
+          "interface" = "";
+          "module" = "";
+          "property" = "";
+          "unit" = "";
+          "value" = "";
+          "enum" = "";
+          "keyword" = "";
+          "snippet" = "";
+          "color" = "";
+          "file" = "";
+          "reference" = "";
+          "folder" = "";
+          "enumMember" = "";
+          "constant" = "";
+          "struct" = "";
+          "event" = "";
+          "operator" = "";
+          "typeParameter" = "tp";
+          "default" = "v";
+        };
+        "python.jediEnabled" = false;
+        "python.linting.enabled"  = false;
+        "languageserver" = {
+          "nix" = {
+            "command" = "rnix-lsp";
+            "filetypes" = [
+              "nix"
+            ];
+          };
+        };
+      };
     };
   };
 

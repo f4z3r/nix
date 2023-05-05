@@ -17,6 +17,12 @@ nnoremap <buffer> <localleader>d :set conceallevel=0<cr>
 " }}}
 
 
+" ==== Settings =========================================================={{{
+" disable pairing of code blocks
+setlocal b:coc_pairs_disabled = ['`']
+" }}}
+
+
 " ==== Conceal ==========================================================={{{
 setlocal conceallevel=2
 setlocal concealcursor=n
