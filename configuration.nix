@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      (import ./nixos/networking.nix { inherit config pkgs hostname; })
       ./nixos/tlp.nix
       ./nixos/zsh.nix
       ./nixos/openvpn/default.nix
@@ -60,11 +61,6 @@
       enable = true;
       channel = "https://nixos.org/channels/nixos-unstable";
     };
-  };
-
-  networking = {
-    hostName = "${hostname}";
-    networkmanager.enable = true;
   };
 
   sound = {
