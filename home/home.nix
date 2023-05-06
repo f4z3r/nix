@@ -156,5 +156,9 @@ assert lib.asserts.assertOneOf "theme" theme [
       package = pkgs.gruvbox-gtk-theme;
       name = (if theme == "dark" then "Gruvbox-Dark-BL" else "Gruvbox-Light-BL");
     };
+    cursorTheme = {
+      package = pkgs.capitaine-cursors-themed;
+      name = (if theme == "dark" then "Capitaine Cursors (Gruvbox) - White" else "Capitaine Cursors (Gruvbox)");
+    };
   };
 }
