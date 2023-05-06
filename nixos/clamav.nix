@@ -8,6 +8,8 @@
           "/home/${username}/Downloads"
           "/home/${username}/Documents"
           "/home/${username}/Music"
+          "/home/${username}/opt"
+          "/home/${username}/tmp"
         ];
         OnAccessPrevention = "yes";
         OnAccessExcludeUname = "clamav";
