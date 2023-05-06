@@ -152,6 +152,7 @@ assert lib.asserts.assertOneOf "theme" theme [
       alsa-utils
       mpc-cli
       uair
+      bc
       libnotify
 
       # quick scripting stuff

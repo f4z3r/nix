@@ -60,6 +60,7 @@
       # launchers
       "${mod} + ${alt} + w" = "${pkgs.brave}/bin/brave";
       "${mod} + ${alt} + p" = "${pkgs.uair}/bin/uairctl toggle";
+      "${mod} + ${alt} + m" = "${pkgs.ncmpcpp}/bin/ncmpcpp";
     };
   };
 

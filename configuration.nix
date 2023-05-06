@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       (import ./nixos/networking.nix { inherit config pkgs hostname; })
       ./nixos/virtualisation.nix
+      (import ./nixos/clamav.nix { inherit config pkgs username; })
       ./nixos/tlp.nix
       ./nixos/zsh.nix
       ./nixos/openvpn/default.nix
@@ -137,12 +138,19 @@
     xkbVariant = "alt-intl";
   };
 
-  users.users.${username} = {
-    isNormalUser = true;
-    description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" "podman" "docker" ];
-    shell = pkgs.zsh;
-    packages = with pkgs; [];
+  users = {
+    users = {
+      ${username} = {
+        isNormalUser = true;
+        description = "${username}";
+        extraGroups = [ "networkmanager" "wheel" "audio" "video" "podman" "docker" "clamav" ];
+        shell = pkgs.zsh;
+        packages = with pkgs; [];
+      };
+    };
+    groups = {
+      users.members = [ "${username}" "clamav" ];
+    };
   };
 
 
