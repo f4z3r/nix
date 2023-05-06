@@ -153,7 +153,6 @@ assert lib.asserts.assertOneOf "theme" theme [
       mpc-cli
       uair
       bc
-      libnotify
 
       # quick scripting stuff
       python311

@@ -177,6 +177,7 @@
     brightnessctl
     xdotool
     xsecurelock
+    libnotify
   ];
 
   services = {

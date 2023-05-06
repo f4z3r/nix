@@ -72,3 +72,8 @@ quarantine, run the following:
 ```sh
 sudo mkdir -p /root/quarantine
 ```
+
+## TODOs
+
+- Test `ncmpcpp`
+- Get ClamD to notify user when file is quarantined
