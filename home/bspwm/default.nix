@@ -5,7 +5,7 @@
     windowManager.bspwm = {
       enable = true;
       startupPrograms = [
-        "${pkgs.feh}/bin/feh --bg-scale ~/.config/bspwm/wallpaper.png"
+        "${pkgs.feh}/bin/feh --bg-fill ~/.config/bspwm/wallpaper.jpeg"
         "${pkgs.polybar}/bin/polybar main"
       ];
       monitors = {
@@ -69,8 +69,8 @@
   };
 
   home.file = {
-    ".config/bspwm/wallpaper.png" = {
-      source = ./wallpaper.png;
+    ".config/bspwm/wallpaper.jpeg" = {
+      source = ./wallpaper.jpeg;
     };
   };
 }
