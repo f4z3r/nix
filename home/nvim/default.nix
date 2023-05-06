@@ -97,6 +97,7 @@ in
         config = builtins.readFile ./plugin/rainbow.vim;
       }
       targets-vim
+      bullets-vim
       vim-indent-object
       vim-signature
       vim-gitgutter

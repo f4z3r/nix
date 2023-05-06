@@ -104,11 +104,12 @@ assert lib.asserts.assertOneOf "theme" theme [
     homeDirectory = "/home/${username}";
     stateVersion = "22.11";
     packages = with pkgs; [
+      # GUI programs
       gimp
       brave
       helvum
 
-      ctags
+      # utils
       neofetch
       mupdf
       ripgrep
@@ -122,13 +123,19 @@ assert lib.asserts.assertOneOf "theme" theme [
       fend
       autorandr
       ouch
+      fd
+      vimv-rs
 
+      # stuff used for GTK theming
       gtk-engine-murrine
 
+      # nix l
       rnix-lsp
 
       xsel
 
+      # stuff used in the background
+      ctags
       rofi-power-menu
       rofi-rbw
       wmctrl
@@ -138,6 +145,7 @@ assert lib.asserts.assertOneOf "theme" theme [
       uair
       libnotify
 
+      # quick scripting stuff
       python311
       ruff
       black

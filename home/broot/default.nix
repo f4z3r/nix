@@ -41,6 +41,14 @@
       };
       verbs = [
         {
+          key = "ctrl-p";
+          execution = ":line_up";
+        }
+        {
+          key = "ctrl-n";
+          execution = ":line_down";
+        }
+        {
           name = "touch";
           shortcut = "t";
           invocation = "touch {new_file}";

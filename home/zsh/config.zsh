@@ -7,9 +7,9 @@ bindkey '^x^e' edit-command-line
 # Add custom binds
 bindkey "^y" vi-cmd-mode
 bindkey "^n" vi-down-line-or-history
-bindkey "^k" vi-up-line-or-history
+bindkey "^p" vi-up-line-or-history
 bindkey -a "^n" vi-down-line-or-history
-bindkey -a "^k" vi-up-line-or-history
+bindkey -a "^p" vi-up-line-or-history
 bindkey -a "^h" vi-beginning-of-line
 bindkey -a "^l" vi-end-of-line
 bindkey "^f" forward-char

@@ -6,7 +6,7 @@
     keybindings = let mod = "alt"; alt = "control"; in {
       # rofi launcher
       "${mod} + space" = "${pkgs.rofi}/bin/rofi -combi-modi window,drun -show combi";
-      "${mod} + s" = ''${pkgs.rofi-rbw}/bin/rofi-rbw -a copy -t password'';
+      "${mod} + ${alt} + o" = ''${pkgs.rofi-rbw}/bin/rofi-rbw -a copy -t password'';
 
       # launch terminal
       "${mod} + Return" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.tmux}/bin/tmux";
