@@ -5,7 +5,8 @@
     settings = {
       DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth wifi";
 
-      START_CHARGE_THRESH_BAT0 = 75;
+      # this is not supported by dell, is set in the bios directly
+      START_CHARGE_THRESH_BAT0 = 70;
       STOP_CHARGE_THRESH_BAT0 = 90;
       RESTORE_THRESHOLDS_ON_BAT = 1;
 
@@ -29,6 +30,8 @@
 
       USB_BLACKLIST_PRINTER = 0;
       USB_BLACKLIST_PHONE = 0;
+
+      RUNTIME_PM_ON_AC = "auto";
     };
   };
 }
