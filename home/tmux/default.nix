@@ -85,7 +85,7 @@ in
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
       # easy scrolling
-      bind-key -T copy-mode-vi C-k send-keys -X scroll-up
+      bind-key -T copy-mode-vi C-p send-keys -X scroll-up
       bind-key -T copy-mode-vi C-n send-keys -X scroll-down
       bind-key -T copy-mode-vi C-l send-keys -X end-of-line
       bind-key -T copy-mode-vi C-h send-keys -X start-of-line

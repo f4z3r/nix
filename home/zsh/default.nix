@@ -51,6 +51,8 @@
       "ck" = ''cd "$(fd -t d -c always -L -H . ./ | sk --ansi)"'';
       "l" = ''exa -Fa'';
       "ll" = ''exa -alF --git'';
+      "cp" = "xcp";
+      "erd" = "erd -IHl";
       "k" = ''kubectl'';
       "kn" = ''kubens'';
       "kc" = ''kubectx'';

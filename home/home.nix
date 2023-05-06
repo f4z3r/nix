@@ -118,13 +118,22 @@ assert lib.asserts.assertOneOf "theme" theme [
       tree
       jq
       rsync
-      curlie
+      xh
       dogdns
       fend
       autorandr
       ouch
       fd
       vimv-rs
+      lfs
+      erdtree
+      xcp
+
+      # stuff not used often, installed via nix-shell
+      #miniserve
+      #tokei
+      #jless
+      #pastel
 
       # stuff used for GTK theming
       gtk-engine-murrine
