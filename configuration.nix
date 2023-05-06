@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
       (import ./nixos/networking.nix { inherit config pkgs hostname; })
+      ./nixos/virtualisation.nix
       ./nixos/tlp.nix
       ./nixos/zsh.nix
       ./nixos/openvpn/default.nix
@@ -139,7 +140,7 @@
   users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" "podman" "docker" ];
     shell = pkgs.zsh;
     packages = with pkgs; [];
   };
