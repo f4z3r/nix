@@ -151,7 +151,7 @@ in
         "diagnostic.displayByAle" = true;
         "yank.limit" = 5;
         "python.linting.ruffEnabled" = true;
-        "python.testing.provider" = "pytest";
+        "pyright.testing.provider" = "pytest";
         "codeLens.enable" = true;
         "suggest.completionItemKindLabels" = {
           "text" = "";
