@@ -143,7 +143,7 @@
       ${username} = {
         isNormalUser = true;
         description = "${username}";
-        extraGroups = [ "networkmanager" "wheel" "audio" "video" "podman" "docker" "clamav" ];
+        extraGroups = [ "networkmanager" "wheel" "audio" "video" "podman" "docker" ];
         shell = pkgs.zsh;
         packages = with pkgs; [];
       };
