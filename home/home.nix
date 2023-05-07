@@ -8,7 +8,7 @@ assert lib.asserts.assertOneOf "theme" theme [
 {
   imports = [
     ./bspwm/default.nix
-    ./sxhkd/default.nix
+    (import ./sxhkd/default.nix { inherit pkgs username; })
     ./polybar/default.nix
     ./picom/default.nix
     ./rofi/default.nix
@@ -21,6 +21,7 @@ assert lib.asserts.assertOneOf "theme" theme [
     ./nvim/default.nix
     ./broot/default.nix
     (import ./bat/default.nix { inherit pkgs theme; })
+    (import ./mpd/default.nix { inherit pkgs username; })
   ];
 
   programs = {
@@ -66,11 +67,6 @@ assert lib.asserts.assertOneOf "theme" theme [
       enable = true;
       icons = true;
     };
-
-    ncmpcpp = {
-      enable = true;
-      # TODO(@jakob): configure
-    };
   };
 
   services = {
@@ -110,22 +106,6 @@ assert lib.asserts.assertOneOf "theme" theme [
       ignoreLid = true;
     };
 
-    mpd = {
-      enable = true;
-      musicDirectory = /home/${username}/Music;
-      network.startWhenNeeded = true;
-      extraConfig = ''
-        volume_normalization "yes"
-
-        audio_output {
-          type     "fifo"
-          name     "my_fifo"
-          path     "/tmp/mpd.fifo"
-          format   "44100:16:2"
-        }
-      '';
-    };
-
     redshift = {
       enable = true;
       dawnTime = "06:00";
@@ -136,6 +116,7 @@ assert lib.asserts.assertOneOf "theme" theme [
   };
 
   home = {
+    sessionPath = [ "home/${username}/.local/bin/" ];
     username = "${username}";
     homeDirectory = "/home/${username}";
     stateVersion = "22.11";
@@ -189,6 +170,7 @@ assert lib.asserts.assertOneOf "theme" theme [
       mpc-cli
       uair
       bc
+      ffmpeg
 
       # quick scripting stuff
       python311

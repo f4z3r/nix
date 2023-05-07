@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
   services.sxhkd = {
@@ -61,6 +61,7 @@
       "${mod} + ${alt} + w" = "${pkgs.brave}/bin/brave";
       "${mod} + ${alt} + p" = "${pkgs.uair}/bin/uairctl toggle";
       "${mod} + ${alt} + m" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.ncmpcpp}/bin/ncmpcpp";
+      "${mod} + i" = "/home/${username}/.local/bin/songinfo";
     };
   };
 
