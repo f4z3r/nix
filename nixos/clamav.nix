@@ -13,6 +13,11 @@
         ];
         OnAccessPrevention = "yes";
         OnAccessExcludeUname = "clamav";
+        VirusEvent = ''/run/wrappers/bin/sudo -u ${username} '' +
+          ''DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus DISPLAY=:0 '' +
+          ''${pkgs.libnotify}/bin/notify-send -u critical -i clamav '' +
+          '' "Virus Found" "Virus $CLAM_VIRUSEVENT_VIRUSNAME found in '' +
+          ''$CLAM_VIRUSEVENT_FILENAME.\nFile moved to /root/quarantine."'';
       };
     };
 

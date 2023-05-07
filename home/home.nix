@@ -116,7 +116,6 @@ assert lib.asserts.assertOneOf "theme" theme [
   };
 
   home = {
-    sessionPath = [ "home/${username}/.local/bin/" ];
     username = "${username}";
     homeDirectory = "/home/${username}";
     stateVersion = "22.11";

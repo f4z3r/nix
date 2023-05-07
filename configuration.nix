@@ -216,5 +216,18 @@
     };
   };
 
+  security.sudo.extraRules = [
+    {
+      users = [ "clamav" ];
+      runAs = "${username}";
+      commands = [
+        {
+          command = "${pkgs.libnotify}/bin/notify-send";
+          options = [ "NOPASSWD" "SETENV" ];
+        }
+      ];
+    }
+  ];
+
   system.stateVersion = "22.11";
 }

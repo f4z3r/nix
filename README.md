@@ -18,16 +18,17 @@ With the light theme, for working outside in the sun:
 - Window Manager: `bspwm`
 - Bar: `polybar`
 - Shortcut Daemon: `sxhkd`
-- Keyboard Remapper: `kanata`
+- Layered Keyboard Mapping: `kanata`
 - Launcher: `rofi`
 - Compositor: `picom`
 - GTK Theme: `Gruvbox Material Dark`
+- GTK Icon Theme: `Papirus Dark`
 - Terminal: `wezterm`
 - Multiplexer: `tmux`
 - Shell: `zsh`
 - Editor: `neovim`
 - Prompt: `starship`
-- Audio: `pipewire`
+- Audio: `pipewire`, `mpd`, `ncmpcpp`
 
 ## Update
 
@@ -72,7 +73,3 @@ quarantine, run the following:
 ```sh
 sudo mkdir -p /root/quarantine
 ```
-
-## TODOs
-
-- Get ClamD to notify user when file is quarantined
