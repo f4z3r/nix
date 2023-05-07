@@ -76,7 +76,33 @@ assert lib.asserts.assertOneOf "theme" theme [
   services = {
     dunst = {
       enable = true;
-      # TODO(@jakob): configure
+      iconTheme = {
+        package = pkgs.papirus-icon-theme;
+        name = "Papirus-Dark";
+        size = "64x64";
+      };
+      settings = {
+        urgency_low = {
+          frame_color = "#1D918B";
+          foreground = "#FFEE79";
+          background = "#18191E";
+          timeout = 2;
+        };
+
+        urgency_normal = {
+          frame_color = "#D16BB7";
+          foreground = "#FFEE79";
+          background = "#18191E";
+          timeout = 5;
+        };
+
+        urgency_critical = {
+          frame_color = "#FC2929";
+          foreground = "#FFFF00";
+          background = "#18191E";
+          timeout = 0;
+        };
+      };
     };
 
     autorandr = {
@@ -87,7 +113,17 @@ assert lib.asserts.assertOneOf "theme" theme [
     mpd = {
       enable = true;
       musicDirectory = /home/${username}/Music;
-      # TODO(@jakob): configure
+      network.startWhenNeeded = true;
+      extraConfig = ''
+        volume_normalization "yes"
+
+        audio_output {
+          type     "fifo"
+          name     "my_fifo"
+          path     "/tmp/mpd.fifo"
+          format   "44100:16:2"
+        }
+      '';
     };
 
     redshift = {
@@ -172,6 +208,10 @@ assert lib.asserts.assertOneOf "theme" theme [
     theme = {
       package = pkgs.gruvbox-gtk-theme;
       name = (if theme == "dark" then "Gruvbox-Dark-BL" else "Gruvbox-Light-BL");
+    };
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = (if theme == "dark" then "Papirus-Dark" else "Papirus-Light");
     };
     cursorTheme = {
       package = pkgs.capitaine-cursors-themed;
