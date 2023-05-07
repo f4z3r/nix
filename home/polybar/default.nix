@@ -74,12 +74,12 @@
         [module/xworkspaces]
         type = internal/xworkspaces
 
-        label-active = 
+        label-active = 
         label-active-background = ''${colors.background-alt}
         label-active-underline= ''${colors.primary}
         label-active-padding = 1
 
-        label-occupied = 
+        label-occupied = 
         label-occupied-padding = 1
 
         label-urgent = 

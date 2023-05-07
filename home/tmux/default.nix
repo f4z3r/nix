@@ -49,8 +49,8 @@ in
       set-option -g status-right ""
       set -g status-justify centre
       set-window-option -g window-status-separator "    "
-      set-window-option -g window-status-current-format "#{?window_zoomed_flag,#[fg=${focous_colour}],}"
-      set-window-option -g window-status-format ""
+      set-window-option -g window-status-current-format "#{?window_zoomed_flag,#[fg=${focous_colour}],}"
+      set-window-option -g window-status-format ""
       
       # fix coloring for tmux
       set -g default-terminal "screen-256color"

@@ -42,9 +42,9 @@ let g:airline_right_alt_sep = ''
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.maxlinenr = '☰'
-let g:airline_symbols.branch = ''
+let g:airline_symbols.linenr = ' '
+let g:airline_symbols.maxlinenr = '☰ '
+let g:airline_symbols.branch = ''
 let g:airline_symbols.dirty = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.paste = ''
@@ -58,10 +58,10 @@ let g:airline_section_c = '%t'
 let g:airline_mode_map = {
       \ '__'     : '-',
       \ 'c'      : '',
-      \ 'i'      : '奈',
-      \ 'ic'     : '奈',
-      \ 'ix'     : '奈',
-      \ 'n'      : '',
+      \ 'i'      : '',
+      \ 'ic'     : '',
+      \ 'ix'     : '',
+      \ 'n'      : '',
       \ 'multi'  : 'ﯟ',
       \ 'ni'     : '',
       \ 'no'     : '',

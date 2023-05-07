@@ -5,12 +5,6 @@ scriptencoding utf-8
 
 " airline support
 let g:airline#extensions#ale#enabled = 1
-" automatic pipenv on python projects
-let g:ale_python_auto_pipenv = 1
-let g:ale_python_mypy_auto_pipenv = 1
-let g:ale_python_bandit_auto_pipenv = 1
-let g:ale_python_black_auto_pipenv = 1
-let g:ale_python_ruff_auto_pipenv = 1
 " lua configuration
 let g:ale_lua_stylua_options = '-s'
 " ale sign update
@@ -60,5 +54,3 @@ let g:ale_fixers = {
       \}
 " rust options
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
-
-let g:ale_v_v_executable = '/usr/bin/v'

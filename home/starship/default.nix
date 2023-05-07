@@ -63,8 +63,8 @@
 
       battery = {
         full_symbol = "󰁹";
-        charging_symbol = "󰢝 ";
-        discharging_symbol = "󱃌";
+        charging_symbol = "󰂄";
+        discharging_symbol = "󰂃";
         format = "([ $symbol$percentage ]($style))";
         display = [
           {
@@ -131,7 +131,7 @@
       };
 
       git_branch = {
-        symbol = " ";
+        symbol = " ";
         format = "╱[ $symbol$branch ]($style)";
         style = "bold green";
         truncation_length = 18;
@@ -141,25 +141,25 @@
         commit_hash_length = 7;
         tag_symbol = " ";
         tag_disabled = false;
-        format = "[ $hash]($style)[($tag) ]($style)";
+        format = "[ $hash]($style)[($tag) ]($style)";
       };
 
       git_state = {
         format = ''[\($state( $progress_current/$progress_total) \)]($style)'';
         rebase = "󰃻";
-        cherry_pick = " ";
-        merge = " ";
-        bisect = "󱁉 ";
+        cherry_pick = "";
+        merge = "";
+        bisect = "󱁉";
       };
 
       git_status = {
         format = "([\\[$all_status$ahead_behind\\] ]($style))";
         style = "red";
         conflicted = "";
-        ahead = ''[  ''${count}](yellow)'';
-        behind = ''[  ''${count}](yellow)'';
-        diverged = ''[   ''${ahead_count}  ''${behind_count}](yellow)'';
-        staged = "[ \\($count\\)](green)";
+        ahead = ''[''${count}](yellow)'';
+        behind = ''[''${count}](yellow)'';
+        diverged = ''[''${ahead_count}''${behind_count}](yellow)'';
+        staged = "[$count](green)";
         renamed = "󰑕";
         deleted = "󰆳";
       };
@@ -186,7 +186,7 @@
       };
 
       golang = {
-        symbol = "ﳑ ";
+        symbol = " ";
         format = "╱ [$symbol$version ]($style)";
       };
 
@@ -196,7 +196,7 @@
       };
 
       nim = {
-        symbol = " ";
+        symbol = " ";
         format = "╱ [$symbol$version ]($style)";
       };
 
@@ -210,12 +210,12 @@
       };
 
       rust = {
-        symbol = " ";
+        symbol = "󱘗 ";
         format = "╱ (bg:237)[$symbol$version ]($style)";
       };
 
       python = {
-        symbol = " ";
+        symbol = "󰌠 ";
         format = "╱ [$symbol$version ($virtualenv )]($style)";
       };
 
@@ -235,12 +235,12 @@
       };
 
       helm = {
-        symbol = "ﴱ ";
+        symbol = "󰠳 ";
         format = "╱ [$symbol$version ]($style)";
       };
 
       nodejs = {
-        symbol = " ";
+        symbol = " ";
         format = "╱ [$symbol$version ]($style)";
       };
 
@@ -250,7 +250,7 @@
       };
 
       terraform = {
-        symbol = " ";
+        symbol = "󰇧 ";
         format = "╱ [$symbol$workspace ]($style)";
       };
 
@@ -282,7 +282,7 @@
       };
 
       status = {
-        symbol = "";
+        symbol = "";
         format = ''[\[>> $symbol $status <<\]](dimmed bold red) '';
         disabled = false;
       };
@@ -294,6 +294,15 @@
         read_only = "";
         style = "underline bold dimmed cyan";
         format = "([$read_only]($read_only_style) )[$path]($style) ";
+      };
+
+      character = {
+        success_symbol = "[>](bold green)";
+        error_symbol = "[>](bold red)";
+        vimcmd_symbol = "[](bold green)";
+        vimcmd_replace_one_symbol = "[](bold purple)";
+        vimcmd_replace_symbol = "[](bold purple)";
+        vimcmd_visual_symbol = "[](bold yellow)";
       };
     };
   };
