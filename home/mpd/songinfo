@@ -4,6 +4,7 @@ IFS=$'\n\t'
 
 music_dir="$HOME/Music"
 previewdir="$HOME/.config/ncmpcpp/previews"
+test -d $previewdir || mkdir -p $previewdir
 filename="$(mpc --format "$music_dir"/%file% current)"
 previewname="$previewdir/$(mpc --format %file% current | base64).png"
 
