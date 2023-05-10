@@ -166,9 +166,9 @@
 
       kubernetes = {
         disabled = false;
-        format = "╱ [$context $symbol $namespace ](style)";
+        format = "╱ [$context $symbol $namespace ]($style)";
         style = "#BA55D3 dimmed bold";
-        symbol = "󱃾 ";
+        symbol = "󱃾";
       };
 
       docker_context = {
