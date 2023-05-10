@@ -158,7 +158,7 @@
         inherit = network-base
         interface-type = wireless
         interface = wlp0s20f3
-        label-connected = %{F#F0C674}%ifname%%{F-} %essid% %local_ip%
+        label-connected = %{F#F0C674}%ifname%%{F-} %essid% %local_ip% (%upspeed% - %downspeed%)
 
         [module/vpn]
         type = custom/script
