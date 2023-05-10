@@ -3,6 +3,7 @@
 {
   services.picom = {
     enable = true;
+    package = pkgs.picom-jonaburg;
     backend = "glx";
     vSync = true;
 
