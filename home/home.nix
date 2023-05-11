@@ -124,6 +124,7 @@ assert lib.asserts.assertOneOf "theme" theme [
       gimp
       brave
       helvum
+      onlyoffice-bin
 
       # utils
       neofetch
