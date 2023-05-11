@@ -150,15 +150,23 @@
         [network-base]
         type = internal/network
         interval = 5
+        speed-unit = ""
         format-connected = <label-connected>
         format-disconnected = <label-disconnected>
         label-disconnected = %{F#F0C674}%ifname%%{F#707880} disconnected
 
         [module/wlan]
         inherit = network-base
+        format-connected = <label-connected> <ramp-signal>
+        ramp-signal-0 = 󰣽
+        ramp-signal-1 = 󰣾
+        ramp-signal-2 = 󰣴
+        ramp-signal-3 = 󰣶
+        ramp-signal-4 = 󰣸
+        ramp-signal-5 = 󰣺
         interface-type = wireless
         interface = wlp0s20f3
-        label-connected = %{F#F0C674}%ifname%%{F-} %essid% %local_ip% (%upspeed% - %downspeed%)
+        label-connected = %{F#F0C674}%ifname%%{F-} %essid% %local_ip% %{F#F0C674}UP%{F-} %upspeed% %{F#F0C674}DN%{F-} %downspeed%
 
         [module/vpn]
         type = custom/script
