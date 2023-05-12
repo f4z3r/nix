@@ -294,23 +294,23 @@ nnoremap <localleader>tw :call Toggle_wrap()<cr>
 
 " ==== Git ==============================================================={{{
 " (g)it (s)tatus
-nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gs :Git<cr>
 " (g)it (p)tatus
-nnoremap <leader>gp :Gpush<cr>
+nnoremap <leader>gp :Git! push<cr>
 " (g)it (f)etch
-nnoremap <leader>gf :Gfetch<cr>
+nnoremap <leader>gf :Git! fetch<cr>
 " (g)it pul(l)
-nnoremap <leader>gl :Gpull<cr>
+nnoremap <leader>gl :Git! pull<cr>
 " (g)it (c)ommit
-nnoremap <leader>gc :Gcommit<cr>a
+nnoremap <leader>gc :Git commit<cr>a
 " (g)it (a)dd
-nnoremap <leader>ga :Gwrite<cr>
+nnoremap <leader>ga :GWrite<cr>
 " (g)it (A)mend
 nnoremap <leader>gA :Git commit --amend<cr>
 " (g)it (m)ove
-nnoremap <leader>gm :Gmove
+nnoremap <leader>gm :GMove
 " (g)it (b)lame
-nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gb :Git blame<cr>
 " Use for merge conflicts, head refers to local changes, last refers to pulled
 " changes.
 " (g)it (d)iff
