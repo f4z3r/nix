@@ -119,7 +119,11 @@ assert lib.asserts.assertOneOf "theme" theme [
     username = "${username}";
     homeDirectory = "/home/${username}";
     stateVersion = "22.11";
-    packages = with pkgs; [
+    packages = with pkgs; let
+      python-packages = ps: with ps; [
+      ];
+      enhanced-python = pkgs.python311.withPackages python-packages;
+    in [
       # GUI programs
       gimp
       brave
@@ -173,7 +177,7 @@ assert lib.asserts.assertOneOf "theme" theme [
       ffmpeg
 
       # quick scripting stuff
-      python311
+      enhanced-python
       ruff
       black
     ];

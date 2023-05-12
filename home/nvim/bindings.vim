@@ -34,6 +34,30 @@ nmap sk :SplitjoinJoin<cr>
 " }}}
 
 
+" ==== Debugging ========================================================={{{
+" launch
+nnoremap <leader>dd :call vimspector#Launch()<cr>
+" reset
+nnoremap <leader>dr :call vimspector#Reset()<cr>
+" continue
+nnoremap <leader>dc :call vimspector#Continue()<cr>
+" toggle
+nnoremap <leader>dt :call vimspector#ToggleBreakpoint()<cr>
+nnoremap <leader>dT :call vimspector#ClearBreakpoints()<cr>
+" restart
+nmap <leader>dk <Plug>VimspectorRestart
+" out
+nmap <leader>do <Plug>VimspectorStepOut
+" in
+nmap <leader>di <Plug>VimspectorStepInto
+" step
+nmap <leader>ds <Plug>VimspectorStepOver
+" inspect
+nmap <leader>di <Plug>VimspectorBalloonEval
+xmap <leader>di <Plug>VimspectorBalloonEval
+" }}}
+
+
 " ==== Vimux ============================================================={{{
 " (v)imux (p)rompt
 nnoremap <leader>vp :VimuxPromptCommand<cr>
