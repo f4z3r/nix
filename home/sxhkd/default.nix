@@ -16,7 +16,7 @@
       "${mod} + shift + q" = "${pkgs.xsecurelock}/bin/xsecurelock";
 
       # fullscreen
-      "${mod} + f" = "${pkgs.bspwm}/bin/bspc node -t fullscreen";
+      "${mod} + f" = "${pkgs.bspwm}/bin/bspc node -t '~fullscreen'";
 
       # close / kill client
       "${mod} + {_,shift + }w" = "${pkgs.bspwm}/bin/bspc node -{c,k}";
