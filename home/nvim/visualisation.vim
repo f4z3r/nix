@@ -53,13 +53,7 @@ set expandtab
 
 " ==== Liner Ruler ======================================================={{{
 set number
-set relativenumber
-" toggle relative and absolute numbering based on mode
-augroup LineNumberGroup
-  autocmd!
-  autocmd InsertEnter * :set nornu
-  autocmd InsertLeave * :set rnu
-augroup END
+set norelativenumber
 " set signs to be displayed in number column
 set signcolumn=number
 " }}}
