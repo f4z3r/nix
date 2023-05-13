@@ -223,6 +223,8 @@ omap af <Plug>(coc-funcobj-a)
 
 
 " ==== Search ============================================================{{{
+" (s)earch clear highlighting
+nnoremap ; :noh<cr>
 " (s)earch (t)ags
 nnoremap <leader>st <cmd>lua require('telescope.builtin').tags()<cr>
 " (s)earch local (t)ags
