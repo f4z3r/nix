@@ -44,7 +44,7 @@
 
         font-0 = monospace;2
 
-        modules-left = xworkspaces xwindow
+        modules-left = xworkspaces
 
         cursor-click = pointer
         cursor-scroll = ns-resize
@@ -89,10 +89,6 @@
         label-empty = 
         label-empty-foreground = ''${colors.disabled}
         label-empty-padding = 1
-
-        [module/xwindow]
-        type = internal/xwindow
-        label = %title:0:60:...%
 
         [module/pomo]
         type = custom/script
