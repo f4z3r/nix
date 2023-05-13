@@ -3,7 +3,7 @@
   services.tlp = {
     enable = true;
     settings = {
-      DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth wifi";
+      DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth";
 
       # this is not supported by dell, is set in the bios directly
       START_CHARGE_THRESH_BAT0 = 70;
