@@ -7,21 +7,21 @@ assert lib.asserts.assertOneOf "theme" theme [
 
 {
   imports = [
-    ./bspwm/default.nix
-    (import ./sxhkd/default.nix { inherit pkgs username; })
-    ./polybar/default.nix
-    ./picom/default.nix
-    ./rofi/default.nix
-    (import ./git/default.nix { inherit pkgs theme; })
-    (import ./wezterm/default.nix { inherit pkgs theme; })
-    (import ./tmux/default.nix {inherit pkgs theme; })
-    (import ./zsh/default.nix { inherit pkgs theme; })
-    ./starship/default.nix
-    ./gpg/default.nix
-    ./nvim/default.nix
-    ./broot/default.nix
-    (import ./bat/default.nix { inherit pkgs theme; })
-    (import ./mpd/default.nix { inherit pkgs username; })
+    ./apps/bspwm/default.nix
+    (import ./apps/sxhkd/default.nix { inherit pkgs username; })
+    ./apps/polybar/default.nix
+    ./apps/picom.nix
+    ./apps/rofi/default.nix
+    (import ./apps/git/default.nix { inherit pkgs theme; })
+    (import ./apps/wezterm.nix { inherit pkgs theme; })
+    (import ./apps/tmux.nix {inherit pkgs theme; })
+    (import ./apps/zsh/default.nix { inherit pkgs theme; })
+    ./apps/starship.nix
+    ./apps/gpg.nix
+    ./apps/nvim/default.nix
+    ./apps/broot.nix
+    (import ./apps/bat.nix { inherit pkgs theme; })
+    (import ./apps/mpd/default.nix { inherit pkgs username; })
   ];
 
   programs = {
