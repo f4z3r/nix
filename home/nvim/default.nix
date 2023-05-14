@@ -70,10 +70,6 @@ in
       vim-repeat
       gruvbox-material
       nerdcommenter
-      {
-        plugin = vimspector;
-        config = builtins.readFile ./plugin/vimspector.vim;
-      }
       vim-fugitive
       {
         plugin = telescope-nvim;
