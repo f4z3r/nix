@@ -1,6 +1,26 @@
 { pkgs, ... }:
 
 let
+  telescope-orgmode = pkgs.vimUtils.buildVimPlugin {
+    name = "telescope-orgmode.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "joaomsa";
+      repo = "telescope-orgmode.nvim";
+      rev = "eabff061c3852a9aa94e672a7d2fa4a1ef63f9e2";
+      sha256 = "sha256-/sW4vfBbyurAQBgO0guU8BALB/KN9LYwhMBG8+EEuQo=";
+    };
+  };
+
+  org-bullets = pkgs.vimUtils.buildVimPlugin {
+    name = "org-bullets.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "akinsho";
+      repo = "org-bullets.nvim";
+      rev = "6e0d60e901bb939eb526139cb1f8d59065132fd9";
+      sha256 = "sha256-x6S4WdgfUr7HGEHToSDy3pSHEwOPQalzWhBUipqMtnw=";
+    };
+  };
+
   fern-renderer-nerdfont-vim = pkgs.vimUtils.buildVimPlugin {
     name = "fern-renderer-nerdfont-vim";
     src = pkgs.fetchFromGitHub {
@@ -70,19 +90,32 @@ in
       vim-repeat
       gruvbox-material
       nerdcommenter
+      {
+        plugin = orgmode;
+        config = builtins.readFile ./plugin/orgmode.vim;
+      }
+      {
+        plugin = (nvim-treesitter.withPlugins (p: [ p.org p.query ]));
+        config = builtins.readFile ./plugin/treesitter.vim;
+      }
+      {
+        plugin = org-bullets;
+        config = builtins.readFile ./plugin/org-bullets.vim;
+      }
+      telescope-orgmode
       vim-fugitive
       {
         plugin = telescope-nvim;
         config = builtins.readFile ./plugin/telescope.vim;
       }
       telescope-coc-nvim
+      fzfWrapper
       telescope-fzf-native-nvim
       vim-surround
       {
         plugin = indentLine;
         config = builtins.readFile ./plugin/indentLine.vim;
       }
-      todo-txt-vim
       {
         plugin = vim-easy-align;
         config = builtins.readFile ./plugin/vim-easy-align.vim;

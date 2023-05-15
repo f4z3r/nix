@@ -166,6 +166,7 @@ assert lib.asserts.assertOneOf "theme" theme [
 
       # stuff used in the background
       ctags
+      gcc
       rofi-power-menu
       rofi-rbw
       wmctrl

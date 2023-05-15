@@ -438,23 +438,10 @@ nmap ]t <Plug>AirlineSelectNextTab
 " }}}
 
 
-" ==== Organisation ======================================================{{{
-" Start (p)omodoro with name auto
-nnoremap <leader>op :PomodoroStart auto<cr>
-" (j)ump to next todo/fixme tag in file
-nnoremap <silent> ]o /\C\<\(TODO\\|FIXME\\|XXX\\|OPTIMIZE\\|NOTE\)\><cr>:noh<cr>
-" (J)ump to previous todo/fixme tag in file
-nnoremap <silent> [o ?\C\<\(TODO\\|FIXME\\|XXX\\|OPTIMIZE\\|NOTE\)\><cr>:noh<cr>
-" (o)rganisation generate (t)odo quickfix for current file
-nnoremap <leader>ot :vimgrep /\C\<\(TODO\\|FIXME\\|XXX\\|OPTIMIZE\\|NOTE\)\>/g %<cr>:copen<cr>
-" (o)rganisation (s)ession (c)reate
-nnoremap <leader>osc :mksession ~/.vim/sessions/
-" (o)rganisation (s)ession (l)oad
-nnoremap <leader>osl :source ~/.vim/sessions/
-" (o)rganisation (s)ession (m)anage
-nnoremap <leader>osm :e ~/.vim/sessions/<cr>
-" (o)rganisation (s)ession (m)anage
-nnoremap <leader>osm :e ~/.vim/sessions/<cr>
+" ==== Org Mode =========================================================={{{
+" (s)earch (o)rgmode
+nnoremap <leader>so :Telescope orgmode search_headings<cr>
+
 " }}}
 
 
@@ -496,7 +483,7 @@ nnoremap <silent> <leader>yy :call Copy_to_clipboard()<cr>
 nnoremap <silent> <leader>yl  :<C-u>CocList -A --normal yank<cr>
 
 " change last written word to UPPER_CASE
-inoremap <M-l> <esc>bviwUea
+inoremap <C-s> <esc>bviwUea
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
