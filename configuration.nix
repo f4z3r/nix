@@ -7,6 +7,7 @@
       (import ./nixos/networking.nix { inherit config pkgs hostname; })
       ./nixos/virtualisation.nix
       (import ./nixos/clamav.nix { inherit config pkgs username; })
+      (import ./nixos/restic.nix { inherit config pkgs username; })
       ./nixos/tlp.nix
       ./nixos/zsh.nix
       ./nixos/openvpn/default.nix
@@ -172,6 +173,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    vim
     git
     man-pages
     brightnessctl

@@ -37,8 +37,8 @@ With the light theme, for working outside in the sun:
 sudo nix-channel --update
 # update flake lock file
 nix flake update
-# rebuild system
-sudo nixos-rebuild switch --flake .#
+# rebuild system (impure needed due to external credentials for rclone)
+sudo nixos-rebuild switch --impure --flake .#
 ```
 
 ## Dynamic Theming
@@ -58,12 +58,12 @@ restart.
 ## OpenVPN
 
 Download configurations from Proton to get the CAs, Keys, etc. All VPN information is then stored
-under `/root/vpn` to ensure they are not world readable. Store them as:
+under `/etc/nixos/vpn` to ensure they are not world readable. Store them as:
 
-- `/root/vpn/ca`: Proton's CA, theoretically public
-- `/root/vpn/tls-auth`: Proton's TLS key, theoretically not too problematic
-- `/root/vpn/jakobbeckmann-proton.cred`: your credentials (with `+f2` attached to the username for
-  NetShield protection), with username on first line and password on second.
+- `/etc/nixos/vpn/ca`: Proton's CA, theoretically public
+- `/etc/nixos/vpn/tls-auth`: Proton's TLS key, theoretically not too problematic
+- `/etc/nixos/vpn/jakobbeckmann-proton.cred`: your credentials (with `+f2` attached to the username
+  for NetShield protection), with username on first line and password on second.
 
 ## ClamAV
 
@@ -72,4 +72,14 @@ quarantine, run the following:
 
 ```sh
 sudo mkdir -p /root/quarantine
+```
+
+## Restic
+
+Configure a `rclone` backend named `gdrive`. Store the `rclone` configuration under:
+
+```bash
+/etc/nixos/rclone.conf
+# add restic backup password under
+/etc/nixos/restic-password
 ```
