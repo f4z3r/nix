@@ -15,3 +15,8 @@ inoreabbrev <silent><buffer> equ #+END_QUOTE
 
 inoreabbrev <silent><buffer> :p: :PROPERTIES:
 inoreabbrev <silent><buffer> :e: :END:
+
+augroup OrgFileEnableSpelling
+  autocmd!
+  autocmd BufRead,BufEnter *.org set spell
+augroup END
