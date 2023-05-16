@@ -65,7 +65,6 @@ in
       builtins.readFile ./searching.vim +
       builtins.readFile ./scrolling.vim +
       builtins.readFile ./misc.vim +
-      builtins.readFile ./abbrev.vim +
       builtins.readFile ./plugin/grep-operator.vim
       );
     extraPackages = with pkgs; [

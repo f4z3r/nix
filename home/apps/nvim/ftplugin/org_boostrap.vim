@@ -8,13 +8,15 @@ setlocal shiftwidth=1
 setlocal tabstop=1
 setlocal conceallevel=2
 
-inoreabbrev <silent><buffer> bsrc #+BEGIN_SRC
-inoreabbrev <silent><buffer> esrc #+END_SRC
-inoreabbrev <silent><buffer> bqu #+BEGIN_QUOTE
-inoreabbrev <silent><buffer> equ #+END_QUOTE
+inoreabbrev todo TODO
 
-inoreabbrev <silent><buffer> :p: :PROPERTIES:
-inoreabbrev <silent><buffer> :e: :END:
+inoreabbrev <silent><buffer> bsrc #+BEGIN_SRC
+inoreabbrev <silent><buffer> esrc #+END_SRC<cr><bs>
+inoreabbrev <silent><buffer> bqu #+BEGIN_QUOTE<cr><bs>
+inoreabbrev <silent><buffer> equ #+END_QUOTE<cr><bs>
+
+inoreabbrev <silent><buffer> :p: :PROPERTIES:<cr><bs>
+inoreabbrev <silent><buffer> :e: :END:<cr><bs>
 
 augroup OrgFileEnableSpelling
   autocmd!
