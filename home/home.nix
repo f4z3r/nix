@@ -121,6 +121,9 @@ assert lib.asserts.assertOneOf "theme" theme [
     stateVersion = "22.11";
     packages = with pkgs; let
       python-packages = ps: with ps; [
+        pip
+        virtualenv
+        setuptools
       ];
       enhanced-python = pkgs.python311.withPackages python-packages;
     in [
@@ -158,9 +161,6 @@ assert lib.asserts.assertOneOf "theme" theme [
 
       # stuff used for GTK theming
       gtk-engine-murrine
-
-      # nix l
-      rnix-lsp
 
       xsel
 

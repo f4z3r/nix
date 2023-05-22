@@ -1,6 +1,16 @@
 { pkgs, ... }:
 
 let
+  gruvbox-material-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "gruvbox-material.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "WIttyJudge";
+      repo = "gruvbox-material.nvim";
+      rev = "02d0f0cc7bffc38a8ea419d941075b7b982aa314";
+      sha256 = "sha256-m0ohVF+Ec0UHefsBQPVoDoMHyreXkPof+nVDZhEilzU=";
+    };
+  };
+
   telescope-orgmode = pkgs.vimUtils.buildVimPlugin {
     name = "telescope-orgmode.nvim";
     src = pkgs.fetchFromGitHub {
@@ -20,235 +30,179 @@ let
       sha256 = "sha256-x6S4WdgfUr7HGEHToSDy3pSHEwOPQalzWhBUipqMtnw=";
     };
   };
-
-  fern-renderer-nerdfont-vim = pkgs.vimUtils.buildVimPlugin {
-    name = "fern-renderer-nerdfont-vim";
-    src = pkgs.fetchFromGitHub {
-      owner = "lambdalisue";
-      repo = "fern-renderer-nerdfont.vim";
-      rev = "1e90a78ab5510fbcedc85abeb9a251d978726935";
-      sha256 = "sha256-foX/RguLMKVs0TvBcnfH9m3hkDQmfokzuESrb4iUmw8=";
-    };
-  };
-
-  nerdfont-vim = pkgs.vimUtils.buildVimPlugin {
-    name = "nerdfont-vim";
-    src = pkgs.fetchFromGitHub {
-      owner = "lambdalisue";
-      repo = "nerdfont.vim";
-      rev = "3daf10116daad5da257486c9043c658cced4dd31";
-      sha256 = "sha256-FKjjuPk8aQaAB+Jlwa3X8SByFd4WIsthDoqAnX+EJP0=";
-    };
-  };
-
-  fern-git-status = pkgs.vimUtils.buildVimPlugin {
-    name = "fern-git-status";
-    src = pkgs.fetchFromGitHub {
-      owner = "lambdalisue";
-      repo = "fern-git-status.vim";
-      rev = "151336335d3b6975153dad77e60049ca7111da8e";
-      sha256 = "sha256-9N+T/MB+4hKcxoKRwY8F7iwmTsMtNmHCHiVZfcsADcc=";
-    };
-  };
 in
-{
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-
-    extraConfig = (
-      builtins.readFile ./functions.vim +
-      builtins.readFile ./bindings.vim +
-      builtins.readFile ./visualisation.vim +
-      builtins.readFile ./searching.vim +
-      builtins.readFile ./scrolling.vim +
-      builtins.readFile ./misc.vim +
-      builtins.readFile ./plugin/grep-operator.vim
-      );
-    extraPackages = with pkgs; [
-      fzf
-    ];
-
-    plugins = with pkgs.vimPlugins; [
-      vim-startify
-      vim-snippets
-      vim-devicons
-      {
-        plugin = ale;
-        config = builtins.readFile ./plugin/ale.vim;
-      }
-      {
-        plugin = fern-vim;
-        config = builtins.readFile ./plugin/fern.vim;
-      }
-      fern-renderer-nerdfont-vim
-      nerdfont-vim
-      fern-git-status
-      vim-repeat
-      gruvbox-material
-      nerdcommenter
-      {
-        plugin = orgmode;
-        config = builtins.readFile ./plugin/orgmode.vim;
-      }
-      {
-        plugin = (nvim-treesitter.withPlugins (p: with p; [
-          org
-          query
-          bash
-          markdown
-          markdown_inline
-          python
-          go
-          rust
-          lua
-          vim
-          nix
-          toml
-          yaml
-          json
-          json5
-          hjson
-          hcl
-          dockerfile
-          make
-        ]));
-        config = builtins.readFile ./plugin/treesitter.vim;
-      }
-      {
-        plugin = org-bullets;
-        config = builtins.readFile ./plugin/org-bullets.vim;
-      }
-      telescope-orgmode
-      vim-fugitive
-      {
-        plugin = telescope-nvim;
-        config = builtins.readFile ./plugin/telescope.vim;
-      }
-      telescope-coc-nvim
-      fzfWrapper
-      telescope-fzf-native-nvim
-      vim-surround
-      {
-        plugin = indentLine;
-        config = builtins.readFile ./plugin/indentLine.vim;
-      }
-      {
-        plugin = vim-easy-align;
-        config = builtins.readFile ./plugin/vim-easy-align.vim;
-      }
-      jsonc-vim
-      {
-        plugin = rainbow;
-        config = builtins.readFile ./plugin/rainbow.vim;
-      }
-      targets-vim
-      bullets-vim
-      vim-indent-object
-      vim-signature
-      vim-gitgutter
-      incsearch-vim
-      incsearch-easymotion-vim
-      {
-        plugin = vim-easymotion;
-        config = builtins.readFile ./plugin/vim-easymotion.vim;
-      }
-      vim-gutentags
-      tagbar
-      {
-        plugin = splitjoin-vim;
-        config = builtins.readFile ./plugin/splitjoin.vim;
-      }
-      vim-abolish
-      vim-endwise
-      {
-        plugin = vim-airline;
-        config = builtins.readFile ./plugin/vim-airline.vim;
-      }
-      camelcasemotion
-      vim-projectionist
-      vimux
-      {
-        plugin = vim-test;
-        config = builtins.readFile ./plugin/vim-test.vim;
-      }
-      vim-dispatch
-      coc-yank
-      coc-go
-      coc-pairs
-      coc-docker
-      coc-sh
-      coc-toml
-      coc-lua
-      coc-snippets
-      coc-pyright
-      coc-vimlsp
-      coc-rust-analyzer
-    ];
-
-    coc = {
+  {
+    programs.neovim = {
       enable = true;
-      pluginConfig = builtins.readFile ./plugin/coc.vim;
-      settings = {
-        "diagnostic.errorSign" = "";
-        "diagnostic.warningSign" = "";
-        "diagnostic.infoSign" = "כֿ";
-        "diagnostic.hintSign" = "";
-        "diagnostic.displayByAle" = true;
-        "yank.limit" = 5;
-        "python.linting.ruffEnabled" = true;
-        "pyright.testing.provider" = "pytest";
-        "codeLens.enable" = true;
-        "suggest.completionItemKindLabels" = {
-          "text" = "";
-          "function" = "";
-          "method" = "";
-          "constructor" = "";
-          "field" = "羅";
-          "variable" = "";
-          "class" = "";
-          "interface" = "";
-          "module" = "";
-          "property" = "";
-          "unit" = "";
-          "value" = "";
-          "enum" = "";
-          "keyword" = "";
-          "snippet" = "";
-          "color" = "";
-          "file" = "";
-          "reference" = "";
-          "folder" = "";
-          "enumMember" = "";
-          "constant" = "";
-          "struct" = "";
-          "event" = "";
-          "operator" = "";
-          "typeParameter" = "tp";
-          "default" = "v";
-        };
-        "python.jediEnabled" = false;
-        "python.linting.enabled"  = false;
-        "languageserver" = {
-          "nix" = {
-            "command" = "rnix-lsp";
-            "filetypes" = [
-              "nix"
-            ];
-          };
-        };
-      };
-    };
-  };
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      withPython3 = true;
+      withRuby = false;
 
-  home.file.".config/nvim/ftplugin" = {
-    source = ./ftplugin;
-    recursive = true;
-  };
-  home.file.".config/nvim/after" = {
-    source = ./after;
-    recursive = true;
-  };
-}
+      extraLuaConfig = ''
+
+        require("bindings")
+        require("visualisation")
+        require("searching")
+        require("scrolling")
+        require("misc")
+      '';
+      extraPackages = with pkgs; [
+        lua-language-server
+        rnix-lsp
+        fzf
+      ];
+
+      plugins = with pkgs.vimPlugins; [
+        # startup stuff
+        vim-startify
+
+        # syntax highlighting
+        nvim-ts-rainbow2
+        nvim-treesitter-textobjects
+        {
+          type = "lua";
+          plugin = (nvim-treesitter.withPlugins (p: with p; [
+            org
+            query
+            bash
+            markdown
+            markdown_inline
+            python
+            go
+            rust
+            lua
+            vim
+            nix
+            toml
+            yaml
+            json
+            json5
+            hjson
+            hcl
+            dockerfile
+            make
+          ]));
+          config = builtins.readFile ./plugin/treesitter.lua;
+        }
+        {
+          type = "lua";
+          plugin = gruvbox-material-nvim;
+          config = builtins.readFile ./plugin/gruvbox.lua;
+        }
+        {
+          type = "lua";
+          plugin = indent-blankline-nvim;
+          config = builtins.readFile ./plugin/indent-blankline.lua;
+        }
+
+        # completion
+        # {
+        #   type = "lua";
+        #   plugin = coq_nvim;
+        #   config = builtins.readFile ./plugin/coq.lua;
+        # }
+        # coq-artifacts
+
+        # lsp stuff
+        {
+          type = "lua";
+          plugin = nvim-lspconfig;
+          config = builtins.readFile ./plugin/lsp.lua;
+        }
+
+        # finder
+        {
+          type = "lua";
+          plugin = telescope-nvim;
+          config = builtins.readFile ./plugin/telescope.lua;
+        }
+        fzfWrapper
+        telescope-fzf-native-nvim
+        telescope-orgmode
+
+        # useful stuff
+        {
+          type = "lua";
+          plugin = vim-easymotion;
+          config = builtins.readFile ./plugin/vim-easymotion.lua;
+        }
+        camelcasemotion
+        vim-repeat
+        vim-surround
+        targets-vim
+        vim-signature
+        vim-endwise
+
+        # git integration
+        {
+          type = "lua";
+          plugin = gitsigns-nvim;
+          config = builtins.readFile ./plugin/gitsigns.lua;
+        }
+
+        # tree
+        nui-nvim
+        plenary-nvim
+        nvim-web-devicons
+        {
+          type = "lua";
+          plugin = neo-tree-nvim;
+          config = builtins.readFile ./plugin/neo-tree.lua;
+        }
+
+        # tag generation
+        vim-gutentags
+
+        # executor TODO (dispatch, vimux, etc)
+        # vim-projectionist
+        # vimux
+        # vim-dispatch
+
+        # searching
+        incsearch-vim
+        incsearch-easymotion-vim
+
+        # orgmode
+        {
+          type = "lua";
+          plugin = orgmode;
+          config = builtins.readFile ./plugin/orgmode.lua;
+        }
+        {
+          type = "lua";
+          plugin = org-bullets;
+          config = builtins.readFile ./plugin/org-bullets.lua;
+        }
+
+        # comments
+        {
+          type = "lua";
+          plugin = comment-nvim;
+          config = builtins.readFile ./plugin/comment.lua;
+        }
+
+        # alignment
+        {
+          type = "lua";
+          plugin = vim-easy-align;
+          config = builtins.readFile ./plugin/vim-easy-align.lua;
+        }
+
+      ];
+    };
+
+    home.file.".config/nvim/lua" = {
+      source = ./lua;
+      recursive = true;
+    };
+    home.file.".config/nvim/ftplugin" = {
+      source = ./ftplugin;
+      recursive = true;
+    };
+    home.file.".config/nvim/after" = {
+      source = ./after;
+      recursive = true;
+    };
+  }
