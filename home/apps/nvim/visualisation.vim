@@ -32,6 +32,8 @@ set encoding=UTF-8
 " ==== Column Indicators ================================================={{{
 set colorcolumn=+1
 highlight ColorColumn ctermbg=darkgrey
+set cursorline cursorlineopt=number
+highlight CursorLineNr cterm=bold ctermfg=208 gui=bold guifg=#e78a4e
 " }}}
 
 

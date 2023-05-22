@@ -94,7 +94,27 @@ in
         config = builtins.readFile ./plugin/orgmode.vim;
       }
       {
-        plugin = (nvim-treesitter.withPlugins (p: [ p.org p.query ]));
+        plugin = (nvim-treesitter.withPlugins (p: with p; [
+          org
+          query
+          bash
+          markdown
+          markdown_inline
+          python
+          go
+          rust
+          lua
+          vim
+          nix
+          toml
+          yaml
+          json
+          json5
+          hjson
+          hcl
+          dockerfile
+          make
+        ]));
         config = builtins.readFile ./plugin/treesitter.vim;
       }
       {
@@ -118,10 +138,6 @@ in
       {
         plugin = vim-easy-align;
         config = builtins.readFile ./plugin/vim-easy-align.vim;
-      }
-      {
-        plugin = vim-polyglot;
-        config = builtins.readFile ./plugin/polyglot.vim;
       }
       jsonc-vim
       {
