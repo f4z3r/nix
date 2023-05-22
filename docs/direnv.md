@@ -5,16 +5,22 @@ default only in the directories of your project.
 
 Direnv is configured per default with this setup.
 
-In order to use Direnv in a project, add a `shell.nix` file that describes the development
+In order to use Direnv in a project, add a `flake.nix` file that describes the development
 environment in the project root. Examples can be found under [`./direnv-shells/`](./direnv-shells/).
 Then execute the following two commands to activate the environment:
 
 ```sh
-echo "use nix" >> .envrc
+echo "use flake" >> .envrc
 direnv allow
 ```
 
-This fill generate a non reproducible setup, as a lock file is not generated. In order to generate
-fully reproducible environments, use Flake.
+This will generate a fully reproducible setup, including a lock file. However, note that Flake
+requires you to have files staged in order to activate the environment. If these should not be
+committed, use the following:
 
-<!--TODO(@jakob): document the usage of nix-shell with flake-->
+```sh
+# the same will be necessary for flake.lock once generated
+git add --intent-to-add flake.nix
+git update-index --assume-unchanged flake.nix
+```
+

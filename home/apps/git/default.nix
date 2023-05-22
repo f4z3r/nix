@@ -62,7 +62,6 @@
       "tags.temp"
       "tags.lock"
       ".mypy_cache/"
-      ".direnv/"
       ".ruff_cache/"
       ".pytest_cache/"
       "__pycache__/"
@@ -71,7 +70,9 @@
       ".tool-versions"
       "/worktrees/"
       "/.envrc"
+      "/.venv/"
       "/shell.nix"
+      "/.direnv/"
     ];
 
     aliases = {

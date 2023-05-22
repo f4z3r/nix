@@ -3,7 +3,7 @@
 {
   services.sxhkd = {
     enable = true;
-    keybindings = let mod = "alt"; alt = "control"; in {
+    keybindings = let super = "super"; mod = "alt"; alt = "control"; in {
       # rofi launcher
       "${mod} + space" = "${pkgs.rofi}/bin/rofi -combi-modi window,drun -show combi";
       "${mod} + ${alt} + o" = ''${pkgs.rofi-rbw}/bin/rofi-rbw -a copy -t password'';
@@ -12,14 +12,14 @@
       "${mod} + Return" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.tmux}/bin/tmux";
 
       # quit / powermenu
-      "${mod} + q" = "${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
-      "${mod} + shift + q" = "${pkgs.xsecurelock}/bin/xsecurelock";
+      "${super} + q" = "${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
+      "${super} + shift + q" = "${pkgs.xsecurelock}/bin/xsecurelock";
 
       # fullscreen
-      "${mod} + f" = "${pkgs.bspwm}/bin/bspc node -t '~fullscreen'";
+      "${super} + f" = "${pkgs.bspwm}/bin/bspc node -t '~fullscreen'";
 
       # close / kill client
-      "${mod} + {_,shift + }w" = "${pkgs.bspwm}/bin/bspc node -{c,k}";
+      "${super} + {_,shift + }w" = "${pkgs.bspwm}/bin/bspc node -{c,k}";
 
       # move between clients/swap clients
       "${mod} + {_,shift + }{h,j,k,l}" = "${pkgs.bspwm}/bin/bspc node -{f,s} {west,south,north,east}";
@@ -31,10 +31,10 @@
       "${mod} + shift + {1-9,0}" = "${pkgs.bspwm}/bin/bspc node -d '^{1-9,10}' --follow";
 
       # move to other monitor (and follow)
-      "${mod} + m" = "${pkgs.bspwm}/bin/bspc node -m last --follow";
+      "${super} + m" = "${pkgs.bspwm}/bin/bspc node -m last --follow";
 
       # resize
-      "${mod} + r : {h,j,k,l}" = ''
+      "${super} + r : {h,j,k,l}" = ''
         STEP=20; SELECTION={1,2,3,4}; \
         ${pkgs.bspwm}/bin/bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
         ${pkgs.bspwm}/bin/bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
@@ -54,14 +54,14 @@
       "XF86AudioPlay" = "${pkgs.mpc-cli}/bin/mpc toggle";
 
       # music control
-      "${mod} + Right" = "${pkgs.mpc-cli}/bin/mpc next";
-      "${mod} + Left" = "${pkgs.mpc-cli}/bin/mpc prev";
+      "${super} + Right" = "${pkgs.mpc-cli}/bin/mpc next";
+      "${super} + Left" = "${pkgs.mpc-cli}/bin/mpc prev";
 
       # launchers
       "${mod} + ${alt} + w" = "${pkgs.brave}/bin/brave";
       "${mod} + ${alt} + p" = "${pkgs.uair}/bin/uairctl toggle";
       "${mod} + ${alt} + m" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.ncmpcpp}/bin/ncmpcpp";
-      "${mod} + i" = "/home/${username}/.local/bin/songinfo";
+      "${super} + i" = "/home/${username}/.local/bin/songinfo";
     };
   };
 
