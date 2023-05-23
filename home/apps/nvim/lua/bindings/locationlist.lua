@@ -6,6 +6,12 @@ local mappings = {
   {
     mode = 'n',
     suffix = 'l',
+    command = '<cmd>TroubleToggle loclist<cr>',
+    desc = 'Search location list',
+  },
+  {
+    mode = 'n',
+    suffix = '/',
     command = function() require('telescope.builtin').loclist() end,
     desc = 'Search location list',
   },

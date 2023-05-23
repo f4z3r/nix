@@ -121,6 +121,7 @@ assert lib.asserts.assertOneOf "theme" theme [
     stateVersion = "22.11";
     packages = with pkgs; let
       python-packages = ps: with ps; [
+        jedi-language-server
         pip
         virtualenv
         setuptools
@@ -165,8 +166,6 @@ assert lib.asserts.assertOneOf "theme" theme [
       xsel
 
       # stuff used in the background
-      ctags
-      zig
       rofi-power-menu
       rofi-rbw
       wmctrl

@@ -1,9 +1,23 @@
 require('trouble').setup {
-  signs = {
-    error = "",
-    warning = "",
-    hint = "󰌶",
-    information = "",
-    other = ""
-  }
+  use_diagnostic_signs = true,
+  action_keys = {
+    close = "q",
+    cancel = "<esc>",
+    cancel = "<c-y>",
+    refresh = "r",
+    jump = {"<cr>"},
+    open_split = { "<c-x>" },
+    open_vsplit = { "<c-v>" },
+    open_tab = { "<c-t>" },
+    jump_close = {"o"},
+    toggle_mode = "m",
+    toggle_preview = "P",
+    hover = "K",
+    preview = "p",
+    close_folds = {"zM", "zm", "[f"},
+    open_folds = {"zR", "zr", "]f"},
+    toggle_fold = {"zA", "za", "<tab>"},
+    previous = "k",
+    next = "j",
+  },
 }

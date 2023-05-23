@@ -17,17 +17,3 @@ setlocal noexpandtab
 setlocal listchars=tab:\|\ 
 setlocal list
 " }}}
-
-
-" ==== Bindings =========================================================={{{
-" (d)ebug toggle a (b)reakpoint
-nnoremap <buffer> <localleader>db :DlvToggleBreakpoint<cr>
-" (d)ebug toggle a (t)racepoint
-nnoremap <buffer> <localleader>dt :DlvToggleTracepoint<cr>
-" (t)est (d)ebug
-nnoremap <buffer> <localleader>td :DlvTestCurrent<cr>
-" (d)ebug test (a)ll
-nnoremap <buffer> <localleader>da :DlvTest<cr>
-" (d)ebug (c)lear all points
-nnoremap <buffer> <localleader>dc :DlvClearAll<cr>
-" }}}

@@ -48,7 +48,12 @@ in
         require("scrolling")
         require("misc")
       '';
+      extraPython3Packages = ps: with ps; [
+      ];
       extraPackages = with pkgs; [
+        zig
+        ctags
+        rust-analyzer
         lua-language-server
         rnix-lsp
         fzf
@@ -70,17 +75,30 @@ in
             markdown
             markdown_inline
             python
+            perl
             go
             rust
+            ruby
+            regex
             lua
             vim
             nix
             toml
             yaml
             json
+            jsonc
             json5
             hjson
             hcl
+            html
+            sql
+            gitignore
+            gitcommit
+            git_config
+            git_rebase
+            gitattributes
+            c
+            cpp
             dockerfile
             make
           ]));
@@ -97,6 +115,13 @@ in
           config = builtins.readFile ./plugin/indent-blankline.lua;
         }
 
+        # git integration
+        {
+          type = "lua";
+          plugin = gitsigns-nvim;
+          config = builtins.readFile ./plugin/gitsigns.lua;
+        }
+
         # lsp stuff
         {
           type = "lua";
@@ -110,12 +135,17 @@ in
         }
 
         # completion
+        luasnip
+        cmp-nvim-lsp-signature-help
+        cmp_luasnip
+        cmp-path
+        cmp-buffer
+        cmp-nvim-lsp
         {
           type = "lua";
-          plugin = coq_nvim;
-          config = builtins.readFile ./plugin/coq.lua;
+          plugin = nvim-cmp;
+          config = builtins.readFile ./plugin/cmp.lua;
         }
-        coq-artifacts
 
         # finder
         {
@@ -144,15 +174,8 @@ in
         vim-signature
         {
           type = "lua";
-          plugin = autoclose-nvim;
-          config = builtins.readFile ./plugin/autoclose.lua;
-        }
-
-        # git integration
-        {
-          type = "lua";
-          plugin = gitsigns-nvim;
-          config = builtins.readFile ./plugin/gitsigns.lua;
+          plugin = nvim-autopairs;
+          config = builtins.readFile ./plugin/autopairs.lua;
         }
 
         # tree
@@ -212,10 +235,6 @@ in
     };
     home.file.".config/nvim/ftplugin" = {
       source = ./ftplugin;
-      recursive = true;
-    };
-    home.file.".config/nvim/after" = {
-      source = ./after;
       recursive = true;
     };
   }
