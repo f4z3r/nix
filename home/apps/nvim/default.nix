@@ -97,20 +97,25 @@ in
           config = builtins.readFile ./plugin/indent-blankline.lua;
         }
 
-        # completion
-        # {
-        #   type = "lua";
-        #   plugin = coq_nvim;
-        #   config = builtins.readFile ./plugin/coq.lua;
-        # }
-        # coq-artifacts
-
         # lsp stuff
         {
           type = "lua";
           plugin = nvim-lspconfig;
           config = builtins.readFile ./plugin/lsp.lua;
         }
+        {
+          type = "lua";
+          plugin = trouble-nvim;
+          config = builtins.readFile ./plugin/trouble.lua;
+        }
+
+        # completion
+        {
+          type = "lua";
+          plugin = coq_nvim;
+          config = builtins.readFile ./plugin/coq.lua;
+        }
+        coq-artifacts
 
         # finder
         {
@@ -128,12 +133,20 @@ in
           plugin = vim-easymotion;
           config = builtins.readFile ./plugin/vim-easymotion.lua;
         }
-        camelcasemotion
+        {
+          type = "lua";
+          plugin = camelcasemotion;
+          config = builtins.readFile ./plugin/camelcasemotion.lua;
+        }
         vim-repeat
         vim-surround
         targets-vim
         vim-signature
-        vim-endwise
+        {
+          type = "lua";
+          plugin = autoclose-nvim;
+          config = builtins.readFile ./plugin/autoclose.lua;
+        }
 
         # git integration
         {

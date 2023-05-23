@@ -29,18 +29,6 @@ local mappings = {
   },
   {
     mode = 'n',
-    suffix = 'n',
-    command = '<cmd>e %:p:h/',
-    desc = 'New file in buffer directory'
-  },
-  {
-    mode = 'n',
-    suffix = 'N',
-    command = '<cmd>e ',
-    desc = 'New file in workspace'
-  },
-  {
-    mode = 'n',
     suffix = 'f',
     command = function() require('telescope.builtin').git_files() end,
     desc = 'Open git tracked file'
@@ -57,12 +45,12 @@ local mappings = {
     command = '<cmd>checktime %<cr>',
     desc = 'Refresh file'
   },
---  {
---    mode = 'n',
---    suffix = 't',
---    command = string.format([[<cmd>execute "e {}"<cr>]], require('lazy.utils').get_temp_file()),
---    desc = 'Open temp file'
---  },
+ {
+   mode = 'n',
+   suffix = 't',
+   command = function() vim.cmd(string.format('e %s', require('lazy.utils').get_temp_file())) end,
+   desc = 'Open temp file'
+ },
 }
 
 

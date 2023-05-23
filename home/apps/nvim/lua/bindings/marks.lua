@@ -1,16 +1,17 @@
--- Commands bindings
+-- Mark bindings
 
-local leader = '<leader>c'
+local leader = '<leader>m'
 
 local mappings = {
   {
     mode = 'n',
-    suffix = 'c',
-    command = function() require('telescope.builtin').command_history() end,
-    desc = 'Search command history',
+    suffix = 'm',
+    command = function() require('telescope.builtin').marks() end,
+    desc = 'Search marks',
   },
 }
 
 for _, mapping in ipairs(mappings) do
   vim.keymap.set(mapping.mode, leader .. mapping.suffix, mapping.command, { desc = mapping.desc })
 end
+

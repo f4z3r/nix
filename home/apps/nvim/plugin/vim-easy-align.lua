@@ -25,3 +25,5 @@ vim.g.easy_align_delimiters = {
     ['right_margin'] = 0
   }
 }
+
+vim.keymap.set({ 'n', 'x' }, 'ga', '<Plug>(EasyAlign)')

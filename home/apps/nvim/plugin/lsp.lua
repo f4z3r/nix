@@ -1,4 +1,21 @@
 -- Setup language servers.
+vim.fn.sign_define(
+  "LspDiagnosticsSignError",
+  { texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError" }
+)
+vim.fn.sign_define(
+  "LspDiagnosticsSignWarning",
+  { texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning" }
+)
+vim.fn.sign_define(
+  "LspDiagnosticsSignHint",
+  { texthl = "LspDiagnosticsSignHint", text = "󰌶", numhl = "LspDiagnosticsSignHint" }
+)
+vim.fn.sign_define(
+  "LspDiagnosticsSignInformation",
+  { texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation" }
+)
+
 local lspconfig = require('lspconfig')
 
 lspconfig.lua_ls.setup {
