@@ -1,4 +1,4 @@
-{ config, pkgs, system, username, hostname, ... }:
+{ config, lib, pkgs, system, username, hostname, ... }:
 
 {
   imports =
@@ -22,21 +22,30 @@
     };
     efi = {
       canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
     };
   };
 
+  hardware = {
+    opengl.enable = true;
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  boot.initrd = {
-    secrets = {
-      "/crypto_keyfile.bin" = null;
-    };
-    luks.devices = {
-      "luks-d8862d2e-20cd-41a7-be46-043a7f66e1ec" = {
-        device = "/dev/disk/by-uuid/d8862d2e-20cd-41a7-be46-043a7f66e1ec";
-        keyFile = "/crypto_keyfile.bin";
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+      settings = {
+        General = {
+          Enable = "Source,Sink,Media,Socket";
+        };
       };
     };
+  };
+
+  networking.useDHCP = lib.mkDefault true;
+
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+    cpuFreqGovernor = lib.mkDefault "powersave";
   };
 
   nix = {
@@ -108,7 +117,6 @@
   services.xserver = {
     enable = true;
     dpi = 192;
-    videoDrivers = [ "nvidia" ];
     
     libinput = {
       enable = true;

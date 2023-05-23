@@ -23,8 +23,6 @@ in
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."luks-0981ed39-6df0-4d4b-9973-84b0563e062a".device = "/dev/disk/by-uuid/0981ed39-6df0-4d4b-9973-84b0563e062a";
-
   fileSystems."/boot/efi" =
     { device = "/dev/disk/by-uuid/E990-B4DE";
       fsType = "vfat";
@@ -34,36 +32,34 @@ in
     [ { device = "/dev/disk/by-uuid/85d6d645-1a70-4dc9-8cc7-ea867810ff3a"; }
     ];
 
-  networking.useDHCP = lib.mkDefault true;
+  boot.initrd = {
+    secrets = {
+      "/crypto_keyfile.bin" = null;
+    };
+    luks.devices = {
+      "luks-0981ed39-6df0-4d4b-9973-84b0563e062a" = {
+        device = "/dev/disk/by-uuid/0981ed39-6df0-4d4b-9973-84b0563e062a";
+      };
+      "luks-d8862d2e-20cd-41a7-be46-043a7f66e1ec" = {
+        device = "/dev/disk/by-uuid/d8862d2e-20cd-41a7-be46-043a7f66e1ec";
+        keyFile = "/crypto_keyfile.bin";
+      };
+    };
+  };
+
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement = {
-    enable = true;
-    powertop.enable = true;
-    cpuFreqGovernor = lib.mkDefault "powersave";
-  };
 
   environment.systemPackages = [
     nvidia-offload
   ];
-  hardware = {
-    opengl.enable = true;
-    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-    nvidia.prime = {
-      offload.enable = true;
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-
-    bluetooth = {
-      enable = true;
-      powerOnBoot = false;
-      settings = {
-        General = {
-          Enable = "Source,Sink,Media,Socket";
-        };
-      };
-    };
+  hardware.nvidia.prime = {
+    offload.enable = true;
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
   };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
 }
