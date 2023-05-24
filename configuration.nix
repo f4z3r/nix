@@ -27,7 +27,6 @@
 
   hardware = {
     opengl.enable = true;
-    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     bluetooth = {
       enable = true;
@@ -117,7 +116,7 @@
   services.xserver = {
     enable = true;
     dpi = dpi;
-    
+
     libinput = {
       enable = true;
       touchpad = {

@@ -153,17 +153,16 @@ assert lib.asserts.assertOneOf "theme" theme [
       lfs
       erdtree
       xcp
+      xsel
+      miniserve
 
       # stuff not used often, installed via nix-shell
-      #miniserve
       #tokei
       #jless
       #pastel
 
       # stuff used for GTK theming
       gtk-engine-murrine
-
-      xsel
 
       # stuff used in the background
       rofi-power-menu
