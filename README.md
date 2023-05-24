@@ -55,6 +55,10 @@ and export `NIX_THEME="..."` for NeoVim to take over the theme if you do not whi
 shells. WezTerm will take over the theme dynmically. GTK themes typically reload only on application
 restart.
 
+## Bootstrap New Computer
+
+See [`docs/bootstrap.md`](./docs/bootstrap.md).
+
 ## OpenVPN
 
 Download configurations from Proton to get the CAs, Keys, etc. All VPN information is then stored
@@ -72,6 +76,7 @@ quarantine, run the following:
 
 ```sh
 sudo mkdir -p /root/quarantine
+# needed to run once or the service will fail
 sudo freshclam
 ```
 

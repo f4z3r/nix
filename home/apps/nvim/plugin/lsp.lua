@@ -19,6 +19,7 @@ lspconfig.lua_ls.setup {
 lspconfig.rnix.setup {}
 lspconfig.jedi_language_server.setup {}
 lspconfig.gopls.setup {}
+lspconfig.marksman.setup {}
 lspconfig.rust_analyzer.setup {}
 
 local signs = {

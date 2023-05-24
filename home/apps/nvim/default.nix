@@ -53,6 +53,7 @@ in
       extraPackages = with pkgs; [
         zig
         ctags
+        marksman
         rust-analyzer
         lua-language-server
         rnix-lsp

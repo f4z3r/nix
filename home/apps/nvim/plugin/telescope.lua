@@ -1,8 +1,8 @@
 local actions = require('telescope.actions')
 local trouble = require('trouble.providers.telescope')
--- Global remapping
-------------------------------
-require('telescope').setup{
+
+local telescope = require('telescope')
+telescope.setup{
   defaults = {
     mappings = {
       i = {
