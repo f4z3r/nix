@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "My NixOS setups";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -12,7 +12,6 @@
 
   outputs = { self, nixpkgs, home-manager, ... }:
   let
-    hostname = "revenge-nix";
     username = "f4z3r";
     theme = "dark";  # one of "light" or "dark"
     system = "x86_64-linux";
@@ -24,9 +23,15 @@
     lib = nixpkgs.lib;
   in {
     nixosConfigurations = {
-      ${hostname} = lib.nixosSystem {
+      "revenge-nix" = let
+        hostname = "revenge-nix";
+        dpi = 192;
+        polybar_dpi = 128;
+        font_size = 18;
+        scratch_res = "2560x1600+0+0";
+      in lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit system username hostname; };
+        specialArgs = { inherit system username hostname dpi; };
         modules = [
           ./configuration.nix
 
@@ -35,7 +40,34 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users = {
-                ${username} = import ./home/home.nix { inherit pkgs lib username theme; };
+                ${username} = import ./home/home.nix {
+                  inherit pkgs lib hostname username theme polybar_dpi font_size scratch_res;
+                };
+              };
+            };
+          }
+        ];
+      };
+      "nix" = let
+        hostname = "nix";
+        dpi = 91;
+        polybar_dpi = 65;
+        font_size = 11;
+        scratch_res = "1280x800+0+0";
+      in lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit system username hostname dpi; };
+        modules = [
+          ./configuration.nix
+
+          home-manager.nixosModules.home-manager {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users = {
+                ${username} = import ./home/home.nix {
+                  inherit pkgs lib hostname username theme polybar_dpi font_size scratch_res;
+                };
               };
             };
           }

@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, hostname, scratch_res, ... }:
 
 {
   xsession = {
     windowManager.bspwm = {
       enable = true;
       startupPrograms = [
-        "${pkgs.feh}/bin/feh --bg-fill ~/.config/bspwm/wallpaper.jpeg"
+        "${pkgs.feh}/bin/feh --bg-fill ~/.config/bspwm/${hostname}-wallpaper.jpeg"
         "${pkgs.polybar}/bin/polybar main"
       ];
       monitors = {
@@ -42,7 +42,7 @@
         "quake" = {
           state = "floating";
           center = true;
-          rectangle = "2560x1600+0+0";
+          rectangle = "${scratch_res}";
         };
       };
       settings = {
@@ -69,8 +69,8 @@
   };
 
   home.file = {
-    ".config/bspwm/wallpaper.jpeg" = {
-      source = ./wallpaper.jpeg;
+    ".config/bspwm/${hostname}-wallpaper.jpeg" = {
+      source = ./${hostname}-wallpaper.jpeg;
     };
   };
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, polybar_dpi, ... }:
 
 {
   services = {
@@ -23,7 +23,7 @@
         height = 24pt
         radius = 6
 
-        dpi = 128
+        dpi = ${toString(polybar_dpi)}
 
         background = ''${colors.background}
         foreground = ''${colors.foreground}

@@ -1,4 +1,4 @@
-{ pkgs, lib, username, theme ? "dark", ... }:
+{ pkgs, lib, hostname, username, theme ? "dark", polybar_dpi, font_size, scratch_res, ... }:
 
 assert lib.asserts.assertOneOf "theme" theme [
   "dark"
@@ -7,13 +7,13 @@ assert lib.asserts.assertOneOf "theme" theme [
 
 {
   imports = [
-    ./apps/bspwm/default.nix
+    (import ./apps/bspwm/default.nix { inherit pkgs hostname scratch_res; })
     (import ./apps/sxhkd/default.nix { inherit pkgs username; })
-    ./apps/polybar/default.nix
+    (import ./apps/polybar/default.nix { inherit pkgs polybar_dpi; })
     ./apps/picom.nix
     ./apps/rofi/default.nix
     (import ./apps/git/default.nix { inherit pkgs theme; })
-    (import ./apps/wezterm.nix { inherit pkgs theme; })
+    (import ./apps/wezterm.nix { inherit pkgs theme font_size; })
     (import ./apps/tmux.nix {inherit pkgs theme; })
     (import ./apps/zsh/default.nix { inherit pkgs theme; })
     ./apps/starship.nix

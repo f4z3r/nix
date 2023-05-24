@@ -72,6 +72,7 @@ quarantine, run the following:
 
 ```sh
 sudo mkdir -p /root/quarantine
+sudo freshclam
 ```
 
 ## Restic

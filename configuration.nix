@@ -1,9 +1,9 @@
-{ config, lib, pkgs, system, username, hostname, ... }:
+{ config, lib, pkgs, system, username, hostname, dpi, ... }:
 
 {
   imports =
     [
-      ./hardware-configuration.nix
+      ./${hostname}-hardware-configuration.nix
       (import ./nixos/networking.nix { inherit config pkgs hostname; })
       ./nixos/virtualisation.nix
       (import ./nixos/clamav.nix { inherit config pkgs username; })
@@ -116,7 +116,7 @@
 
   services.xserver = {
     enable = true;
-    dpi = 192;
+    dpi = dpi;
     
     libinput = {
       enable = true;

@@ -1,4 +1,4 @@
-{ pkgs, theme, ... }:
+{ pkgs, theme, font_size, ... }:
 
 let config = ''
   local wezterm = require 'wezterm'
@@ -20,7 +20,7 @@ let config = ''
 
   config.warn_about_missing_glyphs = false
   config.font = wezterm.font('FiraCode Nerd Font Mono', {weight = 'DemiBold', stretch = 'Expanded'})
-  config.font_size = 18
+  config.font_size = ${toString(font_size)}
 
   config.adjust_window_size_when_changing_font_size = false
 
