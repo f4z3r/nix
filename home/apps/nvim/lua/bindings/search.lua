@@ -5,7 +5,7 @@ local leader = '<leader>/'
 local mappings = {
   {
     mode = 'n',
-    suffix = 'T',
+    suffix = 't',
     command = function() require('telescope.builtin').tags() end,
     desc = 'Search all tags',
   },
@@ -17,7 +17,7 @@ local mappings = {
   },
   {
     mode = 'n',
-    suffix = 't',
+    suffix = 'T',
     command = function() require('telescope.builtin').current_buffer_tags() end,
     desc = 'Search current buffer tags',
   },

@@ -52,7 +52,7 @@ in
       ];
       extraPackages = with pkgs; [
         zig
-        ctags
+        universal-ctags
         marksman
         rust-analyzer
         lua-language-server
