@@ -227,6 +227,12 @@ in
           config = builtins.readFile ./plugin/vim-easy-align.lua;
         }
 
+        # status line
+        {
+          type = "lua";
+          plugin = lualine-nvim;
+          config = builtins.readFile ./plugin/lualine.lua;
+        }
       ];
     };
 
