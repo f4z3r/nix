@@ -4,10 +4,10 @@ let
   gruvbox-material-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "gruvbox-material.nvim";
     src = pkgs.fetchFromGitHub {
-      owner = "WIttyJudge";
+      owner = "f4z3r";
       repo = "gruvbox-material.nvim";
-      rev = "02d0f0cc7bffc38a8ea419d941075b7b982aa314";
-      sha256 = "sha256-m0ohVF+Ec0UHefsBQPVoDoMHyreXkPof+nVDZhEilzU=";
+      rev = "e128092aa0ebfd71fc49a09e3e1729f8a60a033e";
+      sha256 = "sha256-WeEWc+Ja4AfLxMsxQ2yHofBK48UWF3AOik0YIuC+cFk=";
     };
   };
 

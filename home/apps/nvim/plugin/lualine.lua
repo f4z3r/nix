@@ -1,40 +1,42 @@
 local colors = {
-  blue   = '#458588',
-  cyan   = '#d79921',
-  black  = '#282828',
-  white  = '#ebdbb2',
-  red    = '#cc241d',
-  violet = '#98971a',
-  grey   = '#1d2021',
+  red    = '#ea6962',
+  yellow = '#d8a657',
+  green  = '#a9b665',
+  blue   = '#7daea3',
+
+  invis  = '#282828',
+  fg     = '#d4be98',
+  bg     = '#3a3735',
 }
 
-if vim.o.background == "light" then
+if vim.env.NIX_THEME == "light" then
   colors = {
-    blue   = '#458588',
-    cyan   = '#279921',
-    black  = '#fbf1c7',
-    white  = '#3d3836',
-    red    = '#cc241d',
-    violet = '#98971a',
-    grey   = '#7c6f64',
+    red    = '#c14a4a',
+    yellow = '#b47109',
+    green  = '#6c782e',
+    blue   = '#45707a',
+
+    invis  = '#fbf1c7',
+    fg     = '#654735',
+    bg     = '#f2e5bc',
   }
 end
 
 local bubbles_theme = {
   normal = {
-    a = { fg = colors.black, bg = colors.violet },
-    b = { fg = colors.white, bg = colors.grey },
-    c = { fg = colors.black, bg = colors.black },
+    a = { fg = colors.invis, bg = colors.green },
+    b = { fg = colors.fg, bg = colors.bg },
+    c = { fg = colors.invis, bg = colors.invis },
   },
 
-  insert = { a = { fg = colors.black, bg = colors.blue } },
-  visual = { a = { fg = colors.black, bg = colors.cyan } },
-  replace = { a = { fg = colors.black, bg = colors.red } },
+  insert = { a = { fg = colors.invis, bg = colors.blue } },
+  visual = { a = { fg = colors.invis, bg = colors.yellow } },
+  replace = { a = { fg = colors.invis, bg = colors.red } },
 
   inactive = {
-    a = { fg = colors.white, bg = colors.black },
-    b = { fg = colors.white, bg = colors.black },
-    c = { fg = colors.black, bg = colors.black },
+    a = { fg = colors.fg, bg = colors.invis },
+    b = { fg = colors.fg, bg = colors.invis },
+    c = { fg = colors.invis, bg = colors.invis },
   },
 }
 
