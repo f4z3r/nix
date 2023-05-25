@@ -90,7 +90,7 @@
         disabled = false;
         format = "[  $shlvl]($style) ╱";
         style = "bold red";
-        threshold = 2;
+        threshold = 3;
       };
 
       custom = {
