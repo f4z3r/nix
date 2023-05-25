@@ -55,6 +55,9 @@ sudo nixos-rebuild switch --flake .#<host>
 
 Once installed, reboot.
 
+> Some NeoVim plugins use a cache at `~/.cache/nvim` but cannot create that directory if it does not
+> exist. Create it to ensure all plugins can work as expected.
+
 ### Setup Services
 
 In order to setup OpenVPN, Restic, and ClamAV, follow the instructions in the `README.md`.

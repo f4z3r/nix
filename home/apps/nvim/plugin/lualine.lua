@@ -40,6 +40,10 @@ local bubbles_theme = {
   },
 }
 
+local function maximize_status()
+  return vim.t.maximized and ' ' or ''
+end
+
 require('lualine').setup {
   options = {
     theme = bubbles_theme,
@@ -56,7 +60,7 @@ require('lualine').setup {
     },
     lualine_c = { 'fileformat' },
     lualine_x = {},
-    lualine_y = { 'filetype', 'progress' },
+    lualine_y = { 'filetype', 'progress', maximize_status },
     lualine_z = {
       { 'location', separator = { right = '' }, left_padding = 2 },
     },
