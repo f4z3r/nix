@@ -89,3 +89,18 @@ Configure a `rclone` backend named `gdrive`. Store the `rclone` configuration un
 # add restic backup password under
 /etc/nixos/restic-password
 ```
+
+## Rclone
+
+Rclone is setup to sync the second brain between devices with an alias. In order to set it up run:
+
+```bash
+mkdir -p ~/.config/rclone/
+sudo cp /etc/nixos/rclone.conf ~/.config/rclone/rclone.conf
+sudo chown f4z3r:users ~/.config/rclone/rclone.conf
+sudo chmod 600 ~/.config/rclone/rclone.conf
+# then encrypt the file
+rclone config
+```
+
+Once this is done, you can sync with `sbpull` and `sbpush`.

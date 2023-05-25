@@ -146,6 +146,7 @@ in
       onlyoffice-bin
 
       # utils
+      rclone
       neofetch
       mupdf
       ripgrep

@@ -66,6 +66,8 @@
       "grep" = ''grep --color=auto'';
       "egrep" = ''egrep --color=auto'';
       "fgrep" = ''fgrep --color=auto'';
+      "sbpull" = ''rclone sync --delete-after -P gdrive:/sb-sync ~/Documents/sb'';
+      "sbpush" = ''rclone sync --delete-after -P ~/Documents/sb gdrive:/sb-sync'';
     };
     sessionVariables = {
       GREP_COLORS = "mt=01;33:ms=01;33:mc=01;33:sl=:cx=:fn=35:ln=32:bn=32:se=36";
