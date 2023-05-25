@@ -4,7 +4,7 @@ vim.o.matchtime = 0
 vim.o.splitbelow = true
 vim.o.splitright = true
 
-vim.o.laststatus = 1
+vim.o.laststatus = 2
 
 vim.o.wrap = false
 vim.o.formatoptions = vim.o.formatoptions .. 'q'

@@ -104,14 +104,14 @@
 
         [module/red]
         type = custom/script
-        exec = ~/.local/bin/redshift.sh
+        exec = ${pkgs.bash}/bin/bash ~/.local/bin/redshift.sh
         tail = false
         label = %{F#F0C674}RS%{F-} %output%
         interval = 120
 
         [module/alsa]
         type = custom/script
-        exec = ~/.local/bin/volume.sh
+        exec = ${pkgs.bash}/bin/bash ~/.local/bin/volume.sh
         tail = false
         label = %{F#F0C674}VOL%{F-} %output%
         interval = 5
@@ -166,7 +166,7 @@
         [module/vpn]
         type = custom/script
         exec-if = systemctl is-active openvpn-*
-        exec = ~/.local/bin/vpn.py
+        exec = ${pkgs.luajit}/bin/luajit ~/.local/bin/vpn.lua
         tail = false
         label = %{F#F0C674}VPN%{F-} %output%
         interval = 60
@@ -205,15 +205,12 @@
   home.file = {
     ".local/bin/redshift.sh" = {
       source = ./scripts/redshift.sh;
-      executable = true;
     };
     ".local/bin/volume.sh" = {
       source = ./scripts/volume.sh;
-      executable = true;
     };
-    ".local/bin/vpn.py" = {
-      source = ./scripts/vpn.py;
-      executable = true;
+    ".local/bin/vpn.lua" = {
+      source = ./scripts/vpn.lua;
     };
     ".config/uair/uair.toml" = {
       source = ./uair.toml;

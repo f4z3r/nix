@@ -6,14 +6,38 @@ vim.diagnostic.config({
 
 local lspconfig = require('lspconfig')
 
+-- local function lua_path()
+--   local path = {}
+--   for token in string.gmatch(vim.env.LUA_PATH, "[^;]+") do
+--     path[#path+1] = token
+--   end
+--   return path
+-- end
+
+local runtime_path = vim.split(package.path, ";")
+table.insert(runtime_path, "?.lua")
+table.insert(runtime_path, "?/init.lua")
+local system_lib_path = vim.split(vim.env.LUA_PATH, ";")
+table.insert(system_lib_path, vim.api.nvim_get_runtime_file("", true))
+
 lspconfig.lua_ls.setup {
   settings = {
     Lua = {
+      runtime = {
+        version = 'LuaJIT',
+        path = runtime_path,
+      },
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = system_lib_path,
+      },
       telemetry = {
         enable = false,
       },
-    },
-  },
+    }
+  }
 }
 
 lspconfig.rnix.setup {}

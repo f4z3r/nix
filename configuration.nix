@@ -194,6 +194,14 @@
     timesyncd.enable = true;
     thermald.enable = true;
 
+    upower = {
+      enable = true;
+      percentageLow = 20;
+      percentageCritical = 10;
+      percentageAction = 3;
+      criticalPowerAction = "HybridSleep";
+    };
+
     locate = {
       enable = true;
       interval = "hourly";

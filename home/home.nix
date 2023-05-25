@@ -127,6 +127,13 @@ assert lib.asserts.assertOneOf "theme" theme [
         setuptools
       ];
       enhanced-python = pkgs.python311.withPackages python-packages;
+      lua-packages = with pkgs.luajitPackages; [
+        luasec
+        luasocket
+        luafilesystem
+        rapidjson
+        penlight
+      ];
     in [
       # GUI programs
       gimp
@@ -179,7 +186,8 @@ assert lib.asserts.assertOneOf "theme" theme [
       enhanced-python
       ruff
       black
-    ];
+      luajit
+    ] ++ lua-packages;
 
     file = {
       ".config/ruff/pyproject.toml" = {

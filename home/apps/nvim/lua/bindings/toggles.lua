@@ -24,6 +24,13 @@ local mappings = {
   {
     mode = 'n',
     suffix = 't',
+    command = '<cmd>TroubleToggle document_diagnostics<cr>',
+    desc = 'Toggle document diagnostics',
+
+  },
+  {
+    mode = 'n',
+    suffix = 'd',
     command = '<cmd>TroubleToggle workspace_diagnostics<cr>',
     desc = 'Toggle workspace diagnostics',
   },
@@ -38,13 +45,6 @@ local mappings = {
     suffix = 'r',
     command = '<cmd>TroubleToggle lsp_references<cr>',
     desc = 'Toggle LSP references',
-  },
-  {
-    mode = 'n',
-    suffix = 'd',
-    command = '<cmd>TroubleToggle document_diagnostics<cr>',
-    desc = 'Toggle document diagnostics',
-
   },
   {
     mode = 'n',
