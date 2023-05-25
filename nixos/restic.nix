@@ -1,7 +1,7 @@
 { config, pkgs, username, brain_backup, ... }:
 {
   services.restic = (if brain_backup then {
-    second-brain = {
+    backups.second-brain = {
       repository = "rclone:gdrive:sb";
       initialize = true;
       passwordFile = "/etc/nixos/restic-password";
