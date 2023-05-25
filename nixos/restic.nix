@@ -1,7 +1,7 @@
-{ config, pkgs, username, ... }:
+{ config, pkgs, username, brain_backup, ... }:
 {
-  services.restic = {
-    backups.second-brain = {
+  services.restic = (if brain_backup then {
+    second-brain = {
       repository = "rclone:gdrive:sb";
       initialize = true;
       passwordFile = "/etc/nixos/restic-password";
@@ -22,5 +22,6 @@
         drive-use-trash = "true";
       };
     };
-  };
+  } else {
+  });
 }

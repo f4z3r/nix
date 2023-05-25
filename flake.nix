@@ -21,57 +21,50 @@
     };
 
     lib = nixpkgs.lib;
+    setup = {
+      hostname,
+      dpi,
+      polybar_dpi,
+      font_size,
+      scratch_res,
+      brain_backup,
+    }: lib.nixosSystem {
+      inherit system;
+      specialArgs = { inherit system username hostname dpi brain_backup; };
+      modules = [
+        ./configuration.nix
+
+        home-manager.nixosModules.home-manager {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users = {
+              ${username} = import ./home/home.nix {
+                inherit pkgs lib hostname username theme polybar_dpi font_size scratch_res;
+              };
+            };
+          };
+        }
+      ];
+    };
+
   in {
     nixosConfigurations = {
-      "revenge-nix" = let
+      "revenge-nix" = setup {
         hostname = "revenge-nix";
         dpi = 192;
         polybar_dpi = 128;
         font_size = 18;
         scratch_res = "2560x1600+0+0";
-      in lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit system username hostname dpi; };
-        modules = [
-          ./configuration.nix
-
-          home-manager.nixosModules.home-manager {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users = {
-                ${username} = import ./home/home.nix {
-                  inherit pkgs lib hostname username theme polybar_dpi font_size scratch_res;
-                };
-              };
-            };
-          }
-        ];
+        brain_backup = false;
       };
-      "nix" = let
+      "nix" = setup {
         hostname = "nix";
         dpi = 91;
         polybar_dpi = 65;
         font_size = 11;
         scratch_res = "1280x800+0+0";
-      in lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit system username hostname dpi; };
-        modules = [
-          ./configuration.nix
-
-          home-manager.nixosModules.home-manager {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users = {
-                ${username} = import ./home/home.nix {
-                  inherit pkgs lib hostname username theme polybar_dpi font_size scratch_res;
-                };
-              };
-            };
-          }
-        ];
+        brain_backup = true;
       };
     };
   };
