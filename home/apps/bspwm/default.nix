@@ -46,12 +46,12 @@
         };
       };
       settings = {
-        border_width = 5;
+        border_width = 3;
         normal_border_color = "";
         active_border_color = "\#145f9d";
         focused_border_color = "\#145f9d";
 
-        window_gap = 12;
+        window_gap = 7;
 
         click_to_focus = true;
         focus_follows_pointer = false;

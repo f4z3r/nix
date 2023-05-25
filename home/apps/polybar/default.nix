@@ -21,7 +21,7 @@
         [base]
         width = 100%
         height = 24pt
-        radius = 6
+        radius = 5
 
         dpi = ${toString(polybar_dpi)}
 
@@ -30,8 +30,7 @@
 
         line-size = 3pt
 
-        border-size = 4pt
-        border-color = #00000000
+        border-size = 0pt
 
         padding-left = 0
         padding-right = 1

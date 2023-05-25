@@ -17,8 +17,11 @@
       use-damage = false;
       resize-damage = 1;
       refresh-rate = 0;
-      corner-radius = 15;
-      round-borders = 15;
+      corner-radius = 10;
+      round-borders = 10;
+      rounded-corners-exclude = [
+        "class_g = 'Polybar'"
+      ];
 
       # Animations Pijulius
       animations = true;

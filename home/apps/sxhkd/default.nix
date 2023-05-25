@@ -51,6 +51,7 @@
       "XF86AudioRaiseVolume" = "${pkgs.alsa-utils}/bin/amixer -q sset Master 1%+";
       "XF86AudioLowerVolume" = "${pkgs.alsa-utils}/bin/amixer -q sset Master 1%-";
       "XF86AudioMute" = "${pkgs.alsa-utils}/bin/amixer -q sset Master toggle";
+      "XF86AudioMicMute" = "${pkgs.alsa-utils}/bin/amixer -q set Capture toggle";
       "XF86AudioPlay" = "${pkgs.mpc-cli}/bin/mpc toggle";
 
       # music control
