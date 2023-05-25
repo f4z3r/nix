@@ -5,6 +5,17 @@ assert lib.asserts.assertOneOf "theme" theme [
   "light"
 ];
 
+let
+  lua-packages = with pkgs.luajitPackages; [
+    luasec
+    luasocket
+    luafilesystem
+    penlight
+    lualogging
+    rapidjson
+  ];
+in
+
 {
   imports = [
     (import ./apps/bspwm/default.nix { inherit pkgs hostname scratch_res; })
@@ -15,7 +26,7 @@ assert lib.asserts.assertOneOf "theme" theme [
     (import ./apps/git/default.nix { inherit pkgs theme; })
     (import ./apps/wezterm.nix { inherit pkgs theme font_size; })
     (import ./apps/tmux.nix {inherit pkgs theme; })
-    (import ./apps/zsh/default.nix { inherit pkgs theme; })
+    (import ./apps/zsh/default.nix { inherit lib pkgs theme lua-packages; })
     ./apps/starship.nix
     ./apps/gpg.nix
     ./apps/nvim/default.nix
@@ -127,13 +138,6 @@ assert lib.asserts.assertOneOf "theme" theme [
         setuptools
       ];
       enhanced-python = pkgs.python311.withPackages python-packages;
-      lua-packages = with pkgs.luajitPackages; [
-        luasec
-        luasocket
-        luafilesystem
-        rapidjson
-        penlight
-      ];
     in [
       # GUI programs
       gimp

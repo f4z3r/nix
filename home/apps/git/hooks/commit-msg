@@ -1,41 +1,57 @@
-#!/usr/bin/env python
+#!/usr/bin/env luajit
 
-import logging
-import re
-import sys
-from pathlib import Path
+local io = require('io')
+local os = require('os')
+local string = require('string')
+local stringx = require('pl.stringx')
+local Logging = require('logging')
 
-TYPES = ["feat", "impr", "fix", "docs", "chore", "test", "ci", "refactor", "style"]
+local TYPES = {
+  "feat",
+  "impr",
+  "fix",
+  "docs",
+  "chore",
+  "test",
+  "ci",
+  "refactor",
+  "style",
+}
 
-PATTERN = re.compile(r"(?P<type>\w+)(?:\((?P<scope>[\w-]+)\))?!?:(?P<desc>[^$]+)")
+local appender = function(_, level, message)
+  print("commit-msg", level, message)
+  return true
+end
 
+local logger = Logging.new(appender)
+logger:setLevel(logger.WARN)
 
-def main(path):
-    path = Path(path)
-    with path.open("r") as fh:
-        msg = fh.read()
-        validate_or_exit(msg)
+local function get_prefix(msg)
+  local match = string.match(msg, '[%S%(%)]+:')
+  if not match then
+    logger:error("could not find any prefix in commit")
+    os.exit(1)
+  end
+  return match
+end
 
+local function main(path)
+  local fh = io.open(path, 'r')
+  if fh == nil then
+    logger:error("could not open commit message file")
+    os.exit(1)
+  end
+  local content = fh:read("*a")
+  fh:close()
+  local prefix = get_prefix(content)
+  for _, type in ipairs(TYPES) do
+    if stringx.startswith(prefix, type) then
+      return
+    end
+  end
 
-def validate_or_exit(msg):
-    log = logging.getLogger("commit-msg hook")
-    if msg.startswith("Merge branch"):
-        return
-    match = PATTERN.match(msg)
-    if match is None:
-        log.fatal("commit message not in conventional commit form")
-        log.info("aborting...")
-        sys.exit(1)
-    typ = match.group("type")
-    if typ not in TYPES:
-        log.fatal(f"type '{typ}' is not supported by conventional commits")
-        log.info("aborting...")
-        sys.exit(1)
+  logger:error("did not find valid prefix in commit message")
+  os.exit(1)
+end
 
-
-if __name__ == "__main__":
-    logging.basicConfig(
-        format="%(name)s - %(levelname)s - %(message)s",
-        level=logging.INFO,
-    )
-    main(sys.argv[1])
+main(arg[1])

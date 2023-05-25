@@ -1,4 +1,4 @@
-{ pkgs, theme, ... }:
+{ lib, pkgs, theme, lua-packages, ... }:
 
 {
   programs.zsh = {
@@ -72,6 +72,8 @@
       MANPAGER = "sh -c 'col -bx | bat --theme=default -l man -p'";
       NIX_THEME = "${theme}";
       NIXPKGS_ALLOW_UNFREE = 1;
+      LUA_CPATH = "${lib.concatStringsSep ";" (map pkgs.luajitPackages.getLuaCPath lua-packages)}";
+      LUA_PATH = "${lib.concatStringsSep ";" (map pkgs.luajitPackages.getLuaPath lua-packages)}";
     };
   };
 }
