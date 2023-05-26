@@ -66,10 +66,10 @@ in
       bind-key C-n select-pane -t '{down-of}'
       
       # resize with arrow keys
-      bind-key Right resize-pane -R 20
-      bind-key Left resize-pane -L 20
-      bind-key Up resize-pane -U 20
-      bind-key Down resize-pane -D 20
+      bind-key Right resize-pane -R 5
+      bind-key Left resize-pane -L 5
+      bind-key Up resize-pane -U 5
+      bind-key Down resize-pane -D 5
       
       # Similar split to screen
       bind-key | split-window -h -c "#{pane_current_path}"
