@@ -72,7 +72,6 @@ in
         nodePackages.bash-language-server
         universal-ctags
         marksman
-        rust-analyzer
         rustfmt
         lua-language-server
         stylua
@@ -160,6 +159,23 @@ in
           plugin = null-ls-nvim;
           config = builtins.readFile ./plugin/null-ls.lua;
         }
+        nvim-dap
+        {
+          type = "lua";
+          plugin = nvim-dap-ui;
+          config = ''require('dapui').setup()'';
+        }
+        {
+          type = "lua";
+          plugin = rust-tools-nvim;
+          config = builtins.readFile ./plugin/rust-tools.lua;
+        }
+        nvim-dap-python
+        {
+          type = "lua";
+          plugin = nvim-dap-go;
+          config = ''require('dap-go').setup()'';
+        }
 
         # completion
         luasnip
@@ -187,8 +203,8 @@ in
         # useful stuff
         {
           type = "lua";
-          plugin = vim-easymotion;
-          config = builtins.readFile ./plugin/vim-easymotion.lua;
+          plugin = hop-nvim;
+          config = builtins.readFile ./plugin/hop.lua;
         }
         {
           type = "lua";
@@ -202,7 +218,7 @@ in
         {
           type = "lua";
           plugin = nvim-autopairs;
-          config = builtins.readFile ./plugin/autopairs.lua;
+          config = ''require('nvim-autopairs').setup()'';
         }
 
         # tree
@@ -243,7 +259,7 @@ in
         {
           type = "lua";
           plugin = comment-nvim;
-          config = builtins.readFile ./plugin/comment.lua;
+          config = ''require('Comment').setup()'';
         }
 
         # alignment

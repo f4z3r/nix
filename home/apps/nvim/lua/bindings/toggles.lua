@@ -64,6 +64,30 @@ local mappings = {
     command = toggle_wrap,
     desc = 'Toggle wrap',
   },
+  {
+    mode = 'n',
+    suffix = 'D',
+    command = function() require('dapui').toggle() end,
+    desc = 'Toggle DAP UI',
+  },
+  {
+    mode = 'n',
+    suffix = 'b',
+    command = function() require('dap').toggle_breakpoint() end,
+    desc = 'Toggle breakpoint'
+  },
+  {
+    mode = 'n',
+    suffix = 'Bc',
+    command = function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
+    desc = 'DAP set breakpoint with condition'
+  },
+  {
+    mode = 'n',
+    suffix = 'Bl',
+    command = function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end,
+    desc = 'DAP set breakpoint with log message'
+  },
 }
 
 for _, mapping in ipairs(mappings) do

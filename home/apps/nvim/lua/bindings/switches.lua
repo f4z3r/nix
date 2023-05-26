@@ -13,5 +13,9 @@ vim.keymap.set('n', '[t', function() require('trouble').previous({skip_groups = 
 vim.keymap.set('n', ']t', function() require('trouble').next({skip_groups = true, jump = true}) end, {
   desc = 'Jump to next entry in trouble list',
 })
-
--- errors and diagnostics, warnings
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {
+  desc = 'Jump to previous diagnostic',
+})
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {
+  desc = 'Jump to next diagnostic',
+})

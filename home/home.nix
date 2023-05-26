@@ -134,11 +134,12 @@ in
     packages = with pkgs; let
       python-packages = ps: with ps; [
         jedi-language-server
+        debugpy
         pip
         virtualenv
         setuptools
       ];
-      enhanced-python = pkgs.python311.withPackages python-packages;
+      enhanced-python = pkgs.python310.withPackages python-packages;
     in [
       # GUI programs
       gimp
@@ -147,6 +148,7 @@ in
       onlyoffice-bin
 
       # utils
+      gcc
       rclone
       neofetch
       mupdf
@@ -188,7 +190,8 @@ in
       bc
       ffmpeg
 
-      # quick scripting stuff
+      # programming
+      rustup
       enhanced-python
       ruff
       black

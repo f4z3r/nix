@@ -5,7 +5,7 @@ vim.g.mapleader = ' '
 --require('actions.lua')
 require('bindings.buffers')
 require('bindings.commands')
---require('diagnostics.lua')
+require('bindings.diagnostics')
 require('bindings.file')
 require('bindings.general')
 --require('bindings.git')

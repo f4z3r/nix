@@ -41,6 +41,33 @@ nix flake update
 sudo nixos-rebuild switch --impure --flake .#
 ```
 
+## Current NeoVim Language Support
+
+In my eyes a full support of a language in my setup means:
+
+- full autocompletion (syntax and code aware)
+- LSP integration for diagnostics, autocompletion, ...
+- additional linters for best practices
+- formatters for automatic code style enforcement
+- debugger integration via DAP
+
+With this setup we support the following languages with this:
+
+- Rust
+- Go
+- Python
+- Lua (no DAP support for now)
+
+Those are the languages I use the most, and will probably not thrive to add anything more unless my
+needs change.
+
+For Rust, install a toolchain and rust-analyzer via `rustup`:
+
+```bash
+rustup toolchain install stable
+rustup component add rust-analyzer
+```
+
 ## Dynamic Theming
 
 Themes cannot be implemented fully dynamically, as Nix's filesystems are read-only. Instead, you can
