@@ -67,14 +67,17 @@ in
         hadolint
         shfmt
         shellcheck
+        shellharden
         revive
         nodePackages.bash-language-server
         universal-ctags
         marksman
         rust-analyzer
+        rustfmt
         lua-language-server
-        luaformatter
+        stylua
         rnix-lsp
+        yamlfmt
         fzf
       ];
 

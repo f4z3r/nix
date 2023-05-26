@@ -17,8 +17,14 @@ null_ls.setup({
     null_ls.builtins.diagnostics.zsh,
     -- formatting
     null_ls.builtins.formatting.gofmt,
-    null_ls.builtins.formatting.lua_format,
+    null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.nixfmt,
     null_ls.builtins.formatting.shfmt,
+    null_ls.builtins.formatting.shellharden,
+    null_ls.builtins.formatting.ruff,
+    null_ls.builtins.formatting.rustfmt,
+    null_ls.builtins.formatting.trim_whitespace,
+    null_ls.builtins.formatting.trim_newlines,
+    null_ls.builtins.formatting.yamlfmt,
   }
 })
