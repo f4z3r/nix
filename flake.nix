@@ -54,9 +54,9 @@
         hostname = "revenge-nix";
         dpi = 192;
         polybar_dpi = 128;
-        font_size = 18;
+        font_size = 19;
         scratch_res = "2560x1600+0+0";
-        brain_backup = false;
+        brain_backup = true;
       };
       "nix" = setup {
         hostname = "nix";
@@ -64,7 +64,7 @@
         polybar_dpi = 65;
         font_size = 11;
         scratch_res = "1280x800+0+0";
-        brain_backup = true;
+        brain_backup = false;
       };
     };
   };
