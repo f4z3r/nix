@@ -2,6 +2,7 @@
 
 vim.diagnostic.config({
   update_in_insert = true,
+  virtual_text = false,
 })
 
 local lspconfig = require('lspconfig')
@@ -85,7 +86,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', '<cmd>Trouble lsp_definitions<cr>', opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gk', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'K', function() vim.diagnostic.open_float(nil, {focus=false}) end, opts)
     vim.keymap.set('n', 'gi', '<cmd>Trouble lsp_implementations<cr>', opts)
     vim.keymap.set('n', 'gr', '<cmd>Trouble lsp_references<cr>', opts)
     vim.keymap.set('i', '<c-k>', vim.lsp.buf.signature_help, opts)
@@ -98,7 +100,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set({ 'n', 'v' }, '<leader>da', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<leader>df', function()
-      vim.lsp.buf.format { async = true }
+      vim.lsp.buf.format { async = true, timeout_ms = 1000 }
     end, opts)
   end,
 })

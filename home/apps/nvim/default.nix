@@ -62,12 +62,18 @@ in
       ];
       extraPackages = with pkgs; [
         zig
+        deadnix
+        statix
+        hadolint
+        shfmt
         shellcheck
+        revive
         nodePackages.bash-language-server
         universal-ctags
         marksman
         rust-analyzer
         lua-language-server
+        luaformatter
         rnix-lsp
         fzf
       ];
@@ -81,7 +87,7 @@ in
         nvim-treesitter-textobjects
         {
           type = "lua";
-          plugin = (nvim-treesitter.withPlugins (p: with p; [
+          plugin = nvim-treesitter.withPlugins (p: with p; [
             org
             query
             bash
@@ -114,7 +120,7 @@ in
             cpp
             dockerfile
             make
-          ]));
+          ]);
           config = builtins.readFile ./plugin/treesitter.lua;
         }
         {
@@ -145,6 +151,11 @@ in
           type = "lua";
           plugin = trouble-nvim;
           config = builtins.readFile ./plugin/trouble.lua;
+        }
+        {
+          type = "lua";
+          plugin = null-ls-nvim;
+          config = builtins.readFile ./plugin/null-ls.lua;
         }
 
         # completion

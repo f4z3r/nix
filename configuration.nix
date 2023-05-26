@@ -114,8 +114,8 @@
   };
 
   services.xserver = {
+    inherit dpi;
     enable = true;
-    dpi = dpi;
 
     libinput = {
       enable = true;

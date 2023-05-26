@@ -7,6 +7,7 @@ assert lib.asserts.assertOneOf "theme" theme [
 
 let
   lua-packages = with pkgs.luajitPackages; [
+    luacheck
     luasec
     luasocket
     luafilesystem
@@ -205,15 +206,15 @@ in
     enable = true;
     theme = {
       package = pkgs.gruvbox-gtk-theme;
-      name = (if theme == "dark" then "Gruvbox-Dark-BL" else "Gruvbox-Light-BL");
+      name = if theme == "dark" then "Gruvbox-Dark-BL" else "Gruvbox-Light-BL";
     };
     iconTheme = {
       package = pkgs.papirus-icon-theme;
-      name = (if theme == "dark" then "Papirus-Dark" else "Papirus-Light");
+      name = if theme == "dark" then "Papirus-Dark" else "Papirus-Light";
     };
     cursorTheme = {
       package = pkgs.capitaine-cursors-themed;
-      name = (if theme == "dark" then "Capitaine Cursors (Gruvbox) - White" else "Capitaine Cursors (Gruvbox)");
+      name = if theme == "dark" then "Capitaine Cursors (Gruvbox) - White" else "Capitaine Cursors (Gruvbox)";
     };
   };
 }
