@@ -6,14 +6,7 @@ vim.diagnostic.config({
 
 local lspconfig = require('lspconfig')
 
--- local function lua_path()
---   local path = {}
---   for token in string.gmatch(vim.env.LUA_PATH, "[^;]+") do
---     path[#path+1] = token
---   end
---   return path
--- end
-
+-- LUA
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "?.lua")
 table.insert(runtime_path, "?/init.lua")
@@ -40,11 +33,23 @@ lspconfig.lua_ls.setup {
   }
 }
 
+-- Nix
 lspconfig.rnix.setup {}
+
+-- Python
 lspconfig.jedi_language_server.setup {}
+
+-- Go
 lspconfig.gopls.setup {}
+
+-- Markdown
 lspconfig.marksman.setup {}
+
+-- Rust
 lspconfig.rust_analyzer.setup {}
+
+-- Bash
+lspconfig.bashls.setup {}
 
 local signs = {
   Error = '',

@@ -62,6 +62,8 @@ in
       ];
       extraPackages = with pkgs; [
         zig
+        shellcheck
+        nodePackages.bash-language-server
         universal-ctags
         marksman
         rust-analyzer
