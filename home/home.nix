@@ -7,6 +7,7 @@ assert lib.asserts.assertOneOf "theme" theme [
 
 let
   lua-packages = with pkgs.luajitPackages; [
+    luv
     luacheck
     luasec
     luasocket
@@ -193,6 +194,8 @@ in
       # programming
       cargo
       rustc
+      go
+      delve
       enhanced-python
       ruff
       black

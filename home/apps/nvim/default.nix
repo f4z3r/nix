@@ -64,6 +64,7 @@ in
         zig
         deadnix
         statix
+        nixfmt
         hadolint
         shfmt
         shellcheck
@@ -149,6 +150,11 @@ in
         # lsp stuff
         {
           type = "lua";
+          plugin = neodev-nvim;
+          config = builtins.readFile ./plugin/neodev.lua;
+        }
+        {
+          type = "lua";
           plugin = nvim-lspconfig;
           config = builtins.readFile ./plugin/lsp.lua;
         }
@@ -177,6 +183,23 @@ in
         {
           type = "lua";
           plugin = nvim-dap-go;
+          config = ''require('dap-go').setup()'';
+        }
+
+        # test stuff
+        {
+          type = "lua";
+          plugin = neotest;
+          config = builtins.readFile ./plugin/neotest.lua;
+        }
+        {
+          type = "lua";
+          plugin = neotest-go;
+          config = ''require('dap-go').setup()'';
+        }
+        {
+          type = "lua";
+          plugin = neotest-python;
           config = ''require('dap-go').setup()'';
         }
 

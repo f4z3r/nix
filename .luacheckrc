@@ -1,0 +1,4 @@
+globals = {
+  "nvim",
+  "vim"
+}
