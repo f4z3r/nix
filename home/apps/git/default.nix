@@ -23,8 +23,8 @@
       options = {
         syntax-theme = "gruvbox-${theme}";
         true-color = "always";
-        plus-style = "syntax #012800";
-        minus-style = "syntax #340001";
+        plus-style = if theme == "light" then "syntax #cdffcc" else "syntax #012800";
+        minus-style = if theme == "light" then "syntax #ff8ab6" else "syntax #340001";
         navigate = true;
         line-numbers = true;
         side-by-side = true;

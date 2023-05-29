@@ -68,11 +68,14 @@ in
         shfmt
         shellcheck
         shellharden
+        gopls
         revive
         nodePackages.bash-language-server
         universal-ctags
         marksman
         rustfmt
+        rust-analyzer
+        clippy
         lua-language-server
         stylua
         rnix-lsp

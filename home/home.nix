@@ -191,7 +191,8 @@ in
       ffmpeg
 
       # programming
-      rustup
+      cargo
+      rustc
       enhanced-python
       ruff
       black
