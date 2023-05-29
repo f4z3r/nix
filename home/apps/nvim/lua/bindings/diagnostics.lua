@@ -3,7 +3,7 @@
 local leader = "<leader>d"
 
 local mappings = {
-  -- dr and da taken for rename and actions
+  -- dr taken for rename
   {
     mode = 'n',
     suffix = 'd',
@@ -15,12 +15,6 @@ local mappings = {
     suffix = 'l',
     command = vim.diagnostic.setloclist,
     desc = 'Set location list for diagnostics'
-  },
-  {
-    mode = 'n',
-    suffix = 'L',
-    command = function() require('osv').run_this() end,
-    desc = 'Debug a lua file with OSV',
   },
   {
     mode = 'n',
@@ -92,7 +86,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>dr", vim.lsp.buf.rename, {
       buffer = ev.buf, desc = "rename symbol under cursor"
     })
-    vim.keymap.set({ "n", "v" }, "<leader>da", vim.lsp.buf.code_action, {
+    vim.keymap.set({ "n", "v" }, "<leader>aa", vim.lsp.buf.code_action, {
       buffer = ev.buf, desc = "perform code action"
     })
     vim.keymap.set("n", "<leader>df", function()

@@ -72,7 +72,7 @@
             style = "bold red";
           }
           {
-            threshold = 30;
+            threshold = 20;
             style = "bold yellow";
           }
         ];

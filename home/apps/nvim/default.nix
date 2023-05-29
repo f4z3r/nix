@@ -168,7 +168,11 @@ in
           plugin = null-ls-nvim;
           config = builtins.readFile ./plugin/null-ls.lua;
         }
-        nvim-dap
+        {
+          type = "lua";
+          plugin = nvim-dap;
+          config = builtins.readFile ./plugin/dap.lua;
+        }
         {
           type = "lua";
           plugin = nvim-dap-ui;
@@ -187,20 +191,13 @@ in
         }
 
         # test stuff
+        neotest-go
+        neotest-python
+        neotest-rust
         {
           type = "lua";
           plugin = neotest;
           config = builtins.readFile ./plugin/neotest.lua;
-        }
-        {
-          type = "lua";
-          plugin = neotest-go;
-          config = ''require('dap-go').setup()'';
-        }
-        {
-          type = "lua";
-          plugin = neotest-python;
-          config = ''require('dap-go').setup()'';
         }
 
         # completion
