@@ -173,15 +173,15 @@
 
         [module/bat]
         type = internal/battery
-        full-at = 99
+        full-at = 89
         low-at = 20
         battery = BAT0
         poll-interval = 20
 
-        label-charging = %{F#458588}BAT%{F-} %percentage%%
-        label-discharging = %{F#F0C674}BAT%{F-} %percentage%%
-        label-full = %{F#98971A}BAT%{F-} %percentage%%
-        label-low = %{F#CC241D}BAT%{F-} %percentage%%
+        label-charging = %{F#458588}BAT%{F-} %percentage_raw%%
+        label-discharging = %{F#F0C674}BAT%{F-} %percentage_raw%%
+        label-full = %{F#98971A}BAT%{F-} %percentage_raw%%
+        label-low = %{F#CC241D}BAT%{F-} %percentage_raw%%
 
         [module/date]
         type = internal/date
