@@ -60,7 +60,7 @@ require('lualine').setup {
     },
     lualine_c = { 'fileformat' },
     lualine_x = {},
-    lualine_y = { 'filetype', 'progress', maximize_status },
+    lualine_y = { 'filetype', 'overseer', 'progress', maximize_status },
     lualine_z = {
       { 'location', separator = { right = '' }, left_padding = 2 },
     },

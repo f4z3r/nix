@@ -13,7 +13,7 @@
   outputs = { self, nixpkgs, home-manager, ... }:
   let
     username = "f4z3r";
-    theme = "light";  # one of "light" or "dark"
+    theme = "dark";  # one of "light" or "dark"
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;

@@ -39,3 +39,6 @@ vim.o.signcolumn = "auto:1-3"
 
 -- folding
 vim.o.foldenable = false
+
+-- notifications
+vim.notify = require('notify')

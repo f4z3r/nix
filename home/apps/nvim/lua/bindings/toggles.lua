@@ -48,6 +48,13 @@ local mappings = {
   },
   {
     mode = 'n',
+    suffix = 'r',
+    command = function() require('overseer').toggle() end,
+    desc = 'Toggle task runner',
+
+  },
+  {
+    mode = 'n',
     suffix = 'c',
     command = toggle_conceal,
     desc = 'Toggle conceal',
@@ -87,6 +94,12 @@ local mappings = {
     suffix = 'Bl',
     command = function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end,
     desc = 'DAP set breakpoint with log message'
+  },
+  {
+    mode = 'n',
+    suffix = 'T',
+    command = function() require('neotest').summary.toggle() end,
+    desc = 'Toggle test ouputs',
   },
 }
 

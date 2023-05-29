@@ -53,6 +53,12 @@ local mappings = {
     command = function() require('neotest').run.stop() end,
     desc = 'Stop currently running test',
   },
+  {
+    mode = 'n',
+    suffix = 'o',
+    command = function() require('neotest').summary.toggle() end,
+    desc = 'Toggle test ouputs',
+  },
 }
 
 for _, mapping in ipairs(mappings) do

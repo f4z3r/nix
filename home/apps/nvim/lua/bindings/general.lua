@@ -21,3 +21,5 @@ vim.keymap.set('n', '<c-w>', '<cmd>qa<cr>')
 -- neotree support
 vim.keymap.set('n', '-', '<cmd>Neotree<cr>')
 vim.keymap.set('n', '+', '<cmd>Neotree close<cr>')
+
+vim.keymap.set('n', 'z=', function() require('telescope.builtin').spell_suggest() end)

@@ -10,7 +10,8 @@ vim.diagnostic.config({
   },
 }, neotest_ns)
 
-require("neotest").setup({
+local neotest = require('neotest')
+neotest.setup({
   adapters = {
     require('neotest-go'),
     require('neotest-python'),

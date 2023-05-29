@@ -11,6 +11,27 @@ let
     };
   };
 
+  # temporary override to sidestep subprocess issue
+  neotest = pkgs.vimUtils.buildVimPlugin {
+    name = "neotest";
+    src = pkgs.fetchFromGitHub {
+      owner = "f4z3r";
+      repo = "neotest";
+      rev = "310c1ed801fc6716512bf503c2e06f2d927b3cd1";
+      sha256 = "sha256-x4YPyf9626N9M4lSVgyrc2/OT0XlwTpbpRydqVwmstg=";
+    };
+  };
+
+  overseer-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "overseer.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "stevearc";
+      repo = "overseer.nvim";
+      rev = "d286e681c4efa7477fccb113e23ef645fcb43cac";
+      sha256 = "sha256-blWHi+fWUGi3+HMk+ejfgzcZnCthaYDMGVDrkJbnEMs=";
+    };
+  };
+
   maximize-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "maximize.nvim";
     src = pkgs.fetchFromGitHub {
@@ -139,6 +160,16 @@ in
           plugin = indent-blankline-nvim;
           config = builtins.readFile ./plugin/indent-blankline.lua;
         }
+        {
+          type = "lua";
+          plugin = nvim-notify;
+          config = ''require('notify').setup()'';
+        }
+        {
+          type = "lua";
+          plugin = dressing-nvim;
+          config = builtins.readFile ./plugin/dressing.lua;
+        }
 
         # git integration
         {
@@ -190,7 +221,12 @@ in
           config = ''require('dap-go').setup()'';
         }
 
-        # test stuff
+        # test and runner stuff
+        {
+          type = "lua";
+          plugin = overseer-nvim;
+          config = builtins.readFile ./plugin/overseer.lua;
+        }
         neotest-go
         neotest-python
         neotest-rust
