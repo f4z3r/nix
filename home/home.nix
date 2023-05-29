@@ -193,6 +193,7 @@ in
 
       # programming
       cargo
+      cargo-nextest
       rustc
       go
       delve

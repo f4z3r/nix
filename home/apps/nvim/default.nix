@@ -214,7 +214,11 @@ in
           plugin = rust-tools-nvim;
           config = builtins.readFile ./plugin/rust-tools.lua;
         }
-        nvim-dap-python
+        {
+          type = "lua";
+          plugin = nvim-dap-python;
+          config = ''require('dap-python').setup()'';
+        }
         {
           type = "lua";
           plugin = nvim-dap-go;

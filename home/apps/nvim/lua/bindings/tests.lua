@@ -57,7 +57,13 @@ local mappings = {
     mode = 'n',
     suffix = 'o',
     command = function() require('neotest').summary.toggle() end,
-    desc = 'Toggle test ouputs',
+    desc = 'Toggle test summary',
+  },
+  {
+    mode = 'n',
+    suffix = 'O',
+    command = function() require('neotest').output.toggle() end,
+    desc = 'Toggle test output',
   },
 }
 

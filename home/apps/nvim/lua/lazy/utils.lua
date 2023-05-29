@@ -8,7 +8,7 @@ end
 
 function utils.copy_to_clipboard()
   vim.cmd('let @+=@')
-  vim.notify([[System clipbord updated]])
+  vim.notify('System clipbord updated', vim.log.levels.INFO)
 end
 
 return utils

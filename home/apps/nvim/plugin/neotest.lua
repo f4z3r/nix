@@ -12,6 +12,9 @@ vim.diagnostic.config({
 
 local neotest = require('neotest')
 neotest.setup({
+  consumers = {
+    overseer = require("neotest.consumers.overseer"),
+  },
   adapters = {
     require('neotest-go'),
     require('neotest-python'),
