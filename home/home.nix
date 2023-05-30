@@ -6,16 +6,73 @@ assert lib.asserts.assertOneOf "theme" theme [
 ];
 
 let
+  custom-lua-packages = luaPkgs: with luaPkgs; let
+    # generated with `luarocks-nix lua-path`
+    lua-path = buildLuarocksPackage {
+      pname = "lua-path";
+      version = "0.3.1-2";
+      knownRockspec = (pkgs.fetchurl {
+        url    = "mirror://luarocks/lua-path-0.3.1-2.rockspec";
+        sha256 = "1y0r23bbqhrd3wl7f5fpm1fqijb5sar59if4cif1j789rymf43z2";
+      }).outPath;
+      src = pkgs.fetchzip {
+        url    = "https://github.com/moteus/lua-path/archive/v0.3.1.zip";
+        sha256 = "1v65rsakwi1n64v3ylpsyml9dg8kac8c1glnlng0ccrqnlw6jzka";
+      };
+
+      disabled = (luaOlder "5.1") || (luaAtLeast "5.5");
+      propagatedBuildInputs = [ lua ];
+
+      meta = {
+        homepage = "https://github.com/moteus/lua-path";
+        description = "File system path manipulation library";
+        license.fullName = "MIT/X11";
+      };
+    };
+    lua-fun = buildLuarocksPackage {
+      pname = "fun";
+      version = "0.1.3-1";
+      knownRockspec = (pkgs.fetchurl {
+          url    = "mirror://luarocks/fun-0.1.3-1.rockspec";
+          sha256 = "03bimwzz9qwcs759ld69bljvnaim7dlsppg4w1hgxmvm6f2c8058";
+          }).outPath;
+      src = pkgs.fetchgit ( removeAttrs (builtins.fromJSON ''{
+            "url": "https://github.com/luafun/luafun.git",
+            "rev": "02960048e4dff4f5fd5b683c4b61f9df42e8339f",
+            "date": "2016-01-18T10:01:48+03:00",
+            "path": "/nix/store/xx98fa3m6av4fcakczlhcgglndygb5l9-luafun",
+            "sha256": "16m0hg3480c03pm1mmsfrgad3l28nbwkkjqvfbrxbns3nl5y5sk8",
+            "fetchLFS": false,
+            "fetchSubmodules": true,
+            "deepClone": false,
+            "leaveDotGit": false
+            }
+            '') ["date" "path"]) ;
+
+      propagatedBuildInputs = [ lua ];
+
+      meta = {
+        homepage = "https://luafun.github.io/";
+        description = "High-performance functional programming library for Lua";
+        license.fullName = "MIT/X11";
+      };
+    };
+  in
+  [
+    lua-path
+    lua-fun
+  ];
   lua-packages = with pkgs.luajitPackages; [
     luv
     luacheck
-    luasec
-    luasocket
-    luafilesystem
-    penlight
-    lualogging
+    http
+    # lua-log
+    # lust
+    lyaml
+    lua-toml
     rapidjson
-  ];
+    argparse
+    ] ++ [(pkgs.luajit.withPackages custom-lua-packages)];
 in
 
 {
@@ -200,7 +257,6 @@ in
       enhanced-python
       ruff
       black
-      luajit
     ] ++ lua-packages;
 
     file = {
