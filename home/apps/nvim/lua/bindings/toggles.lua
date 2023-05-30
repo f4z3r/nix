@@ -31,6 +31,12 @@ local mappings = {
   {
     mode = 'n',
     suffix = 'd',
+    command = function() require('dapui').toggle() end,
+    desc = 'Toggle debug UI',
+  },
+  {
+    mode = 'n',
+    suffix = 'D',
     command = '<cmd>TroubleToggle workspace_diagnostics<cr>',
     desc = 'Toggle workspace diagnostics',
   },
