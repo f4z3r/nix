@@ -172,11 +172,6 @@ in
         }
         {
           type = "lua";
-          plugin = nvim-notify;
-          config = ''require('notify').setup()'';
-        }
-        {
-          type = "lua";
           plugin = dressing-nvim;
           config = builtins.readFile ./plugin/dressing.lua;
         }
@@ -352,6 +347,11 @@ in
           type = "lua";
           plugin = lualine-nvim;
           config = builtins.readFile ./plugin/lualine.lua;
+        }
+        {
+          type = "lua";
+          plugin = nvim-notify;
+          config = builtins.readFile ./plugin/notify.lua;
         }
       ];
     };
