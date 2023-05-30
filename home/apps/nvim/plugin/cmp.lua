@@ -14,9 +14,8 @@ cmp.setup({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-y>'] = cmp.mapping.abort(),
     ['<tab>'] = cmp.mapping.confirm({select = true}),
-
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },

@@ -23,9 +23,33 @@ local mappings = {
   },
   {
     mode = 'n',
-    suffix = 'r',
+    suffix = 'R',
     command = '<c-w>=',
     desc = 'Resize windows',
+  },
+  {
+    mode = 'n',
+    suffix = 'rk',
+    command = '5<c-w>-',
+    desc = 'Resize window down',
+  },
+  {
+    mode = 'n',
+    suffix = 'rn',
+    command = '5<c-w>+',
+    desc = 'Resize window up',
+  },
+  {
+    mode = 'n',
+    suffix = 'rh',
+    command = '5<c-w><',
+    desc = 'Resize window left',
+  },
+  {
+    mode = 'n',
+    suffix = 'rl',
+    command = '5<c-w>>',
+    desc = 'Resize window right',
   },
   {
     mode = 'n',
