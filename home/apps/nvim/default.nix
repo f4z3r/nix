@@ -61,6 +61,16 @@ let
       sha256 = "sha256-x6S4WdgfUr7HGEHToSDy3pSHEwOPQalzWhBUipqMtnw=";
     };
   };
+
+  align-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "align.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "Vonr";
+      repo = "align.nvim";
+      rev = "2004d263bb1b1ec28e55cf56c35944ec4ea23f8b";
+      sha256 = "sha256-FqexLsG6PAslo2XeVLpFfThtNCrvwcytOEAaQcnJ/PQ=";
+    };
+  };
 in
   {
     programs.neovim = {
@@ -328,8 +338,8 @@ in
         # alignment
         {
           type = "lua";
-          plugin = vim-easy-align;
-          config = builtins.readFile ./plugin/vim-easy-align.lua;
+          plugin = align-nvim;
+          config = builtins.readFile ./plugin/align.lua;
         }
 
         # status line
