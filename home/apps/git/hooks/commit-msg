@@ -3,8 +3,6 @@
 local io = require('io')
 local os = require('os')
 local string = require('string')
-local stringx = require('pl.stringx')
-local Logging = require('logging')
 
 local TYPES = {
   "feat",
@@ -18,18 +16,14 @@ local TYPES = {
   "style",
 }
 
-local appender = function(_, level, message)
-  print("commit-msg", level, message)
-  return true
+local function log_error(msg, ...)
+  print(string.format("[ERROR] "..msg, ...))
 end
-
-local logger = Logging.new(appender)
-logger:setLevel(logger.WARN)
 
 local function get_prefix(msg)
   local match = string.match(msg, '[%S%(%)]+:')
   if not match then
-    logger:error("could not find any prefix in commit")
+    log_error("could not find any prefix in commit")
     os.exit(1)
   end
   return match
@@ -38,19 +32,19 @@ end
 local function main(path)
   local fh = io.open(path, 'r')
   if fh == nil then
-    logger:error("could not open commit message file")
+    log_error("could not open commit message file")
     os.exit(1)
   end
   local content = fh:read("*a")
   fh:close()
   local prefix = get_prefix(content)
   for _, type in ipairs(TYPES) do
-    if stringx.startswith(prefix, type) then
+    if string.find(prefix, type) == 1 then
       return
     end
   end
 
-  logger:error("did not find valid prefix in commit message")
+  log_error("did not find valid prefix in commit message")
   os.exit(1)
 end
 
