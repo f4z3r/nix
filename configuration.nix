@@ -1,27 +1,27 @@
 { config, lib, pkgs, system, username, hostname, dpi, brain_backup, ... }:
 
 {
-  imports =
-    [
-      ./${hostname}-hardware-configuration.nix
-      (import ./nixos/networking.nix { inherit config pkgs hostname; })
-      ./nixos/virtualisation.nix
-      (import ./nixos/clamav.nix { inherit config pkgs username; })
-      (import ./nixos/restic.nix { inherit config pkgs username brain_backup; })
-      ./nixos/tlp.nix
-      ./nixos/zsh.nix
-      ./nixos/openvpn/default.nix
-      ./nixos/kanata.nix
-    ];
+  imports = [
+    ./${hostname}-hardware-configuration.nix
+    (import ./nixos/networking.nix { inherit config pkgs hostname; })
+    ./nixos/virtualisation.nix
+    (import ./nixos/clamav.nix { inherit config pkgs username; })
+    (import ./nixos/restic.nix { inherit config pkgs username brain_backup; })
+    ./nixos/tlp.nix
+    ./nixos/zsh.nix
+    ./nixos/openvpn/default.nix
+    ./nixos/kanata.nix
+  ];
 
-  boot.loader = {
-    timeout = 1;
-    systemd-boot = {
-      enable = true;
-      configurationLimit = 20;
-    };
-    efi = {
-      canTouchEfiVariables = true;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader = {
+      timeout = 1;
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 20;
+      };
+      efi = { canTouchEfiVariables = true; };
     };
   };
 
@@ -31,11 +31,7 @@
     bluetooth = {
       enable = true;
       powerOnBoot = false;
-      settings = {
-        General = {
-          Enable = "Source,Sink,Media,Socket";
-        };
-      };
+      settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
     };
   };
 
@@ -53,16 +49,14 @@
       experimental-features = nix-command flakes
       keep-outputs = true
       keep-derivations = true
-      '';
+    '';
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 14d";
     };
 
-    settings = {
-      auto-optimise-store = true;
-    };
+    settings = { auto-optimise-store = true; };
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -101,9 +95,7 @@
 
   fonts = {
     enableDefaultFonts = true;
-    fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
-    ];
+    fonts = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
 
     fontconfig = {
       defaultFonts = {
@@ -125,11 +117,7 @@
       };
     };
 
-    windowManager = {
-      bspwm = {
-        enable = true;
-      };
-    };
+    windowManager = { bspwm = { enable = true; }; };
 
     displayManager = {
       defaultSession = "none+bspwm";
@@ -137,9 +125,7 @@
         enable = true;
         user = "${username}";
       };
-      lightdm = {
-        enable = true;
-      };
+      lightdm = { enable = true; };
     };
 
     layout = "us";
@@ -151,16 +137,14 @@
       ${username} = {
         isNormalUser = true;
         description = "${username}";
-        extraGroups = [ "networkmanager" "wheel" "audio" "video" "podman" "docker" ];
+        extraGroups =
+          [ "networkmanager" "wheel" "audio" "video" "podman" "docker" ];
         shell = pkgs.zsh;
-        packages = with pkgs; [];
+        packages = with pkgs; [ ];
       };
     };
-    groups = {
-      users.members = [ "${username}" "clamav" ];
-    };
+    groups = { users.members = [ "${username}" "clamav" ]; };
   };
-
 
   programs = {
     xss-lock = {
@@ -233,18 +217,14 @@
     };
   };
 
-  security.sudo.extraRules = [
-    {
-      users = [ "clamav" ];
-      runAs = "${username}";
-      commands = [
-        {
-          command = "${pkgs.libnotify}/bin/notify-send";
-          options = [ "NOPASSWD" "SETENV" ];
-        }
-      ];
-    }
-  ];
+  security.sudo.extraRules = [{
+    users = [ "clamav" ];
+    runAs = "${username}";
+    commands = [{
+      command = "${pkgs.libnotify}/bin/notify-send";
+      options = [ "NOPASSWD" "SETENV" ];
+    }];
+  }];
 
   system.stateVersion = "22.11";
 }
