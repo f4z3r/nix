@@ -1,42 +1,43 @@
-{ pkgs, lib, hostname, username, theme ? "dark", polybar_dpi, font_size, scratch_res, ... }:
+{ pkgs, lib, hostname, username, theme ? "dark", polybar_dpi, font_size
+, scratch_res, ... }:
 
-assert lib.asserts.assertOneOf "theme" theme [
-  "dark"
-  "light"
-];
+assert lib.asserts.assertOneOf "theme" theme [ "dark" "light" ];
 
 let
-  custom-lua-packages = luaPkgs: with luaPkgs; let
-    # generated with `luarocks-nix lua-path`
-    lua-path = buildLuarocksPackage {
-      pname = "lua-path";
-      version = "0.3.1-2";
-      knownRockspec = (pkgs.fetchurl {
-        url    = "mirror://luarocks/lua-path-0.3.1-2.rockspec";
-        sha256 = "1y0r23bbqhrd3wl7f5fpm1fqijb5sar59if4cif1j789rymf43z2";
-      }).outPath;
-      src = pkgs.fetchzip {
-        url    = "https://github.com/moteus/lua-path/archive/v0.3.1.zip";
-        sha256 = "1v65rsakwi1n64v3ylpsyml9dg8kac8c1glnlng0ccrqnlw6jzka";
-      };
+  custom-lua-packages = luaPkgs:
+    with luaPkgs;
+    let
+      # generated with `luarocks-nix lua-path`
+      lua-path = buildLuarocksPackage {
+        pname = "lua-path";
+        version = "0.3.1-2";
+        knownRockspec = (pkgs.fetchurl {
+          url = "mirror://luarocks/lua-path-0.3.1-2.rockspec";
+          sha256 = "1y0r23bbqhrd3wl7f5fpm1fqijb5sar59if4cif1j789rymf43z2";
+        }).outPath;
+        src = pkgs.fetchzip {
+          url = "https://github.com/moteus/lua-path/archive/v0.3.1.zip";
+          sha256 = "1v65rsakwi1n64v3ylpsyml9dg8kac8c1glnlng0ccrqnlw6jzka";
+        };
 
-      disabled = (luaOlder "5.1") || (luaAtLeast "5.5");
-      propagatedBuildInputs = [ lua ];
+        disabled = (luaOlder "5.1") || (luaAtLeast "5.5");
+        propagatedBuildInputs = [ lua ];
 
-      meta = {
-        homepage = "https://github.com/moteus/lua-path";
-        description = "File system path manipulation library";
-        license.fullName = "MIT/X11";
+        meta = {
+          homepage = "https://github.com/moteus/lua-path";
+          description = "File system path manipulation library";
+          license.fullName = "MIT/X11";
+        };
       };
-    };
-    lua-fun = buildLuarocksPackage {
-      pname = "fun";
-      version = "0.1.3-1";
-      knownRockspec = (pkgs.fetchurl {
-          url    = "mirror://luarocks/fun-0.1.3-1.rockspec";
+      lua-fun = buildLuarocksPackage {
+        pname = "fun";
+        version = "0.1.3-1";
+        knownRockspec = (pkgs.fetchurl {
+          url = "mirror://luarocks/fun-0.1.3-1.rockspec";
           sha256 = "03bimwzz9qwcs759ld69bljvnaim7dlsppg4w1hgxmvm6f2c8058";
-          }).outPath;
-      src = pkgs.fetchgit ( removeAttrs (builtins.fromJSON ''{
+        }).outPath;
+        src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
+          {
             "url": "https://github.com/luafun/luafun.git",
             "rev": "02960048e4dff4f5fd5b683c4b61f9df42e8339f",
             "date": "2016-01-18T10:01:48+03:00",
@@ -46,36 +47,119 @@ let
             "fetchSubmodules": true,
             "deepClone": false,
             "leaveDotGit": false
-            }
-            '') ["date" "path"]) ;
+          }
+        '') [ "date" "path" ]);
 
-      propagatedBuildInputs = [ lua ];
+        propagatedBuildInputs = [ lua ];
 
-      meta = {
-        homepage = "https://luafun.github.io/";
-        description = "High-performance functional programming library for Lua";
-        license.fullName = "MIT/X11";
+        meta = {
+          homepage = "https://luafun.github.io/";
+          description =
+            "High-performance functional programming library for Lua";
+          license.fullName = "MIT/X11";
+        };
       };
-    };
-  in
-  [
-    lua-path
-    lua-fun
-  ];
-  lua-packages = with pkgs.luajitPackages; [
-    luv
-    luacheck
-    http
-    # lua-log
-    # lust
-    lyaml
-    lua-toml
-    rapidjson
-    argparse
-    ] ++ [(pkgs.luajit.withPackages custom-lua-packages)];
-in
+      date = buildLuarocksPackage {
+        pname = "date";
+        version = "2.2-2";
+        knownRockspec = (pkgs.fetchurl {
+          url = "mirror://luarocks/date-2.2-2.rockspec";
+          sha256 = "0z2gb4rxfrkdx3zlysmlvfpm867fk0yq0bsn7yl789pvgf591l1x";
+        }).outPath;
+        src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
+          {
+            "url": "https://github.com/Tieske/date.git",
+            "rev": "e5d38bb4e8b8d258d4fc07f3423aa0ac8d1deb6f",
+            "date": "2021-11-22T12:57:18+01:00",
+            "path": "/nix/store/dflfbxkaz1wfja0v3l9mvafz5dinvm53-date",
+            "sha256": "1g50117sx2as5rf21gfddbmcsz7gv4pxs03z8a6d8dwbx31v4g2f",
+            "fetchLFS": false,
+            "fetchSubmodules": true,
+            "deepClone": false,
+            "leaveDotGit": false
+          }
+        '') [ "date" "path" ]);
 
-{
+        disabled = (luaOlder "5.0") || (luaAtLeast "5.5");
+        propagatedBuildInputs = [ lua ];
+
+        meta = {
+          homepage = "https://github.com/Tieske/date";
+          description = "Date & Time module for Lua 5.x";
+          license.fullName = "MIT";
+        };
+      };
+      ansicolors = buildLuarocksPackage {
+        pname = "ansicolors";
+        version = "1.0.2-3";
+        knownRockspec = (pkgs.fetchurl {
+          url = "mirror://luarocks/ansicolors-1.0.2-3.rockspec";
+          sha256 = "19y962xdx5ldl3596ywdl7n825dffz9al6j6rx6pbgmhb7pi8s5v";
+        }).outPath;
+        src = pkgs.fetchurl {
+          url =
+            "https://github.com/kikito/ansicolors.lua/archive/v1.0.2.tar.gz";
+          sha256 = "0r4xi57njldmar9pn77l0vr5701rpmilrm51spv45lz0q9js8xps";
+        };
+
+        disabled = luaOlder "5.1";
+        propagatedBuildInputs = [ lua ];
+
+        meta = {
+          homepage = "https://github.com/kikito/ansicolors.lua";
+          description = "Library for color Manipulation.";
+          license.fullName = "MIT <http://opensource.org/licenses/MIT>";
+        };
+      };
+      lua-log = buildLuarocksPackage {
+        pname = "lua-log";
+        version = "0.1.6-1";
+        knownRockspec = (pkgs.fetchurl {
+          url = "mirror://luarocks/lua-log-0.1.6-1.rockspec";
+          sha256 = "19k2hq7w1sizdar3470jwr016gak8a0x53n3c6mpnpbqz6wjlcsc";
+        }).outPath;
+        src = pkgs.fetchzip {
+          url = "https://github.com/moteus/lua-log/archive/v0.1.6.zip";
+          sha256 = "0j24mdpsa5fzzibx1734dcg506qzz5c0mq217bxij1ciivkyy9qm";
+        };
+
+        disabled = (luaOlder "5.1") || (luaAtLeast "5.4");
+        propagatedBuildInputs = [ date lua ];
+
+        meta = {
+          homepage = "https://github.com/moteus/lua-log";
+          description = "Asynchronous logging library";
+          license.fullName = "MIT/X11";
+        };
+      };
+    in [ lua-path lua-fun lua-log date ansicolors ];
+  lua-packages = with pkgs.luajitPackages;
+    [
+      http
+      lyaml
+      lua-toml
+      rapidjson
+      argparse
+      basexx
+      busted
+      compat53
+
+      # tooling
+      luacheck
+      # dependencies required elsewhere
+      luasec
+      luasocket
+      luv
+      # dependencies for lua-http
+      cqueues
+      luaossl
+      binaryheap
+      lpeg
+      lpeg_patterns
+      fifo
+    ] ++ [ (pkgs.luajit.withPackages custom-lua-packages) ];
+
+in {
   imports = [
     (import ./apps/bspwm/default.nix { inherit pkgs hostname scratch_res; })
     (import ./apps/sxhkd/default.nix { inherit pkgs username; })
@@ -84,7 +168,7 @@ in
     ./apps/rofi/default.nix
     (import ./apps/git/default.nix { inherit pkgs theme; })
     (import ./apps/wezterm.nix { inherit pkgs theme font_size; })
-    (import ./apps/tmux.nix {inherit pkgs theme; })
+    (import ./apps/tmux.nix { inherit pkgs theme; })
     (import ./apps/zsh/default.nix { inherit lib pkgs theme lua-packages; })
     ./apps/starship.nix
     ./apps/gpg.nix
@@ -104,11 +188,7 @@ in
 
     tealdeer = {
       enable = true;
-      settings = {
-        updates = {
-          auto_update = false;
-        };
-      };
+      settings = { updates = { auto_update = false; }; };
     };
 
     rbw = {
@@ -189,81 +269,79 @@ in
     username = "${username}";
     homeDirectory = "/home/${username}";
     stateVersion = "22.11";
-    packages = with pkgs; let
-      python-packages = ps: with ps; [
-        jedi-language-server
-        debugpy
-        pip
-        virtualenv
-        setuptools
-      ];
-      enhanced-python = pkgs.python310.withPackages python-packages;
-    in [
-      # GUI programs
-      gimp
-      brave
-      helvum
-      onlyoffice-bin
+    packages = with pkgs;
+      let
+        python-packages = ps:
+          with ps; [
+            jedi-language-server
+            debugpy
+            pip
+            virtualenv
+            setuptools
+          ];
+        enhanced-python = pkgs.python310.withPackages python-packages;
+      in [
+        # GUI programs
+        gimp
+        brave
+        helvum
+        onlyoffice-bin
 
-      # utils
-      gcc
-      rclone
-      neofetch
-      mupdf
-      ripgrep
-      silver-searcher
-      procs
-      tree
-      jq
-      rsync
-      xh
-      dogdns
-      fend
-      autorandr
-      ouch
-      fd
-      vimv-rs
-      lfs
-      erdtree
-      xcp
-      xsel
-      miniserve
+        # utils
+        gcc
+        rclone
+        neofetch
+        mupdf
+        ripgrep
+        silver-searcher
+        procs
+        tree
+        jq
+        rsync
+        xh
+        dogdns
+        fend
+        autorandr
+        ouch
+        fd
+        vimv-rs
+        lfs
+        erdtree
+        xcp
+        xsel
+        miniserve
 
-      # stuff not used often, installed via nix-shell
-      #tokei
-      #jless
-      #pastel
+        # stuff not used often, installed via nix-shell
+        #tokei
+        #jless
+        #pastel
 
-      # stuff used for GTK theming
-      gtk-engine-murrine
+        # stuff used for GTK theming
+        gtk-engine-murrine
 
-      # stuff used in the background
-      rofi-power-menu
-      rofi-rbw
-      wmctrl
-      bsp-layout
-      alsa-utils
-      mpc-cli
-      uair
-      bc
-      ffmpeg
+        # stuff used in the background
+        rofi-power-menu
+        rofi-rbw
+        wmctrl
+        bsp-layout
+        alsa-utils
+        mpc-cli
+        uair
+        bc
+        ffmpeg
 
-      # programming
-      cargo
-      cargo-nextest
-      rustc
-      go
-      delve
-      enhanced-python
-      ruff
-      black
-    ] ++ lua-packages;
+        # programming
+        cargo
+        cargo-nextest
+        rustc
+        go
+        delve
+        enhanced-python
+        ruff
+        black
+      ] ++ lua-packages;
 
-    file = {
-      ".config/ruff/pyproject.toml" = {
-        source = ./files/ruff.toml;
-      };
-    };
+    file = { ".config/ruff/pyproject.toml" = { source = ./files/ruff.toml; }; };
   };
 
   gtk = {
@@ -278,7 +356,10 @@ in
     };
     cursorTheme = {
       package = pkgs.capitaine-cursors-themed;
-      name = if theme == "dark" then "Capitaine Cursors (Gruvbox) - White" else "Capitaine Cursors (Gruvbox)";
+      name = if theme == "dark" then
+        "Capitaine Cursors (Gruvbox) - White"
+      else
+        "Capitaine Cursors (Gruvbox)";
     };
   };
 }
