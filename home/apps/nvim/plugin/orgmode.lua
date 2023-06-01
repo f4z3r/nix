@@ -9,6 +9,10 @@ require('orgmode').setup({
   org_log_into_drawer = 'LOGBOOK',
   org_tags_column = 100,
   org_archive_location = '~/Documents/sb/archive/default.org',
+  org_blank_before_new_entry = {
+    heading = false,
+    plain_list_item = false,
+  },
   org_capture_templates = {
     t = {
       description = 'Task',
