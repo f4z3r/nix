@@ -62,11 +62,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  system = {
-    autoUpgrade = {
-      enable = false;
-    };
-  };
+  system = { autoUpgrade = { enable = false; }; };
 
   sound = {
     enable = true;
@@ -217,14 +213,19 @@
     };
   };
 
-  security.sudo.extraRules = [{
-    users = [ "clamav" ];
-    runAs = "${username}";
-    commands = [{
-      command = "${pkgs.libnotify}/bin/notify-send";
-      options = [ "NOPASSWD" "SETENV" ];
+  security.sudo = {
+    extraConfig = ''
+      Defaults insults
+    '';
+    extraRules = [{
+      users = [ "clamav" ];
+      runAs = "${username}";
+      commands = [{
+        command = "${pkgs.libnotify}/bin/notify-send";
+        options = [ "NOPASSWD" "SETENV" ];
+      }];
     }];
-  }];
+  };
 
   system.stateVersion = "22.11";
 }
