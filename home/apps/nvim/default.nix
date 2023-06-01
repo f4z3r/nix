@@ -71,6 +71,16 @@ let
       sha256 = "sha256-FqexLsG6PAslo2XeVLpFfThtNCrvwcytOEAaQcnJ/PQ=";
     };
   };
+
+  yanky = pkgs.vimUtils.buildVimPlugin {
+    name = "yanky.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "gbprod";
+      repo = "yanky.nvim";
+      rev = "16884855e65931cdec3937d60bfb942530535e9c";
+      sha256 = "sha256-R0s5FvCj3dPJieBUMbCYoO9HP6pGbJXPgeoglQh8nf0=";
+    };
+  };
 in
   {
     programs.neovim = {
@@ -267,6 +277,7 @@ in
         fzfWrapper
         telescope-fzf-native-nvim
         telescope-orgmode
+        telescope-undo-nvim
 
         # useful stuff
         {
@@ -302,15 +313,6 @@ in
         # tag generation
         vim-gutentags
 
-        # executor TODO (dispatch, vimux, etc)
-        # vim-projectionist
-        # vimux
-        # vim-dispatch
-
-        # searching
-        incsearch-vim
-        incsearch-easymotion-vim
-
         # orgmode
         {
           type = "lua";
@@ -329,6 +331,13 @@ in
           plugin = comment-nvim;
           config = ''require('Comment').setup()'';
         }
+
+        # yanks
+        # {
+        #   type = "lua";
+        #   plugin = yanky;
+        #   config = builtins.readFile ./plugin/yanky.lua;
+        # }
 
         # alignment
         {

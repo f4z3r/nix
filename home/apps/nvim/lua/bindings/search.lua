@@ -72,8 +72,8 @@ local mappings = {
   {
     mode = 'n',
     suffix = 'u',
-    command = function() require('telescope.builtin').oldfiles() end,
-    desc = 'Search previously open files',
+    command = function() require("telescope").extensions.undo.undo() end,
+    desc = 'Search undo stack',
   },
   {
     mode = 'n',
@@ -98,6 +98,12 @@ local mappings = {
     suffix = '/',
     command = function() require('telescope.builtin').current_buffer_fuzzy_find() end,
     desc = 'Fuzzy search current buffer',
+  },
+  {
+    mode = 'n',
+    suffix = 'y',
+    command = function() require("telescope").extensions.yank_history.yank_history() end,
+    desc = 'Search yank history',
   },
   -- TODO search LSP stuff
 }
