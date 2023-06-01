@@ -364,4 +364,13 @@ in
       source = ./ftplugin;
       recursive = true;
     };
+    home.file.".config/nvim/spell/en.utf-8.add" = {
+      source = ./spell/en.utf-8.add;
+    };
+    home.file.".config/nvim/spell/de.utf-8.add" = {
+      source = ./spell/de.utf-8.add;
+    };
+    home.file.".config/nvim/spell/fr.utf-8.add" = {
+      source = ./spell/fr.utf-8.add;
+    };
   }
