@@ -1,5 +1,6 @@
 local utils = {}
 
+local quotes = require("lazy.quotes")
 local os = require('os')
 
 function utils.get_temp_file()
@@ -12,6 +13,12 @@ function utils.copy_to_clipboard()
     title = "Clipboard",
     timeout = 1000,
   })
+end
+
+function utils.quote()
+    math.randomseed(os.clock())
+    local index = math.random() * #quotes
+    return quotes[math.floor(index) + 1]
 end
 
 return utils

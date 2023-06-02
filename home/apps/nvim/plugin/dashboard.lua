@@ -1,3 +1,8 @@
+local footer = { "", "" }
+for _, line in ipairs(require("lazy.utils").quote()) do
+  footer[#footer + 1] = line
+end
+
 require('dashboard').setup({
   theme = 'hyper',
   config = {
@@ -66,5 +71,6 @@ require('dashboard').setup({
         key = 's',
       },
     },
+    footer = footer,
   },
 })
