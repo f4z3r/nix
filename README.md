@@ -112,6 +112,9 @@ sudo freshclam
 Configure a `rclone` backend named `gdrive`. Store the `rclone` configuration under:
 
 ```bash
+# can be found on proton drive
+# ! do not use the same config as for sb sync actions, as that one is encrypted for additional
+# protection !
 /etc/nixos/rclone.conf
 # add restic backup password under
 /etc/nixos/restic-password
@@ -119,14 +122,17 @@ Configure a `rclone` backend named `gdrive`. Store the `rclone` configuration un
 
 ## Rclone
 
-Rclone is setup to sync the second brain between devices with an alias. In order to set it up run:
+Rclone is setup to sync the second brain between devices with an alias. In order to allow a simple
+sync without having to trust google to not eavesdrop, all files within the second brain are passed
+via the `crypt` encryption layer from rclone before syncing. Both encryption and salt are protected
+by 512bit passphrases. The encrypted configuration can be found in the proton drive.
 
 ```bash
-mkdir -p ~/.config/rclone/
-sudo cp /etc/nixos/rclone.conf ~/.config/rclone/rclone.conf
-sudo chown f4z3r:users ~/.config/rclone/rclone.conf
+# copy from the proton drive to local and change premissions
 sudo chmod 600 ~/.config/rclone/rclone.conf
-# then encrypt the file
+# check that there are at least the following backends configured:
+# - gdrive (used by restic directly, restic does encryption as well)
+# - gdrive-crypt (used by to sync the second brain between devices, with rclone encryption layer)
 rclone config
 ```
 
