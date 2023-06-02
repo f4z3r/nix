@@ -185,6 +185,11 @@ in
           plugin = dressing-nvim;
           config = builtins.readFile ./plugin/dressing.lua;
         }
+        {
+          type = "lua";
+          plugin = symbols-outline-nvim;
+          config = builtins.readFile ./plugin/symbols-outline.lua;
+        }
 
         # git integration
         {

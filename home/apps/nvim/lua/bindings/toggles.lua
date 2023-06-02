@@ -68,6 +68,12 @@ local mappings = {
   {
     mode = 'n',
     suffix = 's',
+    command = '<cmd>SymbolsOutline<cr>',
+    desc = 'Toggle document symbol outline',
+  },
+  {
+    mode = 'n',
+    suffix = 'S',
     command = toggle_spell,
     desc = 'Toggle spelling',
   },
