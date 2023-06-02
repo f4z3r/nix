@@ -1,6 +1,6 @@
-{ config, pkgs, username, brain_backup, ... }:
+{ username, brain_backup, ... }:
 {
-  services.restic = (if brain_backup then {
+  services.restic = if brain_backup then {
     backups.second-brain = {
       repository = "rclone:gdrive:sb";
       initialize = true;
@@ -10,6 +10,8 @@
       ];
       timerConfig = {
         OnCalendar = "daily";
+        RandomizedDelaySec = "20m";
+        Persistent = true;
       };
       pruneOpts = [
         "--keep-daily 7"
@@ -23,5 +25,5 @@
       };
     };
   } else {
-  });
+  };
 }

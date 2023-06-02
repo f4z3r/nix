@@ -64,7 +64,7 @@
         polybar_dpi = 65;
         font_size = 11;
         scratch_res = "1280x800+0+0";
-        brain_backup = false;
+        brain_backup = true;
       };
     };
   };
