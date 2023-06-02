@@ -7,6 +7,10 @@ vim.api.nvim_set_hl(0, 'IndentBlanklineIndent6', { link = "TSRainbowBlue", nocom
 
 require("indent_blankline").setup {
     space_char_blankline = " ",
+    filetype_exclude = {
+      "help",
+      "dashboard",
+    },
     char_highlight_list = {
         "IndentBlanklineIndent1",
         "IndentBlanklineIndent2",

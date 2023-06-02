@@ -127,7 +127,11 @@ in
 
       plugins = with pkgs.vimPlugins; [
         # startup stuff
-        vim-startify
+        {
+          type = "lua";
+          plugin = dashboard-nvim;
+          config = builtins.readFile ./plugin/dashboard.lua;
+        }
 
         # syntax highlighting
         nvim-ts-rainbow2

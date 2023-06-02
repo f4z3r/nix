@@ -11,18 +11,6 @@ local mappings = {
   },
   {
     mode = 'n',
-    suffix = 'dd',
-    command = '<cmd>Dispatch<cr>',
-    desc = 'Synchronously dispatch on file'
-  },
-  {
-    mode = 'n',
-    suffix = 'da',
-    command = '<cmd>Dispatch!<cr>',
-    desc = 'Asynchronously dispatch on file'
-  },
-  {
-    mode = 'n',
     suffix = 's',
     command = '<cmd>update<cr>',
     desc = 'Save file'
