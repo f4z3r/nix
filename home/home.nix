@@ -324,6 +324,7 @@ in {
         onlyoffice-bin
 
         # utils
+        gnumake
         gcc
         rclone
         neofetch
