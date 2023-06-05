@@ -41,33 +41,6 @@ nix flake update
 sudo nixos-rebuild switch --impure --flake .#
 ```
 
-## Current NeoVim Language Support
-
-In my eyes a full support of a language in my setup means:
-
-- full autocompletion (syntax and code aware)
-- LSP integration for diagnostics, autocompletion, ...
-- additional linters for best practices
-- formatters for automatic code style enforcement
-- debugger integration via DAP
-
-With this setup we support the following languages with this:
-
-- Rust
-- Go
-- Python
-- Lua (no DAP support for now)
-
-Those are the languages I use the most, and will probably not thrive to add anything more unless my
-needs change.
-
-For Rust, install a toolchain and rust-analyzer via `rustup`:
-
-```bash
-rustup toolchain install stable
-rustup component add rust-analyzer
-```
-
 ## Dynamic Theming
 
 Themes cannot be implemented fully dynamically, as Nix's filesystems are read-only. Instead, you can
@@ -124,7 +97,7 @@ Configure a `rclone` backend named `gdrive`. Store the `rclone` configuration un
 
 Rclone is setup to sync the second brain between devices with an alias. In order to allow a simple
 sync without having to trust google to not eavesdrop, all files within the second brain are passed
-via the `crypt` encryption layer from rclone before syncing. Both encryption and salt are protected
+via the `crypt` encryption layer from Rclone before syncing. Both encryption and salt are protected
 by 512bit passphrases. The encrypted configuration can be found in the proton drive.
 
 ```bash
