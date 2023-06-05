@@ -71,7 +71,7 @@ require('dashboard').setup({
         key = 's',
       },
       {
-        desc = ' Orgmode',
+        desc = ' Agenda',
         group = '@parameter',
         action = function() require('orgmode').action('agenda.prompt') end,
         key = 'a',
