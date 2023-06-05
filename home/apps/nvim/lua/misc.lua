@@ -22,6 +22,7 @@ vim.o.autochdir = false
 vim.o.tags = 'tags;/'
 
 vim.o.secure = true
+vim.o.mouse = nil
 
 vim.g.clipboard = {
   name = "xsel_override",
