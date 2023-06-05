@@ -2,15 +2,15 @@
 
 ## Screenshots
 
-![](./assets/shell-quake.jpeg)
+![](./assets/full.jpeg)
 
 
-![](./assets/desktop.jpeg)
+![](./assets/nvim.jpeg)
 
 
 With the light theme, for working outside in the sun:
 
-![](./assets/shell-quake-light.jpeg)
+![](./assets/full-light.jpeg)
 
 ## Standard Software Used
 
