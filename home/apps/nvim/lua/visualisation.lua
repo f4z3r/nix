@@ -41,4 +41,7 @@ vim.o.signcolumn = "auto:1-3"
 vim.o.foldenable = false
 
 -- notifications
-vim.notify = require('notify')
+local ok, mod = pcall(require, 'notify')
+if ok then
+  vim.notify = mod
+end
