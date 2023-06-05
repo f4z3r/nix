@@ -41,6 +41,12 @@ cmp.setup({
 cmp.setup.filetype('org', {
   sources = cmp.config.sources({
     { name = 'orgmode' },
+    {
+      name = 'path',
+      options = {
+        trailing_slash = true,
+      },
+    },
   }, {
     { name = 'buffer' },
   }),
