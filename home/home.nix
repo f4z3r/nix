@@ -326,6 +326,7 @@ in {
         # utils
         gnumake
         gcc
+        openssl
         rclone
         neofetch
         mupdf
