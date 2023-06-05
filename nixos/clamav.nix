@@ -39,7 +39,6 @@
       ExecStartPre = ''${pkgs.bash}/bin/bash -c "while [ ! -S /run/clamav/clamd.ctl ]; do sleep 1; done"'';
       ExecStart = ''${pkgs.clamav}/bin/clamonacc -F -c /etc/clamav/clamd.conf --move /root/quarantine  --fdpass --allmatch'';
       ExecReload = ''${pkgs.coreutils}/bin/kill -USR2 $MAINPID'';
-      ExecStop = ''${pkgs.coreutils}/bin/kill -9 $MAINPID'';
     };
   };
 }
