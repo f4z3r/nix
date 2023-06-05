@@ -54,7 +54,7 @@ require('dashboard').setup({
       },
       {
         desc = '󰊳 Grep',
-        group = '@parameter',
+        group = '@constant',
         action = function() require('telescope.builtin').live_grep() end,
         key = 'g'
       },
@@ -69,6 +69,12 @@ require('dashboard').setup({
         group = '@number',
         action = function() require('telescope.builtin').tags() end,
         key = 's',
+      },
+      {
+        desc = ' Orgmode',
+        group = '@parameter',
+        action = function() require('orgmode').action('agenda.prompt') end,
+        key = 'a',
       },
     },
     footer = footer,
