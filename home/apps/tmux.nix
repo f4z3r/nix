@@ -59,6 +59,13 @@ in
       # override suspend
       bind-key C-z resize-pane -Z
 
+      # popup
+      bind-key -n C-g if-shell -F '#{==:#{=5:session_name},popup}' {
+        detach-client
+      } {
+        display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E 'tmux attach-session -t popup || tmux new-session -s popup'
+      }
+
       # vim like pane movement
       bind-key C-h select-pane -t '{left-of}'
       bind-key C-l select-pane -t '{right-of}'

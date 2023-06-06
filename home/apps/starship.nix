@@ -8,50 +8,23 @@
       # use all extensions
       format = lib.concatStrings [
         "$battery"
-        "$memory_usage"
-        "$shlvl"
         "$custom"
         "$time"
         "$nix_shell"
-        "$username"
-        "$hostname"
         "$git_branch"
         "$git_commit"
         "$git_state"
         "$git_status"
         "$kubernetes"
-        "$hg_branch"
-        "$docker_context"
         "$package"
         "$cmake"
-        "$dart"
-        "$dotnet"
-        "$elixir"
-        "$elm"
-        "$erlang"
         "$golang"
         "$helm"
-        "$java"
-        "$julia"
-        "$nim"
-        "$nodejs"
-        "$ocaml"
         "$perl"
         "$lua"
-        "$php"
-        "$purescript"
         "$python"
-        "$ruby"
-        "$crystal"
         "$rust"
-        "$swift"
         "$terraform"
-        "$zig"
-        "$conda"
-        "$aws"
-        "$gcloud"
-        "$openstack"
-        "$env_var"
         "$cmd_duration"
         "$jobs"
         "╱"
@@ -79,7 +52,7 @@
       };
 
       memory_usage = {
-        disabled = false;
+        disabled = true;
         threshold = 75;
         symbol = "󰍛";
         style = "bold dimmed white";
@@ -87,7 +60,7 @@
       };
 
       shlvl = {
-        disabled = false;
+        disabled = true;
         format = "[  $shlvl]($style) ╱";
         style = "bold red";
         threshold = 3;
@@ -125,6 +98,7 @@
       };
 
       hostname = {
+        disabled = true;
         format =  "╱[  $hostname ]($style)";
         trim_at = ".";
         style = "dimmed bold red";
@@ -172,6 +146,7 @@
       };
 
       docker_context = {
+        disabled = true;
         symbol = " ";
         format = "╱ [$symbol$context ]($style)";
       };
@@ -196,16 +171,19 @@
       };
 
       nim = {
+        disabled = true;
         symbol = " ";
         format = "╱ [$symbol$version ]($style)";
       };
 
       java = {
+        disabled = true;
         symbol = " ";
         format = "╱ [$symbol$version ]($style)";
       };
 
       julia = {
+        disabled = true;
         format = "╱ (bg:237)[$symbol$version ]($style)";
       };
 
@@ -220,11 +198,13 @@
       };
 
       ruby = {
+        disabled = true;
         symbol = " ";
         format = "╱ [$symbol$version ]($style)";
       };
 
       crystal = {
+        disabled = true;
         symbol = " ";
         format = "╱ [$symbol$version ]($style)";
       };
@@ -240,11 +220,13 @@
       };
 
       nodejs = {
+        disabled = true;
         symbol = " ";
         format = "╱ [$symbol$version ]($style)";
       };
 
       ocaml = {
+        disabled = true;
         symbol = " ";
         format = "╱ [$symbol$version (\\(switch_indicator$switch_name\\))]($style)";
       };
@@ -257,8 +239,8 @@
       # TODO(@jakob): add langs here
 
       gcloud = {
-        symbol = "";
         disabled = true;
+        symbol = "";
         format = "╱ [$symbol ]($style)";
       };
 
