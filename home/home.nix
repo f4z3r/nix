@@ -206,6 +206,7 @@ in {
     (import ./apps/wezterm.nix { inherit pkgs theme font_size; })
     (import ./apps/tmux.nix { inherit pkgs theme; })
     (import ./apps/zsh/default.nix { inherit lib pkgs theme lua-packages; })
+    (import ./apps/nushell/default.nix { inherit lib pkgs theme lua-packages; })
     ./apps/starship.nix
     ./apps/gpg.nix
     ./apps/nvim/default.nix
@@ -244,6 +245,7 @@ in {
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
+      enableNushellIntegration = true;
     };
 
     feh.enable = true;
