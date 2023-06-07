@@ -2,7 +2,7 @@ require('nvim-treesitter.install').prefer_git = true
 require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = {'org'},
+    additional_vim_regex_highlighting = {'org', 'helm'},
   },
   ensure_installed = {},
   rainbow = {

@@ -52,6 +52,9 @@ lspconfig.marksman.setup({})
 -- Bash
 lspconfig.bashls.setup({})
 
+-- Helm
+lspconfig.helm_ls.setup({})
+
 local signs = {
   Error = "",
   Warn = "",

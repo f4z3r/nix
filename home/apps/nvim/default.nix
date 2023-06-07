@@ -112,6 +112,7 @@ in
         shellharden
         gopls
         revive
+        helm-ls
         nodePackages.bash-language-server
         universal-ctags
         marksman
@@ -194,6 +195,7 @@ in
           plugin = symbols-outline-nvim;
           config = builtins.readFile ./plugin/symbols-outline.lua;
         }
+        vim-helm
 
         # git integration
         {
