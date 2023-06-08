@@ -1,7 +1,7 @@
 { pkgs, theme, ... }:
 let
-  fg_colour = (if theme == "dark" then "colour230" else "colour236");
-  bg_colour = (if theme == "dark" then "colour236" else "colour180");
+  fg_colour = if theme == "dark" then "colour230" else "colour236";
+  bg_colour = if theme == "dark" then "colour236" else "colour180";
   focous_colour = "colour214";
 in
 
@@ -60,7 +60,7 @@ in
       bind-key C-z resize-pane -Z
 
       # popup
-      bind-key -n C-g if-shell -F '#{==:#{=5:session_name},popup}' {
+      bind-key -n C-w if-shell -F '#{==:#{=5:session_name},popup}' {
         detach-client
       } {
         display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E 'tmux attach-session -t popup || tmux new-session -s popup'

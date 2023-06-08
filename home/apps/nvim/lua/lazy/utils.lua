@@ -15,10 +15,4 @@ function utils.copy_to_clipboard()
   })
 end
 
-function utils.quote()
-    math.randomseed(os.clock())
-    local index = math.random() * #quotes
-    return quotes[math.floor(index) + 1]
-end
-
 return utils

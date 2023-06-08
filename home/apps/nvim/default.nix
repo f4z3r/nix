@@ -72,7 +72,7 @@ let
     };
   };
 
-  yanky = pkgs.vimUtils.buildVimPlugin {
+  yanky-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "yanky.nvim";
     src = pkgs.fetchFromGitHub {
       owner = "gbprod";
@@ -344,11 +344,11 @@ in
         }
 
         # yanks
-        # {
-        #   type = "lua";
-        #   plugin = yanky;
-        #   config = builtins.readFile ./plugin/yanky.lua;
-        # }
+        {
+          type = "lua";
+          plugin = yanky-nvim;
+          config = builtins.readFile ./plugin/yanky.lua;
+        }
 
         # alignment
         {

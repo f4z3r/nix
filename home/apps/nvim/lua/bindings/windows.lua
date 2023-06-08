@@ -6,8 +6,8 @@ local mappings = {
   {
     mode = 'n',
     suffix = 'q',
-    command = '<cmd>q<cr>',
-    desc = 'Quit window',
+    command = '<cmd>qa<cr>',
+    desc = 'Quit all windows',
   },
   {
     mode = 'n',
