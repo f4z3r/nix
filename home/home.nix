@@ -232,7 +232,7 @@ in {
       enable = true;
       settings = {
         email = "jakobbeckmann@pm.me";
-        pinentry = "curses";
+        pinentry = "gtk2";
       };
     };
 
