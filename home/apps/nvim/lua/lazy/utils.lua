@@ -1,6 +1,5 @@
 local utils = {}
 
-local quotes = require("lazy.quotes")
 local os = require('os')
 
 function utils.get_temp_file()
