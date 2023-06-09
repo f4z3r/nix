@@ -130,8 +130,8 @@ in
         # startup stuff
         {
           type = "lua";
-          plugin = dashboard-nvim;
-          config = builtins.readFile ./plugin/dashboard.lua;
+          plugin = alpha-nvim;
+          config = builtins.readFile ./plugin/alpha.lua;
         }
 
         # syntax highlighting
