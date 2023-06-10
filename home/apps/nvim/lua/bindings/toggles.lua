@@ -44,7 +44,7 @@ local mappings = {
     mode = 'n',
     suffix = 'm',
     command = function() require('maximize').toggle() end,
-    desc = 'Toggle workspace diagnostics',
+    desc = 'Toggle maximization',
   },
   {
     mode = 'n',
