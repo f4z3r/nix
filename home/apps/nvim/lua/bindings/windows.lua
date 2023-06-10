@@ -75,6 +75,12 @@ local mappings = {
     command = '<c-w>kzH',
     desc = 'Move to north window',
   },
+  {
+    mode = 'n',
+    suffix = 'o',
+    command = function() vim.cmd('%bd|e#|bd#|\'"') end,
+    desc = 'Keep only the current window',
+  },
 }
 
 for _, mapping in ipairs(mappings) do
