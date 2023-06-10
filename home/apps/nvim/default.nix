@@ -139,40 +139,7 @@ in
         nvim-treesitter-textobjects
         {
           type = "lua";
-          plugin = nvim-treesitter.withPlugins (p: with p; [
-            org
-            query
-            bash
-            markdown
-            markdown_inline
-            python
-            perl
-            go
-            rust
-            ruby
-            regex
-            lua
-            vim
-            nix
-            toml
-            yaml
-            json
-            jsonc
-            json5
-            hjson
-            hcl
-            html
-            sql
-            gitignore
-            gitcommit
-            git_config
-            git_rebase
-            gitattributes
-            c
-            cpp
-            dockerfile
-            make
-          ]);
+          plugin = nvim-treesitter.withAllGrammars;
           config = builtins.readFile ./plugin/treesitter.lua;
         }
         {
