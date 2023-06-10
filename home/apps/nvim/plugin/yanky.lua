@@ -45,5 +45,5 @@ vim.keymap.set({"n","x"}, "gP",        "<Plug>(YankyGPutBefore)")
 vim.keymap.set("n",       "<leader>P", "<Plug>(YankyCycleBackward)")
 vim.keymap.set("n",       "<leader>p", "<Plug>(YankyCycleForward)")
 
-vim.api.nvim_set_hl(0, 'YankyYanked', { link = "TelescopeSelection",    nocombine = true })
-vim.api.nvim_set_hl(0, 'YankyPut',    { link = "TelescopeSelection",    nocombine = true })
+vim.api.nvim_set_hl(0, 'YankyYanked', { link = "TelescopeResultsDiffDelete", nocombine = true })
+vim.api.nvim_set_hl(0, 'YankyPut',    { link = "TelescopeResultsDiffChange", nocombine = true })

@@ -154,6 +154,11 @@ in
         }
         {
           type = "lua";
+          plugin = vim-illuminate;
+          config = builtins.readFile ./plugin/illuminate.lua;
+        }
+        {
+          type = "lua";
           plugin = dressing-nvim;
           config = builtins.readFile ./plugin/dressing.lua;
         }
