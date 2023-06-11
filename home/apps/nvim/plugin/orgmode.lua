@@ -5,7 +5,7 @@ require('orgmode').setup({
   org_agenda_skip_deadline_if_done = true,
   org_deadline_warning_days = 7,
   org_default_notes_file = '~/Documents/sb/todo/scratch.org',
-  org_todo_keywords = { 'TODO(t)', 'ON HOLD(o)', 'BLOCKED(b)', '|', 'DONE(d)', 'DELEGATED'},
+  org_todo_keywords = { 'TODO(t)', 'ON HOLD(o)', 'BLOCKED(b)', '|', 'DONE(d)', 'DELEGATED(l)'},
   org_log_into_drawer = 'LOGBOOK',
   org_tags_column = 100,
   org_archive_location = '~/Documents/sb/archive/default.org',
