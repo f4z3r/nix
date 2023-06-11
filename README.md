@@ -2,15 +2,15 @@
 
 ## Screenshots
 
-![](./assets/full.jpeg)
+![](./assets/base.png)
 
 
-![](./assets/nvim.jpeg)
+![](./assets/apps.png)
 
 
-With the light theme, for working outside in the sun:
+Supports quake terminals:
 
-![](./assets/full-light.jpeg)
+![](./assets/quake.png)
 
 ## Standard Software Used
 
