@@ -104,15 +104,9 @@
         label = %{F#d8a657}BL%{F-} %percentage%%
 
         [module/alsa]
-        type = internal/alsa
-        master-soundcard = default
-        speaker-soundcard = default
-        headphone-soundcard = default
-        master-mixer = Master
-        format-volume = <label-volume>
-        format-muted = <label-muted>
-        label-volume = %{F#d8a657}VOL%{F-} %percentage%%
-        label-muted = %{F#7c6f64}VOL %percentage%%%{F-}
+        type = custom/script
+        exec = ${pkgs.luajit}/bin/luajit ~/.local/bin/vol.lua
+        interval = 3
 
         [module/memory]
         type = internal/memory
@@ -187,6 +181,9 @@
   };
 
   home.file = {
+    ".local/bin/vol.lua" = {
+      source = ./scripts/vol.lua;
+    };
     ".local/bin/vpn.lua" = {
       source = ./scripts/vpn.lua;
     };
