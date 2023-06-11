@@ -7,13 +7,14 @@
       script = "${pkgs.polybar}/bin/polybar";
       extraConfig = ''
         [colors]
-        background = #282A2E
-        background-alt = #373B41
-        foreground = #C5C8C6
-        primary = #F0C674
-        secondary = #8ABEB7
-        alert = #CC241D
-        disabled = #707880
+        background = #282828
+        background-alt = #32302f
+        foreground = #d4be98
+        primary = #d8a657
+        secondary = #89b482
+        tertiary = #d3869b
+        alert = #ea6962
+        disabled = #7c6f64
 
         [global/wm]
         margin-top = 0
@@ -43,7 +44,8 @@
 
         font-0 = monospace;2
 
-        modules-left = xworkspaces
+        modules-left = xworkspaces backlight alsa
+        modules-right = cpu memory wlan vpn bat date
 
         cursor-click = pointer
         cursor-scroll = ns-resize
@@ -53,29 +55,28 @@
         [bar/main]
         inherit = base
         monitor = eDP-1
-        modules-right = pomo backlight red alsa filesystem memory cpu wlan vpn bat date
+        modules-left = xworkspaces pomo backlight alsa
 
         [bar/e1]
         inherit = base
         monitor = DP-1
-        modules-right = backlight red alsa filesystem memory cpu wlan vpn bat date
 
         [bar/e2]
         inherit = base
         monitor = DP-2
-        modules-right = backlight red alsa filesystem memory cpu wlan vpn bat date
 
         [bar/e3]
         inherit = base
         monitor = DP-2
-        modules-right = backlight red alsa filesystem memory cpu wlan vpn bat date
 
         [module/xworkspaces]
         type = internal/xworkspaces
 
+        pin-workspaces = true
+
         label-active = 
         label-active-background = ''${colors.background-alt}
-        label-active-underline= ''${colors.primary}
+        label-active-underline = ''${colors.tertiary}
         label-active-padding = 1
 
         label-occupied = 
@@ -93,40 +94,25 @@
         type = custom/script
         exec = ${pkgs.uair}/bin/uair
         tail = true
-        label = %{F#F0C674}PO%{F-} %output%
+        label = %{F#d8a657}PO%{F-} %output%
 
         [module/backlight]
         type = internal/backlight
         card = intel_backlight
         use-actual-brightness = true
         format = <label>
-        label = %{F#F0C674}BL%{F-} %percentage%%
-
-        [module/red]
-        type = custom/script
-        exec = ${pkgs.bash}/bin/bash ~/.local/bin/redshift.sh
-        tail = false
-        label = %{F#F0C674}RS%{F-} %output%
-        interval = 120
+        label = %{F#d8a657}BL%{F-} %percentage%%
 
         [module/alsa]
-        type = custom/script
-        exec = ${pkgs.bash}/bin/bash ~/.local/bin/volume.sh
-        tail = false
-        label = %{F#F0C674}VOL%{F-} %output%
-        interval = 5
-
-
-        [module/filesystem]
-        type = internal/fs
-        interval = 25
-
-        mount-0 = /
-
-        label-mounted = %{F#F0C674}%mountpoint%%{F-} %percentage_used%%
-
-        label-unmounted = %mountpoint% not mounted
-        label-unmounted-foreground = ''${colors.disabled}
+        type = internal/alsa
+        master-soundcard = default
+        speaker-soundcard = default
+        headphone-soundcard = default
+        master-mixer = Master
+        format-volume = <label-volume>
+        format-muted = <label-muted>
+        label-volume = %{F#d8a657}VOL%{F-} %percentage%%
+        label-muted = %{F#7c6f64}VOL %percentage%%%{F-}
 
         [module/memory]
         type = internal/memory
@@ -148,7 +134,7 @@
         speed-unit = ""
         format-connected = <label-connected>
         format-disconnected = <label-disconnected>
-        label-disconnected = %{F#F0C674}%ifname%%{F#707880} disconnected
+        label-disconnected = %{F#d8a657}%ifname%%{F#7c6f64} disconnected
 
         [module/wlan]
         inherit = network-base
@@ -161,14 +147,14 @@
         ramp-signal-5 = 󰣺
         interface-type = wireless
         interface = wlp0s20f3
-        label-connected = %{F#F0C674}%ifname%%{F-} %essid% %local_ip% %{F#F0C674}UP%{F-} %upspeed% %{F#F0C674}DN%{F-} %downspeed%
+        label-connected = %{F#d8a657}%ifname%%{F-} %{F#d3869b}%essid%%{F-} %local_ip% %{F#89b482}UP%{F-} %upspeed% %{F#89b482}DN%{F-} %downspeed%
 
         [module/vpn]
         type = custom/script
         exec-if = systemctl is-active openvpn-*
         exec = ${pkgs.luajit}/bin/luajit ~/.local/bin/vpn.lua
         tail = false
-        label = %{F#F0C674}VPN%{F-} %output%
+        label = %{F#d8a657}VPN%{F-} %output%
         interval = 60
 
         [module/bat]
@@ -178,17 +164,17 @@
         battery = BAT0
         poll-interval = 20
 
-        label-charging = %{F#458588}BAT%{F-} %percentage_raw%%
-        label-discharging = %{F#F0C674}BAT%{F-} %percentage_raw%%
-        label-full = %{F#98971A}BAT%{F-} %percentage_raw%%
-        label-low = %{F#CC241D}BAT%{F-} %percentage_raw%%
+        label-charging = %{F#d3869b}BAT%{F-} %percentage_raw%%
+        label-discharging = %{F#d8a657}BAT%{F-} %percentage_raw%%
+        label-full = %{F#a9b665}BAT%{F-} %percentage_raw%%
+        label-low = %{F#ea6962}BAT%{F-} %percentage_raw%%
 
         [module/date]
         type = internal/date
-        interval = 1
+        interval = 60
 
-        date = %H:%M
-        date-alt = %Y-%m-%d %H:%M:%S
+        date = %Y-%m-%d %H:%M
+        date-alt = %H:%M
 
         label = %date%
         label-foreground = ''${colors.primary}
@@ -196,19 +182,11 @@
         [settings]
         screenchange-reload = true
         pseudo-transparency = true
-
-        ; vim:ft=dosini
       '';
     };
   };
 
   home.file = {
-    ".local/bin/redshift.sh" = {
-      source = ./scripts/redshift.sh;
-    };
-    ".local/bin/volume.sh" = {
-      source = ./scripts/volume.sh;
-    };
     ".local/bin/vpn.lua" = {
       source = ./scripts/vpn.lua;
     };
