@@ -379,7 +379,10 @@ in {
         black
       ] ++ lua-packages;
 
-    file = { ".config/ruff/pyproject.toml" = { source = ./files/ruff.toml; }; };
+    file = {
+      ".config/ruff/pyproject.toml" = { source = ./files/ruff.toml; };
+      "revive.toml" = { source = ./files/revive.toml; };
+    };
   };
 
   gtk = {
