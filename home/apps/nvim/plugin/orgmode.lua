@@ -35,5 +35,10 @@ require('orgmode').setup({
       template = '** %<%Y-%m-%d> %<%A>\n*** %U\n    %?',
       target = '~/Documents/sb/journal/default.org',
     },
+  },
+  mappings = {
+    org = {
+      org_timestamp_up = '<c-q>'
+    }
   }
 })
