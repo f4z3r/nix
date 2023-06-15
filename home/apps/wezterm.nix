@@ -29,6 +29,8 @@ let
     config.keys = {
       { key = 'UpArrow', mods = 'CTRL', action = wezterm.action.IncreaseFontSize },
       { key = 'DownArrow', mods = 'CTRL', action = wezterm.action.DecreaseFontSize },
+      { key = 'V', mods = 'CTRL', action = wezterm.action.PasteFrom 'Clipboard' },
+      { key = 'C', mods = 'CTRL', action = wezterm.action.CopyTo 'Clipboard' },
     }
 
     config.window_padding = {
