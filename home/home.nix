@@ -358,6 +358,7 @@ in {
         gtk-engine-murrine
 
         # stuff used in the background
+        yt-dlp
         rofi-power-menu
         rofi-rbw
         wmctrl
