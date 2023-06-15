@@ -25,6 +25,7 @@ let
 
     config.adjust_window_size_when_changing_font_size = false
 
+    config.disable_default_key_bindings = true
     config.keys = {
       { key = 'UpArrow', mods = 'CTRL', action = wezterm.action.IncreaseFontSize },
       { key = 'DownArrow', mods = 'CTRL', action = wezterm.action.DecreaseFontSize },
