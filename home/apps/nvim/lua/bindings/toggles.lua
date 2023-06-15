@@ -31,12 +31,6 @@ local mappings = {
   {
     mode = 'n',
     suffix = 'd',
-    command = function() require('dapui').toggle() end,
-    desc = 'Toggle debug UI',
-  },
-  {
-    mode = 'n',
-    suffix = 'D',
     command = '<cmd>TroubleToggle workspace_diagnostics<cr>',
     desc = 'Toggle workspace diagnostics',
   },
@@ -45,12 +39,6 @@ local mappings = {
     suffix = 'm',
     command = function() require('maximize').toggle() end,
     desc = 'Toggle maximization',
-  },
-  {
-    mode = 'n',
-    suffix = 'r',
-    command = '<cmd>TroubleToggle lsp_references<cr>',
-    desc = 'Toggle LSP references',
   },
   {
     mode = 'n',
