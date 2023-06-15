@@ -8,7 +8,6 @@
       # use all extensions
       format = lib.concatStrings [
         "$battery"
-        "$custom"
         "$time"
         "$nix_shell"
         "$git_branch"
@@ -19,7 +18,6 @@
         "$package"
         "$cmake"
         "$golang"
-        "$helm"
         "$perl"
         "$lua"
         "$python"
@@ -29,8 +27,8 @@
         "$jobs"
         "╱"
         "$line_break"
-        "$status"
         "$directory"
+        "$status"
         "$character"
       ];
 
@@ -38,7 +36,7 @@
         full_symbol = "󰁹";
         charging_symbol = "󰂄";
         discharging_symbol = "󰂃";
-        format = "([ $symbol$percentage ]($style))";
+        format = "([$symbol$percentage]($style)) ╱ ";
         display = [
           {
             threshold = 10;
@@ -56,7 +54,7 @@
         threshold = 75;
         symbol = "󰍛";
         style = "bold dimmed white";
-        format = ''[ $symbol ''${ram} ]($style) ╱)'';
+        format = ''[ $symbol ''${ram} ]($style) ╱'';
       };
 
       shlvl = {
@@ -66,19 +64,9 @@
         threshold = 3;
       };
 
-      custom = {
-        shell = {
-          shell = "bash";
-          command = ''echo ''${CURR_SHELL:-''${SHELL}}'';
-          when = ''! [[ "''${CURR_SHELL:-''${SHELL}}" =~ "zsh" ]]'';
-          format = "  [$output]($style) ╱";
-          style = "dimmed red";
-        };
-      };
-
       time = {
         disabled = false;
-        format = "[ $time ]($style)";
+        format = "[$time ]($style)";
         time_format = "%T";
       };
 
@@ -94,7 +82,7 @@
         style_user = "white bold";
         style_root = "black bold";
         format = "╱[  $user ]($style)";
-        disabled = false;
+        disabled = true;
       };
 
       hostname = {
@@ -236,8 +224,6 @@
         format = "╱ [$symbol$workspace ]($style)";
       };
 
-      # TODO(@jakob): add langs here
-
       gcloud = {
         disabled = true;
         symbol = "";
@@ -249,8 +235,6 @@
         show_milliseconds = false;
         format = "╱ [took](dimmed)[ $duration ]($style)";
         style = "bold yellow";
-        # show_notification = true;
-        # min_time_to_notify = 10_000;
       };
 
       jobs = {
@@ -258,14 +242,7 @@
         format = "╱ [$symbol$number ]($style)";
       };
 
-      # NOTE(@jakob): new line from here on
       line_break = {
-        disabled = false;
-      };
-
-      status = {
-        symbol = "";
-        format = ''[\[>> $symbol $status <<\]](dimmed bold red) '';
         disabled = false;
       };
 
@@ -274,16 +251,22 @@
         truncation_symbol = "…/";
         truncate_to_repo = true;
         read_only = "";
-        style = "underline bold dimmed cyan";
+        style = "bold cyan";
         format = "([$read_only]($read_only_style) )[$path]($style) ";
+      };
+
+      status = {
+        symbol = "";
+        format = ''[$symbol \($status\)](bold red) '';
+        disabled = false;
       };
 
       character = {
         success_symbol = "[>](bold green)";
-        error_symbol = "[>](bold red)";
-        vimcmd_symbol = "[](bold green)";
-        vimcmd_replace_one_symbol = "[](bold purple)";
-        vimcmd_replace_symbol = "[](bold purple)";
+        error_symbol = "[>>>](bold red)";
+        vimcmd_symbol = "[](bold purple)";
+        vimcmd_replace_one_symbol = "[](bold green)";
+        vimcmd_replace_symbol = "[](bold green)";
         vimcmd_visual_symbol = "[](bold yellow)";
       };
     };
