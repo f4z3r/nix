@@ -217,9 +217,7 @@
   };
 
   security.sudo = {
-    extraConfig = ''
-      Defaults insults
-    '';
+    execWheelOnly = true;
     extraRules = [{
       users = [ "clamav" ];
       runAs = "${username}";
