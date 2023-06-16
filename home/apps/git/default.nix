@@ -51,6 +51,41 @@
         ff = "only";
         rebase = true;
       };
+      trailer = {
+        ifexists = "addIfDifferent";
+        separators = ":#";
+
+        fix = {
+          key = "Fix #";
+        };
+        coa = {
+          key = "Co-authored-by: ";
+          cmd = "~/.local/bin/glog-author.sh";
+        };
+        rel = {
+          key = "Relates-to: ";
+        };
+        ack = {
+          key = "Acked-by: ";
+          cmd = "~/.local/bin/glog-author.sh";
+        };
+        sign = {
+          key = "Signed-off-by: ";
+          cmd = "~/.local/bin/glog-author.sh";
+        };
+        help = {
+          key = "Helped-by: ";
+          cmd = "~/.local/bin/glog-author.sh";
+        };
+        ref = {
+          key = "Reference-to: ";
+          cmd = "~/.local/bin/glog-commit.sh";
+        };
+        see = {
+          key = "See-also: ";
+          cmd = "~/.local/bin/glog-commit.sh";
+        };
+      };
     };
 
     hooks = {
@@ -103,6 +138,17 @@
       "wl" = ''worktree list'';
       "bc" = ''!git branch -vva --color=always | grep -v '/HEAD\\s' | sk --ansi --tac | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs git switch'';
       "bp" = ''!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D'';
+    };
+  };
+
+  home.file = {
+    ".local/bin/glog-commit.sh" = {
+      source = ./scripts/glog-commit.sh;
+      executable = true;
+    };
+    ".local/bin/glog-author.sh" = {
+      source = ./scripts/glog-author.sh;
+      executable = true;
     };
   };
 }
