@@ -11,17 +11,6 @@ let
     };
   };
 
-  # temporary override to sidestep subprocess issue
-  neotest = pkgs.vimUtils.buildVimPlugin {
-    name = "neotest";
-    src = pkgs.fetchFromGitHub {
-      owner = "f4z3r";
-      repo = "neotest";
-      rev = "310c1ed801fc6716512bf503c2e06f2d927b3cd1";
-      sha256 = "sha256-x4YPyf9626N9M4lSVgyrc2/OT0XlwTpbpRydqVwmstg=";
-    };
-  };
-
   overseer-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "overseer.nvim";
     src = pkgs.fetchFromGitHub {
@@ -229,14 +218,14 @@ in
           plugin = overseer-nvim;
           config = builtins.readFile ./plugin/overseer.lua;
         }
-        neotest-go
-        neotest-python
-        neotest-rust
         {
           type = "lua";
           plugin = neotest;
           config = builtins.readFile ./plugin/neotest.lua;
         }
+        neotest-go
+        neotest-python
+        neotest-rust
 
         # completion
         luasnip
