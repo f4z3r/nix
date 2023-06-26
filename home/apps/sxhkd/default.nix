@@ -51,7 +51,7 @@
       "XF86AudioRaiseVolume" = "${pkgs.alsa-utils}/bin/amixer -q sset Master 1%+";
       "XF86AudioLowerVolume" = "${pkgs.alsa-utils}/bin/amixer -q sset Master 1%-";
       "XF86AudioMute" = "${pkgs.alsa-utils}/bin/amixer -q sset Master toggle";
-      "XF86AudioMicMute" = "${pkgs.alsa-utils}/bin/amixer -q set Capture toggle";
+      "XF86AudioMicMute" = ''~/.config/sxhkd/scripts/toggle-mute'';
       "XF86AudioPlay" = "${pkgs.mpc-cli}/bin/mpc toggle";
 
       # music control
@@ -69,6 +69,10 @@
   home.file = {
     ".config/sxhkd/scripts/bspwm-scratchpad" = {
       source = ./scripts/bspwm-scratchpad;
+      executable = true;
+    };
+    ".config/sxhkd/scripts/toggle-mute" = {
+      source = ./scripts/toggle-mute;
       executable = true;
     };
   };
