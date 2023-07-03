@@ -269,7 +269,10 @@ in
         {
           type = "lua";
           plugin = nvim-autopairs;
-          config = ''require('nvim-autopairs').setup()'';
+          config = ''require('nvim-autopairs').setup({
+            check_ts = true,
+            ts_config = {},
+          })'';
         }
 
         # tree
