@@ -378,6 +378,7 @@ in {
         enhanced-python
         ruff
         black
+        hatch
       ] ++ lua-packages;
 
     file = {
