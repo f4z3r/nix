@@ -4,7 +4,7 @@ require('orgmode').setup({
   org_agenda_files = {'~/Documents/sb/**/*' },
   org_agenda_skip_deadline_if_done = true,
   org_deadline_warning_days = 7,
-  org_default_notes_file = '~/Documents/sb/todo/scratch.org',
+  org_default_notes_file = '~/Documents/sb/inbox.org',
   org_todo_keywords = { 'TODO(t)', 'ON HOLD(o)', 'BLOCKED(b)', '|', 'DONE(d)', 'DELEGATED(l)'},
   org_log_into_drawer = 'LOGBOOK',
   org_tags_column = 100,
@@ -33,7 +33,7 @@ require('orgmode').setup({
     j = {
       description = 'Journal Entry',
       template = '** %<%Y-%m-%d> %<%A>\n*** %U\n    %?',
-      target = '~/Documents/sb/journal/default.org',
+      target = '~/Documents/sb/journal.org',
     },
   },
   mappings = {
