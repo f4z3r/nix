@@ -16,19 +16,19 @@ require('orgmode').setup({
   org_capture_templates = {
     t = {
       description = 'Task',
-      template = '* TODO %?\n  %U'
+      template = '** TODO %?\n  %U'
     },
     s = {
       description = 'Scheduled Task',
-      template = '* TODO %?\n  %U SCHEDULED: %t'
+      template = '** TODO %?\n  %U SCHEDULED: %t'
     },
     d = {
       description = 'Done Task',
-      template = '* DONE %?\n  %U SCHEDULED: %t CLOSED: %U'
+      template = '** DONE %?\n  %U SCHEDULED: %t CLOSED: %U'
     },
     n = {
       description = 'Note',
-      template = '* TODO %?\n  %U\n  Relates to: %a'
+      template = '** TODO %?\n  %U\n  Relates to: %a'
     },
     j = {
       description = 'Journal Entry',
