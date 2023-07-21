@@ -19,8 +19,8 @@
       inherit system;
       config.allowUnfree = true;
     };
+    inherit (nixpkgs) lib;
 
-    lib = nixpkgs.lib;
     setup = {
       hostname,
       dpi,
