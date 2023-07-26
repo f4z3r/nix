@@ -12,7 +12,7 @@
           col (layer-switch colemakdh)
         
           ;; tapped shift
-          tsh (tap-hold 100 100 ' rsft)
+          tsh (tap-hold-release 150 150 ' rsft)
         
           ;; one-shot control
           osc (one-shot 2000 lctl)
