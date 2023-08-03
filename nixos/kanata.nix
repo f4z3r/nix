@@ -51,7 +51,6 @@
         sequence-timeout 1000
         sequence-input-mode visible-backspaced
         log-layer-changes no
-        linux-continue-if-no-dev-found no
         linux-unicode-termination space
       '';
     };

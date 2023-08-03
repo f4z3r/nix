@@ -93,8 +93,8 @@
   };
 
   fonts = {
-    enableDefaultFonts = true;
-    fonts = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
+    enableDefaultPackages = true;
+    packages = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
 
     fontconfig = {
       defaultFonts = {
