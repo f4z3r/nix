@@ -21,3 +21,6 @@ accessor
 whitelist
 pgp
 gpg
+Kubernetes
+RMQ
+RabbitMQ
