@@ -322,6 +322,7 @@ in {
         # GUI programs
         gimp
         brave
+        luakit
         helvum
         onlyoffice-bin
 
@@ -386,6 +387,8 @@ in {
     file = {
       ".config/ruff/pyproject.toml" = { source = ./files/ruff.toml; };
       "revive.toml" = { source = ./files/revive.toml; };
+      ".config/luakit/userconf.lua" = { source = ./files/luakit.lua; };
+      ".local/share/luakit/adblock/easylist.txt" = { source = ./files/easylist.txt; };
     };
   };
 

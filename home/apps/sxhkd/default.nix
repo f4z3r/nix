@@ -62,7 +62,7 @@
       "${super} + Left" = "${pkgs.mpc-cli}/bin/mpc prev";
 
       # launchers
-      "${mod} + ${alt} + w" = "${pkgs.brave}/bin/brave";
+      "${mod} + ${alt} + w" = "${pkgs.luakit}/bin/luakit";
       "${mod} + ${alt} + p" = "${pkgs.uair}/bin/uairctl toggle";
       "${mod} + ${alt} + m" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.ncmpcpp}/bin/ncmpcpp";
       "${super} + i" = "/home/${username}/.local/bin/songinfo";
