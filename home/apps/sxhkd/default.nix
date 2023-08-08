@@ -40,6 +40,9 @@
         ${pkgs.bspwm}/bin/bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
       '';
 
+      # screenshots
+      "Print" = "${pkgs.flameshot}/bin/flameshot gui";
+
       # quake
       "${alt} + Return" = ''~/.config/sxhkd/scripts/bspwm-scratchpad "quake" "wezterm start --class quake -- tmux"'';
 
