@@ -26,7 +26,98 @@ modes.add_binds("normal", {
     "<C-c>",
     "Copy selected text.",
     function()
-       luakit.selection.clipboard = luakit.selection.primary
+      luakit.selection.clipboard = luakit.selection.primary
+    end,
+  },
+  {
+    "<C-t>",
+    "Switch to latest tab.",
+    function(w)
+      local current = w.tabs:current()
+      if w.last_active_tab ~= nil then
+        w:goto_tab(w.last_active_tab)
+      end
+      w.last_active_tab = current
+    end,
+  },
+  {
+    "<C-1>",
+    "Switch to tab 1.",
+    function(w)
+      w.last_active_tab = w.tabs:current()
+      w.tabs:switch(1)
+    end,
+  },
+  {
+    "<C-2>",
+    "Switch to tab 2.",
+    function(w)
+      w.last_active_tab = w.tabs:current()
+      w.tabs:switch(2)
+    end,
+  },
+  {
+    "<C-3>",
+    "Switch to tab 3.",
+    function(w)
+      w.last_active_tab = w.tabs:current()
+      w.tabs:switch(3)
+    end,
+  },
+  {
+    "<C-4>",
+    "Switch to tab 4.",
+    function(w)
+      w.last_active_tab = w.tabs:current()
+      w.tabs:switch(4)
+    end,
+  },
+  {
+    "<C-5>",
+    "Switch to tab 5.",
+    function(w)
+      w.last_active_tab = w.tabs:current()
+      w.tabs:switch(5)
+    end,
+  },
+  {
+    "<C-6>",
+    "Switch to tab 6.",
+    function(w)
+      w.last_active_tab = w.tabs:current()
+      w.tabs:switch(6)
+    end,
+  },
+  {
+    "<C-7>",
+    "Switch to tab 7.",
+    function(w)
+      w.last_active_tab = w.tabs:current()
+      w.tabs:switch(7)
+    end,
+  },
+  {
+    "<C-8>",
+    "Switch to tab 8.",
+    function(w)
+      w.last_active_tab = w.tabs:current()
+      w.tabs:switch(8)
+    end,
+  },
+  {
+    "<C-9>",
+    "Switch to tab 9.",
+    function(w)
+      w.last_active_tab = w.tabs:current()
+      w.tabs:switch(9)
+    end,
+  },
+  {
+    "<C-0>",
+    "Switch to tab 10.",
+    function(w)
+      w.last_active_tab = w.tabs:current()
+      w.tabs:switch(10)
     end,
   },
   {
