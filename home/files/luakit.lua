@@ -193,25 +193,61 @@ modes.add_binds("all", {{
 }})
 
 --- Tabmenu
-modes.add_binds("tabmenu", {{
-  "n",
-  "Move the menu row focus downwards.",
-  function(w) w.menu:move_down() end,
-}})
+modes.add_binds("tabmenu", {
+  {
+    "n",
+    "Move the menu row focus downwards.",
+    function(w) w.menu:move_down() end,
+  },
+  {
+    "<C-p>",
+    "Move the menu row focus upwards.",
+    function(w) w.menu:move_up() end,
+  },
+  {
+    "<C-n>",
+    "Move the menu row focus downwards.",
+    function(w) w.menu:move_down() end,
+  },
+})
 
 --- Tabhistory
-modes.add_binds("tabhistory", {{
-  "n",
-  "Move the menu row focus downwards.",
-  function(w) w.menu:move_down() end,
-}})
+modes.add_binds("tabhistory", {
+  {
+    "n",
+    "Move the menu row focus downwards.",
+    function(w) w.menu:move_down() end,
+  },
+  {
+    "<C-p>",
+    "Move the menu row focus upwards.",
+    function(w) w.menu:move_up() end,
+  },
+  {
+    "<C-n>",
+    "Move the menu row focus downwards.",
+    function(w) w.menu:move_down() end,
+  },
+})
 
 --- Qmarklist
-modes.add_binds("qmarklist", {{
-  "n",
-  "Move the menu row focus downwards.",
-  function(w) w.menu:move_down() end,
-}})
+modes.add_binds("qmarklist", {
+  {
+    "n",
+    "Move the menu row focus downwards.",
+    function(w) w.menu:move_down() end,
+  },
+  {
+    "<C-p>",
+    "Move the menu row focus upwards.",
+    function(w) w.menu:move_up() end,
+  },
+  {
+    "<C-n>",
+    "Move the menu row focus downwards.",
+    function(w) w.menu:move_down() end,
+  },
+})
 
 --- Command History
 modes.remap_binds("cmdhist", {
