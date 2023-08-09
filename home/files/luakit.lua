@@ -41,6 +41,22 @@ modes.add_binds("normal", {
     end,
   },
   {
+    "gT",
+    "Switch to previous tab.",
+    function(w)
+      w.last_active_tab = w.tabs:current()
+      w:prev_tab()
+    end,
+  },
+  {
+    "gt",
+    "Switch to next tab.",
+    function(w)
+      w.last_active_tab = w.tabs:current()
+      w:next_tab()
+    end,
+  },
+  {
     "<C-1>",
     "Switch to tab 1.",
     function(w)
@@ -210,8 +226,8 @@ engines.default = engines.ddg
 
 -- Hints
 local select = require("select")
-select.label_marker = function()
-  local chars = interleave("arstgqwfpb", "oienmyulj")
+select.label_maker = function()
+  local chars = interleave("arstgqwfp", "oienmyul")
   return chars
 end
 
