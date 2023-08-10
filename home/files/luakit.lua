@@ -23,6 +23,19 @@ modes.add_binds("normal", {
     end,
   },
   {
+    "<C-q>",
+    "Close all but current tab.",
+    function(w)
+      local current = w.tabs:current()
+      -- need to loop backwards as index gets updated as we delete tabs
+      for index = w.tabs:count(),1,-1 do
+        if index ~= current then
+          w:close_tab(w.tabs[index])
+        end
+      end
+    end,
+  },
+  {
     "<C-c>",
     "Copy selected text.",
     function()
