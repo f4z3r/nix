@@ -262,6 +262,20 @@ modes.add_binds("qmarklist", {
   },
 })
 
+--- completion
+modes.add_binds("completion", {
+  {
+    "<C-p>",
+    "Move the menu row focus upwards.",
+    function(w) w.menu:move_up() end,
+  },
+  {
+    "<C-n>",
+    "Move the menu row focus downwards.",
+    function(w) w.menu:move_down() end,
+  },
+})
+
 --- Command History
 modes.remap_binds("cmdhist", {
   { "<C-p", "<Up>" },
