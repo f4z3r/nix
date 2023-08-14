@@ -66,8 +66,7 @@ local function fuzzy_bookmarks(w)
   local index = tonumber(string.match(out, "%d+"))
   if not index then return end
   local uri = data[index]
-  w.last_active_tab = w.tabs:current()
-  w:new_tab(uri, { switch = true })
+  w:navigate(uri)
 end
 
 modes.add_cmds({
@@ -92,8 +91,7 @@ local function fuzzy_history(w)
   os.remove("/tmp/luakit-history-open")
   if not index then return end
   local uri = data[index]
-  w.last_active_tab = w.tabs:current()
-  w:new_tab(uri, { switch = true })
+  w:navigate(uri)
 end
 
 modes.add_cmds({
