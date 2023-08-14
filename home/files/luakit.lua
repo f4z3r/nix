@@ -40,7 +40,7 @@ end
 
 local modes = require("modes")
 modes.add_cmds({
-  { ":tabfuzzy", [[Open tab fuzzy searcher.]], function (w) fuzzy_tab(w) end },
+  { ":fuzzytabs", [[Open tab fuzzy searcher.]], function (w) fuzzy_tab(w) end },
 })
 
 -- Fuzzy Bookmarks
@@ -70,6 +70,10 @@ local function fuzzy_bookmarks(w)
   w:new_tab(uri, { switch = true })
 end
 
+modes.add_cmds({
+  { ":fuzzybookmarks", [[Open bookmark fuzzy searcher.]], function (w) fuzzy_bookmarks(w) end },
+})
+
 -- Fuzzy History
 local history = require("history")
 local function fuzzy_history(w)
@@ -91,6 +95,10 @@ local function fuzzy_history(w)
   w.last_active_tab = w.tabs:current()
   w:new_tab(uri, { switch = true })
 end
+
+modes.add_cmds({
+  { ":fuzzyhistory", [[Open history fuzzy searcher.]], function (w) fuzzy_history(w) end },
+})
 
 -- Edit in neovim
 local function open_in_neovim(content)
@@ -405,6 +413,21 @@ modes.add_binds("completion", {
 modes.remap_binds("cmdhist", {
   { "<C-p", "<Up>" },
   { "<C-n", "<Down>" },
+})
+
+-- Redefine opentab to respect tab switch
+modes.add_cmds({
+  {
+    ":t[abopen]",
+    "Open one or more URLs in a new tab.",
+    {
+      func = function (w, o)
+        w.last_active_tab = w.tabs:current()
+        w:new_tab(o.arg, { switch = true })
+      end,
+      format = "{uri}",
+    },
+  },
 })
 
 
