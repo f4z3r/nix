@@ -1,4 +1,4 @@
-{ pkgs, hostname, scratch_res, ... }:
+{ pkgs, hostname, scratch_res, main_monitor, monitor_prefix, ... }:
 
 {
   xsession = {
@@ -9,34 +9,10 @@
         "${pkgs.polybar}/bin/polybar main"
       ];
       monitors = {
-        "eDP-1" = [
-          "I"
-          "II"
-          "III"
-          "IV"
-          "V"
-        ];
-        "DP-1" = [
-          "VI"
-          "VII"
-          "VIII"
-          "IX"
-          "X"
-        ];
-        "DP-2" = [
-          "XI"
-          "XII"
-          "XIII"
-          "XIV"
-          "XV"
-        ];
-        "DP-3" = [
-          "XVI"
-          "XVII"
-          "XVIII"
-          "XIX"
-          "XX"
-        ];
+        ${main_monitor} = [ "I" "II" "III" "IV" "V" ];
+        "${monitor_prefix}-1" = [ "VI" "VII" "VIII" "IX" "X" ];
+        "${monitor_prefix}-2" = [ "XI" "XII" "XIII" "XIV" "XV" ];
+        "${monitor_prefix}-3" = [ "XVI" "XVII" "XVIII" "XIX" "XX" ];
       };
       rules = {
         "quake" = {
@@ -48,8 +24,8 @@
       settings = {
         border_width = 3;
         normal_border_color = "";
-        active_border_color = "\#145f9d";
-        focused_border_color = "\#145f9d";
+        active_border_color = "#145f9d";
+        focused_border_color = "#145f9d";
 
         window_gap = 7;
 

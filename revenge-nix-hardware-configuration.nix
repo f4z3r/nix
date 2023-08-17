@@ -1,13 +1,4 @@
 { config, lib, pkgs, modulesPath, ... }:
-let
-  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
-    export __NV_PRIME_RENDER_OFFLOAD=1
-    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export __VK_LAYER_NV_optimus=NVIDIA_only
-    exec "$@"
-  '';
-in
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
@@ -54,13 +45,23 @@ in
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   environment.systemPackages = [
-    nvidia-offload
+    pkgs.nvtop
   ];
 
-  hardware.nvidia.prime = {
-    offload.enable = true;
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
+  hardware.nvidia = {
+    modesetting.enable = true;
+    prime = {
+      offload = {
+        # nvidia on standby for offloading
+        # enable = true;
+        # enableOffloadCmd = true;
+      };
+      # nvidia always on
+      sync.enable = true;
+
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];

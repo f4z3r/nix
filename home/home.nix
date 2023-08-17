@@ -1,5 +1,5 @@
 { pkgs, lib, hostname, username, theme ? "dark", polybar_dpi, font_size
-, scratch_res, ... }:
+, scratch_res, main_monitor, monitor_prefix, ... }:
 
 assert lib.asserts.assertOneOf "theme" theme [ "dark" "light" ];
 
@@ -31,12 +31,10 @@ let
 
         disabled = luaOlder "5.1";
         propagatedBuildInputs = [ lua ];
-        externalDeps = [
-          {
-            name = "PTHREAD";
-            dep = pkgs.glibc;
-          }
-        ];
+        externalDeps = [{
+          name = "PTHREAD";
+          dep = pkgs.glibc;
+        }];
 
         meta = {
           homepage = "https://github.com/LuaLanes/lanes";
@@ -197,9 +195,13 @@ let
 
 in {
   imports = [
-    (import ./apps/bspwm/default.nix { inherit pkgs hostname scratch_res; })
+    (import ./apps/bspwm/default.nix {
+      inherit pkgs hostname scratch_res main_monitor monitor_prefix;
+    })
     (import ./apps/sxhkd/default.nix { inherit pkgs username; })
-    (import ./apps/polybar/default.nix { inherit pkgs polybar_dpi; })
+    (import ./apps/polybar/default.nix {
+      inherit pkgs polybar_dpi main_monitor monitor_prefix;
+    })
     ./apps/picom.nix
     ./apps/rofi/default.nix
     (import ./apps/git/default.nix { inherit pkgs theme; })
@@ -388,8 +390,12 @@ in {
       ".config/ruff/pyproject.toml" = { source = ./files/ruff.toml; };
       "revive.toml" = { source = ./files/revive.toml; };
       ".config/luakit/userconf.lua" = { source = ./files/luakit.lua; };
-      ".local/share/luakit/adblock/easylist.txt" = { source = ./files/easylist.txt; };
-      ".local/share/luakit/adblock/abp-filters-anti-cv.txt" = { source = ./files/abp-filters-anti-cv.txt; };
+      ".local/share/luakit/adblock/easylist.txt" = {
+        source = ./files/easylist.txt;
+      };
+      ".local/share/luakit/adblock/abp-filters-anti-cv.txt" = {
+        source = ./files/abp-filters-anti-cv.txt;
+      };
     };
   };
 

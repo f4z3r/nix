@@ -1,4 +1,4 @@
-{ pkgs, polybar_dpi, ... }:
+{ pkgs, polybar_dpi, main_monitor, monitor_prefix, ... }:
 
 {
   services = {
@@ -24,7 +24,7 @@
         height = 24pt
         radius = 5
 
-        dpi = ${toString(polybar_dpi)}
+        dpi = ${toString (polybar_dpi)}
 
         background = ''${colors.background}
         foreground = ''${colors.foreground}
@@ -54,20 +54,20 @@
 
         [bar/main]
         inherit = base
-        monitor = eDP-1
+        monitor = ${main_monitor}
         modules-left = xworkspaces pomo backlight alsa
 
         [bar/e1]
         inherit = base
-        monitor = DP-1
+        monitor = ${monitor_prefix}-1
 
         [bar/e2]
         inherit = base
-        monitor = DP-2
+        monitor = ${monitor_prefix}-2
 
         [bar/e3]
         inherit = base
-        monitor = DP-2
+        monitor = ${monitor_prefix}-3
 
         [module/xworkspaces]
         type = internal/xworkspaces
@@ -181,15 +181,9 @@
   };
 
   home.file = {
-    ".local/bin/vol.lua" = {
-      source = ./scripts/vol.lua;
-    };
-    ".local/bin/vpn.lua" = {
-      source = ./scripts/vpn.lua;
-    };
-    ".config/uair/uair.toml" = {
-      source = ./uair.toml;
-    };
+    ".local/bin/vol.lua" = { source = ./scripts/vol.lua; };
+    ".local/bin/vpn.lua" = { source = ./scripts/vpn.lua; };
+    ".config/uair/uair.toml" = { source = ./uair.toml; };
   };
 }
 # vim:ft=nix
