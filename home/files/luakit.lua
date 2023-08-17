@@ -1,11 +1,42 @@
 local luakit = require("luakit")
 local settings = require("settings")
+
+settings.window.load_etc_hosts = true
 settings.window.home_page = "https://xkcd.com/"
-settings.webview.enable_webgl = true
+settings.window.new_tab_page = "https://xkcd.com/"
+settings.window.reuse_new_tab_pages = true
+settings.window.close_with_last_tab = true
 settings.session.always_save = true
+
+settings.webview.enable_smooth_scrolling = true
 settings.application.prefer_dark_mode = true
+settings.webview.default_charset = "monospace"
+
 settings.webview.enable_webaudio = true
+settings.webview.enable_media_stream = true
+settings.webview.enable_mediasource = true
+
+settings.webview.enable_webgl = false
 settings.webview.enable_java = false
+settings.webview.enable_plugins = false
+
+settings.webview.enable_xss_auditor = true
+
+settings.webview.enable_frame_flattening = true
+settings.webview.enable_page_cache = true
+settings.webview.enable_dns_prefetching = true
+settings.webview.enable_offline_web_application_cache = true
+settings.webview.hardware_acceleration_policy = "always"
+settings.webview.enable_accelerated_2d_canvas = true
+
+settings.completion.history.order = "last_visit"
+
+settings.undoclose.max_saved_tabs = 10
+
+settings.window.search_engines = {
+  ddg = "https://duckduckgo.com/?q=%s",
+  default = "https://duckduckgo.com/?q=%s",
+}
 
 -- Fuzzy Tabs
 local lousy = require("lousy")
@@ -428,11 +459,6 @@ modes.add_cmds({
   },
 })
 
-
--- Search Engines
-local engines = settings.window.search_engines
-engines.ddg = "https://duckduckgo.com/?q=%s"
-engines.default = engines.ddg
 
 -- Hints
 local select = require("select")
