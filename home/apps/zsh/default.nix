@@ -73,6 +73,7 @@
       GREP_COLORS = "mt=01;33:ms=01;33:mc=01;33:sl=:cx=:fn=35:ln=32:bn=32:se=36";
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
       NIX_THEME = "${theme}";
+      MANROFFOPT = "-c";
       NIXPKGS_ALLOW_UNFREE = 1;
       LUA_CPATH = "${lib.concatStringsSep ";" (map pkgs.luajitPackages.getLuaCPath lua-packages)}";
       LUA_PATH = "${lib.concatStringsSep ";" (map pkgs.luajitPackages.getLuaPath lua-packages)}";
