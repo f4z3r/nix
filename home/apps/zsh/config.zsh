@@ -49,6 +49,27 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
   zle -N zle-line-finish
 fi
 
+autoload -U add-zsh-hook
+
+function _hoard_list() {
+  emulate -L zsh
+  zle -I
+
+  echoti rmkx
+  output=$(hoard --autocomplete list 3>&1 1>&2 2>&3)
+  echoti smkx
+  
+  if [[ -n $output ]]; then
+    LBUFFER=$output
+  fi
+
+  zle reset-prompt
+}
+
+zle -N _hoard_list_widget _hoard_list
+
+bindkey '^o' _hoard_list_widget
+
 # do not add stuff to history containing "password"
 function zshaddhistory() {
   emulate -L zsh

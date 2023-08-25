@@ -1,0 +1,10 @@
+---
+version: 1.3.1
+commands:
+  - name: prune-local-branches
+    namespace: git
+    tags:
+      - git
+      - branch
+    command: "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -r git branch -D"
+    description: Removes all local branches that no longer track an upstream. Run after pruning the remote.

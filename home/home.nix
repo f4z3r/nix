@@ -353,6 +353,7 @@ in {
         xcp
         xsel
         miniserve
+        hoard
 
         # stuff not used often, installed via nix-shell
         #tokei
