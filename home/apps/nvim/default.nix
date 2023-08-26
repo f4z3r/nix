@@ -70,6 +70,16 @@ let
       sha256 = "sha256-R0s5FvCj3dPJieBUMbCYoO9HP6pGbJXPgeoglQh8nf0=";
     };
   };
+
+  flash-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "flash.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "folke";
+      repo = "flash.nvim";
+      rev = "967117690bd677cb7b6a87f0bc0077d2c0be3a27";
+      sha256 = "sha256-1VisMxCH31Ss+SoMhjPeHUdi0l39JKe/8ErmyeOjh+Y=";
+    };
+  };
 in
   {
     programs.neovim = {
@@ -254,8 +264,8 @@ in
         # useful stuff
         {
           type = "lua";
-          plugin = hop-nvim;
-          config = builtins.readFile ./plugin/hop.lua;
+          plugin = flash-nvim;
+          config = builtins.readFile ./plugin/flash.lua;
         }
         {
           type = "lua";
