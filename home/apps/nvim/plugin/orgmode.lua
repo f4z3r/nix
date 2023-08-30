@@ -3,7 +3,7 @@ require('orgmode').setup_ts_grammar()
 require('orgmode').setup({
   org_agenda_files = {'~/Documents/sb/**/*' },
   org_agenda_skip_deadline_if_done = true,
-  org_deadline_warning_days = 7,
+  org_deadline_warning_days = 4,
   org_default_notes_file = '~/Documents/sb/inbox.org',
   org_todo_keywords = { 'TODO(t)', 'ON HOLD(o)', 'BLOCKED(b)', '|', 'DONE(d)', 'DELEGATED(l)'},
   org_log_into_drawer = 'LOGBOOK',

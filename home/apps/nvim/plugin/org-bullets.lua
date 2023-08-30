@@ -1,7 +1,7 @@
 require("org-bullets").setup {
   concealcursor = false,
   symbols = {
-    headlines = { "◉", "○", "⊛", "" },
+    headlines = { "", "󰪥", "󰻂", "󰺕", "○" },
     checkboxes = {
       half = { "", "OrgTSCheckboxHalfChecked" },
       done = { "", "OrgDone" },
