@@ -105,7 +105,7 @@ in
         deadnix
         statix
         nixfmt
-        hadolint
+        # hadolint
         shfmt
         shellcheck
         shellharden
