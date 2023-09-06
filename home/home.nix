@@ -397,6 +397,7 @@ in {
       ".local/share/luakit/adblock/abp-filters-anti-cv.txt" = {
         source = ./files/abp-filters-anti-cv.txt;
       };
+      ".local/share/uair/notification-sound.wav" = { source = ./files/notification-sound.wav; };
     };
   };
 

@@ -1,7 +1,14 @@
 [defaults]
-format = "{time}\n"
+format = "{name} - {time}\n"
 
 [[sessions]]
-name = "Work"
+id = "word"
+name = "work"
 duration = "25m"
-command = "notify-send 'Pomodorro' 'Timer completed, work done!' -t 10000 -u critical -i tomato"
+command = "notify-send 'Pomodoro' 'Timer completed, work done!' -u critical -i tomato && aplay /home/f4z3r/.local/share/uair/notification-sound.wav"
+
+[[sessions]]
+id = "rest"
+name = "rest"
+duration = "5m"
+command = "notify-send 'Pomodoro' 'Rest done!' -t 10000 -u critical -i tomato && aplay /home/f4z3r/.local/share/uair/notification-sound.wav"
