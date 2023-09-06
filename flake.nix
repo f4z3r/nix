@@ -66,7 +66,7 @@
           dpi = 91;
           polybar_dpi = 65;
           font_size = 11;
-          scratch_res = "1280x800+0+0";
+          scratch_res = "1440x900+0+0";
           brain_backup = true;
           main_monitor = "eDP-1";
           monitor_prefix = "DP";
