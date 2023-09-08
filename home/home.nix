@@ -354,6 +354,7 @@ in {
         xsel
         miniserve
         hoard
+        pandoc
 
         # stuff not used often, installed via nix-shell
         #tokei

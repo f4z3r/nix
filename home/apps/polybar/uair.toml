@@ -5,10 +5,10 @@ format = "{name} - {time}\n"
 id = "word"
 name = "work"
 duration = "25m"
-command = "notify-send 'Pomodoro' 'Timer completed, work done!' -u critical -i tomato && aplay /home/f4z3r/.local/share/uair/notification-sound.wav"
+command = "notify-send 'Pomodoro' 'Timer completed, work done!' -u critical -i tomato && aplay /home/f4z3r/.local/share/uair/notification-sound.wav 2> /dev/null"
 
 [[sessions]]
 id = "rest"
 name = "rest"
 duration = "5m"
-command = "notify-send 'Pomodoro' 'Rest done!' -t 10000 -u critical -i tomato && aplay /home/f4z3r/.local/share/uair/notification-sound.wav"
+command = "notify-send 'Pomodoro' 'Rest done!' -t 10000 -u critical -i tomato && aplay /home/f4z3r/.local/share/uair/notification-sound.wav 2> /dev/null"
