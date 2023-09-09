@@ -55,7 +55,7 @@
           dpi = 192;
           polybar_dpi = 128;
           font_size = 19;
-          scratch_res = "2560x1600+0+0";
+          scratch_res = "2880x1800+0+0";
           brain_backup = true;
           # update the following to the "nix" values if disabling nvidia sync
           main_monitor = "eDP-1-1";
