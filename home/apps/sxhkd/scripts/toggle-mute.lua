@@ -1,5 +1,3 @@
-#!/usr/bin/env luajit
-
 local os = require('os')
 local io = require('io')
 local string = require('string')

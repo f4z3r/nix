@@ -54,7 +54,7 @@
       "XF86AudioRaiseVolume" = "${pkgs.alsa-utils}/bin/amixer -q sset Master 1%+";
       "XF86AudioLowerVolume" = "${pkgs.alsa-utils}/bin/amixer -q sset Master 1%-";
       "XF86AudioMute" = "${pkgs.alsa-utils}/bin/amixer -q sset Master toggle";
-      "XF86AudioMicMute" = ''~/.config/sxhkd/scripts/toggle-mute'';
+      "XF86AudioMicMute" = ''${pkgs.luajit}/bin/luajit /home/${username}/.config/sxhkd/scripts/toggle-mute.lua'';
       "XF86AudioPlay" = "${pkgs.mpc-cli}/bin/mpc toggle";
 
       # music control
@@ -62,7 +62,7 @@
       "${super} + Left" = "${pkgs.mpc-cli}/bin/mpc prev";
 
       # launchers
-      "${mod} + ${alt} + w" = "${pkgs.luakit}/bin/luakit";
+      "${mod} + ${alt} + w" = ''${pkgs.luajit}/bin/luajit /home/${username}/.config/sxhkd/scripts/fuzzy-bookmarks.lua'';
       "${mod} + ${alt} + p" = "${pkgs.uair}/bin/uairctl toggle";
       "${mod} + ${alt} + m" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.ncmpcpp}/bin/ncmpcpp";
       "${super} + i" = "/home/${username}/.local/bin/songinfo";
@@ -74,9 +74,11 @@
       source = ./scripts/bspwm-scratchpad;
       executable = true;
     };
-    ".config/sxhkd/scripts/toggle-mute" = {
-      source = ./scripts/toggle-mute;
-      executable = true;
+    ".config/sxhkd/scripts/toggle-mute.lua" = {
+      source = ./scripts/toggle-mute.lua;
+    };
+    ".config/sxhkd/scripts/fuzzy-bookmarks.lua" = {
+      source = ./scripts/fuzzy-bookmarks.lua;
     };
   };
 }

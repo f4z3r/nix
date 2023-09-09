@@ -324,7 +324,6 @@ in {
         # GUI programs
         gimp
         brave
-        luakit
         helvum
         onlyoffice-bin
 
@@ -391,14 +390,9 @@ in {
     file = {
       ".config/ruff/pyproject.toml" = { source = ./files/ruff.toml; };
       "revive.toml" = { source = ./files/revive.toml; };
-      ".config/luakit/userconf.lua" = { source = ./files/luakit.lua; };
-      ".local/share/luakit/adblock/easylist.txt" = {
-        source = ./files/easylist.txt;
+      ".local/share/uair/notification-sound.wav" = {
+        source = ./files/notification-sound.wav;
       };
-      ".local/share/luakit/adblock/abp-filters-anti-cv.txt" = {
-        source = ./files/abp-filters-anti-cv.txt;
-      };
-      ".local/share/uair/notification-sound.wav" = { source = ./files/notification-sound.wav; };
     };
   };
 
