@@ -385,6 +385,9 @@ in {
         ruff
         black
         hatch
+        kubectl
+        kubernetes-helm
+        k9s
       ] ++ lua-packages;
 
     file = {
