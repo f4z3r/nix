@@ -49,6 +49,26 @@
           execution = ":line_down";
         }
         {
+          key = "ctrl-u";
+          execution = ":line_up 10";
+        }
+        {
+          key = "ctrl-d";
+          execution = ":line_down 10";
+        }
+        {
+          key = "ctrl-y";
+          execution = ":back";
+        }
+        {
+          key = "ctrl-l";
+          execution = ":panel_right";
+        }
+        {
+          key = "ctrl-h";
+          execution = ":panel_left";
+        }
+        {
           name = "touch";
           shortcut = "t";
           invocation = "touch {new_file}";
@@ -82,7 +102,7 @@
           invocation = "git_diff";
           shortcut = "gd";
           leave_broot = false;
-          external = "git difftool -y {file}";
+          external = "git diff {file}";
         }
       ];
       skin = {

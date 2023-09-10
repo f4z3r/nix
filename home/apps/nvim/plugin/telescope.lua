@@ -13,6 +13,14 @@ local function add_to_arglist(prompt_bufnr)
   actions.close(prompt_bufnr)
 end
 
+local function repeat_action(action, count)
+  return function(prompt_bufnr)
+    for _=1,count do
+      action(prompt_bufnr)
+    end
+  end
+end
+
 local telescope = require('telescope')
 telescope.setup{
   defaults = {
@@ -22,6 +30,8 @@ telescope.setup{
         ["<C-t>"] = trouble.open_with_trouble,
         ["<C-n>"] = actions.move_selection_next,
         ["<C-p>"] = actions.move_selection_previous,
+        ["<C-d>"] = repeat_action(actions.move_selection_next, 10),
+        ["<C-u>"] = repeat_action(actions.move_selection_previous, 10),
         ["<C-c>"] = actions.close,
         ["<esc>"] = actions.close,
       },
