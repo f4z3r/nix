@@ -58,7 +58,7 @@
         }
         {
           key = "ctrl-y";
-          execution = ":back";
+          cmd = ":input_clear;:back";
         }
         {
           key = "ctrl-l";
@@ -67,6 +67,10 @@
         {
           key = "ctrl-h";
           execution = ":panel_left";
+        }
+        {
+          key = "ctrl-f";
+          cmd = ":cd";
         }
         {
           name = "touch";
