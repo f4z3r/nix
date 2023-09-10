@@ -17,7 +17,7 @@ local mappings = {
   },
   {
     mode = 'n',
-    suffix = 'f',
+    suffix = 'g',
     command = function() require('telescope.builtin').git_files() end,
     desc = 'Open git tracked file'
   },
@@ -33,12 +33,18 @@ local mappings = {
     command = '<cmd>checktime %<cr>',
     desc = 'Refresh file'
   },
- {
-   mode = 'n',
-   suffix = 't',
-   command = function() vim.cmd(string.format('e %s', require('lazy.utils').get_temp_file())) end,
-   desc = 'Open temp file'
- },
+  {
+    mode = 'n',
+    suffix = 't',
+    command = function() vim.cmd(string.format('e %s', require('lazy.utils').get_temp_file())) end,
+    desc = 'Open temp file'
+  },
+  {
+    mode = 'n',
+    suffix = 'f',
+    command = function() require('lazy.utils').open_with_broot() end,
+    desc = 'Open file with Broot'
+  },
 }
 
 

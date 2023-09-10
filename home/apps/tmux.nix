@@ -66,13 +66,6 @@ in {
         display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E 'tmux attach-session -t popup || tmux new-session -s popup'
       }
 
-      # broot
-      bind-key -n M-b if-shell -F '#{==:#{=5:session_name},broot}' {
-        detach-client
-      } {
-        display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E 'tmux attach-session -t broot || tmux new-session -s broot zsh -ic br'
-      }
-
       # vim like pane movement
       bind-key C-h select-pane -t '{left-of}'
       bind-key C-l select-pane -t '{right-of}'
