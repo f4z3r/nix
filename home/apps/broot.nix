@@ -6,6 +6,7 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     settings = {
+      modal = true;
       imports = [
         "verbs.hjson"
         {file = "dark-gruvbox.hjson"; luma = ["dark" "unknown"];}
@@ -41,24 +42,24 @@
       };
       verbs = [
         {
-          key = "ctrl-p";
-          execution = ":line_up";
-        }
-        {
-          key = "ctrl-n";
-          execution = ":line_down";
-        }
-        {
-          key = "ctrl-u";
+          key = "ctrl-k";
           execution = ":line_up 10";
         }
         {
-          key = "ctrl-d";
+          key = "ctrl-n";
           execution = ":line_down 10";
         }
         {
+          key = "n";
+          execution = ":line_down";
+        }
+        {
+          key = "i";
+          execution = ":mode_input";
+        }
+        {
           key = "ctrl-y";
-          cmd = ":input_clear;:back";
+          execution = ":mode_command";
         }
         {
           key = "ctrl-l";
@@ -89,7 +90,7 @@
           leave_broot = false;
         }
         {
-          invocation = "edit";
+          invocation = "edit_leave";
           shortcut = "e";
           apply_to = "file";
           external = "nvim +{line} {file}";
