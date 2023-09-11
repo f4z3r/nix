@@ -15,6 +15,8 @@ null_ls.setup({
     null_ls.builtins.diagnostics.shellcheck,
     null_ls.builtins.diagnostics.statix,
     null_ls.builtins.diagnostics.zsh,
+    null_ls.builtins.diagnostics.terraform_validate,
+    null_ls.builtins.diagnostics.tfsec,
     -- formatting
     null_ls.builtins.formatting.gofmt,
     null_ls.builtins.formatting.stylua,
@@ -26,5 +28,6 @@ null_ls.setup({
     null_ls.builtins.formatting.trim_whitespace,
     null_ls.builtins.formatting.trim_newlines,
     null_ls.builtins.formatting.yamlfmt,
+    null_ls.builtins.formatting.terraform_fmt,
   }
 })

@@ -212,6 +212,7 @@ in {
     ./apps/gpg.nix
     ./apps/nvim/default.nix
     ./apps/broot.nix
+    ./apps/k9s/default.nix
     (import ./apps/bat.nix { inherit pkgs theme; })
     (import ./apps/mpd/default.nix { inherit pkgs username; })
   ];
@@ -385,9 +386,11 @@ in {
         ruff
         black
         hatch
+        dive
         kubectl
+        kubectx
         kubernetes-helm
-        k9s
+        terraform
       ] ++ lua-packages;
 
     file = {

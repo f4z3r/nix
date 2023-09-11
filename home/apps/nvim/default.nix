@@ -123,6 +123,8 @@ in
         rnix-lsp
         yamlfmt
         fzf
+        terraform-ls
+        tfsec
       ];
 
       plugins = with pkgs.vimPlugins; [

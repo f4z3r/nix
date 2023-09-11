@@ -55,6 +55,9 @@ lspconfig.bashls.setup({})
 -- Helm
 lspconfig.helm_ls.setup({})
 
+-- Terraform
+lspconfig.terraformls.setup({})
+
 local signs = {
   Error = "",
   Warn = "",
