@@ -136,7 +136,7 @@
       "w" = ''worktree'';
       "wa" = ''worktree add'';
       "wl" = ''worktree list'';
-      "bc" = ''!git branch -vva --color=always | grep -v '/HEAD\\s' | sk --ansi --tac | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs git switch'';
+      "bc" = ''!git branch -a --color=always | grep -v '/HEAD\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs git switch'';
       "bp" = ''!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D'';
     };
   };
