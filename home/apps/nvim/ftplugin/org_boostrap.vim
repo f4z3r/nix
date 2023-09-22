@@ -12,7 +12,7 @@ setlocal tabstop=2
 
 " ==== Conceal ==========================================================={{{
 setlocal conceallevel=2
-setlocal concealcursor=n
+setlocal concealcursor=nc
 " }}}
 
 
