@@ -10,7 +10,7 @@ require('orgmode').setup({
   org_todo_keywords = { 'TODO(t)', 'ON HOLD(o)', 'BLOCKED(b)', '|', 'DONE(d)', 'DELEGATED(l)'},
   org_log_into_drawer = 'LOGBOOK',
   org_tags_column = 100,
-  org_archive_location = '~/Documents/sb/archive/%s',
+  org_archive_location = 'archive/%s',
   org_blank_before_new_entry = {
     heading = false,
     plain_list_item = false,
