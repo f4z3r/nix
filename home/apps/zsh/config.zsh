@@ -73,7 +73,11 @@ bindkey '^o' _hoard_list_widget
 # do not add stuff to history containing "password"
 function zshaddhistory() {
   emulate -L zsh
-  if [[ $1 = *"password"* ]]; then
+  if [[ "${1:l}" = *"pass"* ]]; then
+    return 1
+  elif [[ "${1:l}" = *"secret"* ]]; then
+    return 1
+  elif [[ "${1:l}" = *"token"* ]]; then
     return 1
   fi
 }
