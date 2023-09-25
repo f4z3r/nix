@@ -1,7 +1,6 @@
 require('orgmode').setup_ts_grammar()
 
 require('orgmode').setup({
-  win_split_mode = "float",
   org_agenda_files = {'~/Documents/sb/**/*' },
   org_agenda_skip_scheduled_if_done = true,
   org_agenda_skip_deadline_if_done = true,
