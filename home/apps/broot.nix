@@ -6,7 +6,7 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     settings = {
-      modal = true;
+      modal = false;
       imports = [
         "verbs.hjson"
         {file = "dark-gruvbox.hjson"; luma = ["dark" "unknown"];}
@@ -42,24 +42,12 @@
       };
       verbs = [
         {
-          key = "ctrl-k";
-          execution = ":line_up 10";
+          key = "ctrl-p";
+          execution = ":line_up";
         }
         {
           key = "ctrl-n";
-          execution = ":line_down 10";
-        }
-        {
-          key = "n";
           execution = ":line_down";
-        }
-        {
-          key = "i";
-          execution = ":mode_input";
-        }
-        {
-          key = "ctrl-y";
-          execution = ":mode_command";
         }
         {
           key = "ctrl-l";
