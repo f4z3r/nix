@@ -115,6 +115,7 @@
       "f" = ''fetch -q'';
       "b" = ''branch -vv'';
       "ba" = ''branch -vva'';
+      "bd" = ''!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -tr git branch -D'';
       "d" = ''diff'';
       "aa" = ''add .'';
       "a" = ''add'';
@@ -127,7 +128,7 @@
       "re" = ''reset'';
       "s"  ='' status -sb'';
       "st" = ''stash list'';
-      "sh" = ''stash show --full-diff'';
+      "sh" = ''show HEAD'';
       "lg" = ''log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit'';
       "rs" = ''reflog show'';
       "ph" = ''push -q'';
@@ -136,8 +137,10 @@
       "w" = ''worktree'';
       "wa" = ''worktree add'';
       "wl" = ''worktree list'';
-      "bc" = ''!git branch -a --color=always | grep -v '/HEAD\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs git switch'';
-      "bp" = ''!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D'';
+      "wd" = ''!git worktree list | rg -vF '[master]' | awk '{print $1}' | xargs -trL1 git worktree remove'';
+      "wc" = ''!git branch -a --color=always | grep -v '/HEAD\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -trI'{}' git worktree add 'worktrees/{}' '{}' '';
+      "bc" = ''!git branch -a --color=always | grep -v '/HEAD\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -tr git switch'';
+      "bp" = ''!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -tr git branch -D'';
     };
   };
 
