@@ -135,7 +135,7 @@
       "phf" = ''push -q --force-with-lease'';
       "pl" = ''pull -q'';
       "w" = ''worktree'';
-      "wa" = ''worktree add'';
+      "wa" = ''worktree add -b'';
       "wl" = ''worktree list'';
       "wd" = ''!git worktree list | rg -vF '[master]' | awk '{print $1}' | xargs -trL1 git worktree remove'';
       "wc" = ''!git branch -a --color=always | grep -v '/HEAD\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -trI'{}' git worktree add 'worktrees/{}' '{}' '';
