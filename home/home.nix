@@ -254,7 +254,7 @@ in {
     feh.enable = true;
     bottom.enable = true;
 
-    exa = {
+    eza = {
       enable = true;
       icons = true;
     };
