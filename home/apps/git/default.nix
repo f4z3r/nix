@@ -115,7 +115,7 @@
       "f" = ''fetch -q'';
       "b" = ''branch -vv'';
       "ba" = ''branch -vva'';
-      "bd" = ''!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -tr git branch -D'';
+      "bd" = ''!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == "[gone]" { print $1 }' | xargs -tr git branch -D'';
       "d" = ''diff'';
       "aa" = ''add .'';
       "a" = ''add'';
@@ -140,7 +140,6 @@
       "wd" = ''!git worktree list | rg -v '\[(master|main)\]' | awk '{print $1}' | xargs -trL1 git worktree remove'';
       "wc" = ''!git branch -a --color=always | grep -v '/HEAD\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -trI'{}' git worktree add 'worktrees/{}' '{}' '';
       "bc" = ''!git branch -a --color=always | grep -v '/HEAD\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -tr git switch'';
-      "bp" = ''!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -tr git branch -D'';
     };
   };
 
