@@ -5,9 +5,9 @@ local leader = '<leader>o'
 local mappings = {
   {
     mode = 'n',
-    suffix = 'o',
+    suffix = 's',
     command = '<cmd>Telescope orgmode search_headings<cr>',
-    desc = 'Search jumplist',
+    desc = 'Search orgmode headings',
   },
 }
 

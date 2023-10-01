@@ -70,6 +70,24 @@ local mappings = {
     command = function() require('dap').repl.open() end,
     desc = 'DAP open REPL'
   },
+  {
+    mode = 'n',
+    suffix = 'tf',
+    command = function() require('tablemd').format() end,
+    desc = 'Format table under cursor'
+  },
+  {
+    mode = 'n',
+    suffix = 'td',
+    command = function() require('tablemd').deleteColumn() end,
+    desc = 'Delete table column under cursor'
+  },
+  {
+    mode = 'n',
+    suffix = 'tc',
+    command = function() require('tablemd').insertColumn(false) end,
+    desc = 'Add table column to the right'
+  },
 }
 
 for _, mapping in ipairs(mappings) do

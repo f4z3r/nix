@@ -61,6 +61,16 @@ let
     };
   };
 
+  nvim-table-md = pkgs.vimUtils.buildVimPlugin {
+    name = "nvim-table-md";
+    src = pkgs.fetchFromGitHub {
+      owner = "allen-mack";
+      repo = "nvim-table-md";
+      rev = "77bf0afc093ffc8b7336c1096a844e76b09e9d04";
+      sha256 = "sha256-Q+RLKClM1F+VCdv72st0DhAFQzOyvBwIwguplSkRqSI=";
+    };
+  };
+
   yanky-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "yanky.nvim";
     src = pkgs.fetchFromGitHub {
@@ -310,6 +320,10 @@ in
           type = "lua";
           plugin = org-bullets;
           config = builtins.readFile ./plugin/org-bullets.lua;
+        }
+        {
+          type = "lua";
+          plugin = nvim-table-md;
         }
 
         # comments

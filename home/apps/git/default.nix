@@ -90,6 +90,7 @@
 
     hooks = {
       commit-msg = ./hooks/commit-msg;
+      pre-commit = ./hooks/pre-commit;
     };
 
     ignores = [
@@ -150,6 +151,10 @@
     };
     ".local/bin/glog-author.sh" = {
       source = ./scripts/glog-author.sh;
+      executable = true;
+    };
+    ".config/git/hooks/test-secrets.lua" = {
+      source = ./hooks/test-secrets.lua;
       executable = true;
     };
   };

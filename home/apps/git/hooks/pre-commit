@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if test -e /dev/tty ; then
+  exec < /dev/tty ~/.config/git/hooks/test-secrets.lua
+fi
+
+exec ~/.config/git/hooks/test-secrets.lua
