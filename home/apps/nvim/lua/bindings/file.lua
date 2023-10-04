@@ -48,7 +48,9 @@ local mappings = {
 }
 
 
-vim.keymap.set('n', '<c-p>', function() require('telescope.builtin').find_files() end, {
+vim.keymap.set('n', '<c-p>', function() require('telescope.builtin').find_files(
+  { find_command = { "rg", "--files", "--color", "never", "-g", "!archive/**" } }
+) end, {
   desc = 'Open file in workspace',
 })
 
