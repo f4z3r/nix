@@ -348,7 +348,7 @@ in {
         ouch
         fd
         vimv-rs
-        lfs
+        dysk
         erdtree
         xcp
         xsel
