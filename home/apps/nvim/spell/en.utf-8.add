@@ -1,5 +1,7 @@
 filesystem
 NeoVim
+nvim
+neovim
 WezTerm
 frontend
 ciphertext
@@ -34,3 +36,5 @@ nonmalleable
 meetup
 meetups
 k8s
+loadbalancer
+loadbalancers
