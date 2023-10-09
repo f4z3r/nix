@@ -355,6 +355,7 @@ in {
         miniserve
         hoard
         pandoc
+        slides
 
         # stuff not used often, installed via nix-shell
         #tokei
