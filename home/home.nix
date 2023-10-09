@@ -375,6 +375,7 @@ in {
         uair
         bc
         ffmpeg
+        fzf
 
         # programming
         cargo
