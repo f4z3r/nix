@@ -38,7 +38,7 @@ lspconfig.lua_ls.setup({
 lspconfig.rnix.setup({})
 
 -- Python
-lspconfig.jedi_language_server.setup({})
+lspconfig.pyright.setup({})
 
 -- Go
 lspconfig.gopls.setup({})

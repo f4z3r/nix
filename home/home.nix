@@ -314,13 +314,12 @@ in {
       let
         python-packages = ps:
           with ps; [
-            jedi-language-server
             debugpy
             pip
             virtualenv
             setuptools
           ];
-        enhanced-python = pkgs.python310.withPackages python-packages;
+        enhanced-python = pkgs.python311.withPackages python-packages;
       in [
         # GUI programs
         gimp
@@ -393,6 +392,9 @@ in {
         kubectx
         kubernetes-helm
         terraform
+
+        # python language server
+        nodePackages.pyright
       ] ++ lua-packages;
 
     file = {

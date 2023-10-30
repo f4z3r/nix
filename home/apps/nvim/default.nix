@@ -71,7 +71,7 @@ let
     };
   };
 
-  yanky-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  yanky-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "yanky.nvim";
     src = pkgs.fetchFromGitHub {
       owner = "gbprod";
@@ -81,7 +81,7 @@ let
     };
   };
 
-  flash-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  flash-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "flash.nvim";
     src = pkgs.fetchFromGitHub {
       owner = "folke";
@@ -205,8 +205,8 @@ in
         }
         {
           type = "lua";
-          plugin = null-ls-nvim;
-          config = builtins.readFile ./plugin/null-ls.lua;
+          plugin = none-ls-nvim;
+          config = builtins.readFile ./plugin/none-ls.lua;
         }
         {
           type = "lua";

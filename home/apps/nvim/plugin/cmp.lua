@@ -73,7 +73,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local servers = {
   'lua_ls',
   'rnix',
-  'jedi_language_server',
+  'pyright',
   'marksman',
   'gopls',
   'rust_analyzer',

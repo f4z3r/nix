@@ -1,22 +1,45 @@
-vim.api.nvim_set_hl(0, 'IndentBlanklineIndent1', { link = "TSRainbowRed", nocombine = true })
-vim.api.nvim_set_hl(0, 'IndentBlanklineIndent2', { link = "TSRainbowOrange", nocombine = true })
-vim.api.nvim_set_hl(0, 'IndentBlanklineIndent3', { link = "TSRainbowYellow", nocombine = true })
-vim.api.nvim_set_hl(0, 'IndentBlanklineIndent4', { link = "TSRainbowGreen", nocombine = true })
-vim.api.nvim_set_hl(0, 'IndentBlanklineIndent5', { link = "TSRainbowCyan", nocombine = true })
-vim.api.nvim_set_hl(0, 'IndentBlanklineIndent6', { link = "TSRainbowBlue", nocombine = true })
+local highlight = {
+  "IndentRainbowRed",
+  "IndentRainbowOrange",
+  "IndentRainbowYellow",
+  "IndentRainbowGreen",
+  "IndentRainbowCyan",
+  "IndentRainbowBlue",
+  "IndentRainbowViolet",
+}
 
-require("indent_blankline").setup {
-    space_char_blankline = " ",
-    filetype_exclude = {
+local hooks = require("ibl.hooks")
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+  vim.api.nvim_set_hl(0, 'IndentRainbowRed',     { link = "TSRainbowRed",    nocombine = true })
+  vim.api.nvim_set_hl(0, 'IndentRainbowOrange',  { link = "TSRainbowOrange", nocombine = true })
+  vim.api.nvim_set_hl(0, 'IndentRainbowYellow',  { link = "TSRainbowYellow", nocombine = true })
+  vim.api.nvim_set_hl(0, 'IndentRainbowGreen',   { link = "TSRainbowGreen",  nocombine = true })
+  vim.api.nvim_set_hl(0, 'IndentRainbowCyan',    { link = "TSRainbowCyan",   nocombine = true })
+  vim.api.nvim_set_hl(0, 'IndentRainbowBlue',    { link = "TSRainbowBlue",   nocombine = true })
+  vim.api.nvim_set_hl(0, 'IndentRainbowViolet',  { link = "TSRainbowViolet", nocombine = true })
+end)
+
+require("ibl").setup {
+  indent = {
+    highlight = highlight,
+    char = "┊",
+    priority = 2,
+  },
+  scope = {
+    enabled = false,
+  },
+  exclude = {
+    filetypes = {
+      "lspinfo",
+      "packer",
+      "checkhealth",
       "help",
+      "man",
+      "gitcommit",
+      "TelescopePrompt",
+      "TelescopeResults",
+      "''",
       "alpha",
-    },
-    char_highlight_list = {
-        "IndentBlanklineIndent1",
-        "IndentBlanklineIndent2",
-        "IndentBlanklineIndent3",
-        "IndentBlanklineIndent4",
-        "IndentBlanklineIndent5",
-        "IndentBlanklineIndent6",
-    },
+    }
+  },
 }
