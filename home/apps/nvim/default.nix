@@ -51,13 +51,23 @@ let
     };
   };
 
-  align-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "align.nvim";
+  mini-align = pkgs.vimUtils.buildVimPlugin {
+    name = "mini.align";
     src = pkgs.fetchFromGitHub {
-      owner = "Vonr";
-      repo = "align.nvim";
-      rev = "2004d263bb1b1ec28e55cf56c35944ec4ea23f8b";
-      sha256 = "sha256-FqexLsG6PAslo2XeVLpFfThtNCrvwcytOEAaQcnJ/PQ=";
+      owner = "echasnovski";
+      repo = "mini.align";
+      rev = "c5ab28809c630b65ffe069b564ce1d473bbcb332";
+      sha256 = "sha256-PVSgN0VamkR6PfpNOfkSv6LiIVwIlWWYfySxp1P+LAE=";
+    };
+  };
+
+  mini-splitjoin = pkgs.vimUtils.buildVimPlugin {
+    name = "mini.splitjoin";
+    src = pkgs.fetchFromGitHub {
+      owner = "echasnovski";
+      repo = "mini.splitjoin";
+      rev = "2b4ade24c1d46ce98801b74fc84241d7b676f9f4";
+      sha256 = "sha256-/4yqAnnTzrQ1jbhMGIk/wKz7QbqSZRmhgBLAWgugYOQ=";
     };
   };
 
@@ -343,8 +353,13 @@ in
         # alignment
         {
           type = "lua";
-          plugin = align-nvim;
+          plugin = mini-align;
           config = builtins.readFile ./plugin/align.lua;
+        }
+        {
+          type = "lua";
+          plugin = mini-splitjoin;
+          config = builtins.readFile ./plugin/splitjoin.lua;
         }
 
         # status line
