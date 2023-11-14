@@ -116,6 +116,11 @@ vim.keymap.set('n', '#', '#zz')
 vim.keymap.set('n', 'g*', 'g*zz')
 vim.keymap.set('n', 'g#', 'g#zz')
 
+vim.keymap.set('c', '<c-s>', function() require('flash').toggle() end, {
+  desc = 'Toggle flash in regular search',
+})
+
+
 for _, mapping in ipairs(mappings) do
   vim.keymap.set(mapping.mode, leader .. mapping.suffix, mapping.command, { desc = mapping.desc })
 end
