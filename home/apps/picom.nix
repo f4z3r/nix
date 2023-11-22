@@ -3,7 +3,7 @@
 {
   services.picom = {
     enable = true;
-    package = pkgs.picom-jonaburg;
+    package = pkgs.picom-allusive;
     backend = "glx";
     vSync = true;
 
@@ -23,21 +23,16 @@
         "class_g = 'Polybar'"
       ];
 
-      # Animations Pijulius
       animations = true;
-      animation-window-mass = 0.5;
       animation-for-open-window = "zoom";
-      animation-stiffness = 350;
-      animation-clamping = false;
+      animation-for-unmap-window = "zoom";
+      animation-open-exclude = [
+        "class_g = 'Polybar'"
+      ];
+      animation-dampening = 10;
+      animation-stiffness = 200;
+      animation-clamping = true;
       fade-out-step = 1;
-
-      # Animations Jonaburg
-      transition-length = 300;
-      transition-pow-x = 0.5;
-      transition-pow-y = 0.5;
-      transition-pow-w = 0.5;
-      transition-pow-h = 0.5;
-      size-transition = true;
 
       # Extras
       detect-rounded-corners = true;
