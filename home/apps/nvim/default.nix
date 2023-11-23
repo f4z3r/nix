@@ -34,6 +34,14 @@ let
     };
   };
 
+  plantuml-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "plantuml-nvim";
+    src = pkgs.fetchurl {
+      url = "https://gitlab.com/itaranto/plantuml.nvim/-/archive/master/plantuml.nvim-master.tar.gz";
+      sha256 = "sha256-AU2h4b3ZwHwyGmHf3hJVG/1u4aLzKnq7XJxms4S3kto=";
+    };
+  };
+
   maximize-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "maximize.nvim";
     src = pkgs.fetchFromGitHub {
@@ -158,6 +166,7 @@ in
         fzf
         terraform-ls
         tfsec
+        plantuml
       ];
 
       plugins = with pkgs.vimPlugins; [
@@ -348,6 +357,13 @@ in
           type = "lua";
           plugin = nvim-table-md;
         }
+        plantuml-syntax
+        {
+          type = "lua";
+          plugin = plantuml-nvim;
+          config = builtins.readFile ./plugin/plantuml.lua;
+        }
+
 
         # comments
         {
