@@ -212,7 +212,7 @@
       enable = true;
       stateless = true;
       startWhenNeeded = true;
-      webInterface = false;
+      webInterface = true;
     };
   };
 
