@@ -2,6 +2,11 @@ local utils = {}
 
 local os = require('os')
 local io = require('io')
+local string = require('string')
+local path = require('path')
+local math = require('math')
+
+math.randomseed(os.time())
 
 function utils.get_temp_file()
   return string.format('/tmp/neovim_%s', os.date('%Y-%m-%dT%H-%M-%S'))
@@ -45,6 +50,17 @@ key = "enter"
   local content = fh_reader:read("*a")
   fh_reader:close()
   vim.cmd(string.format("e %s", content))
+end
+
+function utils.get_random_org()
+  local files = {}
+  for fullpath in path.each(vim.fn.expand('~/Documents/sb') .. '/*', 'f', { recurse = true, skipdirs = true, delay = true }) do
+    if not string.find(fullpath, '/archive/') then
+      files[#files + 1] = fullpath
+    end
+  end
+  local idx = math.random(#files)
+  return files[idx]
 end
 
 return utils

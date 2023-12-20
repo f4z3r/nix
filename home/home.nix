@@ -177,6 +177,7 @@ let
       basexx
       busted
       compat53
+      luafilesystem
 
       # tooling
       luacheck
