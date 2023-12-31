@@ -1,4 +1,4 @@
-{ pkgs, lib, hostname, username, theme ? "dark", polybar_dpi, font_size
+{ pkgs, lib, pkgs-custom, hostname, username, theme ? "dark", polybar_dpi, font_size
 , scratch_res, main_monitor, monitor_prefix, ... }:
 
 assert lib.asserts.assertOneOf "theme" theme [ "dark" "light" ];
