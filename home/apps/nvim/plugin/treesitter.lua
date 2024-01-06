@@ -7,8 +7,8 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = {},
   rainbow = {
     enable = true,
-    query = 'rainbow-parens',
-    strategy = require('ts-rainbow').strategy.global,
+    query = 'rainbow-delimiters',
+    strategy = require('rainbow-delimiters').strategy.global,
   },
   indent = {
     enable = true,

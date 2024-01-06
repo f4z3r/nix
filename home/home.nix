@@ -237,7 +237,7 @@ in {
       enable = true;
       settings = {
         email = "jakobbeckmann@pm.me";
-        pinentry = "gtk2";
+        pinentry = "qt";
       };
     };
 

@@ -1,19 +1,6 @@
 { pkgs, ... }:
 
 let
-  # TODO remove neotest once fixed
-  neotest = pkgs.vimUtils.buildVimPlugin {
-    pname = "neotest";
-    version = "2023-11-13";
-    src = pkgs.fetchFromGitHub {
-      owner = "nvim-neotest";
-      repo = "neotest";
-      rev = "d424d262d01bccc1e0b038c9a7220a755afd2a1f";
-      sha256 = "1sg8m77hik1gffrqy4038sivhr8yhg536dp6yr5gbnbrjvc35dgm";
-    };
-    meta.homepage = "https://github.com/nvim-neotest/neotest/";
-  };
-
   gruvbox-material-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "gruvbox-material.nvim";
     src = pkgs.fetchFromGitHub {
@@ -21,16 +8,6 @@ let
       repo = "gruvbox-material.nvim";
       rev = "ae3d4c9c7fd4c4eb4121df3068cfa77f969aec92";
       sha256 = "sha256-WeEWc+Ja4AfLxMsxQ2yHofBK48UWF3AOik0YIuC+cFk=";
-    };
-  };
-
-  overseer-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "overseer.nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "stevearc";
-      repo = "overseer.nvim";
-      rev = "d286e681c4efa7477fccb113e23ef645fcb43cac";
-      sha256 = "sha256-blWHi+fWUGi3+HMk+ejfgzcZnCthaYDMGVDrkJbnEMs=";
     };
   };
 
@@ -101,26 +78,6 @@ let
       sha256 = "sha256-Q+RLKClM1F+VCdv72st0DhAFQzOyvBwIwguplSkRqSI=";
     };
   };
-
-  yanky-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "yanky.nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "gbprod";
-      repo = "yanky.nvim";
-      rev = "16884855e65931cdec3937d60bfb942530535e9c";
-      sha256 = "sha256-R0s5FvCj3dPJieBUMbCYoO9HP6pGbJXPgeoglQh8nf0=";
-    };
-  };
-
-  flash-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "flash.nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "folke";
-      repo = "flash.nvim";
-      rev = "967117690bd677cb7b6a87f0bc0077d2c0be3a27";
-      sha256 = "sha256-1VisMxCH31Ss+SoMhjPeHUdi0l39JKe/8ErmyeOjh+Y=";
-    };
-  };
 in
   {
     programs.neovim = {
@@ -178,7 +135,7 @@ in
         }
 
         # syntax highlighting
-        nvim-ts-rainbow2
+        rainbow-delimiters-nvim
         nvim-treesitter-textobjects
         {
           type = "lua";
