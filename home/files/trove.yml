@@ -15,3 +15,10 @@ commands:
       - container
     command: "docker container list -a | perl -lane 'print @F[0] if ($_ =~ /Exited/ and $_ !~ /k3d/)' | xargs -r docker rm"
     description: delete all exited containers
+  - name: prune-images
+    namespace: docker
+    tags:
+      - docker
+      - images
+    command: "docker images | tail -n+2 | perl -lane 'print @F[2] if @F[1] =~ /<none>/' | xargs -r docker rmi"
+    description: delete all container images missing a tag
