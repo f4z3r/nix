@@ -6,7 +6,7 @@ require('orgmode').setup({
   org_agenda_skip_deadline_if_done = true,
   org_deadline_warning_days = 4,
   org_default_notes_file = '~/Documents/sb/inbox.org',
-  org_todo_keywords = { 'TODO(t)', 'IN-PROGRESS(p)', 'ON-HOLD(o)', 'BLOCKED(b)', 'DELAYED(y)', '|', 'DONE(d)', 'DELEGATED(l)', 'WONT-DO(w)' },
+  org_todo_keywords = { 'TODO(t)', 'REMINDER(r)', 'GOAL(g)', 'IN-PROGRESS(p)', 'ON-HOLD(o)', 'BLOCKED(b)', 'DELAYED(y)', '|', 'DONE(d)', 'DELEGATED(l)', 'WONT-DO(w)' },
   org_log_into_drawer = 'LOGBOOK',
   org_tags_column = 100,
   org_archive_location = 'archive/%s',
