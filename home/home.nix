@@ -328,6 +328,7 @@ in {
         helvum
         onlyoffice-bin
         obs-studio
+        flowblade
 
         # utils
         gnumake
