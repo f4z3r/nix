@@ -327,6 +327,7 @@ in {
         brave
         helvum
         onlyoffice-bin
+        obs-studio
 
         # utils
         gnumake
