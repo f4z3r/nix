@@ -15,7 +15,7 @@ let
     name = "plantuml-nvim";
     src = pkgs.fetchurl {
       url = "https://gitlab.com/itaranto/plantuml.nvim/-/archive/master/plantuml.nvim-master.tar.gz";
-      sha256 = "sha256-D5zDtrVP7eQ96xIMe84I56DL9yDhz3hfcH5ZpmUwjOg=";
+      sha256 = "sha256-wRoc+j/LJaYaCinju0XeVICaTc1O+hdNiqcjut+6Z1c=";
     };
   };
 
