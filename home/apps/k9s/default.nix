@@ -53,62 +53,64 @@ in {
       };
     };
 
-    skin = {
-      k9s = {
-        body = {
-          fgColor = foreground;
-          bgColor = background;
-          logoColor = blue;
-        };
-        prompt = {
-          fgColor = foreground;
-          bgColor = background;
-          suggestColor = orange;
-        };
-        info = {
-          fgColor = magenta;
-          sectionColor = foreground;
-        };
-        dialog = {
-          fgColor = foreground;
-          bgColor = background;
-          buttonFgColor = foreground;
-          buttonBgColor = magenta;
-          buttonFocusFgColor = selection;
-          buttonFocusBgColor = cyan;
-          labelFgColor = orange;
-          fieldFgColor = foreground;
-        };
-        frame = {
-          border = {
-            fgColor = selection;
-            focusColor = comment;
-          };
-          menu = {
-            fgColor = foreground;
-            keyColor = magenta;
-            numKeyColor = magenta;
-          };
-          crumbs = {
-            fgColor = comment;
-            bgColor = background;
-            activeColor = green;
-          };
-          status = {
-            newColor = cyan;
-            modifyColor = blue;
-            addColor = green;
-            errorColor = red;
-            highlightcolor = orange;
-            killColor = comment;
-            completedColor = comment;
-          };
-          title = {
+    skins = {
+      skin = {
+        k9s = {
+          body = {
             fgColor = foreground;
             bgColor = background;
-            highlightColor = orange;
-            counterColor = blue;
-            filterColor = magenta;
+            logoColor = blue;
+          };
+          prompt = {
+            fgColor = foreground;
+            bgColor = background;
+            suggestColor = orange;
+          };
+          info = {
+            fgColor = magenta;
+            sectionColor = foreground;
+          };
+          dialog = {
+            fgColor = foreground;
+            bgColor = background;
+            buttonFgColor = foreground;
+            buttonBgColor = magenta;
+            buttonFocusFgColor = selection;
+            buttonFocusBgColor = cyan;
+            labelFgColor = orange;
+            fieldFgColor = foreground;
+          };
+          frame = {
+            border = {
+              fgColor = selection;
+              focusColor = comment;
+            };
+            menu = {
+              fgColor = foreground;
+              keyColor = magenta;
+              numKeyColor = magenta;
+            };
+            crumbs = {
+              fgColor = comment;
+              bgColor = background;
+              activeColor = green;
+            };
+            status = {
+              newColor = cyan;
+              modifyColor = blue;
+              addColor = green;
+              errorColor = red;
+              highlightcolor = orange;
+              killColor = comment;
+              completedColor = comment;
+            };
+            title = {
+              fgColor = foreground;
+              bgColor = background;
+              highlightColor = orange;
+              counterColor = blue;
+              filterColor = magenta;
+            };
           };
         };
         views = {
