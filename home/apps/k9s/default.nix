@@ -54,7 +54,7 @@ in {
     };
 
     skins = {
-      skin = {
+      gruvbox = {
         k9s = {
           body = {
             fgColor = foreground;
