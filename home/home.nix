@@ -329,6 +329,7 @@ in {
         onlyoffice-bin
         obs-studio
         flowblade
+        signal-desktop
 
         # utils
         gnumake
