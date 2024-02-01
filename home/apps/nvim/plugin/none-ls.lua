@@ -8,7 +8,6 @@ null_ls.setup({
     null_ls.builtins.code_actions.statix,
     -- diagnostics
     null_ls.builtins.diagnostics.deadnix,
-    null_ls.builtins.diagnostics.hadolint,
     null_ls.builtins.diagnostics.luacheck,
     null_ls.builtins.diagnostics.revive,
     null_ls.builtins.diagnostics.ruff,
