@@ -56,7 +56,6 @@
       "k" = ''kubectl'';
       "kn" = ''kubens'';
       "kc" = ''kubectx'';
-      "kv" = ''k9s --headless --crumbsless'';
       "ks" = ''stern'';
       "tree" = ''tree -C'';
       "ip" = ''ip -c'';

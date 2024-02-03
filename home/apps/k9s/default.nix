@@ -2,7 +2,7 @@
 
 let
   foreground = "#d4be98";
-  background = "#32302f";
+  background = "#282828";
   current_line = "#d4be98";
   selection = "#928374";
   comment = "#665c54";
@@ -18,15 +18,17 @@ in {
 
     settings = {
       k9s = {
+        ui = {
+          headless = true;
+          enableMouse = false;
+          crumbsless = true;
+          logoless = true;
+          noIcons = false;
+        };
+        readOnly = false;
         refreshRate = 2;
         maxConnRetry = 5;
-        enableMouse = false;
-        headless = false;
-        logoless = false;
-        crumbsless = false;
-        readOnly = false;
-        noExitOnCtrlC = false;
-        noIcons = false;
+        noExitOnCtrlC = true;
         skipLatestRevCheck = false;
         logger = {
           tail = 100;
@@ -68,6 +70,7 @@ in {
           };
           info = {
             fgColor = magenta;
+            bgColor = background;
             sectionColor = foreground;
           };
           dialog = {
@@ -83,10 +86,12 @@ in {
           frame = {
             border = {
               fgColor = selection;
+              bgColor = background;
               focusColor = comment;
             };
             menu = {
               fgColor = foreground;
+              bgColor = background;
               keyColor = magenta;
               numKeyColor = magenta;
             };
@@ -96,6 +101,7 @@ in {
               activeColor = green;
             };
             status = {
+              bgColor = background;
               newColor = cyan;
               modifyColor = blue;
               addColor = green;
@@ -112,41 +118,41 @@ in {
               filterColor = magenta;
             };
           };
-        };
-        views = {
-          charts = {
-            bgColor = background;
-            defaultDialColors = [ blue red ];
-            defaultChartColors = [ blue red ];
-          };
-          table = {
-            fgColor = foreground;
-            bgColor = background;
-            markColor = magenta;
-            header = {
-              fgColor = magenta;
-              bgColor = background;
-              sorterColor = selection;
+          views = {
+            charts = {
+              defaultDialColors = [ blue red ];
+              defaultChartColors = [ blue red ];
             };
-          };
-          xray = {
-            fgColor = foreground;
-            bgColor = background;
-            cursorColor = comment;
-            graphicColor = orange;
-            showIcons = true;
-          };
-          yaml = {
-            keyColor = blue;
-            colonColor = orange;
-            valueColor = foreground;
-          };
-          logs = {
-            fgColor = foreground;
-            bgColor = background;
-            indicator = {
-              fgColor = magenta;
+            table = {
+              fgColor = foreground;
               bgColor = background;
+              markColor = magenta;
+              header = {
+                fgColor = magenta;
+                bgColor = background;
+                sorterColor = selection;
+              };
+            };
+            xray = {
+              fgColor = foreground;
+              bgColor = background;
+              cursorColor = comment;
+              graphicColor = orange;
+              showIcons = true;
+            };
+            yaml = {
+              bgColor = background;
+              keyColor = blue;
+              colonColor = orange;
+              valueColor = foreground;
+            };
+            logs = {
+              fgColor = foreground;
+              bgColor = background;
+              indicator = {
+                fgColor = magenta;
+                bgColor = background;
+              };
             };
           };
         };
