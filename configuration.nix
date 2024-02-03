@@ -127,8 +127,10 @@
       lightdm = { enable = true; };
     };
 
-    layout = "us";
-    xkbVariant = "alt-intl";
+    xkb = {
+      layout = "us";
+      variant = "alt-intl";
+    };
   };
 
   users = {
