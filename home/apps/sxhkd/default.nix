@@ -27,6 +27,8 @@
 
       # focus on the given desktop
       "${mod} + {1-9,0}" = "${pkgs.bspwm}/bin/bspc desktop -f '^{1-9,10}'";
+      # focus on the last desktop
+      "${mod} + Tab" = "${pkgs.bspwm}/bin/bspc desktop -f last";
 
       # move to given desktop (and follow)
       "${mod} + shift + {1-9,0}" = "${pkgs.bspwm}/bin/bspc node -d '^{1-9,10}' --follow";
