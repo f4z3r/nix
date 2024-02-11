@@ -45,7 +45,7 @@
         font-0 = monospace;2
 
         modules-left = xworkspaces backlight alsa
-        modules-right = cpu memory wlan vpn bat date
+        modules-right = cpu memory ssd wlan vpn bat date
 
         cursor-click = pointer
         cursor-scroll = ns-resize
@@ -107,6 +107,14 @@
         type = custom/script
         exec = ${pkgs.luajit}/bin/luajit ~/.local/bin/vol.lua
         interval = 3
+
+        [module/ssd]
+        type = internal/fs
+        interval = 30
+        fixed-values = true
+        warn-percentage = 85
+        label-mounted = %{F#d8a657}SSD%{F-} %percentage_used%%
+        label-warn = %{F#ea6962}SSD%{F-} %percentage_used%%
 
         [module/memory]
         type = internal/memory
