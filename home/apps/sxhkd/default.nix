@@ -4,25 +4,26 @@
   services.sxhkd = {
     enable = true;
     keybindings = let super = "super"; mod = "alt"; alt = "control"; in {
+      # using alt + control + o as leader key
       # rofi launcher
       "${mod} + space" = "${pkgs.rofi}/bin/rofi -combi-modi window,drun -show combi";
-      "${mod} + ${alt} + o" = ''${pkgs.rofi-rbw}/bin/rofi-rbw -a copy -t password'';
+      "${mod} + ${alt} + o ; p" = ''${pkgs.rofi-rbw}/bin/rofi-rbw -a copy -t password'';
 
       # launch terminal
       "${mod} + Return" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.tmux}/bin/tmux";
 
       # quit / powermenu
-      "${super} + q" = "${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
-      "${super} + shift + q" = "${pkgs.xsecurelock}/bin/xsecurelock";
+      "${mod} + ${alt} + o ; q" = "${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
+      "${mod} + ${alt} + o ; l" = "${pkgs.xsecurelock}/bin/xsecurelock";
 
       # fullscreen
-      "${super} + f" = "${pkgs.bspwm}/bin/bspc node -t '~fullscreen'";
+      "${mod} + ${alt} + f" = "${pkgs.bspwm}/bin/bspc node -t '~fullscreen'";
 
       # close / kill client
-      "${super} + {_,shift + }w" = "${pkgs.bspwm}/bin/bspc node -{c,k}";
+      "${mod} + ${alt} + o ; {_,shift + }w" = "${pkgs.bspwm}/bin/bspc node -{c,k}";
 
       # move between clients/swap clients
-      "${mod} + {_,shift + }{h,j,k,l}" = "${pkgs.bspwm}/bin/bspc node -{f,s} {west,south,north,east}";
+      "${mod} + {_,shift + }{h,n,k,l}" = "${pkgs.bspwm}/bin/bspc node -{f,s} {west,south,north,east}";
 
       # focus on the given desktop
       "${mod} + {1-9,0}" = "${pkgs.bspwm}/bin/bspc desktop -f '^{1-9,10}'";
@@ -31,14 +32,17 @@
       "${mod} + shift + {1-9,0}" = "${pkgs.bspwm}/bin/bspc node -d '^{1-9,10}' --follow";
 
       # move to other monitor (and follow)
-      "${super} + m" = "${pkgs.bspwm}/bin/bspc node -m last --follow";
+      "${mod} + ${alt} + o ; m" = "${pkgs.bspwm}/bin/bspc node -m last --follow";
 
       # resize
-      "${super} + r : {h,j,k,l}" = ''
-        STEP=20; SELECTION={1,2,3,4}; \
-        ${pkgs.bspwm}/bin/bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
-        ${pkgs.bspwm}/bin/bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
-      '';
+      "${mod} + ${alt} + r + {Left,Down,Up,Right}" = ''bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}'';
+      "${mod} + ${alt} + r + shift + {Left,Down,Up,Right}" = ''bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}'';
+
+      # preselect new window
+      "${super} + o ; {h,n,k,l}" = "${pkgs.bspwm}/bin/bspc node --presel-dir '~{west,south,north,east}'";
+      "${super} + o ; {Left,Down,Up,Right}" = "${pkgs.bspwm}/bin/bspc node --presel-dir '~{west,south,north,east}'";
+      "${super} + o ; space" = "${pkgs.bspwm}/bin/bspc node -p cancel";
+
 
       # screenshots
       "Print" = "${pkgs.flameshot}/bin/flameshot gui";
