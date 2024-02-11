@@ -68,10 +68,10 @@
       "${super} + Left" = "${pkgs.mpc-cli}/bin/mpc prev";
 
       # launchers
-      "${mod} + ${alt} + w" = ''${pkgs.luajit}/bin/luajit /home/${username}/.config/sxhkd/scripts/fuzzy-bookmarks.lua'';
-      "${mod} + ${alt} + p" = "${pkgs.uair}/bin/uairctl toggle";
-      "${mod} + ${alt} + m" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.ncmpcpp}/bin/ncmpcpp";
-      "${super} + i" = "/home/${username}/.local/bin/songinfo";
+      "${mod} + ${alt} + l ; w" = ''${pkgs.luajit}/bin/luajit /home/${username}/.config/sxhkd/scripts/fuzzy-bookmarks.lua'';
+      "${mod} + ${alt} + l ; p" = "${pkgs.uair}/bin/uairctl toggle";
+      "${mod} + ${alt} + l ; m" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.ncmpcpp}/bin/ncmpcpp";
+      "${mod} + ${alt} + l ; i" = "/home/${username}/.local/bin/songinfo";
     };
   };
 
