@@ -60,7 +60,7 @@ in {
       bind-key C-z resize-pane -Z
 
       # popup
-      bind-key -n C-f if-shell -F '#{==:#{=5:session_name},popup}' {
+      bind-key -n M-f if-shell -F '#{==:#{=5:session_name},popup}' {
         detach-client
       } {
         display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E 'tmux attach-session -t popup || tmux new-session -s popup'

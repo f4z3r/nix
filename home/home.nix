@@ -373,7 +373,6 @@ in {
         rofi-power-menu
         rofi-rbw
         wmctrl
-        bsp-layout
         alsa-utils
         mpc-cli
         uair
