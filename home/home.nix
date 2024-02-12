@@ -207,7 +207,7 @@ in {
     ./apps/rofi/default.nix
     (import ./apps/git/default.nix { inherit pkgs theme; })
     (import ./apps/wezterm.nix { inherit pkgs theme font_size; })
-    (import ./apps/tmux.nix { inherit pkgs theme; })
+    (import ./apps/tmux/default.nix { inherit pkgs theme; })
     (import ./apps/zsh/default.nix { inherit lib pkgs theme lua-packages; })
     ./apps/starship.nix
     ./apps/gpg.nix

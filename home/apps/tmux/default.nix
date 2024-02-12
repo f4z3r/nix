@@ -4,7 +4,8 @@ let
   bg_colour = if theme == "dark" then "colour236" else "colour180";
   focous_colour = "colour214";
 
-in {
+in
+{
   programs.tmux = {
     enable = true;
     clock24 = true;
@@ -63,7 +64,7 @@ in {
       bind-key -n M-f if-shell -F '#{==:#{=5:session_name},popup}' {
         detach-client
       } {
-        display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E 'tmux attach-session -t popup || tmux new-session -s popup'
+        run-shell -b ~/.local/bin/tmux-popup.sh
       }
 
       # vim like pane movement
@@ -101,5 +102,11 @@ in {
       bind-key -T copy-mode-vi h send-keys -X cursor-left
       bind-key -T copy-mode-vi l send-keys -X cursor-right
     '';
+  };
+  home.file = {
+    ".local/bin/tmux-popup.sh" = {
+      source = ./scripts/tmux-popup.sh;
+      executable = true;
+    };
   };
 }
