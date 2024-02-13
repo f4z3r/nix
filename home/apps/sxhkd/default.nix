@@ -15,6 +15,7 @@
       # quit / powermenu
       "${mod} + ${alt} + o ; q" = "${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
       "${mod} + ${alt} + o ; l" = "${pkgs.xsecurelock}/bin/xsecurelock";
+      "${mod} + ${alt} + o ; s" = "${pkgs.systemd}/bin/systemctl suspend";
 
       # fullscreen
       "${mod} + ${alt} + f" = "${pkgs.bspwm}/bin/bspc node -t '~fullscreen'";
