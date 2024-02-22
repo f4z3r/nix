@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   programs.zsh = {
     enable = true;
     syntaxHighlighting = {
@@ -55,9 +54,7 @@
         "cursor-matchingbracket" = "fg=green,bold";
         "bracket-error" = "bg=black,bold";
       };
-      patterns = {
-        "sudo rm *" = "fg=white,bold,bg=red";
-      };
+      patterns = { "sudo rm *" = "fg=white,bold,bg=red"; };
     };
   };
 }
