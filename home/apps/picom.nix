@@ -3,7 +3,7 @@
 {
   services.picom = {
     enable = true;
-    package = pkgs.picom-allusive;
+    package = pkgs.picom;
     backend = "glx";
     vSync = true;
 
