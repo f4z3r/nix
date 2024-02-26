@@ -24,9 +24,7 @@
       };
       efi = { canTouchEfiVariables = true; };
     };
-    tmp = {
-      cleanOnBoot = true;
-    };
+    tmp = { cleanOnBoot = true; };
   };
 
   hardware = {
@@ -150,7 +148,8 @@
   programs = {
     xss-lock = {
       enable = true;
-      lockerCommand = "${pkgs.xsecurelock}/bin/xsecurelock";
+      lockerCommand =
+        "XSECURELOCK_SHOW_USERNAME=0 XSECURELOCK_SHOW_HOSTNAME=0 XSECURELOCK_FONT='FiraCode Nerd Font Mono Med' ${pkgs.xsecurelock}/bin/xsecurelock";
     };
 
     gnupg = {
