@@ -135,6 +135,7 @@ in
         }
 
         # syntax highlighting
+        vim-just
         rainbow-delimiters-nvim
         nvim-treesitter-textobjects
         {
