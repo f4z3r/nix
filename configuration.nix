@@ -148,8 +148,7 @@
   programs = {
     xss-lock = {
       enable = true;
-      lockerCommand =
-        "XSECURELOCK_SHOW_USERNAME=0 XSECURELOCK_SHOW_HOSTNAME=0 XSECURELOCK_FONT='FiraCode Nerd Font Mono Med' ${pkgs.xsecurelock}/bin/xsecurelock";
+      lockerCommand = "${pkgs.xsecurelock}/bin/xsecurelock";
     };
 
     gnupg = {
@@ -163,15 +162,25 @@
     thunar.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    vim
-    git
-    man-pages
-    brightnessctl
-    xdotool
-    xsecurelock
-    libnotify
-  ];
+  environment = {
+    sessionVariables = {
+      "XSECURELOCK_SHOW_USERNAME" = "0";
+      "XSECURELOCK_SHOW_HOSTNAME" = "0";
+      "XSECURELOCK_SHOW_KEYBOARD_LAYOUT" = "0";
+      "XSECURELOCK_AUTH_FOREGROUND_COLOR" = "Medium Orchid";
+      "XSECURELOCK_FONT" = "FiraCode Nerd Font Mono Med";
+    };
+
+    systemPackages = with pkgs; [
+      vim
+      git
+      man-pages
+      brightnessctl
+      xdotool
+      xsecurelock
+      libnotify
+    ];
+  };
 
   services = {
     blueman.enable = true;
