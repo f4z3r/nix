@@ -1,5 +1,5 @@
-{ pkgs, lib, pkgs-custom, hostname, username, theme ? "dark", polybar_dpi, font_size
-, scratch_res, main_monitor, monitor_prefix, ... }:
+{ pkgs, lib, pkgs-custom, hostname, username, theme ? "dark", polybar_dpi
+, font_size, scratch_res, main_monitor, monitor_prefix, ... }:
 
 assert lib.asserts.assertOneOf "theme" theme [ "dark" "light" ];
 
@@ -7,7 +7,11 @@ let
   custom-lua-packages = luaPkgs:
     with luaPkgs;
     let
-      # generated with `luarocks-nix lua-path`
+      # to generate new packages:
+      # ```bash
+      # nix-shell -p luajitPackages.luarocks-nix
+      # luarocks nix <package>
+      # ```
       lanes = buildLuarocksPackage {
         pname = "lanes";
         version = "3.16.0-0";
@@ -166,7 +170,38 @@ let
           license.fullName = "MIT/X11";
         };
       };
-    in [ lanes lua-path lua-fun lua-log date ansicolors ];
+      luastatic = buildLuarocksPackage {
+        pname = "luastatic";
+        version = "0.0.12-1";
+        knownRockspec = (pkgs.fetchurl {
+          url = "mirror://luarocks/luastatic-0.0.12-1.rockspec";
+          sha256 = "0mai46i5ddx6f8j71y3ibr1whnhqcanvwsg5xw6vkywf1ki6mp4c";
+        }).outPath;
+        src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
+          {
+            "url": "https://github.com/ers35/luastatic.git",
+            "rev": "a1bb249dbbd1263ca63696455fdf7c613f417f32",
+            "date": "2020-06-13T23:30:34-07:00",
+            "path": "/nix/store/ff6jqlqpk21x28dznw2iv23aaspw7q5g-luastatic",
+            "sha256": "0frvjgdcq8vmsjmn5znba2zj398vbqqqkaks277r2xcyw4n8wnrj",
+            "hash": "sha256-MluOLOGedZHPEXqqiTFeG6Uhv1DL/mKr1HUjzNqTOzs=",
+            "fetchLFS": false,
+            "fetchSubmodules": true,
+            "deepClone": false,
+            "leaveDotGit": false
+          }
+        '') [ "date" "path" "sha256" ]);
+
+        disabled = luaOlder "5.1";
+        propagatedBuildInputs = [ lua ];
+
+        meta = {
+          homepage = "https://www.github.com/ers35/luastatic";
+          description = "Build a standalone executable from a Lua program.";
+          license.fullName = "CC0";
+        };
+      };
+    in [ lanes lua-path lua-fun lua-log date ansicolors luastatic ];
   lua-packages = with pkgs.luajitPackages;
     [
       http
@@ -313,13 +348,7 @@ in {
     stateVersion = "22.11";
     packages = with pkgs;
       let
-        python-packages = ps:
-          with ps; [
-            debugpy
-            pip
-            virtualenv
-            setuptools
-          ];
+        python-packages = ps: with ps; [ debugpy pip virtualenv setuptools ];
         enhanced-python = pkgs.python311.withPackages python-packages;
       in [
         # GUI programs
