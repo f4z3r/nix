@@ -361,6 +361,7 @@ in {
         signal-desktop
 
         # utils
+        just
         gnumake
         gcc
         openssl
