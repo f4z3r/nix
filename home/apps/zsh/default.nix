@@ -24,15 +24,13 @@
       }
     ];
     defaultKeymap = "viins";
-    dirHashes = {
-      "docs" = "$HOME/Documents";
-      "down" = "$HOME/Downloads";
-    };
     initExtraFirst = builtins.readFile ./config.zsh;
     initExtra = ''
       eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
       eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
       eval "$(${pkgs.starship}/bin/starship init zsh)"
+      path=("$HOME/.local/bin/" $path)
+      export PATH
     '';
     shellGlobalAliases = {
       "sys" = ''systemctl'';
