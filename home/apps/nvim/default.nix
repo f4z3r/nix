@@ -240,7 +240,11 @@ in
         neotest-rust
 
         # completion
-        luasnip
+        {
+          type = "lua";
+          plugin = luasnip;
+          config = builtins.readFile ./plugin/luasnip.lua;
+        }
         cmp-nvim-lsp-signature-help
         cmp_luasnip
         cmp-path
