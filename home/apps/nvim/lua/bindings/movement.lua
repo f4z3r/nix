@@ -34,27 +34,27 @@ end
 
 local mappings = {
   {
-    mode = { 'n', 'v' },
+    mode = { 'n', 'x' },
     suffix = 'n',
     command = 'j',
   },
   {
-    mode = { 'n', 'v' },
+    mode = { 'n', 'x' },
     suffix = 'N',
     command = 'J',
   },
   {
-    mode = { 'n', 'v' },
+    mode = { 'n', 'x' },
     suffix = '<c-n>',
     command = '10j',
   },
   {
-    mode = { 'n', 'v' },
+    mode = { 'n', 'x' },
     suffix = '<c-k>',
     command = '10k',
   },
   {
-    mode = { 'n', 'v' },
+    mode = { 'n', 'x' },
     suffix = '<c-h>',
     command = 'zH_',
   },
@@ -64,7 +64,7 @@ local mappings = {
     command = '_',
   },
   {
-    mode = { 'n', 'v', 'o' },
+    mode = { 'n', 'x', 'o' },
     suffix = '<c-l>',
     command = '$',
   },
