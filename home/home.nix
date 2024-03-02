@@ -361,6 +361,7 @@ in {
         signal-desktop
 
         # utils
+        lua-language-server
         just
         gnumake
         gcc
