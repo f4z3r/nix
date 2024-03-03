@@ -116,7 +116,6 @@ in
         rustfmt
         rust-analyzer
         clippy
-        lua-language-server
         stylua
         rnix-lsp
         yamlfmt
@@ -197,6 +196,11 @@ in
           type = "lua";
           plugin = none-ls-nvim;
           config = builtins.readFile ./plugin/none-ls.lua;
+        }
+        {
+          type = "lua";
+          plugin = refactoring-nvim;
+          config = ''require('refactoring').setup()'';
         }
         {
           type = "lua";

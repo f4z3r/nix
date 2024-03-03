@@ -214,8 +214,10 @@ let
       compat53
       luafilesystem
 
-      # tooling
-      luacheck
+      # needed for publishing rocks
+      luarocks-nix
+      cjson
+
       # dependencies required elsewhere
       luasec
       luasocket
@@ -362,6 +364,8 @@ in {
 
         # utils
         lua-language-server
+        selene
+        zip
         just
         gnumake
         gcc

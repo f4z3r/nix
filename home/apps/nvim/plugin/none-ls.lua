@@ -6,9 +6,10 @@ null_ls.setup({
     null_ls.builtins.code_actions.shellcheck,
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.code_actions.statix,
+    null_ls.builtins.code_actions.refactoring,
     -- diagnostics
     null_ls.builtins.diagnostics.deadnix,
-    null_ls.builtins.diagnostics.luacheck,
+    null_ls.builtins.diagnostics.selene,
     null_ls.builtins.diagnostics.revive,
     null_ls.builtins.diagnostics.ruff,
     null_ls.builtins.diagnostics.shellcheck,
@@ -16,6 +17,8 @@ null_ls.setup({
     null_ls.builtins.diagnostics.zsh,
     null_ls.builtins.diagnostics.terraform_validate,
     null_ls.builtins.diagnostics.tfsec,
+    null_ls.builtins.diagnostics.todo_comments,
+    null_ls.builtins.diagnostics.trail_space,
     -- formatting
     null_ls.builtins.formatting.gofmt,
     null_ls.builtins.formatting.stylua,
