@@ -128,19 +128,19 @@ let
       };
       luatext = buildLuarocksPackage {
         pname = "luatext";
-        version = "0.1.2-0";
+        version = "0.1.3-0";
         knownRockspec = (pkgs.fetchurl {
-          url = "mirror://luarocks/luatext-0.1.2-0.rockspec";
-          sha256 = "0c5snl4dv4l4mbbmd6pwzpbvlmza3l480hvadpg1mjpd6gg4bpz5";
+          url = "mirror://luarocks/luatext-0.1.3-0.rockspec";
+          sha256 = "04gadxf6skam2pbx0l4xajxpm4gpds1c3gcd1fm3n1jmspbxkg7w";
         }).outPath;
         src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
           {
             "url": "https://github.com/f4z3r/luatext.git",
-            "rev": "eb9dba6469adf6d0296e85e29cbc37c9a24bdd42",
-            "date": "2024-03-03T18:18:31+01:00",
-            "path": "/nix/store/mwzvmfywidk0r587xfq78yll5271s3cf-luatext",
-            "sha256": "07wm4xga3l6yp4f1pjws6damzmw2wnfmr28kvwa6sp3kxw3xa4q5",
-            "hash": "sha256-BRPVB+9zXG0U3xOJXJ3lgtdfVTOayxscud7QoV4nlR8=",
+            "rev": "ff6912a46907c277558a6da32abeb0dcfe1390b6",
+            "date": "2024-03-03T19:23:59+01:00",
+            "path": "/nix/store/mq0rvw5g0vj4ckv07fk4nyha6lh6fr5v-luatext",
+            "sha256": "1q5acxkl56c9qf3hl1fysmwhh5zkf7cwz0gwhpiql9mxx8mqvv2z",
+            "hash": "sha256-X+yNK+q9JorjhfyBz9lx8xcIedXeBQqHw4mZQmdnquA=",
             "fetchLFS": false,
             "fetchSubmodules": true,
             "deepClone": false,
@@ -149,7 +149,7 @@ let
         '') [ "date" "path" "sha256" ]);
 
         disabled = luaOlder "5.1";
-        propagatedBuildInputs = [ compat53 lua ];
+        propagatedBuildInputs = [ lua ];
 
         meta = {
           homepage = "https://github.com/f4z3r/luatext/tree/main";
