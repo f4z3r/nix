@@ -139,6 +139,11 @@ in
         nvim-treesitter-textobjects
         {
           type = "lua";
+          plugin = nvim-treesitter-context;
+          config = builtins.readFile ./plugin/treesitter-context.lua;
+        }
+        {
+          type = "lua";
           plugin = nvim-treesitter.withAllGrammars;
           config = builtins.readFile ./plugin/treesitter.lua;
         }

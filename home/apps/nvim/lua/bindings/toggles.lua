@@ -55,6 +55,12 @@ local mappings = {
   },
   {
     mode = 'n',
+    suffix = 'C',
+    command = '<cmd>TSContextToggle<cr>',
+    desc = 'Toggle context',
+  },
+  {
+    mode = 'n',
     suffix = 's',
     command = '<cmd>SymbolsOutline<cr>',
     desc = 'Toggle document symbol outline',

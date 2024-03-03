@@ -1,6 +1,7 @@
 require('gruvbox-material').setup()
 
 vim.api.nvim_set_hl(0, 'CursorLineNr', { ctermfg = 208, bold = true, fg = "#e78a4e" })
+vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { link = "Visual", nocombine = true })
 
 local mapping = {
   ['@markup.heading.1'] = { link = "Orange", default = true },
