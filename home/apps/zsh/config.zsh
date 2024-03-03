@@ -79,6 +79,10 @@ function zshaddhistory() {
     return 1
   elif [[ "${1:l}" = *"token"* ]]; then
     return 1
+  elif [[ "${1:l}" = *"api-key"* ]]; then
+    return 1
+  elif [[ "${1:l}" = *"api_key"* ]]; then
+    return 1
   fi
 }
 
