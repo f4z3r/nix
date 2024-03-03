@@ -9,7 +9,6 @@ let
     let
       # to generate new packages:
       # ```bash
-      # nix-shell -p luajitPackages.luarocks-nix
       # luarocks nix <package>
       # ```
       lanes = buildLuarocksPackage {
@@ -127,26 +126,35 @@ let
           license.fullName = "MIT";
         };
       };
-      ansicolors = buildLuarocksPackage {
-        pname = "ansicolors";
-        version = "1.0.2-3";
+      luatext = buildLuarocksPackage {
+        pname = "luatext";
+        version = "0.1.2-0";
         knownRockspec = (pkgs.fetchurl {
-          url = "mirror://luarocks/ansicolors-1.0.2-3.rockspec";
-          sha256 = "19y962xdx5ldl3596ywdl7n825dffz9al6j6rx6pbgmhb7pi8s5v";
+          url = "mirror://luarocks/luatext-0.1.2-0.rockspec";
+          sha256 = "0c5snl4dv4l4mbbmd6pwzpbvlmza3l480hvadpg1mjpd6gg4bpz5";
         }).outPath;
-        src = pkgs.fetchurl {
-          url =
-            "https://github.com/kikito/ansicolors.lua/archive/v1.0.2.tar.gz";
-          sha256 = "0r4xi57njldmar9pn77l0vr5701rpmilrm51spv45lz0q9js8xps";
-        };
+        src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
+          {
+            "url": "https://github.com/f4z3r/luatext.git",
+            "rev": "eb9dba6469adf6d0296e85e29cbc37c9a24bdd42",
+            "date": "2024-03-03T18:18:31+01:00",
+            "path": "/nix/store/mwzvmfywidk0r587xfq78yll5271s3cf-luatext",
+            "sha256": "07wm4xga3l6yp4f1pjws6damzmw2wnfmr28kvwa6sp3kxw3xa4q5",
+            "hash": "sha256-BRPVB+9zXG0U3xOJXJ3lgtdfVTOayxscud7QoV4nlR8=",
+            "fetchLFS": false,
+            "fetchSubmodules": true,
+            "deepClone": false,
+            "leaveDotGit": false
+          }
+        '') [ "date" "path" "sha256" ]);
 
         disabled = luaOlder "5.1";
-        propagatedBuildInputs = [ lua ];
+        propagatedBuildInputs = [ compat53 lua ];
 
         meta = {
-          homepage = "https://github.com/kikito/ansicolors.lua";
-          description = "Library for color Manipulation.";
-          license.fullName = "MIT <http://opensource.org/licenses/MIT>";
+          homepage = "https://github.com/f4z3r/luatext/tree/main";
+          description = "A small library to print colored text";
+          license.fullName = "MIT";
         };
       };
       lua-log = buildLuarocksPackage {
@@ -201,7 +209,7 @@ let
           license.fullName = "CC0";
         };
       };
-    in [ lanes lua-path lua-fun lua-log date ansicolors luastatic ];
+    in [ lanes lua-path lua-fun lua-log date luatext luastatic ];
   lua-packages = with pkgs.luajitPackages;
     [
       http
