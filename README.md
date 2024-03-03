@@ -4,10 +4,6 @@
 
 ![](./assets/base.png)
 
-
-![](./assets/apps.png)
-
-
 Supports quake terminals:
 
 ![](./assets/quake.png)
