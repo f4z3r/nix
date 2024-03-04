@@ -221,6 +221,7 @@ let
       busted
       compat53
       luafilesystem
+      luautf8
 
       # needed for publishing rocks
       luarocks-nix
