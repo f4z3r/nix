@@ -24,14 +24,20 @@ local mappings = {
   {
     mode = 'n',
     suffix = 't',
-    command = '<cmd>TroubleToggle document_diagnostics<cr>',
+    command = function() require("trouble").toggle() end,
     desc = 'Toggle document diagnostics',
 
   },
   {
     mode = 'n',
     suffix = 'd',
-    command = '<cmd>TroubleToggle workspace_diagnostics<cr>',
+    command = function() require("trouble").toggle("document_diagnostics") end,
+    desc = 'Toggle workspace diagnostics',
+  },
+  {
+    mode = 'n',
+    suffix = 'D',
+    command = function() require("trouble").toggle("workspace_diagnostics") end,
     desc = 'Toggle workspace diagnostics',
   },
   {
@@ -79,7 +85,7 @@ local mappings = {
   },
   {
     mode = 'n',
-    suffix = 'D',
+    suffix = 'p',
     command = function() require('dapui').toggle() end,
     desc = 'Toggle DAP UI',
   },
