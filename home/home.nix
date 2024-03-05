@@ -401,6 +401,7 @@ in {
         xsel
         miniserve
         hoard
+        vhs
         pandoc
         slides
 
