@@ -359,7 +359,15 @@ in {
     stateVersion = "22.11";
     packages = with pkgs;
       let
-        python-packages = ps: with ps; [ debugpy pip virtualenv setuptools ];
+        python-packages = ps: with ps; [
+        debugpy
+          pip
+          virtualenv
+          setuptools
+          python-lsp-server
+          pylsp-rope
+          pylsp-mypy
+        ];
         enhanced-python = pkgs.python311.withPackages python-packages;
       in [
         # GUI programs
@@ -440,9 +448,6 @@ in {
         kubectx
         kubernetes-helm
         terraform
-
-        # python language server
-        nodePackages.pyright
       ] ++ lua-packages;
 
     file = {

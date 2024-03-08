@@ -110,6 +110,7 @@ in
         gopls
         revive
         helm-ls
+        ruff-lsp
         nodePackages.bash-language-server
         universal-ctags
         marksman
@@ -249,6 +250,7 @@ in
         neotest-rust
 
         # completion
+        friendly-snippets
         {
           type = "lua";
           plugin = luasnip;

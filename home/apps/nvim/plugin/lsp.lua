@@ -38,7 +38,18 @@ lspconfig.lua_ls.setup({
 lspconfig.rnix.setup({})
 
 -- Python
-lspconfig.pyright.setup({})
+lspconfig.pylsp.setup({
+  settings = {
+    pylsp = {
+      plugins = {
+        rope_autoimport = {
+          enabled = true;
+        }
+      }
+    }
+  }
+})
+lspconfig.ruff_lsp.setup({})
 
 -- Go
 lspconfig.gopls.setup({})
