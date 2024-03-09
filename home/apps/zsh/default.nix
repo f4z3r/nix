@@ -1,4 +1,4 @@
-{ lib, pkgs, theme, lua-packages, ... }:
+{ lib, pkgs, theme, ... }:
 
 {
   programs.zsh = {
@@ -71,8 +71,6 @@
       NIX_THEME = "${theme}";
       MANROFFOPT = "-c";
       NIXPKGS_ALLOW_UNFREE = 1;
-      LUA_CPATH = "${lib.concatStringsSep ";" (map pkgs.luajitPackages.getLuaCPath lua-packages)}";
-      LUA_PATH = "./?.lua;./?/init.lua;${lib.concatStringsSep ";" (map pkgs.luajitPackages.getLuaPath lua-packages)}";
     };
   };
 }
