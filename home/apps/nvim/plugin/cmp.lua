@@ -72,7 +72,7 @@ cmp.setup.cmdline(':', {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local servers = {
   'lua_ls',
-  'rnix',
+  'nil_ls',
   'pylsp',
   'marksman',
   'gopls',

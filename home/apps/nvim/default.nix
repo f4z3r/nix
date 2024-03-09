@@ -118,8 +118,8 @@ in
         rust-analyzer
         clippy
         stylua
-        rnix-lsp
         yamlfmt
+        nil
         fzf
         terraform-ls
         tfsec

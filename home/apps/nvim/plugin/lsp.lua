@@ -35,7 +35,7 @@ lspconfig.lua_ls.setup({
 })
 
 -- Nix
-lspconfig.rnix.setup({})
+lspconfig.nil_ls.setup({})
 
 -- Python
 lspconfig.pylsp.setup({
