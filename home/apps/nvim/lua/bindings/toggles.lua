@@ -25,7 +25,7 @@ local mappings = {
     mode = 'n',
     suffix = 't',
     command = function() require("trouble").toggle() end,
-    desc = 'Toggle document diagnostics',
+    desc = 'Toggle trouble list',
 
   },
   {
