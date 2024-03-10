@@ -187,19 +187,19 @@ let
       };
       nd = buildLuarocksPackage {
         pname = "nd";
-        version = "0.1.0-3";
+        version = "0.1.0-14";
         knownRockspec = (pkgs.fetchurl {
-          url = "mirror://luarocks/nd-0.1.0-3.rockspec";
-          sha256 = "0sm739yqj80lpcn3k33pwlmizazx8wzjjc8s9lrqgipc9ym9ldz8";
+          url = "mirror://luarocks/nd-0.1.0-14.rockspec";
+          sha256 = "0k5m6iqsz9s49fifgzrghrgdsk4103glxbj0c0fmaja52pi9zbyp";
         }).outPath;
         src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
           {
             "url": "https://github.com/f4z3r/nd.git",
-            "rev": "023d4a601bf262c7098253f4742206299a88dbcc",
-            "date": "2024-03-10T15:41:12+01:00",
-            "path": "/nix/store/hj5c6gxs6q9z4b2dn8njih4vy38xgvrq-nd",
-            "sha256": "1jb33qv8g5k2iaad7j6h6alc3zlivqjzd1vlp5ssan297f9ap4s0",
-            "hash": "sha256-QJOrkjtJWKV1uXSH9iXekf7BqDLQyNOUimKWhzYeY8k=",
+            "rev": "f2bafa24d0aa99ff1985f3c1f357a0443604f8d3",
+            "date": "2024-03-10T20:19:37+01:00",
+            "path": "/nix/store/lf8906j561nymqi6licbamwwp7sxx14d-nd",
+            "sha256": "0a556l3jfj18vzz0hr3kapbf1lm34fhi37xf9s48rknz883xbj1a",
+            "hash": "sha256-KsjVB0LfzoyITq6fEaEjo9Lg1lVzZAj+3yhIJwc1pSg=",
             "fetchLFS": false,
             "fetchSubmodules": true,
             "deepClone": false,

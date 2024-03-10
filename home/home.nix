@@ -80,6 +80,14 @@ assert lib.asserts.assertOneOf "theme" theme [ "dark" "light" ];
         size = "64x64";
       };
       settings = {
+        global = {
+          follow = "keyboard";
+        };
+
+        fullscreen = {
+          fullscreen = "show";
+        };
+
         urgency_low = {
           frame_color = "#1D918B";
           foreground = "#FFEE79";
