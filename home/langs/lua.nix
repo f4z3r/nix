@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 let
-  custom-lua-packages = luaPkgs:
+  lua-packages = luaPkgs:
     with luaPkgs;
     let
       # to generate new packages:
@@ -154,42 +154,21 @@ let
           license.fullName = "MIT";
         };
       };
-      lua-log = buildLuarocksPackage {
-        pname = "lua-log";
-        version = "0.1.6-1";
+      utf8 = buildLuarocksPackage {
+        pname = "utf8";
+        version = "1.2-0";
         knownRockspec = (pkgs.fetchurl {
-          url = "mirror://luarocks/lua-log-0.1.6-1.rockspec";
-          sha256 = "19k2hq7w1sizdar3470jwr016gak8a0x53n3c6mpnpbqz6wjlcsc";
-        }).outPath;
-        src = pkgs.fetchzip {
-          url = "https://github.com/moteus/lua-log/archive/v0.1.6.zip";
-          sha256 = "0j24mdpsa5fzzibx1734dcg506qzz5c0mq217bxij1ciivkyy9qm";
-        };
-
-        disabled = (luaOlder "5.1") || (luaAtLeast "5.4");
-        propagatedBuildInputs = [ date lua ];
-
-        meta = {
-          homepage = "https://github.com/moteus/lua-log";
-          description = "Asynchronous logging library";
-          license.fullName = "MIT/X11";
-        };
-      };
-      luastatic = buildLuarocksPackage {
-        pname = "luastatic";
-        version = "0.0.12-1";
-        knownRockspec = (pkgs.fetchurl {
-          url = "mirror://luarocks/luastatic-0.0.12-1.rockspec";
-          sha256 = "0mai46i5ddx6f8j71y3ibr1whnhqcanvwsg5xw6vkywf1ki6mp4c";
+          url = "mirror://luarocks/utf8-1.2-0.rockspec";
+          sha256 = "10l9w1yh00m2ixicg3iwfz0zliqbbyvhw82q4xw882p89hx0r21m";
         }).outPath;
         src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
           {
-            "url": "https://github.com/ers35/luastatic.git",
-            "rev": "a1bb249dbbd1263ca63696455fdf7c613f417f32",
-            "date": "2020-06-13T23:30:34-07:00",
-            "path": "/nix/store/ff6jqlqpk21x28dznw2iv23aaspw7q5g-luastatic",
-            "sha256": "0frvjgdcq8vmsjmn5znba2zj398vbqqqkaks277r2xcyw4n8wnrj",
-            "hash": "sha256-MluOLOGedZHPEXqqiTFeG6Uhv1DL/mKr1HUjzNqTOzs=",
+            "url": "https://github.com/dannote/luautf8",
+            "rev": "abcf9c25e435c36788e1c9b0fc6d36b16912f1a0",
+            "date": "2014-11-11T12:35:09+03:00",
+            "path": "/nix/store/dfs4wp7fsycm5r5iy1cd0fi8zhk4zknz-luautf8",
+            "sha256": "0lqm0c6377589dglm26n16bx3wb5yznkjcbwcl12sldzm3zr7q59",
+            "hash": "sha256-qeCT/6i/US0CZXwxOe33ZfHRlwnWiEpfS6icMwwDFVM=",
             "fetchLFS": false,
             "fetchSubmodules": true,
             "deepClone": false,
@@ -201,24 +180,51 @@ let
         propagatedBuildInputs = [ lua ];
 
         meta = {
-          homepage = "https://www.github.com/ers35/luastatic";
-          description = "Build a standalone executable from a Lua program.";
-          license.fullName = "CC0";
+          homepage = "http://github.com/starwing/luautf8";
+          description = "A UTF-8 support module for Lua";
+          license.fullName = "MIT";
         };
       };
-    in [ lanes lua-path lua-fun lua-log date luatext luastatic ];
-  lua-packages = with pkgs.luajitPackages;
-    [
-      http
+      nd = buildLuarocksPackage {
+        pname = "nd";
+        version = "0.1.0-3";
+        knownRockspec = (pkgs.fetchurl {
+          url = "mirror://luarocks/nd-0.1.0-3.rockspec";
+          sha256 = "0sm739yqj80lpcn3k33pwlmizazx8wzjjc8s9lrqgipc9ym9ldz8";
+        }).outPath;
+        src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
+          {
+            "url": "https://github.com/f4z3r/nd.git",
+            "rev": "023d4a601bf262c7098253f4742206299a88dbcc",
+            "date": "2024-03-10T15:41:12+01:00",
+            "path": "/nix/store/hj5c6gxs6q9z4b2dn8njih4vy38xgvrq-nd",
+            "sha256": "1jb33qv8g5k2iaad7j6h6alc3zlivqjzd1vlp5ssan297f9ap4s0",
+            "hash": "sha256-QJOrkjtJWKV1uXSH9iXekf7BqDLQyNOUimKWhzYeY8k=",
+            "fetchLFS": false,
+            "fetchSubmodules": true,
+            "deepClone": false,
+            "leaveDotGit": false
+          }
+        '') [ "date" "path" "sha256" ]);
+
+        disabled = lua.luaversion != "5.1";
+        propagatedBuildInputs = [ argparse date lua lua-path utf8 ];
+
+        meta = {
+          homepage = "https://github.com/f4z3r/nd";
+          description = "Simple time tracking tool with a pomodoro timer.";
+          license.fullName = "MIT <http://opensource.org/licenses/MIT>";
+        };
+      };
+    in [ lanes lua-path lua-fun date luatext utf8 nd ] ++ [
       lyaml
+      argparse
       lua-toml
       rapidjson
-      argparse
       basexx
       busted
       compat53
       luafilesystem
-      luautf8
 
       # needed for publishing rocks
       luarocks-nix
@@ -235,17 +241,18 @@ let
       lpeg
       lpeg_patterns
       fifo
-    ] ++ [ (pkgs.luajit.withPackages custom-lua-packages) ];
 
+    ];
+  luajit = pkgs.luajit.withPackages lua-packages;
 in {
   home = {
-    packages = with pkgs; [ lua-language-server selene ] ++ lua-packages;
+    packages = with pkgs; [ lua-language-server selene luajit ];
     sessionVariables = {
       LUA_CPATH = "${lib.concatStringsSep ";"
-        (map pkgs.luajitPackages.getLuaCPath lua-packages)}";
+        (map pkgs.luajitPackages.getLuaCPath [ luajit ])}";
       LUA_PATH = "./?.lua;./?/init.lua;${
           lib.concatStringsSep ";"
-          (map pkgs.luajitPackages.getLuaPath lua-packages)
+          (map pkgs.luajitPackages.getLuaPath [ luajit ])
         }";
     };
   };
