@@ -6,23 +6,40 @@ vim.diagnostic.config({
 })
 
 local lspconfig = require("lspconfig")
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- LUA
--- local runtime_path = vim.split(package.path, ";")
--- table.insert(runtime_path, "?.lua")
--- table.insert(runtime_path, "?/init.lua")
---
--- local system_lib_path = vim.split(vim.env.LUA_PATH, ";")
--- table.insert(system_lib_path, vim.api.nvim_get_runtime_file("", true))
---
 lspconfig.lua_ls.setup({
+  on_init = function(client)
+    local path = client.workspace_folders[1].name
+    if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+      return
+    end
+
+    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          vim.env.VIMRUNTIME
+          -- TODO add busted here
+          -- Depending on the usage, you might want to add additional paths here.
+          -- "${3rd}/busted/library",
+        }
+      }
+    })
+  end,
   settings = {
     Lua = {
       runtime = {
         version = "LuaJIT",
       },
-      diagnostics = {
-        globals = { "vim" },
+      format = {
+        enable = false,
+      },
+      doc = {
+        privateName = { "_*" },
       },
       telemetry = {
         enable = false,
@@ -30,20 +47,23 @@ lspconfig.lua_ls.setup({
       completion = {
         callSnippet = "Replace",
       }
-    },
+    }
   },
 })
 
 -- Nix
-lspconfig.nil_ls.setup({})
+lspconfig.nil_ls.setup({
+  capabilities = capabilities,
+})
 
 -- Python
 lspconfig.pylsp.setup({
+  capabilities = capabilities,
   settings = {
     pylsp = {
       plugins = {
         rope_autoimport = {
-          enabled = true;
+          enabled = true,
         }
       }
     }
@@ -52,22 +72,32 @@ lspconfig.pylsp.setup({
 lspconfig.ruff_lsp.setup({})
 
 -- Go
-lspconfig.gopls.setup({})
+lspconfig.gopls.setup({
+  capabilities = capabilities,
+})
 
 -- Markdown
-lspconfig.marksman.setup({})
+lspconfig.marksman.setup({
+  capabilities = capabilities,
+})
 
 -- Rust
 -- already done by rust-tools
 
 -- Bash
-lspconfig.bashls.setup({})
+lspconfig.bashls.setup({
+  capabilities = capabilities,
+})
 
 -- Helm
-lspconfig.helm_ls.setup({})
+lspconfig.helm_ls.setup({
+  capabilities = capabilities,
+})
 
 -- Terraform
-lspconfig.terraformls.setup({})
+lspconfig.terraformls.setup({
+  capabilities = capabilities,
+})
 
 local signs = {
   Error = "",

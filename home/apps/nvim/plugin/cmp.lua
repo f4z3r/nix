@@ -7,8 +7,8 @@ cmp.setup({
     end,
   },
   window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
   mapping = {
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "c", "i"}),
@@ -68,24 +68,6 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' },
   }),
 })
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local servers = {
-  'lua_ls',
-  'nil_ls',
-  'pylsp',
-  'marksman',
-  'gopls',
-  'rust_analyzer',
-  'helm_ls',
-  'terraformls',
-}
-
-for _, lsp in ipairs(servers) do
-  require('lspconfig')[lsp].setup {
-    capabilities = capabilities,
-  }
-end
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on(
