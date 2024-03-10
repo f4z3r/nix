@@ -1,19 +1,19 @@
 local utils = {}
 
-local os = require('os')
-local io = require('io')
-local string = require('string')
-local path = require('path')
-local math = require('math')
+local io = require("io")
+local math = require("math")
+local os = require("os")
+local path = require("path")
+local string = require("string")
 
 math.randomseed(os.time())
 
 function utils.get_temp_file()
-  return string.format('/tmp/neovim_%s', os.date('%Y-%m-%dT%H-%M-%S'))
+  return string.format("/tmp/neovim_%s", os.date("%Y-%m-%dT%H-%M-%S"))
 end
 
 function utils.copy_to_clipboard()
-  vim.cmd('let @+=@')
+  vim.cmd("let @+=@")
   vim.notify("Copied data to system clipboard", vim.log.levels.INFO, {
     title = "Clipboard",
     timeout = 1000,
@@ -39,10 +39,12 @@ from_shell = true
 key = "enter"
 ]=])
   fh:close()
-  assert(os.execute(
-    [[tmux display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E 'tmux new-session -s nvim-broot zsh -ic "br --conf /tmp/broot/conf.toml"']]
-  ))
-  local fh_reader, err = io.open("/tmp/broot/capture", 'r')
+  assert(
+    os.execute(
+      [[tmux display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E 'tmux new-session -s nvim-broot zsh -ic "br --conf /tmp/broot/conf.toml"']]
+    )
+  )
+  local fh_reader, err = io.open("/tmp/broot/capture", "r")
   if err then
     return
   end
@@ -54,8 +56,10 @@ end
 
 function utils.get_random_org()
   local files = {}
-  for fullpath in path.each(vim.fn.expand('~/Documents/sb') .. '/*', 'f', { recurse = true, skipdirs = true, delay = true }) do
-    if not string.find(fullpath, '/archive/') then
+  for fullpath in
+    path.each(vim.fn.expand("~/Documents/sb") .. "/*", "f", { recurse = true, skipdirs = true, delay = true })
+  do
+    if not string.find(fullpath, "/archive/") then
       files[#files + 1] = fullpath
     end
   end

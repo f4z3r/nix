@@ -1,7 +1,7 @@
-local splitjoin = require('mini.splitjoin')
+local splitjoin = require("mini.splitjoin")
 local gen_hook = splitjoin.gen_hook
 
-local curly = { '%b{}' }
+local curly = { "%b{}" }
 
 local add_comma = gen_hook.add_trailing_separator()
 local del_comma = gen_hook.del_trailing_separator()

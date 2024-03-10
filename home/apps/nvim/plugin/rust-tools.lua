@@ -1,5 +1,5 @@
-require('rust-tools').setup({
+require("rust-tools").setup({
   tools = {
     inlay_hints = false,
-  }
+  },
 })

@@ -256,6 +256,7 @@ in
           plugin = luasnip;
           config = builtins.readFile ./plugin/luasnip.lua;
         }
+        lspkind-nvim
         cmp-nvim-lsp-signature-help
         cmp_luasnip
         cmp-path

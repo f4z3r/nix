@@ -1,4 +1,4 @@
-require("org-bullets").setup {
+require("org-bullets").setup({
   concealcursor = false,
   symbols = {
     headlines = { "", "󰪥", "󰻂", "󰺕", "○" },
@@ -7,5 +7,5 @@ require("org-bullets").setup {
       done = { "", "OrgDone" },
       todo = { " ", "OrgTODO" },
     },
-  }
-}
+  },
+})

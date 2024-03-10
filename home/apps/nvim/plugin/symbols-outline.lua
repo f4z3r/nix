@@ -2,20 +2,20 @@ local opts = {
   highlight_hovered_item = true,
   show_guides = true,
   auto_preview = false,
-  position = 'right',
+  position = "right",
   relative_width = true,
   width = 25,
   auto_close = true,
   show_numbers = false,
   show_relative_numbers = false,
   show_symbol_details = true,
-  preview_bg_highlight = 'Pmenu',
+  preview_bg_highlight = "Pmenu",
   autofold_depth = 4,
   auto_unfold_hover = true,
-  fold_markers = { '', '' },
+  fold_markers = { "", "" },
   wrap = false,
   keymaps = {
-    close = {"<esc>", "q", "<c-y>"},
+    close = { "<esc>", "q", "<c-y>" },
     goto_location = "<cr>",
     focus_location = "o",
     hover_symbol = "<C-space>",
@@ -61,4 +61,4 @@ local opts = {
     Fragment = { icon = "", hl = "@constant" },
   },
 }
-require('symbols-outline').setup(opts)
+require("symbols-outline").setup(opts)

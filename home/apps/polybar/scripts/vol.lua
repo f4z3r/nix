@@ -1,13 +1,13 @@
 #!/usr/bin/env luajit
 
-local io = require('io')
-local os = require('os')
-local string = require('string')
+local io = require("io")
+local os = require("os")
+local string = require("string")
 
-local CMD = 'amixer sget Master 2> /dev/null'
+local CMD = "amixer sget Master 2> /dev/null"
 
 local function run(cmd)
-  local fh = io.popen(cmd, 'r')
+  local fh = io.popen(cmd, "r")
   if not fh then
     error("failed to run external command")
   end
@@ -27,9 +27,9 @@ local function main()
     os.exit(1)
   end
   if off then
-    print('%{F#7c6f64}VOL '..volume .. '%{F-}')
+    print("%{F#7c6f64}VOL " .. volume .. "%{F-}")
   else
-    print('%{F#d8a657}VOL%{F-} '..volume)
+    print("%{F#d8a657}VOL%{F-} " .. volume)
   end
 end
 main()

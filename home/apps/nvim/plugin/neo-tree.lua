@@ -8,8 +8,8 @@ require("neo-tree").setup({
     },
     git_status = {
       symbols = {
-        renamed   = "󰁕",
-        unstaged  = "󰄱",
+        renamed = "󰁕",
+        unstaged = "󰄱",
       },
     },
   },
@@ -30,8 +30,8 @@ require("neo-tree").setup({
       Struct = { icon = "󰌗", hl = "Type" },
       Operator = { icon = "󰆕", hl = "Operator" },
       TypeParameter = { icon = "󰊄", hl = "Type" },
-      StaticMethod = { icon = '󰠄 ', hl = 'Function' },
-    }
+      StaticMethod = { icon = "󰠄 ", hl = "Function" },
+    },
   },
   -- Add this section only if you've configured source selector.
   source_selector = {

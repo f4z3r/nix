@@ -1,3 +1,3 @@
-require("maximize").setup {
+require("maximize").setup({
   default_keymaps = false,
-}
+})

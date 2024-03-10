@@ -1,6 +1,6 @@
 local mapping = require("yanky.telescope.mapping")
 
-require('yanky').setup({
+require("yanky").setup({
   ring = {
     history_length = 50,
     storage = "shada",
@@ -15,14 +15,14 @@ require('yanky').setup({
       use_default_mappings = false,
       mappings = {
         default = mapping.put("p"),
-        i = { },
+        i = {},
         n = {
           p = mapping.put("p"),
           P = mapping.put("P"),
           d = mapping.delete(),
         },
-      }
-    }
+      },
+    },
   },
   system_clipboard = {
     sync_with_ring = true,
@@ -37,13 +37,13 @@ require('yanky').setup({
   },
 })
 
-vim.keymap.set({"n","x"}, "y",         "<Plug>(YankyYank)")
-vim.keymap.set({"n","x"}, "p",         "<Plug>(YankyPutAfter)")
-vim.keymap.set({"n","x"}, "P",         "<Plug>(YankyPutBefore)")
-vim.keymap.set({"n","x"}, "gp",        "<Plug>(YankyGPutAfter)")
-vim.keymap.set({"n","x"}, "gP",        "<Plug>(YankyGPutBefore)")
-vim.keymap.set("n",       "<leader>P", "<Plug>(YankyCycleBackward)")
-vim.keymap.set("n",       "<leader>p", "<Plug>(YankyCycleForward)")
+vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+vim.keymap.set("n", "<leader>P", "<Plug>(YankyCycleBackward)")
+vim.keymap.set("n", "<leader>p", "<Plug>(YankyCycleForward)")
 
-vim.api.nvim_set_hl(0, 'YankyYanked', { link = "TelescopeResultsDiffDelete", nocombine = true })
-vim.api.nvim_set_hl(0, 'YankyPut',    { link = "TelescopeResultsDiffChange", nocombine = true })
+vim.api.nvim_set_hl(0, "YankyYanked", { link = "TelescopeResultsDiffDelete", nocombine = true })
+vim.api.nvim_set_hl(0, "YankyPut", { link = "TelescopeResultsDiffChange", nocombine = true })

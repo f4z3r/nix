@@ -5,31 +5,31 @@ vim.diagnostic.config({
   virtual_text = false,
 })
 
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 lspconfig.lua_ls.setup({
-  on_init = function(client)
-    local path = client.workspace_folders[1].name
-    if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
-      return
-    end
-
-    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        checkThirdParty = false,
-        library = {
-          vim.env.VIMRUNTIME
-          -- TODO add busted here
-          -- Depending on the usage, you might want to add additional paths here.
-          -- "${3rd}/busted/library",
-        }
-      }
-    })
-  end,
+  -- on_init = function(client)
+  --   local path = client.workspace_folders[1].name
+  --   if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+  --     return
+  --   end
+  --
+  --   client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+  --     diagnostics = {
+  --       globals = { "vim" },
+  --     },
+  --     workspace = {
+  --       checkThirdParty = false,
+  --       library = {
+  --         vim.env.VIMRUNTIME
+  --         -- TODO add busted here
+  --         -- Depending on the usage, you might want to add additional paths here.
+  --         -- "${3rd}/busted/library",
+  --       }
+  --     }
+  --   })
+  -- end,
   settings = {
     Lua = {
       runtime = {
@@ -46,9 +46,10 @@ lspconfig.lua_ls.setup({
       },
       completion = {
         callSnippet = "Replace",
-      }
-    }
+      },
+    },
   },
+  capabilities = capabilities,
 })
 
 -- Nix
@@ -58,22 +59,37 @@ lspconfig.nil_ls.setup({
 
 -- Python
 lspconfig.pylsp.setup({
-  capabilities = capabilities,
   settings = {
     pylsp = {
       plugins = {
         rope_autoimport = {
           enabled = true,
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
+  capabilities = capabilities,
 })
-lspconfig.ruff_lsp.setup({})
+lspconfig.ruff_lsp.setup({
+  capabilities = capabilities,
+})
 
 -- Go
 lspconfig.gopls.setup({
   capabilities = capabilities,
+  settings = {
+    gopls = {
+      experimentalPostfixCompletions = true,
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+      },
+      staticcheck = true,
+    },
+  },
+  init_options = {
+    usePlaceholders = true,
+  },
 })
 
 -- Markdown

@@ -1,13 +1,15 @@
 -- Jumplist bindings
 
-local leader = '<leader>j'
+local leader = "<leader>j"
 
 local mappings = {
   {
-    mode = 'n',
-    suffix = 'j',
-    command = function() require('telescope.builtin').jumplist() end,
-    desc = 'Search jumplist',
+    mode = "n",
+    suffix = "j",
+    command = function()
+      require("telescope.builtin").jumplist()
+    end,
+    desc = "Search jumplist",
   },
 }
 

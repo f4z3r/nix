@@ -1,4 +1,4 @@
-local null_ls = require('null-ls')
+local null_ls = require("null-ls")
 
 null_ls.setup({
   sources = {
@@ -29,5 +29,5 @@ null_ls.setup({
     null_ls.builtins.formatting.trim_newlines,
     null_ls.builtins.formatting.yamlfmt,
     null_ls.builtins.formatting.terraform_fmt,
-  }
+  },
 })

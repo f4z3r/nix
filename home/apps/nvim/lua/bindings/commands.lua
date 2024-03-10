@@ -1,13 +1,15 @@
 -- Commands bindings
 
-local leader = '<leader>c'
+local leader = "<leader>c"
 
 local mappings = {
   {
-    mode = 'n',
-    suffix = 'c',
-    command = function() require('telescope.builtin').command_history() end,
-    desc = 'Search command history',
+    mode = "n",
+    suffix = "c",
+    command = function()
+      require("telescope.builtin").command_history()
+    end,
+    desc = "Search command history",
   },
 }
 

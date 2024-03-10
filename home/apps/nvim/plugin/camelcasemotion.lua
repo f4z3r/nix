@@ -2,27 +2,27 @@
 
 local mappings = {
   {
-    mode = { 'n', 'x', 'o' },
-    suffix = 'W',
-    command = '<Plug>CamelCaseMotion_w',
+    mode = { "n", "x", "o" },
+    suffix = "W",
+    command = "<Plug>CamelCaseMotion_w",
     opts = { silent = true },
   },
   {
-    mode = { 'n', 'x', 'o' },
-    suffix = 'B',
-    command = '<Plug>CamelCaseMotion_b',
+    mode = { "n", "x", "o" },
+    suffix = "B",
+    command = "<Plug>CamelCaseMotion_b",
     opts = { silent = true },
   },
   {
-    mode = { 'n', 'x', 'o' },
-    suffix = 'E',
-    command = '<Plug>CamelCaseMotion_e',
+    mode = { "n", "x", "o" },
+    suffix = "E",
+    command = "<Plug>CamelCaseMotion_e",
     opts = { silent = true },
   },
   {
-    mode = { 'n', 'x', 'o' },
-    suffix = 'gE',
-    command = '<Plug>CamelCaseMotion_ge',
+    mode = { "n", "x", "o" },
+    suffix = "gE",
+    command = "<Plug>CamelCaseMotion_ge",
     opts = { silent = true },
   },
 }

@@ -1,24 +1,24 @@
 local colors = {
-  red    = '#ea6962',
-  yellow = '#d8a657',
-  green  = '#a9b665',
-  blue   = '#7daea3',
+  red = "#ea6962",
+  yellow = "#d8a657",
+  green = "#a9b665",
+  blue = "#7daea3",
 
-  invis  = '#282828',
-  fg     = '#d4be98',
-  bg     = '#3a3735',
+  invis = "#282828",
+  fg = "#d4be98",
+  bg = "#3a3735",
 }
 
 if vim.env.NIX_THEME == "light" then
   colors = {
-    red    = '#c14a4a',
-    yellow = '#b47109',
-    green  = '#6c782e',
-    blue   = '#45707a',
+    red = "#c14a4a",
+    yellow = "#b47109",
+    green = "#6c782e",
+    blue = "#45707a",
 
-    invis  = '#fbf1c7',
-    fg     = '#654735',
-    bg     = '#f2e5bc',
+    invis = "#fbf1c7",
+    fg = "#654735",
+    bg = "#f2e5bc",
   }
 end
 
@@ -41,38 +41,38 @@ local bubbles_theme = {
 }
 
 local function maximize_status()
-  return vim.t.maximized and ' ' or ''
+  return vim.t.maximized and " " or ""
 end
 
-require('lualine').setup {
+require("lualine").setup({
   options = {
     theme = bubbles_theme,
-    component_separators = '|',
-    section_separators = { left = '', right = '' },
+    component_separators = "|",
+    section_separators = { left = "", right = "" },
   },
   sections = {
     lualine_a = {
-      { 'mode', separator = { left = '' }, right_padding = 2 },
+      { "mode", separator = { left = "" }, right_padding = 2 },
     },
     lualine_b = {
-      'filename',
-      { 'branch', icon = '', },
+      "filename",
+      { "branch", icon = "" },
     },
-    lualine_c = { 'fileformat' },
+    lualine_c = { "fileformat" },
     lualine_x = {},
-    lualine_y = { 'filetype', 'overseer', 'progress', maximize_status },
+    lualine_y = { "filetype", "overseer", "progress", maximize_status },
     lualine_z = {
-      { 'location', separator = { right = '' }, left_padding = 2 },
+      { "location", separator = { right = "" }, left_padding = 2 },
     },
   },
   inactive_sections = {
-    lualine_a = { 'filename' },
+    lualine_a = { "filename" },
     lualine_b = {},
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = { 'location' },
+    lualine_z = { "location" },
   },
   tabline = {},
   extensions = {},
-}
+})

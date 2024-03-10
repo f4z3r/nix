@@ -1,13 +1,13 @@
 -- Orgmode bindings
 
-local leader = '<leader>o'
+local leader = "<leader>o"
 
 local mappings = {
   {
-    mode = 'n',
-    suffix = 's',
-    command = '<cmd>Telescope orgmode search_headings<cr>',
-    desc = 'Search orgmode headings',
+    mode = "n",
+    suffix = "s",
+    command = "<cmd>Telescope orgmode search_headings<cr>",
+    desc = "Search orgmode headings",
   },
 }
 

@@ -1,1 +1,1 @@
-require('mini.align').setup({})
+require("mini.align").setup({})

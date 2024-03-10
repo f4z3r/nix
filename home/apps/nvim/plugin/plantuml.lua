@@ -1,10 +1,10 @@
-require('plantuml').setup({
+require("plantuml").setup({
   renderer = {
-    type = 'image',
+    type = "image",
     options = {
-      prog = 'feh',
+      prog = "feh",
       dark_mode = true,
-    }
+    },
   },
   render_on_write = true,
 })
