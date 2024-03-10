@@ -384,6 +384,10 @@ in
       ];
     };
 
+    home.file.".local/share/nvim/lua/addons" = {
+      source = ./lls-addons;
+      recursive = true;
+    };
     home.file.".config/nvim/lua" = {
       source = ./lua;
       recursive = true;
