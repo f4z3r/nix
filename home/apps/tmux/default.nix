@@ -54,7 +54,7 @@ in
       set-window-option -g window-status-format ""
 
       # fix coloring for tmux
-      set -g default-terminal "screen-256color"
+      set -g default-terminal "tmux-256color"
       set -ga terminal-overrides ",xterm-256color:Tc"
 
       # override suspend

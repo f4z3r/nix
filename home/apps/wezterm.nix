@@ -20,7 +20,7 @@ let
     config.hide_tab_bar_if_only_one_tab = true
 
     config.warn_about_missing_glyphs = false
-    config.font = wezterm.font('FiraCode Nerd Font Mono', {weight = 'DemiBold', stretch = 'Expanded'})
+    config.font = wezterm.font('FiraCode Nerd Font Mono', {weight = 'DemiBold'})
     config.font_size = ${toString font_size}
 
     config.adjust_window_size_when_changing_font_size = false
