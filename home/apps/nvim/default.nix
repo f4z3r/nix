@@ -14,7 +14,8 @@ let
   plantuml-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "plantuml-nvim";
     src = pkgs.fetchurl {
-      url = "https://gitlab.com/itaranto/plantuml.nvim/-/archive/master/plantuml.nvim-master.tar.gz";
+      url =
+        "https://gitlab.com/itaranto/plantuml.nvim/-/archive/master/plantuml.nvim-master.tar.gz";
       sha256 = "sha256-wRoc+j/LJaYaCinju0XeVICaTc1O+hdNiqcjut+6Z1c=";
     };
   };
@@ -78,331 +79,335 @@ let
       sha256 = "sha256-Q+RLKClM1F+VCdv72st0DhAFQzOyvBwIwguplSkRqSI=";
     };
   };
-in
-  {
-    programs.neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      withPython3 = true;
-      withRuby = false;
+in {
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    withPython3 = true;
+    withRuby = false;
 
-      extraLuaConfig = ''
+    extraLuaConfig = ''
 
-        require("bindings")
-        require("visualisation")
-        require("searching")
-        require("scrolling")
-        require("misc")
-      '';
-      extraPython3Packages = ps: with ps; [
-      ];
-      extraPackages = with pkgs; [
-        zig
-        deadnix
-        statix
-        nixfmt
-        # hadolint
-        shfmt
-        shellcheck
-        shellharden
-        gopls
-        revive
-        helm-ls
-        ruff-lsp
-        nodePackages.bash-language-server
-        universal-ctags
-        marksman
-        rustfmt
-        rust-analyzer
-        clippy
-        stylua
-        yamlfmt
-        nil
-        fzf
-        terraform-ls
-        tfsec
-        plantuml
-      ];
+      require("bindings")
+      require("visualisation")
+      require("searching")
+      require("scrolling")
+      require("misc")
+    '';
+    extraPackages = with pkgs; [
+      zig
+      deadnix
+      statix
+      nixfmt
+      # hadolint
+      shfmt
+      shellcheck
+      shellharden
+      gopls
+      revive
+      helm-ls
+      ruff-lsp
+      nodePackages.bash-language-server
+      universal-ctags
+      marksman
+      rustfmt
+      rust-analyzer
+      clippy
+      stylua
+      yamlfmt
+      nil
+      fzf
+      terraform-ls
+      tfsec
+      plantuml
+    ];
 
-      plugins = with pkgs.vimPlugins; [
-        # startup stuff
-        {
-          type = "lua";
-          plugin = alpha-nvim;
-          config = builtins.readFile ./plugin/alpha.lua;
-        }
+    plugins = with pkgs.vimPlugins; [
+      # startup stuff
+      {
+        type = "lua";
+        plugin = alpha-nvim;
+        config = builtins.readFile ./plugin/alpha.lua;
+      }
 
-        # syntax highlighting
-        vim-just
-        rainbow-delimiters-nvim
-        nvim-treesitter-textobjects
-        {
-          type = "lua";
-          plugin = nvim-treesitter-context;
-          config = builtins.readFile ./plugin/treesitter-context.lua;
-        }
-        {
-          type = "lua";
-          plugin = nvim-treesitter.withAllGrammars;
-          config = builtins.readFile ./plugin/treesitter.lua;
-        }
-        {
-          type = "lua";
-          plugin = gruvbox-material-nvim;
-          config = builtins.readFile ./plugin/gruvbox.lua;
-        }
-        {
-          type = "lua";
-          plugin = indent-blankline-nvim;
-          config = builtins.readFile ./plugin/indent-blankline.lua;
-        }
-        {
-          type = "lua";
-          plugin = vim-illuminate;
-          config = builtins.readFile ./plugin/illuminate.lua;
-        }
-        {
-          type = "lua";
-          plugin = dressing-nvim;
-          config = builtins.readFile ./plugin/dressing.lua;
-        }
-        {
-          type = "lua";
-          plugin = symbols-outline-nvim;
-          config = builtins.readFile ./plugin/symbols-outline.lua;
-        }
-        vim-helm
+      # syntax highlighting
+      vim-just
+      rainbow-delimiters-nvim
+      nvim-treesitter-textobjects
+      {
+        type = "lua";
+        plugin = nvim-treesitter-context;
+        config = builtins.readFile ./plugin/treesitter-context.lua;
+      }
+      {
+        type = "lua";
+        plugin = nvim-treesitter.withAllGrammars;
+        config = builtins.readFile ./plugin/treesitter.lua;
+      }
+      {
+        type = "lua";
+        plugin = gruvbox-material-nvim;
+        config = builtins.readFile ./plugin/gruvbox.lua;
+      }
+      {
+        type = "lua";
+        plugin = indent-blankline-nvim;
+        config = builtins.readFile ./plugin/indent-blankline.lua;
+      }
+      {
+        type = "lua";
+        plugin = vim-illuminate;
+        config = builtins.readFile ./plugin/illuminate.lua;
+      }
+      {
+        type = "lua";
+        plugin = dressing-nvim;
+        config = builtins.readFile ./plugin/dressing.lua;
+      }
+      {
+        type = "lua";
+        plugin = symbols-outline-nvim;
+        config = builtins.readFile ./plugin/symbols-outline.lua;
+      }
 
-        # git integration
-        {
-          type = "lua";
-          plugin = gitsigns-nvim;
-          config = builtins.readFile ./plugin/gitsigns.lua;
-        }
+      # git integration
+      {
+        type = "lua";
+        plugin = gitsigns-nvim;
+        config = builtins.readFile ./plugin/gitsigns.lua;
+      }
 
-        # lsp stuff
-        {
-          type = "lua";
-          plugin = neodev-nvim;
-          config = builtins.readFile ./plugin/neodev.lua;
-        }
-        {
-          type = "lua";
-          plugin = nvim-lspconfig;
-          config = builtins.readFile ./plugin/lsp.lua;
-        }
-        {
-          type = "lua";
-          plugin = trouble-nvim;
-          config = builtins.readFile ./plugin/trouble.lua;
-        }
-        {
-          type = "lua";
-          plugin = none-ls-nvim;
-          config = builtins.readFile ./plugin/none-ls.lua;
-        }
-        {
-          type = "lua";
-          plugin = refactoring-nvim;
-          config = ''require('refactoring').setup()'';
-        }
-        {
-          type = "lua";
-          plugin = nvim-dap;
-          config = builtins.readFile ./plugin/dap.lua;
-        }
-        {
-          type = "lua";
-          plugin = nvim-dap-ui;
-          config = ''require('dapui').setup()'';
-        }
-        {
-          type = "lua";
-          plugin = rust-tools-nvim;
-          config = builtins.readFile ./plugin/rust-tools.lua;
-        }
-        {
-          type = "lua";
-          plugin = nvim-dap-python;
-          config = ''require('dap-python').setup()'';
-        }
-        {
-          type = "lua";
-          plugin = nvim-dap-go;
-          config = ''require('dap-go').setup()'';
-        }
+      # lsp stuff
+      {
+        type = "lua";
+        plugin = neodev-nvim;
+        config = builtins.readFile ./plugin/neodev.lua;
+      }
+      {
+        type = "lua";
+        plugin = nvim-lspconfig;
+        config = builtins.readFile ./plugin/lsp.lua;
+      }
+      {
+        type = "lua";
+        plugin = trouble-nvim;
+        config = builtins.readFile ./plugin/trouble.lua;
+      }
+      {
+        type = "lua";
+        plugin = none-ls-nvim;
+        config = builtins.readFile ./plugin/none-ls.lua;
+      }
+      {
+        type = "lua";
+        plugin = refactoring-nvim;
+        config = "require('refactoring').setup()";
+      }
+      {
+        type = "lua";
+        plugin = nvim-dap;
+        config = builtins.readFile ./plugin/dap.lua;
+      }
+      {
+        type = "lua";
+        plugin = nvim-dap-ui;
+        config = "require('dapui').setup()";
+      }
+      {
+        type = "lua";
+        plugin = rust-tools-nvim;
+        config = builtins.readFile ./plugin/rust-tools.lua;
+      }
+      {
+        type = "lua";
+        plugin = nvim-dap-python;
+        config = "require('dap-python').setup()";
+      }
+      {
+        type = "lua";
+        plugin = nvim-dap-go;
+        config = "require('dap-go').setup()";
+      }
 
-        # test and runner stuff
-        {
-          type = "lua";
-          plugin = overseer-nvim;
-          config = builtins.readFile ./plugin/overseer.lua;
-        }
-        {
-          type = "lua";
-          plugin = neotest;
-          config = builtins.readFile ./plugin/neotest.lua;
-        }
-        neotest-go
-        neotest-python
-        neotest-rust
+      # test and runner stuff
+      {
+        type = "lua";
+        plugin = overseer-nvim;
+        config = builtins.readFile ./plugin/overseer.lua;
+      }
+      {
+        type = "lua";
+        plugin = neotest;
+        config = builtins.readFile ./plugin/neotest.lua;
+      }
+      neotest-go
+      neotest-python
+      neotest-rust
 
-        # completion
-        friendly-snippets
-        {
-          type = "lua";
-          plugin = luasnip;
-          config = builtins.readFile ./plugin/luasnip.lua;
-        }
-        lspkind-nvim
-        cmp-nvim-lsp-signature-help
-        cmp_luasnip
-        cmp-path
-        cmp-buffer
-        cmp-nvim-lsp
-        {
-          type = "lua";
-          plugin = nvim-cmp;
-          config = builtins.readFile ./plugin/cmp.lua;
-        }
+      # completion
+      friendly-snippets
+      {
+        type = "lua";
+        plugin = luasnip;
+        config = builtins.readFile ./plugin/luasnip.lua;
+      }
+      lspkind-nvim
+      cmp-nvim-lsp-signature-help
+      cmp_luasnip
+      cmp-path
+      cmp-buffer
+      cmp-nvim-lsp
+      {
+        type = "lua";
+        plugin = nvim-cmp;
+        config = builtins.readFile ./plugin/cmp.lua;
+      }
 
-        # finder
-        {
-          type = "lua";
-          plugin = telescope-nvim;
-          config = builtins.readFile ./plugin/telescope.lua;
-        }
-        fzfWrapper
-        telescope-fzf-native-nvim
-        telescope-orgmode
-        telescope-undo-nvim
+      # finder
+      {
+        type = "lua";
+        plugin = telescope-nvim;
+        config = builtins.readFile ./plugin/telescope.lua;
+      }
+      fzfWrapper
+      telescope-fzf-native-nvim
+      telescope-orgmode
+      telescope-undo-nvim
 
-        # useful stuff
-        {
-          type = "lua";
-          plugin = flash-nvim;
-          config = builtins.readFile ./plugin/flash.lua;
-        }
-        {
-          type = "lua";
-          plugin = camelcasemotion;
-          config = builtins.readFile ./plugin/camelcasemotion.lua;
-        }
-        vim-repeat
-        vim-surround
-        targets-vim
-        vim-signature
-        {
-          type = "lua";
-          plugin = nvim-autopairs;
-          config = ''require('nvim-autopairs').setup({
-            check_ts = true,
-            ts_config = {},
-          })'';
-        }
+      # useful stuff
+      {
+        type = "lua";
+        plugin = flash-nvim;
+        config = builtins.readFile ./plugin/flash.lua;
+      }
+      {
+        type = "lua";
+        plugin = camelcasemotion;
+        config = builtins.readFile ./plugin/camelcasemotion.lua;
+      }
+      vim-repeat
+      vim-surround
+      targets-vim
+      vim-signature
+      {
+        type = "lua";
+        plugin = nvim-autopairs;
+        config = ''
+          require('nvim-autopairs').setup({
+                      check_ts = true,
+                      ts_config = {},
+                    })'';
+      }
 
-        # tree
-        nui-nvim
-        plenary-nvim
-        nvim-web-devicons
-        {
-          type = "lua";
-          plugin = neo-tree-nvim;
-          config = builtins.readFile ./plugin/neo-tree.lua;
-        }
+      # tree
+      nui-nvim
+      plenary-nvim
+      nvim-web-devicons
+      {
+        type = "lua";
+        plugin = neo-tree-nvim;
+        config = builtins.readFile ./plugin/neo-tree.lua;
+      }
 
-        # tag generation
-        vim-gutentags
+      # tag generation
+      vim-gutentags
 
-        # orgmode
-        {
-          type = "lua";
-          plugin = orgmode;
-          config = builtins.readFile ./plugin/orgmode.lua;
-        }
-        {
-          type = "lua";
-          plugin = org-bullets;
-          config = builtins.readFile ./plugin/org-bullets.lua;
-        }
-        {
-          type = "lua";
-          plugin = nvim-table-md;
-        }
-        plantuml-syntax
-        {
-          type = "lua";
-          plugin = plantuml-nvim;
-          config = builtins.readFile ./plugin/plantuml.lua;
-        }
+      # orgmode
+      {
+        type = "lua";
+        plugin = orgmode;
+        config = builtins.readFile ./plugin/orgmode.lua;
+      }
+      {
+        type = "lua";
+        plugin = org-bullets;
+        config = builtins.readFile ./plugin/org-bullets.lua;
+      }
+      {
+        type = "lua";
+        plugin = nvim-table-md;
+      }
+      plantuml-syntax
+      {
+        type = "lua";
+        plugin = plantuml-nvim;
+        config = builtins.readFile ./plugin/plantuml.lua;
+      }
 
+      # comments
+      {
+        type = "lua";
+        plugin = comment-nvim;
+        config = "require('Comment').setup()";
+      }
 
-        # comments
-        {
-          type = "lua";
-          plugin = comment-nvim;
-          config = ''require('Comment').setup()'';
-        }
+      # yanks
+      {
+        type = "lua";
+        plugin = yanky-nvim;
+        config = builtins.readFile ./plugin/yanky.lua;
+      }
 
-        # yanks
-        {
-          type = "lua";
-          plugin = yanky-nvim;
-          config = builtins.readFile ./plugin/yanky.lua;
-        }
+      # alignment
+      {
+        type = "lua";
+        plugin = mini-align;
+        config = builtins.readFile ./plugin/align.lua;
+      }
+      {
+        type = "lua";
+        plugin = mini-splitjoin;
+        config = builtins.readFile ./plugin/splitjoin.lua;
+      }
 
-        # alignment
-        {
-          type = "lua";
-          plugin = mini-align;
-          config = builtins.readFile ./plugin/align.lua;
-        }
-        {
-          type = "lua";
-          plugin = mini-splitjoin;
-          config = builtins.readFile ./plugin/splitjoin.lua;
-        }
+      # status line
+      {
+        type = "lua";
+        plugin = maximize-nvim;
+        config = builtins.readFile ./plugin/maximize.lua;
+      }
+      {
+        type = "lua";
+        plugin = lualine-nvim;
+        config = builtins.readFile ./plugin/lualine.lua;
+      }
+      {
+        type = "lua";
+        plugin = nvim-notify;
+        config = builtins.readFile ./plugin/notify.lua;
+      }
+    ];
+  };
 
-        # status line
-        {
-          type = "lua";
-          plugin = maximize-nvim;
-          config = builtins.readFile ./plugin/maximize.lua;
-        }
-        {
-          type = "lua";
-          plugin = lualine-nvim;
-          config = builtins.readFile ./plugin/lualine.lua;
-        }
-        {
-          type = "lua";
-          plugin = nvim-notify;
-          config = builtins.readFile ./plugin/notify.lua;
-        }
-      ];
-    };
-
-    home.file.".local/share/nvim/lua/addons" = {
-      source = ./lls-addons;
-      recursive = true;
-    };
-    home.file.".config/nvim/lua" = {
-      source = ./lua;
-      recursive = true;
-    };
-    home.file.".config/nvim/ftplugin" = {
-      source = ./ftplugin;
-      recursive = true;
-    };
-    home.file.".config/nvim/spell/en.utf-8.add" = {
-      source = ./spell/en.utf-8.add;
-    };
-    home.file.".config/nvim/spell/de.utf-8.add" = {
-      source = ./spell/de.utf-8.add;
-    };
-    home.file.".config/nvim/spell/fr.utf-8.add" = {
-      source = ./spell/fr.utf-8.add;
-    };
-  }
+  home.file.".local/share/nvim/lua/addons" = {
+    source = ./lls-addons;
+    recursive = true;
+  };
+  home.file.".config/nvim/lua" = {
+    source = ./lua;
+    recursive = true;
+  };
+  home.file.".config/nvim/ftplugin" = {
+    source = ./ftplugin;
+    recursive = true;
+  };
+  home.file.".config/nvim/ftdetect" = {
+    source = ./ftdetect;
+    recursive = true;
+  };
+  home.file.".config/nvim/queries" = {
+    source = ./queries;
+    recursive = true;
+  };
+  home.file.".config/nvim/spell/en.utf-8.add" = {
+    source = ./spell/en.utf-8.add;
+  };
+  home.file.".config/nvim/spell/de.utf-8.add" = {
+    source = ./spell/de.utf-8.add;
+  };
+  home.file.".config/nvim/spell/fr.utf-8.add" = {
+    source = ./spell/fr.utf-8.add;
+  };
+}
