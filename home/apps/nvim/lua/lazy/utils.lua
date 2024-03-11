@@ -48,7 +48,7 @@ key = "enter"
   if err then
     return
   end
-  fh_reader = assert(fh_reader)
+  fh_reader = assert(fh_reader, "could not read broot capture")
   local content = fh_reader:read("*a")
   fh_reader:close()
   vim.cmd(string.format("e %s", content))
@@ -65,6 +65,19 @@ function utils.get_random_org()
   end
   local idx = math.random(#files)
   return files[idx]
+end
+
+function utils.split(str, ch)
+  local res = {}
+  local start = 1
+  local idx = string.find(str, ch, nil, true)
+  while idx ~= nil do
+    res[#res + 1] = string.sub(str, start, idx - 1)
+    start = idx + 1
+    idx = string.find(str, ch, start, true)
+  end
+  res[#res + 1] = string.sub(str, start)
+  return res
 end
 
 return utils

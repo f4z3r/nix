@@ -10,6 +10,7 @@ vim.diagnostic.config({
 }, neotest_ns)
 
 local neotest = require("neotest")
+
 neotest.setup({
   consumers = {
     overseer = require("neotest.consumers.overseer"),

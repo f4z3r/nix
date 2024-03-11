@@ -71,6 +71,10 @@ local mapping = {
   ["@markup.bold"] = { link = "markdownBold", default = true },
   ["@markup.italic"] = { link = "markdownItalic", default = true },
   ["@punctuation.special"] = { link = "Aqua", default = true },
+  ["@comment.todo"] = { link = "Todo", default = true },
+  ["@comment.note"] = { link = "Blue", default = true },
+  ["@comment.warning"] = { link = "Warning", default = true },
+  ["@comment.error"] = { link = "Error", default = true },
 }
 
 for key, value in pairs(mapping) do

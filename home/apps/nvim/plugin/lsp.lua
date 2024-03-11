@@ -23,6 +23,9 @@ lspconfig.lua_ls.setup({
       telemetry = {
         enable = false,
       },
+      semantic = {
+        enable = false,
+      },
       workspace = {
         checkThirdParty = false,
         library = {

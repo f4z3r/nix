@@ -94,6 +94,7 @@ in {
       require("visualisation")
       require("searching")
       require("scrolling")
+      require("filetypes")
       require("misc")
     '';
     extraPackages = with pkgs; [
@@ -143,7 +144,19 @@ in {
       }
       {
         type = "lua";
-        plugin = nvim-treesitter.withAllGrammars;
+        plugin = nvim-treesitter.withPlugins (_:
+          nvim-treesitter.allGrammars ++ [
+            (pkgs.tree-sitter.buildGrammar {
+              language = "gotmpl";
+              version = "master";
+              src = pkgs.fetchFromGitHub {
+                owner = "ngalaiko";
+                repo = "tree-sitter-go-template";
+                rev = "17144a77be0acdecebd9d557398883569fed41de";
+                sha256 = "sha256-aB8MTTKzxV9+66goNfFRI39wzuBiGECAc8HvAQzIv80=";
+              };
+            })
+          ]);
         config = builtins.readFile ./plugin/treesitter.lua;
       }
       {
@@ -171,6 +184,11 @@ in {
         plugin = symbols-outline-nvim;
         config = builtins.readFile ./plugin/symbols-outline.lua;
       }
+      {
+        type = "lua";
+        plugin = twilight-nvim;
+        config = builtins.readFile ./plugin/twilight.lua;
+      }
 
       # git integration
       {
@@ -180,11 +198,6 @@ in {
       }
 
       # lsp stuff
-      {
-        type = "lua";
-        plugin = neodev-nvim;
-        config = builtins.readFile ./plugin/neodev.lua;
-      }
       {
         type = "lua";
         plugin = nvim-lspconfig;
@@ -205,31 +218,31 @@ in {
         plugin = refactoring-nvim;
         config = "require('refactoring').setup()";
       }
-      {
-        type = "lua";
-        plugin = nvim-dap;
-        config = builtins.readFile ./plugin/dap.lua;
-      }
-      {
-        type = "lua";
-        plugin = nvim-dap-ui;
-        config = "require('dapui').setup()";
-      }
-      {
-        type = "lua";
-        plugin = rust-tools-nvim;
-        config = builtins.readFile ./plugin/rust-tools.lua;
-      }
-      {
-        type = "lua";
-        plugin = nvim-dap-python;
-        config = "require('dap-python').setup()";
-      }
-      {
-        type = "lua";
-        plugin = nvim-dap-go;
-        config = "require('dap-go').setup()";
-      }
+      # {
+      #   type = "lua";
+      #   plugin = nvim-dap;
+      #   config = builtins.readFile ./plugin/dap.lua;
+      # }
+      # {
+      #   type = "lua";
+      #   plugin = nvim-dap-ui;
+      #   config = "require('dapui').setup()";
+      # }
+      # {
+      #   type = "lua";
+      #   plugin = rust-tools-nvim;
+      #   config = builtins.readFile ./plugin/rust-tools.lua;
+      # }
+      # {
+      #   type = "lua";
+      #   plugin = nvim-dap-python;
+      #   config = "require('dap-python').setup()";
+      # }
+      # {
+      #   type = "lua";
+      #   plugin = nvim-dap-go;
+      #   config = "require('dap-go').setup()";
+      # }
 
       # test and runner stuff
       {
@@ -393,12 +406,12 @@ in {
     source = ./ftplugin;
     recursive = true;
   };
-  home.file.".config/nvim/ftdetect" = {
-    source = ./ftdetect;
-    recursive = true;
-  };
   home.file.".config/nvim/queries" = {
     source = ./queries;
+    recursive = true;
+  };
+  home.file.".config/nvim/after" = {
+    source = ./after;
     recursive = true;
   };
   home.file.".config/nvim/spell/en.utf-8.add" = {

@@ -31,6 +31,12 @@ local mappings = {
   },
   {
     mode = "n",
+    suffix = "T",
+    command = "<cmd>Twilight<cr>",
+    desc = "Toggle trouble list",
+  },
+  {
+    mode = "n",
     suffix = "d",
     command = function()
       require("trouble").toggle("document_diagnostics")
@@ -125,7 +131,7 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "T",
+    suffix = "N",
     command = function()
       require("neotest").summary.toggle()
     end,
