@@ -108,6 +108,7 @@ in {
       shellharden
       gopls
       revive
+      yaml-language-server
       helm-ls
       ruff-lsp
       nodePackages.bash-language-server

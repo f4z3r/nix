@@ -97,6 +97,12 @@ lspconfig.bashls.setup({
 -- Helm
 lspconfig.helm_ls.setup({
   capabilities = capabilities,
+  filetypes = { "helm", "gotmpl" },
+})
+
+-- Yaml
+lspconfig.yamlls.setup({
+  capabilities = capabilities,
 })
 
 -- Terraform
