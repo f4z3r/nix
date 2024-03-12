@@ -410,10 +410,6 @@ in {
     source = ./queries;
     recursive = true;
   };
-  home.file.".config/nvim/after" = {
-    source = ./after;
-    recursive = true;
-  };
   home.file.".config/nvim/spell/en.utf-8.add" = {
     source = ./spell/en.utf-8.add;
   };
