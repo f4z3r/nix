@@ -220,6 +220,7 @@ let
       lyaml
       argparse
       lua-toml
+      http
       rapidjson
       basexx
       busted
@@ -234,14 +235,6 @@ let
       luasec
       luasocket
       luv
-      # dependencies for lua-http
-      cqueues
-      luaossl
-      binaryheap
-      lpeg
-      lpeg_patterns
-      fifo
-
     ];
   luajit = pkgs.luajit.withPackages lua-packages;
 in {
