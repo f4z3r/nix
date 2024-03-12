@@ -17,7 +17,7 @@ overseer.register_template({
   builder = function(_)
     return {
       cmd = { "busted" },
-      args = { "./" },
+      args = { "./tests" },
       name = "Busted",
       cwd = vim.fn.getcwd(),
       -- env = {
