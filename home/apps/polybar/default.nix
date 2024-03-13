@@ -1,6 +1,10 @@
-{ pkgs, polybar_dpi, main_monitor, monitor_prefix, ... }:
-
 {
+  pkgs,
+  polybar_dpi,
+  main_monitor,
+  monitor_prefix,
+  ...
+}: {
   services = {
     polybar = {
       enable = true;
@@ -24,7 +28,7 @@
         height = 24pt
         radius = 5
 
-        dpi = ${toString (polybar_dpi)}
+        dpi = ${toString polybar_dpi}
 
         background = ''${colors.background}
         foreground = ''${colors.foreground}
@@ -189,9 +193,9 @@
   };
 
   home.file = {
-    ".local/bin/vol.lua" = { source = ./scripts/vol.lua; };
-    ".local/bin/vpn.lua" = { source = ./scripts/vpn.lua; };
-    ".config/uair/uair.toml" = { source = ./uair.toml; };
+    ".local/bin/vol.lua" = {source = ./scripts/vol.lua;};
+    ".local/bin/vpn.lua" = {source = ./scripts/vpn.lua;};
+    ".config/uair/uair.toml" = {source = ./uair.toml;};
   };
 }
 # vim:ft=nix

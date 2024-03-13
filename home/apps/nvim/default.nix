@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   gruvbox-material-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "gruvbox-material.nvim";
     src = pkgs.fetchFromGitHub {
@@ -145,7 +143,8 @@ in {
       {
         type = "lua";
         plugin = nvim-treesitter.withPlugins (_:
-          nvim-treesitter.allGrammars ++ [
+          nvim-treesitter.allGrammars
+          ++ [
             (pkgs.tree-sitter.buildGrammar {
               language = "gotmpl";
               version = "master";

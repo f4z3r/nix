@@ -1,11 +1,18 @@
-{ pkgs, theme, ... }:
-let
-  fg_colour = if theme == "dark" then "colour230" else "colour236";
-  bg_colour = if theme == "dark" then "colour236" else "colour180";
-  focous_colour = "colour214";
-
-in
 {
+  pkgs,
+  theme,
+  ...
+}: let
+  fg_colour =
+    if theme == "dark"
+    then "colour230"
+    else "colour236";
+  bg_colour =
+    if theme == "dark"
+    then "colour236"
+    else "colour180";
+  focous_colour = "colour214";
+in {
   programs.tmux = {
     enable = true;
     clock24 = true;
@@ -29,8 +36,7 @@ in
       }
       {
         plugin = copycat;
-        extraConfig =
-          ''set -g @override_copy_command "(xsel -cb && xsel -bi)"'';
+        extraConfig = ''set -g @override_copy_command "(xsel -cb && xsel -bi)"'';
       }
     ];
 

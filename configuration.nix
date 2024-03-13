@@ -1,12 +1,20 @@
-{ config, lib, pkgs, system, username, hostname, dpi, brain_backup, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  system,
+  username,
+  hostname,
+  dpi,
+  brain_backup,
+  ...
+}: {
   imports = [
     ./${hostname}-hardware-configuration.nix
-    (import ./nixos/networking.nix { inherit config pkgs hostname; })
+    (import ./nixos/networking.nix {inherit config pkgs hostname;})
     ./nixos/virtualisation.nix
-    (import ./nixos/clamav.nix { inherit config pkgs username; })
-    (import ./nixos/restic.nix { inherit config pkgs username brain_backup; })
+    (import ./nixos/clamav.nix {inherit config pkgs username;})
+    (import ./nixos/restic.nix {inherit config pkgs username brain_backup;})
     ./nixos/tlp.nix
     ./nixos/zsh.nix
     ./nixos/openvpn/default.nix
@@ -22,9 +30,9 @@
         configurationLimit = 20;
         editor = false;
       };
-      efi = { canTouchEfiVariables = true; };
+      efi = {canTouchEfiVariables = true;};
     };
-    tmp = { cleanOnBoot = true; };
+    tmp = {cleanOnBoot = true;};
   };
 
   hardware = {
@@ -33,7 +41,7 @@
     bluetooth = {
       enable = true;
       powerOnBoot = false;
-      settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
+      settings = {General = {Enable = "Source,Sink,Media,Socket";};};
     };
   };
 
@@ -58,12 +66,12 @@
       options = "--delete-older-than 14d";
     };
 
-    settings = { auto-optimise-store = true; };
+    settings = {auto-optimise-store = true;};
   };
 
   nixpkgs.config.allowUnfree = true;
 
-  system = { autoUpgrade = { enable = false; }; };
+  system = {autoUpgrade = {enable = false;};};
 
   sound = {
     enable = true;
@@ -92,12 +100,12 @@
 
   fonts = {
     enableDefaultPackages = true;
-    packages = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
+    packages = with pkgs; [(nerdfonts.override {fonts = ["FiraCode"];})];
 
     fontconfig = {
       defaultFonts = {
-        monospace = [ "FiraCode Nerd Font Mono" ];
-        sansSerif = [ "FiraCode Nerd Font" ];
+        monospace = ["FiraCode Nerd Font Mono"];
+        sansSerif = ["FiraCode Nerd Font"];
       };
     };
   };
@@ -114,7 +122,7 @@
       };
     };
 
-    windowManager = { bspwm = { enable = true; }; };
+    windowManager = {bspwm = {enable = true;};};
 
     displayManager = {
       defaultSession = "none+bspwm";
@@ -122,7 +130,7 @@
         enable = true;
         user = "${username}";
       };
-      lightdm = { enable = true; };
+      lightdm = {enable = true;};
     };
 
     xkb = {
@@ -136,13 +144,12 @@
       ${username} = {
         isNormalUser = true;
         description = "${username}";
-        extraGroups =
-          [ "networkmanager" "wheel" "audio" "video" "podman" "docker" ];
+        extraGroups = ["networkmanager" "wheel" "audio" "video" "podman" "docker"];
         shell = pkgs.zsh;
-        packages = with pkgs; [ ];
+        packages = with pkgs; [];
       };
     };
-    groups = { users.members = [ "${username}" "clamav" ]; };
+    groups = {users.members = ["${username}" "clamav"];};
   };
 
   programs = {
@@ -228,14 +235,18 @@
 
   security.sudo = {
     execWheelOnly = true;
-    extraRules = [{
-      users = [ "clamav" ];
-      runAs = "${username}";
-      commands = [{
-        command = "${pkgs.libnotify}/bin/notify-send";
-        options = [ "NOPASSWD" "SETENV" ];
-      }];
-    }];
+    extraRules = [
+      {
+        users = ["clamav"];
+        runAs = "${username}";
+        commands = [
+          {
+            command = "${pkgs.libnotify}/bin/notify-send";
+            options = ["NOPASSWD" "SETENV"];
+          }
+        ];
+      }
+    ];
   };
 
   system.stateVersion = "22.11";

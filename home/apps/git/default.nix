@@ -1,6 +1,8 @@
-{ pkgs, theme, ... }:
-
 {
+  pkgs,
+  theme,
+  ...
+}: {
   programs.git = {
     enable = true;
 
@@ -23,8 +25,14 @@
       options = {
         syntax-theme = "gruvbox-${theme}";
         true-color = "always";
-        plus-style = if theme == "light" then "syntax #cdffcc" else "syntax #012800";
-        minus-style = if theme == "light" then "syntax #ff8ab6" else "syntax #340001";
+        plus-style =
+          if theme == "light"
+          then "syntax #cdffcc"
+          else "syntax #012800";
+        minus-style =
+          if theme == "light"
+          then "syntax #ff8ab6"
+          else "syntax #340001";
         navigate = true;
         line-numbers = true;
         side-by-side = true;
@@ -127,7 +135,7 @@
       "co" = ''checkout'';
       "sw" = ''switch'';
       "re" = ''reset'';
-      "s"  ='' status -sb'';
+      "s" = ''status -sb'';
       "st" = ''stash list'';
       "sh" = ''show HEAD'';
       "lg" = ''log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit'';

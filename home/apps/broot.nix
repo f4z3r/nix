@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.broot = {
     enable = true;
     enableBashIntegration = true;
@@ -9,11 +7,22 @@
       modal = false;
       imports = [
         "verbs.hjson"
-        {file = "dark-gruvbox.hjson"; luma = ["dark" "unknown"];}
+        {
+          file = "dark-gruvbox.hjson";
+          luma = ["dark" "unknown"];
+        }
       ];
       true_colors = true;
       show_selection_mark = true;
       default_flags = "gip";
+      special_paths = {
+        worktrees = {
+          show = "never";
+        };
+        build = {
+          show = "never";
+        };
+      };
       ext_colors = {
         rs = "rgb(255, 128, 75)";
         js = "rgb(255, 128, 75)";
@@ -56,6 +65,10 @@
         {
           key = "ctrl-h";
           execution = ":panel_left";
+        }
+        {
+          key = "ctrl-s";
+          internal = ":toggle_stage";
         }
         {
           key = "ctrl-f";

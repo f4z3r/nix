@@ -1,9 +1,10 @@
-{ pkgs, lib, ... }:
-
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   lua-packages = luaPkgs:
-    with luaPkgs;
-    let
+    with luaPkgs; let
       # to generate new packages:
       # ```bash
       # luarocks nix <package>
@@ -11,10 +12,12 @@ let
       lanes = buildLuarocksPackage {
         pname = "lanes";
         version = "3.16.0-0";
-        knownRockspec = (pkgs.fetchurl {
-          url = "mirror://luarocks/lanes-3.16.0-0.rockspec";
-          sha256 = "0clnd3fsbx6w340bqddkcw0kdp4jsnnymf0mwcxdh0njkqfsxwma";
-        }).outPath;
+        knownRockspec =
+          (pkgs.fetchurl {
+            url = "mirror://luarocks/lanes-3.16.0-0.rockspec";
+            sha256 = "0clnd3fsbx6w340bqddkcw0kdp4jsnnymf0mwcxdh0njkqfsxwma";
+          })
+          .outPath;
         src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
           {
             "url": "https://github.com/LuaLanes/lanes.git",
@@ -27,14 +30,16 @@ let
             "deepClone": false,
             "leaveDotGit": false
           }
-        '') [ "date" "path" ]);
+        '') ["date" "path"]);
 
         disabled = luaOlder "5.1";
-        propagatedBuildInputs = [ lua ];
-        externalDeps = [{
-          name = "PTHREAD";
-          dep = pkgs.glibc;
-        }];
+        propagatedBuildInputs = [lua];
+        externalDeps = [
+          {
+            name = "PTHREAD";
+            dep = pkgs.glibc;
+          }
+        ];
 
         meta = {
           homepage = "https://github.com/LuaLanes/lanes";
@@ -45,17 +50,19 @@ let
       lua-path = buildLuarocksPackage {
         pname = "lua-path";
         version = "0.3.1-2";
-        knownRockspec = (pkgs.fetchurl {
-          url = "mirror://luarocks/lua-path-0.3.1-2.rockspec";
-          sha256 = "1y0r23bbqhrd3wl7f5fpm1fqijb5sar59if4cif1j789rymf43z2";
-        }).outPath;
+        knownRockspec =
+          (pkgs.fetchurl {
+            url = "mirror://luarocks/lua-path-0.3.1-2.rockspec";
+            sha256 = "1y0r23bbqhrd3wl7f5fpm1fqijb5sar59if4cif1j789rymf43z2";
+          })
+          .outPath;
         src = pkgs.fetchzip {
           url = "https://github.com/moteus/lua-path/archive/v0.3.1.zip";
           sha256 = "1v65rsakwi1n64v3ylpsyml9dg8kac8c1glnlng0ccrqnlw6jzka";
         };
 
         disabled = (luaOlder "5.1") || (luaAtLeast "5.5");
-        propagatedBuildInputs = [ lua ];
+        propagatedBuildInputs = [lua];
 
         meta = {
           homepage = "https://github.com/moteus/lua-path";
@@ -66,10 +73,12 @@ let
       lua-fun = buildLuarocksPackage {
         pname = "fun";
         version = "0.1.3-1";
-        knownRockspec = (pkgs.fetchurl {
-          url = "mirror://luarocks/fun-0.1.3-1.rockspec";
-          sha256 = "03bimwzz9qwcs759ld69bljvnaim7dlsppg4w1hgxmvm6f2c8058";
-        }).outPath;
+        knownRockspec =
+          (pkgs.fetchurl {
+            url = "mirror://luarocks/fun-0.1.3-1.rockspec";
+            sha256 = "03bimwzz9qwcs759ld69bljvnaim7dlsppg4w1hgxmvm6f2c8058";
+          })
+          .outPath;
         src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
           {
             "url": "https://github.com/luafun/luafun.git",
@@ -82,24 +91,25 @@ let
             "deepClone": false,
             "leaveDotGit": false
           }
-        '') [ "date" "path" ]);
+        '') ["date" "path"]);
 
-        propagatedBuildInputs = [ lua ];
+        propagatedBuildInputs = [lua];
 
         meta = {
           homepage = "https://luafun.github.io/";
-          description =
-            "High-performance functional programming library for Lua";
+          description = "High-performance functional programming library for Lua";
           license.fullName = "MIT/X11";
         };
       };
       date = buildLuarocksPackage {
         pname = "date";
         version = "2.2-2";
-        knownRockspec = (pkgs.fetchurl {
-          url = "mirror://luarocks/date-2.2-2.rockspec";
-          sha256 = "0z2gb4rxfrkdx3zlysmlvfpm867fk0yq0bsn7yl789pvgf591l1x";
-        }).outPath;
+        knownRockspec =
+          (pkgs.fetchurl {
+            url = "mirror://luarocks/date-2.2-2.rockspec";
+            sha256 = "0z2gb4rxfrkdx3zlysmlvfpm867fk0yq0bsn7yl789pvgf591l1x";
+          })
+          .outPath;
         src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
           {
             "url": "https://github.com/Tieske/date.git",
@@ -112,10 +122,10 @@ let
             "deepClone": false,
             "leaveDotGit": false
           }
-        '') [ "date" "path" ]);
+        '') ["date" "path"]);
 
         disabled = (luaOlder "5.0") || (luaAtLeast "5.5");
-        propagatedBuildInputs = [ lua ];
+        propagatedBuildInputs = [lua];
 
         meta = {
           homepage = "https://github.com/Tieske/date";
@@ -126,10 +136,12 @@ let
       luatext = buildLuarocksPackage {
         pname = "luatext";
         version = "1.1.1-0";
-        knownRockspec = (pkgs.fetchurl {
-          url = "mirror://luarocks/luatext-1.1.1-0.rockspec";
-          sha256 = "1jy8iffvmyyg4lvlk4g6npm09447p9ii9zs0jc5j9ryly005qk27";
-        }).outPath;
+        knownRockspec =
+          (pkgs.fetchurl {
+            url = "mirror://luarocks/luatext-1.1.1-0.rockspec";
+            sha256 = "1jy8iffvmyyg4lvlk4g6npm09447p9ii9zs0jc5j9ryly005qk27";
+          })
+          .outPath;
         src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
           {
             "url": "https://github.com/f4z3r/luatext.git",
@@ -143,10 +155,10 @@ let
             "deepClone": false,
             "leaveDotGit": false
           }
-        '') [ "date" "path" "sha256" ]);
+        '') ["date" "path" "sha256"]);
 
         disabled = luaOlder "5.1";
-        propagatedBuildInputs = [ lua ];
+        propagatedBuildInputs = [lua];
 
         meta = {
           homepage = "https://github.com/f4z3r/luatext/tree/main";
@@ -157,10 +169,12 @@ let
       utf8 = buildLuarocksPackage {
         pname = "utf8";
         version = "1.2-0";
-        knownRockspec = (pkgs.fetchurl {
-          url = "mirror://luarocks/utf8-1.2-0.rockspec";
-          sha256 = "10l9w1yh00m2ixicg3iwfz0zliqbbyvhw82q4xw882p89hx0r21m";
-        }).outPath;
+        knownRockspec =
+          (pkgs.fetchurl {
+            url = "mirror://luarocks/utf8-1.2-0.rockspec";
+            sha256 = "10l9w1yh00m2ixicg3iwfz0zliqbbyvhw82q4xw882p89hx0r21m";
+          })
+          .outPath;
         src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
           {
             "url": "https://github.com/dannote/luautf8",
@@ -174,10 +188,10 @@ let
             "deepClone": false,
             "leaveDotGit": false
           }
-        '') [ "date" "path" "sha256" ]);
+        '') ["date" "path" "sha256"]);
 
         disabled = luaOlder "5.1";
-        propagatedBuildInputs = [ lua ];
+        propagatedBuildInputs = [lua];
 
         meta = {
           homepage = "http://github.com/starwing/luautf8";
@@ -188,10 +202,12 @@ let
       nd = buildLuarocksPackage {
         pname = "nd";
         version = "0.1.0-17";
-        knownRockspec = (pkgs.fetchurl {
-          url = "mirror://luarocks/nd-0.1.0-17.rockspec";
-          sha256 = "03106hj1lk8nvndv63lxwfhsiaq3jnln6wlm6ncp2li1aigkzjck";
-        }).outPath;
+        knownRockspec =
+          (pkgs.fetchurl {
+            url = "mirror://luarocks/nd-0.1.0-17.rockspec";
+            sha256 = "03106hj1lk8nvndv63lxwfhsiaq3jnln6wlm6ncp2li1aigkzjck";
+          })
+          .outPath;
         src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
           {
             "url": "https://github.com/f4z3r/nd.git",
@@ -205,10 +221,10 @@ let
             "deepClone": false,
             "leaveDotGit": false
           }
-        '') [ "date" "path" "sha256" ]);
+        '') ["date" "path" "sha256"]);
 
         disabled = lua.luaversion != "5.1";
-        propagatedBuildInputs = [ argparse date lua lua-path utf8 ];
+        propagatedBuildInputs = [argparse date lua lua-path utf8];
 
         meta = {
           homepage = "https://github.com/f4z3r/nd";
@@ -216,37 +232,39 @@ let
           license.fullName = "MIT <http://opensource.org/licenses/MIT>";
         };
       };
-    in [ lanes lua-path lua-fun date luatext utf8 nd ] ++ [
-      lyaml
-      argparse
-      lua-toml
-      http
-      rapidjson
-      basexx
-      busted
-      compat53
-      luafilesystem
+    in
+      [lanes lua-path lua-fun date luatext utf8 nd]
+      ++ [
+        lyaml
+        argparse
+        lua-toml
+        http
+        rapidjson
+        basexx
+        busted
+        compat53
+        luafilesystem
 
-      # needed for publishing rocks
-      luarocks-nix
-      cjson
+        # needed for publishing rocks
+        luarocks-nix
+        cjson
 
-      # dependencies required elsewhere
-      luasec
-      luasocket
-      luv
-    ];
+        # dependencies required elsewhere
+        luasec
+        luasocket
+        luv
+      ];
   luajit = pkgs.luajit.withPackages lua-packages;
 in {
   home = {
-    packages = with pkgs; [ lua-language-server selene luajit ];
+    packages = with pkgs; [lua-language-server selene luajit];
     sessionVariables = {
       LUA_CPATH = "${lib.concatStringsSep ";"
-        (map pkgs.luajitPackages.getLuaCPath [ luajit ])}";
+        (map pkgs.luajitPackages.getLuaCPath [luajit])}";
       LUA_PATH = "./?.lua;./?/init.lua;${
-          lib.concatStringsSep ";"
-          (map pkgs.luajitPackages.getLuaPath [ luajit ])
-        }";
+        lib.concatStringsSep ";"
+        (map pkgs.luajitPackages.getLuaPath [luajit])
+      }";
     };
   };
 }

@@ -1,5 +1,9 @@
-{ config, pkgs, username, ... }:
 {
+  config,
+  pkgs,
+  username,
+  ...
+}: {
   services.clamav = {
     daemon = {
       enable = true;
@@ -12,11 +16,12 @@
         ];
         OnAccessPrevention = "yes";
         OnAccessExcludeUname = "clamav";
-        VirusEvent = ''/run/wrappers/bin/sudo -u ${username} '' +
-          ''DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus DISPLAY=:0 '' +
-          ''${pkgs.libnotify}/bin/notify-send -u critical -i clamav '' +
-          '' "Virus Found" "Virus $CLAM_VIRUSEVENT_VIRUSNAME found in '' +
-          ''$CLAM_VIRUSEVENT_FILENAME.\nFile moved to /root/quarantine."'';
+        VirusEvent =
+          ''/run/wrappers/bin/sudo -u ${username} ''
+          + ''DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus DISPLAY=:0 ''
+          + ''${pkgs.libnotify}/bin/notify-send -u critical -i clamav ''
+          + ''"Virus Found" "Virus $CLAM_VIRUSEVENT_VIRUSNAME found in ''
+          + ''$CLAM_VIRUSEVENT_FILENAME.\nFile moved to /root/quarantine."'';
       };
     };
 
@@ -29,10 +34,10 @@
 
   systemd.services."clamav-clamonacc" = {
     description = "ClamAV On-Access Scanner";
-    documentation = [ "man:clamonacc(8)" "man:clamd.conf(5)" "https://docs.clamav.net/" ];
-    requires = [ "clamav-daemon.service" ];
-    after = [ "clamav-daemon.service" ];
-    wantedBy = [ "multi-user.target" ];
+    documentation = ["man:clamonacc(8)" "man:clamd.conf(5)" "https://docs.clamav.net/"];
+    requires = ["clamav-daemon.service"];
+    after = ["clamav-daemon.service"];
+    wantedBy = ["multi-user.target"];
     serviceConfig = {
       Type = "simple";
       User = "root";

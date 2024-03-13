@@ -1,8 +1,8 @@
 #!/usr/bin/env luajit
 
-local io = require('io')
-local os = require('os')
-local string = require('string')
+local io = require("io")
+local os = require("os")
+local string = require("string")
 
 local TYPES = {
   "feat",
@@ -17,11 +17,11 @@ local TYPES = {
 }
 
 local function log_error(msg, ...)
-  print(string.format("[ERROR] "..msg, ...))
+  print(string.format("[ERROR] " .. msg, ...))
 end
 
 local function get_prefix(msg)
-  local match = string.match(msg, '[%S%(%)]+:')
+  local match = string.match(msg, "[%S%(%)]+:")
   if not match then
     log_error("could not find any prefix in commit")
     os.exit(1)
@@ -30,7 +30,7 @@ local function get_prefix(msg)
 end
 
 local function main(path)
-  local fh = io.open(path, 'r')
+  local fh = io.open(path, "r")
   if fh == nil then
     log_error("could not open commit message file")
     os.exit(1)

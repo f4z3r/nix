@@ -1,6 +1,8 @@
-{ pkgs, theme, ... }:
-
-let
+{
+  pkgs,
+  theme,
+  ...
+}: let
   foreground = "#d4be98";
   background = "#282828";
   current_line = "#d4be98";
@@ -51,7 +53,7 @@ in {
         screenDumpDir = "/tmp/k9s-screens-jakob";
         currentContext = "ccp21-n";
         currentCluster = "ccp21-n";
-        clusters = { };
+        clusters = {};
       };
     };
 
@@ -120,8 +122,8 @@ in {
           };
           views = {
             charts = {
-              defaultDialColors = [ blue red ];
-              defaultChartColors = [ blue red ];
+              defaultDialColors = [blue red];
+              defaultChartColors = [blue red];
             };
             table = {
               fgColor = foreground;

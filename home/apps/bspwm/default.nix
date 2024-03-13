@@ -1,6 +1,11 @@
-{ pkgs, hostname, scratch_res, main_monitor, monitor_prefix, ... }:
-
 {
+  pkgs,
+  hostname,
+  scratch_res,
+  main_monitor,
+  monitor_prefix,
+  ...
+}: {
   xsession = {
     windowManager.bspwm = {
       enable = true;
@@ -9,10 +14,10 @@
         "${pkgs.polybar}/bin/polybar main"
       ];
       monitors = {
-        ${main_monitor} = [ "I" "II" "III" "IV" "V" ];
-        "${monitor_prefix}-1" = [ "VI" "VII" "VIII" "IX" "X" ];
-        "${monitor_prefix}-2" = [ "XI" "XII" "XIII" "XIV" "XV" ];
-        "${monitor_prefix}-3" = [ "XVI" "XVII" "XVIII" "XIX" "XX" ];
+        ${main_monitor} = ["I" "II" "III" "IV" "V"];
+        "${monitor_prefix}-1" = ["VI" "VII" "VIII" "IX" "X"];
+        "${monitor_prefix}-2" = ["XI" "XII" "XIII" "XIV" "XV"];
+        "${monitor_prefix}-3" = ["XVI" "XVII" "XVIII" "XIX" "XX"];
       };
       rules = {
         "quake" = {

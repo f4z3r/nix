@@ -1,6 +1,9 @@
-{ lib, pkgs, theme, ... }:
-
 {
+  lib,
+  pkgs,
+  theme,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;

@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
@@ -88,7 +91,7 @@
 
       hostname = {
         disabled = true;
-        format =  "╱[  $hostname ]($style)";
+        format = "╱[  $hostname ]($style)";
         trim_at = ".";
         style = "dimmed red";
       };

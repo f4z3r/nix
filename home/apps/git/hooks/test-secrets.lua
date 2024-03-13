@@ -1,8 +1,8 @@
 #!/usr/bin/env luajit
 
-local os = require('os')
-local io = require('io')
-local string = require('string')
+local io = require("io")
+local os = require("os")
+local string = require("string")
 
 local secret_patterns = {
   "pass.*=",
