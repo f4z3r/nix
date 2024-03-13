@@ -5,7 +5,7 @@ id=$(wmctrl -lx | grep "${1}" | awk '{ print $1 }')
 
 # stop execution if theres no matches
 if [ "$id" = "" ] && ! [ "$2" = "" ]; then
-	"${2}"
+	eval "${2}"
 	exit
 fi
 
