@@ -68,6 +68,7 @@
         disabled = false;
         format = "[$time ]($style)";
         time_format = "%T";
+        style = "dimmed yellow";
       };
 
       nix_shell = {
@@ -75,7 +76,7 @@
         format = "╱ [$symbol$state(\\($name\\)) ]($style)";
         impure_msg = "[ ](bold red)";
         pure_msg = "[ ](bold green)";
-        unknown_msg = "[ ](bold yellow)";
+        unknown_msg = "[ ](dimmed yellow)";
       };
 
       username = {
@@ -89,7 +90,7 @@
         disabled = true;
         format =  "╱[  $hostname ]($style)";
         trim_at = ".";
-        style = "dimmed bold red";
+        style = "dimmed red";
       };
 
       git_branch = {
@@ -129,7 +130,7 @@
       kubernetes = {
         disabled = false;
         format = "╱ [$context $symbol $namespace ]($style)";
-        style = "#BA55D3 dimmed bold";
+        style = "#BA55D3 dimmed";
         symbol = "󱃾";
       };
 
@@ -234,7 +235,7 @@
         min_time = 500;
         show_milliseconds = false;
         format = "╱ [took](dimmed)[ $duration ]($style)";
-        style = "bold yellow";
+        style = "dimmed yellow";
       };
 
       jobs = {

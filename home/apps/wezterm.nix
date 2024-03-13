@@ -12,9 +12,19 @@ let
 
     config.audible_bell = "Disabled"
 
-    config.color_scheme = 'THEME'
+    config.color_scheme = "${if theme == "dark" then "Gruvbox Material (Gogh)" else "Gruvbox (Gogh)"}"
     config.colors = {
       cursor_fg = "${if theme == "dark" then "#282828" else "#fbf1c7"}",
+      brights = {
+        "${if theme == "dark" then "#928374" else "#928374"}",  -- Bright Black
+        "${if theme == "dark" then "#FB4934" else "#9D0006"}",  -- Bright Red (Command error)
+        "${if theme == "dark" then "#B8BB26" else "#79740E"}",  -- Bright Green (Exec)
+        "${if theme == "dark" then "#FABD2F" else "#B57614"}",  -- Bright Yellow
+        "${if theme == "dark" then "#83A598" else "#076678"}",  -- Bright Blue (Folder)
+        "${if theme == "dark" then "#D3869B" else "#8F3F71"}",  -- Bright Magenta
+        "${if theme == "dark" then "#8EC07C" else "#427B58"}",  -- Bright Cyan
+        "${if theme == "dark" then "#EBDBB2" else "#3C3836"}",  -- Bright White
+      }
     }
 
     config.hide_tab_bar_if_only_one_tab = true
@@ -46,8 +56,6 @@ let
 in {
   programs.wezterm = {
     enable = true;
-    extraConfig = builtins.replaceStrings [ "THEME" ] [
-      (if theme == "dark" then "Gruvbox Material (Gogh)" else "Gruvbox (Gogh)")
-    ] "${config}";
+    extraConfig = config;
   };
 }
