@@ -98,32 +98,42 @@ in {
       require("misc")
     '';
     extraPackages = with pkgs; [
-      zig
       deadnix
       statix
-      nixfmt
-      # hadolint
+      alejandra
+
+      cbfmt
+
       shfmt
-      shellcheck
       shellharden
-      gopls
+
+      gofumpt
+      goimports-reviser
       revive
+
+      gopls
       yaml-language-server
       helm-ls
       ruff-lsp
       nodePackages.bash-language-server
-      universal-ctags
       marksman
-      rustfmt
       rust-analyzer
-      clippy
-      stylua
-      yamlfmt
-      nil
-      fzf
       terraform-ls
+      nil
+
+      universal-ctags
+
+      clippy
+
+      stylua
+
+      yamlfmt
+
       tfsec
+
       plantuml
+
+      fzf
     ];
 
     plugins = with pkgs.vimPlugins; [
