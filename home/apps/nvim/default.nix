@@ -11,15 +11,6 @@ let
     };
   };
 
-  plantuml-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "plantuml-nvim";
-    src = pkgs.fetchurl {
-      url =
-        "https://gitlab.com/itaranto/plantuml.nvim/-/archive/master/plantuml.nvim-master.tar.gz";
-      sha256 = "sha256-wRoc+j/LJaYaCinju0XeVICaTc1O+hdNiqcjut+6Z1c=";
-    };
-  };
-
   maximize-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "maximize.nvim";
     src = pkgs.fetchFromGitHub {
@@ -43,10 +34,10 @@ let
   org-bullets = pkgs.vimUtils.buildVimPlugin {
     name = "org-bullets.nvim";
     src = pkgs.fetchFromGitHub {
-      owner = "akinsho";
+      owner = "nvim-orgmode";
       repo = "org-bullets.nvim";
-      rev = "6e0d60e901bb939eb526139cb1f8d59065132fd9";
-      sha256 = "sha256-x6S4WdgfUr7HGEHToSDy3pSHEwOPQalzWhBUipqMtnw=";
+      rev = "3623e86e0fa6d07f45042f7207fc333c014bf167";
+      sha256 = "sha256-aIEe1dgUmDzu9kl33JCNcgyfp8DymURltH0HcZfph0Y=";
     };
   };
 
@@ -55,8 +46,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "echasnovski";
       repo = "mini.align";
-      rev = "c5ab28809c630b65ffe069b564ce1d473bbcb332";
-      sha256 = "sha256-PVSgN0VamkR6PfpNOfkSv6LiIVwIlWWYfySxp1P+LAE=";
+      rev = "f845218c5fea89e49074e48270dc5e1b9511a0f9";
+      sha256 = "sha256-vq8l6ff3xbdYAdoyZA7VszP7Hl5oVeQCM7n89sxs+Yo=";
     };
   };
 
@@ -65,8 +56,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "echasnovski";
       repo = "mini.splitjoin";
-      rev = "2b4ade24c1d46ce98801b74fc84241d7b676f9f4";
-      sha256 = "sha256-/4yqAnnTzrQ1jbhMGIk/wKz7QbqSZRmhgBLAWgugYOQ=";
+      rev = "a6b043b4afb075058a8c49325ff22e07f0e96170";
+      sha256 = "sha256-u4eDN8b7CZrfrtUILR/W6Q36JCLtPE2mrOc5uouzmDY=";
     };
   };
 
@@ -130,8 +121,6 @@ in {
       yamlfmt
 
       tfsec
-
-      plantuml
 
       fzf
     ];
@@ -353,12 +342,6 @@ in {
         type = "lua";
         plugin = nvim-table-md;
       }
-      plantuml-syntax
-      {
-        type = "lua";
-        plugin = plantuml-nvim;
-        config = builtins.readFile ./plugin/plantuml.lua;
-      }
 
       # comments
       {
@@ -415,6 +398,10 @@ in {
   };
   home.file.".config/nvim/ftplugin" = {
     source = ./ftplugin;
+    recursive = true;
+  };
+  home.file.".config/nvim/after" = {
+    source = ./after;
     recursive = true;
   };
   home.file.".config/nvim/queries" = {
