@@ -45,7 +45,11 @@ require("orgmode").setup({
     },
     j = {
       description = "Journal Entry",
-      template = "** %<%Y-%m-%d> %<%A>\n*** %U\n    %?",
+      template = "    %?",
+      datetree = {
+        tree_type = "day",
+        time_prompt = true,
+      },
       target = "~/Documents/sb/journal.org",
     },
   },
@@ -54,4 +58,17 @@ require("orgmode").setup({
       org_timestamp_up = "<c-q>",
     },
   },
+})
+
+-- setup meta return on shift enter in insert mode in orgmode files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "org",
+  callback = function()
+    vim.keymap.set("i", "<S-cr>", function()
+      require("orgmode").action("org_mappings.meta_return")
+    end, {
+      silent = true,
+      buffer = true,
+    })
+  end,
 })
