@@ -287,6 +287,7 @@ in {
       telescope-fzf-native-nvim
       telescope-orgmode
       telescope-undo-nvim
+      harpoon2
 
       # useful stuff
       {

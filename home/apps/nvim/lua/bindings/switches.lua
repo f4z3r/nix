@@ -30,3 +30,5 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {
   desc = "Jump to next diagnostic",
 })
+
+-- NOTE: harpoon switches are defined in the harpoon bindings
