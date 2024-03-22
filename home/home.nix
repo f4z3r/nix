@@ -235,6 +235,10 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
       ".local/share/uair/notification-sound.wav" = {
         source = ./files/notification-sound.wav;
       };
+      ".local/bin/mip" = {
+        source = ./scripts/mip;
+        executable = true;
+      };
     };
   };
 
