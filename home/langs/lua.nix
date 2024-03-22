@@ -166,6 +166,39 @@
           license.fullName = "MIT";
         };
       };
+      luatables = buildLuarocksPackage {
+        pname = "luatables";
+        version = "0.1.3-0";
+        knownRockspec =
+          (pkgs.fetchurl {
+            url = "mirror://luarocks/luatables-0.1.3-0.rockspec";
+            sha256 = "0586bmi7gk6f3r7imvm1q38iiyp1dv3fp7cb08rp7shc3c7124rc";
+          })
+          .outPath;
+        src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
+          {
+            "url": "https://github.com/f4z3r/luatables.git",
+            "rev": "f1b552101e5e5092262562d5ee82278192da0a43",
+            "date": "2024-03-22T21:09:16+01:00",
+            "path": "/nix/store/6p91kmmz3bfdfmjqpsimsv23h82c4bcn-luatables",
+            "sha256": "1drl6iwgzx9fpkskizpnd06w7623nr1lsv4r8gnkcichpivzaxlh",
+            "hash": "sha256-kHb1d7yQRTbtQ5lsTUO2Q5jDDWj2/jj1vC71/3g0NLc=",
+            "fetchLFS": false,
+            "fetchSubmodules": true,
+            "deepClone": false,
+            "leaveDotGit": false
+          }
+        '') ["date" "path" "sha256"]);
+
+        disabled = lua.luaversion != "5.1";
+        propagatedBuildInputs = [lua luatext utf8];
+
+        meta = {
+          homepage = "https://github.com/f4z3r/luatables/tree/main";
+          description = "Library to render tables nicely to the terminal.";
+          license.fullName = "MIT";
+        };
+      };
       utf8 = buildLuarocksPackage {
         pname = "utf8";
         version = "1.2-0";
@@ -233,7 +266,7 @@
         };
       };
     in
-      [lanes lua-path lua-fun date luatext utf8 nd]
+      [lanes lua-path lua-fun date luatext luatables utf8 nd]
       ++ [
         lyaml
         argparse
