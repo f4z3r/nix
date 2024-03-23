@@ -41,7 +41,7 @@ local mappings = {
     command = function()
       require("trouble").toggle("document_diagnostics")
     end,
-    desc = "Toggle workspace diagnostics",
+    desc = "Toggle document diagnostics",
   },
   {
     mode = "n",
