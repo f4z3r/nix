@@ -1,24 +1,51 @@
 #!/usr/bin/env luajit
 
 local io = require("io")
-local string = require("string")
+local os = require("os")
 
 local json = require("rapidjson")
 local request = require("http.request")
 
-local text = require("luatext")
+local tables = require("luatables")
 
 local TIMEOUT = 15
 
+local COLORS = {
+  tables.Color.Red,
+  tables.Color.Green,
+  tables.Color.Blue,
+  tables.Color.Yellow,
+}
+
+local function assert_no_trace(nok, msg, ...)
+  if nok == nil then
+    io.stderr:write(msg)
+    os.exit(1)
+  end
+  return nok, msg, ...
+end
+
+local function formatter(i, j, content)
+  -- in data column render based on fixed colours
+  if j == 2 then
+    return content:fg(COLORS[i])
+  end
+  return content
+end
+
 local function main()
-  local _, stream = request.new_from_uri("http://ip-api.com/json/"):go(TIMEOUT)
-  local body = stream:get_body_as_string(TIMEOUT)
+  local _, stream = assert_no_trace(request.new_from_uri("http://ip-api.com/json/"):go(TIMEOUT))
+  local body = assert_no_trace(stream:get_body_as_string(TIMEOUT))
   local data = json.decode(body)
-  local ip = text.Text:new(data.query):fg(text.Color.Red)
-  local region = text.Text:new(data.regionName):fg(text.Color.Green)
-  local country = text.Text:new(data.country):fg(text.Color.Blue)
-  local isp = text.Text:new(data.isp):fg(text.Color.Yellow)
-  io.write(string.format("IP: %s\nRegion: %s\nCountry: %s\nISP: %s\n", ip, region, country, isp))
+  local out = tables.Table
+    :new()
+    :rows({ "IP", data.query }, { "Region", data.regionName }, { "Country", data.country }, { "ISP", data.isp })
+    :border(tables.BorderType.None)
+    :row_separator(false)
+    :column_separator(false)
+    :format_cells(formatter)
+    :padding(0)
+  io.write(out:render() .. "\n")
 end
 
 main()
