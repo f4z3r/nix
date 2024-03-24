@@ -38,6 +38,16 @@ in {
         plugin = copycat;
         extraConfig = ''set -g @override_copy_command "(xsel -cb && xsel -bi)"'';
       }
+      {
+        plugin = tmux-thumbs;
+        extraConfig = ''
+          set -g @thumbs-unique enabled
+          set -g @thumbs-alphabet colemak
+          set -g @thumbs-command "echo -n {} | xsel -bi"
+          set -g @thumbs-upcase-command "tmux set-buffer -- {} && tmux paste-buffer"
+          set -g @thumbs-regexp-1 'sha256\-\S{44}' # Match Nix SHAs
+        '';
+      }
     ];
 
     extraConfig = ''
