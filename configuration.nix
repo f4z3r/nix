@@ -176,6 +176,7 @@
       "XSECURELOCK_SHOW_KEYBOARD_LAYOUT" = "0";
       "XSECURELOCK_AUTH_FOREGROUND_COLOR" = "Medium Orchid";
       "XSECURELOCK_FONT" = "FiraCode Nerd Font Mono Med";
+      "DO_NOT_TRACK" = "1";
     };
 
     systemPackages = with pkgs; [
