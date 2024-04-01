@@ -179,6 +179,8 @@
       "DO_NOT_TRACK" = "1";
     };
 
+    pathsToLink = ["/share/zsh"];
+
     systemPackages = with pkgs; [
       vim
       git

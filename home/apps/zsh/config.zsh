@@ -4,10 +4,19 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
+# Add stuff for auto-complete
+zstyle ':autocomplete:*' delay 0.2  # seconds (float)
+zmodload zsh/complist
+bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
 # Add custom binds
 bindkey "^y" vi-cmd-mode
-bindkey "^n" vi-down-line-or-history
-bindkey "^p" vi-up-line-or-history
+bindkey "^n" history-incremental-search-backward
+bindkey "^p" history-incremental-search-backward
+bindkey -M menuselect "^n" vi-down-line-or-history
+bindkey -M menuselect "^p" vi-up-line-or-history
 bindkey -a "^n" vi-down-line-or-history
 bindkey -a "^p" vi-up-line-or-history
 bindkey -a "^h" vi-beginning-of-line
@@ -58,7 +67,7 @@ function _hoard_list() {
   echoti rmkx
   output=$(hoard --autocomplete list 3>&1 1>&2 2>&3)
   echoti smkx
-  
+
   if [[ -n $output ]]; then
     LBUFFER=$output
   fi
