@@ -117,6 +117,7 @@
       "/.venv/"
       "/shell.nix"
       "/.direnv/"
+      ".ropeproject/"
     ];
 
     aliases = {
