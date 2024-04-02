@@ -13,8 +13,8 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # Add custom binds
 bindkey "^y" vi-cmd-mode
-bindkey "^n" history-incremental-search-backward
-bindkey "^p" history-incremental-search-backward
+bindkey "^n" vi-down-line-or-history
+bindkey "^p" vi-up-line-or-history
 bindkey -M menuselect "^n" vi-down-line-or-history
 bindkey -M menuselect "^p" vi-up-line-or-history
 bindkey -a "^n" vi-down-line-or-history
