@@ -5,7 +5,7 @@ zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
 # Add stuff for auto-complete
-zstyle ':autocomplete:*' delay 0.2  # seconds (float)
+zstyle ':autocomplete:*' delay 0.1  # seconds (float)
 zmodload zsh/complist
 bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
