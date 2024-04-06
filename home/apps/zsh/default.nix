@@ -13,7 +13,9 @@
         "marlonrichert/zsh-autocomplete"
       ];
     };
-    enableAutosuggestions = true;
+    autosuggestion = {
+      enable = true;
+    };
     history = {
       expireDuplicatesFirst = true;
       extended = true;

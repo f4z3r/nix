@@ -50,7 +50,8 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   environment.systemPackages = [
-    pkgs.nvtop
+    pkgs.nvtopPackages.nvidia
+    pkgs.nvtopPackages.intel
   ];
 
   hardware.nvidia = {

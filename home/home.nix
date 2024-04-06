@@ -56,7 +56,7 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
       enable = true;
       settings = {
         email = "jakobbeckmann@pm.me";
-        pinentry = "qt";
+        pinentry = pkgs.pinentry-gtk2;
       };
     };
 
