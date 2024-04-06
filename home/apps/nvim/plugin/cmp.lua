@@ -37,7 +37,7 @@ cmp.setup({
         trailing_slash = true,
       },
     },
-    { name = "luasnip" },
+    { name = "luasnip_choice" },
   }, {
     { name = "buffer" },
   }),
@@ -67,19 +67,52 @@ cmp.setup.filetype("org", {
   }),
 })
 
+cmp.setup.filetype("norg", {
+  sources = cmp.config.sources({
+    { name = "neorg" },
+    {
+      name = "path",
+      options = {
+        trailing_slash = true,
+      },
+    },
+    { name = "luasnip_choice" },
+  }, {
+    { name = "buffer" },
+  }),
+})
+
 cmp.setup.cmdline({ "/", "?" }, {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = "buffer" },
+    {
+      name = "cmdline_history",
+      opts = { history_type = "/" },
+    },
   },
 })
 
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = "path" },
+    {
+      name = "path",
+      options = {
+        trailing_slash = true,
+      },
+    },
   }, {
-    { name = "cmdline" },
+    {
+      name = "cmdline",
+      option = {
+        ignore_cmds = { "Man", "!" },
+      },
+    },
+    {
+      name = "cmdline_history",
+      opts = { history_type = ":" },
+    },
   }),
 })
 

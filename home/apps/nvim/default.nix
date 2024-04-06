@@ -9,6 +9,16 @@
     };
   };
 
+  cmp-luasnip-choice = pkgs.vimUtils.buildVimPlugin {
+    name = "cmp-luasnip-choice";
+    src = pkgs.fetchFromGitHub {
+      owner = "L3MON4D3";
+      repo = "cmp-luasnip-choice";
+      rev = "4f49232e51c9df379b9daf43f25f7ee6320450f0";
+      sha256 = "sha256-/s1p/WLfrHZHX6fU1p2PUQ0GIocAB4mvhjZ0XUMzkaw=";
+    };
+  };
+
   maximize-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "maximize.nvim";
     src = pkgs.fetchFromGitHub {
@@ -68,6 +78,33 @@
       sha256 = "sha256-Q+RLKClM1F+VCdv72st0DhAFQzOyvBwIwguplSkRqSI=";
     };
   };
+
+  lua-packages = luaPkgs:
+    with luaPkgs; let
+      pathlib-nvim = buildLuarocksPackage {
+        pname = "pathlib.nvim";
+        version = "2.2.0-1";
+        knownRockspec =
+          (pkgs.fetchurl {
+            url = "mirror://luarocks/pathlib.nvim-2.2.0-1.rockspec";
+            sha256 = "0zj3psdq06822y8vl117z3y7zlc6jxwqppbv9irgwzr60wdz517n";
+          })
+          .outPath;
+        src = pkgs.fetchzip {
+          url = "https://github.com/pysan3/pathlib.nvim/archive/v2.2.0.zip";
+          sha256 = "1nyl3y0z2rrr35dyk2ypv8xjx43zamqxlpdq468iyyhfvkplz9yw";
+        };
+
+        disabled = luaOlder "5.1";
+        propagatedBuildInputs = [lua nvim-nio];
+
+        meta = {
+          homepage = "https://pysan3.github.io/pathlib.nvim/";
+          description = "OS Independent, ultimate solution to path handling in neovim.";
+          license.fullName = "MPL-2.0";
+        };
+      };
+    in [pathlib-nvim];
 in {
   programs.neovim = {
     enable = true;
@@ -76,6 +113,16 @@ in {
     vimAlias = true;
     withPython3 = true;
     withRuby = false;
+
+    extraLuaPackages = luaPkgs:
+      with luaPkgs;
+        (lua-packages luaPkgs)
+        ++ [
+          nvim-nio
+          lua-utils-nvim
+          plenary-nvim
+          nui-nvim
+        ];
 
     extraLuaConfig = ''
 
@@ -142,8 +189,9 @@ in {
       }
       {
         type = "lua";
-        plugin = nvim-treesitter.withPlugins (_:
-          nvim-treesitter.allGrammars
+        plugin = nvim-treesitter.withPlugins (p:
+          [p.tree-sitter-lua]
+          ++ nvim-treesitter.allGrammars
           ++ [
             (pkgs.tree-sitter.buildGrammar {
               language = "gotmpl";
@@ -268,8 +316,15 @@ in {
       lspkind-nvim
       cmp-nvim-lsp-signature-help
       cmp_luasnip
+      {
+        type = "lua";
+        plugin = cmp-luasnip-choice;
+        config = "require('cmp_luasnip_choice').setup()";
+      }
       cmp-path
       cmp-buffer
+      cmp-cmdline
+      cmp-cmdline-history
       cmp-nvim-lsp
       {
         type = "lua";
@@ -326,6 +381,14 @@ in {
 
       # tag generation
       vim-gutentags
+
+      # neorg
+      {
+        type = "lua";
+        plugin = neorg;
+        config = builtins.readFile ./plugin/neorg.lua;
+      }
+      neorg-telescope
 
       # orgmode
       {

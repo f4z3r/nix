@@ -10,6 +10,7 @@
     };
 
     nixpkgs-terraform-1-3-7.url = "github:nixos/nixpkgs/3c3b3ab88a34ff8026fc69cb78febb9ec9aedb16";
+    neorg-overlay.url = "github:nvim-neorg/nixpkgs-neorg-overlay";
   };
 
   outputs = {
@@ -17,6 +18,7 @@
     nixpkgs,
     home-manager,
     nixpkgs-terraform-1-3-7,
+    neorg-overlay,
     ...
   }: let
     username = "f4z3r";
@@ -60,6 +62,7 @@
 
           home-manager.nixosModules.home-manager
           {
+            nixpkgs.overlays = [neorg-overlay.overlays.default];
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
