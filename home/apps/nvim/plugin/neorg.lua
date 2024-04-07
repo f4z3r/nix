@@ -1,7 +1,26 @@
 require("neorg").setup({
   load = {
     ["core.defaults"] = {},
-    ["core.concealer"] = {},
+    ["core.concealer"] = {
+      config = {
+        icons = {
+          todo = {
+            urgent = {
+              icon = "",
+            },
+          },
+          heading = {
+            icons = {
+              "",
+              "󰪥",
+              "󰻂",
+              "󰺕",
+              "○",
+            },
+          },
+        },
+      },
+    },
     ["core.dirman"] = {
       config = {
         workspaces = {
@@ -124,14 +143,11 @@ require("neorg").setup({
   },
 })
 
-local group = vim.api.nvim_create_augroup(
-  'NeorgLoadTemplateGroup',
-  { clear = true }
-)
+local group = vim.api.nvim_create_augroup("NeorgLoadTemplateGroup", { clear = true })
 
 local is_buffer_empty = function(buffer)
   local content = vim.api.nvim_buf_get_lines(buffer, 0, -1, false)
-  return not (#content > 1 or content[1] ~= '')
+  return not (#content > 1 or content[1] ~= "")
 end
 
 local callback = function(args)
@@ -140,20 +156,17 @@ local callback = function(args)
       return
     end
 
-    if string.find(args.file, '/journal/') then
-      vim.api.nvim_cmd({ cmd = 'Neorg', args = { 'templates', 'fload', 'journal' } }, {})
+    if string.find(args.file, "/journal/") then
+      vim.api.nvim_cmd({ cmd = "Neorg", args = { "templates", "fload", "journal" } }, {})
     else
-      vim.api.nvim_cmd({ cmd = 'Neorg', args = { 'inject-metadata' } }, {})
+      vim.api.nvim_cmd({ cmd = "Neorg", args = { "inject-metadata" } }, {})
     end
   end)
 end
 
-vim.api.nvim_create_autocmd(
-  { 'BufNewFile', 'BufNew', },
-  {
-    desc = 'Load template on new norg files',
-    pattern = '*.norg',
-    callback = callback,
-    group = group,
-  }
-)
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufNew" }, {
+  desc = "Load template on new norg files",
+  pattern = "*.norg",
+  callback = callback,
+  group = group,
+})
