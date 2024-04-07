@@ -33,7 +33,7 @@ dashboard.section.top_buttons.val = {
   dashboard.button("a", "󰃭  Agenda", ':lua require("orgmode").action("agenda.prompt")<cr>'),
   dashboard.button(
     "o",
-    "  Org File",
+    "  Neorg File",
     ':lua vim.cmd(string.format("e %s", require("lazy.utils").get_random_org()))<cr>'
   ),
 }

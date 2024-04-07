@@ -1,5 +1,4 @@
-require("orgmode").setup_ts_grammar()
-
+-- TODO: remove these
 require("orgmode").setup({
   org_agenda_files = { "~/Documents/sb/**/*" },
   org_agenda_skip_scheduled_if_done = true,

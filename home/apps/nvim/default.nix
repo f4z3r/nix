@@ -19,6 +19,16 @@
     };
   };
 
+  neorg-templates = pkgs.vimUtils.buildVimPlugin {
+    name = "neorg-templates";
+    src = pkgs.fetchFromGitHub {
+      owner = "pysan3";
+      repo = "neorg-templates";
+      rev = "v2.0.3";
+      sha256 = "sha256-nZOAxXSHTUDBpUBS/Esq5HHwEaTB01dI7x5CQFB3pcw=";
+    };
+  };
+
   maximize-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "maximize.nvim";
     src = pkgs.fetchFromGitHub {
@@ -26,16 +36,6 @@
       repo = "maximize.nvim";
       rev = "97bfc171775c404396f8248776347ebe64474fe7";
       sha256 = "sha256-k8Cqti4nLUvtl0EBaU8ZPYJ6JlfnRlN6nCxE/WHrbnw=";
-    };
-  };
-
-  telescope-orgmode = pkgs.vimUtils.buildVimPlugin {
-    name = "telescope-orgmode.nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "joaomsa";
-      repo = "telescope-orgmode.nvim";
-      rev = "eabff061c3852a9aa94e672a7d2fa4a1ef63f9e2";
-      sha256 = "sha256-/sW4vfBbyurAQBgO0guU8BALB/KN9LYwhMBG8+EEuQo=";
     };
   };
 
@@ -340,7 +340,6 @@ in {
       }
       fzfWrapper
       telescope-fzf-native-nvim
-      telescope-orgmode
       telescope-undo-nvim
       harpoon2
 
@@ -389,7 +388,9 @@ in {
         config = builtins.readFile ./plugin/neorg.lua;
       }
       neorg-telescope
+      neorg-templates
 
+      # TODO: delete these soon
       # orgmode
       {
         type = "lua";
@@ -457,6 +458,10 @@ in {
   };
   home.file.".config/nvim/lua" = {
     source = ./lua;
+    recursive = true;
+  };
+  home.file.".config/nvim/templates" = {
+    source = ./templates;
     recursive = true;
   };
   home.file.".config/nvim/ftplugin" = {

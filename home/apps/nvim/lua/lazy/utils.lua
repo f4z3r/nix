@@ -56,10 +56,8 @@ end
 
 function utils.get_random_org()
   local files = {}
-  for fullpath in
-    path.each(vim.fn.expand("~/Documents/sb") .. "/*", "f", { recurse = true, skipdirs = true, delay = true })
-  do
-    if not string.find(fullpath, "/archive/") then
+  for fullpath in path.each(vim.fn.expand("~/notes") .. "/*", "f", { recurse = true, skipdirs = true, delay = true }) do
+    if not string.find(fullpath, "/archive/") and not string.find(fullpath, "/journal/") then
       files[#files + 1] = fullpath
     end
   end
