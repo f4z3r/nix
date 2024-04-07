@@ -37,6 +37,7 @@ cmp.setup({
         trailing_slash = true,
       },
     },
+    { name = 'luasnip' },
     { name = "luasnip_choice" },
   }, {
     { name = "buffer" },
@@ -76,6 +77,7 @@ cmp.setup.filetype("norg", {
         trailing_slash = true,
       },
     },
+    { name = 'luasnip' },
     { name = "luasnip_choice" },
   }, {
     { name = "buffer" },

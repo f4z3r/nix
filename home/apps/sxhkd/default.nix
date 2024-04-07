@@ -16,7 +16,7 @@
       "${mod} + ${alt} + o ; p" = "${pkgs.rofi-rbw}/bin/rofi-rbw -a copy -t password";
 
       # launch terminal
-      "${mod} + Return" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.tmux}/bin/tmux";
+      "${super} + Return" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.tmux}/bin/tmux";
 
       # quit / powermenu
       "${mod} + ${alt} + o ; q" = "${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";

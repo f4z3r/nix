@@ -33,7 +33,7 @@ local mappings = {
     mode = "n",
     suffix = "T",
     command = "<cmd>Twilight<cr>",
-    desc = "Toggle trouble list",
+    desc = "Toggle twilight",
   },
   {
     mode = "n",
