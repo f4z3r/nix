@@ -37,6 +37,14 @@ local mappings = {
   },
   {
     mode = "n",
+    suffix = "z",
+    command = function()
+      require("true-zen.ataraxis").toggle()
+    end,
+    desc = "Toggle zen mode",
+  },
+  {
+    mode = "n",
     suffix = "d",
     command = function()
       require("trouble").toggle("document_diagnostics")

@@ -233,6 +233,11 @@ in {
       }
       {
         type = "lua";
+        plugin = true-zen-nvim;
+        config = builtins.readFile ./plugin/true-zen.lua;
+      }
+      {
+        type = "lua";
         plugin = twilight-nvim;
         config = builtins.readFile ./plugin/twilight.lua;
       }
