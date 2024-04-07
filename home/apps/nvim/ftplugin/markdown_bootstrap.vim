@@ -4,7 +4,7 @@
 
 " ==== Conceal ==========================================================={{{
 setlocal conceallevel=2
-setlocal concealcursor=n
+setlocal concealcursor=c
 " }}}
 
 
