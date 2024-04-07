@@ -7,11 +7,11 @@
     if brain_backup
     then {
       backups.second-brain = {
-        repository = "rclone:gdrive:sb";
+        repository = "rclone:gdrive:notes";
         initialize = true;
         passwordFile = "/etc/nixos/restic-password";
         paths = [
-          "/home/${username}/Documents/sb"
+          "/home/${username}/notes"
         ];
         timerConfig = {
           OnCalendar = "daily";
