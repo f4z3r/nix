@@ -105,7 +105,7 @@ require("neorg").setup({
     },
     ["core.qol.todo_items"] = {
       config = {
-        create_todo_parents = true,
+        create_todo_parents = false,
         order = {
           {
             "undone",
