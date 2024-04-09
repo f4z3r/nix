@@ -189,7 +189,7 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
       miniserve
       hoard
       vhs
-      slides
+      presenterm
       d2
 
       # stuff not used often, installed via nix-shell
