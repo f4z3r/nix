@@ -90,7 +90,7 @@ cmp.setup.cmdline({ "/", "?" }, {
     { name = "buffer" },
     {
       name = "cmdline_history",
-      opts = { history_type = "/" },
+      options = { history_type = "/" },
     },
   },
 })
@@ -113,7 +113,7 @@ cmp.setup.cmdline(":", {
     },
     {
       name = "cmdline_history",
-      opts = { history_type = ":" },
+      options = { history_type = ":" },
     },
   }),
 })
