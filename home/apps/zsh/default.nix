@@ -82,7 +82,6 @@
       NIX_THEME = "${theme}";
       MANROFFOPT = "-c";
       NIXPKGS_ALLOW_UNFREE = 1;
-      ND_LOG_FILE = "~/Documents/sb/nd/nd.log";
     };
   };
 }
