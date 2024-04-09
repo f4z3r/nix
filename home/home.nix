@@ -189,8 +189,8 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
       miniserve
       hoard
       vhs
-      pandoc
       slides
+      d2
 
       # stuff not used often, installed via nix-shell
       #tokei

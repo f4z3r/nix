@@ -82,6 +82,8 @@
       NIX_THEME = "${theme}";
       MANROFFOPT = "-c";
       NIXPKGS_ALLOW_UNFREE = 1;
+      D2_LAYOUT = "elk";
+      D2_THEME = "200";
     };
   };
 }
