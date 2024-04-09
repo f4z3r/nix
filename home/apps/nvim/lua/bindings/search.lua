@@ -85,12 +85,6 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "o",
-    command = "<cmd>Telescope orgmode search_headings<cr>",
-    desc = "Search orgmode headings",
-  },
-  {
-    mode = "n",
     suffix = "u",
     command = function()
       require("telescope").extensions.undo.undo()

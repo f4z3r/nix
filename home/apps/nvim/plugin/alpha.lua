@@ -30,7 +30,6 @@ dashboard.section.top_buttons.val = {
     "󱋡  Temp File",
     ':lua vim.cmd(string.format("e %s", require("lazy.utils").get_temp_file()))<cr>'
   ),
-  dashboard.button("a", "󰃭  Agenda", ':lua require("orgmode").action("agenda.prompt")<cr>'),
   dashboard.button(
     "o",
     "  Neorg File",

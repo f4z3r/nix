@@ -49,16 +49,6 @@
     };
   };
 
-  org-bullets = pkgs.vimUtils.buildVimPlugin {
-    name = "org-bullets.nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "nvim-orgmode";
-      repo = "org-bullets.nvim";
-      rev = "3623e86e0fa6d07f45042f7207fc333c014bf167";
-      sha256 = "sha256-aIEe1dgUmDzu9kl33JCNcgyfp8DymURltH0HcZfph0Y=";
-    };
-  };
-
   mini-align = pkgs.vimUtils.buildVimPlugin {
     name = "mini.align";
     src = pkgs.fetchFromGitHub {
@@ -406,18 +396,6 @@ in {
       neorg-telescope
       neorg-templates
 
-      # TODO: delete these soon
-      # orgmode
-      {
-        type = "lua";
-        plugin = orgmode;
-        config = builtins.readFile ./plugin/orgmode.lua;
-      }
-      {
-        type = "lua";
-        plugin = org-bullets;
-        config = builtins.readFile ./plugin/org-bullets.lua;
-      }
       {
         type = "lua";
         plugin = nvim-table-md;
