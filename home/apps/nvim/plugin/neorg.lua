@@ -81,11 +81,6 @@ require("neorg").setup({
           keybinds.unmap("norg", "n", leader .. "id")
           -- insert stuff via telescope
           keybinds.map_event("norg", "i", "<C-l>", "core.integrations.telescope.insert_file_link")
-          keybinds.map_event("norg", "n", "<leader>/n", "core.integrations.telescope.find_linkable")
-          keybinds.map_event("norg", "n", "<leader>nh", "core.integrations.telescope.search_headings")
-          keybinds.map_event("norg", "n", "<leader>/H", "core.integrations.telescope.search_headings")
-          keybinds.map_event("norg", "n", "<leader>nb", "core.integrations.telescope.find_backlinks")
-          keybinds.map_event("norg", "n", "<leader>/b", "core.integrations.telescope.find_backlinks")
           -- neorg return
           keybinds.map("norg", "n", "<leader>nr", "<cmd>Neorg return<cr>")
           -- insert metadata
