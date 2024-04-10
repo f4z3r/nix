@@ -4,7 +4,7 @@
 
 " ==== Tabbing ==========================================================={{{
 setlocal textwidth=120
-setlocal foldlevel=5
+setlocal foldlevel=10
 " }}}
 
 
