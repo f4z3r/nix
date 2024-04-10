@@ -40,7 +40,7 @@
       eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
       eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
       eval "$(${pkgs.starship}/bin/starship init zsh)"
-      path=("$HOME/.local/bin/" $path)
+      path=("$HOME/.local/bin/" "$HOME/.luarocks/bin/" $path)
       export PATH
     '';
     shellGlobalAliases = {
