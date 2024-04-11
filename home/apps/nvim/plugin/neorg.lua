@@ -1,3 +1,16 @@
+local string = require("string")
+local table = require("table")
+local math = require("math")
+
+local function tostring_lowercase(n)
+    local t = {}
+    while n > 0 do
+        t[#t + 1] = string.char(0x61 + (n - 1) % 26)
+        n = math.floor((n - 1) / 26)
+    end
+    return table.concat(t):reverse()
+end
+
 require("neorg").setup({
   load = {
     ["core.defaults"] = {},
@@ -9,8 +22,25 @@ require("neorg").setup({
               icon = "",
             },
           },
+          code_block = {
+            width = "content",
+            spell_check = false,
+          },
           heading = {
             icons = { "", "󰪥", "󰻂", "󰺕", "○" },
+          },
+          quote = {
+            icons = { "┊" },
+          },
+          ordered = {
+            icons = {
+              function(idx) return tostring_lowercase(idx) end,
+              function(idx) return tostring_lowercase(idx):upper() end,
+              function(idx) return tostring(idx) end,
+              function(idx) return tostring_lowercase(idx) end,
+              function(idx) return tostring_lowercase(idx):upper() end,
+              function(idx) return tostring(idx) end,
+            }
           },
         },
       },
