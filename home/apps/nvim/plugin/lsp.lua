@@ -20,6 +20,9 @@ lspconfig.lua_ls.setup({
       doc = {
         privateName = { "_*" },
       },
+      diagnostics = {
+        unusedLocalExclude = { "_*" },
+      },
       telemetry = {
         enable = false,
       },
