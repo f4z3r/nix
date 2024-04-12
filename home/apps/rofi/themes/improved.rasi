@@ -1,9 +1,9 @@
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun";
+    modi:                       "drun";
     show-icons:                 true;
     display-drun:               "Applications";
-	drun-display-format:        "{name}";
+    drun-display-format:        "{name}";
 }
 
 /*****----- Global Properties -----*****/
@@ -16,7 +16,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       800px;
+    width:                       1200px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -92,7 +92,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
+
     spacing:                     10px;
     margin:                      0px;
     padding:                     0px;
