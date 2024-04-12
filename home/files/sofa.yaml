@@ -1,0 +1,25 @@
+namespaces:
+  git:
+    commands:
+      prune-branckes:
+        command: git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == "[gone]" { print $1 }' | xargs -r git branch -D
+        description: Removes all local branches that no longer track an upstream. Run after pruning the remote.
+        tags:
+        - local
+        - clean
+  docker:
+    commands:
+      prune-containers:
+        command: docker container list -a | perl -lane 'print @F[0] if ($_ =~ /Exited/ and $_ !~ /k3d/)' | xargs -r docker rm
+        description: Delete all exited containers
+        tags:
+        - local
+        - clean
+      prune-images:
+        command: docker images | tail -n+2 | perl -lane 'print @F[2] if @F[1] =~ /<none>/' | xargs -r docker rmi
+        description: Delete all container images missing a tag
+        tags:
+        - local
+        - clean
+config:
+  shell: zsh

@@ -187,7 +187,6 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
       xcp
       xsel
       miniserve
-      hoard
       vhs
       presenterm
       d2

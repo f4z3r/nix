@@ -60,12 +60,12 @@ fi
 
 autoload -U add-zsh-hook
 
-function _hoard_list() {
+function _sofa_list() {
   emulate -L zsh
   zle -I
 
   echoti rmkx
-  output=$(hoard --autocomplete list 3>&1 1>&2 2>&3)
+  output=$(sofa --list)
   echoti smkx
 
   if [[ -n $output ]]; then
@@ -75,9 +75,9 @@ function _hoard_list() {
   zle reset-prompt
 }
 
-zle -N _hoard_list_widget _hoard_list
+zle -N _sofa_list_widget _sofa_list
 
-bindkey '^o' _hoard_list_widget
+bindkey '^o' _sofa_list_widget
 
 # do not add stuff to history containing "password"
 function zshaddhistory() {

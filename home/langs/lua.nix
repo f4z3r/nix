@@ -265,8 +265,40 @@
           license.fullName = "MIT <http://opensource.org/licenses/MIT>";
         };
       };
+      sofa = buildLuarocksPackage {
+        pname = "sofa";
+        version = "0.1.0-0";
+        knownRockspec =
+          (pkgs.fetchurl {
+            url = "mirror://luarocks/sofa-0.1.0-0.rockspec";
+            sha256 = "1b8fpjya69a9k55l289z3fcyp1bg4bcr0flsmd80p8kq1qscfngk";
+          })
+          .outPath;
+        src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''          {
+            "url": "https://github.com/f4z3r/sofa.git",
+            "rev": "386196673dc0b33c92b67cf494b554d33304b26b",
+            "date": "2024-04-12T11:29:19+02:00",
+            "path": "/nix/store/i6mhhiik58v8l7wx7cbv60niqdp3ajbk-sofa",
+            "sha256": "0j1f5ypd7sza76igymvc8xy3rdsdqb4176ji1wdgk11fnz03pw1c",
+            "hash": "sha256-LPA7wLcuhPkaD1GaE8jCTbc8fEdsV/+iOerr064vLkg=",
+            "fetchLFS": false,
+            "fetchSubmodules": true,
+            "deepClone": false,
+            "leaveDotGit": false
+          }
+        '') ["date" "path" "sha256"]);
+
+        disabled = lua.luaversion != "5.1";
+        propagatedBuildInputs = [lua lyaml];
+
+        meta = {
+          homepage = "https://github.com/f4z3r/sofa";
+          description = "A command execution engine powered by rofi.";
+          license.fullName = "MIT <http://opensource.org/licenses/MIT>";
+        };
+      };
     in
-      [lanes lua-path lua-fun date luatext luatables utf8 nd]
+      [lanes lua-path lua-fun date luatext luatables utf8 nd sofa]
       ++ [
         lyaml
         argparse
@@ -299,5 +331,9 @@ in {
         (map pkgs.luajitPackages.getLuaPath [luajit])
       }";
     };
+  };
+
+  home.file.".config/sofa/config.yaml" = {
+    source = ../files/sofa.yaml;
   };
 }

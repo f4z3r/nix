@@ -106,14 +106,3 @@ rclone config
 ```
 
 Once this is done, you can sync with `sbpull` and `sbpush`.
-
-## Hoard
-
-Since `hoard` write to its configuration constantly, one cannot use NixOS to manage these files.
-Instead, we will choose to link them into the correct place:
-
-```bash
-mkdir -p ~/.config/hoard
-ln -s $(pwd)/home/files/hoard.yml ~/.config/hoard/config.yml
-ln -s $(pwd)/home/files/trove.yml ~/.config/hoard/trove.yml
-```
