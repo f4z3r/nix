@@ -65,7 +65,7 @@ function _sofa_list() {
   zle -I
 
   echoti rmkx
-  output=$(sofa --list)
+  output=$(sofa -i)
   echoti smkx
 
   if [[ -n $output ]]; then

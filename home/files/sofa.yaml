@@ -1,12 +1,67 @@
 namespaces:
-  git:
+  utils:
     commands:
-      prune-branckes:
-        command: git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == "[gone]" { print $1 }' | xargs -r git branch -D
-        description: Removes all local branches that no longer track an upstream. Run after pruning the remote.
+      project-root:
+        command: cd $( if git rev-parse --show-toplevel &> /dev/null; then; git rev-parse --show-toplevel; else; echo "."; fi; )
+        description: Go to project root
+        interactive: true
         tags:
-        - local
-        - clean
+        - git
+      skim-dir:
+        command: cd "$(fd -t d -c always -L -H . ./ | sk --ansi)"
+        description: Go to sub-directory
+        interactive: true
+        tags:
+        - fuzzy
+      skim-file:
+        command: sk -m --color="dark,hl:3,spiller:2,fg+:9,hl+:3,selected:6,query:5,matched_bg:-1"
+        description: Find file in sub-directory
+        interactive: true
+        tags:
+        - fuzzy
+      skim-content:
+        command: "sk -m --color=dark,hl:3,spiller:2,fg+:9,hl+:3,selected:6,query:5,matched_bg:-1 --ansi -i -c 'ag \"{}\"' "
+        description: Find content in sub-directory
+        interactive: true
+        tags:
+        - fuzzy
+  bookmarks:
+    commands:
+      github:
+        command: brave "https://github.com/{{ user }}/{{ project }}"
+        description: Open a GitHub project
+        tags:
+        - brave
+        parameters:
+          user:
+            default: f4z3r
+            prompt: Choose user
+          project:
+            prompt: Choose project
+      nixos:
+        command: brave "https://search.nixos.org/packages?channel={{ channel }}"
+        description: Open NixOS packages and versions
+        tags:
+        - brave
+        parameters:
+          channel:
+            default: unstable
+            prompt: Choose channel
+            choices:
+            - unstable
+            - "23.11"
+      home-manager:
+        command: brave "https://home-manager-options.extranix.com/?query=&release={{ release }}"
+        description: Open Home-Manager options
+        tags:
+        - brave
+        parameters:
+          release:
+            default: master
+            prompt: Choose release
+            choices:
+            - master
+            - "release-23.11"
   docker:
     commands:
       prune-containers:
