@@ -60,7 +60,7 @@ fi
 
 autoload -U add-zsh-hook
 
-function _sofa_list() {
+function _interactive_sofa() {
   emulate -L zsh
   zle -I
 
@@ -75,9 +75,8 @@ function _sofa_list() {
   zle reset-prompt
 }
 
-zle -N _sofa_list_widget _sofa_list
-
-bindkey '^o' _sofa_list_widget
+zle -N _interactive_sofa_widget _interactive_sofa
+bindkey '^o' _interactive_sofa_widget
 
 # do not add stuff to history containing "password"
 function zshaddhistory() {
