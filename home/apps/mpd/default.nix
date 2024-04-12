@@ -75,7 +75,7 @@
         key = "H";
         command = [
           ''push_characters "/."''
-          ''push_characters "enter"''
+          ''push_character "enter"''
           "select_found_items"
         ];
       }
