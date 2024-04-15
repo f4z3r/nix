@@ -274,19 +274,16 @@
             sha256 = "1q8gwb2125q35z78r5dqx2751vici25pja5adi70nyl6m8rkflbm";
           })
           .outPath;
-        src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''          {
+        src = pkgs.fetchgit (builtins.fromJSON ''          {
             "url": "https://github.com/f4z3r/sofa.git",
-            "rev": "5e459fc56a1193eb7498271da099713eb2045970",
-            "date": "2024-04-12T15:40:29+02:00",
-            "path": "/nix/store/z8qz5ircd1hj29pvqankzvrggx3c0ml1-sofa",
-            "sha256": "0kjpd2bc46qyhz23jafys2ylw11nvw1wjlq7nrhjynv428f3crjr",
-            "hash": "sha256-WWY2HBJkWy9htgdTyQPfNgROvdDeKTnEhx4bwpZoV04=",
+            "rev": "d11a3ae62febba5a9fb53b341367c1628a1aab19",
+            "hash": "sha256-TDRbZ93eRArtlFsZhHHU8AVPbBo0JzKaUu8F/hGj5y4=",
             "fetchLFS": false,
             "fetchSubmodules": true,
             "deepClone": false,
             "leaveDotGit": false
           }
-        '') ["date" "path" "sha256"]);
+        '');
 
         disabled = lua.luaversion != "5.1";
         propagatedBuildInputs = [argparse lua lyaml];

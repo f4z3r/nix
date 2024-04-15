@@ -25,6 +25,30 @@ namespaces:
         interactive: true
         tags:
         - fuzzy
+  nix:
+    commands:
+      rebuild:
+        command: sudo nixos-rebuild {{ type }} --impure --flake .#
+        description: Rebuild nix setup
+        interactive: true
+        tags:
+        - sudo
+        parameters:
+          type:
+            default: switch
+            prompt: How to rebuild
+            exclusive: true
+            choices:
+            - switch
+            - reboot
+      clean-generations:
+        command: nix-collect-garbage --delete-older-than {{ days }}d
+        description: Delete old nix generations
+        interactive: true
+        parameters:
+          days:
+            default: 30
+            prompt: Number of days to keep
   bookmarks:
     commands:
       github:
