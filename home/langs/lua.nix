@@ -276,8 +276,8 @@
           .outPath;
         src = pkgs.fetchgit (builtins.fromJSON ''          {
             "url": "https://github.com/f4z3r/sofa.git",
-            "rev": "fcd458a659a2ecb447672713c40a5b1550d8c2f8",
-            "hash": "sha256-16C+7iHcyyo/tVjnL0fWuKI7FLB08NtonkyzFalDQHk=",
+            "rev": "9ff28871c03d5338797dcb956ab5a397c7c24d0b",
+            "hash": "sha256-fZv15PNUJls2GjdElW5sbSBs9GqRmJcre3agvs0OmWA=",
             "fetchLFS": false,
             "fetchSubmodules": true,
             "deepClone": false,
