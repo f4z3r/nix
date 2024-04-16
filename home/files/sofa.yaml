@@ -1,30 +1,17 @@
 namespaces:
   utils:
     commands:
-      project-root:
-        command: cd $( if git rev-parse --show-toplevel &> /dev/null; then; git rev-parse --show-toplevel; else; echo "."; fi; )
-        description: Go to project root
+      change-dir:
+        command: cd {{ dir }}
+        description: Change to subdirectory
         interactive: true
         tags:
-        - git
-      skim-dir:
-        command: cd "$(fd -t d -c always -L -H . ./ | sk --ansi)"
-        description: Go to sub-directory
-        interactive: true
-        tags:
-        - fuzzy
-      skim-file:
-        command: sk -m --color="dark,hl:3,spiller:2,fg+:9,hl+:3,selected:6,query:5,matched_bg:-1"
-        description: Find file in sub-directory
-        interactive: true
-        tags:
-        - fuzzy
-      skim-content:
-        command: "sk -m --color=dark,hl:3,spiller:2,fg+:9,hl+:3,selected:6,query:5,matched_bg:-1 --ansi -i -c 'ag \"{}\"' "
-        description: Find content in sub-directory
-        interactive: true
-        tags:
-        - fuzzy
+        - cd
+        parameters:
+          dir:
+            prompt: Directory
+            exclusive: true
+            choices_cmd: fd -td -c never .
   nix:
     commands:
       rebuild:
@@ -105,5 +92,39 @@ namespaces:
         tags:
         - local
         - clean
+  lua:
+    commands:
+      install-local:
+        command: luarocks --local make --deps-mode {{ deps_mode }} {{ rockspec }}
+        description: Install rock locally
+        tags:
+        - local
+        - luarocks
+        interactive: true
+        parameters:
+          deps_mode:
+            default: none
+            exclusive: true
+            prompt: Install dependencies
+            choices:
+            - none
+            - one
+            - all
+            - order
+          rockspec:
+            prompt: Rockspec
+            choices_cmd: fd -tf -c never '.*.rockspec' .
+      remove-local:
+        command: luarocks --local remove {{ rock }}
+        description: Remove local rock
+        tags:
+        - local
+        - luarocks
+        interactive: true
+        parameters:
+          rock:
+            prompt: Rock
+            exclusive: true
+            choices_cmd: luarocks --local list | rg -e '^\w' | rg -v -F 'Rocks installed'
 config:
   shell: zsh
