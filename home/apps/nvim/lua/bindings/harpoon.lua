@@ -1,28 +1,65 @@
--- Harpoon bindings
-
 local string = require("string")
 
+local action_state = require("telescope.actions.state")
+local actions = require("telescope.actions")
 local harpoon = require("harpoon")
+local conf = require("telescope.config").values
 
 harpoon:setup()
 
 local leader = "<leader>h"
 
-local conf = require("telescope.config").values
+local function list_indexOf(list, predicate)
+  for i, v in ipairs(list) do
+    if predicate(v) then
+      return i
+    end
+  end
+  return -1
+end
+
 local function toggle_telescope(harpoon_files)
-  local file_paths = {}
-  for _, item in ipairs(harpoon_files.items) do
-    table.insert(file_paths, item.value)
+  local files = {}
+  for i, item in ipairs(harpoon_files.items) do
+    table.insert(files, i .. ". " .. item.value)
   end
 
   require("telescope.pickers")
     .new({}, {
       prompt_title = "Harpoon",
       finder = require("telescope.finders").new_table({
-        results = file_paths,
+        results = files,
       }),
       previewer = conf.file_previewer({}),
       sorter = conf.generic_sorter({}),
+      attach_mappings = function(_, map)
+        actions.select_default:replace(function(prompt_bufnr)
+          local curr_entry = action_state.get_selected_entry()
+          if not curr_entry then
+            return
+          end
+          actions.close(prompt_bufnr)
+
+          harpoon:list():select(curr_entry.index)
+        end)
+
+        map({ "n", "i" }, "<C-d>", function(prompt_bufnr)
+          local curr_picker = action_state.get_current_picker(prompt_bufnr)
+          curr_picker:delete_selection(function(selection)
+            local mark_idx = list_indexOf(harpoon_files.items, function(v)
+              return v.value == selection[1]
+            end)
+            if mark_idx == -1 then
+              return
+            end
+
+            harpoon:list():removeAt(mark_idx)
+          end)
+        end)
+
+        -- use default mappings
+        return true
+      end,
     })
     :find()
 end
@@ -42,7 +79,7 @@ local mappings = {
     command = function()
       toggle_telescope(harpoon:list())
     end,
-    desc = "Append to Harpoon list",
+    desc = "Show Harpoon list in telescope",
   },
 }
 

@@ -86,6 +86,11 @@ namespaces:
             choices:
             - master
             - "release-23.11"
+      printer-admin:
+        command: brave "localhost:631"
+        description: Open CUPS management GUI
+        tags:
+        - brave
   docker:
     commands:
       prune-containers:
