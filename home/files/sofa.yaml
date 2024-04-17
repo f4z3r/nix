@@ -78,6 +78,40 @@ namespaces:
         description: Open CUPS management GUI
         tags:
         - brave
+      lua-reference:
+        command: brave "https://www.lua.org/manual/{{ version }}/"
+        description: Open Lua reference in browser
+        tags:
+        - brave
+        parameters:
+          version:
+            default: "5.1"
+            prompt: Choose version
+            choices:
+            - "5.1"
+            - "5.2"
+            - "5.3"
+            - "5.4"
+      lua-date:
+        command: brave "https://tieske.github.io/date/"
+        description: Open LuaDate documentation
+        tags:
+        - brave
+      lua-path:
+        command: brave "https://moteus.github.io/path/index.html"
+        description: Open Lua path documentation
+        tags:
+        - brave
+      lua-http:
+        command: brave "https://daurnimator.github.io/lua-http/0.4/"
+        description: Open lua-http documentation
+        tags:
+        - brave
+      lua-lsp-annotations:
+        command: brave "https://luals.github.io/wiki/annotations/"
+        description: Open Lua LSP annotation documentation
+        tags:
+        - brave
   docker:
     commands:
       prune-containers:
