@@ -190,6 +190,7 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
       vhs
       presenterm
       d2
+      imagemagick
 
       # stuff not used often, installed via nix-shell
       #tokei
