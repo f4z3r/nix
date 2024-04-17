@@ -105,4 +105,4 @@ sudo chmod 600 ~/.config/rclone/rclone.conf
 rclone config
 ```
 
-Once this is done, you can sync with `sbpull` and `sbpush`.
+Once this is done, you can sync with `nph` and `npl`.
