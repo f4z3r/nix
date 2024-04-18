@@ -147,7 +147,7 @@ namespaces:
             - order
           rockspec:
             prompt: Rockspec
-            choices_cmd: fd -tf -c never '.*.rockspec' .
+            choices_cmd: fd -tf -c never '.*\.rockspec$' .
       remove-local:
         command: luarocks --local remove {{ rock }}
         description: Remove local rock
@@ -160,5 +160,16 @@ namespaces:
             prompt: Rock
             exclusive: true
             choices_cmd: luarocks --local list | rg -e '^\w' | rg -v -F 'Rocks installed'
+      upload:
+        command: luarocks upload {{ rockspec }}
+        description: Upload rock to luarocks.org
+        tags:
+        - remote
+        - luarocks
+        interactive: true
+        parameters:
+          rockspec:
+            prompt: Rockspec
+            choices_cmd: fd -tf -c never '.*\.rockspec$' .
 config:
   shell: zsh
