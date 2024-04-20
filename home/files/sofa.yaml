@@ -1,17 +1,22 @@
 namespaces:
   utils:
     commands:
-      change-dir:
-        command: cd {{ dir }}
-        description: Change to subdirectory
+      wifi-connect:
+        command: nmcli con up {{ connection }}
+        description: Connect to existing wifi network
+        tags:
+        - network
+        parameters:
+          connection:
+            prompt: Connection
+            exclusive: true
+            choices_cmd: nmcli c | cut -d" "  -f1 | tail -n+2 | rg -v "lo|tun0"
+      restart-vpn:
+        command: sudo systemctl restart openvpn-ch.service
+        description: Restart VPN service
         interactive: true
         tags:
-        - cd
-        parameters:
-          dir:
-            prompt: Directory
-            exclusive: true
-            choices_cmd: fd -td -c never .
+        - openvpn
   nix:
     commands:
       rebuild:
