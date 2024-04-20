@@ -10,6 +10,7 @@ zmodload zsh/complist
 bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 
 # Add custom binds
 bindkey "^y" vi-cmd-mode
@@ -95,3 +96,9 @@ function zshaddhistory() {
 }
 
 umask 027
+
+eval "$(direnv hook zsh)"
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+path=("$HOME/.local/bin/" "$HOME/.luarocks/bin/" $path)
+export PATH

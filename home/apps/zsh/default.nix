@@ -35,14 +35,7 @@
       }
     ];
     defaultKeymap = "viins";
-    initExtraFirst = builtins.readFile ./config.zsh;
-    initExtra = ''
-      eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
-      eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
-      eval "$(${pkgs.starship}/bin/starship init zsh)"
-      path=("$HOME/.local/bin/" "$HOME/.luarocks/bin/" $path)
-      export PATH
-    '';
+    initExtra = builtins.readFile ./config.zsh;
     shellGlobalAliases = {
       "sys" = ''systemctl'';
       "sysl" = ''systemctl list-units'';
