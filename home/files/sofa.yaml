@@ -17,6 +17,18 @@ namespaces:
         interactive: true
         tags:
         - openvpn
+      git-merge:
+        command: git merge --ff-only {{ branch }}
+        description: Merge a git branch
+        interactive: true
+        tags:
+        - git
+        - ff
+        parameters:
+          branch:
+            prompt: Branch
+            exclusive: true
+            choices_cmd: git for-each-ref --format="%(refname:short)" refs/heads/
   nix:
     commands:
       rebuild:
