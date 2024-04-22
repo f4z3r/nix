@@ -369,6 +369,8 @@ function json.decode(str)
   return res
 end
 
+--- # actual code
+
 local io = require("io")
 local os = require("os")
 local string = require("string")
@@ -390,14 +392,14 @@ local function build_bookmark_list(brave_bookmarks, prefix, data)
     return
   end
   for _, child in ipairs(brave_bookmarks.children) do
-    local current_prefix = string.format("%s < %s", child.name, prefix)
+    local current_prefix = string.format("%s > %s", prefix, child.name)
     if prefix == "" then
       current_prefix = child.name
     end
     if child.type == "folder" then
       build_bookmark_list(child, current_prefix, data)
     elseif child.type == "url" then
-      data[tostring(child.id)] = {
+      data[#data + 1] = {
         url = child.url,
         title = current_prefix,
       }
@@ -413,18 +415,18 @@ local function main()
   local bookmarks = {}
   build_bookmark_list(brave_bookmarks, "", bookmarks)
   local rofi_in = {}
-  for id, bookmark in pairs(bookmarks) do
-    table.insert(rofi_in, string.format("%d: %s (%s)", id, bookmark.title, bookmark.url))
+  for _, bookmark in ipairs(bookmarks) do
+    local escaped = string.gsub(bookmark.url, "%&", "&amp;")
+    local row = string.format('%s <span size="small">(%s)</span>', bookmark.title, escaped)
+    rofi_in[#rofi_in + 1] = row
   end
   print_table_to_file("/tmp/brave-bookmark-open", rofi_in)
-  local proc = assert(io.popen("cat /tmp/brave-bookmark-open | rofi -i -dmenu"))
+  local proc =
+    assert(io.popen("rofi -dmenu -i -input /tmp/brave-bookmark-open -p Bookmark -no-custom -markup-rows -format d"))
   local out = proc:read("*a")
   proc:close()
   os.remove("/tmp/brave-bookmark-open")
-  local index = string.match(out, "%d+")
-  if not index then
-    return
-  end
+  local index = tonumber(out)
   local url = bookmarks[index].url
   os.execute(string.format("brave '%s' >/dev/null 2>/dev/null", url))
 end
