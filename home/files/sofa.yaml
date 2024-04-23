@@ -10,7 +10,7 @@ namespaces:
           connection:
             prompt: Connection
             exclusive: true
-            choices_cmd: nmcli c | cut -d" "  -f1 | tail -n+2 | rg -v "lo|tun0"
+            choices: nmcli c | cut -d" "  -f1 | tail -n+2 | rg -v "lo|tun0"
       restart-vpn:
         command: sudo systemctl restart openvpn-ch.service
         description: Restart VPN service
@@ -28,7 +28,7 @@ namespaces:
           branch:
             prompt: Branch
             exclusive: true
-            choices_cmd: git for-each-ref --format="%(refname:short)" refs/heads/
+            choices: git for-each-ref --format="%(refname:short)" refs/heads/
   nix:
     commands:
       rebuild:
@@ -172,14 +172,13 @@ namespaces:
             - order
           rockspec:
             prompt: Rockspec
-            choices_cmd: fd -tf -c never '.*\.rockspec$' .
+            choices: fd -tf -c never '.*\.rockspec$' .
       remove-local:
         command: luarocks --local remove {{ rock }}
         description: Remove local rock
         tags:
         - local
         - luarocks
-        - uninstall
         - delete
         - rm
         interactive: true
@@ -187,7 +186,7 @@ namespaces:
           rock:
             prompt: Rock
             exclusive: true
-            choices_cmd: luarocks --local list | rg -e '^\w' | rg -v -F 'Rocks installed'
+            choices: luarocks --local list | rg -e '^\w' | rg -v -F 'Rocks installed'
       upload:
         command: luarocks upload {{ rockspec }}
         description: Upload rock to luarocks.org
@@ -198,6 +197,6 @@ namespaces:
         parameters:
           rockspec:
             prompt: Rockspec
-            choices_cmd: fd -tf -c never '.*\.rockspec$' .
+            choices: fd -tf -c never '.*\.rockspec$' .
 config:
   shell: zsh
