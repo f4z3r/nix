@@ -7,7 +7,7 @@
     enable = true;
 
     userName = "Jakob Beckmann";
-    userEmail = "jakobbeckmann@pm.me";
+    userEmail = "f4z3r-github@pm.me";
 
     lfs = {
       enable = true;
@@ -17,7 +17,7 @@
     signing = {
       gpgPath = "${pkgs.gnupg}/bin/gpg";
       signByDefault = true;
-      key = "jakobbeckmann@pm.me";
+      key = "f4z3r-github@pm.me";
     };
 
     delta = {
