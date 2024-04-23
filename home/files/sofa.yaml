@@ -49,6 +49,10 @@ namespaces:
         command: nix-collect-garbage --delete-older-than {{ days }}d
         description: Delete old nix generations
         interactive: true
+        tags:
+        - clean
+        - rm
+        - remove
         parameters:
           days:
             default: 30
@@ -137,12 +141,16 @@ namespaces:
         tags:
         - local
         - clean
+        - remove
+        - rm
       prune-images:
         command: docker images | tail -n+2 | perl -lane 'print @F[2] if @F[1] =~ /<none>/' | xargs -r docker rmi
         description: Delete all container images missing a tag
         tags:
         - local
         - clean
+        - remove
+        - rm
   lua:
     commands:
       install-local:
@@ -171,6 +179,9 @@ namespaces:
         tags:
         - local
         - luarocks
+        - uninstall
+        - delete
+        - rm
         interactive: true
         parameters:
           rock:
