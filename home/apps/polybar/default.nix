@@ -59,7 +59,7 @@
         [bar/main]
         inherit = base
         monitor = ${main_monitor}
-        modules-left = xworkspaces pomo backlight alsa
+        modules-left = xworkspaces backlight alsa
 
         [bar/e1]
         inherit = base
@@ -93,12 +93,6 @@
         label-empty = 
         label-empty-foreground = ''${colors.disabled}
         label-empty-padding = 1
-
-        [module/pomo]
-        type = custom/script
-        exec = ${pkgs.uair}/bin/uair
-        tail = true
-        label = %{F#d8a657}PO%{F-} %output%
 
         [module/backlight]
         type = internal/backlight
@@ -195,7 +189,6 @@
   home.file = {
     ".local/bin/vol.lua" = {source = ./scripts/vol.lua;};
     ".local/bin/vpn.lua" = {source = ./scripts/vpn.lua;};
-    ".config/uair/uair.toml" = {source = ./uair.toml;};
   };
 }
 # vim:ft=nix

@@ -208,7 +208,6 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
       wmctrl
       alsa-utils
       mpc-cli
-      uair
       bc
       ffmpeg
       fzf
@@ -233,9 +232,6 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
     file = {
       ".config/ruff/pyproject.toml" = {source = ./files/ruff.toml;};
       "revive.toml" = {source = ./files/revive.toml;};
-      ".local/share/uair/notification-sound.wav" = {
-        source = ./files/notification-sound.wav;
-      };
       ".local/bin/mip" = {
         source = ./scripts/mip;
         executable = true;
