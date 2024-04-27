@@ -159,6 +159,7 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
       obs-studio
       flowblade
       signal-desktop
+      ticktick
 
       # utils
       zip
