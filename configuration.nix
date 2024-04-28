@@ -100,7 +100,7 @@
 
   fonts = {
     enableDefaultPackages = true;
-    packages = with pkgs; [(nerdfonts.override {fonts = ["FiraCode"];})];
+    packages = with pkgs; [(nerdfonts.override {fonts = ["FiraCode" "SourceCodePro"];})];
 
     fontconfig = {
       defaultFonts = {
