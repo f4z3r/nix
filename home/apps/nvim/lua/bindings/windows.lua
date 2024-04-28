@@ -71,6 +71,12 @@ local mappings = {
   },
   {
     mode = "n",
+    suffix = "w",
+    command = "<c-w>w",
+    desc = "Move to last window",
+  },
+  {
+    mode = "n",
     suffix = "k",
     command = "<c-w>kzH",
     desc = "Move to north window",
