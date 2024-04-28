@@ -189,6 +189,7 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
       xsel
       miniserve
       vhs
+      pandoc
       presenterm
       d2
       imagemagick
