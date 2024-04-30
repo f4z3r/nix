@@ -21,6 +21,7 @@ vim.o.autoread = true
 vim.o.autochdir = false
 vim.o.tags = "tags;/"
 
+vim.o.startofline = true
 vim.o.secure = true
 vim.o.mouse = nil
 
