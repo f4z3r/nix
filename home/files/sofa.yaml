@@ -44,7 +44,7 @@ namespaces:
             exclusive: true
             choices:
             - switch
-            - reboot
+            - boot
       clean-generations:
         command: nix-collect-garbage --delete-older-than {{ days }}d
         description: Delete old nix generations
