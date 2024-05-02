@@ -222,12 +222,10 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
       enhanced-python
       ruff
       black
-      hatch
       dive
       kubectl
       kubectx
       kubernetes-helm
-      terraform
     ];
 
     file = {

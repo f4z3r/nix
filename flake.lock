@@ -87,11 +87,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712390667,
-        "narHash": "sha256-ebq+fJZfobqpsAdGDGpxNWSySbQejRwW9cdiil6krCo=",
+        "lastModified": 1714515075,
+        "narHash": "sha256-azMK7aWH0eUc3IqU4Fg5rwZdB9WZBvimOGG3piqvtsY=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b787726a8413e11b074cde42704b4af32d95545c",
+        "rev": "6d3b6dc9222c12b951169becdf4b0592ee9576ef",
         "type": "github"
       },
       "original": {
@@ -103,11 +103,11 @@
     "neorg": {
       "flake": false,
       "locked": {
-        "lastModified": 1712251792,
-        "narHash": "sha256-pQbJHlWSlhROzLaUKWw8uSuaLsayJcrrdLFg4BZapNg=",
+        "lastModified": 1714577587,
+        "narHash": "sha256-ryFbfjaMYwAGJs9FO2CcmsuwEdh3SgxPdQOlhD9RQOM=",
         "owner": "nvim-neorg",
         "repo": "neorg",
-        "rev": "6ffe7093eb54650d3f479c882dd6fa4a2492ddbf",
+        "rev": "03fb74927f358320f66cdd1337265c8e7f049fa3",
         "type": "github"
       },
       "original": {
@@ -126,11 +126,11 @@
         "norg-meta": "norg-meta"
       },
       "locked": {
-        "lastModified": 1712434430,
-        "narHash": "sha256-57nLioxODqfera8PyOP/m4BkfkV6b47YDc7kTXyTTlY=",
+        "lastModified": 1714580175,
+        "narHash": "sha256-bHimhiPJp2dzM+wTi0hBh31BnaU2OnCO6BAFvJh1XP0=",
         "owner": "nvim-neorg",
         "repo": "nixpkgs-neorg-overlay",
-        "rev": "a982b47b04a52c8098fd597334f1bd8c983055a9",
+        "rev": "06216f80b4d071c60468df8adbdb700f0710f1ff",
         "type": "github"
       },
       "original": {
@@ -142,11 +142,11 @@
     "neorg-telescope": {
       "flake": false,
       "locked": {
-        "lastModified": 1712295829,
-        "narHash": "sha256-Gfb/09JCp9v65CUD7ni+8x1Yqg0xnyfgycYVcVOHQvU=",
+        "lastModified": 1713548473,
+        "narHash": "sha256-Ytm1Au9ir/31cL36hIlrDFFe1hSSPo9yTVeHysm1WW0=",
         "owner": "nvim-neorg",
         "repo": "neorg-telescope",
-        "rev": "a4fc4eb3cd5db6ccd52e99f2b49ce931c458e38f",
+        "rev": "92c1c6064429c74505de8e5d84a6dc8488a6f8e3",
         "type": "github"
       },
       "original": {
@@ -157,33 +157,17 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1712388808,
-        "narHash": "sha256-9ogU4c3vUmuMDoRlbQCeq3OKx0XJmgHcLZ4XywJNYWI=",
+        "lastModified": 1714562304,
+        "narHash": "sha256-Mr3U37Rh6tH0FbaDFu0aZDwk9mPAe7ASaqDOGgLqqLU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fe4295b9ecd88764c1abf6179e03b1a828ca0e9a",
+        "rev": "bcd44e224fd68ce7d269b4f44d24c2220fd821e7",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-terraform-1-3-7": {
-      "locked": {
-        "lastModified": 1673641359,
-        "narHash": "sha256-vffYAYAAG5Bhj4vjShFQWve24HyXPQAZdqn9jA5KT6U=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "3c3b3ab88a34ff8026fc69cb78febb9ec9aedb16",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "3c3b3ab88a34ff8026fc69cb78febb9ec9aedb16",
         "type": "github"
       }
     },
@@ -221,11 +205,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1712163089,
-        "narHash": "sha256-Um+8kTIrC19vD4/lUCN9/cU9kcOsD1O1m+axJqQPyMM=",
+        "lastModified": 1714253743,
+        "narHash": "sha256-mdTQw2XlariysyScCv2tTE45QSU9v/ezLcHJ22f0Nxc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "fd281bd6b7d3e32ddfa399853946f782553163b5",
+        "rev": "58a1abdbae3217ca6b702f03d3b35125d88a2994",
         "type": "github"
       },
       "original": {
@@ -263,11 +247,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1685293302,
-        "narHash": "sha256-7tCmYem8vpgG+9HM92cbQH1r+h+iRDf7wfrxQGoadO8=",
+        "lastModified": 1713028366,
+        "narHash": "sha256-8qSdwHlfnjFuQF4zNdLtU2/tzDRhDZbo9K54Xxgn5+8=",
         "owner": "nvim-neorg",
         "repo": "tree-sitter-norg-meta",
-        "rev": "a479d1ca05848d0b51dd25bc9f71a17e0108b240",
+        "rev": "6f0510cc516a3af3396a682fbd6655486c2c9d2d",
         "type": "github"
       },
       "original": {
@@ -280,8 +264,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "neorg-overlay": "neorg-overlay",
-        "nixpkgs": "nixpkgs_4",
-        "nixpkgs-terraform-1-3-7": "nixpkgs-terraform-1-3-7"
+        "nixpkgs": "nixpkgs_4"
       }
     },
     "systems": {

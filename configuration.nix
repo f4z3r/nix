@@ -110,10 +110,7 @@
     };
   };
 
-  services.xserver = {
-    inherit dpi;
-    enable = true;
-
+  services = {
     libinput = {
       enable = true;
       touchpad = {
@@ -122,20 +119,28 @@
       };
     };
 
-    windowManager = {bspwm = {enable = true;};};
-
     displayManager = {
       defaultSession = "none+bspwm";
       autoLogin = {
         enable = true;
         user = "${username}";
       };
-      lightdm = {enable = true;};
     };
 
-    xkb = {
-      layout = "us";
-      variant = "alt-intl";
+    xserver = {
+      inherit dpi;
+      enable = true;
+
+      windowManager = {bspwm = {enable = true;};};
+
+      displayManager = {
+        lightdm = {enable = true;};
+      };
+
+      xkb = {
+        layout = "us";
+        variant = "alt-intl";
+      };
     };
   };
 
