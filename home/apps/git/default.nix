@@ -136,6 +136,7 @@
       "co" = ''checkout'';
       "sw" = ''switch'';
       "re" = ''reset'';
+      "rebase" = ''rebase -S'';
       "s" = ''status -sb'';
       "st" = ''stash list'';
       "sh" = ''show HEAD'';
