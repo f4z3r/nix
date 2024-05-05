@@ -1,4 +1,11 @@
-require("gruvbox-material").setup()
+require("gruvbox-material").setup({
+  background = {
+    transparent = true,
+  },
+  float = {
+    force_background = true,
+  },
+})
 
 --- Curser lines
 vim.api.nvim_set_hl(0, "CursorLineNr", { ctermfg = 208, bold = true, fg = "#e78a4e" })
