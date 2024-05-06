@@ -1,6 +1,7 @@
 require("notify").setup({
   render = "compact",
 })
+vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000" })
 vim.api.nvim_set_hl(0, "NotifyERRORBorder", { link = "DiagnosticError", nocombine = true })
 vim.api.nvim_set_hl(0, "NotifyERRORIcon", { link = "DiagnosticError", nocombine = true })
 vim.api.nvim_set_hl(0, "NotifyERRORTitle", { link = "DiagnosticError", nocombine = true })
