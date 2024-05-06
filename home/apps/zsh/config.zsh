@@ -92,6 +92,10 @@ function zshaddhistory() {
     return 1
   elif [[ "${1:l}" = *"api_key"* ]]; then
     return 1
+  elif [[ "${1:l}" = "curl -u"* ]]; then
+    return 1
+  elif [[ "${1:l}" = "xh -a"* ]]; then
+    return 1
   fi
 }
 
