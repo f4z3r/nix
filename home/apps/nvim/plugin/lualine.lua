@@ -9,7 +9,7 @@ local colors = {
   bg = "#3a3735",
 }
 
-if vim.env.NIX_THEME == "light" then
+if vim.o.background == "light" then
   colors = {
     red = "#c14a4a",
     yellow = "#b47109",
