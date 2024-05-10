@@ -5,32 +5,30 @@
   monitor_prefix,
   theme,
   ...
-}:
-  let
-    colors = if theme == "dark" then
-      {
-        background = "#282828";
-        background-alt = "#32302f";
-        foreground = "#d4be98";
-        primary = "#d8a657";
-        secondary = "#89b482";
-        tertiary = "#d3869b";
-        alert = "#ea6962";
-        disabled = "#7c6f64";
-      }
-    else
-      {
-        background = "#fbf1c7";
-        background-alt = "#f4e8be";
-        foreground = "#654735";
-        primary = "#b47109";
-        secondary = "#4c7a5d";
-        tertiary = "#945e80";
-        alert = "#c14a4a";
-        disabled = "#7c6f64";
-      }
-    ;
-  in {
+}: let
+  colors =
+    if theme == "dark"
+    then {
+      background = "#282828";
+      background-alt = "#32302f";
+      foreground = "#d4be98";
+      primary = "#d8a657";
+      secondary = "#89b482";
+      tertiary = "#d3869b";
+      alert = "#ea6962";
+      disabled = "#7c6f64";
+    }
+    else {
+      background = "#fbf1c7";
+      background-alt = "#f4e8be";
+      foreground = "#654735";
+      primary = "#b47109";
+      secondary = "#4c7a5d";
+      tertiary = "#945e80";
+      alert = "#c14a4a";
+      disabled = "#7c6f64";
+    };
+in {
   services = {
     polybar = {
       enable = true;
