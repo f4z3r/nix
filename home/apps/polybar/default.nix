@@ -3,22 +3,48 @@
   polybar_dpi,
   main_monitor,
   monitor_prefix,
+  theme,
   ...
-}: {
+}:
+  let
+    colors = if theme == "dark" then
+      {
+        background = "#282828";
+        background-alt = "#32302f";
+        foreground = "#d4be98";
+        primary = "#d8a657";
+        secondary = "#89b482";
+        tertiary = "#d3869b";
+        alert = "#ea6962";
+        disabled = "#7c6f64";
+      }
+    else
+      {
+        background = "#fbf1c7";
+        background-alt = "#f4e8be";
+        foreground = "#654735";
+        primary = "#b47109";
+        secondary = "#4c7a5d";
+        tertiary = "#945e80";
+        alert = "#c14a4a";
+        disabled = "#7c6f64";
+      }
+    ;
+  in {
   services = {
     polybar = {
       enable = true;
       script = "${pkgs.polybar}/bin/polybar";
       extraConfig = ''
         [colors]
-        background = #282828
-        background-alt = #32302f
-        foreground = #d4be98
-        primary = #d8a657
-        secondary = #89b482
-        tertiary = #d3869b
-        alert = #ea6962
-        disabled = #7c6f64
+        background = ${colors.background}
+        background-alt = ${colors.background-alt}
+        foreground = ${colors.foreground}
+        primary = ${colors.primary}
+        secondary = ${colors.secondary}
+        tertiary = ${colors.tertiary}
+        alert = ${colors.alert}
+        disabled = ${colors.disabled}
 
         [global/wm]
         margin-top = 0
@@ -99,7 +125,7 @@
         card = intel_backlight
         use-actual-brightness = true
         format = <label>
-        label = %{F#d8a657}BL%{F-} %percentage%%
+        label = %{F${colors.primary}}BL%{F-} %percentage%%
 
         [module/alsa]
         type = custom/script
@@ -111,8 +137,8 @@
         interval = 30
         fixed-values = true
         warn-percentage = 85
-        label-mounted = %{F#d8a657}SSD%{F-} %percentage_used%%
-        label-warn = %{F#ea6962}SSD%{F-} %percentage_used%%
+        label-mounted = %{F${colors.primary}}SSD%{F-} %percentage_used%%
+        label-warn = %{F${colors.alert}}SSD%{F-} %percentage_used%%
 
         [module/memory]
         type = internal/memory
@@ -134,7 +160,7 @@
         speed-unit = ""
         format-connected = <label-connected>
         format-disconnected = <label-disconnected>
-        label-disconnected = %{F#d8a657}%ifname%%{F#7c6f64} disconnected
+        label-disconnected = %{F${colors.primary}}%ifname%%{F${colors.disabled}} disconnected
 
         [module/wlan]
         inherit = network-base
@@ -147,14 +173,14 @@
         ramp-signal-5 = 󰣺
         interface-type = wireless
         interface = wlp0s20f3
-        label-connected = %{F#d8a657}%ifname%%{F-} %{F#d3869b}%essid%%{F-} %local_ip% %{F#89b482}UP%{F-} %upspeed% %{F#89b482}DN%{F-} %downspeed%
+        label-connected = %{F${colors.primary}}%ifname%%{F-} %{F${colors.tertiary}}%essid%%{F-} %local_ip% %{F${colors.secondary}}UP%{F-} %upspeed% %{F${colors.secondary}}DN%{F-} %downspeed%
 
         [module/vpn]
         type = custom/script
         exec-if = systemctl is-active openvpn-*
         exec = ${pkgs.luajit}/bin/luajit ~/.local/bin/vpn.lua
         tail = false
-        label = %{F#d8a657}VPN%{F-} %output%
+        label = %{F${colors.primary}}VPN%{F-} %output%
         interval = 60
 
         [module/bat]
@@ -164,10 +190,10 @@
         battery = BAT0
         poll-interval = 20
 
-        label-charging = %{F#d3869b}BAT%{F-} %percentage_raw%%
-        label-discharging = %{F#d8a657}BAT%{F-} %percentage_raw%%
+        label-charging = %{F${colors.tertiary}}BAT%{F-} %percentage_raw%%
+        label-discharging = %{F${colors.primary}}BAT%{F-} %percentage_raw%%
         label-full = %{F#a9b665}BAT%{F-} %percentage_raw%%
-        label-low = %{F#ea6962}BAT%{F-} %percentage_raw%%
+        label-low = %{F${colors.alert}}BAT%{F-} %percentage_raw%%
 
         [module/date]
         type = internal/date

@@ -20,7 +20,7 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
     })
     (import ./apps/sxhkd/default.nix {inherit pkgs username;})
     (import ./apps/polybar/default.nix {
-      inherit pkgs polybar_dpi main_monitor monitor_prefix;
+      inherit pkgs polybar_dpi main_monitor monitor_prefix theme;
     })
     ./apps/picom.nix
     ./apps/rofi/default.nix
