@@ -1,14 +1,14 @@
+local math = require("math")
 local string = require("string")
 local table = require("table")
-local math = require("math")
 
 local function tostring_lowercase(n)
-    local t = {}
-    while n > 0 do
-        t[#t + 1] = string.char(0x61 + (n - 1) % 26)
-        n = math.floor((n - 1) / 26)
-    end
-    return table.concat(t):reverse()
+  local t = {}
+  while n > 0 do
+    t[#t + 1] = string.char(0x61 + (n - 1) % 26)
+    n = math.floor((n - 1) / 26)
+  end
+  return table.concat(t):reverse()
 end
 
 require("neorg").setup({
@@ -34,13 +34,17 @@ require("neorg").setup({
           },
           ordered = {
             icons = {
-              function(idx) return tostring_lowercase(idx) end,
-              function(idx) return tostring_lowercase(idx):upper() end,
-              function(idx) return tostring(idx) end,
-              function(idx) return tostring_lowercase(idx) end,
-              function(idx) return tostring_lowercase(idx):upper() end,
-              function(idx) return tostring(idx) end,
-            }
+              tostring_lowercase,
+              function(idx)
+                return tostring_lowercase(idx):upper()
+              end,
+              tostring,
+              tostring_lowercase,
+              function(idx)
+                return tostring_lowercase(idx):upper()
+              end,
+              tostring,
+            },
           },
         },
       },
@@ -148,7 +152,13 @@ require("neorg").setup({
       },
     },
     -- integrations
-    ["core.integrations.telescope"] = {},
+    ["core.integrations.telescope"] = {
+      config = {
+        insert_file_link = {
+          show_title_preview = false,
+        },
+      },
+    },
     ["external.templates"] = {
       config = {
         templates_dir = vim.fn.stdpath("config") .. "/templates/norg",

@@ -1,4 +1,13 @@
 {pkgs, ...}: let
+  neorg-telescope-f4z3r = pkgs.vimUtils.buildVimPlugin {
+    name = "neorg-telescope";
+    src = pkgs.fetchFromGitHub {
+      owner = "nvim-neorg";
+      repo = "neorg-telescope";
+      rev = "v1.2.0";
+      sha256 = "sha256-zR+r57qnfJ0V1EtsN+gyfHYTTI0I5i/GtjoAYvVmH5Y=";
+    };
+  };
   gruvbox-material-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "gruvbox-material.nvim";
     src = pkgs.fetchFromGitHub {
@@ -393,7 +402,7 @@ in {
         plugin = neorg;
         config = builtins.readFile ./plugin/neorg.lua;
       }
-      neorg-telescope
+      neorg-telescope-f4z3r
       neorg-templates
 
       {
