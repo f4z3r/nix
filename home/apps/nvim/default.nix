@@ -246,11 +246,6 @@ in {
         plugin = true-zen-nvim;
         config = builtins.readFile ./plugin/true-zen.lua;
       }
-      {
-        type = "lua";
-        plugin = twilight-nvim;
-        config = builtins.readFile ./plugin/twilight.lua;
-      }
 
       # git integration
       {
@@ -280,31 +275,6 @@ in {
         plugin = refactoring-nvim;
         config = "require('refactoring').setup()";
       }
-      # {
-      #   type = "lua";
-      #   plugin = nvim-dap;
-      #   config = builtins.readFile ./plugin/dap.lua;
-      # }
-      # {
-      #   type = "lua";
-      #   plugin = nvim-dap-ui;
-      #   config = "require('dapui').setup()";
-      # }
-      # {
-      #   type = "lua";
-      #   plugin = rust-tools-nvim;
-      #   config = builtins.readFile ./plugin/rust-tools.lua;
-      # }
-      # {
-      #   type = "lua";
-      #   plugin = nvim-dap-python;
-      #   config = "require('dap-python').setup()";
-      # }
-      # {
-      #   type = "lua";
-      #   plugin = nvim-dap-go;
-      #   config = "require('dap-go').setup()";
-      # }
 
       # test and runner stuff
       {
@@ -355,8 +325,6 @@ in {
       }
       fzfWrapper
       telescope-fzf-native-nvim
-      telescope-undo-nvim
-      harpoon2
 
       # useful stuff
       {

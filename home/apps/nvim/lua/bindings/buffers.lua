@@ -25,9 +25,14 @@ local mappings = {
     mode = "n",
     suffix = "b",
     command = function()
-      require("telescope.builtin").buffers()
+      require("neo-tree.command").execute({
+        source = "buffers",
+        toggle = true,
+        action = "focus",
+        reveal = true,
+      })
     end,
-    desc = "Pick buffer",
+    desc = "Toggle buffer sidepane",
   },
 }
 

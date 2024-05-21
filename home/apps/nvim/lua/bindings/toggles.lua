@@ -31,12 +31,6 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "T",
-    command = "<cmd>Twilight<cr>",
-    desc = "Toggle twilight",
-  },
-  {
-    mode = "n",
     suffix = "z",
     command = function()
       require("true-zen.ataraxis").toggle()
@@ -107,35 +101,16 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "p",
-    command = function()
-      require("dapui").toggle()
-    end,
-    desc = "Toggle DAP UI",
-  },
-  {
-    mode = "n",
     suffix = "b",
     command = function()
-      require("dap").toggle_breakpoint()
+      require("neo-tree.command").execute({
+        source = "buffers",
+        toggle = true,
+        action = "focus",
+        reveal = true,
+      })
     end,
-    desc = "Toggle breakpoint",
-  },
-  {
-    mode = "n",
-    suffix = "Bc",
-    command = function()
-      require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
-    end,
-    desc = "DAP set breakpoint with condition",
-  },
-  {
-    mode = "n",
-    suffix = "Bl",
-    command = function()
-      require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-    end,
-    desc = "DAP set breakpoint with log message",
+    desc = "Toggle buffer sidepane",
   },
   {
     mode = "n",

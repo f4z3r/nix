@@ -125,6 +125,14 @@ local mappings = {
   },
   {
     mode = "n",
+    suffix = "b",
+    command = function()
+      require("telescope.builtin").buffers()
+    end,
+    desc = "Pick buffer",
+  },
+  {
+    mode = "n",
     suffix = "y",
     command = function()
       require("telescope").extensions.yank_history.yank_history()
