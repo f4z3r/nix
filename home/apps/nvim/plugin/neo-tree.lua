@@ -10,12 +10,12 @@ require("neo-tree").setup({
     filesystem = {
       filtered_items = {
         hide_dotfiles = false,
+        hide_by_name = {
+          "worktrees",
+          ".git",
+          "tags",
+        },
       },
-      hide_by_name = {
-        "worktrees",
-        ".git",
-        "tags",
-      }
     },
     git_status = {
       symbols = {

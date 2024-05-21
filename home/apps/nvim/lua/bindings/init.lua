@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 
 require("bindings.actions")
 require("bindings.buffers")
-require("bindings.commands")
+require("bindings.comments")
 require("bindings.diagnostics")
 require("bindings.file")
 require("bindings.general")

@@ -316,6 +316,11 @@ in {
         plugin = nvim-cmp;
         config = builtins.readFile ./plugin/cmp.lua;
       }
+      {
+        type = "lua";
+        plugin = neogen;
+        config = ''require('neogen').setup({ snippet_engine = "luasnip" })'';
+      }
 
       # finder
       {
