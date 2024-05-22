@@ -18,3 +18,8 @@ local colors = g_colors.get(vim.o.background, "medium")
 --- Default backgrounds and selection backgrounds.
 vim.api.nvim_set_hl(0, "PmenuSel", { bg = colors.bg_visual_red, fg = "NONE" })
 vim.api.nvim_set_hl(0, "Pmenu", { fg = colors.fg0, bg = colors.bg0 })
+
+--- Nicer Neotree
+vim.api.nvim_set_hl(0, "NeoTreeDirectoryName", { fg = colors.blue })
+vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { fg = colors.blue })
+vim.api.nvim_set_hl(0, "NeoTreeGitModified", { fg = colors.aqua })

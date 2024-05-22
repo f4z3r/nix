@@ -8,6 +8,7 @@
       sha256 = "sha256-zR+r57qnfJ0V1EtsN+gyfHYTTI0I5i/GtjoAYvVmH5Y=";
     };
   };
+
   gruvbox-material-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "gruvbox-material.nvim";
     src = pkgs.fetchFromGitHub {
