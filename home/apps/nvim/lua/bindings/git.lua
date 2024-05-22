@@ -18,6 +18,22 @@ local mappings = {
     end,
     desc = "Toggle git status",
   },
+  {
+    mode = "n",
+    suffix = "w",
+    command = function()
+      require('telescope').extensions.git_worktree.git_worktrees()
+    end,
+    desc = "Switch worktrees",
+  },
+  {
+    mode = "n",
+    suffix = "c",
+    command = function()
+      require('telescope').extensions.git_worktree.create_git_worktree()
+    end,
+    desc = "Create new worktree",
+  },
 }
 
 for _, mapping in ipairs(mappings) do
