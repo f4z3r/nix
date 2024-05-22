@@ -29,6 +29,17 @@ namespaces:
             prompt: Branch
             exclusive: true
             choices: git for-each-ref --format="%(refname:short)" refs/heads/
+      monitors:
+        command: autorandr -l {{ config }}
+        description: Setup external monitors based on preconfiguration
+        tags:
+        - autorandr
+        - displays
+        parameters:
+          config:
+            prompt: Configuration
+            exclusive: true
+            choices: autorandr --list
   nix:
     commands:
       rebuild:
