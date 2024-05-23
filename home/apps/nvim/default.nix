@@ -255,8 +255,8 @@ in {
       }
       {
         type = "lua";
-        plugin = true-zen-nvim;
-        config = builtins.readFile ./plugin/true-zen.lua;
+        plugin = zen-mode-nvim;
+        config = builtins.readFile ./plugin/zen-mode.lua;
       }
 
       # git integration

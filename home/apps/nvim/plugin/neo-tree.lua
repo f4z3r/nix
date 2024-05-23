@@ -19,12 +19,13 @@ require("neo-tree").setup({
     },
     git_status = {
       symbols = {
+        added = "",
         renamed = "󰁕",
         deleted   = "",
         unstaged = "󰄱",
-        untracked = "",
+        untracked = "",
         ignored   = "",
-        staged    = "",
+        staged    = "",
         conflict  = "",
       },
     },

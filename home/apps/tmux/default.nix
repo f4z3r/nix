@@ -60,6 +60,9 @@ in {
       set-option -g automatic-rename on
       set-option -g automatic-rename-format '#{b:pane_current_path}: #{b:pane_current_command}'
 
+      # passthrough for zen-mode
+      set-option -g allow-passthrough on
+
       # minimal status bar
       set-option -g status-style bg=${bg_colour},fg=${fg_colour}
       set-option -g status-left ""
