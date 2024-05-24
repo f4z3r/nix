@@ -8,13 +8,9 @@ updated: {NOW}
 @end
 
 * ( ) goal
-  {CURSOR}
 
-* todos
-** (!) urgent and important
-** (!) not urgent and important
-** ( ) urgent and not important
-** ( ) not urgent and not important
+* tasks
+  - ( ) {CURSOR}
 
 * reflection
 
