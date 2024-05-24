@@ -3,8 +3,6 @@ if vim.env.STY == nil then
   vim.o.termguicolors = true
 end
 
-vim.o.t_Co = 256
-
 -- theming
 local theme = "dark"
 if vim.env.NIX_THEME ~= "" then
