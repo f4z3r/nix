@@ -22,10 +22,13 @@ local function main()
     os.exit(1)
   end
   local volume = string.match(out, "%[(%d%d%%)%]")
-  local off = string.find(out, "%[off%]")
+  if not volume then
+    volume = string.match(out, "%[(%d%%)%]")
+  end
   if not volume then
     os.exit(1)
   end
+  local off = string.find(out, "%[off%]")
   if off then
     print("%{F#7c6f64}VOL " .. volume .. "%{F-}")
   else
