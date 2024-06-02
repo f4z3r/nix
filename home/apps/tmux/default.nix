@@ -103,6 +103,9 @@ in {
       # session finder
       bind-key -r f run-shell "tmux neww ~/.local/bin/tmux-session-finder.lua"
 
+      # window tree
+      bind-key -r w run-shell 'tmux choose-tree -wf"##{==:##{session_name},#{session_name}}" -F "##{window_name}"'
+
       # vim like pane movement
       bind-key C-h select-pane -t '{left-of}'
       bind-key C-l select-pane -t '{right-of}'
