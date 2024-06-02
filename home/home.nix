@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  stdenv,
   pkgs-custom,
   hostname,
   username,
@@ -26,7 +27,7 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
     ./apps/rofi/default.nix
     (import ./apps/git/default.nix {inherit pkgs theme;})
     (import ./apps/wezterm.nix {inherit pkgs theme font_size;})
-    (import ./apps/tmux/default.nix {inherit pkgs theme;})
+    (import ./apps/tmux/default.nix {inherit pkgs lib stdenv theme;})
     (import ./apps/zsh/default.nix {inherit lib pkgs theme;})
     ./apps/starship.nix
     ./apps/gpg.nix

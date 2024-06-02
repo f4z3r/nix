@@ -29,6 +29,7 @@
     inherit (nixpkgs) lib;
     pkgs-custom = {
     };
+    inherit (pkgs) stdenv;
 
     setup = {
       hostname,
@@ -68,6 +69,7 @@
                   inherit
                     pkgs
                     lib
+                    stdenv
                     pkgs-custom
                     hostname
                     username

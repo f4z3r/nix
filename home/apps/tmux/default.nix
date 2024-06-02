@@ -1,5 +1,7 @@
 {
   pkgs,
+  lib,
+  stdenv,
   theme,
   ...
 }: let
@@ -12,6 +14,48 @@
     then "colour236"
     else "colour180";
   focous_colour = "colour214";
+
+  rtpPath = "share/tmux-plugins";
+
+  addRtp = path: rtpFilePath: attrs: derivation:
+    derivation // { rtp = "${derivation}/${path}/${rtpFilePath}"; } // {
+      overrideAttrs = f: mkTmuxPlugin (attrs // f attrs);
+    };
+
+  mkTmuxPlugin = a@{
+    pluginName,
+    rtpFilePath ? (builtins.replaceStrings ["-"] ["_"] pluginName) + ".tmux",
+    namePrefix ? "tmuxplugin-",
+    src,
+    unpackPhase ? "",
+    configurePhase ? ":",
+    buildPhase ? ":",
+    addonInfo ? null,
+    preInstall ? "",
+    postInstall ? "",
+    path ? lib.getName pluginName,
+    ...
+  }:
+    if lib.hasAttr "dependencies" a then
+      throw "dependencies attribute is obselete. see NixOS/nixpkgs#118034" # added 2021-04-01
+    else addRtp "${rtpPath}/${path}" rtpFilePath a (stdenv.mkDerivation (a // {
+      pname = namePrefix + pluginName;
+
+      inherit pluginName unpackPhase configurePhase buildPhase addonInfo preInstall postInstall;
+
+      installPhase = ''
+        runHook preInstall
+
+        target=$out/${rtpPath}/${path}
+        mkdir -p $out/${rtpPath}
+        cp -r . $target
+        if [ -n "$addonInfo" ]; then
+          echo "$addonInfo" > $target/addon-info.json
+        fi
+
+        runHook postInstall
+      '';
+    }));
 in {
   programs.tmux = {
     enable = true;
@@ -49,6 +93,20 @@ in {
       {
         plugin = copycat;
         extraConfig = ''set -g @override_copy_command "(xsel -cb && xsel -bi)"'';
+      }
+      {
+        plugin = mkTmuxPlugin {
+          pluginName = "tea";
+          version = "unstable-2024-06-02";
+          src = pkgs.fetchFromGitHub {
+            owner = "2KAbhishek";
+            repo = "tmux-tea";
+            rev = "8a150154a68a1a1d0c575098a1aa649da4090371";
+            hash = "sha256-NGD2raQyhaeLRLvApyX/eX5y//rsaK/DuB0UTv4LkBw=";
+          };
+        };
+        extraConfig = ''
+        '';
       }
       {
         plugin = tmux-thumbs;
@@ -100,9 +158,6 @@ in {
         run-shell -b ~/.local/bin/tmux-popup.sh
       }
 
-      # session finder
-      bind-key -r f run-shell "tmux neww ~/.local/bin/tmux-session-finder.lua"
-
       # window tree
       bind-key -r w run-shell 'tmux choose-tree -wf"##{==:##{session_name},#{session_name}}" -F "##{window_name}"'
 
@@ -145,10 +200,6 @@ in {
   home.file = {
     ".local/bin/tmux-popup.sh" = {
       source = ./scripts/tmux-popup.sh;
-      executable = true;
-    };
-    ".local/bin/tmux-session-finder.lua" = {
-      source = ./scripts/session-finder.lua;
       executable = true;
     };
   };

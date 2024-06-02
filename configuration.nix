@@ -182,6 +182,7 @@
       "XSECURELOCK_AUTH_FOREGROUND_COLOR" = "Medium Orchid";
       "XSECURELOCK_FONT" = "FiraCode Nerd Font Mono Med";
       "DO_NOT_TRACK" = "1";
+      "FZF_TMUX_OPTS" = "-p80%,60%";
     };
 
     pathsToLink = ["/share/zsh"];
