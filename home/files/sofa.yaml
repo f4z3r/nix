@@ -166,13 +166,28 @@ namespaces:
     commands:
       kill-all-sessions:
         command: tmux kill-session -a
-        description: Delete all sessions except the current one.
+        description: Delete all sessions except the current one
         tags:
         - delete
         - clean
         - remove
         - rm
         interactive: true
+      kill-session:
+        command: tmux kill-session -t{{ session }}
+        description: Delete a tmux session
+        tags:
+        - delete
+        - clean
+        - remove
+        - rm
+        interactive: true
+        parameters:
+          session:
+            exclusive: true
+            prompt: Session
+            choices: "tmux list-sessions -F '#S: #{session_path} (#{session_attached} attached, #{session_windows} windows)'"
+            mapping: "cut -d: -f1"
   lua:
     commands:
       install-local:
