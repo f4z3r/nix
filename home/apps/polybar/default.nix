@@ -107,7 +107,7 @@ in {
         label-active-underline = ''${colors.tertiary}
         label-active-padding = 1
 
-        label-occupied = 
+        label-occupied = 󰺕
         label-occupied-padding = 1
 
         label-urgent = 
