@@ -71,18 +71,6 @@ in {
 
     plugins = with pkgs.tmuxPlugins; [
       {
-        plugin = resurrect;
-        extraConfig = ''
-          set -g @resurrect-processes 'nvim man less more tail'
-        '';
-      }
-      {
-        plugin = continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-        '';
-      }
-      {
         plugin = yank;
         extraConfig = ''
           set -g @yank_selection 'clipboard'
@@ -99,13 +87,14 @@ in {
           pluginName = "tea";
           version = "unstable-2024-06-02";
           src = pkgs.fetchFromGitHub {
-            owner = "2KAbhishek";
+            owner = "f4z3r";
             repo = "tmux-tea";
-            rev = "8a150154a68a1a1d0c575098a1aa649da4090371";
-            hash = "sha256-NGD2raQyhaeLRLvApyX/eX5y//rsaK/DuB0UTv4LkBw=";
+            rev = "e174fd3676d1fdf6a6cb6f5266ad25b4c12cb88a";
+            hash = "sha256-dEKSbAmXNKN0mVV0Jf/SrjpNnmukJPkbqAraArBV4yI=";
           };
         };
         extraConfig = ''
+          set -g @tea-session-name "full-path"
         '';
       }
       {
