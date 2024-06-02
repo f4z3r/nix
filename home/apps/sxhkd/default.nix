@@ -57,7 +57,7 @@
 
       # quake
       "${alt} + Return" = ''
-        ~/.config/sxhkd/scripts/bspwm-scratchpad "quake" "wezterm start --class quake -- tmux"'';
+        ~/.config/sxhkd/scripts/bspwm-scratchpad "quake" "wezterm start --class quake -- tmux new -s quake"'';
 
       # brightness control
       "XF86MonBrightnessDown" = "${pkgs.brightnessctl}/bin/brightnessctl -c 'backlight' -d '*backlight*' s 5%-";
