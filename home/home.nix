@@ -182,6 +182,7 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
       autorandr
       ouch
       fd
+      gfold
       vimv-rs
       dysk
       erdtree

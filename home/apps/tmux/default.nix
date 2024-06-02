@@ -27,6 +27,18 @@ in {
 
     plugins = with pkgs.tmuxPlugins; [
       {
+        plugin = resurrect;
+        extraConfig = ''
+          set -g @resurrect-processes 'nvim man less more tail'
+        '';
+      }
+      {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+        '';
+      }
+      {
         plugin = yank;
         extraConfig = ''
           set -g @yank_selection 'clipboard'
@@ -55,6 +67,8 @@ in {
       set -g mouse off
 
       set -g status on
+
+      set -g base-index 1
 
       # improve default name of windows
       set-option -g automatic-rename on
@@ -85,6 +99,9 @@ in {
       } {
         run-shell -b ~/.local/bin/tmux-popup.sh
       }
+
+      # session finder
+      bind-key -r f run-shell "tmux neww ~/.local/bin/tmux-session-finder.lua"
 
       # vim like pane movement
       bind-key C-h select-pane -t '{left-of}'
@@ -125,6 +142,10 @@ in {
   home.file = {
     ".local/bin/tmux-popup.sh" = {
       source = ./scripts/tmux-popup.sh;
+      executable = true;
+    };
+    ".local/bin/tmux-session-finder.lua" = {
+      source = ./scripts/session-finder.lua;
       executable = true;
     };
   };

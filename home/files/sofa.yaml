@@ -162,6 +162,17 @@ namespaces:
         - clean
         - remove
         - rm
+  tmux:
+    commands:
+      kill-all-sessions:
+        command: tmux kill-session -a
+        description: Delete all sessions except the current one.
+        tags:
+        - delete
+        - clean
+        - remove
+        - rm
+        interactive: true
   lua:
     commands:
       install-local:
