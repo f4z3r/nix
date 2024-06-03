@@ -266,29 +266,22 @@
       };
       sofa = buildLuarocksPackage {
         pname = "sofa";
-        version = "0.5.0-0";
+        version = "0.5.2-0";
         knownRockspec =
           (pkgs.fetchurl {
-            url = "mirror://luarocks/sofa-0.5.0-0.rockspec";
-            sha256 = "0vimbvnnfwn1vaxz33vgvmrng3l87j970zgzxsmj4g0p5yqkmnsn";
+            url = "mirror://luarocks/sofa-0.5.2-0.rockspec";
+            sha256 = "1fm83cskbcyc5bs0flqmp7rszazpb414m2whbp2kg31frpd1ykl5";
           })
           .outPath;
-        src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''          {
-            "url": "https://github.com/f4z3r/sofa.git",
-            "rev": "ad113b42780215f78695577ded5460a68886c03b",
-            "date": "2024-05-04T13:33:29+02:00",
-            "path": "/nix/store/n3crsij6x8irrjmrmqr428d09npnvakq-sofa",
-            "sha256": "08w47kjzcrmzddk55s31qr9g1vkc5gdwnqprdxvz52xiikvh35kn",
-            "hash": "sha256-dpYB94yxi/J3b/liy9srbO7wUsZh6FJma79m9uU8hCM=",
-            "fetchLFS": false,
-            "fetchSubmodules": true,
-            "deepClone": false,
-            "leaveDotGit": false
-          }
-        '') ["date" "path" "sha256"]);
+        src = pkgs.fetchFromGitHub {
+          owner = "f4z3r";
+          repo = "sofa";
+          rev = "v0.5.2";
+          hash = "sha256-lDIjSoqVRzn+spmvZGgCD/VujEYEqastgDkk1uxkecA=";
+        };
 
-        disabled = (luaOlder "5.1") || (luaAtLeast "5.5");
-        propagatedBuildInputs = [argparse compat53 lua luatext lyaml];
+        disabled = luaOlder "5.1" || luaAtLeast "5.5";
+        propagatedBuildInputs = [argparse compat53 luatext lyaml];
 
         meta = {
           homepage = "https://github.com/f4z3r/sofa";
