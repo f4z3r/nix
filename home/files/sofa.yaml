@@ -186,7 +186,7 @@ namespaces:
           session:
             exclusive: true
             prompt: Session
-            choices: "tmux list-sessions -F '#S: #{session_path} (#{session_attached} attached, #{session_windows} windows)'"
+            choices: "tmux list-sessions -F '#S <span size=\"small\"><i>(#{session_attached} attached, #{session_windows} windows)</i></span>'"
             mapping: "cut -d: -f1"
   lua:
     commands:
