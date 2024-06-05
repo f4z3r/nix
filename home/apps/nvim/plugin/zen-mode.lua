@@ -1,6 +1,6 @@
 require("zen-mode").setup({
   window = {
-    width = 100,
+    width = 105,
     options = {
       -- signcolumn = "no", -- disable signcolumn
       number = false, -- disable number column
