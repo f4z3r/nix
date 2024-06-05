@@ -26,6 +26,7 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
     ./apps/picom.nix
     ./apps/rofi/default.nix
     (import ./apps/git/default.nix {inherit pkgs theme;})
+    (import ./apps/lazygit.nix {inherit pkgs theme;})
     (import ./apps/wezterm.nix {inherit pkgs theme font_size;})
     (import ./apps/tmux/default.nix {inherit pkgs lib stdenv theme;})
     (import ./apps/zsh/default.nix {inherit lib pkgs theme;})

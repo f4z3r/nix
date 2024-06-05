@@ -147,6 +147,9 @@ in {
         run-shell -b ~/.local/bin/tmux-popup.sh
       }
 
+      # git
+      bind-key -n C-g display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E "${pkgs.lazygit}/bin/lazygit"
+
       # window tree
       bind-key -r w run-shell 'tmux choose-tree -wf"##{==:##{session_name},#{session_name}}" -F "##{window_name}"'
 
