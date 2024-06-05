@@ -141,7 +141,7 @@ in {
       bind-key C-z resize-pane -Z
 
       # popup
-      bind-key -n M-f if-shell -F '#{==:#{=5:session_name},popup}' {
+      bind-key -n C-s if-shell -F '#{==:#{=5:session_name},popup}' {
         detach-client
       } {
         run-shell -b ~/.local/bin/tmux-popup.sh
