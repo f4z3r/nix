@@ -41,7 +41,7 @@
 
     extraConfig = {
       core = {
-        editor = "${pkgs.neovim}/bin/nvim";
+        editor = "nvim";
       };
       advice = {
         skippedCherryPicks = false;
