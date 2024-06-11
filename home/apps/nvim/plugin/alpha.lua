@@ -30,11 +30,6 @@ dashboard.section.top_buttons.val = {
     "󱋡  Temp File",
     ':lua vim.cmd(string.format("e %s", require("lazy.utils").get_temp_file()))<cr>'
   ),
-  dashboard.button(
-    "o",
-    "  Neorg File",
-    ':lua vim.cmd(string.format("e %s", require("lazy.utils").get_random_org()))<cr>'
-  ),
 }
 dashboard.section.bottom_buttons.val = {
   dashboard.button("q", "󰩈  Quit", ":qa<CR>"),
