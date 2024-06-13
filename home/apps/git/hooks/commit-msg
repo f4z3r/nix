@@ -6,7 +6,6 @@ local string = require("string")
 
 local TYPES = {
   "feat",
-  "impr",
   "fix",
   "docs",
   "chore",
