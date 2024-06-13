@@ -30,16 +30,6 @@
     };
   };
 
-  cmp-luasnip-choice = pkgs.vimUtils.buildVimPlugin {
-    name = "cmp-luasnip-choice";
-    src = pkgs.fetchFromGitHub {
-      owner = "L3MON4D3";
-      repo = "cmp-luasnip-choice";
-      rev = "4f49232e51c9df379b9daf43f25f7ee6320450f0";
-      sha256 = "sha256-/s1p/WLfrHZHX6fU1p2PUQ0GIocAB4mvhjZ0XUMzkaw=";
-    };
-  };
-
   d2-vim = pkgs.vimUtils.buildVimPlugin {
     name = "d2-vim";
     src = pkgs.fetchFromGitHub {
@@ -314,11 +304,6 @@ in {
       lspkind-nvim
       cmp-nvim-lsp-signature-help
       cmp_luasnip
-      {
-        type = "lua";
-        plugin = cmp-luasnip-choice;
-        config = "require('cmp_luasnip_choice').setup({auto_open = true})";
-      }
       cmp-path
       cmp-buffer
       cmp-cmdline

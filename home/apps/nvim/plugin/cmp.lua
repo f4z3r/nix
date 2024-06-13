@@ -38,7 +38,6 @@ cmp.setup({
       },
     },
     { name = 'luasnip' },
-    { name = "luasnip_choice" },
   }, {
     { name = "buffer" },
   }),
@@ -64,7 +63,6 @@ cmp.setup.filetype("norg", {
       },
     },
     { name = 'luasnip' },
-    { name = "luasnip_choice" },
   }, {
     { name = "buffer" },
   }),
