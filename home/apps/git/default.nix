@@ -59,6 +59,12 @@
         ff = "only";
         rebase = true;
       };
+      merge = {
+        tool = "nvimdiff";
+      };
+      mergetool = {
+        keepBackup = false;
+      };
       trailer = {
         ifexists = "addIfDifferent";
         separators = ":#";
