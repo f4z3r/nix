@@ -1,8 +1,18 @@
 -- Setup language servers.
 
+local border = "single"
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = border,
+})
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = border,
+})
+
 vim.diagnostic.config({
   update_in_insert = false,
   virtual_text = false,
+  float = { border = border },
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
