@@ -317,7 +317,7 @@ in {
       {
         type = "lua";
         plugin = cmp-luasnip-choice;
-        config = "require('cmp_luasnip_choice').setup()";
+        config = "require('cmp_luasnip_choice').setup({auto_open = true})";
       }
       cmp-path
       cmp-buffer
