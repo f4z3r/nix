@@ -3,7 +3,7 @@ require("gruvbox-material").setup({
     transparent = true,
   },
   float = {
-    force_background = true,
+    force_background = false,
   },
   signs = {
     highlight = false,
