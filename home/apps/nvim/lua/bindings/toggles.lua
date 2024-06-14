@@ -16,10 +16,6 @@ local function toggle_spell()
   vim.o.spell = not vim.o.spell
 end
 
-local function toggle_wrap()
-  vim.o.wrap = not vim.o.wrap
-end
-
 local mappings = {
   {
     mode = "n",
@@ -92,12 +88,6 @@ local mappings = {
     suffix = "S",
     command = toggle_spell,
     desc = "Toggle spelling",
-  },
-  {
-    mode = "n",
-    suffix = "w",
-    command = toggle_wrap,
-    desc = "Toggle wrap",
   },
   {
     mode = "n",

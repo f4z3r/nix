@@ -81,6 +81,14 @@ local mappings = {
     end,
     desc = "Show Harpoon list in telescope",
   },
+  {
+    mode = "n",
+    suffix = "h",
+    command = function()
+      toggle_telescope(harpoon:list())
+    end,
+    desc = "Show Harpoon list in telescope",
+  },
 }
 
 for _, mapping in ipairs(mappings) do
