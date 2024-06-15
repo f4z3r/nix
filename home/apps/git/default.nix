@@ -146,7 +146,7 @@
       "s" = ''status -sb'';
       "st" = ''stash list'';
       "sh" = ''show HEAD'';
-      "lg" = ''log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit'';
+      "lg" = ''log --color --graph --pretty=format:'%Cred%h%Creset - %C(magenta)%G?%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit'';
       "rs" = ''reflog show'';
       "ph" = ''push -q'';
       "phf" = ''push -q --force-with-lease'';

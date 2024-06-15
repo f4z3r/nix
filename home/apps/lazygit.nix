@@ -23,8 +23,8 @@
         merging = {
           args = "--ff-only";
         };
-        branchLogCmd = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit";
-        allBranchesLogCmd = "log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit";
+        branchLogCmd = "git log --color --graph --pretty=format:'%Cred%h%Creset - %C(magenta)%G?%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --";
+        allBranchesLogCmd = "git log --all --color --graph --pretty=format:'%Cred%h%Creset - %C(magenta)%G?%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit";
         parseEmoji = true;
       };
       notARepository = "quit";
