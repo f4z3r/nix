@@ -1,11 +1,6 @@
 -- Switches configuration
 -- NOTE: some are contained within other binding configurations
 
--- use `2[C` to move two up the context list
-vim.keymap.set("n", "[C", function()
-  require("treesitter-context").go_to_context(vim.v.count1)
-end, { desc = "Increase foldlevel", silent = true })
-
 vim.keymap.set("n", "]f", "zr", {
   desc = "Increase foldlevel",
 })
