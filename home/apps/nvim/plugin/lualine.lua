@@ -1,42 +1,37 @@
+local g_colors = require("gruvbox-material.colors")
+local gruvbox_colors = g_colors.get(vim.o.background, "medium")
+
 local colors = {
-  red = "#ea6962",
-  yellow = "#d8a657",
-  green = "#a9b665",
-  blue = "#7daea3",
+  red = gruvbox_colors.red,
+  orange = gruvbox_colors.orange,
+  yellow = gruvbox_colors.yellow,
+  green = gruvbox_colors.green,
+  aqua = gruvbox_colors.aqua,
+  blue = gruvbox_colors.blue,
+  purple = gruvbox_colors.purple,
 
-  invis = "#282828",
-  fg = "#d4be98",
-  bg = "#3a3735",
+  invis = "NONE",
+  fg = gruvbox_colors.fg0,
+  bg = gruvbox_colors.bg_statusline1,
 }
-
-if vim.o.background == "light" then
-  colors = {
-    red = "#c14a4a",
-    yellow = "#b47109",
-    green = "#6c782e",
-    blue = "#45707a",
-
-    invis = "#fbf1c7",
-    fg = "#654735",
-    bg = "#f2e5bc",
-  }
-end
 
 local bubbles_theme = {
   normal = {
-    a = { fg = colors.invis, bg = colors.green },
+    a = { fg = colors.bg, bg = colors.green },
     b = { fg = colors.fg, bg = colors.bg },
     c = { fg = colors.invis, bg = colors.invis },
+    x = { fg = colors.bg, bg = colors.purple },
   },
 
-  insert = { a = { fg = colors.invis, bg = colors.blue } },
-  visual = { a = { fg = colors.invis, bg = colors.yellow } },
-  replace = { a = { fg = colors.invis, bg = colors.red } },
+  insert = { a = { fg = colors.bg, bg = colors.blue } },
+  visual = { a = { fg = colors.bg, bg = colors.yellow } },
+  replace = { a = { fg = colors.bg, bg = colors.red } },
 
   inactive = {
     a = { fg = colors.fg, bg = colors.invis },
     b = { fg = colors.fg, bg = colors.invis },
-    c = { fg = colors.invis, bg = colors.invis },
+    c = { fg = colors.fg, bg = colors.invis },
+    x = { fg = colors.fg, bg = colors.invis },
   },
 }
 
@@ -47,26 +42,42 @@ end
 require("lualine").setup({
   options = {
     theme = bubbles_theme,
+    globalstatus = true,
     component_separators = "|",
     section_separators = { left = "", right = "" },
   },
   sections = {
     lualine_a = {
-      { "mode", separator = { left = "" }, right_padding = 2 },
+      { "mode", separator = { left = "" } },
     },
     lualine_b = {
-      "filename",
-      { "branch", icon = "" },
+      {
+        "filename",
+        path = 1,
+        symbols = {
+          modified = "",
+          readonly = "",
+          unnamed = "[No Name]",
+          newfile = "[New]",
+        },
+      },
     },
-    lualine_c = { "fileformat" },
-    lualine_x = {},
-    lualine_y = { "filetype", "overseer", "progress", maximize_status },
+    lualine_c = {},
+    lualine_x = {
+      { "branch", icon = "", separator = { left = "" } },
+    },
+    lualine_y = {
+      { "filetype", separator = { left = "" }, padding = { left = 2, right = 1 } },
+      "overseer",
+      "progress",
+      maximize_status,
+    },
     lualine_z = {
-      { "location", separator = { right = "" }, left_padding = 2 },
+      { "location", separator = { right = "" } },
     },
   },
   inactive_sections = {
-    lualine_a = { "filename" },
+    lualine_a = { "%F" },
     lualine_b = {},
     lualine_c = {},
     lualine_x = {},
