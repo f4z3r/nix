@@ -219,6 +219,11 @@ in {
       }
       {
         type = "lua";
+        plugin = tint-nvim;
+        config = builtins.readFile ./plugin/tint.lua;
+      }
+      {
+        type = "lua";
         plugin = indent-blankline-nvim;
         config = builtins.readFile ./plugin/indent-blankline.lua;
       }
