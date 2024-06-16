@@ -1,5 +1,5 @@
 local actions = require("telescope.actions")
-local trouble = require("trouble.providers.telescope")
+local trouble = require("trouble.sources.telescope")
 
 local function add_to_arglist(prompt_bufnr)
   local action_state = require("telescope.actions.state")
@@ -27,7 +27,7 @@ telescope.setup({
     mappings = {
       i = {
         ["<C-l>"] = add_to_arglist,
-        ["<C-t>"] = trouble.open_with_trouble,
+        ["<C-t>"] = trouble.open,
         ["<C-n>"] = actions.move_selection_next,
         ["<C-p>"] = actions.move_selection_previous,
         ["<C-d>"] = repeat_action(actions.move_selection_next, 10),
@@ -37,7 +37,7 @@ telescope.setup({
       },
       n = {
         ["<C-l>"] = add_to_arglist,
-        ["<C-t>"] = trouble.open_with_trouble,
+        ["<C-t>"] = trouble.open,
         ["<C-c>"] = actions.close,
         ["<C-y>"] = actions.close,
         ["<esc>"] = actions.close,
