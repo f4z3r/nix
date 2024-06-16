@@ -41,9 +41,6 @@ local function generate_dyn_choices(cmd)
   end)
 end
 
-local authors = generate_dyn_choices("bash -c 'git log --pretty=\"%an <%ae>\" | sort | uniq'")
-local commits = generate_dyn_choices("bash -c 'git log --pretty=reference'")
-
 ls.add_snippets("gitcommit", {
   ls.snippet({ trig = "fixes", name = "Fixes", desc = "Add fix trailer for GitHub issues" }, {
     ls.text_node("Fix #"),
@@ -55,27 +52,27 @@ ls.add_snippets("gitcommit", {
   }),
   ls.snippet({ trig = "coa", name = "Co-authored-by", desc = "Add 'Co-authored-by' trailer" }, {
     ls.text_node("Co-authored-by: "),
-    authors,
+    generate_dyn_choices("bash -c 'git log --pretty=\"%an <%ae>\" | sort | uniq'"),
   }),
   ls.snippet({ trig = "ack", name = "Acked-by", desc = "Add 'Acked-by' trailer" }, {
     ls.text_node("Acked-by: "),
-    authors,
+    generate_dyn_choices("bash -c 'git log --pretty=\"%an <%ae>\" | sort | uniq'"),
   }),
   ls.snippet({ trig = "sign", name = "Signed-off-by", desc = "Add 'Signed-off-by' trailer" }, {
     ls.text_node("Signed-off-by: "),
-    authors,
+    generate_dyn_choices("bash -c 'git log --pretty=\"%an <%ae>\" | sort | uniq'"),
   }),
   ls.snippet({ trig = "help", name = "Helped-by", desc = "Add 'Helped-by' trailer" }, {
     ls.text_node("Helped-by: "),
-    authors,
+    generate_dyn_choices("bash -c 'git log --pretty=\"%an <%ae>\" | sort | uniq'"),
   }),
   ls.snippet({ trig = "ref", name = "Reference-to", desc = "Add 'Reference-to' commit trailer" }, {
     ls.text_node("Reference-to: "),
-    commits,
+    generate_dyn_choices("bash -c 'git log --pretty=reference'"),
   }),
   ls.snippet({ trig = "see", name = "See-also", desc = "Add 'See-also' commit trailer" }, {
     ls.text_node("See-also: "),
-    commits,
+    generate_dyn_choices("bash -c 'git log --pretty=reference'"),
   }),
 })
 
