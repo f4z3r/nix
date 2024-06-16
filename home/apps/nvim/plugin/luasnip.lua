@@ -32,10 +32,10 @@ end, { silent = true })
 
 local function generate_dyn_choices(cmd)
   return ls.dynamic_node(1, function(_args, _parent, _old_state, _user_args)
-    local authors = utils.run(cmd)
+    local lines = utils.run(cmd)
     local nodes = {}
-    for _, author in ipairs(authors) do
-      nodes[#nodes + 1] = ls.text_node(author)
+    for _, line in ipairs(lines) do
+      nodes[#nodes + 1] = ls.text_node(line)
     end
     return ls.snippet_node(nil, ls.choice_node(1, nodes))
   end)
