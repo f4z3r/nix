@@ -162,7 +162,6 @@ in {
       yaml-language-server
       helm-ls
       ruff-lsp
-      nodePackages.bash-language-server
       marksman
       rust-analyzer
       terraform-ls

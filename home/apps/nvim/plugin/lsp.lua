@@ -102,11 +102,6 @@ lspconfig.marksman.setup({
 -- Rust
 -- already done by rust-tools
 
--- Bash
-lspconfig.bashls.setup({
-  capabilities = capabilities,
-})
-
 -- Helm
 lspconfig.helm_ls.setup({
   capabilities = capabilities,
