@@ -32,13 +32,22 @@
       animation-clamping = true;
       fade-out-step = 1;
 
+      # dim inactive windows
+      inactive-dim = 0.3;
+      inactive-dim-exclude = [
+        "class_g = 'Rofi'"
+      ];
+      focus-exclude = [
+        "class_g = 'Rofi'"
+      ];
+
       # Extras
       detect-rounded-corners = true;
       detect-client-opacity = false;
       detect-transient = true;
       detect-client-leader = false;
       mark-wmwim-focused = true;
-      mark-ovredir-focues = true;
+      mark-ovredir-focused = false;
       unredir-if-possible = true;
       glx-no-stencil = true;
       glx-no-rebind-pixmap = true;
