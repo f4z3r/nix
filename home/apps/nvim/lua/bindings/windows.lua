@@ -17,7 +17,19 @@ local mappings = {
   },
   {
     mode = "n",
+    suffix = "|",
+    command = "<cmd>vsplit<cr>",
+    desc = "Create vertical split",
+  },
+  {
+    mode = "n",
     suffix = "s",
+    command = "<cmd>split<cr>",
+    desc = "Create horizontal split",
+  },
+  {
+    mode = "n",
+    suffix = "-",
     command = "<cmd>split<cr>",
     desc = "Create horizontal split",
   },
