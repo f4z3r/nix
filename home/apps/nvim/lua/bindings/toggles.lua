@@ -12,10 +12,6 @@ local function toggle_conceal()
   end
 end
 
-local function toggle_spell()
-  vim.o.spell = not vim.o.spell
-end
-
 local mappings = {
   {
     mode = "n",
@@ -28,9 +24,7 @@ local mappings = {
   {
     mode = "n",
     suffix = "z",
-    command = function()
-      require("zen-mode").toggle()
-    end,
+    command = require("zen-mode").toggle,
     desc = "Toggle zen mode",
   },
   {
@@ -52,17 +46,13 @@ local mappings = {
   {
     mode = "n",
     suffix = "m",
-    command = function()
-      require("maximize").toggle()
-    end,
+    command = require("maximize").toggle,
     desc = "Toggle maximization",
   },
   {
     mode = "n",
     suffix = "r",
-    command = function()
-      require("overseer").toggle()
-    end,
+    command = require("overseer").toggle,
     desc = "Toggle task runner",
   },
   {
@@ -86,8 +76,8 @@ local mappings = {
   {
     mode = "n",
     suffix = "S",
-    command = toggle_spell,
-    desc = "Toggle spelling",
+    command = require('treesj').toggle,
+    desc = "Toggle split/join",
   },
   {
     mode = "n",

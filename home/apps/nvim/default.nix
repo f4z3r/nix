@@ -70,16 +70,6 @@
     };
   };
 
-  mini-splitjoin = pkgs.vimUtils.buildVimPlugin {
-    name = "mini.splitjoin";
-    src = pkgs.fetchFromGitHub {
-      owner = "echasnovski";
-      repo = "mini.splitjoin";
-      rev = "a6b043b4afb075058a8c49325ff22e07f0e96170";
-      sha256 = "sha256-u4eDN8b7CZrfrtUILR/W6Q36JCLtPE2mrOc5uouzmDY=";
-    };
-  };
-
   nvim-table-md = pkgs.vimUtils.buildVimPlugin {
     name = "nvim-table-md";
     src = pkgs.fetchFromGitHub {
@@ -403,8 +393,8 @@ in {
       }
       {
         type = "lua";
-        plugin = mini-splitjoin;
-        config = builtins.readFile ./plugin/splitjoin.lua;
+        plugin = treesj;
+        config = builtins.readFile ./plugin/treesj.lua;
       }
 
       # status line
