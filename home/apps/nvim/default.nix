@@ -182,6 +182,7 @@ in {
       vim-just
       d2-vim
       rainbow-delimiters-nvim
+      nvim-treesitter-endwise
       nvim-treesitter-textobjects
       {
         type = "lua";
@@ -339,9 +340,10 @@ in {
         plugin = nvim-autopairs;
         config = ''
           require('nvim-autopairs').setup({
-                      check_ts = true,
-                      ts_config = {},
-                    })'';
+            check_ts = true,
+            ts_config = {},
+          })
+        '';
       }
 
       # tree
