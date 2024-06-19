@@ -236,4 +236,4 @@ namespaces:
             prompt: Rockspec
             choices: fd -tf -c never '.*\.rockspec$' .
 config:
-  shell: zsh
+  shell: fish

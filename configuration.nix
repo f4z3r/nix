@@ -16,7 +16,7 @@
     (import ./nixos/clamav.nix {inherit config pkgs username;})
     (import ./nixos/restic.nix {inherit config pkgs username brain_backup;})
     ./nixos/tlp.nix
-    ./nixos/zsh.nix
+    ./nixos/fish.nix
     ./nixos/openvpn/default.nix
     ./nixos/kanata.nix
   ];
@@ -150,7 +150,7 @@
         isNormalUser = true;
         description = "${username}";
         extraGroups = ["networkmanager" "wheel" "audio" "video" "podman" "docker"];
-        shell = pkgs.zsh;
+        shell = pkgs.fish;
         packages = with pkgs; [];
       };
     };
@@ -184,8 +184,6 @@
       "DO_NOT_TRACK" = "1";
       "FZF_TMUX_OPTS" = "-p80%,60%";
     };
-
-    pathsToLink = ["/share/zsh"];
 
     systemPackages = with pkgs; [
       vim

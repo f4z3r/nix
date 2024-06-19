@@ -29,7 +29,7 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
     (import ./apps/lazygit.nix {inherit pkgs theme;})
     (import ./apps/wezterm.nix {inherit pkgs theme font_size;})
     (import ./apps/tmux/default.nix {inherit pkgs lib stdenv theme;})
-    (import ./apps/zsh/default.nix {inherit lib pkgs theme;})
+    (import ./apps/fish/default.nix {inherit lib pkgs theme;})
     ./apps/starship.nix
     ./apps/gpg.nix
     ./apps/nvim/default.nix
@@ -64,13 +64,12 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
 
     skim = {
       enable = true;
-      enableZshIntegration = true;
+      enableFishIntegration = true;
     };
 
     zoxide = {
       enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
+      enableFishIntegration = true;
     };
 
     feh.enable = true;

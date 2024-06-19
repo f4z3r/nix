@@ -1,8 +1,7 @@
 {pkgs, ...}: {
   programs.broot = {
     enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
+    enableFishIntegration = true;
     settings = {
       modal = false;
       imports = [

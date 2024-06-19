@@ -11,7 +11,7 @@ null_ls.setup({
     null_ls.builtins.diagnostics.selene,
     null_ls.builtins.diagnostics.revive,
     null_ls.builtins.diagnostics.statix,
-    null_ls.builtins.diagnostics.zsh,
+    null_ls.builtins.diagnostics.fish,
     null_ls.builtins.diagnostics.terraform_validate,
     null_ls.builtins.diagnostics.tfsec,
     null_ls.builtins.diagnostics.todo_comments,
@@ -30,6 +30,8 @@ null_ls.setup({
 
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.shellharden,
+
+    null_ls.builtins.formatting.fish_indent,
 
     null_ls.builtins.formatting.yamlfmt,
 

@@ -47,7 +47,7 @@ key = "enter"
   fh:close()
   assert(
     os.execute(
-      [[tmux display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E 'tmux new-session -s nvim-broot zsh -ic "br --conf /tmp/broot/conf.toml"']]
+      [[tmux display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E 'tmux new-session -s nvim-broot fish -ic "br --conf /tmp/broot/conf.toml"']]
     )
   )
   local fh_reader, err = io.open("/tmp/broot/capture", "r")

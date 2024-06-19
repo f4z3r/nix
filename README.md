@@ -21,7 +21,7 @@ Supports quake terminals:
 - GTK Icon Theme: `Papirus Dark`
 - Terminal: `wezterm`
 - Multiplexer: `tmux`
-- Shell: `zsh`
+- Shell: `fish`
 - Editor: `neovim`
 - Prompt: `starship`
 - Audio: `pipewire`, `mpd`, `ncmpcpp`
