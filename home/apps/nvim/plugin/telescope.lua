@@ -27,7 +27,7 @@ telescope.setup({
     mappings = {
       i = {
         ["<C-l>"] = add_to_arglist,
-        ["<C-t>"] = trouble.open,
+        ["<C-o>"] = trouble.open,
         ["<C-n>"] = actions.move_selection_next,
         ["<C-p>"] = actions.move_selection_previous,
         ["<C-d>"] = repeat_action(actions.move_selection_next, 10),
@@ -37,7 +37,7 @@ telescope.setup({
       },
       n = {
         ["<C-l>"] = add_to_arglist,
-        ["<C-t>"] = trouble.open,
+        ["<C-o>"] = trouble.open,
         ["<C-c>"] = actions.close,
         ["<C-y>"] = actions.close,
         ["<esc>"] = actions.close,
