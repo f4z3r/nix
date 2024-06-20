@@ -1,5 +1,3 @@
-set -U MANROFFOPT -c
-set -U MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -U GREP_COLORS "mt=01;33:ms=01;33:mc=01;33:sl=:cx=:fn=35:ln=32:bn=32:se=36"
 
 # erase greeting
@@ -11,7 +9,7 @@ fish_add_path -p "$HOME/.local/bin/" "$HOME/.luarocks/bin/"
 # use gruvbox theme
 theme_gruvbox $NIX_THEME medium
 
-# use vim mode
+# key bindings
 fish_vi_key_bindings insert
 bind -M insert \cy 'set fish_bind_mode default; commandline -f repaint'
 bind -M insert \cf accept-autosuggestion
@@ -44,3 +42,6 @@ end
 
 bind -M insert \ce edit_cmd
 bind \ce edit_cmd
+
+# fifc settings
+set -Ux fifc_editor nvim

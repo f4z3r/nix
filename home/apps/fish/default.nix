@@ -6,8 +6,10 @@
 }: {
   programs.fish = {
     enable = true;
-    shellAliases = {
+    shellAbbrs = {
       sys = ''systemctl'';
+    };
+    shellAliases = {
       rt = ''z $( if git rev-parse --show-toplevel &> /dev/null; git rev-parse --show-toplevel; else; echo "."; end )'';
       sk = ''sk -m --color="dark,hl:3,spiller:2,fg+:9,hl+:3,selected:6,query:5,matched_bg:-1"'';
       skd = ''z "$(fd -t d -c always -L -H . ./ | sk --ansi)"'';
@@ -32,8 +34,6 @@
       npl = ''rclone sync -u --delete-after -P gdrive-crypt:/ ~/notes'';
       nph = ''rclone sync -u --delete-after -P ~/notes gdrive-crypt:/'';
     };
-    # add history config
-    # add vim support
     shellInit = ''
       set -U NIX_THEME "${theme}"
       set -U NIXPKGS_ALLOW_UNFREE 1
@@ -49,6 +49,10 @@
       {
         name = autopair.pname;
         inherit (autopair) src;
+      }
+      {
+        name = fifc.pname;
+        inherit (fifc) src;
       }
     ];
   };
