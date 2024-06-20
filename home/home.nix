@@ -47,7 +47,6 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-      enableFishIntegration = true;
     };
 
     tealdeer = {
