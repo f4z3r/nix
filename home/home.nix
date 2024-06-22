@@ -205,6 +205,7 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
       gtk-engine-murrine
 
       # stuff used in the background
+      file
       yt-dlp
       rofi-power-menu
       rofi-rbw
