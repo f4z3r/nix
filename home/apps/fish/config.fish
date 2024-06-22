@@ -46,7 +46,9 @@ bind -M insert \ce edit_cmd
 bind \ce edit_cmd
 
 # fifc settings
-set -x fifc_editor nvim
+bind -M insert -e \t
+bind -M insert \t _fifc
+set -gx fifc_editor nvim
 
 # useful functions
 function backup --argument filename
