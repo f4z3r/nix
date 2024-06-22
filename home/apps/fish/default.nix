@@ -35,10 +35,10 @@
       nph = ''rclone sync -u --delete-after -P ~/notes gdrive-crypt:/'';
     };
     shellInit = ''
-      set -U NIX_THEME "${theme}"
-      set -U NIXPKGS_ALLOW_UNFREE 1
-      set -U D2_LAYOUT "elk"
-      set -U D2_THEME "200"
+      set -x NIX_THEME "${theme}"
+      set -x NIXPKGS_ALLOW_UNFREE 1
+      set -x D2_LAYOUT "elk"
+      set -x D2_THEME "200"
     '';
     interactiveShellInit = builtins.readFile ./config.fish;
     plugins = with pkgs.fishPlugins; [

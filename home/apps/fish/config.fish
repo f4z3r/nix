@@ -1,7 +1,7 @@
-set -U GREP_COLORS "mt=01;33:ms=01;33:mc=01;33:sl=:cx=:fn=35:ln=32:bn=32:se=36"
+set -x GREP_COLORS "mt=01;33:ms=01;33:mc=01;33:sl=:cx=:fn=35:ln=32:bn=32:se=36"
 
 # erase greeting
-set -U fish_greeting
+set -x fish_greeting
 
 # add local binaries to path
 fish_add_path -p "$HOME/.local/bin/" "$HOME/.luarocks/bin/"
