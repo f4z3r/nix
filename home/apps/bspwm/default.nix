@@ -4,8 +4,18 @@
   scratch_res,
   main_monitor,
   monitor_prefix,
+  theme,
   ...
 }: {
+  home.pointerCursor = {
+    x11.enable = true;
+    gtk.enable = true;
+    package = pkgs.capitaine-cursors-themed;
+    name =
+      if theme == "dark"
+        then "Capitaine Cursors (Gruvbox) - White"
+      else "Capitaine Cursors (Gruvbox)";
+  };
   xsession = {
     windowManager.bspwm = {
       enable = true;

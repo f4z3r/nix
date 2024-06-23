@@ -13,11 +13,24 @@
   monitor_prefix,
   ...
 }:
-assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
+assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; let
+  gtkTheme =
+    if theme == "dark"
+    then "Gruvbox-Dark-BL"
+    else "Gruvbox-Light-BL";
+  iconTheme =
+    if theme == "dark"
+    then "Papirus-Dark"
+    else "Papirus-Light";
+  cursorTheme =
+    if theme == "dark"
+    then "Capitaine Cursors (Gruvbox) - White"
+    else "Capitaine Cursors (Gruvbox)";
+in {
   imports = [
     (import ./langs/lua.nix {inherit pkgs lib;})
     (import ./apps/bspwm/default.nix {
-      inherit pkgs hostname scratch_res main_monitor monitor_prefix;
+      inherit pkgs hostname scratch_res main_monitor monitor_prefix theme;
     })
     (import ./apps/sxhkd/default.nix {inherit pkgs username;})
     (import ./apps/polybar/default.nix {
@@ -245,24 +258,25 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; {
     enable = true;
     theme = {
       package = pkgs.gruvbox-gtk-theme;
-      name =
-        if theme == "dark"
-        then "Gruvbox-Dark-BL"
-        else "Gruvbox-Light-BL";
+      name = gtkTheme;
     };
     iconTheme = {
       package = pkgs.papirus-icon-theme;
-      name =
-        if theme == "dark"
-        then "Papirus-Dark"
-        else "Papirus-Light";
+      name = iconTheme;
     };
     cursorTheme = {
       package = pkgs.capitaine-cursors-themed;
-      name =
-        if theme == "dark"
-        then "Capitaine Cursors (Gruvbox) - White"
-        else "Capitaine Cursors (Gruvbox)";
+      name = cursorTheme;
+    };
+    gtk3.extraConfig = {
+      gtk-icon-theme-name = iconTheme;
+      gtk-theme-name = gtkTheme;
+      gtk-cursor-theme-name = cursorTheme;
+    };
+    gtk4.extraConfig = {
+      gtk-icon-theme-name = iconTheme;
+      gtk-theme-name = gtkTheme;
+      gtk-cursor-theme-name = cursorTheme;
     };
   };
 }
