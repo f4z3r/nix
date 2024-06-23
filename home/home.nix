@@ -16,8 +16,8 @@
 assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; let
   gtkTheme =
     if theme == "dark"
-    then "Gruvbox-Dark-BL"
-    else "Gruvbox-Light-BL";
+    then "Materia-dark"
+    else "Materia-light";
   iconTheme =
     if theme == "dark"
     then "Papirus-Dark"
@@ -257,7 +257,7 @@ in {
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.gruvbox-gtk-theme;
+      package = pkgs.materia-theme;
       name = gtkTheme;
     };
     iconTheme = {
@@ -269,14 +269,10 @@ in {
       name = cursorTheme;
     };
     gtk3.extraConfig = {
-      gtk-icon-theme-name = iconTheme;
-      gtk-theme-name = gtkTheme;
-      gtk-cursor-theme-name = cursorTheme;
+      gtk-application-prefer-dark-theme = true;
     };
     gtk4.extraConfig = {
-      gtk-icon-theme-name = iconTheme;
-      gtk-theme-name = gtkTheme;
-      gtk-cursor-theme-name = cursorTheme;
+      gtk-application-prefer-dark-theme = true;
     };
   };
 }

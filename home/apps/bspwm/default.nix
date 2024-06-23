@@ -13,7 +13,7 @@
     package = pkgs.capitaine-cursors-themed;
     name =
       if theme == "dark"
-        then "Capitaine Cursors (Gruvbox) - White"
+      then "Capitaine Cursors (Gruvbox) - White"
       else "Capitaine Cursors (Gruvbox)";
   };
   xsession = {
