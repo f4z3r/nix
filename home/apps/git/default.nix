@@ -59,6 +59,9 @@
         ff = "only";
         rebase = true;
       };
+      format = {
+        signoff = true;
+      };
       merge = {
         tool = "nvimdiff";
       };
