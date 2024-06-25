@@ -41,5 +41,10 @@ loadbalancers
 enablement
 mountpoint
 datacenter
+datacenters
+OpenShift
+georedundant
 Postgres
 PostgreSQL
+vCPU
+FTE
