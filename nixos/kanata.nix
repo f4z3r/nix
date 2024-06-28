@@ -9,16 +9,18 @@
       devices = ["/dev/input/event0"];
       config = ''
         (defalias
-          ;; layer toggles
-          lyu (one-shot 2000 (layer-while-held up))
-          lyd (one-shot 2000 (layer-while-held down))
-          col (layer-switch colemakdh)
+          ;; backspace is not mapped like on piantor setup but should work fine
 
-          ;; tapped shift
-          tsh (tap-hold-release 150 150 ' rsft)
+          ;; alt keys
+          at1 (multi lalt 1)
+          at2 (multi lalt 2)
 
-          ;; one-shot control
+          ;; shot toggles
           osc (one-shot 2000 lctl)
+          lyd (tap-hold-release 200 200 esc (layer-while-held down))
+          spc (tap-hold-release 200 200 spc lsft)
+          lyu (multi f24 (tap-hold-release 200 200 ret (layer-while-held up)))
+          att (multi f24 (tap-hold-release 200 200 esc lalt))
         )
         (defsrc
           tab  q    w    e    r    t    y    u    i    o    p    [    ]
@@ -28,24 +30,24 @@
         )
 
         (deflayer colemakdh
-          tab  q    w    f    p    b    j    l    u    y    ;    bspc rsft
-          lctl a    r    s    t    g    m    n    e    i    o    ret  @lyu ret
-          lsft lmet x    c    d    v    z    k    h    ,    .    /    @tsh
-          @col lalt @lyd           spc            @lyu rctl lft  down up   rght
+          @at1 q    w    f    p    b    j    l    u    y    ;    @at2 XX
+          lctl a    r    s    t    g    m    n    e    i    o    lalt ret  ret
+          XX   lmet x    c    d    v    z    k    h    ,    .    /    del
+          XX   @att @lyd           @spc           @lyu @osc XX   XX   XX   XX
         )
 
         (deflayer down
-          esc  blup pgup brup volu pp   brk  7    8    9    .     bspc rsft
-          del  bldn pgdn brdn vold ins  home 4    5    6    0     ret  @lyu ret
-          S-6  _    _    _    mute sys  end  _    1    2    3    ,     @tsh
-          _    _    @col           _              @lyu @osc mute  vold volu pp
+          f9   f10  f11  f12  pgup home XX   7    8    9    ,    @at2 XX
+          f5   f6   f7   f8   pgdn end  ;    4    5    6    0    S-4  ret  ret
+          XX   f1   f2   f3   f4   XX   XX   sys  1    2    3    .    del
+          XX   @att @lyd           @spc           S-'  '    XX   XX   XX   XX
         )
 
         (deflayer up
-          grv  S-1  [    ]    S-4  S-5  _    f9   f10  f11  f12  S-2   ]
-          +    =    S-9  S-0  S--  S-3  _    f5   f6   f7   f8   S-\   @col ret
-          S-8  _    \    S-[  S-]  -    S-7  _    f1   f2   f3   f4   S-`
-          _    _    _              _              @col rctl lft  down  up   rght
+          brup \    [    ]    S-4  S-2  volu S-\  S-`  S-1  S-5  @at2 XX
+          brdn S--  S-9  S-0  =    grv  vold lft  down up   rght lalt ret  ret
+          XX   pp   S-7  S-[  S-]  -    XX   mute S-8  +    S-3  /    del
+          XX   @att @lyd           @spc           @lyu @osc XX   XX   XX   XX
         )
       '';
       extraDefCfg = ''
