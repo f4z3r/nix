@@ -7,8 +7,10 @@ let
     local config = {}
 
     if wezterm.config_builder then
-    config = wezterm.config_builder()
+      config = wezterm.config_builder()
     end
+
+    config.enable_wayland = false
 
     config.audible_bell = "Disabled"
 

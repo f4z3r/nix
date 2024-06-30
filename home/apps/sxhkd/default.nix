@@ -80,6 +80,7 @@
       # music control
       "${super} + Right" = "${pkgs.mpc-cli}/bin/mpc next";
       "${super} + Left" = "${pkgs.mpc-cli}/bin/mpc prev";
+
     };
   };
 
