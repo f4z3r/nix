@@ -104,6 +104,8 @@ require("neorg").setup({
         default_keybinds = true,
         hook = function(keybinds)
           local leader = keybinds.leader
+          -- remap todo cycling due to control space being taken
+           keybinds.remap_event("norg", "n", "<C-t>", "core.qol.todo_items.todo.task_cycle")
           -- remap j -> n
           keybinds.remap_key("traverse-heading", "n", "j", "n")
           keybinds.remap_key("traverse-links", "n", "j", "n")

@@ -30,7 +30,7 @@
       notARepository = "quit";
       keybinding = {
         universal = {
-          return = "<c-y>";
+          return = "<esc>";
           nextItem-alt = "n";
           prevItem-alt = "k";
           nextMatch = "j";

@@ -17,10 +17,11 @@
 
           ;; shot toggles
           osc (one-shot 2000 lctl)
-          lyd (tap-hold-release 200 200 esc (layer-while-held down))
-          spc (tap-hold-release 200 200 spc lsft)
-          lyu (multi f24 (tap-hold-release 200 200 ret (layer-while-held up)))
-          att (multi f24 (tap-hold-release 200 200 esc lalt))
+          tab (tap-hold-release 140 140 tab lctl)
+          lyd (tap-hold-release 140 140 esc (layer-while-held down))
+          spc (tap-hold-release 140 140 spc lsft)
+          lyu (multi f24 (tap-hold-release 140 140 ret (layer-while-held up)))
+          att (multi f24 (tap-hold-release 140 140 esc lalt))
         )
         (defsrc
           tab  q    w    e    r    t    y    u    i    o    p    [    ]
@@ -31,7 +32,7 @@
 
         (deflayer colemakdh
           @at1 q    w    f    p    b    j    l    u    y    ;    @at2 XX
-          lctl a    r    s    t    g    m    n    e    i    o    lalt ret  ret
+          @tab a    r    s    t    g    m    n    e    i    o    lalt ret  ret
           XX   lmet x    c    d    v    z    k    h    ,    .    /    del
           XX   @att @lyd           @spc           @lyu @osc XX   XX   XX   XX
         )

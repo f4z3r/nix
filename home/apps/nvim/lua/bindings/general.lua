@@ -13,9 +13,6 @@ vim.keymap.set("i", "<c-r>", '<c-r>"')
 vim.keymap.set("i", "<c-q>", '<c-r>=strftime("%H:%M")<c-m>')
 vim.keymap.set("i", "<c-x>", '<c-r>=strftime("&%Y-%m-%d %a %H:%M&")<c-m>')
 
--- change to upper case
-vim.keymap.set("i", "<c-s>", "<esc>bviwUea")
-
 -- rebind increment due to tmux prefix
 vim.keymap.set("n", "<c-q>", "<c-a>")
 

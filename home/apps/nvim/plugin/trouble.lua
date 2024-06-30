@@ -2,7 +2,7 @@ require("trouble").setup({
   use_diagnostic_signs = true,
   action_keys = {
     close = "q",
-    cancel = "<c-y>",
+    cancel = "<esc>",
     refresh = "r",
     jump = { "<cr>" },
     open_split = { "<c-x>" },

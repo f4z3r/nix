@@ -5,9 +5,6 @@
     location = "center";
     terminal = "${pkgs.wezterm}/bin/wezterm";
     theme = "improved";
-    extraConfig = {
-      kb-cancel = "Control+y";
-    };
   };
 
   home.file = {

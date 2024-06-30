@@ -39,7 +39,6 @@ telescope.setup({
         ["<C-l>"] = add_to_arglist,
         ["<C-o>"] = trouble.open,
         ["<C-c>"] = actions.close,
-        ["<C-y>"] = actions.close,
         ["<esc>"] = actions.close,
       },
     },
