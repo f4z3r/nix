@@ -8,7 +8,9 @@
   dpi,
   brain_backup,
   ...
-}: {
+}: let
+  session = "${pkgs.hyprland}/bin/Hyprland";
+in {
   imports = [
     ./${hostname}-hardware-configuration.nix
     (import ./nixos/networking.nix {inherit config pkgs hostname;})
@@ -119,14 +121,29 @@
       };
     };
 
-    displayManager = {
-      defaultSession = "none+bspwm";
-      autoLogin = {
-        enable = true;
-        user = "${username}";
+    greetd = {
+      enable = true;
+      settings = {
+        initial_session = {
+          command = "${session}";
+          user = "f4z3r";
+        };
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet  --greeting 'Welcome to NixOS!' --asterisks --remember --remember-user-session --time -cmd ${session}";
+          user = "greeter";
+        };
       };
     };
 
+    # displayManager = {
+    #   # TODO change to wayland session
+    #   # defaultSession = "none+bspwm";
+    #   autoLogin = {
+    #     enable = true;
+    #     user = "${username}";
+    #   };
+    # };
+    #
     udev = {
       enable = true;
       extraRules = ''
@@ -157,22 +174,6 @@
 
       '';
     };
-
-    xserver = {
-      inherit dpi;
-      enable = true;
-
-      windowManager = {bspwm = {enable = true;};};
-
-      displayManager = {
-        lightdm = {enable = true;};
-      };
-
-      xkb = {
-        layout = "us";
-        variant = "alt-intl";
-      };
-    };
   };
 
   users = {
@@ -193,9 +194,9 @@
   };
 
   programs = {
-    xss-lock = {
+    hyprland = {
       enable = true;
-      lockerCommand = "${pkgs.xsecurelock}/bin/xsecurelock";
+      xwayland.enable = true;
     };
 
     gnupg = {
@@ -211,11 +212,6 @@
 
   environment = {
     sessionVariables = {
-      "XSECURELOCK_SHOW_USERNAME" = "0";
-      "XSECURELOCK_SHOW_HOSTNAME" = "0";
-      "XSECURELOCK_SHOW_KEYBOARD_LAYOUT" = "0";
-      "XSECURELOCK_AUTH_FOREGROUND_COLOR" = "Medium Orchid";
-      "XSECURELOCK_FONT" = "FiraCode Nerd Font Mono Med";
       "DO_NOT_TRACK" = "1";
       "FZF_TMUX_OPTS" = "-p80%,60%";
     };
@@ -225,8 +221,6 @@
       git
       man-pages
       brightnessctl
-      xdotool
-      xsecurelock
       libnotify
     ];
   };

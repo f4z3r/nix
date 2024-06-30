@@ -77,7 +77,6 @@
       # launchers
       "${mod} + ${alt} + l ; o" = "/etc/profiles/per-user/f4z3r/bin/sofa";
       "${mod} + ${alt} + l ; w" = "${pkgs.luajit}/bin/luajit /home/${username}/.config/sxhkd/scripts/fuzzy-bookmarks.lua";
-      "${mod} + ${alt} + l ; p" = "${pkgs.uair}/bin/uairctl toggle";
       "${mod} + ${alt} + l ; m" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.ncmpcpp}/bin/ncmpcpp";
       "${mod} + ${alt} + l ; i" = "/home/${username}/.local/bin/songinfo";
     };

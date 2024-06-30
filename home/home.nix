@@ -29,15 +29,18 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; let
 in {
   imports = [
     (import ./langs/lua.nix {inherit pkgs lib;})
-    (import ./apps/bspwm/default.nix {
-      inherit pkgs hostname scratch_res main_monitor monitor_prefix theme;
+    (import ./apps/hyprland/default.nix {
+      inherit pkgs hostname username scratch_res main_monitor monitor_prefix theme;
     })
-    (import ./apps/sxhkd/default.nix {inherit pkgs username;})
-    (import ./apps/polybar/default.nix {
-      inherit pkgs polybar_dpi main_monitor monitor_prefix theme;
-    })
+    # (import ./apps/bspwm/default.nix {
+    #   inherit pkgs hostname scratch_res main_monitor monitor_prefix theme;
+    # })
+    # (import ./apps/sxhkd/default.nix {inherit pkgs username;})
+    # (import ./apps/polybar/default.nix {
+    #   inherit pkgs polybar_dpi main_monitor monitor_prefix theme;
+    # })
     ./apps/picom.nix
-    ./apps/rofi/default.nix
+    # ./apps/rofi/default.nix
     (import ./apps/git/default.nix {inherit pkgs theme;})
     (import ./apps/lazygit.nix {inherit pkgs theme;})
     (import ./apps/wezterm.nix {inherit pkgs theme font_size;})
@@ -56,6 +59,15 @@ in {
     home-manager.enable = true;
 
     mpv.enable = true;
+
+    fuzzel = {
+      enable = true;
+      settings = {
+        main = {
+          terminal = "${pkgs.wezterm}/bin/wezterm";
+        };
+      };
+    };
 
     direnv = {
       enable = true;
@@ -171,9 +183,7 @@ in {
       helvum
       onlyoffice-bin
       obs-studio
-      flowblade
-      signal-desktop
-      ticktick
+      foot
 
       # utils
       zip
@@ -201,7 +211,6 @@ in {
       dysk
       erdtree
       xcp
-      xsel
       miniserve
       vhs
       pandoc
