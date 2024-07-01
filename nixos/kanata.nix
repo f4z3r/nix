@@ -31,24 +31,24 @@
         )
 
         (deflayer colemakdh
-          @at1 q    w    f    p    b    j    l    u    y    ;    @at2 XX
+          S-3  q    w    f    p    b    j    l    u    y    ;    S-/  XX
           @tab a    r    s    t    g    m    n    e    i    o    lalt ret  ret
           XX   lmet x    c    d    v    z    k    h    ,    .    /    del
-          XX   @att @lyd           @spc           @lyu @osc XX   XX   XX   XX
+          XX   @att @lyd           @spc           @lyu @osc lft  down up   rght
         )
 
         (deflayer down
-          f9   f10  f11  f12  pgup home XX   7    8    9    ,    @at2 XX
-          f5   f6   f7   f8   pgdn end  ;    4    5    6    0    S-4  ret  ret
+          f9   f10  f11  f12  pgup home XX   7    8    9    ,    S-/  XX
+          f5   f6   f7   f8   pgdn end  S-;  4    5    6    0    S-4  ret  ret
           XX   f1   f2   f3   f4   XX   XX   sys  1    2    3    .    del
-          XX   @att @lyd           @spc           S-'  '    XX   XX   XX   XX
+          XX   @att @lyd           @spc           S-'  '    lft  down up   rght
         )
 
         (deflayer up
-          brup \    [    ]    S-4  S-2  volu S-\  S-`  S-1  S-5  @at2 XX
-          brdn S--  S-9  S-0  =    grv  vold lft  down up   rght lalt ret  ret
-          XX   pp   S-7  S-[  S-]  -    XX   mute S-8  +    S-3  /    del
-          XX   @att @lyd           @spc           @lyu @osc XX   XX   XX   XX
+          brup \    [    ]    S-4  S-2  XX   S-\  up   S-1  S-5  volu XX
+          brdn S--  S-9  S-0  =    S-`  grv  lft  down rght +    vold ret  ret
+          XX   pp   S-7  S-[  S-]  -    XX   XX   S-8  +    XX   S-3  mute
+          XX   @att @lyd           @spc           @lyu @osc lft  down up   rght
         )
       '';
       extraDefCfg = ''
