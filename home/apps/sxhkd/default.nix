@@ -13,35 +13,42 @@
       # using alt + control + o as leader key
       # rofi launcher
       "${mod} + space" = "${pkgs.rofi}/bin/rofi -combi-modi window,drun -show combi";
-      "${mod} + ${alt} + o ; p" = "${pkgs.rofi-rbw}/bin/rofi-rbw -a copy -t password";
 
-      # launch terminal
+      # launch terminal (shift modifies)
       "${super} + Return" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.tmux}/bin/tmux";
-
-      # quit / powermenu
-      "${mod} + ${alt} + o ; q" = "${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
-      "${mod} + ${alt} + o ; l" = "${pkgs.xsecurelock}/bin/xsecurelock";
-      "${mod} + ${alt} + o ; s" = "${pkgs.systemd}/bin/systemctl suspend";
-
-      # fullscreen
-      "${mod} + ${alt} + f" = "${pkgs.bspwm}/bin/bspc node -t '~fullscreen'";
-
-      # close / kill client
-      "${mod} + ${alt} + o ; {_,shift + }w" = "${pkgs.bspwm}/bin/bspc node -{c,k}";
-
-      # move between clients/swap clients
-      "${mod} + {_,shift + }{h,n,k,l}" = "${pkgs.bspwm}/bin/bspc node -{f,s} {west,south,north,east}";
-
-      # focus on the given desktop
-      "${mod} + {1-9,0}" = "${pkgs.bspwm}/bin/bspc desktop -f '^{1-9,10}'";
-      # focus on the last desktop
+      "${mod} + a" = "${pkgs.bspwm}/bin/bspc desktop -f '^1'";
+      "${mod} + r" = "${pkgs.bspwm}/bin/bspc desktop -f '^2'";
+      "${mod} + s" = "${pkgs.bspwm}/bin/bspc desktop -f '^3'";
+      "${mod} + t" = "${pkgs.bspwm}/bin/bspc desktop -f '^4'";
+      "${mod} + g" = "${pkgs.bspwm}/bin/bspc desktop -f '^5'";
+      "${mod} + q" = "${pkgs.bspwm}/bin/bspc desktop -f '^6'";
+      "${mod} + w" = "${pkgs.bspwm}/bin/bspc desktop -f '^7'";
+      "${mod} + f" = "${pkgs.bspwm}/bin/bspc desktop -f '^8'";
+      "${mod} + p" = "${pkgs.bspwm}/bin/bspc desktop -f '^9'";
+      "${mod} + b" = "${pkgs.bspwm}/bin/bspc desktop -f '^10'";
+      "${mod} + shift + a" = "${pkgs.bspwm}/bin/bspc node --follow -d '^1'";
+      "${mod} + shift + r" = "${pkgs.bspwm}/bin/bspc node --follow -d '^2'";
+      "${mod} + shift + s" = "${pkgs.bspwm}/bin/bspc node --follow -d '^3'";
+      "${mod} + shift + t" = "${pkgs.bspwm}/bin/bspc node --follow -d '^4'";
+      "${mod} + shift + g" = "${pkgs.bspwm}/bin/bspc node --follow -d '^5'";
+      "${mod} + shift + q" = "${pkgs.bspwm}/bin/bspc node --follow -d '^6'";
+      "${mod} + shift + w" = "${pkgs.bspwm}/bin/bspc node --follow -d '^7'";
+      "${mod} + shift + f" = "${pkgs.bspwm}/bin/bspc node --follow -d '^8'";
+      "${mod} + shift + p" = "${pkgs.bspwm}/bin/bspc node --follow -d '^9'";
+      "${mod} + shift + b" = "${pkgs.bspwm}/bin/bspc node --follow -d '^10'";
       "${mod} + Tab" = "${pkgs.bspwm}/bin/bspc desktop -f last";
+      "${mod} + {_,shift + }{h,n,k,l}" = "${pkgs.bspwm}/bin/bspc node -{f,s} {west,south,north,east}";
+      "${mod} + shift + o" = "${pkgs.bspwm}/bin/bspc node -m last --follow";
+      "${mod} + shift + x " = "${pkgs.bspwm}/bin/bspc node -c";
+      "${mod} + shift + y " = "${pkgs.bspwm}/bin/bspc node -t '~fullscreen'";
 
-      # move to given desktop (and follow)
-      "${mod} + shift + {1-9,0}" = "${pkgs.bspwm}/bin/bspc node -d '^{1-9,10}' --follow";
-
-      # move to other monitor (and follow)
-      "${mod} + ${alt} + o ; m" = "${pkgs.bspwm}/bin/bspc node -m last --follow";
+      # cnotrl for laucher (password, terminal, powermenu, sofa)
+      "${mod} + ${alt} + x" = "${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
+      "${mod} + ${alt} + o" = "/etc/profiles/per-user/f4z3r/bin/sofa";
+      "${mod} + ${alt} + w" = "${pkgs.luajit}/bin/luajit /home/${username}/.config/sxhkd/scripts/fuzzy-bookmarks.lua";
+      "${mod} + ${alt} + p" = "${pkgs.rofi-rbw}/bin/rofi-rbw -a copy -t password";
+      "${mod} + ${alt} + s" = "${pkgs.systemd}/bin/systemctl suspend";
+      "${mod} + ${alt} + l" = "${pkgs.xsecurelock}/bin/xsecurelock";
 
       # resize
       "${mod} + ${alt} + r + {Left,Down,Up,Right}" = "bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}";
@@ -73,13 +80,6 @@
       # music control
       "${super} + Right" = "${pkgs.mpc-cli}/bin/mpc next";
       "${super} + Left" = "${pkgs.mpc-cli}/bin/mpc prev";
-
-      # launchers
-      "${mod} + ${alt} + l ; o" = "/etc/profiles/per-user/f4z3r/bin/sofa";
-      "${mod} + ${alt} + l ; w" = "${pkgs.luajit}/bin/luajit /home/${username}/.config/sxhkd/scripts/fuzzy-bookmarks.lua";
-      "${mod} + ${alt} + l ; p" = "${pkgs.uair}/bin/uairctl toggle";
-      "${mod} + ${alt} + l ; m" = "${pkgs.wezterm}/bin/wezterm start ${pkgs.ncmpcpp}/bin/ncmpcpp";
-      "${mod} + ${alt} + l ; i" = "/home/${username}/.local/bin/songinfo";
     };
   };
 
