@@ -53,7 +53,7 @@ in {
         (deflayer up
           brup \    [    ]    S-4  S-2  XX   S-\  up   S-1  S-5  volu XX
           brdn S--  S-9  S-0  =    S-`  grv  lft  down rght +    vold ret  ret
-          XX   pp   S-7  S-[  S-]  -    XX   XX   S-8  +    XX   S-3  mute
+          XX   pp   S-7  S-[  S-]  -    XX   XX   S-8  S-6  XX   S-3  mute
           XX   esc  @lyd           @spc           @lyu bspc lft  down up   rght
         )
       '';
