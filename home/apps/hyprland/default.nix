@@ -46,6 +46,8 @@
           bind = [
             ''$general, RETURN, exec, ${pkgs.wezterm}/bin/wezterm start ${pkgs.tmux}/bin/tmux''
 
+            ''$general, V, exec, rofi -modi clipboard:/home/${username}/.local/bin/cliphist-rofi-img.sh -show clipboard -show-icons''
+
             ''$app, RETURN, togglespecialworkspace, quake''
 
             ''$wm, Space, exec, ${pkgs.rofi}/bin/rofi -combi-modi window,drun -show combi''
@@ -85,10 +87,12 @@
             ''$wm SHIFT, B, movetoworkspace, 0''
 
             ''$wm&$app, x, exec, ${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu''
+            ''$wm&$app, l, exec, loginctl lock-session''
             ''$wm&$app, o, exec, /etc/profiles/per-user/f4z3r/bin/sofa''
             ''$wm&$app, w, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/fuzzy-bookmarks.lua''
+            ''$wm&$app, r, exec, bash /home/${username}/.local/share/scripts/screen-record.sh''
 
-            '', Print, exec, ${pkgs.flameshot}/bin/flameshot gui''
+            '', Print, exec, bash /home/${username}/.local/share/scripts/screenshot.sh''
             '', XF86AudioMute, exec, ${pkgs.alsa-utils}/bin/amixer -q sset Master toggle''
             '', XF86AudioMicMute, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.config/sxhkd/scripts/toggle-mute.lua''
             '', XF86AudioPlay, exec, ${pkgs.mpc-cli}/bin/mpc toggle''
@@ -111,6 +115,7 @@
             ''float,class:(Rofi)''
             ''center,class:(Rofi)''
             ''animation popin,class:(Rofi)''
+            ''animation popin,class:(pinentry)''
             ''float,class:(quake)''
             ''center,class:(quake)''
             ''size 70% 70%,class:(quake)''
@@ -182,9 +187,34 @@
     ".local/share/scripts/toggle-mute.lua" = {
       source = ./scripts/toggle-mute.lua;
     };
+    ".local/bin/cliphist-rofi-img.sh" = {
+      source = ./scripts/cliphist-rofi-img.sh;
+      executable = true;
+    };
     ".local/share/wallpapers/" = {
       source = ./../../../assets/wallpapers;
       recursive = true;
+    };
+    ".local/share/scripts/screenshot.sh" = {
+      text = ''
+        ${pkgs.grim}/bin/grim \
+          -g "$(${pkgs.slurp}/bin/slurp)" - \
+          | ${pkgs.satty}/bin/satty \
+            --filename - \
+            --output-filename "/home/${username}/screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
+      '';
+    };
+    ".local/share/scripts/screen-record.sh" = {
+      text = ''
+        if pidof wl-screenrec; then
+          pkill wl-screenrec;
+        else
+          ${pkgs.wl-screenrec}/bin/wl-screenrec \
+            --dri-device /dev/dri/card1 \
+            -g "$(${pkgs.slurp}/bin/slurp)" \
+            --filename "/home/${username}/screenshots/screenrec-$(date '+%Y%m%d-%H:%M:%S').mp4";
+        fi
+      '';
     };
   };
 }

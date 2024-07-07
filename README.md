@@ -11,13 +11,11 @@ Supports quake terminals:
 ## Standard Software Used
 
 - Channel: NixOS unstable
-- Window Manager: `bspwm`
-- Bar: `polybar`
-- Shortcut Daemon: `sxhkd`
+- Window Manager: `hyprland`
+- Bar: `waybar`
 - Layered Keyboard Mapping: `kanata`
 - Launcher: `rofi`
-- Compositor: `picom`
-- GTK Theme: `Gruvbox Material Dark`
+- GTK Theme: `Materia Material Dark`
 - GTK Icon Theme: `Papirus Dark`
 - Terminal: `wezterm`
 - Multiplexer: `tmux`

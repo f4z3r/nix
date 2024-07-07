@@ -76,11 +76,12 @@ in {
           set -g @yank_selection 'clipboard'
           set -g @yank_action 'copy-pipe'
           set -g @shell_mode 'vi'
+          set -g @override_copy_command 'wl-copy'
         '';
       }
       {
         plugin = copycat;
-        extraConfig = ''set -g @override_copy_command "(xsel -cb && xsel -bi)"'';
+        extraConfig = ''set -g @override_copy_command "wl-copy"'';
       }
       {
         plugin = mkTmuxPlugin {
@@ -102,7 +103,7 @@ in {
         extraConfig = ''
           set -g @thumbs-unique enabled
           set -g @thumbs-alphabet colemak
-          set -g @thumbs-command "echo -n {} | xsel -bi"
+          set -g @thumbs-command "echo -n {} | wl-copy"
           set -g @thumbs-upcase-command "tmux set-buffer -- {} && tmux paste-buffer"
           set -g @thumbs-regexp-1 'sha256\-\S{44}' # Match Nix SHAs
         '';

@@ -159,7 +159,6 @@ in {
       brave
       helvum
       onlyoffice-bin
-      obs-studio # replace with wl-screenrec and slurp
 
       # utils
       zip
@@ -203,6 +202,11 @@ in {
 
       # stuff used in the background
       swww
+      grim
+      slurp
+      satty
+      wl-clipboard
+      wl-screenrec
       file
       yt-dlp
       rofi-power-menu

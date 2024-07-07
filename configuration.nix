@@ -35,8 +35,14 @@
     tmp = {cleanOnBoot = true;};
   };
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  };
   hardware = {
-    graphics.enable = true;
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [ intel-media-driver intel-vaapi-driver libvdpau-va-gl ];
+    };
 
     bluetooth = {
       enable = true;
@@ -198,8 +204,9 @@
 
   environment = {
     sessionVariables = {
-      "DO_NOT_TRACK" = "1";
-      "FZF_TMUX_OPTS" = "-p80%,60%";
+      DO_NOT_TRACK = "1";
+      FZF_TMUX_OPTS = "-p80%,60%";
+      LIBVA_DRIVER_NAME = "iHD";
     };
 
     systemPackages = with pkgs; [

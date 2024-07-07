@@ -9,7 +9,7 @@
           position = "top";
           height = 24;
           spacing = 4;
-          modules-left = ["hyprland/workspaces" "backlight" "pulseaudio"];
+          modules-left = ["hyprland/workspaces" "backlight" "idle_inhibitor" "pulseaudio"];
           modules-right = ["cpu" "memory" "disk" "network" "custom/vpn" "battery" "clock"];
           "hyprland/workspaces" = {
             format = "{icon}";
@@ -28,6 +28,13 @@
           };
           backlight = {
             format = ''<span color="#d8a657">BL</span> {percent}%'';
+          };
+          idle_inhibitor = {
+            format = ''<span color="#d8a657">IDL</span> {icon}'';
+            format-icons = {
+              activated = "";
+              deactivated = "";
+            };
           };
           pulseaudio = {
             format = ''<span color="#d8a657">VOL</span> {volume}% {icon} {format_source}'';

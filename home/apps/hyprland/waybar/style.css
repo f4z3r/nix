@@ -68,7 +68,7 @@ window#waybar {
   color: #7c6f64;
 }
 
-#workspaces, #backlight, #cpu, #memory, #disk, #network, #custom-vpn, #battery {
+#workspaces, #backlight, #idle_inhibitor, #cpu, #memory, #disk, #network, #custom-vpn, #battery {
   padding-right: 10px;
   padding-left: 8px;
   border-right: 2px solid #635850;
