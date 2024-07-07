@@ -115,7 +115,7 @@
             ''float,class:(Rofi)''
             ''center,class:(Rofi)''
             ''animation popin,class:(Rofi)''
-            ''animation popin,class:(pinentry)''
+            ''animation popin,class:(Pinentry)''
             ''float,class:(quake)''
             ''center,class:(quake)''
             ''size 70% 70%,class:(quake)''
