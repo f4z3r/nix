@@ -130,15 +130,6 @@
       };
     };
 
-    # displayManager = {
-    #   # TODO change to wayland session
-    #   # defaultSession = "none+bspwm";
-    #   autoLogin = {
-    #     enable = true;
-    #     user = "${username}";
-    #   };
-    # };
-    #
     udev = {
       enable = true;
       extraRules = ''

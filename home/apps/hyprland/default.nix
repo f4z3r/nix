@@ -23,6 +23,8 @@
         settings = {
           exec-once = [
             "${pkgs.dunst}/bin/dunst"
+            "${pkgs.swww}/bin/swww-daemon"
+            "${pkgs.swww}/bin/swww img ~/.local/share/wallpapers/lofoten1.jpg"
             "wl-paste --watch cliphist store"
             ''[ workspace special:quake silent; float; size 70% 70%; center ] wezterm start --class quake -- tmux new -s quake''
           ];
@@ -173,31 +175,16 @@
       };
     };
   };
-  services = {
-    hyprpaper = {
-      enable = true;
-      settings = {
-        ipc = "on";
-        splash = false;
-        splash_offset = 2.0;
-
-        preload = ["/home/${username}/.local/share/wallpapers/${hostname}-wallpaper.jpeg"];
-
-        wallpaper = [
-          "eDP-1,/home/${username}/.local/share/wallpapers/${hostname}-wallpaper.jpeg"
-        ];
-      };
-    };
-  };
   home.file = {
-    ".local/share/wallpapers/${hostname}-wallpaper.jpeg" = {
-      source = ./wallpapers/${hostname}-wallpaper.jpeg;
-    };
     ".local/share/scripts/fuzzy-bookmarks.lua" = {
       source = ./scripts/fuzzy-bookmarks.lua;
     };
     ".local/share/scripts/toggle-mute.lua" = {
       source = ./scripts/toggle-mute.lua;
+    };
+    ".local/share/wallpapers/" = {
+      source = ./../../../assets/wallpapers;
+      recursive = true;
     };
   };
 }

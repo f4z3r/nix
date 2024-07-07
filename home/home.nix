@@ -33,15 +33,6 @@ in {
       inherit pkgs pkgs-custom hostname username resolution main_monitor monitor_prefix theme;
     })
     pkgs-custom.anyrun.homeManagerModules.anyrun
-    # (import ./apps/anyrun.nix {inherit pkgs pkgs-custom theme;})
-    # (import ./apps/bspwm/default.nix {
-    #   inherit pkgs hostname scratch_res main_monitor monitor_prefix theme;
-    # })
-    # (import ./apps/sxhkd/default.nix {inherit pkgs username;})
-    # (import ./apps/polybar/default.nix {
-    #   inherit pkgs polybar_dpi main_monitor monitor_prefix theme;
-    # })
-    # ./apps/picom.nix
     ./apps/rofi/default.nix
     (import ./apps/git/default.nix {inherit pkgs theme;})
     (import ./apps/lazygit.nix {inherit pkgs theme;})
@@ -139,18 +130,11 @@ in {
       };
     };
 
-    autorandr = {
-      enable = true;
-      ignoreLid = true;
-    };
-
-    redshift = {
+    gammastep = {
       enable = true;
       dawnTime = "06:00";
       duskTime = "19:00";
     };
-
-    flameshot.enable = true;
   };
 
   home = {
@@ -195,7 +179,6 @@ in {
       xh
       dogdns
       fend
-      autorandr
       ouch
       fd
       gfold
@@ -219,11 +202,11 @@ in {
       gtk-engine-murrine
 
       # stuff used in the background
+      swww
       file
       yt-dlp
       rofi-power-menu
       rofi-rbw
-      wmctrl
       alsa-utils
       mpc-cli
       bc
