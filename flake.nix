@@ -9,11 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     neorg-overlay.url = "github:nvim-neorg/nixpkgs-neorg-overlay";
   };
 
@@ -21,7 +16,6 @@
     self,
     nixpkgs,
     home-manager,
-    anyrun,
     neorg-overlay,
     ...
   }: let
@@ -34,7 +28,6 @@
     };
     inherit (nixpkgs) lib;
     pkgs-custom = {
-      inherit anyrun;
     };
     inherit (pkgs) stdenv;
 

@@ -32,7 +32,6 @@ in {
     (import ./apps/hyprland/default.nix {
       inherit pkgs pkgs-custom hostname username resolution main_monitor monitor_prefix theme;
     })
-    pkgs-custom.anyrun.homeManagerModules.anyrun
     ./apps/rofi/default.nix
     (import ./apps/git/default.nix {inherit pkgs theme;})
     (import ./apps/lazygit.nix {inherit pkgs theme;})
