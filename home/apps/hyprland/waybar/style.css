@@ -5,7 +5,7 @@
 
 window#waybar {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, monospace;
+    font-family: FiraCode Nerd Font, monospace;
     background-color: transparent;
     border-bottom: 0px;
     color: #ebdbb2;
@@ -31,13 +31,13 @@ window#waybar.solo {
 */
 
 .modules-right {
-    margin: 10px 10px 0 0;
+    margin: 0 0 0 0;
 }
 .modules-center {
-    margin: 10px 0 0 0;
+    margin: 0 0 0 0;
 }
 .modules-left {
-    margin: 10px 0 0 10px;
+    margin: 0 0 0 0;
 }
 
 button {

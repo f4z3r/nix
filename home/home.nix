@@ -8,7 +8,7 @@
   theme ? "dark",
   polybar_dpi,
   font_size,
-  scratch_res,
+  resolution,
   main_monitor,
   monitor_prefix,
   ...
@@ -30,8 +30,10 @@ in {
   imports = [
     (import ./langs/lua.nix {inherit pkgs lib;})
     (import ./apps/hyprland/default.nix {
-      inherit pkgs hostname username scratch_res main_monitor monitor_prefix theme;
+      inherit pkgs pkgs-custom hostname username resolution main_monitor monitor_prefix theme;
     })
+    pkgs-custom.anyrun.homeManagerModules.anyrun
+    # (import ./apps/anyrun.nix {inherit pkgs pkgs-custom theme;})
     # (import ./apps/bspwm/default.nix {
     #   inherit pkgs hostname scratch_res main_monitor monitor_prefix theme;
     # })
@@ -39,13 +41,13 @@ in {
     # (import ./apps/polybar/default.nix {
     #   inherit pkgs polybar_dpi main_monitor monitor_prefix theme;
     # })
-    ./apps/picom.nix
-    # ./apps/rofi/default.nix
+    # ./apps/picom.nix
+    ./apps/rofi/default.nix
     (import ./apps/git/default.nix {inherit pkgs theme;})
     (import ./apps/lazygit.nix {inherit pkgs theme;})
     (import ./apps/wezterm.nix {inherit pkgs theme font_size;})
     (import ./apps/tmux/default.nix {inherit pkgs lib stdenv theme;})
-    (import ./apps/fish/default.nix {inherit lib pkgs theme;})
+    (import ./apps/fish/default.nix {inherit lib pkgs pkgs-custom theme;})
     ./apps/starship.nix
     ./apps/gpg.nix
     ./apps/nvim/default.nix
@@ -59,15 +61,6 @@ in {
     home-manager.enable = true;
 
     mpv.enable = true;
-
-    fuzzel = {
-      enable = true;
-      settings = {
-        main = {
-          terminal = "${pkgs.wezterm}/bin/wezterm";
-        };
-      };
-    };
 
     direnv = {
       enable = true;
@@ -182,8 +175,7 @@ in {
       brave
       helvum
       onlyoffice-bin
-      obs-studio
-      foot
+      obs-studio # replace with wl-screenrec and slurp
 
       # utils
       zip

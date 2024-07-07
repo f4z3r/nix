@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  pkgs-custom,
   theme,
   ...
 }: {
@@ -31,6 +32,7 @@
       egrep = ''egrep --color=auto'';
       fgrep = ''fgrep --color=auto'';
       nix-shell = ''nix-shell --run fish'';
+      # rofi = ''${pkgs-custom.anyrun.packages.${pkgs.system}.anyrun}/bin/anyrun --plugins ${pkgs-custom.anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so'';
       npl = ''rclone sync -u --delete-after -P gdrive-crypt:/ ~/notes'';
       nph = ''rclone sync -u --delete-after -P ~/notes gdrive-crypt:/'';
     };

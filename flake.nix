@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     neorg-overlay.url = "github:nvim-neorg/nixpkgs-neorg-overlay";
   };
 
@@ -16,6 +21,7 @@
     self,
     nixpkgs,
     home-manager,
+    anyrun,
     neorg-overlay,
     ...
   }: let
@@ -28,6 +34,7 @@
     };
     inherit (nixpkgs) lib;
     pkgs-custom = {
+      inherit anyrun;
     };
     inherit (pkgs) stdenv;
 
@@ -36,7 +43,7 @@
       dpi,
       polybar_dpi,
       font_size,
-      scratch_res,
+      resolution,
       brain_backup,
       main_monitor,
       monitor_prefix,
@@ -76,7 +83,7 @@
                     theme
                     polybar_dpi
                     font_size
-                    scratch_res
+                    resolution
                     main_monitor
                     monitor_prefix
                     ;
@@ -93,7 +100,7 @@
         dpi = 192;
         polybar_dpi = 128;
         font_size = 19;
-        scratch_res = "2880x1800+0+0";
+        resolution = "3840x2160";
         brain_backup = true;
         # update the following to the "nix" values if disabling nvidia sync
         main_monitor = "eDP-1-1";
@@ -104,7 +111,7 @@
         dpi = 91;
         polybar_dpi = 65;
         font_size = 11;
-        scratch_res = "1440x900+0+0";
+        resolution = "1920x1200";
         brain_backup = true;
         main_monitor = "eDP-1";
         monitor_prefix = "DP";

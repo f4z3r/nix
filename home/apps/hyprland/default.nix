@@ -2,9 +2,9 @@
   pkgs,
   hostname,
   username,
-  scratch_res,
   main_monitor,
   monitor_prefix,
+  resolution,
   theme,
   ...
 }: {
@@ -24,6 +24,7 @@
           exec-once = [
             "${pkgs.dunst}/bin/dunst"
             "wl-paste --watch cliphist store"
+            ''[ workspace special:quake silent; float; size 70% 70%; center ] wezterm start --class quake -- tmux new -s quake''
           ];
           env = [
             ''GTK_THEME,Materia-dark''
@@ -33,17 +34,19 @@
           "$wm" = "ALT";
           "$app" = "CONTROL";
           monitor = [
-            ''eDP-1, 1920x1200@60, 0x0, 1''
+            ''${main_monitor}, ${resolution}@60, 0x0, 1''
             # ''DP-1, 5120x1440@60, -1920x0, 1''
             # ''DP-2, 5120x1440@60, 1920x0, 1''
-            ''DP-1, highres, auto-left, 1''
-            ''DP-2, highres, auto-right, 1''
+            ''${monitor_prefix}-1, highres, auto-left, 1''
+            ''${monitor_prefix}-2, highres, auto-right, 1''
             # monitor=desc:Chimei Innolux Corporation 0x150C,preferred,auto,1.5
           ];
           bind = [
             ''$general, RETURN, exec, ${pkgs.wezterm}/bin/wezterm start ${pkgs.tmux}/bin/tmux''
 
-            ''$wm, Space, exec, ${pkgs.fuzzel}/bin/fuzzel''
+            ''$app, RETURN, togglespecialworkspace, quake''
+
+            ''$wm, Space, exec, ${pkgs.rofi}/bin/rofi -combi-modi window,drun -show combi''
 
             ''$wm, L, movefocus, l''
             ''$wm, H, movefocus, r''
@@ -79,7 +82,20 @@
             ''$wm SHIFT, P, movetoworkspace, 9''
             ''$wm SHIFT, B, movetoworkspace, 0''
 
+            ''$wm&$app, x, exec, ${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu''
+            ''$wm&$app, o, exec, /etc/profiles/per-user/f4z3r/bin/sofa''
+            ''$wm&$app, w, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/fuzzy-bookmarks.lua''
+
             '', Print, exec, ${pkgs.flameshot}/bin/flameshot gui''
+            '', XF86AudioMute, exec, ${pkgs.alsa-utils}/bin/amixer -q sset Master toggle''
+            '', XF86AudioMicMute, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.config/sxhkd/scripts/toggle-mute.lua''
+            '', XF86AudioPlay, exec, ${pkgs.mpc-cli}/bin/mpc toggle''
+          ];
+          bindle = [
+            '', XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+''
+            '', XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-''
+            '', XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl -c 'backlight' -d '*backlight*' s 5%-''
+            '', XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl -c 'backlight' -d '*backlight*' s +5%''
           ];
           bezier = [
             ''easeOutExpo, 0.16, 1, 0.3, 1''
@@ -89,9 +105,14 @@
             ''windowsIn, 1, 2, easeOutExpo, slide''
             ''windowsOut, 1, 2, easeOutExpo, popin''
           ];
-          bindle = [
-            '', XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+''
-            '', XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-''
+          windowrulev2 = [
+            ''float,class:(Rofi)''
+            ''center,class:(Rofi)''
+            ''animation popin,class:(Rofi)''
+            ''float,class:(quake)''
+            ''center,class:(quake)''
+            ''size 70% 70%,class:(quake)''
+            ''animation popin,class:(quake)''
           ];
           general = {
             border_size = 2;
@@ -120,6 +141,7 @@
           };
           misc = {
             vfr = true;
+            focus_on_activate = true;
           };
           cursor = {
             inactive_timeout = 5;
@@ -168,6 +190,12 @@
   home.file = {
     ".local/share/wallpapers/${hostname}-wallpaper.jpeg" = {
       source = ./wallpapers/${hostname}-wallpaper.jpeg;
+    };
+    ".local/share/scripts/fuzzy-bookmarks.lua" = {
+      source = ./scripts/fuzzy-bookmarks.lua;
+    };
+    ".local/share/scripts/toggle-mute.lua" = {
+      source = ./scripts/toggle-mute.lua;
     };
   };
 }
