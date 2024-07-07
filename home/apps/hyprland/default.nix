@@ -92,8 +92,8 @@
             '', XF86AudioPlay, exec, ${pkgs.mpc-cli}/bin/mpc toggle''
           ];
           bindle = [
-            '', XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+''
-            '', XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-''
+            '', XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+''
+            '', XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-''
             '', XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl -c 'backlight' -d '*backlight*' s 5%-''
             '', XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl -c 'backlight' -d '*backlight*' s +5%''
           ];
@@ -142,6 +142,8 @@
           misc = {
             vfr = true;
             focus_on_activate = true;
+            disable_hyprland_logo = true;
+            disable_splash_rendering = true;
           };
           cursor = {
             inactive_timeout = 5;
