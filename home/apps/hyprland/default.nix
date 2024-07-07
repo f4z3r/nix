@@ -143,7 +143,7 @@
             follow_mouse = 0;
             touchpad = {
               disable_while_typing = true;
-              natural_scroll = true;
+              natural_scroll = false;
             };
           };
           misc = {
