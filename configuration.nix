@@ -207,6 +207,7 @@
       DO_NOT_TRACK = "1";
       FZF_TMUX_OPTS = "-p80%,60%";
       LIBVA_DRIVER_NAME = "iHD";
+      # NIXOS_OZONE_WL = "1";
     };
 
     systemPackages = with pkgs; [
@@ -262,20 +263,23 @@
     };
   };
 
-  security.sudo = {
-    execWheelOnly = true;
-    extraRules = [
-      {
-        users = ["clamav"];
-        runAs = "${username}";
-        commands = [
-          {
-            command = "${pkgs.libnotify}/bin/notify-send";
-            options = ["NOPASSWD" "SETENV"];
-          }
-        ];
-      }
-    ];
+  security = {
+    sudo = {
+      execWheelOnly = true;
+      extraRules = [
+        {
+          users = ["clamav"];
+          runAs = "${username}";
+          commands = [
+            {
+              command = "${pkgs.libnotify}/bin/notify-send";
+              options = ["NOPASSWD" "SETENV"];
+            }
+          ];
+        }
+      ];
+    };
+    polkit.enable = true;
   };
 
   system.stateVersion = "22.11";
