@@ -3,7 +3,8 @@
   pkgs,
   ...
 }: let
-  hold-delay = "150";
+  tap-timeout = "220";
+  hold-delay = "170";
 in {
   services.kanata = {
     enable = true;
@@ -12,22 +13,36 @@ in {
       config = ''
         (defalias
           ;; shot toggles
-          tab (tap-hold-release ${hold-delay} ${hold-delay} tab lctl)
-          met (multi f24 (tap-hold-release ${hold-delay} ${hold-delay} S-. lmet))
-          lyd (multi f24 (tap-hold-release ${hold-delay} ${hold-delay} esc (layer-while-held down)))
-          spc (tap-hold-release ${hold-delay} ${hold-delay} spc lsft)
-          lyu (multi f24 (tap-hold-release ${hold-delay} ${hold-delay} bspc (layer-while-held up)))
+          lyd (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} esc (layer-while-held down)))
+          lyu (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} bspc (layer-while-held up)))
+          nav (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} bspc (layer-while-held nav)))
 
-          ;; differs from piantor to allow alt usage as not mapped on thumbs
-          qu (multi f24 (tap-hold-release ${hold-delay} ${hold-delay} ' lalt))
+          ;; use shorter hold delay on space as shift is more central here
+          spc (tap-hold-release ${hold-delay} ${hold-delay} spc lsft)
+
+          ;; a r s t n e i o
+          a (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} a lmet))
+          r (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} r lctl))
+          s (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} s lalt))
+          t (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} t lsft))
+          o (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} o lmet))
+          i (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} i lctl))
+          e (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} e lalt))
+          n (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} n lsft))
+
+          ;; helpers
+          arr (macro - S-.)
+          dar (macro = S-.)
+          not (macro S-` =)
+          grt (macro S-. =)
+          les (macro S-, =)
 
           ;; differs from piantor in
           ;; - layer keys are not one-shot
           ;; - enter is not on thumb
-          ;; - alt is not on thumbs but pinky
-          ;; - control is not on thumbs but pinky
           ;; - layer keys are outward compared to shift and space as opposed to on the inside for
           ;;   piantor (due to large spacebar on laptop)
+          ;; - arrows still work
         )
         (defsrc
           tab  q    w    e    r    t    y    u    i    o    p    [    ]
@@ -38,22 +53,29 @@ in {
 
         (deflayer colemakdh
           S-3  q    w    f    p    b    j    l    u    y    ;    S-/  XX
-          @tab a    r    s    t    g    m    n    e    i    o    @qu  ret  ret
-          XX   @met x    c    d    v    z    k    h    ,    .    /    del
-          XX   esc  @lyd           @spc           @lyu bspc lft  down up   rght
+          tab  @a   @r   @s   @t   g    m    @n   @e   @i   @o   '    ret  ret
+          XX   XX   x    c    d    v    z    k    h    ,    .    /    del
+          XX   esc  @lyd           @spc           @lyu @nav lft  down up   rght
         )
 
         (deflayer down
-          f9   f10  f11  f12  pgup home XX   7    8    9    ,    S-/  XX
-          f5   f6   f7   f8   pgdn end  S-;  4    5    6    0    S-4  ret  ret
+          f9   f10  f11  f12  XX   XX   XX   7    8    9    ,    XX   XX
+          f5   f6   f7   f8   S--  XX   S-;  4    5    6    0    S-4  ret  ret
           XX   f1   f2   f3   f4   XX   XX   sys  1    2    3    .    del
           XX   esc  @lyd           @spc           @lyu bspc lft  down up   rght
         )
 
         (deflayer up
-          brup \    [    ]    S-4  S-2  XX   S-\  up   S-1  S-5  volu XX
-          brdn S--  S-9  S-0  =    S-`  grv  lft  down rght +    vold ret  ret
-          XX   pp   S-7  S-[  S-]  -    XX   XX   S-8  S-6  XX   S-3  mute
+          @arr \    [    ]    S-4  S-2  XX   S-5  S-3  S-6  S-/  @grt XX
+          @not S--  S-9  S-0  =    S-`  grv  S-\  S-1  S-8  +    @les ret  ret
+          @dar XX   S-7  S-[  S-]  -    XX   XX   XX   XX   XX   XX   XX
+          XX   esc  @lyd           @spc           @lyu bspc lft  down up   rght
+        )
+
+        (deflayer nav
+          XX   brup volu pgup home XX   XX   XX   up   XX   XX   XX   XX
+          XX   brdn vold pgdn end  sys  XX   lft  down rght +    XX   XX   ret
+          XX   XX   pp   mute XX   XX   XX   XX   XX   XX   XX   XX   XX
           XX   esc  @lyd           @spc           @lyu bspc lft  down up   rght
         )
       '';
