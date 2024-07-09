@@ -65,7 +65,7 @@ window#waybar {
 }
 
 #pulseaudio.source-muted {
-  color: #7c6f64;
+  color: #ea6962;
 }
 
 #workspaces, #backlight, #idle_inhibitor, #cpu, #memory, #disk, #network, #custom-vpn, #battery {
