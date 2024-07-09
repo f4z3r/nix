@@ -93,6 +93,8 @@
             ''$wm&$app, r, exec, bash /home/${username}/.local/share/scripts/screen-record.sh''
 
             '', Print, exec, bash /home/${username}/.local/share/scripts/screenshot.sh''
+          ];
+          bindl = [
             '', XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle''
             '', XF86AudioMicMute, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua''
             '', XF86AudioPlay, exec, ${pkgs.mpc-cli}/bin/mpc toggle''

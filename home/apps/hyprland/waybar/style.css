@@ -68,6 +68,10 @@ window#waybar {
   color: #ea6962;
 }
 
+#idle_inhibitor.activated {
+  color: #ea6962;
+}
+
 #workspaces, #backlight, #idle_inhibitor, #cpu, #memory, #disk, #network, #custom-vpn, #battery {
   padding-right: 10px;
   padding-left: 8px;
