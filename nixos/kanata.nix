@@ -21,14 +21,14 @@ in {
           spc (tap-hold-release ${hold-delay} ${hold-delay} spc lsft)
 
           ;; a r s t n e i o
-          a (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} a lmet))
-          r (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} r lctl))
-          s (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} s lalt))
-          t (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} t lsft))
-          o (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} o lmet))
-          i (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} i lctl))
-          e (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} e lalt))
-          n (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} n lsft))
+          a (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} a lsft))
+          r (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} r lmet))
+          s (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} s lctl))
+          t (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} t lalt))
+          o (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} o rsft))
+          i (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} i lmet))
+          e (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} e rctl))
+          n (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} n lalt))
 
           ;; helpers
           arr (macro - S-.)
