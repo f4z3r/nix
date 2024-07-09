@@ -11,7 +11,7 @@ end
 
 local function muted()
   local out = run("amixer get Capture")
-  local m = string.find(out, "[[off]]")
+  local m = string.find(out, "[off]", nil, true)
   return m ~= nil
 end
 

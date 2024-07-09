@@ -93,8 +93,8 @@
             ''$wm&$app, r, exec, bash /home/${username}/.local/share/scripts/screen-record.sh''
 
             '', Print, exec, bash /home/${username}/.local/share/scripts/screenshot.sh''
-            '', XF86AudioMute, exec, ${pkgs.alsa-utils}/bin/amixer -q sset Master toggle''
-            '', XF86AudioMicMute, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.config/sxhkd/scripts/toggle-mute.lua''
+            '', XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle''
+            '', XF86AudioMicMute, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua''
             '', XF86AudioPlay, exec, ${pkgs.mpc-cli}/bin/mpc toggle''
           ];
           bindle = [
@@ -115,11 +115,19 @@
             ''float,class:(Rofi)''
             ''center,class:(Rofi)''
             ''animation popin,class:(Rofi)''
+            ''stayfocused,class:(Rofi)''
             ''animation popin,class:(Pinentry)''
+            ''stayfocused,class:(Pinentry)''
             ''float,class:(quake)''
             ''center,class:(quake)''
             ''size 70% 70%,class:(quake)''
             ''animation popin,class:(quake)''
+            # disable idling when in full screen or playing video
+            ''idleinhibit focus,fullscreen:1''
+            ''tag +video,class:(brave-browser),title:(.*YouTube.*)''
+            ''tag +video,class:(brave-browser),title:(.*Netflix.*)''
+            ''idleinhibit focus,tag:video''
+            ''nodim,tag:video''
           ];
           general = {
             border_size = 2;
