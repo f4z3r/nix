@@ -28,6 +28,7 @@
       ip = ''ip -c'';
       feh = ''feh -Fx'';
       pdf = ''mupdf'';
+      lg = ''lazygit'';
       grep = ''grep --color=auto'';
       egrep = ''egrep --color=auto'';
       fgrep = ''fgrep --color=auto'';
