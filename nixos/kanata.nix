@@ -20,15 +20,15 @@ in {
           ;; use shorter hold delay on space as shift is more central here
           spc (tap-hold-release ${hold-delay} ${hold-delay} spc lsft)
 
-          ;; a r s t n e i o
-          a (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} a lsft))
-          r (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} r lmet))
-          s (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} s lctl))
-          t (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} t lalt))
-          o (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} o rsft))
-          i (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} i lmet))
-          e (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} e rctl))
-          n (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} n lalt))
+          ;; a r s t n e i o (cannot use f24 multi for umlaut)
+          a (tap-hold-release ${tap-timeout} ${hold-delay} a lsft)
+          r (tap-hold-release ${tap-timeout} ${hold-delay} r lmet)
+          s (tap-hold-release ${tap-timeout} ${hold-delay} s lctl)
+          t (tap-hold-release ${tap-timeout} ${hold-delay} t lalt)
+          o (tap-hold-release ${tap-timeout} ${hold-delay} o rsft)
+          i (tap-hold-release ${tap-timeout} ${hold-delay} i lmet)
+          e (tap-hold-release ${tap-timeout} ${hold-delay} e rctl)
+          n (tap-hold-release ${tap-timeout} ${hold-delay} n lalt)
 
           ;; helpers
           arr (macro - S-.)
