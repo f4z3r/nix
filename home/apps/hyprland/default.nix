@@ -124,10 +124,15 @@
             ''center,class:(quake)''
             ''size 70% 70%,class:(quake)''
             ''animation popin,class:(quake)''
+            # make brave popups appear centrally floating
+            ''float,class:^(brave)$''
+            ''center,class:^(brave)$''
+            ''animation popin,class:^(brave)$''
+            ''size 70% 70%,class:^(brave)$''
             # disable idling when in full screen or playing video
             ''idleinhibit focus,fullscreen:1''
-            ''tag +video,class:(brave-browser),title:(.*YouTube.*)''
-            ''tag +video,class:(brave-browser),title:(.*Netflix.*)''
+            ''tag +video,class:^(brave-browser)$,title:(.*YouTube.*)''
+            ''tag +video,class:^(brave-browser)$,title:(.*Netflix.*)''
             ''idleinhibit focus,tag:video''
             ''nodim,tag:video''
           ];
