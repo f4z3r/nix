@@ -12,6 +12,7 @@
       format = lib.concatStrings [
         "$battery"
         "$time"
+        "$direnv"
         "$nix_shell"
         "$git_branch"
         "$git_commit"
@@ -74,9 +75,21 @@
         style = "dimmed yellow";
       };
 
+      direnv = {
+        disabled = false;
+        format = "╱ [$loaded/$allowed ]($style)";
+        allowed_msg = "";
+        not_allowed_msg = "";
+        denied_msg = "";
+        loaded_msg = "";
+        unloaded_msg = "";
+      };
+
       nix_shell = {
         disabled = false;
-        format = "╱ [$symbol$state(\\($name\\)) ]($style)";
+        format = "╱ [$symbol $state(\\($name\\)) ]($style)";
+        symbol = "";
+        style = "bold cyan";
         impure_msg = "[ ](bold red)";
         pure_msg = "[ ](bold green)";
         unknown_msg = "[ ](dimmed yellow)";
