@@ -75,6 +75,7 @@
             ''$wm, F, workspace, 8''
             ''$wm, P, workspace, 9''
             ''$wm, B, workspace, 0''
+            ''$wm SHIFT, Tab, movetoworkspace, special:quake''
             ''$wm SHIFT, A, movetoworkspace, 1''
             ''$wm SHIFT, R, movetoworkspace, 2''
             ''$wm SHIFT, S, movetoworkspace, 3''
