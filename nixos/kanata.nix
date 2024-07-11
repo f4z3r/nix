@@ -4,6 +4,7 @@
   ...
 }: let
   tap-timeout = "220";
+  home-row-hold-delay = "200";
   hold-delay = "170";
 in {
   services.kanata = {
@@ -21,14 +22,14 @@ in {
           spc (tap-hold-release ${hold-delay} ${hold-delay} spc lsft)
 
           ;; a r s t n e i o (cannot use f24 multi for umlaut)
-          a (tap-hold-release ${tap-timeout} ${hold-delay} a lsft)
-          r (tap-hold-release ${tap-timeout} ${hold-delay} r lmet)
-          s (tap-hold-release ${tap-timeout} ${hold-delay} s lctl)
-          t (tap-hold-release ${tap-timeout} ${hold-delay} t lalt)
-          o (tap-hold-release ${tap-timeout} ${hold-delay} o rsft)
-          i (tap-hold-release ${tap-timeout} ${hold-delay} i lmet)
-          e (tap-hold-release ${tap-timeout} ${hold-delay} e rctl)
-          n (tap-hold-release ${tap-timeout} ${hold-delay} n lalt)
+          a (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} a lsft (r s t))
+          r (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} r lmet (a s t))
+          s (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} s lctl (a r t))
+          t (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} t lalt (a r s))
+          o (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} o rsft (i e n))
+          i (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} i lmet (o e n))
+          e (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} e rctl (o i n))
+          n (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} n lalt (o i e))
 
           ;; helpers
           arr (macro - S-.)
