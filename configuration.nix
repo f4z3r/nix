@@ -5,6 +5,7 @@
   system,
   username,
   hostname,
+  theme,
   dpi,
   brain_backup,
   ...
@@ -36,12 +37,12 @@
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
   };
   hardware = {
     graphics = {
       enable = true;
-      extraPackages = with pkgs; [ intel-media-driver intel-vaapi-driver libvdpau-va-gl ];
+      extraPackages = with pkgs; [intel-media-driver intel-vaapi-driver libvdpau-va-gl];
     };
 
     bluetooth = {
@@ -154,6 +155,10 @@
     sessionVariables = {
       DO_NOT_TRACK = "1";
       FZF_TMUX_OPTS = "-p80%,60%";
+      FZF_DEFAULT_OPTS =
+        if theme == "dark"
+        then "--color bg:#282828,bg+:#282828,fg:#d4be98,fg+:#d3869b,header:#7daea3,hl:#89b482,hl+:#d3869b,info:#e78a4e,marker:#a9b665,pointer:#d3869b,prompt:#ea6962,spinner:#e78a4e"
+        else "--color bg:#fbf1c7,bg+:#fbf1c7,fg:#654735,fg+:#945e80,header:#45707a,hl:#4c7a5d,hl+:#945e80,info:#c35e0a,marker:#6c782e,pointer:#945e80,prompt:#c14a4a,spinner:#c35e0a";
       LIBVA_DRIVER_NAME = "iHD";
       # NIXOS_OZONE_WL = "1";
     };

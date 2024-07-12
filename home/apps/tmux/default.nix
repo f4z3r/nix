@@ -90,8 +90,8 @@ in {
           src = pkgs.fetchFromGitHub {
             owner = "f4z3r";
             repo = "tmux-tea";
-            rev = "07404e92dc41170a961712c65bbaddf93a64dba0";
-            hash = "sha256-PSL5CcEbw2dTpUgb/dxLql5sxc+gsogQBC8AkGd/F6k=";
+            rev = "d56a0bb0f7c2e796d4da3d9bf18f4e0e4fae1965";
+            hash = "sha256-X0bcnrJDPOGhDZcD7pc7igJI+bPJdIacssEjiXEcUEA=";
           };
         };
         extraConfig = ''
