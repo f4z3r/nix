@@ -52,12 +52,12 @@
 
             ''$wm, Space, exec, ${pkgs.rofi}/bin/rofi -combi-modi window,drun -show combi''
 
-            ''$wm, L, movefocus, l''
-            ''$wm, H, movefocus, r''
+            ''$wm, L, movefocus, r''
+            ''$wm, H, movefocus, l''
             ''$wm, K, movefocus, u''
             ''$wm, N, movefocus, d''
-            ''$wm SHIFT, L, swapwindow, r''
-            ''$wm SHIFT, H, swapwindow, l''
+            ''$wm SHIFT, L, swapwindow, l''
+            ''$wm SHIFT, H, swapwindow, r''
             ''$wm SHIFT, K, swapwindow, d''
             ''$wm SHIFT, N, swapwindow, d''
 
