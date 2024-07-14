@@ -137,6 +137,11 @@
             ''idleinhibit focus,tag:video''
             ''nodim,tag:video''
           ];
+          workspace = [
+            ''r[1-5], monitor:${main_monitor}''
+            ''r[6-10], monitor:${main_monitor}-1''
+            ''r[6-10], monitor:${main_monitor}-2''
+          ];
           general = {
             border_size = 2;
             gaps_in = 0;
