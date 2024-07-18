@@ -75,16 +75,16 @@ in {
         )
 
         (deflayer colemakdh
-          S-3  q    w    f    p    b    j    l    u    y    ;    S-/  XX
+          S--  q    w    f    p    b    j    l    u    y    ;    S-/  XX
           tab  @a   @r   @s   @t   g    m    @n   @e   @i   @o   '    ret  ret
-          XX   XX   x    c    d    v    z    k    h    ,    .    /    del
+          del  XX   x    c    d    v    z    k    h    ,    .    /    S-'
           XX   esc  @lyd           @spc           @lyu @nav lft  down up   rght
         )
 
         (deflayer nomods
-          S-3  q    w    f    p    b    j    l    u    y    ;    S-/  XX
+          S--  q    w    f    p    b    j    l    u    y    ;    S-/  XX
           tab  a    r    s    t    g    m    n    e    i    o    '    ret  ret
-          XX   XX   x    c    d    v    z    k    h    ,    .    /    del
+          del  XX   x    c    d    v    z    k    h    ,    .    /    S-'
           XX   esc  @lyd           @spc           @lyu @nav lft  down up   rght
         )
 
