@@ -214,6 +214,7 @@ in {
       brave
       helvum
       onlyoffice-bin
+      vial
 
       # utils
       zip

@@ -206,6 +206,9 @@
 
         # stop charging battery using upower rules
         SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="/bin/sh -c 'echo 90 > /sys/class/power_supply/BAT0/charge_control_end_threshold'"
+
+        # vial rules
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
       '';
     };
 
