@@ -3,8 +3,8 @@
   pkgs,
   ...
 }: let
-  tap-timeout = "220";
-  home-row-hold-delay = "200";
+  tap-timeout = "200";
+  home-row-hold-delay = "150";
   hold-delay = "170";
 in {
   services.kanata = {
@@ -12,6 +12,23 @@ in {
     keyboards.colemak = {
       devices = ["/dev/input/event0"];
       config = ''
+        (defvar
+          left-hand-keys (
+            q w f p b
+            a r s t g
+            x c d v z
+          )
+          right-hand-keys (
+            j l u y ;
+            m n e i o
+            k h , . /
+          )
+        )
+
+        (deffakekeys
+          to-base (layer-switch colemakdh)
+        )
+
         (defalias
           ;; shot toggles
           lyd (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} esc (layer-while-held down)))
@@ -21,15 +38,19 @@ in {
           ;; use shorter hold delay on space as shift is more central here
           spc (tap-hold-release ${hold-delay} ${hold-delay} spc lsft)
 
-          ;; a r s t n e i o (cannot use f24 multi for umlaut)
-          a (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} a lsft (r s t))
-          r (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} r lmet (a s t))
-          s (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} s lctl (a r t))
-          t (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} t lalt (a r s))
-          o (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} o rsft (i e n))
-          i (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} i lmet (o e n))
-          e (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} e rctl (o i n))
-          n (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} n lalt (o i e))
+          ;; home row mod, in a very complex way that does what I want, see https://github.com/jtroo/kanata/blob/main/cfg_samples/home-row-mod-advanced.kbd
+          tap (multi
+            (layer-switch nomods)
+            (on-idle-fakekey to-base tap 20)
+          )
+          a (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi a @tap) lsft $left-hand-keys)
+          r (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi r @tap) lmet $left-hand-keys)
+          s (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi s @tap) lctl $left-hand-keys)
+          t (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi t @tap) lalt $left-hand-keys)
+          o (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi o @tap) rsft $right-hand-keys)
+          i (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi i @tap) lmet $right-hand-keys)
+          e (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi e @tap) rctl $right-hand-keys)
+          n (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi n @tap) lalt $right-hand-keys)
 
           ;; helpers
           arr (macro - S-.)
@@ -45,6 +66,7 @@ in {
           ;;   piantor (due to large spacebar on laptop)
           ;; - arrows still work
         )
+
         (defsrc
           tab  q    w    e    r    t    y    u    i    o    p    [    ]
           caps a    s    d    f    g    h    j    k    l    ;    '    \    ret
@@ -55,6 +77,13 @@ in {
         (deflayer colemakdh
           S-3  q    w    f    p    b    j    l    u    y    ;    S-/  XX
           tab  @a   @r   @s   @t   g    m    @n   @e   @i   @o   '    ret  ret
+          XX   XX   x    c    d    v    z    k    h    ,    .    /    del
+          XX   esc  @lyd           @spc           @lyu @nav lft  down up   rght
+        )
+
+        (deflayer nomods
+          S-3  q    w    f    p    b    j    l    u    y    ;    S-/  XX
+          tab  a    r    s    t    g    m    n    e    i    o    '    ret  ret
           XX   XX   x    c    d    v    z    k    h    ,    .    /    del
           XX   esc  @lyd           @spc           @lyu @nav lft  down up   rght
         )
