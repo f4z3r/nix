@@ -80,14 +80,6 @@
 
   system = {autoUpgrade = {enable = false;};};
 
-  sound = {
-    enable = true;
-    mediaKeys = {
-      enable = true;
-      volumeStep = "3%";
-    };
-  };
-
   time.timeZone = "Europe/Zurich";
 
   i18n = {
