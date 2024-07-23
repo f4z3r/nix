@@ -35,3 +35,26 @@ for _, mapping in ipairs(mappings) do
   vim.keymap.set(mapping.mode, leader .. mapping.suffix, mapping.command, { desc = mapping.desc })
 end
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "norg",
+  desc = "Load keyboard bindings for norg files",
+  group = vim.api.nvim_create_augroup("NorgKeybindings", { clear = true }),
+  callback = function()
+    vim.keymap.set("n", "<C-t>", "<plug>(neorg.qol.todo-items.todo.task-cycle)", { buffer = true, silent = true })
+    -- toc like symbols outline
+    vim.keymap.set("n", "<leader>ts", "<cmd>Neorg toc right<cr>", { buffer = true })
+    -- edit code block in different pannel
+    vim.keymap.set(
+      "n",
+      leader .. "e",
+      "<cmd>Neorg keybind all core.looking-glass.magnify-code-block<cr>",
+      { buffer = true }
+    )
+    -- insert stuff via telescope
+    vim.keymap.set("i", "<C-l>", "<cmd>Telescope neorg insert_file_link<cr>", { buffer = true })
+    -- neorg return
+    vim.keymap.set("n", leader .. "r", "<cmd>Neorg return<cr>", { buffer = true })
+    -- insert metadata
+    vim.keymap.set("n", leader .. "m", "<cmd>Neorg inject-metadata<cr>", { buffer = true })
+  end,
+})

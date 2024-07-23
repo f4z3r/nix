@@ -102,26 +102,6 @@ require("neorg").setup({
     ["core.keybinds"] = {
       config = {
         default_keybinds = true,
-        hook = function(keybinds)
-          local leader = keybinds.leader
-          -- remap todo cycling due to control space being taken
-           keybinds.remap_event("norg", "n", "<C-t>", "core.qol.todo_items.todo.task_cycle")
-          -- remap j -> n
-          keybinds.remap_key("traverse-heading", "n", "j", "n")
-          keybinds.remap_key("traverse-links", "n", "j", "n")
-          -- toc like symbols outline
-          keybinds.map("norg", "n", "<leader>ts", "<cmd>Neorg toc split<cr>")
-          -- edit code block in different pannel
-          keybinds.map("norg", "n", leader .. "e", "<cmd>Neorg keybind all core.looking-glass.magnify-code-block<cr>")
-          -- unmap standard inserts
-          keybinds.unmap("norg", "n", leader .. "id")
-          -- insert stuff via telescope
-          keybinds.map_event("norg", "i", "<C-l>", "core.integrations.telescope.insert_file_link")
-          -- neorg return
-          keybinds.map("norg", "n", "<leader>nr", "<cmd>Neorg return<cr>")
-          -- insert metadata
-          keybinds.map("norg", "n", "<leader>nm", "<cmd>Neorg inject-metadata<cr>")
-        end,
       },
     },
     ["core.journal"] = {
