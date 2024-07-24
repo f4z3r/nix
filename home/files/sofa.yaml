@@ -64,6 +64,23 @@ namespaces:
           scale:
             prompt: Scale
             default: 1
+      move-workspace:
+        command: hyprctl dispatch movecurrentworkspacetomonitor {{ monitor }}
+        description: Move current workspace to different monitor
+        tags:
+        - hyprland
+        - hyprctl
+        - displays
+        - workspace
+        - monitor
+        parameters:
+          monitor:
+            prompt: Monitor
+            exclusive: true
+            choices:
+            - eDP-1
+            - DP-1
+            - DP-2
   nix:
     commands:
       rebuild:
