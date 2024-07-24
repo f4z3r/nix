@@ -14,14 +14,14 @@ in {
       config = ''
         (defvar
           left-hand-keys (
-            q w f p b
+              w f p
             a r s t g
-            x c d v z
+              c d v
           )
           right-hand-keys (
-            j l u y ;
+              l u y
             m n e i o
-            k h , . /
+              h , .
           )
         )
 
@@ -35,9 +35,6 @@ in {
           lyu (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} bspc (layer-while-held up)))
           nav (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} bspc (layer-while-held nav)))
 
-          ;; use shorter hold delay on space as shift is more central here
-          spc (tap-hold-release ${hold-delay} ${hold-delay} spc lsft)
-
           ;; home row mod, in a very complex way that does what I want
           ;; See https://github.com/jtroo/kanata/blob/main/cfg_samples/home-row-mod-advanced.kbd
           ;; does not allow to press two modifiers with the same hand at once, but needs to roll
@@ -50,7 +47,7 @@ in {
           r (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi r @tap) lmet $left-hand-keys)
           s (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi s @tap) lctl $left-hand-keys)
           t (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi t @tap) lalt $left-hand-keys)
-          o (multi o @tap)
+          o (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi o @tap) lsft $right-hand-keys)
           i (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi i @tap) lmet $right-hand-keys)
           e (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi e @tap) rctl $right-hand-keys)
           n (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi n @tap) lalt $right-hand-keys)
@@ -63,11 +60,13 @@ in {
           les (macro S-, =)
 
           ;; differs from piantor in
+          ;; - shift is not on thumb
+          ;; - home row does not allow for same hand combos
+          ;; - home row modifiers on the same hand need to be tapped in sequence
           ;; - layer keys are not one-shot
           ;; - enter is not on thumb
-          ;; - layer keys are outward compared to shift and space as opposed to on the inside for
+          ;; - layer keys are outward compared to space as opposed to on the inside for
           ;;   piantor (due to large spacebar on laptop)
-          ;; - arrows still work
         )
 
         (defsrc
@@ -81,35 +80,35 @@ in {
           S--  q    w    f    p    b    j    l    u    y    ;    S-/  XX
           tab  @a   @r   @s   @t   g    m    @n   @e   @i   @o   S-'  ret  ret
           del  XX   x    c    d    v    z    k    h    ,    .    /    '
-          XX   esc  @lyd           @spc           @lyu @nav lft  down up   rght
+          XX   esc  @lyd           spc            @lyu @nav lft  down up   rght
         )
 
         (deflayer nomods
           S--  q    w    f    p    b    j    l    u    y    ;    S-/  XX
           tab  a    r    s    t    g    m    n    e    i    o    S-'  ret  ret
           del  XX   x    c    d    v    z    k    h    ,    .    /    '
-          XX   esc  @lyd           @spc           @lyu @nav lft  down up   rght
+          XX   esc  @lyd           spc            @lyu @nav lft  down up   rght
         )
 
         (deflayer down
           f9   f10  f11  f12  XX   XX   XX   7    8    9    ,    XX   XX
           f5   f6   f7   f8   S--  XX   S-;  4    5    6    0    S-4  ret  ret
           XX   f1   f2   f3   f4   XX   XX   sys  1    2    3    .    del
-          XX   esc  @lyd           @spc           @lyu bspc lft  down up   rght
+          XX   esc  @lyd           spc            @lyu bspc lft  down up   rght
         )
 
         (deflayer up
           @arr \    [    ]    S-4  S-2  XX   S-5  S-3  S-6  S-/  @grt XX
           @not S--  S-9  S-0  =    S-`  grv  S-\  S-1  S-8  +    @les ret  ret
           @dar XX   S-7  S-[  S-]  -    XX   XX   XX   XX   XX   XX   XX
-          XX   esc  @lyd           @spc           @lyu bspc lft  down up   rght
+          XX   esc  @lyd           spc            @lyu bspc lft  down up   rght
         )
 
         (deflayer nav
           XX   brup volu pgup home XX   XX   XX   up   XX   XX   XX   XX
           XX   brdn vold pgdn end  sys  XX   lft  down rght +    XX   XX   ret
           XX   XX   pp   mute XX   XX   XX   XX   XX   XX   XX   XX   XX
-          XX   esc  @lyd           @spc           @lyu bspc lft  down up   rght
+          XX   esc  @lyd           spc            @lyu bspc lft  down up   rght
         )
       '';
       extraDefCfg = ''
