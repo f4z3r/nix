@@ -38,7 +38,10 @@ in {
           ;; use shorter hold delay on space as shift is more central here
           spc (tap-hold-release ${hold-delay} ${hold-delay} spc lsft)
 
-          ;; home row mod, in a very complex way that does what I want, see https://github.com/jtroo/kanata/blob/main/cfg_samples/home-row-mod-advanced.kbd
+          ;; home row mod, in a very complex way that does what I want
+          ;; See https://github.com/jtroo/kanata/blob/main/cfg_samples/home-row-mod-advanced.kbd
+          ;; does not allow to press two modifiers with the same hand at once, but needs to roll
+          ;; on the modifiers with some delay
           tap (multi
             (layer-switch nomods)
             (on-idle-fakekey to-base tap 20)
@@ -47,7 +50,7 @@ in {
           r (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi r @tap) lmet $left-hand-keys)
           s (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi s @tap) lctl $left-hand-keys)
           t (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi t @tap) lalt $left-hand-keys)
-          o (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi o @tap) rsft $right-hand-keys)
+          o (multi o @tap)
           i (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi i @tap) lmet $right-hand-keys)
           e (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi e @tap) rctl $right-hand-keys)
           n (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi n @tap) lalt $right-hand-keys)
