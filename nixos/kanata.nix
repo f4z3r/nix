@@ -91,9 +91,9 @@ in {
         )
 
         (deflayer down
-          f9   f10  f11  f12  XX   XX   XX   7    8    9    ,    XX   XX
+          f9   f10  f11  f12  S-=  XX   XX   7    8    9    ,    XX   XX
           f5   f6   f7   f8   S--  XX   S-;  4    5    6    0    S-4  ret  ret
-          XX   f1   f2   f3   f4   XX   XX   sys  1    2    3    .    del
+          XX   f1   f2   f3   f4   S-8  XX   -    1    2    3    .    del
           XX   esc  @lyd           spc            @lyu bspc lft  down up   rght
         )
 
