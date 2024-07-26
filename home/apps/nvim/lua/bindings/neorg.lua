@@ -29,6 +29,12 @@ local mappings = {
     command = "<cmd>Neorg journal tomorrow<cr>",
     desc = "Open journal for tomorrow",
   },
+  {
+    mode = "n",
+    suffix = "a",
+    command = "<cmd>Neorg journal custom<cr>",
+    desc = "Open journal for any date",
+  },
 }
 
 for _, mapping in ipairs(mappings) do
