@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  tap-timeout = "200";
+  tap-timeout = "150";
   home-row-hold-delay = "150";
   hold-delay = "170";
 in {
@@ -43,14 +43,14 @@ in {
             (layer-switch nomods)
             (on-idle-fakekey to-base tap 20)
           )
-          a (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi a @tap) lsft $left-hand-keys)
-          r (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi r @tap) lmet $left-hand-keys)
-          s (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi s @tap) lctl $left-hand-keys)
-          t (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi t @tap) lalt $left-hand-keys)
-          o (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi o @tap) lsft $right-hand-keys)
-          i (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi i @tap) lmet $right-hand-keys)
-          e (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi e @tap) rctl $right-hand-keys)
-          n (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi n @tap) lalt $right-hand-keys)
+          q (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} q lmet))
+          w (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} w lsft))
+          f (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} f lctl))
+          p (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} p lalt))
+          ; (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} ; lmet))
+          y (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} y lsft))
+          u (tap-hold-release ${tap-timeout} ${home-row-hold-delay} u rctl)
+          l (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} l lalt))
 
           ;; helpers
           arr (macro - S-.)
@@ -58,6 +58,10 @@ in {
           not (macro S-` =)
           grt (macro S-. =)
           les (macro S-, =)
+
+          cut (multi lctl x)
+          cop (multi lctl c)
+          pas (multi lctl v)
 
           ;; differs from piantor in
           ;; - shift is not on thumb
@@ -77,8 +81,8 @@ in {
         )
 
         (deflayer colemakdh
-          S--  q    w    f    p    b    j    l    u    y    ;    S-/  XX
-          tab  @a   @r   @s   @t   g    m    @n   @e   @i   @o   S-'  ret  ret
+          S--  @q   @w   @f   @p   b    j    @l   @u   @y   @;   S-/  XX
+          tab  a    r    s    t    g    m    n    e    i    o    S-'  ret  ret
           del  XX   x    c    d    v    z    k    h    ,    .    /    '
           XX   esc  @lyd           spc            @lyu @nav lft  down up   rght
         )
@@ -91,9 +95,9 @@ in {
         )
 
         (deflayer down
-          f9   f10  f11  f12  S-=  XX   XX   7    8    9    ,    XX   XX
-          f5   f6   f7   f8   S--  XX   S-;  4    5    6    0    S-4  ret  ret
-          XX   f1   f2   f3   f4   S-8  XX   -    1    2    3    .    del
+          f7   f8   f9   f10  f11  f12  XX   7    8    9    ,    XX   XX
+          @cut S-=  S--  @cop @pas S-8  S-;  4    5    6    0    S-4  ret  ret
+          XX   f1   f2   f3   f4   f5   f6   -    1    2    3    .    del
           XX   esc  @lyd           spc            @lyu bspc lft  down up   rght
         )
 
