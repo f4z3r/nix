@@ -217,6 +217,7 @@ in {
       vial
 
       # utils
+      devbox
       zip
       just
       gnumake
