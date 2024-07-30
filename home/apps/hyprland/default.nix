@@ -115,12 +115,15 @@
             ''windowsOut, 1, 2, easeOutExpo, popin''
           ];
           windowrulev2 = [
+            # ensure rofi floats and grabs input
             ''float,class:(Rofi)''
             ''center,class:(Rofi)''
             ''animation popin,class:(Rofi)''
             ''stayfocused,class:(Rofi)''
+            # ensure pinentry grabs input
             ''animation popin,class:(Pinentry)''
             ''stayfocused,class:(Pinentry)''
+            # quake window sizing
             ''float,class:(quake)''
             ''center,class:(quake)''
             ''size 70% 70%,class:(quake)''
@@ -135,12 +138,15 @@
             ''tag +video,class:^(brave-browser)$,title:(.*YouTube.*)''
             ''tag +video,class:^(brave-browser)$,title:(.*Netflix.*)''
             ''idleinhibit focus,tag:video''
+            # do not dim windows that are playing videos even when inactive
             ''nodim,tag:video''
           ];
           workspace = [
             ''r[1-5], monitor:${main_monitor}''
             ''r[6-10], monitor:${main_monitor}-1''
             ''r[6-10], monitor:${main_monitor}-2''
+            # launch new terminal when opening special workspace and it is empty
+            ''special:quake, on-created-empty:[ float; size 70% 70%; center ] wezterm start --class quake -- tmux new -s quake''
           ];
           general = {
             border_size = 2;
