@@ -14,7 +14,7 @@ in {
       config = ''
         (defvar
           left-hand-keys (
-              w f p
+            q w f p
             a r s t g
               c d v
           )
@@ -44,11 +44,13 @@ in {
             (on-idle-fakekey to-base tap 20)
           )
           q (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} q lmet))
-          w (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} w lsft))
+          ;; using key exception here to avoid wq turning into Q
+          w (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi w @tap) lsft $left-hand-keys)
           f (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} f lctl))
           p (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} p lalt))
           ; (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} ; lmet))
           y (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} y lsft))
+          ;; not using f24 to allow umlaut
           u (tap-hold-release ${tap-timeout} ${home-row-hold-delay} u rctl)
           l (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} l lalt))
 
