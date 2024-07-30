@@ -26,7 +26,6 @@
             "${pkgs.swww}/bin/swww-daemon"
             "${pkgs.swww}/bin/swww img ~/.local/share/wallpapers/lofoten1.jpg"
             "wl-paste --watch cliphist store"
-            ''[ workspace special:quake silent; float; size 70% 70%; center ] wezterm start --class quake -- tmux new -s quake''
           ];
           env = [
             ''GTK_THEME,Materia-dark''
