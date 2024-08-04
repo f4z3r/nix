@@ -295,6 +295,10 @@ in {
         source = ./scripts/mip;
         executable = true;
       };
+      ".local/bin/gcl" = {
+        source = ./scripts/gcl;
+        executable = true;
+      };
     };
   };
 
