@@ -27,3 +27,6 @@ vim.api.nvim_set_hl(0, "NeoTreeDirectoryName", { fg = colors.blue })
 vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { fg = colors.blue })
 vim.api.nvim_set_hl(0, "NeoTreeGitModified", { fg = colors.aqua })
 vim.api.nvim_set_hl(0, "NeoTreeTitleBar", { link = "FloatTitle" })
+
+--- Nicer HTTP stuff
+vim.api.nvim_set_hl(0, "@function.method.http", { fg = colors.red })

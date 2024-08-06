@@ -7,5 +7,6 @@ vim.filetype.add({
   pattern = {
     [".*/templates/.*%.tpl"] = "gotmpl",
     [".*/templates/.*%.yaml"] = "gotmpl",
+    [".*%.http"] = "http",
   }
 })
