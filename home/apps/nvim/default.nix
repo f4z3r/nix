@@ -158,6 +158,8 @@ in {
       tfsec
 
       fzf
+
+      html-tidy
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -273,6 +275,13 @@ in {
       neotest-go
       neotest-python
       neotest-rust
+
+      # http
+      {
+        type = "lua";
+        plugin = rest-nvim;
+        config = builtins.readFile ./plugin/rest.lua;
+      }
 
       # completion
       friendly-snippets
