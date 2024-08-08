@@ -12,19 +12,6 @@ in {
     keyboards.colemak = {
       devices = ["/dev/input/event0"];
       config = ''
-        (defvar
-          left-hand-keys (
-            q w f p
-            a r s t g
-              c d v
-          )
-          right-hand-keys (
-              l u y
-            m n e i o
-              h , .
-          )
-        )
-
         (deffakekeys
           to-base (layer-switch colemakdh)
         )
@@ -44,8 +31,8 @@ in {
             (on-idle-fakekey to-base tap 20)
           )
           q (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} q lmet))
-          ;; using key exception here to avoid wq turning into Q
-          w (tap-hold-release-keys ${tap-timeout} ${home-row-hold-delay} (multi w @tap) lsft $left-hand-keys)
+          ;; can be a pain with wq, but shifting quick is more important
+          w (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} w lsft))
           f (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} f lctl))
           p (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} p lalt))
           ; (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} ; lmet))
