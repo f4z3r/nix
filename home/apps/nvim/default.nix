@@ -4,8 +4,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "f4z3r";
       repo = "gruvbox-material.nvim";
-      rev = "0ab9d8c7a8b4cd26338ca0c816c4ca1a48f9d5d6";
-      sha256 = "sha256-fCLZNWOGtLafh6i8UAcYJLA2UfO7wRtS8W5qP+TMgEY=";
+      rev = "d50ba933dd82988eb2c5b26b1f9bda3bf8e13c5f";
+      sha256 = "sha256-YlsKrGKAyr/pMuZ+kxlyU70O+Lr3Wkwzb6Fsrkr+hUk=";
     };
   };
 

@@ -25,6 +25,8 @@ require("neorg").setup({
           code_block = {
             width = "content",
             spell_check = false,
+            conceal = true,
+            highlight = "CodeBlock",
           },
           heading = {
             icons = { "", "󰪥", "󰻂", "󰺕", "○" },
@@ -74,9 +76,9 @@ require("neorg").setup({
       config = {
         highlights = {
           headings = {
-            ["1"] = "+Yellow",
+            ["1"] = "+Red",
             ["2"] = "+Orange",
-            ["3"] = "+Red",
+            ["3"] = "+Yellow",
             ["4"] = "+Green",
             ["5"] = "+Blue",
             ["6"] = "+Purple",
@@ -87,9 +89,9 @@ require("neorg").setup({
           links = {
             location = {
               heading = {
-                ["1"] = "+Yellow",
+                ["1"] = "+Red",
                 ["2"] = "+Orange",
-                ["3"] = "+Red",
+                ["3"] = "+Yellow",
                 ["4"] = "+Green",
                 ["5"] = "+Blue",
                 ["6"] = "+Purple",
