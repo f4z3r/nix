@@ -366,6 +366,11 @@ in {
       }
       neorg-telescope
       neorg-templates
+      {
+        type = "lua";
+        plugin = headlines-nvim;
+        config = builtins.readFile ./plugin/headlines.lua;
+      }
 
       {
         type = "lua";
