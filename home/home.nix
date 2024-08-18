@@ -317,10 +317,10 @@ in {
       name = cursorTheme;
     };
     gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
+      gtk-application-prefer-dark-theme = theme == "dark";
     };
     gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
+      gtk-application-prefer-dark-theme = theme == "dark";
     };
   };
 }
