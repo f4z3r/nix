@@ -1,8 +1,24 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  theme,
+  ...
+}: let
+  yellow =
+    if theme == "dark"
+    then "#d8a657"
+    else "#b47109";
+in {
   programs = {
     waybar = {
       enable = true;
-      style = builtins.readFile ./style.css;
+      style =
+        if theme == "light"
+        then
+          builtins.replaceStrings
+          ["#282828" "#d4be98" "#635850"]
+          ["#fbf1c7" "#654735" "#ebdbb2"]
+          (builtins.readFile ./style.css)
+        else (builtins.readFile ./style.css);
       settings = {
         mainBar = {
           layer = "top";
@@ -27,20 +43,20 @@
             };
           };
           backlight = {
-            format = ''<span color="#d8a657">BL</span> {percent}%'';
+            format = ''<span color="${yellow}">BL</span> {percent}%'';
           };
           idle_inhibitor = {
-            format = ''<span color="#d8a657">IDL</span> {icon}'';
+            format = ''<span color="${yellow}">IDL</span> {icon}'';
             format-icons = {
               activated = "";
               deactivated = "";
             };
           };
           pulseaudio = {
-            format = ''<span color="#d8a657">VOL</span> {volume}% {icon} {format_source}'';
-            format-bluetooth = ''<span color="#d8a657">VOL</span> 󰂯 {volume}% {icon} {format_source}'';
-            format-bluetooth-muted = ''<span color="#d8a657">VOL</span> 󰂯 {volume}% {icon}  {format_source}'';
-            format-muted = ''<span color="#d8a657">VOL</span> {volume}%  {format_source}'';
+            format = ''<span color="${yellow}">VOL</span> {volume}% {icon} {format_source}'';
+            format-bluetooth = ''<span color="${yellow}">VOL</span> 󰂯 {volume}% {icon} {format_source}'';
+            format-bluetooth-muted = ''<span color="${yellow}">VOL</span> 󰂯 {volume}% {icon}  {format_source}'';
+            format-muted = ''<span color="${yellow}">VOL</span> {volume}%  {format_source}'';
             format-source = "{volume}% 󰍬";
             format-source-muted = "󰍭";
             format-icons = {
@@ -54,14 +70,14 @@
             };
           };
           cpu = {
-            format = ''<span color="#d8a657">CPU</span> {usage}%'';
+            format = ''<span color="${yellow}">CPU</span> {usage}%'';
             interval = 3;
             states = {
               critical = 90;
             };
           };
           memory = {
-            format = ''<span color="#d8a657">MEM</span> {used:0.1f}/{total:0.1f}Gi'';
+            format = ''<span color="${yellow}">MEM</span> {used:0.1f}/{total:0.1f}Gi'';
             interval = 3;
             states = {
               critical = 90;
@@ -69,22 +85,22 @@
           };
           disk = {
             interval = 120;
-            format = ''<span color="#d8a657">SSD</span> {percentage_used}%'';
+            format = ''<span color="${yellow}">SSD</span> {percentage_used}%'';
             unit = "GiB";
           };
           network = {
             interface = "wlp0s20f3";
             interval = 3;
-            format = ''<span color="#d8a657">NET</span> {ifname}'';
-            format-wifi = ''<span color="#d8a657">NET</span> <span color="#d3869b">{essid}</span> 󰖩 ({signalStrength}%) <span color="#d8a657">UP</span> {bandwidthUpBytes} <span color="#d8a657">DN</span> {bandwidthDownBytes}'';
-            format-ethernet = ''<span color="#d8a657">NET</span> <span color="#d3869b">{ipaddr}/{cidr}</span> <span color="#d8a657">UP</span> {bandwidthUpBytes} <span color="#d8a657">DN</span> {bandwidthDownBytes}'';
-            format-disconnected = ''<span color="#d8a657">NET</span> <span color="#7c6f64">disconnected</span>'';
+            format = ''<span color="${yellow}">NET</span> {ifname}'';
+            format-wifi = ''<span color="${yellow}">NET</span> <span color="#d3869b">{essid}</span> 󰖩 ({signalStrength}%) <span color="${yellow}">UP</span> {bandwidthUpBytes} <span color="${yellow}">DN</span> {bandwidthDownBytes}'';
+            format-ethernet = ''<span color="${yellow}">NET</span> <span color="#d3869b">{ipaddr}/{cidr}</span> <span color="${yellow}">UP</span> {bandwidthUpBytes} <span color="${yellow}">DN</span> {bandwidthDownBytes}'';
+            format-disconnected = ''<span color="${yellow}">NET</span> <span color="#7c6f64">disconnected</span>'';
           };
           "custom/vpn" = {
             exec = "${pkgs.luajit}/bin/luajit ~/.local/share/scripts/vpn.lua";
             exec-if = ''systemctl is-active "openvpn-*"'';
             interval = 60;
-            format = ''<span color="#d8a657">VPN</span> {}'';
+            format = ''<span color="${yellow}">VPN</span> {}'';
           };
           battery = {
             interval = 60;
@@ -92,7 +108,7 @@
               warning = 30;
               critical = 15;
             };
-            format = ''<span color="#d8a657">BAT</span> {capacity}%'';
+            format = ''<span color="${yellow}">BAT</span> {capacity}%'';
           };
           clock = {
             format = "{:%F %R}";

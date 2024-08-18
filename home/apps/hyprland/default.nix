@@ -9,7 +9,7 @@
   ...
 }: {
   imports = [
-    (import ./waybar/default.nix)
+    (import ./waybar/default.nix {inherit pkgs theme;})
     (import ./hypridle.nix)
     (import ./hyprlock.nix)
   ];
