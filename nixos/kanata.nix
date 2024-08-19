@@ -41,6 +41,9 @@ in {
           u (tap-hold-release ${tap-timeout} ${home-row-hold-delay} u rctl)
           l (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} l lalt))
 
+          quo (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} ' rsft))
+          del (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} del lsft))
+
           ;; helpers
           arr (macro - S-.)
           dar (macro = S-.)
@@ -72,7 +75,7 @@ in {
         (deflayer colemakdh
           S--  @q   @w   @f   @p   b    j    @l   @u   @y   @;   S-/  XX
           tab  a    r    s    t    g    m    n    e    i    o    S-'  ret  ret
-          del  XX   x    c    d    v    z    k    h    ,    .    /    '
+          @del XX   x    c    d    v    z    k    h    ,    .    /    @quo
           XX   esc  @lyd           spc            @lyu @nav lft  down up   rght
         )
 
