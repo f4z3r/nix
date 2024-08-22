@@ -171,6 +171,7 @@ in {
       }
 
       # syntax highlighting
+      plantuml-syntax
       vim-just
       d2-vim
       rainbow-delimiters-nvim
