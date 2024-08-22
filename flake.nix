@@ -34,7 +34,6 @@
     setup = {
       hostname,
       dpi,
-      polybar_dpi,
       font_size,
       resolution,
       brain_backup,
@@ -75,7 +74,6 @@
                     hostname
                     username
                     theme
-                    polybar_dpi
                     font_size
                     resolution
                     main_monitor
@@ -92,7 +90,6 @@
       "revenge-nix" = setup {
         hostname = "revenge-nix";
         dpi = 192;
-        polybar_dpi = 128;
         font_size = 19;
         resolution = "3840x2160";
         brain_backup = true;
@@ -103,7 +100,6 @@
       "nix" = setup {
         hostname = "nix";
         dpi = 91;
-        polybar_dpi = 65;
         font_size = 11;
         resolution = "1920x1200";
         brain_backup = true;

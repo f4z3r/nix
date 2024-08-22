@@ -6,7 +6,6 @@
   hostname,
   username,
   theme ? "dark",
-  polybar_dpi,
   font_size,
   resolution,
   main_monitor,
@@ -215,6 +214,7 @@ in {
       helvum
       onlyoffice-bin
       vial
+      inkscape-with-extensions
 
       # utils
       devbox
