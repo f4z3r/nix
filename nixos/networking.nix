@@ -10,7 +10,7 @@
     networkmanager.enable = true;
 
     hosts = {
-      "127.0.0.1" = [ "grafana.localhost" ];
+      # "127.0.0.1" = [ "grafana.localhost" ];
     };
 
     nftables.enable = true;
