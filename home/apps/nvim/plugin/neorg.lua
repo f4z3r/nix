@@ -28,9 +28,7 @@ require("neorg").setup({
             conceal = true,
             highlight = "CodeBlock",
           },
-          heading = {
-            icons = { "", "󰪥", "󰻂", "󰺕", "○" },
-          },
+          heading = false,
           quote = {
             icons = { "┊" },
           },

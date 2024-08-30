@@ -9,6 +9,16 @@
     };
   };
 
+  headlines-nvim-f4z3r = pkgs.vimUtils.buildVimPlugin {
+    name = "headlines.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "f4z3r";
+      repo = "headlines.nvim";
+      rev = "62f8585c89e8f0cad4bb59f4c96307aeaa1c69fd";
+      sha256 = "sha256-Dv/G94cKaNf3Kd7DgruPzXsB4dAz2gNQElYW3H231Yg=";
+    };
+  };
+
   # NOTE: this should be changed back to original repo when fixed
   git-worktree-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "git-worktree-nvim";
@@ -369,7 +379,7 @@ in {
       neorg-templates
       {
         type = "lua";
-        plugin = headlines-nvim;
+        plugin = headlines-nvim-f4z3r;
         config = builtins.readFile ./plugin/headlines.lua;
       }
 
