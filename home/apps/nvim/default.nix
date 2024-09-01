@@ -189,21 +189,7 @@ in {
       nvim-treesitter-textobjects
       {
         type = "lua";
-        plugin = nvim-treesitter.withPlugins (p:
-          [p.tree-sitter-lua]
-          ++ nvim-treesitter.allGrammars
-          ++ [
-            (pkgs.tree-sitter.buildGrammar {
-              language = "gotmpl";
-              version = "master";
-              src = pkgs.fetchFromGitHub {
-                owner = "ngalaiko";
-                repo = "tree-sitter-go-template";
-                rev = "17144a77be0acdecebd9d557398883569fed41de";
-                sha256 = "sha256-aB8MTTKzxV9+66goNfFRI39wzuBiGECAc8HvAQzIv80=";
-              };
-            })
-          ]);
+        plugin = nvim-treesitter.withAllGrammars;
         config = builtins.readFile ./plugin/treesitter.lua;
       }
       {

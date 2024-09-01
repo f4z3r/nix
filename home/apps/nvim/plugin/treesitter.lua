@@ -1,10 +1,15 @@
 require("nvim-treesitter.install").prefer_git = true
+
+-- NOTE: this is a temporary solution due to issue with nix setup
+vim.opt.runtimepath:append("$HOME/.local/share/treesitter")
+
 require("nvim-treesitter.configs").setup({
+  -- NOTE: see above note
+  parser_install_dir = "$HOME/.local/share/treesitter",
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = { "org" },
   },
-  ensure_installed = {},
+  ensure_installed = "all",
   rainbow = {
     enable = true,
     query = "rainbow-delimiters",
@@ -35,13 +40,3 @@ require("nvim-treesitter.configs").setup({
     },
   },
 })
-
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.gotmpl = {
-  install_info = {
-    url = "https://github.com/ngalaiko/tree-sitter-go-template",
-    files = { "src/parser.c" },
-  },
-  filetype = "gotmpl",
-  used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml" },
-}
