@@ -66,7 +66,7 @@ in {
     ./apps/rofi/default.nix
     (import ./apps/git/default.nix {inherit pkgs theme;})
     (import ./apps/lazygit.nix {inherit pkgs theme;})
-    (import ./apps/wezterm.nix {inherit pkgs theme font_size;})
+    (import ./apps/foot.nix {inherit pkgs theme font_size;})
     (import ./apps/tmux/default.nix {inherit pkgs lib stdenv theme;})
     (import ./apps/fish/default.nix {inherit lib pkgs pkgs-custom theme;})
     ./apps/starship.nix

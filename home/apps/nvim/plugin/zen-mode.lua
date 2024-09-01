@@ -21,9 +21,5 @@ require("zen-mode").setup({
     twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
     gitsigns = { enabled = false }, -- disables git signs
     tmux = { enabled = true }, -- disables the tmux statusline
-    wezterm = {
-      enabled = true,
-      font = "+4",
-    },
   },
 })

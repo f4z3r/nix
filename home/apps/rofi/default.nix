@@ -3,7 +3,7 @@
     enable = true;
     cycle = true;
     location = "center";
-    terminal = "${pkgs.wezterm}/bin/wezterm";
+    terminal = "${pkgs.foot}/bin/foot";
     theme = "improved";
   };
 

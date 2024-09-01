@@ -7,7 +7,12 @@
   resolution,
   theme,
   ...
-}: {
+}: let
+  cursorTheme =
+    if theme == "dark"
+    then "Capitaine Cursors (Gruvbox) - White"
+    else "Capitaine Cursors (Gruvbox)";
+in {
   imports = [
     (import ./waybar/default.nix {inherit pkgs theme;})
     (import ./hypridle.nix)
@@ -26,6 +31,7 @@
             "${pkgs.swww}/bin/swww-daemon"
             "${pkgs.swww}/bin/swww img ~/.local/share/wallpapers/lofoten1.jpg"
             "wl-paste --watch cliphist store"
+            "${pkgs.hyprland}/bin/hyprctl setcursor '${cursorTheme}' 24"
           ];
           env = [
             ''GTK_THEME,Materia-dark''
@@ -43,7 +49,7 @@
             # monitor=desc:Chimei Innolux Corporation 0x150C,preferred,auto,1.5
           ];
           bind = [
-            ''$general, RETURN, exec, ${pkgs.wezterm}/bin/wezterm start ${pkgs.tmux}/bin/tmux''
+            ''$general, RETURN, exec, ${pkgs.foot}/bin/foot ${pkgs.tmux}/bin/tmux''
 
             ''$general, V, exec, rofi -modi clipboard:/home/${username}/.local/bin/cliphist-rofi-img.sh -show clipboard -show-icons''
 
@@ -145,7 +151,7 @@
             ''r[6-10], monitor:${main_monitor}-1''
             ''r[6-10], monitor:${main_monitor}-2''
             # launch new terminal when opening special workspace and it is empty
-            ''special:quake, on-created-empty:[ float; size 70% 70%; center ] wezterm start --class quake -- tmux new -s quake''
+            ''special:quake, on-created-empty:[ float; size 70% 70%; center ] foot --title=quake -- tmux new -s quake''
           ];
           general = {
             border_size = 2;
