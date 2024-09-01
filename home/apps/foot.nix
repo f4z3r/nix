@@ -82,6 +82,7 @@ in {
     settings = {
       main = {
         font = "FiraCode Nerd Font Mono:size=${toString font_size}:style=SemiBold,Regular";
+        locked-title = true;
       };
       url = {
         label-letters = "arsneiogmwfpluy";
@@ -150,8 +151,7 @@ in {
         pipe-visible = "none";
         pipe-scrollback = "none";
         pipe-selected = "none";
-        # use open output from last command into neovim instance, currently not working in tmux
-        pipe-command-output = ''[sh -c "f=$(mktemp); cat - > $f; foot nvim $f; rm $f"] Control+Shift+g'';
+        pipe-command-output = "none";
         show-urls-launch = "Control+Shift+o";
         show-urls-copy = "none";
         show-urls-persistent = "none";

@@ -127,12 +127,12 @@ in {
             ''stayfocused,class:(Rofi)''
             # ensure pinentry grabs input
             ''animation popin,class:(Pinentry)''
-            ''stayfocused,class:(Pinentry)''
+            ''pin,class:(Pinentry)''
             # quake window sizing
-            ''float,class:(quake)''
-            ''center,class:(quake)''
-            ''size 70% 70%,class:(quake)''
-            ''animation popin,class:(quake)''
+            ''float,title:(quake)''
+            ''center,title:(quake)''
+            ''size 70% 70%,title:(quake)''
+            ''animation popin,title:(quake)''
             # make brave popups appear centrally floating
             ''float,class:^(brave)$''
             ''center,class:^(brave)$''
@@ -148,8 +148,8 @@ in {
           ];
           workspace = [
             ''r[1-5], monitor:${main_monitor}''
-            ''r[6-10], monitor:${main_monitor}-1''
-            ''r[6-10], monitor:${main_monitor}-2''
+            ''r[6-10], monitor:${monitor_prefix}-1''
+            ''r[6-10], monitor:${monitor_prefix}-2''
             # launch new terminal when opening special workspace and it is empty
             ''special:quake, on-created-empty:[ float; size 70% 70%; center ] foot --title=quake -- tmux new -s quake''
           ];
