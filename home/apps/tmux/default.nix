@@ -154,6 +154,13 @@ in {
       # window tree
       bind-key -r w run-shell 'tmux choose-tree -wf"##{==:##{session_name},#{session_name}}" -F "##{window_name}"'
 
+      # better movement
+      bind-key -n Pageup copy-mode -u
+      bind-key -T copy-mode -n Pageup send-keys -X halfpage-up
+      bind-key -T copy-mode -n Pagedown send-keys -X halfpage-down
+      bind-key -T copy-mode-vi Pageup send-keys -X halfpage-up
+      bind-key -T copy-mode-vi Pagedown send-keys -X halfpage-down
+
       # vim like pane movement
       bind-key C-h select-pane -t '{left-of}'
       bind-key C-l select-pane -t '{right-of}'
