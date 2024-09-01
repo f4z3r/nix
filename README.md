@@ -19,7 +19,7 @@ Supports quake terminals:
 - Launcher: `rofi`
 - GTK Theme: `Materia Material Dark`
 - GTK Icon Theme: `Papirus Dark`
-- Terminal: `wezterm`
+- Terminal: `foot`
 - Multiplexer: `tmux`
 - Shell: `fish`
 - Editor: `neovim`
@@ -48,7 +48,7 @@ reload the tmux configurations if a tmux instance is already running:
 ```
 
 and export `NIX_THEME="..."` for NeoVim to take over the theme if you do not which to restart
-shells. WezTerm will take over the theme dynmically. GTK themes typically reload only on application
+shells. Foot will take over the theme dynmically. GTK themes typically reload only on application
 restart.
 
 ## Bootstrap New Computer
