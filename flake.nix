@@ -101,7 +101,7 @@
       "revenge-nix" = setup {
         hostname = "revenge-nix";
         dpi = 192;
-        font_size = 19;
+        font_size = 11;
         resolution = "3840x2160";
         brain_backup = true;
         # update the following to the "nix" values if disabling nvidia sync
