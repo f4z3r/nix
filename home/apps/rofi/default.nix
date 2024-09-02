@@ -5,6 +5,7 @@
     location = "center";
     terminal = "${pkgs.foot}/bin/foot";
     theme = "improved";
+    package = pkgs.rofi-wayland;
   };
 
   home.file = {
