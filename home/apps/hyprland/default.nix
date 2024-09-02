@@ -1,10 +1,10 @@
 {
   pkgs,
-  hostname,
   username,
   main_monitor,
   monitor_prefix,
   resolution,
+  scale,
   theme,
   ...
 }: let
@@ -41,7 +41,7 @@ in {
           "$wm" = "ALT";
           "$app" = "CONTROL";
           monitor = [
-            ''${main_monitor}, ${resolution}@60, 0x0, 1''
+            ''${main_monitor}, ${resolution}@60, 0x0,${toString scale}''
             # ''DP-1, 5120x1440@60, -1920x0, 1''
             # ''DP-2, 5120x1440@60, 1920x0, 1''
             ''${monitor_prefix}-1, highres, auto-left, 1''

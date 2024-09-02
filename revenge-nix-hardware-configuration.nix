@@ -55,17 +55,19 @@
   ];
 
   hardware.nvidia = {
-    open = true;
+    open = false;
+    nvidiaSettings = true;
     modesetting.enable = true;
+    powerManagement = {
+      enable = false;
+      finegrained = false;
+    };
     prime = {
       offload = {
         # nvidia on standby for offloading
-        # enable = true;
-        # enableOffloadCmd = true;
+        enable = true;
+        enableOffloadCmd = true;
       };
-      # nvidia always on
-      sync.enable = true;
-
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };

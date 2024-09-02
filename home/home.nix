@@ -3,7 +3,7 @@
   lib,
   stdenv,
   pkgs-custom,
-  hostname,
+  scale,
   username,
   theme ? "dark",
   font_size,
@@ -61,7 +61,7 @@ in {
   imports = [
     (import ./langs/lua.nix {inherit pkgs lib;})
     (import ./apps/hyprland/default.nix {
-      inherit pkgs pkgs-custom hostname username resolution main_monitor monitor_prefix theme;
+      inherit pkgs pkgs-custom username resolution scale main_monitor monitor_prefix theme;
     })
     ./apps/rofi/default.nix
     (import ./apps/git/default.nix {inherit pkgs theme;})

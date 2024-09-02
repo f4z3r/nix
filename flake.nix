@@ -33,12 +33,13 @@
 
     setup = {
       hostname,
-      dpi,
       font_size,
       resolution,
+      scale,
       brain_backup,
       main_monitor,
       monitor_prefix,
+      monitoring,
     }:
       lib.nixosSystem {
         inherit system;
@@ -47,12 +48,12 @@
             system
             pkgs-custom
             username
-            hostname
             theme
-            dpi
+            hostname
             brain_backup
             main_monitor
             monitor_prefix
+            monitoring
             ;
         };
         modules = [
@@ -82,11 +83,11 @@
                     lib
                     stdenv
                     pkgs-custom
-                    hostname
                     username
                     theme
                     font_size
                     resolution
+                    scale
                     main_monitor
                     monitor_prefix
                     ;
@@ -100,22 +101,24 @@
     nixosConfigurations = {
       "revenge-nix" = setup {
         hostname = "revenge-nix";
-        dpi = 192;
         font_size = 11;
         resolution = "3840x2160";
+        scale = 2;
         brain_backup = true;
-        # update the following to the "nix" values if disabling nvidia sync
-        main_monitor = "eDP-1-1";
-        monitor_prefix = "DP-1";
+        # potential update to these when using nvidia sync
+        main_monitor = "eDP-1";
+        monitor_prefix = "DP";
+        monitoring = true;
       };
       "nix" = setup {
         hostname = "nix";
-        dpi = 91;
         font_size = 11;
         resolution = "1920x1200";
+        scale = 1;
         brain_backup = true;
         main_monitor = "eDP-1";
         monitor_prefix = "DP";
+        monitoring = false;
       };
     };
   };
