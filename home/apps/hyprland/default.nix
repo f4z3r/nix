@@ -127,7 +127,10 @@ in {
             ''stayfocused,class:(Rofi)''
             # ensure pinentry grabs input
             ''animation popin,class:(Pinentry)''
+            ''float,class:(Pinentry)''
+            ''center,class:(Pinentry)''
             ''pin,class:(Pinentry)''
+            ''stayfocused,class:(Pinentry)''
             # quake window sizing
             ''float,title:(quake)''
             ''center,title:(quake)''
