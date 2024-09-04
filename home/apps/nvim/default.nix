@@ -9,13 +9,14 @@
     };
   };
 
+  # NOTE: remove when released to nixpkgs
   headlines-nvim-f4z3r = pkgs.vimUtils.buildVimPlugin {
     name = "headlines.nvim";
     src = pkgs.fetchFromGitHub {
-      owner = "f4z3r";
+      owner = "lukas-reineke";
       repo = "headlines.nvim";
-      rev = "62f8585c89e8f0cad4bb59f4c96307aeaa1c69fd";
-      sha256 = "sha256-Dv/G94cKaNf3Kd7DgruPzXsB4dAz2gNQElYW3H231Yg=";
+      rev = "7671eec1065982cdf2ba4136beb1600fe1279431";
+      sha256 = "sha256-Ef1van9SEKSuc++A0ff3doZgogSsu1VDYF0DXGu9zno=";
     };
   };
 
