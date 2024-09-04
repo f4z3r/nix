@@ -19,6 +19,10 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 
 lspconfig.lua_ls.setup({
+  on_init = function(client, _)
+    -- disable syntax highlighting via LSP for lua
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
   settings = {
     Lua = {
       runtime = {
