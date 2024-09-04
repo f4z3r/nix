@@ -44,6 +44,7 @@ namespaces:
             - eDP-1
             - DP-1
             - DP-2
+            - DP-3
           resolution:
             prompt: Resolution
             exclusive: true
