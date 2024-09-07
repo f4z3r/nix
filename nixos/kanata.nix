@@ -41,8 +41,8 @@ in {
           u (tap-hold-release ${tap-timeout} ${home-row-hold-delay} u rctl)
           l (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} l lalt))
 
-          quo (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} ' rsft))
-          del (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} del lsft))
+          quo (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} S-' rsft))
+          squ (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} '   lsft))
 
           ;; helpers
           arr (macro - S-.)
@@ -54,6 +54,7 @@ in {
           cut (multi lctl x)
           cop (multi lctl c)
           pas (multi lctl v)
+          all (multi lctl a)
 
           ;; differs from piantor in
           ;; - shift is not on thumb
@@ -74,36 +75,36 @@ in {
 
         (deflayer colemakdh
           S--  @q   @w   @f   @p   b    j    @l   @u   @y   @;   S-/  XX
-          tab  a    r    s    t    g    m    n    e    i    o    S-'  ret  ret
-          @del XX   x    c    d    v    z    k    h    ,    .    /    @quo
+          tab  a    r    s    t    g    m    n    e    i    o    S-;  ret  ret
+          @squ @squ x    c    d    v    z    k    h    ,    .    /    @quo
           XX   esc  @lyd           spc            @lyu @nav lft  down up   rght
         )
 
         (deflayer nomods
           S--  q    w    f    p    b    j    l    u    y    ;    S-/  XX
-          tab  a    r    s    t    g    m    n    e    i    o    S-'  ret  ret
-          del  XX   x    c    d    v    z    k    h    ,    .    /    '
+          tab  a    r    s    t    g    m    n    e    i    o    S-;  ret  ret
+          '    '    x    c    d    v    z    k    h    ,    .    /    S-'
           XX   esc  @lyd           spc            @lyu @nav lft  down up   rght
         )
 
         (deflayer down
           f7   f8   f9   f10  f11  f12  XX   7    8    9    ,    XX   XX
-          @cut S-=  S--  @cop @pas S-8  S-;  4    5    6    0    S-4  ret  ret
+          S-=  @cut @all @cop @pas S-8  S-;  4    5    6    0    S-4  ret  ret
           XX   f1   f2   f3   f4   f5   f6   -    1    2    3    .    del
           XX   esc  @lyd           spc            @lyu bspc lft  down up   rght
         )
 
         (deflayer up
-          @arr \    [    ]    S-4  S-2  XX   S-5  S-3  S-6  S-/  @grt XX
-          @not S--  S-9  S-0  =    S-`  grv  S-\  S-1  S-8  +    @les ret  ret
-          @dar XX   S-7  S-[  S-]  -    XX   XX   XX   XX   XX   XX   XX
-          XX   esc  @lyd           spc            @lyu bspc lft  down up   rght
+          @arr \    [    ]    S-4  S-2  XX   S-5  S-3  S-6  S-/  XX   XX
+          @not S-,  S-9  S-0  =    S-`  grv  S-\  S-1  S-8  S-.  @grt ret  ret
+          @dar XX   S-7  S-[  S-]  -    XX   XX   XX   XX   XX   @les XX
+          XX   esc  S-=            spc            @lyu bspc lft  down up   rght
         )
 
         (deflayer nav
           XX   brup volu pgup home XX   XX   XX   up   XX   XX   XX   XX
-          XX   brdn vold pgdn end  sys  XX   lft  down rght +    XX   XX   ret
-          XX   XX   pp   mute XX   XX   XX   XX   XX   XX   XX   XX   XX
+          del  brdn vold pgdn end  sys  XX   lft  down rght +    XX   XX   ret
+          pp   XX   XX   mute XX   XX   XX   XX   XX   XX   XX   XX   XX
           XX   esc  @lyd           spc            @lyu bspc lft  down up   rght
         )
       '';
