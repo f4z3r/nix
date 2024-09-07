@@ -81,6 +81,13 @@
           leave_broot = false;
         }
         {
+          name = "exec";
+          shortcut = "x";
+          apply_to = "file";
+          execution = "chmod +x {file}";
+          leave_broot = false;
+        }
+        {
           invocation = "edit";
           shortcut = "ed";
           key = "ctrl-e";
