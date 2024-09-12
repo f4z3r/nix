@@ -30,6 +30,11 @@
       interval = "daily";
       frequency = 1;
     };
+
+    fangfrisch = {
+      enable = true;
+      interval = "daily";
+    };
   };
 
   systemd.services."clamav-clamonacc" = {
