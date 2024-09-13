@@ -31,16 +31,6 @@
     };
   };
 
-  d2-vim = pkgs.vimUtils.buildVimPlugin {
-    name = "d2-vim";
-    src = pkgs.fetchFromGitHub {
-      owner = "terrastruct";
-      repo = "d2-vim";
-      rev = "981c87dccb63df2887cc41b96e84bf550f736c57";
-      sha256 = "sha256-+mT4pEbtq7f9ZXhOop3Jnjr7ulxU32VtahffIwQqYF4=";
-    };
-  };
-
   neorg-templates = pkgs.vimUtils.buildVimPlugin {
     name = "neorg-templates";
     src = pkgs.fetchFromGitHub {
@@ -51,13 +41,13 @@
     };
   };
 
-  maximize-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "maximize.nvim";
+  markit = pkgs.vimUtils.buildVimPlugin {
+    name = "markit";
     src = pkgs.fetchFromGitHub {
-      owner = "declancm";
-      repo = "maximize.nvim";
-      rev = "97bfc171775c404396f8248776347ebe64474fe7";
-      sha256 = "sha256-k8Cqti4nLUvtl0EBaU8ZPYJ6JlfnRlN6nCxE/WHrbnw=";
+      owner = "2KAbhishek";
+      repo = "markit.nvim";
+      rev = "6a59bcc5140bed8fcf9cec2cba8d442072b1b76d";
+      sha256 = "sha256-ROYzCYgELycenWC/+lgDP7JZuZlck2yRGqVdaDA0zFE=";
     };
   };
 
@@ -184,7 +174,6 @@ in {
       # syntax highlighting
       plantuml-syntax
       vim-just
-      d2-vim
       rainbow-delimiters-nvim
       nvim-treesitter-endwise
       nvim-treesitter-textobjects
@@ -335,7 +324,6 @@ in {
       vim-repeat
       vim-surround
       targets-vim
-      vim-signature
       {
         type = "lua";
         plugin = nvim-autopairs;
@@ -359,6 +347,13 @@ in {
 
       # tag generation
       vim-gutentags
+
+      # marks
+      {
+        type = "lua";
+        plugin = markit;
+        config = builtins.readFile ./plugin/markit.lua;
+      }
 
       # neorg
       {
@@ -406,11 +401,6 @@ in {
       }
 
       # status line
-      {
-        type = "lua";
-        plugin = maximize-nvim;
-        config = builtins.readFile ./plugin/maximize.lua;
-      }
       {
         type = "lua";
         plugin = lualine-nvim;

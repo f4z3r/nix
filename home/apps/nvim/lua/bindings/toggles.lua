@@ -45,12 +45,6 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "m",
-    command = require("maximize").toggle,
-    desc = "Toggle maximization",
-  },
-  {
-    mode = "n",
     suffix = "r",
     command = require("overseer").toggle,
     desc = "Toggle task runner",
@@ -75,7 +69,7 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "S",
+    suffix = "m",
     command = require('treesj').toggle,
     desc = "Toggle split/join",
   },
