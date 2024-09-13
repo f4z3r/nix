@@ -325,8 +325,8 @@ in {
       }
       {
         type = "lua";
-        plugin = camelcasemotion;
-        config = builtins.readFile ./plugin/camelcasemotion.lua;
+        plugin = nvim-spider;
+        config = builtins.readFile ./plugin/spider.lua;
       }
       vim-repeat
       vim-surround
