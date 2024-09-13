@@ -306,6 +306,11 @@ in {
         plugin = neogen;
         config = ''require('neogen').setup({ snippet_engine = "luasnip" })'';
       }
+      {
+        type = "lua";
+        plugin = tabout-nvim;
+        config = builtins.readFile ./plugin/tabout.lua;
+      }
 
       # finder
       {
