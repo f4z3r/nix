@@ -2,6 +2,7 @@ local spider = require("spider")
 
 spider.setup({
   skipInsignificantPunctuation = true,
+  consistentOperatorPending = false,
 })
 
 vim.keymap.set({ "n", "o", "x" }, "w", function()
