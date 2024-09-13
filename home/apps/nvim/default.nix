@@ -320,7 +320,6 @@ in {
       }
       fzfWrapper
       telescope-fzf-native-nvim
-      harpoon2
 
       # useful stuff
       {
