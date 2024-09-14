@@ -23,7 +23,7 @@ vim.o.tags = "tags;/"
 
 vim.o.startofline = true
 vim.o.secure = true
-vim.o.mouse = nil
+vim.o.mouse = ""
 
 -- vim.g.clipboard = {
 --   name = "xsel_override",
