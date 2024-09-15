@@ -13,22 +13,16 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "a",
+    suffix = "p",
     command = function()
-      require("telescope").extensions.marks_nvim.marks_list_all({ path_display = "shorten" })
+      require("marks").preview()
     end,
-    desc = "Search all marks",
-  },
-  {
-    mode = "n",
-    suffix = "b",
-    command = function()
-      require("telescope").extensions.marks_nvim.bookmarks_list_all({ path_display = "shorten" })
-    end,
-    desc = "Search all bookmarks",
+    desc = "Preview marks",
   },
 }
 
 for _, mapping in ipairs(mappings) do
   vim.keymap.set(mapping.mode, leader .. mapping.suffix, mapping.command, { desc = mapping.desc })
 end
+
+vim.keymap.set("n", "0", require("marks").toggle_bookmark0, { desc = "Toggle JUMP bookmark" })

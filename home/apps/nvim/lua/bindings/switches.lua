@@ -25,3 +25,10 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {
   desc = "Jump to next diagnostic",
 })
+
+vim.keymap.set("n", "]]", require("marks").next_bookmark0, {
+  desc = "Jump to next JUMP bookmark",
+})
+vim.keymap.set("n", "[[", require("marks").prev_bookmark0, {
+  desc = "Jump to previous JUMP bookmark",
+})
