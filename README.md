@@ -13,6 +13,7 @@ Supports quake terminals:
 ## Standard Software Used
 
 - Channel: NixOS unstable
+- Package Manager: `lix`
 - Window Manager: `hyprland`
 - Bar: `waybar`
 - Layered Keyboard Mapping: `kanata`
