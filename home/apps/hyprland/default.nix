@@ -32,6 +32,7 @@ in {
             "${pkgs.swww}/bin/swww img ~/.local/share/wallpapers/lofoten1.jpg"
             "wl-paste --watch cliphist store"
             "${pkgs.hyprland}/bin/hyprctl setcursor '${cursorTheme}' 24"
+            "${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua"
           ];
           env = [
             ''GTK_THEME,Materia-dark''
