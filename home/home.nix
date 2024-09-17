@@ -247,6 +247,7 @@ in {
       pandoc
       presenterm
       d2
+      tup
       imagemagick
 
       # stuff not used often, installed via nix-shell

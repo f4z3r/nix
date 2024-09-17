@@ -127,6 +127,7 @@
       "/shell.nix"
       "/.direnv/"
       ".ropeproject/"
+      "/.tup/"
     ];
 
     aliases = {
