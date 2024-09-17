@@ -51,6 +51,16 @@
     };
   };
 
+  d2= pkgs.vimUtils.buildVimPlugin {
+    name = "d2";
+    src = pkgs.fetchFromGitHub {
+      owner = "terrastruct";
+      repo = "d2-vim";
+      rev = "981c87dccb63df2887cc41b96e84bf550f736c57";
+      sha256 = "sha256-+mT4pEbtq7f9ZXhOop3Jnjr7ulxU32VtahffIwQqYF4=";
+    };
+  };
+
   mini-align = pkgs.vimUtils.buildVimPlugin {
     name = "mini.align";
     src = pkgs.fetchFromGitHub {
@@ -174,6 +184,7 @@ in {
       # syntax highlighting
       plantuml-syntax
       vim-just
+      d2
       rainbow-delimiters-nvim
       nvim-treesitter-endwise
       nvim-treesitter-textobjects
