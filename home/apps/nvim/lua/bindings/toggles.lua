@@ -31,7 +31,7 @@ local mappings = {
     mode = "n",
     suffix = "d",
     command = function()
-      require("trouble").toggle("document_diagnostics")
+      require("trouble").toggle({ mode = "diagnostics", filter = { buf = 0 } })
     end,
     desc = "Toggle document diagnostics",
   },
@@ -39,7 +39,7 @@ local mappings = {
     mode = "n",
     suffix = "D",
     command = function()
-      require("trouble").toggle("workspace_diagnostics")
+      require("trouble").toggle("diagnostics")
     end,
     desc = "Toggle workspace diagnostics",
   },
@@ -70,7 +70,7 @@ local mappings = {
   {
     mode = "n",
     suffix = "m",
-    command = require('treesj').toggle,
+    command = require("treesj").toggle,
     desc = "Toggle split/join",
   },
   {
