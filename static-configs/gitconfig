@@ -1,0 +1,68 @@
+[advice]
+	skippedCherryPicks = false
+
+[alias]
+	a = "add"
+	aa = "add ."
+	ac = "commit -a -m"
+	b = "branch -vv"
+	ba = "branch -vva"
+	bc = "!git branch -a --color=always | grep -v '/HEAD\\\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -tr git switch"
+	bd = "!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -tr git branch -D"
+	ca = "commit --amend -C HEAD"
+	cc = "commit -m"
+	ce = "commit --amend -m"
+	co = "checkout"
+	d = "diff"
+	f = "fetch -q"
+	lg = "log --color --graph --pretty=format:'%Cred%h%Creset - %C(magenta)%G?%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
+	ph = "push -q"
+	phf = "push -q --force-with-lease"
+	pl = "pull -q"
+	re = "reset"
+	rs = "reflog show"
+	s = "status -sb"
+	sh = "show HEAD"
+	st = "stash list"
+	sw = "switch"
+	t = "tag -n1"
+	w = "worktree"
+	wa = "worktree add -b"
+	wc = "!git branch -a --color=always | grep -v '/HEAD\\\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -trI'{}' git worktree add 'worktrees/{}' '{}' "
+	wd = "!git worktree list | rg -v '\\[(master|main)\\]' | awk '{print $1}' | xargs -trL1 git worktree remove"
+	wl = "worktree list"
+
+[checkout]
+	defaultRemote = "origin"
+
+[core]
+	editor = "vim"
+
+[format]
+	signoff = true
+
+[log]
+	date = "format:%Y-%m-%d %H:%M"
+
+[pull]
+	ff = "only"
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+
+[trailer]
+	ifexists = "addIfDifferent"
+	separators = ":#"
+
+[trailer "fix"]
+	key = "Fix #"
+
+[trailer "rel"]
+	key = "Relates-to: "
+
+[user]
+	email = "f4z3r-github@pm.me"
+	name = "Jakob Beckmann"
+
+; vim: ft=gitconfig

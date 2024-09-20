@@ -108,6 +108,11 @@ rclone config
 
 Once this is done, you can sync with `nph` and `npl`.
 
+## Static Configuration
+
+This repository also offers some static configurations for environments where a basic shell is
+needed to work. These can be found under [`./static-configs/`](./static-configs/).
+
 ## Technical Debt
 
 - Treesitter parsers are currently not held within Nix. This is due to an issue of the parsers no
