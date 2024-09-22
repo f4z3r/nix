@@ -1,27 +1,29 @@
 {
   config,
   pkgs,
-  username,
+  usernames,
   ...
 }: {
   services.clamav = {
     daemon = {
       enable = true;
       settings = {
-        OnAccessIncludePath = [
-          "/home/${username}/Downloads"
-          "/home/${username}/Documents"
-          "/home/${username}/Music"
-          "/home/${username}/tmp"
-        ];
+        OnAccessIncludePath =
+          builtins.concatMap (x: [
+            "/home/${x}/Downloads"
+            "/home/${x}/Documents"
+            "/home/${x}/Music"
+            "/home/${x}/tmp"
+          ])
+          usernames;
         OnAccessPrevention = "yes";
         OnAccessExcludeUname = "clamav";
-        VirusEvent =
-          ''/run/wrappers/bin/sudo -u ${username} ''
-          + ''DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus DISPLAY=:0 ''
-          + ''${pkgs.libnotify}/bin/notify-send -u critical -i clamav ''
-          + ''"Virus Found" "Virus $CLAM_VIRUSEVENT_VIRUSNAME found in ''
-          + ''$CLAM_VIRUSEVENT_FILENAME.\nFile moved to /root/quarantine."'';
+        #   VirusEvent =
+        #     ''/run/wrappers/bin/sudo -u ${username} ''
+        #     + ''DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus DISPLAY=:0 ''
+        #     + ''${pkgs.libnotify}/bin/notify-send -u critical -i clamav ''
+        #     + ''"Virus Found" "Virus $CLAM_VIRUSEVENT_VIRUSNAME found in ''
+        #     + ''$CLAM_VIRUSEVENT_FILENAME.\nFile moved to /root/quarantine."'';
       };
     };
 

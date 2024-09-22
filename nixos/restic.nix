@@ -1,5 +1,5 @@
 {
-  username,
+  usernames,
   brain_backup,
   ...
 }: {
@@ -10,9 +10,11 @@
         repository = "rclone:gdrive:notes";
         initialize = true;
         passwordFile = "/etc/nixos/restic-password";
-        paths = [
-          "/home/${username}/notes"
-        ];
+        paths =
+          builtins.concatMap (x: [
+            "/home/${x}/notes"
+          ])
+          usernames;
         timerConfig = {
           OnCalendar = "daily";
           RandomizedDelaySec = "20m";

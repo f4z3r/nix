@@ -2,20 +2,23 @@
   config,
   lib,
   pkgs,
-  system,
-  username,
-  hostname,
   theme,
+  hostname,
+  usernames,
+  default_user,
   brain_backup,
   monitoring,
   ...
-}: {
+}: let
+  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+  session = "${pkgs.hyprland}/bin/Hyprland";
+in {
   imports = [
     ./${hostname}-hardware-configuration.nix
     (import ./nixos/networking.nix {inherit config pkgs hostname;})
     ./nixos/virtualisation.nix
-    (import ./nixos/clamav.nix {inherit config pkgs username;})
-    (import ./nixos/restic.nix {inherit config pkgs username brain_backup;})
+    (import ./nixos/clamav.nix {inherit config pkgs usernames;})
+    (import ./nixos/restic.nix {inherit config pkgs brain_backup usernames;})
     ./nixos/tlp.nix
     ./nixos/fish.nix
     ./nixos/openvpn/default.nix
@@ -110,18 +113,18 @@
   };
 
   users = {
-    users = {
-      ${username} = {
-        isNormalUser = true;
-        description = "${username}";
-        extraGroups = ["networkmanager" "wheel" "audio" "video" "podman" "docker" "plugdev"];
-        shell = pkgs.fish;
-        packages = [];
-      };
-    };
+    mutableUsers = true;
+    users = lib.attrsets.genAttrs usernames (user: {
+      initialPassword = "changeme";
+      isNormalUser = true;
+      description = "${user}";
+      extraGroups = ["networkmanager" "wheel" "audio" "video" "podman" "docker" "plugdev"];
+      shell = pkgs.fish;
+      packages = [];
+    });
     groups = {
       users = {
-        members = ["${username}" "clamav"];
+        members = builtins.concatLists [usernames ["clamav"]];
       };
     };
   };
@@ -223,12 +226,15 @@
 
     greetd = {
       enable = true;
-      settings = rec {
+      settings = {
         initial_session = {
-          command = "Hyprland";
-          user = "f4z3r";
+          command = "${session}";
+          user = default_user;
         };
-        default_session = initial_session;
+        default_session = {
+          command = "${tuigreet} --asterisks --remember -t -c ${session}";
+          user = "greeter";
+        };
       };
     };
 
@@ -296,21 +302,21 @@
   };
 
   security = {
-    sudo = {
-      execWheelOnly = true;
-      extraRules = [
-        {
-          users = ["clamav"];
-          runAs = "${username}";
-          commands = [
-            {
-              command = "${pkgs.libnotify}/bin/notify-send";
-              options = ["NOPASSWD" "SETENV"];
-            }
-          ];
-        }
-      ];
-    };
+    # sudo = {
+    #   execWheelOnly = true;
+    #   extraRules = [
+    #     {
+    #       users = ["clamav"];
+    #       runAs = "${usernames}";
+    #       commands = [
+    #         {
+    #           command = "${pkgs.libnotify}/bin/notify-send";
+    #           options = ["NOPASSWD" "SETENV"];
+    #         }
+    #       ];
+    #     }
+    #   ];
+    # };
     polkit.enable = true;
   };
 

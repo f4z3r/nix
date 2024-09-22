@@ -95,7 +95,7 @@ in {
 
             ''$wm&$app, x, exec, ${pkgs.rofi-wayland}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu''
             ''$wm&$app, l, exec, loginctl lock-session''
-            ''$wm&$app, o, exec, /etc/profiles/per-user/f4z3r/bin/sofa''
+            ''$wm&$app, o, exec, /etc/profiles/per-user/${username}/bin/sofa''
             ''$wm&$app, w, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/fuzzy-bookmarks.lua''
             ''$wm&$app, r, exec, bash /home/${username}/.local/share/scripts/screen-record.sh''
 

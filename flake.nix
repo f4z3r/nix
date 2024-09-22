@@ -25,7 +25,12 @@
     neorg-overlay,
     ...
   }: let
-    username = "f4z3r";
+    usernames = [
+      # add a user here to create a separate account that is identical in terms of configuration
+      # default password will be changeme
+      "f4z3r"
+    ];
+    default_user = "f4z3r";
     theme = "dark"; # one of "light" or "dark"
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -53,9 +58,10 @@
           inherit
             system
             pkgs-custom
-            username
             theme
             hostname
+            usernames
+            default_user
             brain_backup
             main_monitor
             monitor_prefix
@@ -84,23 +90,24 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users = {
-                ${username} = import ./home/home.nix {
-                  inherit
-                    pkgs
-                    lib
-                    stdenv
-                    pkgs-custom
-                    username
-                    theme
-                    font_size
-                    resolution
-                    scale
-                    main_monitor
-                    monitor_prefix
-                    ;
-                };
-              };
+              users =
+                lib.attrsets.genAttrs
+                usernames (user:
+                  import ./home/home.nix {
+                    inherit
+                      pkgs
+                      lib
+                      stdenv
+                      pkgs-custom
+                      theme
+                      font_size
+                      resolution
+                      scale
+                      main_monitor
+                      monitor_prefix
+                      ;
+                    username = user;
+                  });
             };
           }
         ];

@@ -46,8 +46,8 @@ lspconfig.lua_ls.setup({
       workspace = {
         checkThirdParty = false,
         library = {
-          "/home/f4z3r/.local/share/nvim/lua/addons/busted/",
-          "/home/f4z3r/.local/share/nvim/lua/addons/luassert/",
+          vim.fn.expand("~/.local/share/nvim/lua/addons/busted/"),
+          vim.fn.expand("~/.local/share/nvim/lua/addons/luassert/"),
         },
       },
       completion = {

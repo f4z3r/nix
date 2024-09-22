@@ -375,7 +375,7 @@ local io = require("io")
 local os = require("os")
 local string = require("string")
 
-local BOOKMARKS_PATH = "/home/f4z3r/.config/BraveSoftware/Brave-Browser/Default/Bookmarks"
+local BOOKMARKS_PATH = "~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks"
 
 local function print_table_to_file(filename, tabl)
   local fh = assert(io.open(filename, "w"))
@@ -408,7 +408,9 @@ local function build_bookmark_list(brave_bookmarks, prefix, data)
 end
 
 local function main()
-  local fh = assert(io.open(BOOKMARKS_PATH, "r"))
+  local home = assert(os.getenv("HOME"))
+  local path = string.gsub(BOOKMARKS_PATH, "~", home)
+  local fh = assert(io.open(path, "r"))
   local content = fh:read("*a")
   fh:close()
   local brave_bookmarks = json.decode(content)
