@@ -302,21 +302,6 @@ in {
   };
 
   security = {
-    # sudo = {
-    #   execWheelOnly = true;
-    #   extraRules = [
-    #     {
-    #       users = ["clamav"];
-    #       runAs = "${usernames}";
-    #       commands = [
-    #         {
-    #           command = "${pkgs.libnotify}/bin/notify-send";
-    #           options = ["NOPASSWD" "SETENV"];
-    #         }
-    #       ];
-    #     }
-    #   ];
-    # };
     polkit.enable = true;
   };
 
