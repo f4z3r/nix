@@ -158,6 +158,8 @@ in {
       NIXOS_OZONE_WL = "1";
     };
 
+    extraInit = "umask 0077";
+
     systemPackages = with pkgs; [
       vim
       git
@@ -303,6 +305,7 @@ in {
 
   security = {
     polkit.enable = true;
+    pam.makeHomeDir.umask = "0077";
   };
 
   system.stateVersion = "22.11";
