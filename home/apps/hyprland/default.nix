@@ -52,8 +52,6 @@ in {
           bind = [
             ''$general, RETURN, exec, ${pkgs.foot}/bin/foot ${pkgs.tmux}/bin/tmux''
 
-            ''$general, V, exec, ${pkgs.rofi-wayland}/bin/rofi -modi clipboard:/home/${username}/.local/bin/cliphist-rofi-img.sh -show clipboard -show-icons''
-
             ''$app, RETURN, togglespecialworkspace, quake''
 
             ''$wm, Space, exec, ${pkgs.rofi-wayland}/bin/rofi -combi-modi window,drun -show combi''
@@ -98,6 +96,7 @@ in {
             ''$wm&$app, o, exec, /etc/profiles/per-user/${username}/bin/sofa''
             ''$wm&$app, w, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/fuzzy-bookmarks.lua''
             ''$wm&$app, r, exec, bash /home/${username}/.local/share/scripts/screen-record.sh''
+            ''$wm&$app, c, exec, ${pkgs.rofi-wayland}/bin/rofi -modi clipboard:/home/${username}/.local/bin/cliphist-rofi-img.sh -show clipboard -show-icons''
 
             '', Print, exec, bash /home/${username}/.local/share/scripts/screenshot.sh''
           ];
