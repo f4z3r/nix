@@ -7,7 +7,7 @@
 	ac = "commit -a -m"
 	b = "branch -vv"
 	ba = "branch -vva"
-	bc = "!git branch -a --color=always | grep -v '/HEAD\\\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -tr git switch"
+	bc = "!git branch -a --color=always | grep -v '/HEAD\\\\s' | fzf --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -tr git switch"
 	bd = "!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -tr git branch -D"
 	ca = "commit --amend -C HEAD"
 	cc = "commit -m"
@@ -28,7 +28,7 @@
 	t = "tag -n1"
 	w = "worktree"
 	wa = "worktree add -b"
-	wc = "!git branch -a --color=always | grep -v '/HEAD\\\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -trI'{}' git worktree add 'worktrees/{}' '{}' "
+	wc = "!git branch -a --color=always | grep -v '/HEAD\\\\s' | fzf --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -trI'{}' git worktree add 'worktrees/{}' '{}' "
 	wd = "!git worktree list | rg -v '\\[(master|main)\\]' | awk '{print $1}' | xargs -trL1 git worktree remove"
 	wl = "worktree list"
 

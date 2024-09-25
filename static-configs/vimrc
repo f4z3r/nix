@@ -1,2 +1,80 @@
+nnoremap j n
+xnoremap j n
+nnoremap n j
+xnoremap n j
+nnoremap N J
+xnoremap N J
+nnoremap <C-n> 10j
+xnoremap <C-n> 10j
+nnoremap <C-k> 10k
+xnoremap <C-k> 10k
+nnoremap <C-h> zH_
+xnoremap <C-h> zH_
+nnoremap <C-l> $
+xnoremap <C-l> $
 
-" vim: ft=viml
+syntax on
+
+set ignorecase
+set noincsearch
+set smartcase
+set hlsearch
+set wrapscan
+set nofoldenable
+set noswapfile
+set splitright
+set splitbelow
+set autoread
+set mouse=""
+set wildmenu
+set wildmode="list:longest,full"
+set nowrap
+set showmatch
+set noautochdir
+set scrolloff=8
+set sidescrolloff=5
+set colorcolumn="+1"
+set cursorline
+set number
+set norelativenumber
+set signcolumn="auto:1-3"
+
+set background=dark
+
+set textwidth=100
+set autoindent
+set smartindent
+set shiftwidth=2
+set tabstop=2
+set smarttab
+set expandtab
+
+let mapleader = "\<Space>"
+let maplocalleader = "\\"
+
+"hi ctermfg="" ctermbg="
+hi Visual cterm=inverse
+hi CursorLine cterm=italic
+hi CursorLineNr ctermfg=12
+hi LineNr ctermfg=15
+
+nnoremap <silent> <leader>wq :qa<CR>
+nnoremap <silent> <leader>wv :vsplit<CR>
+nnoremap <silent> <leader>ws :split<CR>
+nnoremap <silent> <leader>wl <C-w>lzH
+nnoremap <silent> <leader>wh <C-w>hzH
+nnoremap <silent> <leader>wn <C-w>jzH
+nnoremap <silent> <leader>wk <C-w>kzH
+
+nnoremap <silent> <leader>fs :update<CR>
+
+nnoremap <silent> <leader>qo :copen<CR>
+nnoremap <silent> <leader>qc :cclose<CR>
+nnoremap <silent> ]q :cnext<CR>
+nnoremap <silent> [q :cprevious<CR>
+
+nnoremap <silent> ; :noh<CR>
+
+nnoremap <silent> - :Lexplore<CR>
+
+" vim: ft=vim
