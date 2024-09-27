@@ -8,11 +8,14 @@ updated: {NOW}
 @end
 
 * ( ) goal
+  {CURSOR}
 
 * tasks
-  - ( ) {CURSOR}
-
-* reflection
+** take care of physical well-being
+** build network of technical leaders
+** learn new things and share knowhow
+** get back to building things
+** the other 5%
 
 * notes
 
