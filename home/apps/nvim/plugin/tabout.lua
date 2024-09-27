@@ -18,5 +18,5 @@ tabout.setup({
         { open = '{', close = '}' },
     },
     ignore_beginning = true,
-    exclude = { 'markdown' },
+    -- exclude = { 'markdown' },
 })
