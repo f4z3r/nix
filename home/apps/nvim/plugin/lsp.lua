@@ -2,6 +2,14 @@
 
 local border = "single"
 
+local navic = require("nvim-navic")
+
+local function on_attach(client, bufnr)
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
+end
+
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = border,
 })
@@ -23,6 +31,7 @@ lspconfig.lua_ls.setup({
     -- disable syntax highlighting via LSP for lua
     client.server_capabilities.semanticTokensProvider = nil
   end,
+  on_attach = on_attach,
   settings = {
     Lua = {
       runtime = {
@@ -61,6 +70,7 @@ lspconfig.lua_ls.setup({
 -- Nix
 lspconfig.nil_ls.setup({
   capabilities = capabilities,
+  on_attach = on_attach,
 })
 
 -- Python
@@ -75,9 +85,11 @@ lspconfig.pylsp.setup({
     },
   },
   capabilities = capabilities,
+  on_attach = on_attach,
 })
 lspconfig.ruff_lsp.setup({
   capabilities = capabilities,
+  on_attach = on_attach,
 })
 
 -- Go
@@ -96,6 +108,7 @@ lspconfig.gopls.setup({
   init_options = {
     usePlaceholders = true,
   },
+  on_attach = on_attach,
 })
 
 -- Markdown
@@ -110,16 +123,19 @@ lspconfig.marksman.setup({
 lspconfig.helm_ls.setup({
   capabilities = capabilities,
   filetypes = { "helm", "gotmpl" },
+  on_attach = on_attach,
 })
 
 -- Yaml
 lspconfig.yamlls.setup({
   capabilities = capabilities,
+  on_attach = on_attach,
 })
 
 -- Terraform
 lspconfig.terraformls.setup({
   capabilities = capabilities,
+  on_attach = on_attach,
 })
 
 local signs = {

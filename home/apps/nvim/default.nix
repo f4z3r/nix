@@ -422,6 +422,11 @@ in {
         plugin = nvim-notify;
         config = builtins.readFile ./plugin/notify.lua;
       }
+      {
+        type = "lua";
+        plugin = nvim-navic;
+        config = ''require("nvim-navic").setup({highlight=true})'';
+      }
     ];
   };
 

@@ -35,6 +35,8 @@ local bubbles_theme = {
   },
 }
 
+local navic = require("nvim-navic")
+
 require("lualine").setup({
   options = {
     theme = bubbles_theme,
@@ -58,7 +60,19 @@ require("lualine").setup({
         },
       },
     },
-    lualine_c = {},
+    lualine_c = {
+      {
+        function()
+          return navic.get_location()
+        end,
+        cond = function()
+          return navic.is_available()
+        end,
+        -- color = { fg = gruvbox_colors.fg0, bg = gruvbox_colors.bg0 },
+        padding = { left = 1, right = 0 },
+
+      },
+    },
     lualine_x = {
       { "branch", icon = "", separator = { left = "" } },
     },
