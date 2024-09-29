@@ -171,6 +171,9 @@ in {
       fzf
 
       html-tidy
+
+      typst-lsp
+      typstyle
     ];
 
     plugins = with pkgs.vimPlugins; [

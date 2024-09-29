@@ -30,5 +30,6 @@ null_ls.setup({
     null_ls.builtins.formatting.yamlfmt,
     null_ls.builtins.formatting.terraform_fmt,
     null_ls.builtins.formatting.tidy,
+    null_ls.builtins.formatting.typstyle,
   },
 })

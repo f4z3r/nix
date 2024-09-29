@@ -249,6 +249,7 @@ in {
       d2
       tup
       imagemagick
+      typst
 
       # stuff not used often, installed via nix-shell
       #tokei

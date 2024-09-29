@@ -73,6 +73,12 @@ lspconfig.nil_ls.setup({
   on_attach = on_attach,
 })
 
+-- Typst
+lspconfig.typst_lsp.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
 -- Python
 lspconfig.pylsp.setup({
   settings = {
