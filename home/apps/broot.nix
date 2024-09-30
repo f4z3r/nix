@@ -66,7 +66,7 @@
           execution = ":panel_left";
         }
         {
-          key = "ctrl-s";
+          key = "ctrl-t";
           internal = ":toggle_stage";
         }
         {
