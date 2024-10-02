@@ -41,16 +41,22 @@ boot.initrd.luks.devices."luks-61a8f812-0b86-4be9-9b69-9472960c08b8".keyFile = "
 ### Register the Device in Flake
 
 In order to register the device in the flake, simply copy a `nixosConfigurations` block and add your
-new host. Define the variables you want and add a wallpaper with the correct naming under
-[`/home/apps/bspwm/`](../home/apps/bspwm/).
+new host.
 
-Finally, comment out the OpenVPN, Restic, and ClamAV imports in `configuration.nix` on the first
+Download the `secrets.nix` file from Proton Drive and register it in git:
+
+```bash
+git add -N secrets.nix
+git update-index --assume-unchanged secrets.nix
+```
+
+Finally, comment out the Restic, and ClamAV imports in `configuration.nix` on the first
 install.
 
 Install the flake using:
 
 ```bash
-sudo nixos-rebuild switch --flake .#<host>
+sudo nixos-rebuild boot --flake .#<host>
 ```
 
 Once installed, reboot.
@@ -60,11 +66,11 @@ Once installed, reboot.
 
 ### Setup Services
 
-In order to setup OpenVPN, Restic, and ClamAV, follow the instructions in the `README.md`.
+In order to setup Restic, and ClamAV, follow the instructions in the `README.md`.
 
 You might also want to sync Brave with an existing device.
 
-## Battery Managment
+## Battery Management
 
 On Dell laptops, the battery cannot be fully managed by TLP. Stuff like the battery charge
 thresholds need to be set in the BIOS directly.

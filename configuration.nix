@@ -169,9 +169,27 @@ in {
       libnotify
     ];
 
-    etc."secfix/secret" = {
-      mode = "0600";
-      text = secrets.secfix.enrollment-secret;
+    etc = {
+      "secfix/secret" = {
+        mode = "0600";
+        text = secrets.secfix.enrollment-secret;
+      };
+      "nixos/restic-password" = {
+        mode = "0600";
+        text = secrets.restic.password;
+      };
+      "nixos/vpn/ca" = {
+        mode = "0600";
+        text = secrets.vpn.ca;
+      };
+      "nixos/vpn/tls-auth" = {
+        mode = "0600";
+        text = secrets.vpn.tls-auth;
+      };
+      "nixos/vpn/account.cred" = {
+        mode = "0600";
+        text = secrets.vpn.creds;
+      };
     };
   };
 

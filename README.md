@@ -56,16 +56,6 @@ restart.
 
 See [`docs/bootstrap.md`](./docs/bootstrap.md).
 
-## OpenVPN
-
-Download configurations from Proton to get the CAs, Keys, etc. All VPN information is then stored
-under `/etc/nixos/vpn` to ensure they are not world readable. Store them as:
-
-- `/etc/nixos/vpn/ca`: Proton's CA, theoretically public
-- `/etc/nixos/vpn/tls-auth`: Proton's TLS key, theoretically not too problematic
-- `/etc/nixos/vpn/jakobbeckmann-proton.cred`: your credentials (with `+f2` attached to the username
-  for NetShield protection), with username on first line and password on second.
-
 ## ClamAV
 
 ClamAV should be instantiated and installed by default. In order to set up the folder for the
@@ -95,8 +85,6 @@ Configure a `rclone` backend named `gdrive`. Store the `rclone` configuration un
 # ! do not use the same config as for sb sync actions, as that one is encrypted for additional
 # protection !
 /etc/nixos/rclone.conf
-# add restic backup password under
-/etc/nixos/restic-password
 ```
 
 ## Rclone
