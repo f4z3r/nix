@@ -182,7 +182,7 @@ in {
       enrollSecretDirectory = "/etc/secfix";
       rootDirectory = "/var/secfix/m1.secfix.com-443";
       updateChannel = "nightly";
-      osQueryFlags = [
+      osqueryFlags = [
         "host_identifier=specified"
         "specified_identifier=${secrets.secfix.host-identifier}"
       ];

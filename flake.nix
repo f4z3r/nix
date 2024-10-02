@@ -17,7 +17,7 @@
     neorg-overlay.url = "github:nvim-neorg/nixpkgs-neorg-overlay";
 
     kolide-launcher = {
-      url = "github:/f4z3r/nix-agent/feat/osqueryflag";
+      url = "github:/kolide/nix-agent/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

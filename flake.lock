@@ -140,16 +140,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1727880041,
-        "narHash": "sha256-A+tdiAAnLJnUfoLMGPKjM6fZt+0iottvohcWvS0Vp2Q=",
-        "owner": "f4z3r",
+        "lastModified": 1727884248,
+        "narHash": "sha256-2BNKYcgwvf8Y82COp5hKA29GqEgNEkebxeiqNWzMx28=",
+        "owner": "kolide",
         "repo": "nix-agent",
-        "rev": "e0b01a5abdeb3bd5969de2919f341bc97b55a656",
+        "rev": "3eefae85fad746c7da3cc9e250fc320b15e0c722",
         "type": "github"
       },
       "original": {
-        "owner": "f4z3r",
-        "ref": "feat/osqueryflag",
+        "owner": "kolide",
+        "ref": "main",
         "repo": "nix-agent",
         "type": "github"
       }
