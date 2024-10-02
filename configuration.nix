@@ -12,6 +12,7 @@
 }: let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   session = "${pkgs.hyprland}/bin/Hyprland";
+  secrets = import ./secrets.nix;
 in {
   imports = [
     ./${hostname}-hardware-configuration.nix
@@ -167,9 +168,26 @@ in {
       brightnessctl
       libnotify
     ];
+
+    etc."secfix/secret" = {
+      mode = "0600";
+      text = secrets.secfix.enrollment-secret;
+    };
   };
 
   services = {
+    kolide-launcher = {
+      enable = true;
+      kolideHostname = "m1.secfix.com:443";
+      enrollSecretDirectory = "/etc/secfix";
+      rootDirectory = "/var/secfix/m1.secfix.com-443";
+      updateChannel = "nightly";
+      osQueryFlags = [
+        "host_identifier=specified"
+        "specified_identifier=${secrets.secfix.host-identifier}"
+      ];
+    };
+
     prometheus = {
       enable = monitoring;
       port = 9090;

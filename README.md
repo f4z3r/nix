@@ -77,6 +77,15 @@ sudo mkdir -p /root/quarantine
 sudo freshclam
 ```
 
+## Secrets
+
+Download the `secrets.nix` file from the encrypted storage, then add it to git without pushing it:
+
+```bash
+git add -N secrets.nix
+git update-index --assume-unchanged secrets.nix
+```
+
 ## Restic
 
 Configure a `rclone` backend named `gdrive`. Store the `rclone` configuration under:

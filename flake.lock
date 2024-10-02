@@ -133,6 +133,27 @@
         "type": "github"
       }
     },
+    "kolide-launcher": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1727880041,
+        "narHash": "sha256-A+tdiAAnLJnUfoLMGPKjM6fZt+0iottvohcWvS0Vp2Q=",
+        "owner": "f4z3r",
+        "repo": "nix-agent",
+        "rev": "e0b01a5abdeb3bd5969de2919f341bc97b55a656",
+        "type": "github"
+      },
+      "original": {
+        "owner": "f4z3r",
+        "ref": "feat/osqueryflag",
+        "repo": "nix-agent",
+        "type": "github"
+      }
+    },
     "lix": {
       "flake": false,
       "locked": {
@@ -331,6 +352,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "kolide-launcher": "kolide-launcher",
         "lix-module": "lix-module",
         "neorg-overlay": "neorg-overlay",
         "nixpkgs": "nixpkgs_4"

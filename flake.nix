@@ -15,6 +15,11 @@
     };
 
     neorg-overlay.url = "github:nvim-neorg/nixpkgs-neorg-overlay";
+
+    kolide-launcher = {
+      url = "github:/f4z3r/nix-agent/feat/osqueryflag";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -23,8 +28,9 @@
     lix-module,
     home-manager,
     neorg-overlay,
+    kolide-launcher,
     ...
-  }: let
+  } @ inputs: let
     usernames = [
       # add a user here to create a separate account that is identical in terms of configuration
       # default password will be changeme
@@ -72,6 +78,8 @@
           lix-module.nixosModules.default
 
           ./configuration.nix
+
+          kolide-launcher.nixosModules.kolide-launcher
 
           home-manager.nixosModules.home-manager
           {
