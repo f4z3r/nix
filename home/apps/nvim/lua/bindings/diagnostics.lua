@@ -10,12 +10,6 @@ local mappings = {
     command = vim.diagnostic.open_float,
     desc = "Show diagnostics in float",
   },
-  {
-    mode = "n",
-    suffix = "l",
-    command = vim.diagnostic.setloclist,
-    desc = "Set location list for diagnostics",
-  },
 }
 
 for _, mapping in ipairs(mappings) do

@@ -6,12 +6,20 @@ local mappings = {
   {
     mode = "n",
     suffix = "q",
-    command = "<cmd>TroubleToggle quickfix<cr>",
+    command = "<cmd>Trouble qflist toggle<cr>",
     desc = "Search quickfix list",
   },
   {
     mode = "n",
     suffix = "/",
+    command = function()
+      require("telescope.builtin").quickfix()
+    end,
+    desc = "Search quickfix list",
+  },
+  {
+    mode = "n",
+    suffix = "s",
     command = function()
       require("telescope.builtin").quickfix()
     end,

@@ -1,17 +1,4 @@
 local actions = require("telescope.actions")
-local trouble = require("trouble.sources.telescope")
-
-local function add_to_arglist(prompt_bufnr)
-  local action_state = require("telescope.actions.state")
-  local picker = action_state.get_current_picker(prompt_bufnr)
-  local manager = picker.manager
-
-  vim.cmd("%argd")
-  for item in manager:iter() do
-    vim.cmd("argadd " .. item.filename)
-  end
-  actions.close(prompt_bufnr)
-end
 
 local function repeat_action(action, count)
   return function(prompt_bufnr)
@@ -26,8 +13,9 @@ telescope.setup({
   defaults = {
     mappings = {
       i = {
-        ["<C-l>"] = add_to_arglist,
-        ["<C-o>"] = trouble.open,
+        ["<C-l>"] = actions.send_to_loclist,
+        ["<C-o>"] = actions.send_selected_to_loclist,
+        ["<C-t>"] = actions.toggle_selection,
         ["<C-n>"] = actions.move_selection_next,
         ["<C-p>"] = actions.move_selection_previous,
         ["<C-d>"] = repeat_action(actions.move_selection_next, 10),
@@ -36,8 +24,9 @@ telescope.setup({
         ["<esc>"] = actions.close,
       },
       n = {
-        ["<C-l>"] = add_to_arglist,
-        ["<C-o>"] = trouble.open,
+        ["<C-l>"] = actions.send_to_loclist,
+        ["<C-o>"] = actions.send_selected_to_loclist,
+        ["<C-t>"] = actions.toggle_selection,
         ["<C-c>"] = actions.close,
         ["<esc>"] = actions.close,
       },
