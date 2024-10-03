@@ -76,6 +76,15 @@ git add -N secrets.nix
 git update-index --assume-unchanged secrets.nix
 ```
 
+> [!NOTE]
+> If encountering issues when pulling, it might make sense to run:
+>
+> ```bash
+> git update-index --really-refresh
+> ```
+>
+> and continue from there.
+
 ## Restic
 
 Configure a `rclone` backend named `gdrive`. Store the `rclone` configuration under:
