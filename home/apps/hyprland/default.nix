@@ -29,7 +29,7 @@ in {
           exec-once = [
             "${pkgs.dunst}/bin/dunst"
             "${pkgs.swww}/bin/swww-daemon"
-            "${pkgs.swww}/bin/swww img ~/.local/share/wallpapers/lofoten1.jpg"
+            "${pkgs.swww}/bin/swww img ~/.local/share/wallpapers/midnight-reflections-moonlit-sea.jpg"
             "wl-paste --watch cliphist store"
             "${pkgs.hyprland}/bin/hyprctl setcursor '${cursorTheme}' 24"
             "${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua"
