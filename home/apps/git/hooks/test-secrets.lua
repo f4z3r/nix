@@ -22,6 +22,10 @@ local key_file_headers = {
   "BEGIN OpenVPN Static key V1",
 }
 
+local forbidden_files = {
+  "secrets.nix",
+}
+
 local function get_staged_additions()
   local pid = assert(io.popen("git diff-index -p --cached --no-color HEAD"))
   local out = {}
@@ -29,6 +33,16 @@ local function get_staged_additions()
     if line:sub(1, 1) == "+" then
       out[#out + 1] = line
     end
+  end
+  pid:close()
+  return out
+end
+
+local function get_staged_files()
+  local pid = assert(io.popen("git diff-index --name-only --cached --no-color HEAD"))
+  local out = {}
+  for line in pid:lines() do
+    out[#out + 1] = line
   end
   pid:close()
   return out
@@ -53,7 +67,20 @@ local function updates_secret_by_fixed(line, substrings)
   return false
 end
 
-local function main()
+local function check_forbidden_files()
+  local updated_files = get_staged_files()
+  for _, updated_file in ipairs(updated_files) do
+    for _, forbidden_file in ipairs(forbidden_files) do
+      local _, match_end, _ = string.find(updated_file, forbidden_file, 1, true)
+      if match_end == string.len(updated_file) then
+        print(string.format("Found forbidden file in commit '%s'", forbidden_file))
+        os.exit(1)
+      end
+    end
+  end
+end
+
+local function check_forbidden_content()
   local added_lines = get_staged_additions()
   local secret_lines = {}
   for _, line in ipairs(added_lines) do
@@ -75,6 +102,11 @@ local function main()
     os.exit(0)
   end
   os.exit(1)
+end
+
+local function main()
+  check_forbidden_files()
+  check_forbidden_content()
 end
 
 main()

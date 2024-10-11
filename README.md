@@ -69,7 +69,10 @@ sudo freshclam
 
 ## Secrets
 
-Download the `secrets.nix` file from the encrypted storage, then add it to git without pushing it:
+Download the `secrets.nix` file from the encrypted storage. We do not use the standard way to add
+secrets to the staging area without committing them, as it is a pain when pulling changes from other
+machines. It is still documented here for completeness. A git hook will prevent committing the
+`secerts.nix` file either way.
 
 ```bash
 git add -N secrets.nix
