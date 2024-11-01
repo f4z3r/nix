@@ -115,7 +115,14 @@ sudo chmod 600 ~/.config/rclone/rclone.conf
 rclone config
 ```
 
-Once this is done, you can sync with `nph` and `npl`.
+Once this is done, you can perform an initial sync using:
+
+```bash
+# you can also run with --dry-run first to check if the output matches your expectations
+rclone bisync gdrive-crypt:/ ~/notes --create-empty-src-dirs --compare size,modtime -MP --fix-case --resync
+```
+
+After which you can use `ns` to sync notes.
 
 ## Static Configuration
 

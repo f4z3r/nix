@@ -34,8 +34,7 @@
       fgrep = ''fgrep --color=auto'';
       nix-shell = ''nix-shell --run fish'';
       wall = ''swww img (fd . ~/.local/share/wallpapers/ | shuf -n 1)'';
-      npl = ''rclone sync -u --delete-after -P gdrive-crypt:/ ~/notes'';
-      nph = ''rclone sync -u --delete-after -P ~/notes gdrive-crypt:/'';
+      ns = ''rclone bisync gdrive-crypt:/ ~/notes --remove-empty-dirs --compare size,modtime -MP --fix-case --conflict-suffix upstream,local'';
     };
     shellInit = ''
       set -x NIX_THEME "${theme}"
