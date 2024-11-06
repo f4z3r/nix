@@ -4,78 +4,56 @@
   font_size,
   ...
 }: let
-  fg =
+  colors =
     if theme == "dark"
-    then "d4be98"
-    else "654735";
-  bg =
-    if theme == "dark"
-    then "282828"
-    else "fbf1c7";
-  black =
-    if theme == "dark"
-    then "3C3836"
-    else "FBF1C7";
-  red =
-    if theme == "dark"
-    then "ea6962"
-    else "c14a4a";
-  green =
-    if theme == "dark"
-    then "a9b665"
-    else "6c782e";
-  yellow =
-    if theme == "dark"
-    then "D8A657"
-    else "D79921";
-  blue =
-    if theme == "dark"
-    then "7daea3"
-    else "45707a";
-  magenta =
-    if theme == "dark"
-    then "d3869b"
-    else "945e80";
-  cyan =
-    if theme == "dark"
-    then "89b482"
-    else "4c7a5d";
-  white =
-    if theme == "dark"
-    then "D4BE98"
-    else "7C6F64";
-  b_black =
-    if theme == "dark"
-    then "928374"
-    else "928374";
-  b_red =
-    if theme == "dark"
-    then "FB4934"
-    else "9D0006";
-  b_green =
-    if theme == "dark"
-    then "B8BB26"
-    else "79740E";
-  b_yellow =
-    if theme == "dark"
-    then "FABD2F"
-    else "B57614";
-  b_blue =
-    if theme == "dark"
-    then "83A598"
-    else "076678";
-  b_magenta =
-    if theme == "dark"
-    then "D3869B"
-    else "8F3F71";
-  b_cyan =
-    if theme == "dark"
-    then "8EC07C"
-    else "427B58";
-  b_white =
-    if theme == "dark"
-    then "EBDBB2"
-    else "3C3836";
+    then {
+      foreground = "d4be98";
+      background = "282828";
+      normal = {
+        black = "3c3836";
+        red = "ea6962";
+        green = "a9b665";
+        yellow = "d8a657";
+        blue = "7daea3";
+        magenta = "d3869b";
+        cyan = "89b482";
+        white = "d4be98";
+      };
+      bright = {
+        black = "928374";
+        red = "fb4934";
+        green = "b8bb26";
+        yellow = "fabd2f";
+        blue = "83a598";
+        magenta = "d3869b";
+        cyan = "8ec07c";
+        white = "ebdbb2";
+      };
+    }
+    else {
+      foreground = "654735";
+      background = "fbf1c7";
+      normal = {
+        black = "fbf1c7";
+        red = "c14a4a";
+        green = "6c782e";
+        yellow = "d79921";
+        blue = "45707a";
+        magenta = "945e80";
+        cyan = "4c7a5d";
+        white = "7c6f64";
+      };
+      bright = {
+        black = "928374";
+        red = "9d0006";
+        green = "79740e";
+        yellow = "b57614";
+        blue = "076678";
+        magenta = "8f3f71";
+        cyan = "427b58";
+        white = "3c3836";
+      };
+    };
 in {
   programs.foot = {
     enable = true;
@@ -89,28 +67,27 @@ in {
       };
       colors = {
         # alpha=1.0
-        background = bg;
-        foreground = fg;
+        inherit (colors) background foreground;
         # flash=7f7f00
         # flash-alpha=0.5
         ## Normal/regular colors (color palette 0-7)
-        regular0 = black;
-        regular1 = red;
-        regular2 = green;
-        regular3 = yellow;
-        regular4 = blue;
-        regular5 = magenta;
-        regular6 = cyan;
-        regular7 = white;
+        regular0 = colors.normal.black;
+        regular1 = colors.normal.red;
+        regular2 = colors.normal.green;
+        regular3 = colors.normal.yellow;
+        regular4 = colors.normal.blue;
+        regular5 = colors.normal.magenta;
+        regular6 = colors.normal.cyan;
+        regular7 = colors.normal.white;
         ## Bright colors (color palette 8-15)
-        bright0 = b_black;
-        bright1 = b_red;
-        bright2 = b_green;
-        bright3 = b_yellow;
-        bright4 = b_blue;
-        bright5 = b_magenta;
-        bright6 = b_cyan;
-        bright7 = b_white;
+        bright0 = colors.bright.black;
+        bright1 = colors.bright.red;
+        bright2 = colors.bright.green;
+        bright3 = colors.bright.yellow;
+        bright4 = colors.bright.blue;
+        bright5 = colors.bright.magenta;
+        bright6 = colors.bright.cyan;
+        bright7 = colors.bright.white;
         ## dimmed colors (see foot.ini(5) man page)
         # dim0=<not set>
         # ...
@@ -122,11 +99,11 @@ in {
         ## Misc colors
         # selection-foreground=<inverse foreground/background>
         # selection-background=<inverse foreground/background>
-        jump-labels = "${black} ${magenta}"; # black-on-purple
+        jump-labels = "${colors.normal.black} ${colors.normal.magenta}"; # black-on-purple
         # scrollback-indicator=<regular0> <bright4>  # black-on-bright-blue
         # search-box-no-match=<regular0> <regular1>  # black-on-red
         # search-box-match=<regular0> <regular3>     # black-on-yellow
-        urls = magenta;
+        urls = colors.normal.magenta;
       };
       key-bindings = {
         scrollback-up-page = "none";
