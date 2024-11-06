@@ -3,17 +3,34 @@
   theme,
   ...
 }: let
-  foreground = "#d4be98";
-  background = "#282828";
-  current_line = "#d4be98";
-  selection = "#928374";
-  comment = "#665c54";
-  cyan = "#89b482";
-  green = "#a9b665";
-  orange = "#e78a4e";
-  magenta = "#d3869b";
-  blue = "#7daea3";
-  red = "#ea6962";
+  colors =
+    if theme == "dark"
+    then {
+      foreground = "#d4be98";
+      background = "#282828";
+      current_line = "#d4be98";
+      selection = "#928374";
+      comment = "#665c54";
+      cyan = "#89b482";
+      green = "#a9b665";
+      orange = "#e78a4e";
+      magenta = "#d3869b";
+      blue = "#7daea3";
+      red = "#ea6962";
+    }
+    else {
+      foreground = "#654735";
+      background = "#fbf1c7";
+      current_line = "#654735";
+      selection = "#928374";
+      comment = "#d5c4a1";
+      cyan = "#4c7a5d";
+      green = "#6c782e";
+      orange = "#c35e0a";
+      magenta = "#945e80";
+      blue = "#45707a";
+      red = "#c14a4a";
+    };
 in {
   programs.k9s = {
     enable = true;
@@ -61,99 +78,99 @@ in {
       gruvbox = {
         k9s = {
           body = {
-            fgColor = foreground;
-            bgColor = background;
-            logoColor = blue;
+            fgColor = colors.foreground;
+            bgColor = colors.background;
+            logoColor = colors.blue;
           };
           prompt = {
-            fgColor = foreground;
-            bgColor = background;
-            suggestColor = orange;
+            fgColor = colors.foreground;
+            bgColor = colors.background;
+            suggestColor = colors.orange;
           };
           info = {
-            fgColor = magenta;
-            bgColor = background;
-            sectionColor = foreground;
+            fgColor = colors.magenta;
+            bgColor = colors.background;
+            sectionColor = colors.foreground;
           };
           dialog = {
-            fgColor = foreground;
-            bgColor = background;
-            buttonFgColor = foreground;
-            buttonBgColor = magenta;
-            buttonFocusFgColor = selection;
-            buttonFocusBgColor = cyan;
-            labelFgColor = orange;
-            fieldFgColor = foreground;
+            fgColor = colors.foreground;
+            bgColor = colors.background;
+            buttonFgColor = colors.background;
+            buttonBgColor = colors.magenta;
+            buttonFocusFgColor = colors.background;
+            buttonFocusBgColor = colors.cyan;
+            labelFgColor = colors.orange;
+            fieldFgColor = colors.foreground;
           };
           frame = {
             border = {
-              fgColor = selection;
-              bgColor = background;
-              focusColor = comment;
+              fgColor = colors.selection;
+              bgColor = colors.background;
+              focusColor = colors.comment;
             };
             menu = {
-              fgColor = foreground;
-              bgColor = background;
-              keyColor = magenta;
-              numKeyColor = magenta;
+              fgColor = colors.foreground;
+              bgColor = colors.background;
+              keyColor = colors.magenta;
+              numKeyColor = colors.magenta;
             };
             crumbs = {
-              fgColor = comment;
-              bgColor = background;
-              activeColor = green;
+              fgColor = colors.comment;
+              bgColor = colors.background;
+              activeColor = colors.green;
             };
             status = {
-              bgColor = background;
-              newColor = cyan;
-              modifyColor = blue;
-              addColor = green;
-              errorColor = red;
-              highlightcolor = orange;
-              killColor = comment;
-              completedColor = comment;
+              bgColor = colors.background;
+              newColor = colors.cyan;
+              modifyColor = colors.blue;
+              addColor = colors.green;
+              errorColor = colors.red;
+              highlightcolor = colors.orange;
+              killColor = colors.comment;
+              completedColor = colors.comment;
             };
             title = {
-              fgColor = foreground;
-              bgColor = background;
-              highlightColor = orange;
-              counterColor = blue;
-              filterColor = magenta;
+              fgColor = colors.foreground;
+              bgColor = colors.background;
+              highlightColor = colors.orange;
+              counterColor = colors.blue;
+              filterColor = colors.magenta;
             };
           };
           views = {
             charts = {
-              defaultDialColors = [blue red];
-              defaultChartColors = [blue red];
+              defaultDialColors = [colors.blue colors.red];
+              defaultChartColors = [colors.blue colors.red];
             };
             table = {
-              fgColor = foreground;
-              bgColor = background;
-              markColor = magenta;
+              fgColor = colors.foreground;
+              bgColor = colors.background;
+              markColor = colors.magenta;
               header = {
-                fgColor = magenta;
-                bgColor = background;
-                sorterColor = selection;
+                fgColor = colors.magenta;
+                bgColor = colors.background;
+                sorterColor = colors.selection;
               };
             };
             xray = {
-              fgColor = foreground;
-              bgColor = background;
-              cursorColor = comment;
-              graphicColor = orange;
+              fgColor = colors.foreground;
+              bgColor = colors.background;
+              cursorColor = colors.background;
+              graphicColor = colors.orange;
               showIcons = true;
             };
             yaml = {
-              bgColor = background;
-              keyColor = blue;
-              colonColor = orange;
-              valueColor = foreground;
+              bgColor = colors.background;
+              keyColor = colors.blue;
+              colonColor = colors.orange;
+              valueColor = colors.foreground;
             };
             logs = {
-              fgColor = foreground;
-              bgColor = background;
+              fgColor = colors.foreground;
+              bgColor = colors.background;
               indicator = {
-                fgColor = magenta;
-                bgColor = background;
+                fgColor = colors.magenta;
+                bgColor = colors.background;
               };
             };
           };

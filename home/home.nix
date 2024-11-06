@@ -73,7 +73,7 @@ in {
     ./apps/gpg.nix
     ./apps/nvim/default.nix
     ./apps/broot.nix
-    ./apps/k9s/default.nix
+    (import ./apps/k9s/default.nix {inherit pkgs theme;})
     (import ./apps/bat.nix {inherit pkgs theme;})
     (import ./apps/mpd/default.nix {inherit pkgs username;})
   ];
