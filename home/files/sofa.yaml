@@ -40,7 +40,7 @@ namespaces:
           monitor:
             prompt: Monitor
             exclusive: true
-            choices: hyprctl monitors | rg "Monitor .+:" | cut -d" " -f 2
+            choices: hyprctl monitors all -j | jq ".[].name" -r
           resolution:
             prompt: Resolution
             exclusive: true
@@ -63,6 +63,36 @@ namespaces:
           scale:
             prompt: Scale
             default: 1
+      mirror-monitors:
+        command: hyprctl keyword monitor {{ in }},{{ resolution }},auto,{{ scale }},mirror,{{ out }}
+        description: Dynamically configure monitors
+        tags:
+        - hyprland
+        - hyprctl
+        - displays
+        parameters:
+          in:
+            prompt: Input
+            exclusive: true
+            choices: hyprctl monitors all -j | jq ".[].name" -r
+          resolution:
+            prompt: Resolution
+            exclusive: true
+            default: preferred
+            choices:
+            - 1920x1080
+            - 2560x1440
+            - 3440x1440
+            - 3840x2160
+            - 5120x1440
+            - preferred
+          scale:
+            prompt: Scale
+            default: 1
+          out:
+            prompt: Output
+            exclusive: true
+            choices: hyprctl monitors all -j | jq ".[].name" -r
       move-workspace:
         command: hyprctl dispatch movecurrentworkspacetomonitor {{ monitor }}
         description: Move current workspace to different monitor
@@ -76,7 +106,7 @@ namespaces:
           monitor:
             prompt: Monitor
             exclusive: true
-            choices: hyprctl monitors | rg "Monitor .+:" | cut -d" " -f 2
+            choices: hyprctl monitors all -j | jq ".[].name" -r
   nix:
     commands:
       rebuild:
