@@ -11,6 +11,7 @@
           luma = ["dark" "unknown"];
         }
       ];
+      capture_mouse = false;
       true_colors = true;
       show_selection_mark = true;
       default_flags = "gip";
@@ -51,19 +52,19 @@
       verbs = [
         {
           key = "ctrl-p";
-          execution = ":line_up";
+          internal = ":line_up";
         }
         {
           key = "ctrl-n";
-          execution = ":line_down";
+          internal = ":line_down";
         }
         {
           key = "ctrl-l";
-          execution = ":panel_right";
+          internal = ":panel_right";
         }
         {
           key = "ctrl-h";
-          execution = ":panel_left";
+          internal = ":panel_left";
         }
         {
           key = "ctrl-t";
@@ -77,22 +78,42 @@
           name = "touch";
           shortcut = "t";
           invocation = "touch {new_file}";
-          execution = "touch {directory}/{new_file}";
+          external = ["touch" "{directory}/{new_file}"];
           leave_broot = false;
         }
         {
           name = "exec";
           shortcut = "x";
           apply_to = "file";
-          execution = "chmod +x {file}";
+          external = ["chmod" "+x" "{file}"];
           leave_broot = false;
+        }
+        {
+          name = "vimv";
+          shortcut = "v";
+          apply_to = "file";
+          external = ["vimv" "{file}"];
+          working_dir = "{directory}";
+          leave_broot = false;
+          switch_terminal = true;
+          panels = ["tree"];
+        }
+        {
+          name = "vimv";
+          shortcut = "v";
+          apply_to = "directory";
+          external = ["vimv"];
+          working_dir = "{directory}";
+          leave_broot = false;
+          switch_terminal = true;
+          panels = ["tree"];
         }
         {
           invocation = "edit";
           shortcut = "ed";
           key = "ctrl-e";
           apply_to = "file";
-          external = "nvim +{line} {file}";
+          external = ["nvim" "+{line}" "{file}"];
           set_working_dir = true;
           leave_broot = false;
         }
@@ -100,21 +121,21 @@
           invocation = "edit_leave";
           shortcut = "e";
           apply_to = "file";
-          external = "nvim +{line} {file}";
+          external = ["nvim" "+{line}" "{file}"];
           set_working_dir = true;
           leave_broot = true;
         }
         {
           invocation = "create {subpath}";
           shortcut = "c";
-          execution = "$EDITOR {directory}/{subpath}";
+          external = ["nvim" "{directory}/{subpath}"];
           leave_broot = false;
         }
         {
           invocation = "git_diff";
           shortcut = "gd";
           leave_broot = false;
-          external = "git diff {file}";
+          external = ["git" "diff" "{file}"];
         }
       ];
       skin = {
