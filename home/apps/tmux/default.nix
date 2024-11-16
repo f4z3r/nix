@@ -151,6 +151,9 @@ in {
       # git
       bind-key -n C-g display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E "${pkgs.lazygit}/bin/lazygit"
 
+      # broot
+      bind-key -n C-b display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E "${pkgs.broot}/bin/broot"
+
       # window tree
       bind-key -r w run-shell 'tmux choose-tree -wf"##{==:##{session_name},#{session_name}}" -F "##{window_name}"'
 

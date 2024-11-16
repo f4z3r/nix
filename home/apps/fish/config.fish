@@ -46,9 +46,13 @@ bind -M insert \ce edit_cmd
 bind \ce edit_cmd
 
 # fifc settings
-bind -M insert -e \t
-bind -M insert \t _fifc
-set -gx fifc_editor nvim
+function __interactive_broot
+    set output (broot)
+    commandline -ij $output
+end
+
+bind \ct __interactive_broot
+bind -M insert \ct __interactive_broot
 
 # useful functions
 function backup --argument filename
