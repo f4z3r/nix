@@ -137,6 +137,11 @@
           leave_broot = false;
           external = ["git" "diff" "{file}"];
         }
+        {
+          apply_to = "file";
+          external = ["echo" "-n" "{file}"];
+          key = "enter";
+        }
       ];
       skin = {
         default = "rgb(235, 219, 178) none / rgb(189, 174, 147) none";

@@ -27,30 +27,12 @@ function utils.copy_to_clipboard()
 end
 
 function utils.open_with_broot()
-  local broot_config = vim.fn.expand("~/.config/broot/")
-  local broot_tmp_config = "/tmp/broot"
-  assert(os.execute(string.format("rm -rf %s", broot_tmp_config)))
-  assert(os.execute(string.format("mkdir %s", broot_tmp_config)))
-  assert(os.execute(string.format("cp %s/conf.toml %s/conf.toml", broot_config, broot_tmp_config)))
-  assert(os.execute(string.format("cp -r %s/skins %s/skins", broot_config, broot_tmp_config)))
-  assert(os.execute(string.format("cp %s/verbs.hjson %s/verbs.hjson", broot_config, broot_tmp_config)))
-  assert(os.execute(string.format("chmod 600 %s/conf.toml", broot_tmp_config)))
-  local fh = assert(io.open(string.format("%s/conf.toml", broot_tmp_config), "a+"))
-  fh:write([=[
-
-[[verbs]]
-apply_to = "file"
-external = "echo -n '+{line} {file}' > /tmp/broot/capture"
-from_shell = true
-key = "enter"
-]=])
-  fh:close()
   assert(
     os.execute(
-      [[tmux display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E 'tmux new-session -s nvim-broot fish -ic "br --conf /tmp/broot/conf.toml"']]
+      [[tmux display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E 'tmux new-session -s nvim-broot "broot > /tmp/broot-capture"']]
     )
   )
-  local fh_reader, err = io.open("/tmp/broot/capture", "r")
+  local fh_reader, err = io.open("/tmp/broot-capture", "r")
   if err then
     return
   end
