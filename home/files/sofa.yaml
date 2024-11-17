@@ -29,6 +29,42 @@ namespaces:
             prompt: Branch
             exclusive: true
             choices: git for-each-ref --format="%(refname:short)" refs/heads/
+      master-layout-orientation:
+        command: hyprctl dispatch layoutmsg orientation{{ orientation }}
+        description: Change master layout orientation
+        tags:
+        - hyprland
+        - hyprctl
+        - layout
+        - master
+        - dwindle
+        parameters:
+          orientation:
+            prompt: Orientation
+            exclusive: true
+            default: left
+            choices:
+              - left
+              - right
+              - top
+              - bottom
+              - center
+      layout:
+        command: hyprctl keyword general:layout {{ layout }}
+        description: Update hyprctl layout
+        tags:
+        - hyprland
+        - hyprctl
+        - layout
+        - master
+        - dwindle
+        parameters:
+          layout:
+            prompt: Layout
+            exclusive: true
+            choices:
+              - master
+              - dwindle
       monitors:
         command: hyprctl keyword monitor {{ monitor }},{{ resolution }},{{ position }},{{ scale }}
         description: Dynamically configure monitors
