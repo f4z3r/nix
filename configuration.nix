@@ -24,6 +24,7 @@ in {
     ./nixos/fish.nix
     ./nixos/openvpn/default.nix
     ./nixos/kanata.nix
+    (import ./nixos/work.nix {inherit pkgs;})
   ];
 
   boot = {
@@ -169,10 +170,6 @@ in {
     ];
 
     etc = {
-      "secfix/secret" = {
-        mode = "0600";
-        text = secrets.secfix.enrollment-secret;
-      };
       "nixos/restic-password" = {
         mode = "0600";
         text = secrets.restic.password;
@@ -193,18 +190,6 @@ in {
   };
 
   services = {
-    kolide-launcher = {
-      enable = true;
-      kolideHostname = "m1.secfix.com:443";
-      enrollSecretDirectory = "/etc/secfix";
-      rootDirectory = "/var/secfix/m1.secfix.com-443";
-      updateChannel = "stable";
-      osqueryFlags = [
-        "host_identifier=specified"
-        "specified_identifier=${secrets.secfix.host-identifier}"
-      ];
-    };
-
     prometheus = {
       enable = monitoring;
       port = 9090;
