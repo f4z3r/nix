@@ -28,10 +28,12 @@ in {
           modules-left = ["hyprland/workspaces" "backlight" "idle_inhibitor" "pulseaudio"];
           modules-right = ["cpu" "memory" "disk" "network" "custom/vpn" "battery" "clock"];
           "hyprland/workspaces" = {
-            format = "{icon}";
+            format = "<sub>{icon}</sub>{windows}";
+            format-window-separator = "|";
             format-icons = {
-              "1" = "";
-              "2" = "󰈹";
+              # "1" = "";
+              # "2" = "";
+              # "3" = "󰈹";
               default = "󰺕";
               empty = "";
               presistent = "󰺕";
@@ -40,6 +42,12 @@ in {
             };
             persistent-workspaces = {
               "*" = 5;
+            };
+            window-rewrite-default = "󰺕";
+            window-rewrite = {
+              "class<foot>" = "";
+              "class<google-chrome>" = "";
+              "class<brave-browser>" = "󰈹";
             };
           };
           backlight = {
