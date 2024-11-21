@@ -375,7 +375,10 @@ local io = require("io")
 local os = require("os")
 local string = require("string")
 
-local BOOKMARKS_PATH = "~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks"
+local BOOKMARKS_PATHS = {
+  brave = "~/.config/BraveSoftware/Brave-Browser/Default/Bookmarks",
+  chrome = "~/.config/google-chrome/Default/Bookmarks",
+}
 
 local function print_table_to_file(filename, tabl)
   local fh = assert(io.open(filename, "w"))
@@ -407,15 +410,37 @@ local function build_bookmark_list(brave_bookmarks, prefix, data)
   end
 end
 
+local function keys(tbl)
+  local res = {}
+  for k, _ in pairs(tbl) do
+    res[#res + 1] = k
+  end
+  return res
+end
+
+local function pick_browser()
+  local browsers = {
+    Brave = "brave",
+    Chrome = "google-chrome-stable",
+  }
+  local choices = table.concat(keys(browsers), [[\n]])
+  local browser_proc = assert(io.popen(string.format([[echo -e "%s" | rofi -dmenu -i -p Browser -no-custom]], choices)))
+  local browser = browser_proc:read("*a"):match("^%s*(.-)%s*$")
+  browser_proc:close()
+  return browsers[browser]
+end
+
 local function main()
-  local home = assert(os.getenv("HOME"))
-  local path = string.gsub(BOOKMARKS_PATH, "~", home)
-  local fh = assert(io.open(path, "r"))
-  local content = fh:read("*a")
-  fh:close()
-  local brave_bookmarks = json.decode(content)
   local bookmarks = {}
-  build_bookmark_list(brave_bookmarks, "", bookmarks)
+  for browser, bookmark_path in pairs(BOOKMARKS_PATHS) do
+    local home = assert(os.getenv("HOME"))
+    local path = string.gsub(bookmark_path, "~", home)
+    local fh = assert(io.open(path, "r"))
+    local content = fh:read("*a")
+    fh:close()
+    local brave_bookmarks = json.decode(content)
+    build_bookmark_list(brave_bookmarks, browser, bookmarks)
+  end
   local rofi_in = {}
   for _, bookmark in ipairs(bookmarks) do
     local escaped = string.gsub(bookmark.url, "%&", "&amp;")
@@ -430,7 +455,8 @@ local function main()
   os.remove("/tmp/brave-bookmark-open")
   local index = tonumber(out)
   local url = bookmarks[index].url
-  os.execute(string.format("brave '%s' >/dev/null 2>/dev/null", url))
+  local browser = pick_browser()
+  os.execute(string.format("%s '%s' >/dev/null 2>/dev/null", browser, url))
 end
 
 main()
