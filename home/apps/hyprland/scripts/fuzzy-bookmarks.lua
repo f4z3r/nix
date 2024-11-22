@@ -423,8 +423,11 @@ local function pick_browser()
     Brave = "brave",
     Chrome = "google-chrome-stable",
   }
+  local default = "Brave"
   local choices = table.concat(keys(browsers), [[\n]])
-  local browser_proc = assert(io.popen(string.format([[echo -e "%s" | rofi -dmenu -i -p Browser -no-custom]], choices)))
+  local browser_proc = assert(
+    io.popen(string.format([[echo -e "%s" | rofi -dmenu -i -p Browser -no-custom -select "%s"]], choices, default))
+  )
   local browser = browser_proc:read("*a"):match("^%s*(.-)%s*$")
   browser_proc:close()
   return browsers[browser]
