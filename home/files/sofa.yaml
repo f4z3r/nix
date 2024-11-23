@@ -100,17 +100,13 @@ namespaces:
             prompt: Scale
             default: 1
       mirror-monitors:
-        command: hyprctl keyword monitor {{ in }},{{ resolution }},auto,{{ scale }},mirror,{{ out }}
+        command: hyprctl keyword monitor eDP-1,{{ resolution }},auto,{{ scale }},mirror,{{ target }}
         description: Dynamically configure monitors
         tags:
         - hyprland
         - hyprctl
         - displays
         parameters:
-          in:
-            prompt: Input
-            exclusive: true
-            choices: hyprctl monitors all -j | jq ".[].name" -r
           resolution:
             prompt: Resolution
             exclusive: true
@@ -125,8 +121,8 @@ namespaces:
           scale:
             prompt: Scale
             default: 1
-          out:
-            prompt: Output
+          target:
+            prompt: Target
             exclusive: true
             choices: hyprctl monitors all -j | jq ".[].name" -r
       move-workspace:
