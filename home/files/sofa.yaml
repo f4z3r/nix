@@ -12,11 +12,20 @@ namespaces:
             exclusive: true
             choices: nmcli c | cut -d" "  -f1 | tail -n+2 | rg -v "lo|tun0"
       restart-vpn:
-        command: sudo systemctl restart openvpn-ch.service
+        command: sudo systemctl restart openvpn-{{ cc }}.service
         description: Restart VPN service
         interactive: true
         tags:
         - openvpn
+        parameters:
+          cc:
+            prompt: Country
+            exclusive: true
+            choices:
+              - ch
+              - de
+              - uk
+            default: ch
       git-merge:
         command: git merge --ff-only {{ branch }}
         description: Merge a git branch
