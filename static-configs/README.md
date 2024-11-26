@@ -6,6 +6,7 @@ with tmux and vim working properly.
 ---
 
 <!--toc:start-->
+
 - [Static Configurations](#static-configurations)
   - [Installation](#installation)
   - [Tools](#tools)
@@ -14,6 +15,7 @@ with tmux and vim working properly.
     - [Tmux](#tmux)
     - [Vim](#vim)
     - [Git](#git)
+
 <!--toc:end-->
 
 ---
@@ -38,6 +40,7 @@ The base configuration supports vi mode, the main keyboard shortcuts, tmux-sensi
 quake if the tmux version supports it.
 
 To install, copy:
+
 - `tmux.conf` to `~/.tmux.conf`
 - `tmux-sensible.sh` to `~/.local/share/tmux/sensible.sh`
 

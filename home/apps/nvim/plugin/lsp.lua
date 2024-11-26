@@ -73,6 +73,29 @@ lspconfig.nil_ls.setup({
   on_attach = on_attach,
 })
 
+-- dprint
+lspconfig.dprint.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "jsonc",
+    "markdown",
+    "python",
+    "toml",
+    "rust",
+    "roslyn",
+    "graphql",
+    "css",
+    "yaml",
+    "html",
+  },
+})
+
 -- Typst
 lspconfig.typst_lsp.setup({
   capabilities = capabilities,

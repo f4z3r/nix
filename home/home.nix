@@ -231,6 +231,7 @@ in {
       procs
       tree
       jq
+      dprint
       rsync
       xh
       dogdns

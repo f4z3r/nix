@@ -1,6 +1,7 @@
 # Bootstrapping a new Computer
 
 <!--toc:start-->
+
 - [Bootstrapping a new Computer](#bootstrapping-a-new-computer)
   - [NixOS Installation](#nixos-installation)
   - [Flake Installation](#flake-installation)
@@ -10,6 +11,7 @@
   - [Battery Managment](#battery-managment)
   - [GPG Imports (needed for git)](#gpg-imports-needed-for-git)
   - [SSH Generation (needed for git)](#ssh-generation-needed-for-git)
+
 <!--toc:end-->
 
 ## NixOS Installation
