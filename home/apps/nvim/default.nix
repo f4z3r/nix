@@ -155,6 +155,7 @@ in {
       ruff-lsp
       marksman
       rust-analyzer
+      rustfmt
       terraform-ls
       nil
 

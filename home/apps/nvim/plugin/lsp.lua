@@ -143,10 +143,14 @@ lspconfig.gopls.setup({
 -- Markdown
 lspconfig.marksman.setup({
   capabilities = capabilities,
+  on_attach = on_attach,
 })
 
 -- Rust
--- already done by rust-tools
+lspconfig.rust_analyzer.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
 
 -- Helm
 lspconfig.helm_ls.setup({
