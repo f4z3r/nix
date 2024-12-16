@@ -165,7 +165,9 @@ in {
           };
           decoration = {
             rounding = 3;
-            drop_shadow = false;
+            shadow = {
+              enabled = false;
+            };
             dim_inactive = true;
             dim_strength = 0.3;
             blur = {

@@ -173,7 +173,7 @@ in {
 
       html-tidy
 
-      typst-lsp
+      tinymist
       typstyle
     ];
 

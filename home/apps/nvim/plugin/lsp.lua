@@ -97,7 +97,7 @@ lspconfig.dprint.setup({
 })
 
 -- Typst
-lspconfig.typst_lsp.setup({
+lspconfig.tinymist.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
@@ -116,7 +116,7 @@ lspconfig.pylsp.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
-lspconfig.ruff_lsp.setup({
+lspconfig.ruff.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
