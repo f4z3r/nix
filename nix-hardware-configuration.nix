@@ -55,8 +55,11 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.firmware = with pkgs; [
+    ivsc-firmware
+  ];
   hardware.ipu6 = {
-    enable = false;
+    enable = true;
     platform = "ipu6ep";
   };
 }

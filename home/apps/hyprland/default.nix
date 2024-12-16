@@ -26,6 +26,9 @@ in {
       hyprland = {
         enable = true;
         settings = {
+          debug = {
+            disable_logs = true;
+          };
           exec-once = [
             "${pkgs.dunst}/bin/dunst"
             "${pkgs.swww}/bin/swww-daemon"

@@ -132,9 +132,6 @@ needed to work. These can be found under [`./static-configs/`](./static-configs/
 ## Technical Debt
 
 - Check how to notify on virus event.
-- Treesitter parsers are currently not held within Nix. This is due to an issue of the parsers no
-  longer being installed properly by Nix. In order to test new versions of nixpkgs, remove [the line defining the install dir](https://github.com/f4z3r/nix/blob/1b3ca0fc940eff8a192334831ac6f1d9238895ca/home/apps/nvim/plugin/treesitter.lua#L8),
-  rebuild and run `:checkhealth nvim-treesitter`.
 - Various nvim plugins are my own forks awaiting merging in the upstream.
 - Various nvim plugins are pinned to a version, and might want to be updated.
 - Rofi colours are not dynamic for system theme.
