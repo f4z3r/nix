@@ -29,6 +29,7 @@
       rev = "handle_changes_in_telescope_api";
       sha256 = "sha256-CC9+h1i+l9TbE60LABZnwjkHy94VGQ7Hqd5jVHEW+mw=";
     };
+    propagatedBuildInputs = with pkgs.luajitPackages; [plenary-nvim];
   };
 
   neorg-templates = pkgs.vimUtils.buildVimPlugin {
@@ -39,6 +40,7 @@
       rev = "v2.0.3";
       sha256 = "sha256-nZOAxXSHTUDBpUBS/Esq5HHwEaTB01dI7x5CQFB3pcw=";
     };
+    propagatedBuildInputs = with pkgs.luajitPackages; [luasnip neorg];
   };
 
   markit = pkgs.vimUtils.buildVimPlugin {
@@ -51,7 +53,7 @@
     };
   };
 
-  d2= pkgs.vimUtils.buildVimPlugin {
+  d2 = pkgs.vimUtils.buildVimPlugin {
     name = "d2";
     src = pkgs.fetchFromGitHub {
       owner = "terrastruct";

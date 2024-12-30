@@ -23,7 +23,7 @@ null_ls.setup({
     null_ls.builtins.formatting.just,
     null_ls.builtins.formatting.cbfmt, --markdown
     null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.alejandra, --nix
+    null_ls.builtins.formatting.alejandra, --nix, also set in nil_ls configuration
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.shellharden,
     null_ls.builtins.formatting.fish_indent,
