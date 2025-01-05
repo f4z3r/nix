@@ -46,7 +46,6 @@ namespaces:
         - hyprctl
         - layout
         - master
-        - dwindle
         parameters:
           orientation:
             prompt: Orientation

@@ -63,10 +63,10 @@ in {
             ''$wm, H, movefocus, l''
             ''$wm, K, movefocus, u''
             ''$wm, N, movefocus, d''
-            ''$wm SHIFT, L, movewindow, r''
-            ''$wm SHIFT, H, movewindow, l''
-            ''$wm SHIFT, K, movewindow, u''
-            ''$wm SHIFT, N, movewindow, d''
+            ''$wm SHIFT, L, movewindoworgroup, r''
+            ''$wm SHIFT, H, movewindoworgroup, l''
+            ''$wm SHIFT, K, movewindoworgroup, u''
+            ''$wm SHIFT, N, movewindoworgroup, d''
 
             ''$wm SHIFT, Y, fullscreen''
             ''$wm SHIFT, X, killactive''
@@ -100,6 +100,8 @@ in {
             ''$wm&$app, w, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/fuzzy-bookmarks.lua''
             ''$wm&$app, r, exec, bash /home/${username}/.local/share/scripts/screen-record.sh''
             ''$wm&$app, c, exec, ${pkgs.rofi-wayland}/bin/rofi -modi clipboard:/home/${username}/.local/bin/cliphist-rofi-img.sh -show clipboard -show-icons''
+            ''$wm&$app, t, togglegroup''
+            ''$wm&$app, g, changegroupactive''
 
             '', Print, exec, bash /home/${username}/.local/share/scripts/screenshot.sh''
           ];
@@ -197,20 +199,21 @@ in {
           };
         };
         # importantPrefixes = "";
-        # extraConfig = ''
-        #   bind = $wm, R, submap, resize
-        #   submap = resize
-        #   binde = , h, resizeactive, 10 0
-        #   binde = , l, resizeactive, -10 0
-        #   binde = , k, resizeactive, 0 -10
-        #   binde = , n, resizeactive, 0 10
-        #   binde = , right, resizeactive, 10 0
-        #   binde = , left, resizeactive, -10 0
-        #   binde = , up, resizeactive, 0 -10
-        #   binde = , down, resizeactive, 0 10
-        #   bind = , escape, submap, reset
-        #   submap = reset
-        # '';
+        extraConfig = ''
+          bindp=$wm&$app, z, submap, resize
+          submap=resize
+          binde=, h, resizeactive, 10 0
+          binde=, l, resizeactive, -10 0
+          binde=, k, resizeactive, 0 -10
+          binde=, n, resizeactive, 0 10
+          binde=, right, resizeactive, 10 0
+          binde=, left, resizeactive, -10 0
+          binde=, up, resizeactive, 0 -10
+          binde=, down, resizeactive, 0 10
+          bind=, escape, submap, reset
+          bind=, catchall, submap, reset
+          submap=reset
+        '';
         systemd = {
           enable = true;
         };
