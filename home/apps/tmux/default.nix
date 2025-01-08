@@ -162,7 +162,9 @@ in {
       bind-key -r w run-shell 'tmux choose-tree -wf"##{==:##{session_name},#{session_name}}" -F "##{window_name}"'
 
       # better movement
-      bind-key -n Pageup copy-mode -u
+      bind-key -n Pageup copy-mode\;\
+          send-keys -X start-of-line\;\
+          send-keys -X search-backward " :: "
       bind-key -T copy-mode -n Pageup send-keys -X halfpage-up
       bind-key -T copy-mode -n Pagedown send-keys -X halfpage-down
       bind-key -T copy-mode-vi Pageup send-keys -X halfpage-up
