@@ -2,6 +2,7 @@
   secrets = import ../secrets.nix;
 in {
   programs = {
+    nix-ld.enable = true;
     chromium = {
       enable = true;
       extraOpts = {
@@ -26,9 +27,37 @@ in {
   };
 
   environment = {
-    etc."secfix/secret" = {
-      mode = "0600";
-      text = secrets.secfix.enrollment-secret;
+    etc = {
+      "secfix/secret" = {
+        mode = "0600";
+        text = secrets.secfix.enrollment-secret;
+      };
+      "opt/chrome/policies/enrollment/CloudManagementEnrollmentToken" = {
+        mode = "0444";
+        text = secrets.chrome.enterprise-enrollment-token;
+      };
+      "opt/chrome/policies/enrollment/CloudManagementEnrollmentMandatory" = {
+        mode = "0444";
+        text = "Mandatory";
+      };
+      "opt/chrome/native-messaging-hosts/com.google.endpoint_verification.api_helper.json" = {
+        mode = "0444";
+        text = ''
+          {
+            "name": "com.google.endpoint_verification.api_helper",
+            "description": "Google Endpoint Verification API Helper",
+            "path": "/opt/google/endpoint-verification/bin/apihelper",
+            "type": "stdio",
+            "allowed_origins": [
+              "chrome-extension://kngjcibmkbngcpnaoafbgkicpgmdehje/",
+              "chrome-extension://callobklhcbilhphinckomhgkigmfocg/",
+              "chrome-extension://oigombmpildfokhngfpagoddcpmfbjbk/",
+              "chrome-extension://defpdpdbabkdgiiemipddkjbpcekecbj/",
+              "chrome-extension://flccafnekgjghjclpipcihjcibfopold/"
+            ]
+          }
+        '';
+      };
     };
 
     systemPackages = with pkgs; [
