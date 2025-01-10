@@ -26,6 +26,39 @@ in {
     };
   };
 
+  systemd.tmpfiles.settings = {
+    google-enterprise = {
+      "/opt/google/endpoint-verification/bin" = {
+        d = {
+          group = "users";
+          user = "root";
+          mode = "775";
+        };
+      };
+      "/opt/google/endpoint-verification/var/lib" = {
+        d = {
+          group = "users";
+          user = "root";
+          mode = "775";
+        };
+      };
+      "/etc/opt/chrome/policies/enrollment" = {
+        d = {
+          group = "root";
+          user = "root";
+          mode = "755";
+        };
+      };
+      "/etc/opt/chrome/native-messaging-hosts" = {
+        d = {
+          group = "root";
+          user = "root";
+          mode = "755";
+        };
+      };
+    };
+  };
+
   environment = {
     etc = {
       "secfix/secret" = {
