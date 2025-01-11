@@ -269,6 +269,24 @@ namespaces:
         - clean
         - remove
         - rm
+  podman:
+    commands:
+      prune-containers:
+        command: podman container list -a --external | perl -lane 'print @F[0] if ($_ =~ /Exited/ and $_ !~ /k3d/)' | xargs -r podman rm
+        description: Delete all exited containers
+        tags:
+        - local
+        - clean
+        - remove
+        - rm
+      prune-images:
+        command: podman images -a | tail -n+2 | perl -lane 'print @F[2] if @F[1] =~ /<none>/' | xargs -r podman rmi
+        description: Delete all container images missing a tag
+        tags:
+        - local
+        - clean
+        - remove
+        - rm
   tmux:
     commands:
       kill-all-sessions:
