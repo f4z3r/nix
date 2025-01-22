@@ -15,11 +15,6 @@
     };
 
     neorg-overlay.url = "github:nvim-neorg/nixpkgs-neorg-overlay";
-
-    kolide-launcher = {
-      url = "github:/kolide/nix-agent/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -28,7 +23,6 @@
     lix-module,
     home-manager,
     neorg-overlay,
-    kolide-launcher,
     ...
   } @ inputs: let
     usernames = [
@@ -78,8 +72,6 @@
           lix-module.nixosModules.default
 
           ./configuration.nix
-
-          kolide-launcher.nixosModules.kolide-launcher
 
           home-manager.nixosModules.home-manager
           {

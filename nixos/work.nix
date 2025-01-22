@@ -12,20 +12,6 @@ in {
     };
   };
 
-  services = {
-    kolide-launcher = {
-      enable = true;
-      kolideHostname = "m1.secfix.com:443";
-      enrollSecretDirectory = "/etc/secfix";
-      rootDirectory = "/var/secfix/m1.secfix.com-443";
-      updateChannel = "stable";
-      osqueryFlags = [
-        "host_identifier=specified"
-        "specified_identifier=${secrets.secfix.host-identifier}"
-      ];
-    };
-  };
-
   systemd.tmpfiles.settings = {
     google-enterprise = {
       "/opt/google/endpoint-verification/bin" = {
@@ -61,10 +47,6 @@ in {
 
   environment = {
     etc = {
-      "secfix/secret" = {
-        mode = "0600";
-        text = secrets.secfix.enrollment-secret;
-      };
       "opt/chrome/policies/enrollment/CloudManagementEnrollmentToken" = {
         mode = "0444";
         text = secrets.chrome.enterprise-enrollment-token;
