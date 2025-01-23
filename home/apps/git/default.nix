@@ -59,6 +59,9 @@
         ff = "only";
         rebase = true;
       };
+      rebase = {
+        updateRefs = true;
+      };
       format = {
         signoff = true;
       };
