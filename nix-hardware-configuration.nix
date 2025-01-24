@@ -59,7 +59,7 @@
     ivsc-firmware
   ];
   hardware.ipu6 = {
-    enable = true;
+    enable = false;
     platform = "ipu6ep";
   };
 }
