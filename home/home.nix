@@ -136,7 +136,14 @@ in {
     };
 
     feh.enable = true;
-    bottom.enable = true;
+    btop = {
+      enable = true;
+      settings = {
+        color_theme = "TTY";
+        vim_keys = true;
+        clock_format = "%H";
+      };
+    };
 
     eza = {
       enable = true;
@@ -224,7 +231,6 @@ in {
       gcc
       openssl
       rclone
-      neofetch
       mupdf
       ripgrep
       silver-searcher
@@ -233,12 +239,10 @@ in {
       jq
       dprint
       rsync
-      xh
       dogdns
       fend
       ouch
       fd
-      gfold
       vimv-rs
       dysk
       erdtree
