@@ -188,6 +188,15 @@ namespaces:
             prompt: Choose user
           project:
             prompt: Choose project
+      gists:
+        command: brave "https://gist.github.com/{{ user }}"
+        description: Open Gists for user
+        tags:
+        - brave
+        parameters:
+          user:
+            default: f4z3r
+            prompt: Choose user
       nixos:
         command: brave "https://search.nixos.org/packages?channel={{ channel }}"
         description: Open NixOS packages and versions
