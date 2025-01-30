@@ -5,15 +5,36 @@ local leader = "<leader>s"
 local mappings = {
   {
     mode = "n",
+    suffix = "s",
+    command = function()
+      vim.opt_local.spell = not vim.opt_local.spell:get()
+      vim.opt_local.wrap = not vim.opt_local.wrap:get()
+    end,
+    desc = "Toggle spelling and word wrapping",
+  },
+  {
+    mode = "n",
     suffix = "e",
-    command = "<cmd>setlocal spell wrap<cr>",
-    desc = "Enable english spelling",
+    command = function()
+      vim.opt_local.spl = "en"
+    end,
+    desc = "Set spell language to English",
   },
   {
     mode = "n",
     suffix = "d",
-    command = "<cmd>setlocal spell spl=de wrap<cr>",
-    desc = "Enable german spelling",
+    command = function()
+      vim.opt_local.spl = "de"
+    end,
+    desc = "Set spell language to German",
+  },
+  {
+    mode = "n",
+    suffix = "f",
+    command = function()
+      vim.opt_local.spl = "fr"
+    end,
+    desc = "Set spell language to French",
   },
 }
 

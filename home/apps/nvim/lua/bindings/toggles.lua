@@ -5,10 +5,11 @@
 local leader = "<leader>t"
 
 local function toggle_conceal()
-  if vim.o.conceallevel > 0 then
-    vim.o.conceallevel = 0
+  local conceal = vim.opt_local.conceallevel:get()
+  if conceal > 0 then
+    vim.opt_local.conceallevel = 0
   else
-    vim.o.conceallevel = 2
+    vim.opt_local.conceallevel = 2
   end
 end
 
@@ -93,6 +94,14 @@ local mappings = {
       require("neotest").summary.toggle()
     end,
     desc = "Toggle test outputs",
+  },
+  {
+    mode = "n",
+    suffix = "w",
+    command = function()
+      vim.opt_local.wrap = not vim.opt_local.wrap:get()
+    end,
+    desc = "Toggle wrapping",
   },
 }
 
