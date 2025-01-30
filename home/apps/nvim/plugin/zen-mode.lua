@@ -1,6 +1,8 @@
 require("zen-mode").setup({
   window = {
-    width = 105,
+    width = function()
+      return vim.opt_local.textwidth:get() + 2
+    end,
     options = {
       -- signcolumn = "no", -- disable signcolumn
       number = false, -- disable number column
@@ -22,4 +24,12 @@ require("zen-mode").setup({
     gitsigns = { enabled = false }, -- disables git signs
     tmux = { enabled = true }, -- disables the tmux statusline
   },
+  -- callback where you can add custom code when the Zen window opens
+  on_open = function(win)
+    vim.opt_local.sidescrolloff = 0
+  end,
+  -- callback where you can add custom code when the Zen window closes
+  on_close = function()
+    vim.opt_local.sidescrolloff = 5
+  end,
 })
