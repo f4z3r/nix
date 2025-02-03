@@ -20,18 +20,6 @@
     };
   };
 
-  # NOTE: this should be changed back to original repo when fixed
-  git-worktree-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "git-worktree-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "awerebea";
-      repo = "git-worktree.nvim";
-      rev = "handle_changes_in_telescope_api";
-      sha256 = "sha256-CC9+h1i+l9TbE60LABZnwjkHy94VGQ7Hqd5jVHEW+mw=";
-    };
-    propagatedBuildInputs = with pkgs.luajitPackages; [plenary-nvim];
-  };
-
   neorg-templates = pkgs.vimUtils.buildVimPlugin {
     name = "neorg-templates";
     src = pkgs.fetchFromGitHub {
@@ -241,7 +229,6 @@ in {
         plugin = gitsigns-nvim;
         config = builtins.readFile ./plugin/gitsigns.lua;
       }
-      git-worktree-nvim
 
       # lsp stuff
       {

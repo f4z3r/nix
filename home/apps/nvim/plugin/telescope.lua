@@ -37,7 +37,6 @@ telescope.setup({
 })
 
 telescope.load_extension("notify")
-telescope.load_extension("git_worktree")
 telescope.load_extension("rest")
 telescope.load_extension("marks_nvim")
 -- telescope.load_extension("yank_history")
