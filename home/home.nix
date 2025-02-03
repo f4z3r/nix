@@ -265,6 +265,7 @@ in {
       gtk-engine-murrine
 
       # stuff used in the background
+      ollama
       swww
       grim
       slurp
