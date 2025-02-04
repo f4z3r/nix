@@ -14,7 +14,6 @@ null_ls.setup({
     null_ls.builtins.diagnostics.fish,
     null_ls.builtins.diagnostics.terraform_validate,
     null_ls.builtins.diagnostics.tfsec,
-    null_ls.builtins.diagnostics.todo_comments,
     null_ls.builtins.diagnostics.trail_space,
     null_ls.builtins.diagnostics.tidy,
     -- formatting
