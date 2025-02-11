@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
