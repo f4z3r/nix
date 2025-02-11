@@ -301,6 +301,7 @@
         busted
         compat53
         luafilesystem
+        luaposix
 
         # needed for publishing rocks
         luarocks-nix
