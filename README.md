@@ -67,6 +67,12 @@ sudo mkdir -p /root/quarantine
 sudo freshclam
 ```
 
+## FireNvim
+
+In order to overlay a NeoVim window in a browser, we are using firenvim. In order to get this to
+work, you need to install the firenvim extension in your browser and run `nvim --headless "+call
+firenvim#install(0) | q"` once.
+
 ## Secrets
 
 Download the `secrets.nix` file from the encrypted storage. We do not use the standard way to add

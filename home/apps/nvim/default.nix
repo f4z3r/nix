@@ -392,6 +392,9 @@ in {
         config = builtins.readFile ./plugin/yanky.lua;
       }
 
+      # browser integration
+      firenvim
+
       # alignment
       {
         type = "lua";
