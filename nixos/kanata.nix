@@ -18,9 +18,9 @@ in {
 
         (defalias
           ;; shot toggles
-          lyd (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} esc (layer-while-held down)))
-          lyu (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} bspc (layer-while-held up)))
-          nav (multi f24 (tap-hold-release ${tap-timeout} ${hold-delay} bspc (layer-while-held nav)))
+          lyd (tap-hold-release ${tap-timeout} ${hold-delay} esc (layer-while-held down))
+          lyu (tap-hold-release ${tap-timeout} ${hold-delay} bspc (layer-while-held up))
+          nav (tap-hold-release ${tap-timeout} ${hold-delay} bspc (layer-while-held nav))
 
           ;; home row mod, in a very complex way that does what I want
           ;; See https://github.com/jtroo/kanata/blob/main/cfg_samples/home-row-mod-advanced.kbd
@@ -30,19 +30,19 @@ in {
             (layer-switch nomods)
             (on-idle-fakekey to-base tap 20)
           )
-          q (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} q lmet))
+          q (tap-hold-release ${tap-timeout} ${home-row-hold-delay} q lmet)
           ;; can be a pain with wq, but shifting quick is more important
-          w (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} w lsft))
-          f (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} f lctl))
-          p (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} p lalt))
-          ; (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} ; lmet))
-          y (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} y lsft))
+          w (tap-hold-release ${tap-timeout} ${home-row-hold-delay} w lsft)
+          f (tap-hold-release ${tap-timeout} ${home-row-hold-delay} f lctl)
+          p (tap-hold-release ${tap-timeout} ${home-row-hold-delay} p lalt)
+          ; (tap-hold-release ${tap-timeout} ${home-row-hold-delay} ; lmet)
+          y (tap-hold-release ${tap-timeout} ${home-row-hold-delay} y lsft)
           ;; not using f24 to allow umlaut
           u (tap-hold-release ${tap-timeout} ${home-row-hold-delay} u rctl)
-          l (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} l lalt))
+          l (tap-hold-release ${tap-timeout} ${home-row-hold-delay} l lalt)
 
-          quo (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} S-' rsft))
-          squ (multi f24 (tap-hold-release ${tap-timeout} ${home-row-hold-delay} '   lsft))
+          quo (tap-hold-release ${tap-timeout} ${home-row-hold-delay} S-' rsft)
+          squ (tap-hold-release ${tap-timeout} ${home-row-hold-delay} '   lsft)
 
           ;; helpers
           arr (macro - S-.)
