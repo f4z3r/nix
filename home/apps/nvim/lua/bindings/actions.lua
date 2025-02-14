@@ -2,6 +2,7 @@
 --
 -- These are currently defined in diagnostics.lua
 -- For markdown table formatting, see after/ftplugin/markdown.lua
+-- For http request handling, see after/ftplugin/http.lua
 
 local leader = "<leader>a"
 

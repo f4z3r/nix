@@ -157,6 +157,8 @@ in {
 
       yamlfmt
 
+      libxml2
+
       tfsec
 
       fzf
@@ -270,8 +272,8 @@ in {
       # http
       {
         type = "lua";
-        plugin = rest-nvim;
-        config = builtins.readFile ./plugin/rest.lua;
+        plugin = kulala-nvim;
+        config = builtins.readFile ./plugin/kulala.lua;
       }
 
       # completion
