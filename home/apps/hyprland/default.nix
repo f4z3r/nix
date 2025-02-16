@@ -36,7 +36,7 @@ in {
             "wl-paste --watch cliphist store"
             "${pkgs.hyprland}/bin/hyprctl setcursor '${cursorTheme}' 24"
             "${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua"
-            "[workspace special:hallofshame silent] ${pkgs.ghostty}/bin/ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
+            "[workspace special:hallofshame silent] ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
           ];
           env = [
             ''GTK_THEME,Materia-dark''
@@ -54,7 +54,7 @@ in {
             # monitor=desc:Chimei Innolux Corporation 0x150C,preferred,auto,1.5
           ];
           bind = [
-            ''$general, RETURN, exec, ${pkgs.ghostty}/bin/ghostty -e ${pkgs.tmux}/bin/tmux''
+            ''$general, RETURN, exec, ghostty -e ${pkgs.tmux}/bin/tmux''
 
             ''$app, RETURN, togglespecialworkspace, quake''
 
