@@ -20,7 +20,7 @@ Supports quake terminals:
 - Launcher: `rofi`
 - GTK Theme: `Materia Material Dark`
 - GTK Icon Theme: `Papirus Dark`
-- Terminal: `foot`
+- Terminal: `ghostty`
 - Multiplexer: `tmux`
 - Shell: `fish`
 - Editor: `neovim`

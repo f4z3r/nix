@@ -36,6 +36,7 @@ in {
             "wl-paste --watch cliphist store"
             "${pkgs.hyprland}/bin/hyprctl setcursor '${cursorTheme}' 24"
             "${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua"
+            "[workspace special:hallofshame silent] ${pkgs.ghostty}/bin/ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
           ];
           env = [
             ''GTK_THEME,Materia-dark''
@@ -53,7 +54,7 @@ in {
             # monitor=desc:Chimei Innolux Corporation 0x150C,preferred,auto,1.5
           ];
           bind = [
-            ''$general, RETURN, exec, ${pkgs.foot}/bin/foot ${pkgs.tmux}/bin/tmux''
+            ''$general, RETURN, exec, ${pkgs.ghostty}/bin/ghostty -e ${pkgs.tmux}/bin/tmux''
 
             ''$app, RETURN, togglespecialworkspace, quake''
 
@@ -159,7 +160,7 @@ in {
             ''r[6-10], monitor:${monitor_prefix}-1''
             ''r[6-10], monitor:${monitor_prefix}-2''
             # launch new terminal when opening special workspace and it is empty
-            ''special:quake, on-created-empty:[ float; size 70% 70%; center ] foot --title=quake -- tmux new -s quake''
+            ''special:quake, on-created-empty:[ float; size 70% 70%; center ] ghostty --title=quake --class=quake -e tmux new -s quake''
           ];
           general = {
             border_size = 2;

@@ -66,7 +66,6 @@ in {
     ./apps/rofi/default.nix
     (import ./apps/git/default.nix {inherit pkgs theme;})
     (import ./apps/lazygit.nix {inherit pkgs theme;})
-    (import ./apps/foot.nix {inherit pkgs theme font_size;})
     (import ./apps/tmux/default.nix {inherit pkgs lib stdenv theme;})
     (import ./apps/fish/default.nix {inherit lib pkgs pkgs-custom theme;})
     ./apps/starship.nix
@@ -299,6 +298,7 @@ in {
     file = {
       ".config/ruff/pyproject.toml" = {source = ./files/ruff.toml;};
       "revive.toml" = {source = ./files/revive.toml;};
+      ".config/ghostty/config" = {source = ./files/ghostty.toml;};
       ".local/bin/mip" = {
         source = ./scripts/mip;
         executable = true;
@@ -323,6 +323,7 @@ in {
     cursorTheme = {
       package = pkgs.capitaine-cursors-themed;
       name = cursorTheme;
+      size = 24;
     };
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = theme == "dark";
