@@ -1,8 +1,8 @@
 font-family = "FiraCode Nerd Font Mono Med"
 font-family-bold = "FiraCode Nerd Font Mono Bold"
 font-family-bold-italic = "FiraCode Nerd Font Mono Bold"
-font-family-italic= "FiraCode Nerd Font Mono Light"
-font-synthetic-style = true
+font-family-italic = "FiraCode Nerd Font Mono Light"
+font-feature = "+ss02"
 
 gtk-single-instance = true
 theme = "GruvboxDark"

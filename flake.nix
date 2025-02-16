@@ -16,7 +16,7 @@
 
     neorg-overlay.url = "github:nvim-neorg/nixpkgs-neorg-overlay";
 
-    ghostty.url = "github:ghostty-org/ghostty";
+    ghostty.url = "github:ghostty-org/ghostty?ref=v1.1.2";
   };
 
   outputs = {
