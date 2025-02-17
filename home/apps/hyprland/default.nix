@@ -36,7 +36,6 @@ in {
             "wl-paste --watch cliphist store"
             "${pkgs.hyprland}/bin/hyprctl setcursor '${cursorTheme}' 24"
             "${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua"
-            "[workspace special:hallofshame silent] ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
           ];
           env = [
             ''GTK_THEME,Materia-dark''
