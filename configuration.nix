@@ -38,6 +38,11 @@ in {
       };
       efi = {canTouchEfiVariables = true;};
     };
+    plymouth = {
+      enable = true;
+      themePackages = [ pkgs.adi1090x-plymouth-themes ];
+      theme = "hud_3";
+    };
     tmp = {cleanOnBoot = true;};
   };
 
