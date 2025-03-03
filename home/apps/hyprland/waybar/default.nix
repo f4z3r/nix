@@ -45,7 +45,7 @@ in {
             };
             window-rewrite-default = "󰺕";
             window-rewrite = {
-              "class<foot>" = "";
+              "class<com.mitchellh.ghostty>" = "󰊠";
               "class<google-chrome>" = "";
               "class<brave-browser>" = "󰈹";
             };
