@@ -15,7 +15,7 @@
     };
 
     signing = {
-      gpgPath = "${pkgs.gnupg}/bin/gpg";
+      signer = "${pkgs.gnupg}/bin/gpg";
       signByDefault = true;
       key = "f4z3r-github@pm.me";
     };

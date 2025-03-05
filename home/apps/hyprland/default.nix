@@ -197,6 +197,10 @@ in {
           cursor = {
             inactive_timeout = 5;
           };
+          ecosystem = {
+            no_update_news = true;
+            no_donation_nag = true;
+          };
         };
         # importantPrefixes = "";
         extraConfig = ''
