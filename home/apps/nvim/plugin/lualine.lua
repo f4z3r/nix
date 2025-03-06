@@ -1,5 +1,14 @@
-local theme = require("gruvbox-material.lualine").theme("medium")
+local g_colors = require("gruvbox-material.colors")
 local navic = require("nvim-navic")
+local theme = require("gruvbox-material.lualine").theme("medium")
+local colors = g_colors.get(vim.o.background, "medium")
+
+theme.normal["x"] = { fg = colors.bg_statusline1, bg = colors.purple }
+theme.insert["x"] = { fg = colors.bg_statusline1, bg = colors.purple }
+theme.visual["x"] = { fg = colors.bg_statusline1, bg = colors.purple }
+theme.replace["x"] = { fg = colors.bg_statusline1, bg = colors.purple }
+theme.command["x"] = { fg = colors.bg_statusline1, bg = colors.purple }
+theme.inactive["x"] = { fg = colors.fg0, bg = "NONE" }
 
 require("lualine").setup({
   options = {
@@ -34,7 +43,6 @@ require("lualine").setup({
         end,
         -- color = { fg = gruvbox_colors.fg0, bg = gruvbox_colors.bg0 },
         padding = { left = 1, right = 0 },
-
       },
     },
     lualine_x = {
