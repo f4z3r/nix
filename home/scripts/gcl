@@ -27,7 +27,7 @@ local function main()
   for _, target in pairs(TARGETS) do
     local project, repo = args.uri:match(target)
     if project ~= nil and repo ~= nil then
-      os.execute(string.format("mkdir %s/%s", BASE, project, repo))
+      os.execute(string.format("mkdir %s/%s", BASE, project))
       os.execute(string.format("git clone %s %s/%s/%s", args.uri, BASE, project, repo))
       return
     end
