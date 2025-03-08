@@ -211,8 +211,9 @@ in {
           python-lsp-server
           pylsp-rope
           pylsp-mypy
+          presenterm-export
         ];
-      enhanced-python = pkgs.python311.withPackages python-packages;
+      enhanced-python = pkgs.python312.withPackages python-packages;
     in [
       # GUI programs
       gimp
