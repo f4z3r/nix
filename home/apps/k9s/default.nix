@@ -177,5 +177,19 @@ in {
         };
       };
     };
+
+    views = {
+      "kafka.strimzi.io/v1beta2/kafkatopics" = {
+        columns = [
+          "NAME"
+          "CLUSTER"
+          "PARTITIONS"
+          "REPLICATION FACTOR"
+          "READY"
+          "TOPIC NAME:.spec.topicName"
+        ];
+      };
+      sortColumn = "TOPIC NAME:asc";
+    };
   };
 }
