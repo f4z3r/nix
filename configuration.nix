@@ -266,15 +266,6 @@ in {
     udev = {
       enable = true;
       extraRules = ''
-        # Rules for Oryx web flashing and live training
-        KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
-        KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
-
-        # Keymapp / Wally Flashing rules for the Moonlander and Planck EZ
-        SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666", SYMLINK+="stm32_dfu"
-        # Keymapp Flashing rules for the Voyager
-        SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
-
         # stop charging battery using upower rules
         SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="/bin/sh -c 'echo 90 > /sys/class/power_supply/BAT0/charge_control_end_threshold'"
 
