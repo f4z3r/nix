@@ -22,7 +22,7 @@ local function log_error(msg, ...)
 end
 
 local function get_prefix(msg)
-  local match = string.match(msg, "[%S%(%)]+:")
+  local match = string.match(msg, "%S+[:%b()]")
   if not match then
     log_error("could not find any prefix in commit")
     os.exit(1)
