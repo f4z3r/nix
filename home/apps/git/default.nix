@@ -125,10 +125,10 @@
       ".nvimlog"
       ".tool-versions"
       "/worktrees/"
-      "/.envrc"
-      "/.venv/"
+      ".envrc"
+      ".venv/"
       "/shell.nix"
-      "/.direnv/"
+      ".direnv/"
       ".ropeproject/"
       "/.tup/"
     ];
