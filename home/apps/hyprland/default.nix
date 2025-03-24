@@ -12,6 +12,10 @@
     if theme == "dark"
     then "Capitaine Cursors (Gruvbox) - White"
     else "Capitaine Cursors (Gruvbox)";
+  wallpaper =
+    if theme == "dark"
+    then "~/.local/share/wallpapers/midnight-reflections-moonlit-sea.jpg"
+    else "~/.local/share/wallpapers/mountains-with-sky.jpg";
 in {
   imports = [
     (import ./waybar/default.nix {inherit pkgs theme;})
@@ -32,7 +36,7 @@ in {
           exec-once = [
             "${pkgs.dunst}/bin/dunst"
             "${pkgs.swww}/bin/swww-daemon"
-            "${pkgs.swww}/bin/swww img ~/.local/share/wallpapers/midnight-reflections-moonlit-sea.jpg"
+            "${pkgs.swww}/bin/swww img ${wallpaper}"
             "wl-paste --watch cliphist store"
             "${pkgs.hyprland}/bin/hyprctl setcursor '${cursorTheme}' 24"
             "${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua"
