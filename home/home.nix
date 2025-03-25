@@ -346,13 +346,7 @@ in {
     cursorTheme = {
       package = pkgs.capitaine-cursors-themed;
       name = cursorTheme;
-      size = 24;
-    };
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = theme == "dark";
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = theme == "dark";
+      size = 32;
     };
   };
 }
