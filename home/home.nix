@@ -25,45 +25,14 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; let
     if theme == "dark"
     then "Capitaine Cursors (Gruvbox) - White"
     else "Capitaine Cursors (Gruvbox)";
-  fg =
-    if theme == "dark"
-    then "#d4be98"
-    else "#654735";
-  bg =
-    if theme == "dark"
-    then "#282828"
-    else "#fbf1c7";
-  red =
-    if theme == "dark"
-    then "#ea6962"
-    else "#c14a4a";
-  blue =
-    if theme == "dark"
-    then "#7daea3"
-    else "#45707a";
-  purple =
-    if theme == "dark"
-    then "#d3869b"
-    else "#945e80";
-  green =
-    if theme == "dark"
-    then "#a9b665"
-    else "#6c782e";
-  orange =
-    if theme == "dark"
-    then "#e78a4e"
-    else "#c35e0a";
-  aqua =
-    if theme == "dark"
-    then "#89b482"
-    else "#4c7a5d";
+  colors = import ./../theme.nix {inherit theme;};
 in {
   imports = [
     (import ./langs/lua.nix {inherit pkgs lib;})
     (import ./apps/hyprland/default.nix {
       inherit pkgs pkgs-custom username resolution scale main_monitor monitor_prefix theme;
     })
-    ./apps/rofi/default.nix
+    (import ./apps/rofi/default.nix {inherit pkgs theme;})
     (import ./apps/git/default.nix {inherit pkgs theme;})
     (import ./apps/lazygit.nix {inherit pkgs theme;})
     (import ./apps/tmux/default.nix {inherit pkgs lib stdenv theme;})
@@ -86,17 +55,18 @@ in {
       enable = true;
       enableFishIntegration = true;
       colors = {
-        inherit bg fg;
-        "bg+" = bg;
-        "fg+" = purple;
-        hl = aqua;
-        "hl+" = purple;
-        info = orange;
-        marker = green;
-        prompt = red;
-        spinner = orange;
-        pointer = purple;
-        header = blue;
+        bg = colors.background;
+        fg = colors.foreground;
+        "bg+" = colors.background;
+        "fg+" = colors.purple;
+        hl = colors.aqua;
+        "hl+" = colors.purple;
+        info = colors.orange;
+        marker = colors.green;
+        prompt = colors.red;
+        spinner = colors.orange;
+        pointer = colors.purple;
+        header = colors.blue;
       };
       tmux = {
         enableShellIntegration = true;

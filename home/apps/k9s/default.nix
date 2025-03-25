@@ -3,34 +3,7 @@
   theme,
   ...
 }: let
-  colors =
-    if theme == "dark"
-    then {
-      foreground = "#d4be98";
-      background = "#282828";
-      current_line = "#d4be98";
-      selection = "#928374";
-      comment = "#665c54";
-      cyan = "#89b482";
-      green = "#a9b665";
-      orange = "#e78a4e";
-      magenta = "#d3869b";
-      blue = "#7daea3";
-      red = "#ea6962";
-    }
-    else {
-      foreground = "#654735";
-      background = "#fbf1c7";
-      current_line = "#654735";
-      selection = "#928374";
-      comment = "#d5c4a1";
-      cyan = "#4c7a5d";
-      green = "#6c782e";
-      orange = "#c35e0a";
-      magenta = "#945e80";
-      blue = "#45707a";
-      red = "#c14a4a";
-    };
+  colors = import ./../../../theme.nix {inherit theme;};
 in {
   programs.k9s = {
     enable = true;
