@@ -13,7 +13,7 @@
     if theme == "dark"
     then "colour236"
     else "colour180";
-  focous_colour = "colour214";
+  focus_colour = "colour214";
 
   rtpPath = "share/tmux-plugins";
 
@@ -135,7 +135,7 @@ in {
       set-option -g status-right ""
       set -g status-justify centre
       set-window-option -g window-status-separator "    "
-      set-window-option -g window-status-current-format "#{?window_zoomed_flag,#[fg=${focous_colour}],}"
+      set-window-option -g window-status-current-format "#{?window_zoomed_flag,#[fg=${focus_colour}],}"
       set-window-option -g window-status-format ""
 
       # fix coloring for tmux
