@@ -9,6 +9,34 @@
     };
   };
 
+  # TODO: remove when nixos-unstable updated
+  blink-nerdfont-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "blink-nerdfont.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "MahanRahmati";
+      repo = "blink-nerdfont.nvim";
+      rev = "2f3cedda78dcf4ef547128ce7f72f7b80e25501d";
+      sha256 = "sha256-lcwcK/QGbZJrfEv282ytHVoijJxlctmPoWbHmIpZip0=";
+    };
+    nvimSkipModule = [
+      "blink-nerdfont"
+    ];
+  };
+
+  # TODO: remove when nixos-unstable updated
+  blink-emoji-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "blink-emoji.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "moyiz";
+      repo = "blink-emoji.nvim";
+      rev = "a77aebc092ebece1eed108f301452ae774d6b67a";
+      sha256 = "sha256-LZDaFaHbezLjx9im1L9GnXdcuIg5OW4fCKn/M6vYmFg=";
+    };
+    nvimSkipModule = [
+      "blink-emoji"
+    ];
+  };
+
   # NOTE: remove when released to nixpkgs
   headlines-nvim-f4z3r = pkgs.vimUtils.buildVimPlugin {
     name = "headlines.nvim";
@@ -284,17 +312,17 @@ in {
         config = builtins.readFile ./plugin/luasnip.lua;
       }
       lspkind-nvim
-      cmp-nvim-lsp-signature-help
-      cmp_luasnip
-      cmp-path
-      cmp-buffer
-      cmp-cmdline
-      cmp-cmdline-history
-      cmp-nvim-lsp
+      blink-emoji-nvim
+      blink-nerdfont-nvim
       {
         type = "lua";
-        plugin = nvim-cmp;
-        config = builtins.readFile ./plugin/cmp.lua;
+        plugin = colorful-menu-nvim;
+        config = ''require('colorful-menu').setup({})'';
+      }
+      {
+        type = "lua";
+        plugin = blink-cmp;
+        config = builtins.readFile ./plugin/blink.lua;
       }
       {
         type = "lua";

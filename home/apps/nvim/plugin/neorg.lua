@@ -58,11 +58,12 @@ require("neorg").setup({
         default_workspace = "notes",
       },
     },
-    ["core.completion"] = {
-      config = {
-        engine = "nvim-cmp",
-      },
-    },
+    -- TODO: re-enable with interim-lsp when installed
+    -- ["core.completion"] = {
+    --   config = {
+    --     engine = "nvim-cmp",
+    --   },
+    -- },
     ["core.esupports.metagen"] = {
       config = {
         type = "empty", -- generate on new empty files

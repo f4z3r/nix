@@ -23,7 +23,7 @@ vim.diagnostic.config({
   float = { border = border },
 })
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require('blink.cmp').get_lsp_capabilities()
 local lspconfig = require("lspconfig")
 
 lspconfig.lua_ls.setup({
