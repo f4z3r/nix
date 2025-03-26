@@ -133,6 +133,19 @@ namespaces:
             prompt: Target
             exclusive: true
             choices: hyprctl monitors all -j | jq ".[].name" -r
+      monitor-resolution:
+        command: hyprctl monitors -j | jq '.[] | select(.name=="{{ target }}") | .availableModes[]' -r | cut -d@ -f1
+        description: Get supported resolutions for monitor
+        tags:
+        - hyprland
+        - hyprctl
+        - displays
+        interactive: true
+        parameters:
+          target:
+            prompt: Target
+            exclusive: true
+            choices: hyprctl monitors all -j | jq ".[].name" -r
       move-workspace:
         command: hyprctl dispatch movecurrentworkspacetomonitor {{ monitor }}
         description: Move current workspace to different monitor
