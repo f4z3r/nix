@@ -225,6 +225,7 @@ in {
       tup
       imagemagick
       typst
+      step-cli
 
       # stuff not used often, installed via nix-shell
       #tokei
