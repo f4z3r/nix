@@ -48,7 +48,7 @@ blink.setup({
       local success, node = pcall(vim.treesitter.get_node)
       if success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
         return { "buffer", "emoji", "nerdfont" }
-      elseif vim.tbl_contains({ "gitcommit", "markdown" }, vim.o.filetype) then
+      elseif vim.tbl_contains({ "gitcommit", "markdown", "norg" }, vim.o.filetype) then
         return { "snippets", "path", "buffer", "emoji", "nerdfont" }
       else
         return { "lsp", "path", "snippets", "buffer" }
@@ -57,6 +57,7 @@ blink.setup({
 
     providers = {
       snippets = {
+        score_offset = 20,
         should_show_items = function(ctx)
           return ctx.trigger.initial_kind ~= "trigger_character"
         end,
@@ -70,7 +71,6 @@ blink.setup({
       nerdfont = {
         module = "blink-nerdfont",
         name = "Nerd Fonts",
-        score_offset = 15,
         opts = { insert = true },
       },
     },
