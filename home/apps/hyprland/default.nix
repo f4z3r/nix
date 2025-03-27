@@ -104,8 +104,6 @@ in {
             ''$wm&$app, w, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/fuzzy-bookmarks.lua''
             ''$wm&$app, r, exec, bash /home/${username}/.local/share/scripts/screen-record.sh''
             ''$wm&$app, c, exec, ${pkgs.rofi-wayland}/bin/rofi -modi clipboard:/home/${username}/.local/bin/cliphist-rofi-img.sh -show clipboard -show-icons''
-            ''$wm&$app, t, togglegroup''
-            ''$wm&$app, g, changegroupactive''
 
             '', Print, exec, bash /home/${username}/.local/share/scripts/screenshot.sh''
           ];
