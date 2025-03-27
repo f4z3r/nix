@@ -6,6 +6,10 @@ end, {
   desc = "Copy to system clipboard",
 })
 
+-- easy update and close
+vim.keymap.set("n", "<leader>u", "<cmd>update<cr>")
+vim.keymap.set("n", "<leader>x", "<cmd>xa<cr>")
+
 -- easy paste in insert mode
 vim.keymap.set("i", "<c-r>", '<c-r>"')
 
