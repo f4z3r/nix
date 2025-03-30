@@ -7,7 +7,6 @@ end, {
 })
 
 -- easy update and close
-vim.keymap.set("n", "<leader>u", "<cmd>update<cr>")
 vim.keymap.set("n", "<leader>x", "<cmd>xa<cr>")
 
 -- easy paste in insert mode
