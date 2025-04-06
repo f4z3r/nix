@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -16,7 +16,7 @@
 
     neorg-overlay.url = "github:nvim-neorg/nixpkgs-neorg-overlay";
 
-    ghostty.url = "github:ghostty-org/ghostty?ref=v1.1.2";
+    ghostty.url = "github:ghostty-org/ghostty?ref=v1.1.3";
   };
 
   outputs = {
