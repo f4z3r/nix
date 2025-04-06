@@ -32,6 +32,7 @@ in {
     (import ./apps/hyprland/default.nix {
       inherit pkgs pkgs-custom username resolution scale main_monitor monitor_prefix theme;
     })
+    (import ./apps/ghostty.nix {inherit pkgs theme;})
     (import ./apps/rofi/default.nix {inherit pkgs theme;})
     (import ./apps/git/default.nix {inherit pkgs theme;})
     (import ./apps/lazygit.nix {inherit pkgs theme;})
@@ -270,29 +271,6 @@ in {
     file = {
       ".config/ruff/pyproject.toml" = {source = ./files/ruff.toml;};
       "revive.toml" = {source = ./files/revive.toml;};
-      ".config/ghostty/config" = {
-        text = ''
-          font-family = "FiraCode Nerd Font Mono Med"
-          font-family-bold = "FiraCode Nerd Font Mono Bold"
-          font-family-bold-italic = "FiraCode Nerd Font Mono Bold"
-          font-family-italic = "FiraCode Nerd Font Mono Light"
-          font-feature = "+ss02"
-
-          gtk-single-instance = true
-          theme = "${
-            if theme == "dark"
-            then "GruvboxDark"
-            else "GruvboxLight"
-          }"
-
-          keybind = "clear"
-          keybind = "ctrl+shift+v=paste_from_clipboard"
-          keybind = "ctrl+shift+c=copy_to_clipboard"
-          keybind = "ctrl+down=decrease_font_size:1"
-          keybind = "ctrl+up=increase_font_size:1"
-          keybind = "ctrl+equal=reset_font_size"
-        '';
-      };
       ".local/bin/mip" = {
         source = ./scripts/mip;
         executable = true;

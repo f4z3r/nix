@@ -15,8 +15,6 @@
     };
 
     neorg-overlay.url = "github:nvim-neorg/nixpkgs-neorg-overlay";
-
-    ghostty.url = "github:ghostty-org/ghostty?ref=v1.1.3";
   };
 
   outputs = {
@@ -25,7 +23,6 @@
     lix-module,
     home-manager,
     neorg-overlay,
-    ghostty,
     ...
   } @ inputs: let
     usernames = [
@@ -78,9 +75,6 @@
 
           home-manager.nixosModules.home-manager
           {
-            environment.systemPackages = [
-              ghostty.packages.x86_64-linux.default
-            ];
             nixpkgs.overlays = [
               neorg-overlay.overlays.default
             ];
