@@ -227,6 +227,7 @@ in {
       imagemagick
       typst
       step-cli
+      watchexec
 
       # stuff not used often, installed via nix-shell
       #tokei
