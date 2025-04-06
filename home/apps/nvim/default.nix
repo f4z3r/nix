@@ -43,8 +43,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "headlines.nvim";
-      rev = "7671eec1065982cdf2ba4136beb1600fe1279431";
-      sha256 = "sha256-Ef1van9SEKSuc++A0ff3doZgogSsu1VDYF0DXGu9zno=";
+      rev = "bf17c96a836ea27c0a7a2650ba385a7783ed322e";
+      sha256 = "sha256-LWYYVnLZgw6DhO/n0rclQVnon5TvyQVUGb2smaBzcPg=";
     };
   };
 
