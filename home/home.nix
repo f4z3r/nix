@@ -41,7 +41,7 @@ in {
     ./apps/starship.nix
     ./apps/gpg.nix
     ./apps/nvim/default.nix
-    ./apps/broot.nix
+    (import ./apps/broot.nix {inherit pkgs theme;})
     (import ./apps/k9s/default.nix {inherit pkgs theme;})
     (import ./apps/bat.nix {inherit pkgs theme;})
     (import ./apps/mpd/default.nix {inherit pkgs username;})
