@@ -19,6 +19,7 @@
       cursor-invert-fg-bg = true;
       cursor-style-blink = false;
       cursor-style = "block";
+      window-decoration = "none";
       theme =
         if theme == "dark"
         then "GruvboxDark"
