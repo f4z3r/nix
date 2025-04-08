@@ -103,6 +103,18 @@ local mappings = {
     end,
     desc = "Toggle wrapping",
   },
+  {
+    mode = "n",
+    suffix = "i",
+    command = function()
+      require("trouble").toggle({
+        mode = "lsp",
+        win = { type = "split", position = "right", size = 0.4 },
+        focus = false,
+      })
+    end,
+    desc = "Toggle information on lsp item",
+  },
 }
 
 for _, mapping in ipairs(mappings) do
