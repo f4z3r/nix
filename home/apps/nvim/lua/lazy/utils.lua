@@ -39,6 +39,9 @@ function utils.open_with_broot()
   fh_reader = assert(fh_reader, "could not read broot capture")
   local content = fh_reader:read("*a")
   fh_reader:close()
+  if content == "" then
+    return
+  end
   vim.cmd(string.format("e %s", content))
 end
 
