@@ -343,6 +343,11 @@ in {
       }
       fzfWrapper
       telescope-fzf-native-nvim
+      {
+        type = "lua";
+        plugin = harpoon2;
+        config = builtins.readFile ./plugin/harpoon.lua;
+      }
 
       # useful stuff
       {

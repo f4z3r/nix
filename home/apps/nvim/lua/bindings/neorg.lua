@@ -2,7 +2,7 @@
 --
 -- Additional currently defined in plugin/gitsigns
 
-local leader = "<leader>n"
+local leader = "<leader>u"
 
 local mappings = {
   {
@@ -13,7 +13,7 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "n",
+    suffix = "u",
     command = "<cmd>Neorg journal today<cr>",
     desc = "Open journal today",
   },

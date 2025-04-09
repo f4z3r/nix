@@ -40,6 +40,12 @@ vim.keymap.set("n", "<leader><tab>", "<cmd>b#<cr>", {
   desc = "Switch to previous buffer",
 })
 
+vim.keymap.set("n", "<c-b>", function()
+  require("telescope.builtin").buffers()
+end, {
+  desc = "Open loaded buffer",
+})
+
 for _, mapping in ipairs(mappings) do
   vim.keymap.set(mapping.mode, leader .. mapping.suffix, mapping.command, { desc = mapping.desc })
 end
