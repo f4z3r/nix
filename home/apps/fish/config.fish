@@ -45,7 +45,7 @@ end
 bind -M insert \ce edit_cmd
 bind \ce edit_cmd
 
-# fifc settings
+# interactive broot settings
 function __interactive_broot
     set output (broot)
     commandline -ij $output

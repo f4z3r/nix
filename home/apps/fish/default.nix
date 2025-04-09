@@ -53,10 +53,6 @@
         name = autopair.pname;
         inherit (autopair) src;
       }
-      {
-        name = fifc.pname;
-        inherit (fifc) src;
-      }
     ];
   };
 }
