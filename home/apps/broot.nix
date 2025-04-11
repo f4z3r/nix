@@ -140,6 +140,12 @@
           external = ["echo" "-n" "{file}"];
           key = "enter";
         }
+        {
+          name = "yank";
+          shortcut = "y";
+          external = ["wl-copy" "{file}"];
+          leave_broot = false;
+        }
       ];
       skin =
         if theme == "dark"
