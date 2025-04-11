@@ -100,6 +100,7 @@ in {
         };
         extraConfig = ''
           set -g @tea-session-name "full-path"
+          set -g @tea-max-depth "3"
         '';
       }
       {
