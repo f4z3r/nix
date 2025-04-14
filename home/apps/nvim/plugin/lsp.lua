@@ -178,6 +178,41 @@ lspconfig.terraformls.setup({
   on_attach = on_attach,
 })
 
+-- Harper
+lspconfig.harper_ls.setup {
+  settings = {
+    ["harper-ls"] = {
+      userDictPath = "",
+      fileDictPath = "",
+      linters = {
+        SpellCheck = true,
+        SpelledNumbers = false,
+        AnA = true,
+        SentenceCapitalization = true,
+        UnclosedQuotes = true,
+        WrongQuotes = false,
+        LongSentences = true,
+        RepeatedWords = true,
+        Spaces = true,
+        Matcher = true,
+        CorrectNumberSuffix = true
+      },
+      codeActions = {
+        ForceStable = false
+      },
+      markdown = {
+        IgnoreLinkTitle = false
+      },
+      diagnosticSeverity = "hint",
+      isolateEnglish = false,
+      dialect = "American",
+    },
+  },
+  capabilities = capabilities,
+  filetypes = { "norg", "markdown", "asciidoc" },
+  on_attach = on_attach,
+}
+
 local signs = {
   Error = "",
   Warn = "",

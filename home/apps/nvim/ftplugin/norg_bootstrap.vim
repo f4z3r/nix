@@ -15,6 +15,7 @@ setlocal concealcursor=c
 
 
 " ==== Spelling =========================================================={{{
-setlocal spell
+" solved by harper
+" setlocal spell
 " }}}
 

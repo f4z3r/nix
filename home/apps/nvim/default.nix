@@ -176,6 +176,7 @@ in {
       rustfmt
       terraform-ls
       nil
+      harper
 
       universal-ctags
 
