@@ -185,17 +185,7 @@ lspconfig.harper_ls.setup {
       userDictPath = "",
       fileDictPath = "",
       linters = {
-        SpellCheck = true,
-        SpelledNumbers = false,
-        AnA = true,
-        SentenceCapitalization = true,
-        UnclosedQuotes = true,
-        WrongQuotes = false,
-        LongSentences = true,
-        RepeatedWords = true,
-        Spaces = true,
-        Matcher = true,
-        CorrectNumberSuffix = true
+        BoringWords = true,
       },
       codeActions = {
         ForceStable = false
@@ -205,11 +195,11 @@ lspconfig.harper_ls.setup {
       },
       diagnosticSeverity = "hint",
       isolateEnglish = false,
-      dialect = "American",
+      dialect = "British",
     },
   },
-  capabilities = capabilities,
   filetypes = { "norg", "markdown", "asciidoc" },
+  capabilities = capabilities,
   on_attach = on_attach,
 }
 
