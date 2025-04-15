@@ -198,7 +198,6 @@ lspconfig.harper_ls.setup {
       dialect = "British",
     },
   },
-  filetypes = { "norg", "markdown", "asciidoc" },
   capabilities = capabilities,
   on_attach = on_attach,
 }
