@@ -90,17 +90,19 @@ in {
       {
         plugin = mkTmuxPlugin {
           pluginName = "tea";
-          version = "unstable-2024-06-02";
+          version = "unstable-2025-04-16";
           src = pkgs.fetchFromGitHub {
             owner = "f4z3r";
             repo = "tmux-tea";
-            rev = "d56a0bb0f7c2e796d4da3d9bf18f4e0e4fae1965";
-            hash = "sha256-X0bcnrJDPOGhDZcD7pc7igJI+bPJdIacssEjiXEcUEA=";
+            rev = "0660ba5a9ad09303295e1bc987949887f4b036a2";
+            hash = "sha256-qa0MvennbMa/fncfXWvItBj4ikJWy5tqx5h5GnwiA3s=";
           };
         };
         extraConfig = ''
           set -g @tea-session-name "full-path"
-          set -g @tea-max-depth "3"
+          set -g @tea-bind "y"
+          set -g @tea-alt-bind "C-y"
+          set -g @tea-find-path "$HOME/opt"
         '';
       }
       {
