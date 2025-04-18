@@ -4,11 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +15,6 @@
   outputs = {
     self,
     nixpkgs,
-    lix-module,
     home-manager,
     neorg-overlay,
     ...
@@ -69,8 +63,6 @@
             ;
         };
         modules = [
-          lix-module.nixosModules.default
-
           ./configuration.nix
 
           home-manager.nixosModules.home-manager
@@ -114,7 +106,7 @@
         # potential update to these when using nvidia sync
         main_monitor = "eDP-1";
         monitor_prefix = "DP";
-        monitoring = true;
+        monitoring = false;
       };
       "nix" = setup {
         hostname = "nix";
