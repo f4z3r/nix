@@ -170,7 +170,6 @@ in {
       gopls
       yaml-language-server
       helm-ls
-      ruff-lsp
       marksman
       rust-analyzer
       rustfmt
