@@ -9,34 +9,6 @@
     };
   };
 
-  # TODO: remove when nixos-unstable updated
-  blink-nerdfont-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "blink-nerdfont.nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "MahanRahmati";
-      repo = "blink-nerdfont.nvim";
-      rev = "2f3cedda78dcf4ef547128ce7f72f7b80e25501d";
-      sha256 = "sha256-lcwcK/QGbZJrfEv282ytHVoijJxlctmPoWbHmIpZip0=";
-    };
-    nvimSkipModule = [
-      "blink-nerdfont"
-    ];
-  };
-
-  # TODO: remove when nixos-unstable updated
-  blink-emoji-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "blink-emoji.nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "moyiz";
-      repo = "blink-emoji.nvim";
-      rev = "a77aebc092ebece1eed108f301452ae774d6b67a";
-      sha256 = "sha256-LZDaFaHbezLjx9im1L9GnXdcuIg5OW4fCKn/M6vYmFg=";
-    };
-    nvimSkipModule = [
-      "blink-emoji"
-    ];
-  };
-
   # NOTE: remove when released to nixpkgs
   headlines-nvim-f4z3r = pkgs.vimUtils.buildVimPlugin {
     name = "headlines.nvim";
@@ -64,9 +36,13 @@
     src = pkgs.fetchFromGitHub {
       owner = "2KAbhishek";
       repo = "markit.nvim";
-      rev = "6a59bcc5140bed8fcf9cec2cba8d442072b1b76d";
-      sha256 = "sha256-ROYzCYgELycenWC/+lgDP7JZuZlck2yRGqVdaDA0zFE=";
+      rev = "9b031afab214aa6e6467f275f55640989f438925";
+      sha256 = "sha256-LCvACs8hHxquwBcCthfrdWQAQd8jrOwhsuZAkjqCZSQ=";
     };
+    nvimSkipModules = [
+      "markit"
+      "markit.bookmark"
+    ];
   };
 
   d2 = pkgs.vimUtils.buildVimPlugin {
@@ -76,16 +52,6 @@
       repo = "d2-vim";
       rev = "981c87dccb63df2887cc41b96e84bf550f736c57";
       sha256 = "sha256-+mT4pEbtq7f9ZXhOop3Jnjr7ulxU32VtahffIwQqYF4=";
-    };
-  };
-
-  mini-align = pkgs.vimUtils.buildVimPlugin {
-    name = "mini.align";
-    src = pkgs.fetchFromGitHub {
-      owner = "echasnovski";
-      repo = "mini.align";
-      rev = "f845218c5fea89e49074e48270dc5e1b9511a0f9";
-      sha256 = "sha256-vq8l6ff3xbdYAdoyZA7VszP7Hl5oVeQCM7n89sxs+Yo=";
     };
   };
 
