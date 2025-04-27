@@ -89,10 +89,6 @@
           key = "Acked-by: ";
           cmd = "~/.local/bin/glog-author.sh";
         };
-        sign = {
-          key = "Signed-off-by: ";
-          cmd = "~/.local/bin/glog-author.sh";
-        };
         help = {
           key = "Helped-by: ";
           cmd = "~/.local/bin/glog-author.sh";
