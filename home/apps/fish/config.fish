@@ -59,3 +59,7 @@ function backup --argument filename
   cp -r $filename $filename.bak
 end
 
+function timer --argument time
+  systemd-run --user --on-calendar "$time:00" /bin/sh -c 'notify-send -u critical "Timer" "Deep work timer expired."'
+end
+
