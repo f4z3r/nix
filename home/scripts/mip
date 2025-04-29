@@ -8,7 +8,7 @@ local request = require("http.request")
 
 local tables = require("luatables")
 
-local TIMEOUT = 15
+local TIMEOUT = 3
 
 local COLORS = {
   tables.Color.Red,
