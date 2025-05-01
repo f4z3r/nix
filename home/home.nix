@@ -131,7 +131,7 @@ in {
       };
       settings = {
         global = {
-          follow = "keyboard";
+          follow = "mouse";
         };
 
         fullscreen = {
