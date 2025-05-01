@@ -45,6 +45,23 @@
     ];
   };
 
+  feed-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "feed-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "neo451";
+      repo = "feed.nvim";
+      rev = "b89f1f1d2cf85a59cfca58a87a0535e3fa7d6dfc";
+      sha256 = "sha256-bTTHKA6aYpwltIvBkoQ8l9OigyrEH7Kn1eeH3nwxNuM=";
+    };
+    nvimSkipModules = [
+      "minimal"
+      "feed.pandoc.gfm"
+      "feed.pickers.fzf-lua"
+      "feed.pickers.mini.pick"
+      "feed.pickers.telescope"
+    ];
+  };
+
   d2 = pkgs.vimUtils.buildVimPlugin {
     name = "d2";
     src = pkgs.fetchFromGitHub {
@@ -90,7 +107,30 @@
           license.fullName = "MPL-2.0";
         };
       };
-    in [pathlib-nvim];
+      coop-nvim = buildLuarocksPackage {
+        pname = "coop.nvim";
+        version = "1.1.1-0";
+        knownRockspec =
+          (pkgs.fetchurl {
+            url = "mirror://luarocks/coop.nvim-1.1.1-0.rockspec";
+            sha256 = "1w99sj02bfa02i0ivhm40md460kvlsw5a2phfln6xgxacygk64ga";
+          }).outPath;
+        src = pkgs.fetchFromGitHub {
+          owner = "gregorias";
+          repo = "coop.nvim";
+          rev = "d98b9c285f28aded2db05a0c178ab0c43b3ac611";
+          hash = "sha256-KcN9znmzfYoCWjV9vMya7zee9gAjxNnJ9ewfQKtspAQ=";
+        };
+
+        disabled = luaOlder "5.1";
+
+        meta = {
+          homepage = "https://github.com/gregorias/coop.nvim";
+          description = "A Neovim plugin for structured concurrency with coroutines.";
+          license.fullName = "GPL-3.0";
+        };
+      };
+    in [pathlib-nvim coop-nvim];
 in {
   programs.neovim = {
     enable = true;
@@ -224,6 +264,14 @@ in {
         type = "lua";
         plugin = gitsigns-nvim;
         config = builtins.readFile ./plugin/gitsigns.lua;
+      }
+
+      # rss feed reader
+      snacks-nvim
+      {
+        type = "lua";
+        plugin = feed-nvim;
+        config = builtins.readFile ./plugin/feed-nvim.lua;
       }
 
       # lsp stuff

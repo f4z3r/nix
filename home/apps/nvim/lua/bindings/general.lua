@@ -26,3 +26,6 @@ vim.keymap.set("n", "+", "<cmd>Neotree close<cr>")
 vim.keymap.set("n", "z=", function()
   require("telescope.builtin").spell_suggest()
 end)
+
+-- Feed
+vim.keymap.set("n", "<leader>z", "<cmd>Feed index<cr>")
