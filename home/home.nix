@@ -158,6 +158,11 @@ in {
           background = "#18191E";
           timeout = 0;
         };
+
+        alert = {
+          summary = "*";
+          script = "/home/${username}/.local/bin/play-notification.sh";
+        };
       };
     };
 
@@ -279,6 +284,18 @@ in {
       ".local/bin/gcl" = {
         source = ./scripts/gcl;
         executable = true;
+      };
+      ".local/bin/play-notification.sh" = {
+        text = ''
+          #!/bin/sh
+
+          ffplay -v 0 -nodisp -autoexit /home/${username}/.local/share/sounds/notification.mp3
+        '';
+        executable = true;
+      };
+      ".local/share/sounds/" = {
+        source = ./../assets/sounds;
+        recursive = true;
       };
     };
   };
