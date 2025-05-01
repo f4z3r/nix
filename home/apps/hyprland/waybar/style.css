@@ -32,6 +32,10 @@ window#waybar {
   color: #635850;
 }
 
+#workspaces button.persistent button:not(.active) button:not(.urgent) {
+  color: #635850;
+}
+
 #workspaces button.urgent {
   color: #ea6962;
 }
