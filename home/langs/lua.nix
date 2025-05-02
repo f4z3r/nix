@@ -323,6 +323,7 @@ in {
         lib.concatStringsSep ";"
         (map pkgs.luajitPackages.getLuaPath [luajit])
       }";
+      LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
     };
   };
 
