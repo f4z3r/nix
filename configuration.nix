@@ -41,6 +41,9 @@ in {
     tmp = {cleanOnBoot = true;};
   };
 
+  # due to security advisory, see: https://github.com/NixOS/nixpkgs/security/advisories/GHSA-m7pq-h9p4-8rr4
+  systemd.shutdownRamfs.enable = false;
+
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
   };
