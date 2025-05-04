@@ -7,17 +7,14 @@ categories: [
 updated: {NOW}
 @end
 
-* ( ) deep work session goal
+* ( ) {:$/areas/growth/deep-work.norg:}[Deep Work] session
   {CURSOR}
 
-* tasks
-** take care of physical well-being
-   - ( ) book times
-** build network of technical leaders
-** learn by building new things and share knowhow
-** learn patience to improve focus and direction
-   - ( ) open neorg inbox for values and vision
-** the other 5%
+* goals
+** physical well-being
+** technical tasks
+** social tasks
+** admin
 
 * notes
 
