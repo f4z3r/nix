@@ -36,6 +36,7 @@
       wall = ''swww img (fd . ~/.local/share/wallpapers/ | shuf -n 1)'';
       ns = ''rclone bisync gdrive-crypt:/ ~/notes --remove-empty-dirs --exclude '/.**' --exclude '**/.**' --compare size,modtime -MP --fix-case --conflict-suffix upstream,local'';
       jwt = ''wl-paste | step crypto jwt inspect --insecure | jq'';
+      imv = ''imv -b ffffff'';
     };
     shellInit = ''
       set -x NIX_THEME "${theme}"

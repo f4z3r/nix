@@ -233,6 +233,7 @@ in {
       typst
       step-cli
       watchexec
+      imv
 
       # stuff not used often, installed via nix-shell
       #tokei
@@ -243,7 +244,6 @@ in {
       gtk-engine-murrine
 
       # stuff used in the background
-      ollama
       swww
       grim
       slurp
