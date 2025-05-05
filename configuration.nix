@@ -314,9 +314,10 @@ in {
 
     printing = {
       enable = true;
-      stateless = true;
+      stateless = false;
       startWhenNeeded = true;
       webInterface = true;
+      browsed.enable = true;
     };
   };
 
