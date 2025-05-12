@@ -9,6 +9,20 @@
     };
   };
 
+  # NOTE: remove when new version for enable() released
+  image-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "image.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "3rd";
+      repo = "image.nvim";
+      rev = "4c51d6202628b3b51e368152c053c3fb5c5f76f2";
+      sha256 = "sha256-r3s19L0NcUfNTR1SQ98z8fEvhTxGRr4/jlicmbzmQZs=";
+    };
+    nvimSkipModules = [
+      "minimal-setup"
+    ];
+  };
+
   # NOTE: remove when released to nixpkgs
   headlines-nvim-f4z3r = pkgs.vimUtils.buildVimPlugin {
     name = "headlines.nvim";
@@ -148,6 +162,7 @@ in {
           lua-utils-nvim
           plenary-nvim
           nui-nvim
+          magick
         ];
 
     extraLuaConfig = ''
@@ -420,6 +435,11 @@ in {
         type = "lua";
         plugin = headlines-nvim-f4z3r;
         config = builtins.readFile ./plugin/headlines.lua;
+      }
+      {
+        type = "lua";
+        plugin = image-nvim;
+        config = builtins.readFile ./plugin/image.lua;
       }
 
       {

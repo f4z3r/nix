@@ -130,7 +130,9 @@ in {
       set-option -g automatic-rename-format '#{b:pane_current_path}: #{b:pane_current_command}'
 
       # passthrough for zen-mode
-      set-option -g allow-passthrough on
+      set-option -gq allow-passthrough on
+      # visual-activity for image.nvim
+      set-option -g visual-activity off
 
       # minimal status bar
       set-option -g status-style bg=${bg_colour},fg=${fg_colour}
