@@ -1,7 +1,7 @@
 require("zen-mode").setup({
   window = {
     width = function()
-      return vim.opt_local.textwidth:get() + 2
+      return vim.opt_local.textwidth:get() + 7
     end,
     options = {
       -- signcolumn = "no", -- disable signcolumn
