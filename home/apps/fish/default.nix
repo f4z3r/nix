@@ -38,6 +38,7 @@
       jwt = ''wl-paste | step crypto jwt inspect --insecure | jq'';
       imv = ''imv -b ffffff'';
       proxy = ''ssh -p 2222 -i ~/.ssh/proxy_connection 192.168.1.40'';
+      tunnel = ''ssh -p 2222 -ND 9191 -i ~/.ssh/proxy_connection 192.168.1.40'';
     };
     shellInit = ''
       set -x NIX_THEME "${theme}"

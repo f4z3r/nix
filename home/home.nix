@@ -240,6 +240,9 @@ in {
       #jless
       #pastel
 
+      # tunnel
+      firefox
+
       # stuff used for GTK theming
       gtk-engine-murrine
 
