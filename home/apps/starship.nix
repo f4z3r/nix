@@ -12,6 +12,7 @@
       format = lib.concatStrings [
         "$battery"
         "$time"
+        "$hostname"
         "$direnv"
         "$nix_shell"
         "$git_branch"
@@ -103,7 +104,7 @@
       };
 
       hostname = {
-        disabled = true;
+        disabled = false;
         format = "╱[  $hostname ]($style)";
         trim_at = ".";
         style = "dimmed red";
