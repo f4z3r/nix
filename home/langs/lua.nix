@@ -269,15 +269,14 @@
         version = "0.5.2-0";
         knownRockspec =
           (pkgs.fetchurl {
-            url = "mirror://luarocks/sofa-0.5.2-0.rockspec";
-            sha256 = "1fm83cskbcyc5bs0flqmp7rszazpb414m2whbp2kg31frpd1ykl5";
-          })
-          .outPath;
+            url = "mirror://luarocks/sofa-0.8.0-0.rockspec";
+            sha256 = "09mjnygy8xpcp892mfqmcirjjndndvynl7bs7j4vp4r4svh17b05";
+          }).outPath;
         src = pkgs.fetchFromGitHub {
           owner = "f4z3r";
           repo = "sofa";
-          rev = "v0.5.2";
-          hash = "sha256-lDIjSoqVRzn+spmvZGgCD/VujEYEqastgDkk1uxkecA=";
+          rev = "v0.8.0";
+          hash = "sha256-MWGp0kbLaXQV3ElSgPTFoVuWk4+ujktG0xh20kQPex4=";
         };
 
         disabled = luaOlder "5.1" || luaAtLeast "5.5";

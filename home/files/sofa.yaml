@@ -384,3 +384,4 @@ namespaces:
             choices: fd -tf -c never '.*\.rockspec$' .
 config:
   shell: fish
+  picker: auto
