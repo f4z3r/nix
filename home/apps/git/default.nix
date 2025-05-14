@@ -138,10 +138,10 @@
       "d" = ''diff'';
       "aa" = ''add .'';
       "a" = ''add'';
-      "acs" = ''commit -aS -m'';
-      "cc" = ''commit -S -m'';
-      "ca" = ''commit --amend -S -C HEAD'';
-      "ce" = ''commit --amend -S -m'';
+      "acs" = ''commit -aS -s'';
+      "cc" = ''commit -S -s'';
+      "ca" = ''commit --amend -S -s -C HEAD'';
+      "ce" = ''commit --amend -S -s'';
       "co" = ''checkout'';
       "sw" = ''switch'';
       "re" = ''reset'';
