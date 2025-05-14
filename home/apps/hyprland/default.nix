@@ -104,6 +104,7 @@ in {
             ''$wm&$app, w, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/fuzzy-bookmarks.lua''
             ''$wm&$app, r, exec, bash /home/${username}/.local/share/scripts/screen-record.sh''
             ''$wm&$app, c, exec, ${pkgs.rofi-wayland}/bin/rofi -modi clipboard:/home/${username}/.local/bin/cliphist-rofi-img.sh -show clipboard -show-icons''
+            ''$wm&$app, p, exec, ${pkgs.gopass}/bin/gopass ls --flat | ${pkgs.rofi-wayland}/bin/rofi -dmenu -p Gopass | xargs --no-run-if-empty ${pkgs.gopass}/bin/gopass show -o | head -n 1 | ${pkgs.wl-clipboard}/bin/wl-copy''
 
             '', Print, exec, bash /home/${username}/.local/share/scripts/screenshot.sh''
           ];

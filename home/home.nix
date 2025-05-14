@@ -242,6 +242,7 @@ in {
 
       # tunnel
       firefox
+      gopass
 
       # stuff used for GTK theming
       gtk-engine-murrine
