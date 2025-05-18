@@ -5,20 +5,6 @@ local leader = "<leader>h"
 local mappings = {
   {
     mode = "n",
-    suffix = "a",
-    command = function()
-      local harpoon = require("harpoon")
-      -- ensure prepending re-indexes the file at the beginning of the list
-      harpoon:list():remove()
-      harpoon:list():prepend()
-      if harpoon:list():length() > 4 then
-        harpoon:list():remove_at(5)
-      end
-    end,
-    desc = "Prepend item to harpoon list",
-  },
-  {
-    mode = "n",
     suffix = "h",
     command = function()
       local harpoon = require("harpoon")
@@ -26,24 +12,26 @@ local mappings = {
     end,
     desc = "Show harpoon list",
   },
+  {
+    mode = "n",
+    suffix = "c",
+    command = function()
+      require("harpoon"):list():clear()
+    end,
+    desc = "Clear harpoon list",
+  },
 }
 
 for _, mapping in ipairs(mappings) do
   vim.keymap.set(mapping.mode, leader .. mapping.suffix, mapping.command, { desc = mapping.desc })
 end
 
-vim.keymap.set("n", "<leader>n", function()
-  require("harpoon"):list():select(1)
-end, { desc = "Switch to first harpoon item" })
+for idx, key in ipairs({ "n", "e", "i", "o" }) do
+  vim.keymap.set("n", "<leader>h" .. key, function()
+    require("harpoon"):list():replace_at(idx)
+  end, { desc = "Set item to fourth harpoon index" })
 
-vim.keymap.set("n", "<leader>e", function()
-  require("harpoon"):list():select(2)
-end, { desc = "Switch to second harpoon item" })
-
-vim.keymap.set("n", "<leader>i", function()
-  require("harpoon"):list():select(3)
-end, { desc = "Switch to third harpoon item" })
-
-vim.keymap.set("n", "<leader>o", function()
-  require("harpoon"):list():select(4)
-end, { desc = "Switch to fourth harpoon item" })
+  vim.keymap.set("n", "<leader>" .. key, function()
+    require("harpoon"):list():select(idx)
+  end, { desc = "Switch to fourth harpoon item" })
+end
