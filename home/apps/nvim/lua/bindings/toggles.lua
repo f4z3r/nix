@@ -25,7 +25,10 @@ local mappings = {
   {
     mode = "n",
     suffix = "z",
-    command = require("zen-mode").toggle,
+    command = function()
+      require("zen-mode").toggle()
+      vim.opt_local.wrap = require("zen-mode.view").is_open()
+    end,
     desc = "Toggle zen mode",
   },
   {

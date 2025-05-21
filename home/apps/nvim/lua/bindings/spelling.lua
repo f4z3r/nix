@@ -8,7 +8,7 @@ local mappings = {
     suffix = "s",
     command = function()
       vim.opt_local.spell = not vim.opt_local.spell:get()
-      vim.opt_local.wrap = not vim.opt_local.wrap:get()
+      vim.opt_local.wrap = vim.opt_local.spell:get()
     end,
     desc = "Toggle spelling and word wrapping",
   },
