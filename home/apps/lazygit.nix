@@ -28,7 +28,9 @@
         };
         autoForwardBranches = "allBranches";
         branchLogCmd = "git log --color --graph --pretty=format:'%Cred%h%Creset - %C(magenta)%G?%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --";
-        allBranchesLogCmd = "git log --all --color --graph --pretty=format:'%Cred%h%Creset - %C(magenta)%G?%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit";
+        allBranchesLogCmds = [
+          "git log --all --color --graph --pretty=format:'%Cred%h%Creset - %C(magenta)%G?%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
+        ];
         parseEmoji = true;
       };
       notARepository = "quit";
