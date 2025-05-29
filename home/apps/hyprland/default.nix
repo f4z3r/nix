@@ -108,6 +108,10 @@ in {
 
             '', Print, exec, bash /home/${username}/.local/share/scripts/screenshot.sh''
           ];
+          bindm = [
+            ''$wm, mouse:272, movewindow''
+            ''$wm, mouse:273, resizewindow''
+          ];
           bindl = [
             '', XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle''
             '', XF86AudioMicMute, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua''
