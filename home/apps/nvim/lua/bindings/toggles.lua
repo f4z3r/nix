@@ -129,7 +129,7 @@ local mappings = {
         image.enable()
       end
     end,
-    desc = "Toggle information on lsp item",
+    desc = "Toggle image rendering",
   },
 }
 

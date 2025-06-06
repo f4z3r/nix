@@ -1,4 +1,6 @@
-require("image").setup({
+local image = require("image")
+
+image.setup({
   backend = "kitty",
   processor = "magick_cli",
   integrations = {
@@ -36,3 +38,6 @@ require("image").setup({
   tmux_show_only_in_active_window = true,
   hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" },
 })
+
+-- disable by default
+image.disable()
