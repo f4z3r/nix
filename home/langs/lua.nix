@@ -231,39 +231,6 @@
           license.fullName = "MIT";
         };
       };
-      nd = buildLuarocksPackage {
-        pname = "nd";
-        version = "0.1.0-17";
-        knownRockspec =
-          (pkgs.fetchurl {
-            url = "mirror://luarocks/nd-0.1.0-17.rockspec";
-            sha256 = "03106hj1lk8nvndv63lxwfhsiaq3jnln6wlm6ncp2li1aigkzjck";
-          })
-          .outPath;
-        src = pkgs.fetchgit (removeAttrs (builtins.fromJSON ''
-          {
-            "url": "https://github.com/f4z3r/nd.git",
-            "rev": "c2e1098d3c63cf080d49518f84205f8a87f23aa9",
-            "date": "2024-03-11T09:24:35+01:00",
-            "path": "/nix/store/xxbb2qxafr5c8svpz9ric2gx61ry1d1j-nd",
-            "sha256": "15mqiff9qb417dnh5jjjzvwvswnc0s1gyi11fsvl3rpay8p4ffsa",
-            "hash": "sha256-SjtHLvLq5kG3diFE/4IGzHK9+f5SygJtO4EsnJyLuJY=",
-            "fetchLFS": false,
-            "fetchSubmodules": true,
-            "deepClone": false,
-            "leaveDotGit": false
-          }
-        '') ["date" "path" "sha256"]);
-
-        disabled = lua.luaversion != "5.1";
-        propagatedBuildInputs = [argparse date lua lua-path utf8];
-
-        meta = {
-          homepage = "https://github.com/f4z3r/nd";
-          description = "Simple time tracking tool with a pomodoro timer.";
-          license.fullName = "MIT <http://opensource.org/licenses/MIT>";
-        };
-      };
       sofa = buildLuarocksPackage {
         pname = "sofa";
         version = "0.5.2-0";
@@ -289,7 +256,7 @@
         };
       };
     in
-      [lanes lua-path lua-fun date luatext luatables utf8 nd sofa]
+      [lanes lua-path lua-fun date luatext luatables utf8 sofa]
       ++ [
         lyaml
         argparse
