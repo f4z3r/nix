@@ -2,6 +2,7 @@ vim.g.maplocalleader = "\\"
 vim.keymap.set("n", "<space>", "<nop>")
 vim.g.mapleader = " "
 
+require("bindings.abbrevs")
 require("bindings.actions")
 require("bindings.buffers")
 require("bindings.comments")
