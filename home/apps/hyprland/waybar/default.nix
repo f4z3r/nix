@@ -47,7 +47,8 @@ in {
             window-rewrite = {
               "class<com.mitchellh.ghostty>" = "󰊠";
               "class<google-chrome>" = "";
-              "class<brave-browser>" = "󰈹";
+              "class<brave-browser>" = "󰴳";
+              "class<firefox>" = "󰈹";
             };
           };
           backlight = {
