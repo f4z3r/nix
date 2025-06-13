@@ -280,6 +280,7 @@ in {
 
     file = {
       ".config/ruff/pyproject.toml" = {source = ./files/ruff.toml;};
+      ".config/presenterm/config.yaml" = {source = ./files/presenterm.yaml;};
       "revive.toml" = {source = ./files/revive.toml;};
       ".local/bin/mip" = {
         source = ./scripts/mip;

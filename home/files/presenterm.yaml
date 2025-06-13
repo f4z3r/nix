@@ -1,0 +1,29 @@
+---
+defaults:
+  theme: gruvbox-dark
+  image_protocol: kitty-local
+
+typst:
+  ppi: 300
+
+mermaid:
+  scale: 2
+
+options:
+  implicit_slide_ends: true
+  incremental_lists: false
+  strict_front_matter_parsing: true
+  end_slide_shorthand: false
+
+snippet:
+  exec:
+    enable: true
+
+transition:
+  duration_millis: 300
+  frames: 30
+  animation:
+    style: slide_horizontal
+
+speaker_notes:
+  always_publish: true
