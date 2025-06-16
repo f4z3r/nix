@@ -124,6 +124,7 @@
       ".envrc"
       ".venv/"
       "/shell.nix"
+      "/result/"
       ".direnv/"
       ".ropeproject/"
       "/.tup/"
