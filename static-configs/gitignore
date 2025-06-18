@@ -12,6 +12,7 @@ __pycache__/
 .envrc
 .venv/
 /shell.nix
+/result
 .direnv/
 .ropeproject/
 /.tup/
