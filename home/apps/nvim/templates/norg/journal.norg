@@ -8,7 +8,7 @@ updated: {NOW}
 @end
 
 * ( ) {:$/areas/growth/deep-work.norg:}[Deep Work] session
-  x hours: link to project, including goal for this session
+  {CURSOR} hours: link to project, including goal for this session
 
 * goals
 ** physical well-being
