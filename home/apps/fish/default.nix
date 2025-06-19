@@ -5,6 +5,21 @@
   theme,
   ...
 }: {
+  programs.atuin = {
+    enable = true;
+    settings = {
+      dialect = "uk";
+      auto_sync = false;
+      update_check = false;
+      enter_accept = true;
+      filter_mode = "session";
+      style = "full";
+      keymap_mode = "emacs";
+    };
+    enableFishIntegration = true;
+    enableBashIntegration = true;
+    daemon.enable = false;
+  };
   programs.fish = {
     enable = true;
     shellAbbrs = {
