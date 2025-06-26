@@ -175,6 +175,12 @@ in {
             "col.active_border" = "rgb(5900be)";
             layout = "dwindle";
           };
+          dwindle = {
+            preserve_split = true;
+            force_split = 2;
+            smart_split = false;
+            smart_resizing = false;
+          };
           decoration = {
             rounding = 3;
             shadow = {
@@ -222,6 +228,28 @@ in {
           binde=, up, resizeactive, 0 -10
           binde=, down, resizeactive, 0 10
           bind=, escape, submap, reset
+          bind=, catchall, submap, reset
+          submap=reset
+          bindp=$wm&$app, s, submap, split
+          submap=split
+          bind=, h, layoutmsg, preselect r
+          bind=, h, submap, reset
+          bind=, l, layoutmsg, preselect l
+          bind=, l, submap, reset
+          bind=, k, layoutmsg, preselect u
+          bind=, k, submap, reset
+          bind=, n, layoutmsg, preselect d
+          bind=, n, submap, reset
+          bind=, right, layoutmsg, preselect l
+          bind=, right, submap, reset
+          bind=, left, layoutmsg, preselect l
+          bind=, left, submap, reset
+          bind=, up, layoutmsg, preselect u
+          bind=, up, submap, reset
+          bind=, down, layoutmsg, preselect d
+          bind=, down, submap, reset
+          bind=, escape, submap, reset
+          bind=, h, submap, reset
           bind=, catchall, submap, reset
           submap=reset
         '';
