@@ -159,8 +159,8 @@
       "wa" = ''worktree add -b'';
       "wl" = ''worktree list'';
       "wd" = ''!git worktree list | rg -v '\[(master|main)\]' | awk '{print $1}' | xargs -trL1 git worktree remove'';
-      "wc" = ''!git branch -a --color=always | grep -v '/HEAD\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -trI'{}' git worktree add 'worktrees/{}' '{}' '';
-      "bc" = ''!git branch -a --color=always | grep -v '/HEAD\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -tr git switch'';
+      "wc" = ''!git branch -a --color=never | grep -v '/HEAD\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -trI'{}' git worktree add 'worktrees/{}' '{}' '';
+      "bc" = ''!git branch -a --color=never | grep -v '/HEAD\\s' | sk --ansi | sed 's/^..//' | awk '{print $1}' | sed 's|^remotes/[^/]*/||' | xargs -tr git switch'';
       "gc" = ''-c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc'';
     };
   };
