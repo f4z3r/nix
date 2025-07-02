@@ -32,7 +32,7 @@ in {
     (import ./apps/hyprland/default.nix {
       inherit pkgs pkgs-custom username resolution scale main_monitor monitor_prefix theme;
     })
-    (import ./apps/ghostty.nix {inherit pkgs theme;})
+    (import ./apps/ghostty.nix {inherit pkgs pkgs-custom theme;})
     (import ./apps/rofi/default.nix {inherit pkgs theme;})
     (import ./apps/git/default.nix {inherit pkgs theme;})
     (import ./apps/lazygit.nix {inherit pkgs theme;})
