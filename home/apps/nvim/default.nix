@@ -327,11 +327,11 @@ in {
       neotest-rust
 
       # http
-      {
-        type = "lua";
-        plugin = kulala-nvim;
-        config = builtins.readFile ./plugin/kulala.lua;
-      }
+      # {
+      #   type = "lua";
+      #   plugin = kulala-nvim;
+      #   config = builtins.readFile ./plugin/kulala.lua;
+      # }
 
       # completion
       friendly-snippets
