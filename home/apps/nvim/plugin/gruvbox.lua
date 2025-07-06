@@ -2,12 +2,6 @@ require("gruvbox-material").setup({
   background = {
     transparent = true,
   },
-  float = {
-    force_background = false,
-  },
-  signs = {
-    highlight = false,
-  },
 })
 
 --- Curser lines
