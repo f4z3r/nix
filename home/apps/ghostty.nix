@@ -22,6 +22,7 @@
       cursor-style-blink = false;
       cursor-style = "block";
       window-decoration = "none";
+      link-url = true;
       theme =
         if theme == "dark"
         then "GruvboxDark"
