@@ -273,6 +273,11 @@ in {
         plugin = zen-mode-nvim;
         config = builtins.readFile ./plugin/zen-mode.lua;
       }
+      {
+        type = "lua";
+        plugin = visual-whitespace-nvim;
+        config = "require('visual-whitespace').setup({})";
+      }
 
       # git integration
       {

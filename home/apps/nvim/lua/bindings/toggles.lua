@@ -108,6 +108,14 @@ local mappings = {
   },
   {
     mode = "n",
+    suffix = "W",
+    command = function()
+      require("visual-whitespace").toggle()
+    end,
+    desc = "Toggle visual whitespace",
+  },
+  {
+    mode = "n",
     suffix = "i",
     command = function()
       require("trouble").toggle({

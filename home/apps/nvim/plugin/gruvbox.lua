@@ -21,3 +21,6 @@ vim.api.nvim_set_hl(0, "NeoTreeTitleBar", { link = "FloatTitle" })
 
 --- Nicer HTTP stuff
 vim.api.nvim_set_hl(0, "@function.method.http", { fg = colors.red })
+
+--- Visual Whitespace
+vim.api.nvim_set_hl(0, "VisualNonText", { fg = colors.bg5 })
