@@ -1,4 +1,20 @@
+<div align="center">
+
+<img src="./assets/img/logo.png" alt="Gruvbox Material" width="40%">
+
 # f4z3r's NixOS Flake
+
+![GitHub last commit](https://img.shields.io/github/last-commit/f4z3r/nix)
+
+### A flake configuring my entire setup, just the way I like it...
+
+[Screenshots](#screenshots) |
+[Software](#what-software-am-i-using) |
+[Static Configuration](#static-configuration)
+
+<hr />
+</div>
+
 
 ## Screenshots
 
@@ -10,7 +26,7 @@ Supports quake terminals:
 
 ![](./assets/quake.png)
 
-## Standard Software Used
+## What Software Am I Using?
 
 - Channel: NixOS unstable
 - Package Manager: `nix`
@@ -134,5 +150,3 @@ needed to work. These can be found under [`./static-configs/`](./static-configs/
 - Check how to notify on virus event.
 - Various nvim plugins are my own forks awaiting merging in the upstream.
 - Various nvim plugins are pinned to a version, and might want to be updated.
-- Rofi colours are not dynamic for system theme.
-- Foot copy output does not work when run within Tmux.
