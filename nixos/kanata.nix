@@ -19,8 +19,29 @@ in {
         (defalias
           ;; shot toggles
           lyd (tap-hold-release ${tap-timeout} ${hold-delay} esc (layer-while-held down))
-          lyu (tap-hold-release ${tap-timeout} ${hold-delay} bspc (layer-while-held up))
-          nav (tap-hold-release ${tap-timeout} ${hold-delay} bspc (layer-while-held nav))
+          lyu (tap-hold-release ${tap-timeout} ${hold-delay} del (layer-while-held up))
+          nav (tap-hold-release ${tap-timeout} ${hold-delay} del (layer-while-held nav))
+
+          ;; helpers
+          hom (macro S-` /)
+          atab (multi lalt tab)
+          vim (macro v i m spc)
+
+          grt (macro S-. =)
+          ctly (multi lctl y)
+          les (macro S-, =)
+
+          arr (macro - S-.)
+          dar (macro = S-.)
+          not (macro S-` =)
+
+          cut (multi lctl x)
+          cop (multi lctl c)
+          pas (multi lctl v)
+          all (multi lctl a)
+          term (multi lctl lsft c)
+
+          dquo (macro S-' spc)
 
           ;; home row mod, in a very complex way that does what I want
           ;; See https://github.com/jtroo/kanata/blob/main/cfg_samples/home-row-mod-advanced.kbd
@@ -31,30 +52,16 @@ in {
             (on-idle-fakekey to-base tap 20)
           )
           q (tap-hold-release ${tap-timeout} ${home-row-hold-delay} q lmet)
-          ;; can be a pain with wq, but shifting quick is more important
           w (tap-hold-release ${tap-timeout} ${home-row-hold-delay} w lsft)
           f (tap-hold-release ${tap-timeout} ${home-row-hold-delay} f lctl)
           p (tap-hold-release ${tap-timeout} ${home-row-hold-delay} p lalt)
           ; (tap-hold-release ${tap-timeout} ${home-row-hold-delay} ; lmet)
           y (tap-hold-release ${tap-timeout} ${home-row-hold-delay} y lsft)
-          ;; not using f24 to allow umlaut
           u (tap-hold-release ${tap-timeout} ${home-row-hold-delay} u rctl)
           l (tap-hold-release ${tap-timeout} ${home-row-hold-delay} l lalt)
 
-          quo (tap-hold-release ${tap-timeout} ${home-row-hold-delay} S-' rsft)
-          squ (tap-hold-release ${tap-timeout} ${home-row-hold-delay} '   lsft)
-
-          ;; helpers
-          arr (macro - S-.)
-          dar (macro = S-.)
-          not (macro S-` =)
-          grt (macro S-. =)
-          les (macro S-, =)
-
-          cut (multi lctl x)
-          cop (multi lctl c)
-          pas (multi lctl v)
-          all (multi lctl a)
+          svim (tap-hold-release ${tap-timeout} ${home-row-hold-delay} @vim lsft)
+          sles (tap-hold-release ${tap-timeout} ${home-row-hold-delay} @les rsft)
 
           ;; differs from piantor in
           ;; - shift is not on thumb
@@ -64,6 +71,7 @@ in {
           ;; - enter is not on thumb
           ;; - layer keys are outward compared to space as opposed to on the inside for
           ;;   piantor (due to large spacebar on laptop)
+          ;; - tilde not on escape
         )
 
         (defsrc
@@ -74,38 +82,38 @@ in {
         )
 
         (deflayer colemakdh
-          S--  @q   @w   @f   @p   b    j    @l   @u   @y   @;   S-/  XX
-          tab  a    r    s    t    g    m    n    e    i    o    S-;  ret  ret
-          @squ @squ x    c    d    v    z    k    h    ,    .    /    @quo
-          XX   esc  @lyd           spc            @lyu @nav lft  down up   rght
+          @hom  @q    @w   @f   @p   b    j    @l   @u   @y   @;   @grt  XX
+          @atab a     r    s    t    g    m    n    e    i    o    @ctly ret  ret
+          @svim @svim x    c    d    v    z    k    h    ,    .    -     @sles
+          XX   tab    @lyd           spc            @lyu @nav lft  down  up   rght
         )
 
         (deflayer nomods
-          S--  q    w    f    p    b    j    l    u    y    ;    S-/  XX
-          tab  a    r    s    t    g    m    n    e    i    o    S-;  ret  ret
-          '    '    x    c    d    v    z    k    h    ,    .    /    S-'
-          XX   esc  @lyd           spc            @lyu @nav lft  down up   rght
+          @hom  q    w    f    p    b    j    l    u    y    ;   @grt  XX
+          @atab a    r    s    t    g    m    n    e    i    o   @ctly ret  ret
+          @vim  @vim x    c    d    v    z    k    h    ,    .   -     @les
+          XX   tab  @lyd           spc            @lyu @nav lft  down   up   rght
         )
 
         (deflayer down
-          f7   f8   f9   f10  f11  f12  XX   7    8    9    ,    XX   XX
-          S-=  @cut @all @cop @pas S-8  S-;  4    5    6    0    S-4  ret  ret
-          XX   f1   f2   f3   f4   f5   f6   -    1    2    3    .    del
-          XX   esc  @lyd           spc            @lyu bspc lft  down up   rght
+          f7   f8   f9   f10  f11  f12   XX   7    8    9    ,    XX   XX
+          XX   @cut @all @cop @pas @term XX   4    5    6    S-;  S-4  ret  ret
+          XX   f1   f2   f3   f4   f5    f6   XX   1    2    3    =    XX
+          XX   tab  @lyd           spc             0    .    lft  down up   rght
         )
 
         (deflayer up
-          @arr \    [    ]    S-4  S-2  XX   S-5  S-3  S-6  S-/  XX   XX
-          @not S-,  S-9  S-0  =    S-`  grv  S-\  S-1  S-8  S-.  @grt ret  ret
-          @dar XX   S-7  S-[  S-]  -    XX   XX   XX   XX   XX   @les XX
-          XX   esc  S-=            spc            @lyu bspc lft  down up   rght
+          @arr \    [    ]    S-4  S-2  S-`  S-\  S-1  S-/  grv  XX   XX
+          @dar S-8  S-9  S-0  /    S-5  S-6  =    S-=  '    S-'  @grt ret  ret
+          @not @not S-7  S-[  S-]  S-3  XX   XX   XX   XX   XX   @les XX
+          XX   tab  @dquo          spc            @lyu bspc lft  down up   rght
         )
 
         (deflayer nav
           XX   brup volu pgup home XX   XX   XX   up   XX   XX   XX   XX
           del  brdn vold pgdn end  sys  XX   lft  down rght +    XX   XX   ret
           pp   XX   XX   mute XX   XX   XX   XX   XX   XX   XX   XX   XX
-          XX   esc  @lyd           spc            @lyu bspc lft  down up   rght
+          XX   tab  @lyd           spc            @lyu bspc lft  down up   rght
         )
       '';
       extraDefCfg = ''
