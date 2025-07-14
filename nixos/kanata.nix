@@ -97,8 +97,8 @@ in {
 
         (deflayer down
           f7   f8   f9   f10  f11  f12   XX   7    8    9    ,    XX   XX
-          XX   @cut @all @cop @pas @term XX   4    5    6    S-;  S-4  ret  ret
-          XX   f1   f2   f3   f4   f5    f6   XX   1    2    3    =    XX
+          XX   @cut @all @cop @pas @term =    4    5    6    S-;  S-4  ret  ret
+          XX   f1   f2   f3   f4   f5    f6   XX   1    2    3    -    XX
           XX   tab  @lyd           spc             0    .    lft  down up   rght
         )
 
