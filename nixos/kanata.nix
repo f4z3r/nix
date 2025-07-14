@@ -19,8 +19,8 @@ in {
         (defalias
           ;; shot toggles
           lyd (tap-hold-release ${tap-timeout} ${hold-delay} esc (layer-while-held down))
-          lyu (tap-hold-release ${tap-timeout} ${hold-delay} del (layer-while-held up))
-          nav (tap-hold-release ${tap-timeout} ${hold-delay} del (layer-while-held nav))
+          lyu (tap-hold-release ${tap-timeout} ${hold-delay} tab (layer-while-held up))
+          nav (tap-hold-release ${tap-timeout} ${hold-delay} bspc (layer-while-held nav))
 
           ;; helpers
           hom (macro S-` /)
@@ -85,35 +85,35 @@ in {
           @hom  @q    @w   @f   @p   b    j    @l   @u   @y   @;   @grt  XX
           @atab a     r    s    t    g    m    n    e    i    o    @ctly ret  ret
           @svim @svim x    c    d    v    z    k    h    ,    .    -     @sles
-          XX   tab    @lyd           spc            @lyu @nav lft  down  up   rght
+          XX   del    @lyd           spc            @lyu @nav lft  down  up   rght
         )
 
         (deflayer nomods
           @hom  q    w    f    p    b    j    l    u    y    ;   @grt  XX
           @atab a    r    s    t    g    m    n    e    i    o   @ctly ret  ret
           @vim  @vim x    c    d    v    z    k    h    ,    .   -     @les
-          XX   tab  @lyd           spc            @lyu @nav lft  down   up   rght
+          XX   del  @lyd           spc            @lyu  @nav lft  down   up   rght
         )
 
         (deflayer down
           f7   f8   f9   f10  f11  f12   XX   7    8    9    ,    XX   XX
-          XX   @cut @all @cop @pas @term =    4    5    6    S-;  S-4  ret  ret
+          XX   @cut @all @cop @pas @term XX   4    5    6    S-;  XX   ret  ret
           XX   f1   f2   f3   f4   f5    f6   XX   1    2    3    -    XX
-          XX   tab  @lyd           spc             0    .    lft  down up   rght
+          XX   del  @lyd           spc             0    bspc lft  down up   rght
         )
 
         (deflayer up
-          @arr \    [    ]    S-4  S-2  S-`  S-\  S-1  S-/  grv  XX   XX
+          @arr S-7  [    ]    S-4  S-2  S-`  S-\  S-1  S-/  grv  XX   XX
           @dar S-8  S-9  S-0  /    S-5  S-6  =    S-=  '    S-'  @grt ret  ret
-          @not @not S-7  S-[  S-]  S-3  XX   XX   XX   XX   XX   @les XX
-          XX   tab  @dquo          spc            @lyu bspc lft  down up   rght
+          @not @not \    S-[  S-]  S-3  XX   XX   XX   XX   XX   @les XX
+          XX   del  @dquo          spc            @lyu bspc lft  down up   rght
         )
 
         (deflayer nav
           XX   brup volu pgup home XX   XX   XX   up   XX   XX   XX   XX
           del  brdn vold pgdn end  sys  XX   lft  down rght +    XX   XX   ret
           pp   XX   XX   mute XX   XX   XX   XX   XX   XX   XX   XX   XX
-          XX   tab  @lyd           spc            @lyu bspc lft  down up   rght
+          XX   del  @lyd           spc            @lyu bspc lft  down up   rght
         )
       '';
       extraDefCfg = ''
