@@ -22,7 +22,7 @@ function utils.copy_to_clipboard()
   vim.cmd("let @+=@")
   vim.notify("Copied data to system clipboard", vim.log.levels.INFO, {
     title = "Clipboard",
-    timeout = 1000,
+    timeout = 500,
   })
 end
 
