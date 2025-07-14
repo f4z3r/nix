@@ -418,6 +418,13 @@ in {
         config = builtins.readFile ./plugin/neo-tree.lua;
       }
 
+      # timer
+      {
+        type = "lua";
+        plugin = timerly;
+        config = builtins.readFile ./plugin/timerly.lua;
+      }
+
       # tag generation
       vim-gutentags
 
