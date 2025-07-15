@@ -285,6 +285,11 @@ in {
         plugin = gitsigns-nvim;
         config = builtins.readFile ./plugin/gitsigns.lua;
       }
+      {
+        type = "lua";
+        plugin = diffview-nvim;
+        config = builtins.readFile ./plugin/diffview.lua;
+      }
 
       # rss feed reader
       snacks-nvim
