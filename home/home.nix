@@ -171,6 +171,10 @@ in {
       dawnTime = "06:00";
       duskTime = "19:00";
     };
+
+    batsignal = {
+      enable = true;
+    };
   };
 
   home = {
