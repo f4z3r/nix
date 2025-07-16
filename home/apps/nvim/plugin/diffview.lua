@@ -124,6 +124,7 @@ require("diffview").setup({
       { "n", "q",               actions.close,                         { desc = "Close the view." } },
       { "n", "<tab>",           actions.select_next_entry,             { desc = "Open the diff for the next file" } },
       { "n", "<s-tab>",         actions.select_prev_entry,             { desc = "Open the diff for the previous file" } },
+      { "n", "<cr>",            actions.select_entry,                  { desc = "Open the diff for the selected entry" } },
       { "n", "R",               actions.refresh_files,                 { desc = "Update stats and entries in the file list" } },
       { "n", "+",               actions.toggle_files,                  { desc = "Toggle the file panel" } },
       { "n", "[x",              actions.prev_conflict,                 { desc = "Go to the previous conflict" } },
