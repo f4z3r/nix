@@ -45,20 +45,6 @@
     propagatedBuildInputs = with pkgs.luajitPackages; [luasnip neorg];
   };
 
-  markit = pkgs.vimUtils.buildVimPlugin {
-    name = "markit";
-    src = pkgs.fetchFromGitHub {
-      owner = "2KAbhishek";
-      repo = "markit.nvim";
-      rev = "9b031afab214aa6e6467f275f55640989f438925";
-      sha256 = "sha256-LCvACs8hHxquwBcCthfrdWQAQd8jrOwhsuZAkjqCZSQ=";
-    };
-    nvimSkipModules = [
-      "markit"
-      "markit.bookmark"
-    ];
-  };
-
   feed-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "feed-nvim";
     src = pkgs.fetchFromGitHub {
@@ -432,13 +418,6 @@ in {
 
       # tag generation
       vim-gutentags
-
-      # marks
-      {
-        type = "lua";
-        plugin = markit;
-        config = builtins.readFile ./plugin/markit.lua;
-      }
 
       # neorg
       {

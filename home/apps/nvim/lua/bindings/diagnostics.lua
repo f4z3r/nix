@@ -4,6 +4,7 @@ local leader = "<leader>d"
 
 local mappings = {
   -- dr taken for rename
+  -- others taken for signature show, see treesitter configuration for lsp_interop
   {
     mode = "n",
     suffix = "d",
