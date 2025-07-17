@@ -103,7 +103,7 @@ in {
         )
 
         (deflayer up
-          @arr S-7  [    ]    S-4  S-2  S-`  S-\  S-1  S-/  grv  XX   XX
+          @arr S-7  [    ]    S-4  grv  S-`  S-\  S-1  S-/  S-2  XX   XX
           @dar S-8  S-9  S-0  /    S-5  S-6  =    S-=  '    S-'  @grt ret  ret
           @not @not \    S-[  S-]  S-3  XX   XX   XX   XX   XX   @les XX
           XX   del  @dquo          spc            @lyu bspc lft  down up   rght
