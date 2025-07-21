@@ -202,6 +202,7 @@ in {
       onlyoffice-bin
       vial
       inkscape-with-extensions
+      fava
 
       # utils
       devbox
@@ -238,6 +239,7 @@ in {
       step-cli
       watchexec
       imv
+      beancount
 
       # stuff not used often, installed via nix-shell
       #tokei
