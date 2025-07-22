@@ -16,6 +16,7 @@ null_ls.setup({
     null_ls.builtins.diagnostics.tfsec,
     null_ls.builtins.diagnostics.trail_space,
     null_ls.builtins.diagnostics.tidy,
+    null_ls.builtins.diagnostics.bean_check,
     -- formatting
     null_ls.builtins.formatting.gofumpt,
     null_ls.builtins.formatting.goimports_reviser,
@@ -30,5 +31,6 @@ null_ls.setup({
     null_ls.builtins.formatting.terraform_fmt,
     null_ls.builtins.formatting.tidy,
     null_ls.builtins.formatting.typstyle,
+    null_ls.builtins.formatting.bean_format,
   },
 })
