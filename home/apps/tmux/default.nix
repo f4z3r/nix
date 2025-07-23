@@ -84,10 +84,6 @@ in {
         '';
       }
       {
-        plugin = copycat;
-        extraConfig = ''set -g @override_copy_command "wl-copy"'';
-      }
-      {
         plugin = mkTmuxPlugin {
           pluginName = "tea";
           version = "unstable-2025-04-16";
@@ -129,8 +125,9 @@ in {
       set-option -g automatic-rename on
       set-option -g automatic-rename-format '#{b:pane_current_path}: #{b:pane_current_command}'
 
-      # passthrough for zen-mode
+      # passthrough for zen-mode and nvim clipboard
       set-option -gq allow-passthrough on
+      set-option -gq set-clipboard on
       # visual-activity for image.nvim
       set-option -g visual-activity off
 
