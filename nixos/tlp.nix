@@ -31,8 +31,8 @@
       CPU_BOOST_ON_AC = 1;
       CPU_BOOST_ON_BAT = 0;
 
-      USB_BLACKLIST_PRINTER = 0;
-      USB_BLACKLIST_PHONE = 0;
+      # blacklist piantor pro (ID from lsusb)
+      USB_DENYLIST="beeb:0002";
 
       RUNTIME_PM_ON_AC = "auto";
     };
