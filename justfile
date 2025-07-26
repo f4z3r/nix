@@ -7,4 +7,4 @@ backup DRIVE:
   @[ -d /mnt/drive ] || sudo mkdir /mnt/drive
   sudo mount /dev/{{ DRIVE }} /mnt/drive
   rsync -vau {{ home }}/Music/ /mnt/drive/music
-  rsync -vau --delete-excluded --exclude='**/.git/' --exclude='**/target/' {{ home }}/Documents/ /mnt/drive/docs
+  rsync -vau --exclude='**/.git/' --exclude='**/target/' {{ home }}/Documents/ /mnt/drive/docs
