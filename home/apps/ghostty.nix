@@ -1,12 +1,10 @@
 {
   pkgs,
-  pkgs-custom,
   theme,
   ...
 }: {
   programs.ghostty = {
     enable = true;
-    package = pkgs-custom.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enableBashIntegration = false;
     enableFishIntegration = false;
     installBatSyntax = true;

@@ -10,8 +10,6 @@
     };
 
     neorg-overlay.url = "github:nvim-neorg/nixpkgs-neorg-overlay";
-
-    ghostty.url = "github:ghostty-org/ghostty";
   };
 
   outputs = {
@@ -19,7 +17,6 @@
     nixpkgs,
     home-manager,
     neorg-overlay,
-    ghostty,
     ...
   } @ inputs: let
     usernames = [
@@ -36,7 +33,6 @@
     };
     inherit (nixpkgs) lib;
     pkgs-custom = {
-      inherit ghostty;
     };
     inherit (pkgs) stdenv;
 

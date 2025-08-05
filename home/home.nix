@@ -30,14 +30,14 @@ in {
   imports = [
     (import ./langs/lua.nix {inherit pkgs lib;})
     (import ./apps/hyprland/default.nix {
-      inherit pkgs pkgs-custom username resolution scale main_monitor monitor_prefix theme;
+      inherit pkgs username resolution scale main_monitor monitor_prefix theme;
     })
-    (import ./apps/ghostty.nix {inherit pkgs pkgs-custom theme;})
+    (import ./apps/ghostty.nix {inherit pkgs theme;})
     (import ./apps/rofi/default.nix {inherit pkgs theme;})
     (import ./apps/git/default.nix {inherit pkgs theme;})
     (import ./apps/lazygit.nix {inherit pkgs theme;})
     (import ./apps/tmux/default.nix {inherit pkgs lib stdenv theme;})
-    (import ./apps/fish/default.nix {inherit lib pkgs pkgs-custom theme;})
+    (import ./apps/fish/default.nix {inherit lib pkgs theme;})
     ./apps/starship.nix
     ./apps/gpg.nix
     ./apps/nvim/default.nix
@@ -192,8 +192,9 @@ in {
           pylsp-rope
           pylsp-mypy
           presenterm-export
+          black
         ];
-      enhanced-python = pkgs.python312.withPackages python-packages;
+      enhanced-python = pkgs.python313.withPackages python-packages;
     in [
       # GUI programs
       gimp
@@ -277,7 +278,6 @@ in {
       delve
       enhanced-python
       ruff
-      black
       dive
       kubectl
       kubectx
