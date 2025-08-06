@@ -255,8 +255,31 @@
           license.fullName = "MIT <http://opensource.org/licenses/MIT>";
         };
       };
+      ftcsv = buildLuarocksPackage {
+        pname = "ftcsv";
+        version = "1.4.0-1";
+        knownRockspec =
+          (pkgs.fetchurl {
+            url = "mirror://luarocks/ftcsv-1.4.0-1.rockspec";
+            hash = "sha256-KqWAmkJepwiepJNm6AXAcgyI3evTWuMXDvuQlrfQcLY=";
+          }).outPath;
+        src = pkgs.fetchFromGitHub {
+          owner = "FourierTransformer";
+          repo = "ftcsv";
+          rev = "1.4.0";
+          hash = "sha256-IpjV6wYNKT/4rlPvOLucHGZYN0n9R1x6Hg2ObQNLAJA=";
+        };
+
+        disabled = luaOlder "5.1" || luaAtLeast "5.5";
+
+        meta = {
+          homepage = "https://github.com/FourierTransformer/ftcsv";
+          description = "A fast pure lua csv library (parser and encoder)";
+          license.fullName = "MIT <http://opensource.org/licenses/MIT>";
+        };
+      };
     in
-      [lanes lua-path lua-fun date luatext luatables utf8 sofa]
+      [lanes lua-path lua-fun date luatext luatables utf8 sofa ftcsv]
       ++ [
         lyaml
         argparse
