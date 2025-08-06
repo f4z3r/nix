@@ -51,9 +51,6 @@
       ns = ''rclone bisync gdrive-crypt:/ ~/notes --remove-empty-dirs --exclude '/.**' --exclude '**/.**' --compare size,modtime -MP --fix-case --conflict-suffix upstream,local'';
       jwt = ''wl-paste | step crypto jwt inspect --insecure | jq'';
       imv = ''imv -b ffffff'';
-      proxy = ''ssh -p 2222 -i ~/.ssh/proxy_connection 192.168.1.40'';
-      tunnel = ''ssh -p 2222 -ND 9191 -i ~/.ssh/proxy_connection 192.168.1.40'';
-      cash = ''fava ~/notes/resources/accounts.beancount'';
     };
     shellInit = ''
       set -x NIX_THEME "${theme}"
