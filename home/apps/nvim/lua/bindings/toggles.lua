@@ -55,12 +55,13 @@ local mappings = {
     end,
     desc = "Toggle workspace diagnostics",
   },
-  {
-    mode = "n",
-    suffix = "r",
-    command = require("overseer").toggle,
-    desc = "Toggle task runner",
-  },
+  -- TODO(@f4z3r): enable again when neotest fixed
+  -- {
+  --   mode = "n",
+  --   suffix = "r",
+  --   command = require("overseer").toggle,
+  --   desc = "Toggle task runner",
+  -- },
   {
     mode = "n",
     suffix = "c",

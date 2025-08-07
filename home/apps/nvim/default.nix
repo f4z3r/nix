@@ -308,19 +308,20 @@ in {
       }
 
       # test and runner stuff
-      {
-        type = "lua";
-        plugin = overseer-nvim;
-        config = builtins.readFile ./plugin/overseer.lua;
-      }
-      {
-        type = "lua";
-        plugin = neotest;
-        config = builtins.readFile ./plugin/neotest.lua;
-      }
-      neotest-go
-      neotest-python
-      neotest-rust
+      # TODO(@f4z3r): reenable when neotest fixed
+      # {
+      #   type = "lua";
+      #   plugin = overseer-nvim;
+      #   config = builtins.readFile ./plugin/overseer.lua;
+      # }
+      # {
+      #   type = "lua";
+      #   plugin = neotest;
+      #   config = builtins.readFile ./plugin/neotest.lua;
+      # }
+      # neotest-go
+      # neotest-python
+      # neotest-rust
 
       # http
       # {
