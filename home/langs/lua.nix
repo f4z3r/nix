@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  username,
   ...
 }: let
   lua-packages = luaPkgs:
@@ -308,9 +309,15 @@ in {
     sessionVariables = {
       LUA_CPATH = "${lib.concatStringsSep ";"
         (map pkgs.luajitPackages.getLuaCPath [luajit])}";
-      LUA_PATH = "./?.lua;./?/init.lua;${
+      LUA_PATH = "${
         lib.concatStringsSep ";"
-        (map pkgs.luajitPackages.getLuaPath [luajit])
+          ([
+            "./?.lua"
+            "./?/init.lua"
+            "/home/${username}/.luarocks/share/lua/5.1/?.lua"
+            "/home/${username}/.luarocks/share/lua/5.1/?/init.lua"
+          ] ++
+          (map pkgs.luajitPackages.getLuaPath [luajit]))
       }";
       LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
     };

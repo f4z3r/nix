@@ -28,7 +28,7 @@ assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; let
   colors = import ./../theme.nix {inherit theme;};
 in {
   imports = [
-    (import ./langs/lua.nix {inherit pkgs lib;})
+    (import ./langs/lua.nix {inherit pkgs lib username;})
     (import ./apps/hyprland/default.nix {
       inherit pkgs username resolution scale main_monitor monitor_prefix theme;
     })
