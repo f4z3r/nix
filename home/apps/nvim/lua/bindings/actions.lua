@@ -7,6 +7,14 @@
 local leader = "<leader>a"
 
 local mappings = {
+  {
+    mode = "n",
+    suffix = "f",
+    command = function()
+      vim.lsp.buf.format({ async = true, timeout_ms = 1000 })
+    end,
+    desc = "Format current buffer",
+  },
 }
 
 for _, mapping in ipairs(mappings) do

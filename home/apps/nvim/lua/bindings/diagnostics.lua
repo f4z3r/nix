@@ -32,12 +32,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       buffer = ev.buf,
       desc = "perform code action",
     })
-    vim.keymap.set("n", "<leader>df", function()
-      vim.lsp.buf.format({ async = true, timeout_ms = 1000 })
-    end, {
-      buffer = ev.buffer,
-      desc = "format current buffer",
-    })
 
     -- signature help
     vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help, {
