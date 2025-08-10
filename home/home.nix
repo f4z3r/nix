@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   lib,
   stdenv,
   pkgs-custom,

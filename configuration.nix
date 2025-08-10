@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-stable,
   theme,
   hostname,
   usernames,
@@ -10,7 +11,7 @@
   monitoring,
   ...
 }: let
-  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+  tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
   session = "${pkgs.hyprland}/bin/Hyprland";
   secrets = import ./secrets.nix;
 in {
@@ -304,12 +305,16 @@ in {
 
     pipewire = {
       enable = true;
+      package = pkgs-stable.pipewire;
       alsa = {
         enable = true;
         support32Bit = true;
       };
       pulse.enable = true;
       jack.enable = true;
+      wireplumber = {
+        package = pkgs-stable.wireplumber;
+      };
     };
 
     printing = {
