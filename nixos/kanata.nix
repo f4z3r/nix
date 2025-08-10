@@ -23,7 +23,7 @@ in {
           nav (tap-hold-release ${tap-timeout} ${hold-delay} bspc (layer-while-held nav))
 
           ;; helpers
-          hom (macro S-` /)
+          hom (macro S-` spc /)
           atab (multi lalt tab)
           vim (macro v i m spc)
 
@@ -33,7 +33,7 @@ in {
 
           arr (macro - S-.)
           dar (macro = S-.)
-          not (macro S-` =)
+          not (macro S-` spc =)
 
           cut (multi lctl x)
           cop (multi lctl c)
