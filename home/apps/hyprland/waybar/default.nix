@@ -7,6 +7,7 @@
     if theme == "dark"
     then "#d8a657"
     else "#b47109";
+  luajit = import ../../../langs/luajit.nix {inherit pkgs;};
 in {
   programs = {
     waybar = {
@@ -106,7 +107,7 @@ in {
             format-disconnected = ''<span color="${yellow}">NET</span> <span color="#7c6f64">disconnected</span>'';
           };
           "custom/vpn" = {
-            exec = "${pkgs.luajit}/bin/luajit ~/.local/share/scripts/vpn.lua";
+            exec = "${luajit}/bin/luajit ~/.local/share/scripts/vpn.lua";
             exec-if = ''systemctl is-active "openvpn-*"'';
             interval = 60;
             format = ''<span color="${yellow}">VPN</span> {}'';

@@ -16,6 +16,7 @@
     if theme == "dark"
     then "~/.local/share/wallpapers/midnight-reflections-moonlit-sea.jpg"
     else "~/.local/share/wallpapers/mountains-with-sky.jpg";
+  luajit = import ../../langs/luajit.nix {inherit pkgs;};
 in {
   imports = [
     (import ./waybar/default.nix {inherit pkgs theme;})
@@ -39,7 +40,7 @@ in {
             "${pkgs.swww}/bin/swww img ${wallpaper}"
             "wl-paste --watch cliphist store"
             "${pkgs.hyprland}/bin/hyprctl setcursor '${cursorTheme}' 24"
-            "${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua"
+            "${luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua"
           ];
           env = [
             ''GTK_THEME,Materia-dark''
@@ -101,7 +102,7 @@ in {
             ''$wm&$app, x, exec, ${pkgs.rofi-wayland}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu''
             ''$wm&$app, l, exec, loginctl lock-session''
             ''$wm&$app, o, exec, /etc/profiles/per-user/${username}/bin/sofa''
-            ''$wm&$app, w, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/fuzzy-bookmarks.lua''
+            ''$wm&$app, w, exec, ${luajit}/bin/luajit /home/${username}/.local/share/scripts/fuzzy-bookmarks.lua''
             ''$wm&$app, r, exec, bash /home/${username}/.local/share/scripts/screen-record.sh''
             ''$wm&$app, c, exec, ${pkgs.rofi-wayland}/bin/rofi -modi clipboard:/home/${username}/.local/bin/cliphist-rofi-img.sh -show clipboard -show-icons''
             ''$wm&$app, p, exec, ${pkgs.gopass}/bin/gopass ls --flat | ${pkgs.rofi-wayland}/bin/rofi -dmenu -p Gopass | xargs --no-run-if-empty ${pkgs.gopass}/bin/gopass show -o | head -n 1 | ${pkgs.wl-clipboard}/bin/wl-copy''
@@ -114,7 +115,7 @@ in {
           ];
           bindl = [
             '', XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle''
-            '', XF86AudioMicMute, exec, ${pkgs.luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua''
+            '', XF86AudioMicMute, exec, ${luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua''
             '', XF86AudioPlay, exec, ${pkgs.mpc-cli}/bin/mpc toggle''
           ];
           bindle = [
