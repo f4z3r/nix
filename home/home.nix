@@ -260,6 +260,7 @@ in {
       grim
       slurp
       satty
+      cliphist
       wl-clipboard
       wl-screenrec
       file
