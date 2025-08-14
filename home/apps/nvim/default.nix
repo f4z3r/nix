@@ -1,4 +1,4 @@
-{pkgs, ...}: let
+{pkgs, pkgs-stable, ...}: let
   gruvbox-material-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "gruvbox-material.nvim";
     src = pkgs.fetchFromGitHub {
@@ -178,7 +178,7 @@ in {
       yaml-language-server
       helm-ls
       marksman
-      rust-analyzer
+      pkgs-stable.rust-analyzer
       rustfmt
       terraform-ls
       nil
