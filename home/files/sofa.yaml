@@ -11,6 +11,11 @@ namespaces:
             prompt: Connection
             exclusive: true
             choices: nmcli c | cut -d" "  -f1 | tail -n+2 | rg -v "lo|tun0"
+      toggle-microphone:
+        command: luajit ~/.local/share/scripts/toggle-mute.lua
+        description: Toggle microphone muting
+        tags:
+        - audio
       restart-vpn:
         command: sudo systemctl restart openvpn-{{ cc }}.service
         description: Restart VPN service
