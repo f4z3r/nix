@@ -221,7 +221,7 @@ in {
       nvim-treesitter-textobjects
       {
         type = "lua";
-        plugin = nvim-treesitter.withAllGrammars;
+        plugin = pkgs-stable.vimPlugins.nvim-treesitter.withAllGrammars;
         config = builtins.readFile ./plugin/treesitter.lua;
       }
       {
