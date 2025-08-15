@@ -128,8 +128,6 @@ in {
       # passthrough for zen-mode and nvim clipboard
       set-option -gq allow-passthrough on
       set-option -gq set-clipboard on
-      # visual-activity for image.nvim
-      set-option -g visual-activity off
 
       # minimal status bar
       set-option -g status-style bg=${bg_colour},fg=${fg_colour}
