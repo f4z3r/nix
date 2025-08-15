@@ -10,7 +10,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neorg-overlay.url = "github:nvim-neorg/nixpkgs-neorg-overlay";
+    neorg-overlay = {
+      url = "github:nvim-neorg/nixpkgs-neorg-overlay";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    # fix due to bug not enabling the grammar
+    norg-meta.url = "github:nvim-neorg/tree-sitter-norg-meta";
   };
 
   outputs = {
@@ -19,6 +25,7 @@
     nixpkgs-stable,
     home-manager,
     neorg-overlay,
+    norg-meta,
     ...
   } @ inputs: let
     usernames = [
@@ -39,6 +46,7 @@
     };
     inherit (nixpkgs) lib;
     pkgs-custom = {
+        norg-meta = norg-meta.defaultPackage.${system};
     };
     inherit (pkgs) stdenv;
 

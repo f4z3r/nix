@@ -1,4 +1,9 @@
-{pkgs, pkgs-stable, ...}: let
+{
+  pkgs,
+  pkgs-stable,
+  pkgs-custom,
+  ...
+}: let
   gruvbox-material-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "gruvbox-material.nvim";
     src = pkgs.fetchFromGitHub {
@@ -207,7 +212,7 @@ in {
       nvim-treesitter-textobjects
       {
         type = "lua";
-        plugin = pkgs-stable.vimPlugins.nvim-treesitter.withAllGrammars;
+        plugin = pkgs-stable.vimPlugins.nvim-treesitter.withPlugins (_: pkgs-stable.vimPlugins.nvim-treesitter.allGrammars ++ [pkgs-custom.norg-meta]);
         config = builtins.readFile ./plugin/treesitter.lua;
       }
       {

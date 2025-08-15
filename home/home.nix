@@ -41,7 +41,7 @@ in {
     (import ./apps/fish/default.nix {inherit lib pkgs theme;})
     ./apps/starship.nix
     ./apps/gpg.nix
-    (import ./apps/nvim/default.nix {inherit pkgs pkgs-stable;})
+    (import ./apps/nvim/default.nix {inherit pkgs pkgs-stable pkgs-custom;})
     (import ./apps/broot.nix {inherit pkgs theme;})
     (import ./apps/k9s/default.nix {inherit pkgs theme;})
     (import ./apps/bat.nix {inherit pkgs theme;})
