@@ -6,7 +6,7 @@ set -x MANROFFOPT "-c"
 set fish_greeting
 
 # add local binaries to path
-fish_add_path -p "$HOME/.local/bin/" "$HOME/.luarocks/bin/"
+fish_add_path -p "$HOME/.local/bin/" "$HOME/.luarocks/bin/" "$HOME/.cargo/bin/"
 
 # use gruvbox theme
 theme_gruvbox $NIX_THEME medium
