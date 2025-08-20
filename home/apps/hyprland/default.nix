@@ -130,13 +130,13 @@ in {
             ''workspaces, 1, 2, easeOutExpo, fade''
             ''windowsIn, 1, 2, easeOutExpo, slide''
             ''windowsOut, 1, 2, easeOutExpo, popin''
+            ''layers, 1, 1, easeOutExpo, popin''
+          ];
+          layerrule = [
+            ''animation popin,rofi''
+            ''dimaround,rofi''
           ];
           windowrulev2 = [
-            # ensure rofi floats and grabs input
-            ''float,class:(Rofi)''
-            ''center,class:(Rofi)''
-            ''animation popin,class:(Rofi)''
-            ''stayfocused,class:(Rofi)''
             # ensure pinentry grabs input
             ''animation popin,class:(Pinentry)''
             ''float,class:(Pinentry)''
@@ -144,6 +144,7 @@ in {
             ''pin,class:(Pinentry)''
             ''stayfocused,class:(Pinentry)''
             # quake window sizing
+            ''dimaround,title:(quake)''
             ''float,title:(quake)''
             ''center,title:(quake)''
             ''size 70% 70%,title:(quake)''
