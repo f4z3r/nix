@@ -1,13 +1,16 @@
 require("zen-mode").setup({
   window = {
     width = function()
-      return vim.opt_local.textwidth:get() + 7
+      if vim.opt_local.textwidth:get() > 0 then
+        return vim.opt_local.textwidth:get() + 7
+      end
+      return 120
     end,
     options = {
       -- signcolumn = "no", -- disable signcolumn
       number = false, -- disable number column
       relativenumber = false, -- disable relative numbers
-      cursorline = false, -- disable cursorline
+      cursorline = true, -- disable cursorline
       cursorcolumn = false, -- disable cursor column
       foldcolumn = "0", -- disable fold column
       -- list = false, -- disable whitespace characters
@@ -26,10 +29,12 @@ require("zen-mode").setup({
   },
   -- callback where you can add custom code when the Zen window opens
   on_open = function(win)
-    vim.opt_local.sidescrolloff = 0
+    vim.opt.sidescrolloff = 0
+    vim.opt.sidescroll = 0
   end,
   -- callback where you can add custom code when the Zen window closes
   on_close = function()
-    vim.opt_local.sidescrolloff = 5
+    vim.opt.sidescrolloff = 5
+    vim.opt.sidescroll = 1
   end,
 })
