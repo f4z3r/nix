@@ -232,7 +232,6 @@ in {
       xcp
       miniserve
       vhs
-      pandoc
       presenterm
       d2
       tup

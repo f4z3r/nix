@@ -25,6 +25,3 @@ vim.keymap.set("n", "-", "<cmd>Oil<cr>")
 vim.keymap.set("n", "z=", function()
   require("telescope.builtin").spell_suggest()
 end)
-
--- Feed
-vim.keymap.set("n", "<leader>z", "<cmd>Feed index<cr>")

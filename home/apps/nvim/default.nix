@@ -39,23 +39,6 @@
     ];
   };
 
-  feed-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "feed-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "neo451";
-      repo = "feed.nvim";
-      rev = "b89f1f1d2cf85a59cfca58a87a0535e3fa7d6dfc";
-      sha256 = "sha256-bTTHKA6aYpwltIvBkoQ8l9OigyrEH7Kn1eeH3nwxNuM=";
-    };
-    nvimSkipModules = [
-      "minimal"
-      "feed.pandoc.gfm"
-      "feed.pickers.fzf-lua"
-      "feed.pickers.mini.pick"
-      "feed.pickers.telescope"
-    ];
-  };
-
   d2 = pkgs.vimUtils.buildVimPlugin {
     name = "d2";
     src = pkgs.fetchFromGitHub {
@@ -297,14 +280,6 @@ in {
         type = "lua";
         plugin = diffview-nvim;
         config = builtins.readFile ./plugin/diffview.lua;
-      }
-
-      # rss feed reader
-      snacks-nvim
-      {
-        type = "lua";
-        plugin = feed-nvim;
-        config = builtins.readFile ./plugin/feed-nvim.lua;
       }
 
       # lsp stuff
