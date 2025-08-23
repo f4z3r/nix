@@ -34,6 +34,9 @@
       sha256 = "sha256-nZOAxXSHTUDBpUBS/Esq5HHwEaTB01dI7x5CQFB3pcw=";
     };
     propagatedBuildInputs = with pkgs.luajitPackages; [luasnip neorg];
+    dependencies = [
+      pkgs.vimPlugins.neorg
+    ];
   };
 
   feed-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -61,6 +64,34 @@
       rev = "981c87dccb63df2887cc41b96e84bf550f736c57";
       sha256 = "sha256-+mT4pEbtq7f9ZXhOop3Jnjr7ulxU32VtahffIwQqYF4=";
     };
+  };
+
+  oil-git-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "oil-git.nvim";
+    src = pkgs.fetchFromGitHub {
+      # FIX(@f4z3r): wait for PR to be merged: https://github.com/benomahony/oil-git.nvim/pull/10
+      # owner = "benomahony";
+      owner = "LeonWiese";
+      repo = "oil-git.nvim";
+      rev = "6fa5df51824d9e9aa1b53ad60de997fd288fd849";
+      sha256 = "sha256-X3VaXEkE40xUb09LWlY5JdzMjKa6H31ZybeTO6Pn6Ro=";
+    };
+    dependencies = [
+      pkgs.vimPlugins.oil-nvim
+    ];
+  };
+
+  oil-lsp-diagnostics-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "oil-lsp-diagnostics.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "JezerM";
+      repo = "oil-lsp-diagnostics.nvim";
+      rev = "e04e3c387262b958fee75382f8ff66eae9d037f4";
+      sha256 = "sha256-E8jukH3I8XDdgrG4XHCo9AuFbY0sLX24pjk054xmB9E=";
+    };
+    dependencies = [
+      pkgs.vimPlugins.oil-nvim
+    ];
   };
 
   nvim-table-md = pkgs.vimUtils.buildVimPlugin {
@@ -391,14 +422,24 @@ in {
         '';
       }
 
-      # tree
+      # oil
       nui-nvim
       plenary-nvim
       nvim-web-devicons
       {
         type = "lua";
-        plugin = neo-tree-nvim;
-        config = builtins.readFile ./plugin/neo-tree.lua;
+        plugin = oil-nvim;
+        config = builtins.readFile ./plugin/oil.lua;
+      }
+      {
+        type = "lua";
+        plugin = oil-git-nvim;
+        config = builtins.readFile ./plugin/oil-git.lua;
+      }
+      {
+        type = "lua";
+        plugin = oil-lsp-diagnostics-nvim;
+        config = builtins.readFile ./plugin/oil-lsp.lua;
       }
 
       # timer

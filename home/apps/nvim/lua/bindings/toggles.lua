@@ -88,19 +88,6 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "b",
-    command = function()
-      require("neo-tree.command").execute({
-        source = "buffers",
-        toggle = true,
-        action = "focus",
-        reveal = true,
-      })
-    end,
-    desc = "Toggle buffer sidepane",
-  },
-  {
-    mode = "n",
     suffix = "n",
     command = function()
       require("neotest").summary.toggle()

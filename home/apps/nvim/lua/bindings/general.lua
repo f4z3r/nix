@@ -19,9 +19,8 @@ vim.keymap.set("i", "<c-x>", '<c-r>=strftime("&%Y-%m-%d %a %H:%M&")<c-m>')
 -- rebind increment due to tmux prefix
 vim.keymap.set("n", "<c-q>", "<c-a>")
 
--- neotree support
-vim.keymap.set("n", "-", "<cmd>Neotree<cr>")
-vim.keymap.set("n", "+", "<cmd>Neotree close<cr>")
+-- Oil support
+vim.keymap.set("n", "-", "<cmd>Oil<cr>")
 
 vim.keymap.set("n", "z=", function()
   require("telescope.builtin").spell_suggest()
