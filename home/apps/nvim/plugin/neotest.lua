@@ -16,7 +16,7 @@ neotest.setup({
     overseer = require("neotest.consumers.overseer"),
   },
   adapters = {
-    require("neotest-go"),
+    require("neotest-golang"),
     require("neotest-python"),
     require("neotest-rust"),
   },

@@ -61,7 +61,7 @@ require("oil").setup({
     ["<leader>ws"] = { "actions.select", opts = { horizontal = true } },
     ["<leader>w-"] = { "actions.select", opts = { horizontal = true } },
     ["<C-c>"] = { "actions.close", mode = "n" },
-    ["<C-r>"] = "actions.refresh",
+    ["<C-l>"] = "actions.refresh",
     ["-"] = { "actions.parent", mode = "n" },
     ["_"] = { "actions.open_cwd", mode = "n" },
     ["`"] = { "actions.cd", mode = "n" },
