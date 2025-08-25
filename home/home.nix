@@ -226,7 +226,6 @@ in {
       fend
       ouch
       fd
-      vimv-rs
       dysk
       erdtree
       xcp
