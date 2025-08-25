@@ -253,6 +253,8 @@ in {
       };
     };
 
+    fwupd.enable = true;
+
     greetd = {
       enable = true;
       settings = {
