@@ -8,7 +8,8 @@ updated: {NOW}
 @end
 
 * ( ) {:$/areas/growth/deep-work.norg:}[Deep Work] session
-  {CURSOR} hours: link to project, including goal for this session
+  See: {:$/resources/methodology/productivity/hack.norg:}[Productivity Hacking]
+  x hours: {CURSOR}
 
 * tenets
   - Focus deeply.
@@ -21,7 +22,5 @@ updated: {NOW}
 ** technical tasks
 ** social tasks
 ** admin
-
-* notes
 
 * reflection
