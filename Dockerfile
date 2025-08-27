@@ -1,6 +1,8 @@
-FROM alpine:3.22.1
+FROM alpine:3.22.1@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1
 
 ENV USER=root
+ENV SHELL=bash
+ENV EDITOR=nvim
 
 RUN apk add bash nix &&\
     nix-channel --add https://nixos.org/channels/nixpkgs-unstable &&\
@@ -14,36 +16,15 @@ RUN nix run home-manager/master -- init --switch
 
 WORKDIR /root/.config/home-manager/
 
-COPY container/home.nix .
 COPY container/flake.nix .
 COPY theme.nix .
-COPY home/scripts ./scripts
-COPY home/files ./files
+COPY home home
+# needs to be copied after home directory to override home.nix already contained there
+COPY container/home.nix home/home.nix
 
 COPY flake.lock .
 
-# RUN nix-shell '<home-manager>' -A install
-# nix --extra-experimental-features "nix-command flakes"  run home-manager/master -- init --switch
-
-# home-manager switch (or build)
-
-# nix --extra-experimental-features "nix-command flakes" build --no-update-lock-file .#homeConfigurations."your.name".activationPackage
-
-# RUN home-manager switch --flake .
-# RUN nix --extra-experimental-features "nix-command flakes"  run home-manager/master -- init --switch
-
 RUN nix run home-manager/master -- build --impure --flake .
 
-# RUN result/activate
-
 ENTRYPOINT ["bash"]
-CMD ["-c", "result/activate && exec bash -l"]
-
-# nix --extra-experimental-features "nix-command flakes" build --no-update-lock-file .#homeConfigurations."your.name".activationPackage
-
-# home.x86_64-linux.homeConfigurations."your.name"
-
-# ./result/activate
-
-# home-manager switch --flake .
-
+CMD ["-c", "result/activate && exec $SHELL -l"]

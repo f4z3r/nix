@@ -6,6 +6,7 @@
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+    enableBashIntegration = true;
     settings = {
       add_newline = true;
       # use all extensions

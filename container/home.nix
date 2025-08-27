@@ -7,9 +7,20 @@
   theme ? "dark",
   ...
 }: let
-  colors = import ./theme.nix {inherit theme;};
+  username = "root";
+  colors = import ../theme.nix {inherit theme;};
 in {
   imports = [
+    (import ./langs/lua.nix {inherit pkgs lib username;})
+    (import ./apps/git/default.nix {inherit pkgs theme;})
+    (import ./apps/lazygit.nix {inherit pkgs theme;})
+    (import ./apps/tmux/default.nix {inherit pkgs lib stdenv theme;})
+    ./apps/starship.nix
+    ./apps/gpg.nix
+    (import ./apps/nvim/default.nix {inherit pkgs pkgs-stable pkgs-custom;})
+    (import ./apps/broot.nix {inherit pkgs theme;})
+    (import ./apps/k9s/default.nix {inherit pkgs theme;})
+    (import ./apps/bat.nix {inherit pkgs theme;})
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -77,11 +88,12 @@ in {
 
     gopass
 
+    # TODO: add clipboard selection if possiblk
     satty
-    cliphist
     file
     bc
     ffmpeg
+    atuin
 
     # programming
     cargo
@@ -120,6 +132,56 @@ in {
 
   programs = {
     home-manager.enable = true;
+
+    bash = {
+      # TODO(@f4z3r): add theme and stuff
+      enable = true;
+      sessionVariables = {
+        NIX_THEME = theme;
+        NIXPKGS_ALLOW_UNFREE = 1;
+        D2_LAYOUT = "elk";
+        D2_THEME = "200";
+        NIX_OPAQUE_NVIM = 1;
+      };
+      initExtra = ''
+        __interactive_sofa () {
+          tput rmkx
+          output="$(sofa -i)"
+          tput smkx
+          READLINE_LINE=$${output}
+          READLINE_POINT=$${#READLINE_LINE}
+        }
+        bind -x '"\C-o": __interactive_sofa'
+      '';
+      shellAliases = {
+        rt = ''z $( if git rev-parse --show-toplevel &> /dev/null; git rev-parse --show-toplevel; else; echo "."; end )'';
+        sk = ''sk -m --color="dark,hl:3,spiller:2,fg+:9,hl+:3,selected:6,query:5,matched_bg:-1"'';
+        skd = ''z "$(fd -t d -c always -L -H . ./ | sk --ansi)"'';
+        ska = ''sk -m --color=dark,hl:3,spiller:2,fg+:9,hl+:3,selected:6,query:5,matched_bg:-1 --ansi -i -c 'ag "{}"' '';
+        ag = ''ag --hidden --ignore .git --ignore .cache --color'';
+        l = ''eza -F -a'';
+        ll = ''eza -aglF --git'';
+        cp = "xcp";
+        erd = "erd -IHl";
+        k = ''kubectl'';
+        kn = ''kubens'';
+        kc = ''kubectx'';
+        ks = ''stern'';
+        tree = ''tree -C'';
+        ip = ''ip -c'';
+        feh = ''feh -Fx'';
+        pdf = ''mupdf'';
+        lg = ''lazygit'';
+        grep = ''grep --color=auto'';
+        egrep = ''egrep --color=auto'';
+        fgrep = ''fgrep --color=auto'';
+        nix-shell = ''nix-shell --run fish'';
+        wall = ''swww img (fd . ~/.local/share/wallpapers/ | shuf -n 1)'';
+        ns = ''rclone bisync gdrive-crypt:/ ~/notes --remove-empty-dirs --exclude '/.**' --exclude '**/.**' --exclude '**/tags' --compare size,modtime -MP --fix-case --conflict-suffix upstream,local'';
+        jwt = ''wl-paste | step crypto jwt inspect --insecure | jq'';
+        imv = ''imv -b ffffff'';
+      };
+    };
 
     fzf = {
       enable = true;

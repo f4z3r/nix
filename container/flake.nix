@@ -51,7 +51,7 @@
             inherit pkgs;
 
             modules = [
-              (import ./home.nix {
+              (import ./home/home.nix {
                 inherit
                   pkgs
                   pkgs-stable
