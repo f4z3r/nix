@@ -105,7 +105,8 @@ in {
         plugin = tmux-thumbs;
         extraConfig = ''
           set -g @thumbs-unique enabled
-          set -g @thumbs-alphabet colemak
+          set -g @thumbs-reverse enabled
+          set -g @thumbs-alphabet colemak-homerow
           set -g @thumbs-command "echo -n {} | wl-copy"
           set -g @thumbs-upcase-command "tmux set-buffer -- {} && tmux paste-buffer"
           set -g @thumbs-regexp-1 'sha256\-\S{44}' # Match Nix SHAs
