@@ -66,7 +66,7 @@ in {
     procs
     tree
     jq
-    dprint
+    pkgs-stable.dprint
     rsync
     dogdns
     fend
