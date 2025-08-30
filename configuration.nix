@@ -297,12 +297,10 @@ in {
       interval = "hourly";
     };
 
-    logind = {
+    logind.settings.Login = {
       lidSwitch = "lock";
       lidSwitchExternalPower = "ignore";
-      extraConfig = ''
-        HandlePowerKey=ignore
-      '';
+      HandlePowerKey = "ignore";
     };
 
     pipewire = {
