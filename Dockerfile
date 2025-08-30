@@ -24,7 +24,7 @@ COPY container/home.nix home/home.nix
 
 COPY flake.lock .
 
-RUN nix run home-manager/master -- build --impure --flake .
+RUN nix run home-manager/master -- build --no-update-lock-file --impure --flake .
 
 ENTRYPOINT ["bash"]
 CMD ["-c", "result/activate && exec $SHELL -l"]
