@@ -23,7 +23,7 @@ vim.diagnostic.config({
   float = { border = border },
 })
 
-local capabilities = require('blink.cmp').get_lsp_capabilities()
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 local lspconfig = require("lspconfig")
 
 lspconfig.lua_ls.setup({
@@ -74,7 +74,7 @@ lspconfig.nil_ls.setup({
   settings = {
     ["nil"] = {
       formatting = {
-        command = {"alejandra", "--quiet"},
+        command = { "alejandra", "--quiet" },
       },
     },
   },
@@ -179,7 +179,7 @@ lspconfig.terraformls.setup({
 })
 
 -- Harper
-lspconfig.harper_ls.setup {
+lspconfig.harper_ls.setup({
   settings = {
     ["harper-ls"] = {
       userDictPath = "",
@@ -188,10 +188,10 @@ lspconfig.harper_ls.setup {
         BoringWords = true,
       },
       codeActions = {
-        ForceStable = false
+        ForceStable = false,
       },
       markdown = {
-        IgnoreLinkTitle = false
+        IgnoreLinkTitle = false,
       },
       diagnosticSeverity = "hint",
       isolateEnglish = false,
@@ -200,17 +200,36 @@ lspconfig.harper_ls.setup {
   },
   capabilities = capabilities,
   on_attach = on_attach,
-}
+})
 
-local signs = {
+local sign_to_configure = {
   Error = "",
   Warn = "",
   Hint = "󰌶",
   Info = "",
+}
+-- do not use linehl to highlight entire line
+local diagnostic_signs = {
+  text = {},
+  texthl = {},
+  numhl = {},
+}
+for type, icon in pairs(sign_to_configure) do
+  local hl = "DiagnosticSign" .. type
+  local level = vim.diagnostic.severity[string.upper(type)]
+  diagnostic_signs.text[level] = icon
+  diagnostic_signs.texthl[level] = hl
+  diagnostic_signs.numhl[level] = hl
+end
+vim.diagnostic.config({
+  signs = diagnostic_signs,
+})
+
+local signs_to_create = {
   Ok = "",
 }
-
-for type, icon in pairs(signs) do
+for type, icon in pairs(signs_to_create) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
