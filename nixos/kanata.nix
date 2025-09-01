@@ -35,11 +35,9 @@ in {
           dar (macro = S-.)
           not (macro S-` spc =)
 
-          cut (multi lctl x)
           cop (multi lctl c)
           pas (multi lctl v)
           all (multi lctl a)
-          term (multi lctl lsft c)
 
           dquo (macro S-' spc)
           quo (macro ' spc)
@@ -98,14 +96,14 @@ in {
 
         (deflayer down
           f7   f8   f9   f10  f11  f12   XX   7    8    9    ,    XX   XX
-          XX   @cut @all @cop @pas @term S-'  4    5    6    S-;  XX   ret  ret
-          XX   f1   f2   f3   f4   f5    f6   '    1    2    3    -    XX
+          XX   f5   @all @cop @pas f6    S-'  4    5    6    S-;  XX   ret  ret
+          XX   XX   f1   f2   f3   f4    XX   '    1    2    3    -    XX
           XX   del  @lyd           spc             0    bspc lft  down up   rght
         )
 
         (deflayer up
-          @arr S-7  [    ]    S-4  grv  XX   S-\  S-1  S-/  XX   XX   XX
-          @dar S-8  S-9  S-0  /    S-5  S-6  =    S-=  S-`  S-2  @grt ret  ret
+          @arr S-7  [    ]    S-4  grv  XX   S-`  S-\  S-/  XX   XX   XX
+          @dar S-8  S-9  S-0  /    S-5  S-6  =    S-1  S-=  S-2  @grt ret  ret
           @not @not \    S-[  S-]  S-3  XX   XX   XX   XX   XX   @les XX
           XX   @quo @dquo          spc            @lyu bspc lft  down up   rght
         )
