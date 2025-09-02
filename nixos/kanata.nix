@@ -25,7 +25,6 @@ in {
           ;; helpers
           hom (macro S-` spc /)
           atab (multi lalt tab)
-          vim (macro v i m spc)
 
           grt (macro S-. =)
           ctly (multi lctl y)
@@ -59,9 +58,6 @@ in {
           u (tap-hold-release ${tap-timeout} ${home-row-hold-delay} u rctl)
           l (tap-hold-release ${tap-timeout} ${home-row-hold-delay} l lalt)
 
-          svim (tap-hold-release ${tap-timeout} ${home-row-hold-delay} @vim lsft)
-          sles (tap-hold-release ${tap-timeout} ${home-row-hold-delay} @les rsft)
-
           ;; differs from piantor in
           ;; - shift is not on thumb
           ;; - home row does not allow for same hand combos
@@ -83,21 +79,21 @@ in {
         (deflayer colemakdh
           @hom  @q    @w   @f   @p   b    j    @l   @u   @y   @;   @grt  XX
           @atab a     r    s    t    g    m    n    e    i    o    @ctly ret  ret
-          @svim @svim x    c    d    v    z    k    h    ,    .    -     @sles
+          lsft  lsft  x    c    d    v    z    k    h    ,    .    -     rsft
           XX   del    @lyd           spc            @lyu @nav lft  down  up   rght
         )
 
         (deflayer nomods
           @hom  q    w    f    p    b    j    l    u    y    ;   @grt  XX
           @atab a    r    s    t    g    m    n    e    i    o   @ctly ret  ret
-          @vim  @vim x    c    d    v    z    k    h    ,    .   -     @les
+          lsft  lsft x    c    d    v    z    k    h    ,    .   -     rsft
           XX   del  @lyd           spc            @lyu  @nav lft  down   up   rght
         )
 
         (deflayer down
-          f7   f8   f9   f10  f11  f12   XX   7    8    9    ,    XX   XX
-          XX   f5   @all @cop @pas f6    S-'  4    5    6    S-;  XX   ret  ret
-          XX   XX   f1   f2   f3   f4    XX   '    1    2    3    -    XX
+          XX   f8   f9   f10  f11  f12   XX   7    8    9    ,    XX   XX
+          XX   f6   @all @cop @pas f7    S-'  4    5    6    S-;  XX   ret  ret
+          XX   XX   f1   f2   f3   f4    f5   '    1    2    3    -    XX
           XX   del  @lyd           spc             0    bspc lft  down up   rght
         )
 
