@@ -14,17 +14,6 @@
     };
   };
 
-  # NOTE: remove when released to nixpkgs
-  headlines-nvim-f4z3r = pkgs.vimUtils.buildVimPlugin {
-    name = "headlines.nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "lukas-reineke";
-      repo = "headlines.nvim";
-      rev = "bf17c96a836ea27c0a7a2650ba385a7783ed322e";
-      sha256 = "sha256-LWYYVnLZgw6DhO/n0rclQVnon5TvyQVUGb2smaBzcPg=";
-    };
-  };
-
   neorg-templates = pkgs.vimUtils.buildVimPlugin {
     name = "neorg-templates";
     src = pkgs.fetchFromGitHub {
@@ -436,7 +425,7 @@ in {
       neorg-templates
       {
         type = "lua";
-        plugin = headlines-nvim-f4z3r;
+        plugin = headlines-nvim;
         config = builtins.readFile ./plugin/headlines.lua;
       }
       {
