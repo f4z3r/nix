@@ -11,6 +11,19 @@
             blur_size = 8;
           }
         ];
+        label = [
+          {
+            monitor = "";
+            text = ''$TIME'';
+            color = "rgba(255, 255, 255, 0.9)";
+            font_size = 90;
+            font_family = "FiraCode Nerd Font Mono";
+            halign = "center";
+            valign = "center";
+            position = "0, 100";
+          }
+        ];
+
         input-field = [
           {
             size = "200, 50";
