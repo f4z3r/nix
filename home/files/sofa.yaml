@@ -123,7 +123,7 @@ namespaces:
           resolution:
             prompt: Resolution
             exclusive: true
-            default: preferred
+            default: 2560x1440
             choices:
             - 1920x1080
             - 2560x1440
