@@ -78,6 +78,9 @@ in {
       };
     };
 
+    # used for presenterm stuff
+    kitty.enable = true;
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
