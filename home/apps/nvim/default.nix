@@ -172,7 +172,7 @@ in {
       yaml-language-server
       helm-ls
       marksman
-      pkgs-stable.rust-analyzer
+      rust-analyzer
       rustfmt
       terraform-ls
       nil
