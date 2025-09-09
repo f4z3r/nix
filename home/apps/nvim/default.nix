@@ -38,6 +38,20 @@
     };
   };
 
+  neotest-busted = pkgs.vimUtils.buildVimPlugin {
+    name = "neotest-busted";
+    src = pkgs.fetchFromGitHub {
+      owner = "MisanthropicBit";
+      repo = "neotest-busted";
+      rev = "context-describe-alias";
+      sha256 = "sha256-TizXTGD+5tygCKJAZlJUR4rUMIxVsold6+GxdKnkLbk=";
+    };
+    doCheck = false;
+    dependencies = [
+      pkgs.vimPlugins.neotest
+    ];
+  };
+
   oil-git-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "oil-git.nvim";
     src = pkgs.fetchFromGitHub {
@@ -143,6 +157,7 @@ in {
           plenary-nvim
           nui-nvim
           magick
+          dkjson
         ];
 
     extraLuaConfig = ''
@@ -307,6 +322,7 @@ in {
       neotest-golang
       neotest-python
       neotest-rust
+      neotest-busted
 
       # http
       # {
@@ -501,6 +517,11 @@ in {
   home.file.".config/nvim/queries" = {
     source = ./queries;
     recursive = true;
+  };
+  # FIX(@f4z3r): due to nvim launcher from neotest-busted
+  home.file.".local/share/nvim/busted" = {
+    text = "require 'busted.runner'({ standalone = false })";
+    executable = true;
   };
   home.file.".config/nvim/spell/en.utf-8.add" = {
     source = ./spell/en.utf-8.add;
