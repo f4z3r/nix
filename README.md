@@ -15,6 +15,12 @@
 <hr />
 </div>
 
+> [!WARNING]
+> Use at your own risk. I am updating this repository continuously, and much stuff will not work for
+> you as I inject data (such as secrets, configs I want to protect, etc) only at runtime or during
+> the build process. However, parts of the configuration can be useful to people (I hope), even if
+> it is tailored to my (sometimes very specific) needs.
+
 
 ## Screenshots
 
@@ -147,6 +153,5 @@ needed to work. These can be found under [`./static-configs/`](./static-configs/
 
 ## Technical Debt
 
-- Check how to notify on virus event.
 - Various nvim plugins are my own forks awaiting merging in the upstream.
 - Various nvim plugins are pinned to a version, and might want to be updated.
