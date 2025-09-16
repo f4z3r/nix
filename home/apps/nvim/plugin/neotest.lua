@@ -27,6 +27,8 @@ neotest.setup({
     require("neotest-busted")({
       -- Leave as nil to let neotest-busted automatically find busted
       busted_command = string.format("%s/.local/share/nvim/busted", home),
+      -- busted_command = "busted",
+      -- no_nvim = true,
       -- busted_args = { "--shuffle-files" },
       -- busted_paths = { "my/custom/path/?.lua" },
       -- busted_cpaths = { "my/custom/path/?.so" },

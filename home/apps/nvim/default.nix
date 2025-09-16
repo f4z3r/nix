@@ -38,19 +38,35 @@
     };
   };
 
+  # TODO(@f4z3r): update once https://github.com/MisanthropicBit/neotest-busted/pull/60 merged
   neotest-busted = pkgs.vimUtils.buildVimPlugin {
     name = "neotest-busted";
     src = pkgs.fetchFromGitHub {
       owner = "MisanthropicBit";
       repo = "neotest-busted";
-      rev = "context-describe-alias";
-      sha256 = "sha256-TizXTGD+5tygCKJAZlJUR4rUMIxVsold6+GxdKnkLbk=";
+      rev = "v1.0.1";
+      sha256 = "sha256-yQKoSkwoWnmWWl9NNWlqRLRFfJgrM4W7EOURqsfJQAQ=";
     };
     doCheck = false;
     dependencies = [
       pkgs.vimPlugins.neotest
     ];
   };
+
+  # TODO(@f4z3r): update once https://github.com/MisanthropicBit/neotest-busted/pull/64 merged
+  # neotest-busted = pkgs.vimUtils.buildVimPlugin {
+  #   name = "neotest-busted";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "f4z3r";
+  #     repo = "neotest-busted";
+  #     rev = "65777fb395982c7549755f35ef473f6527c12d95";
+  #     sha256 = "sha256-alsBZLveUa3od3pSIPLCFvL5Bg2Wl932xTeaq8tdPFI=";
+  #   };
+  #   doCheck = false;
+  #   dependencies = [
+  #     pkgs.vimPlugins.neotest
+  #   ];
+  # };
 
   oil-git-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "oil-git.nvim";

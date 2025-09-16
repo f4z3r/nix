@@ -25,7 +25,7 @@ vim.diagnostic.config({
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-vim.lsp.enable('beancount')
+vim.lsp.enable("beancount")
 
 vim.lsp.config("lua_ls", {
   on_init = function(client, _)
@@ -67,7 +67,7 @@ vim.lsp.config("lua_ls", {
   },
   capabilities = capabilities,
 })
-vim.lsp.enable('lua_ls')
+vim.lsp.enable("emmylua_ls")
 
 -- Nix
 vim.lsp.config("nil_ls", {
@@ -81,7 +81,7 @@ vim.lsp.config("nil_ls", {
     },
   },
 })
-vim.lsp.enable('nil_ls')
+vim.lsp.enable("nil_ls")
 
 -- dprint
 vim.lsp.config("dprint", {
@@ -105,14 +105,14 @@ vim.lsp.config("dprint", {
     "html",
   },
 })
-vim.lsp.enable('dprint')
+vim.lsp.enable("dprint")
 
 -- Typst
 vim.lsp.config("tinymist", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
-vim.lsp.enable('tinymist')
+vim.lsp.enable("tinymist")
 
 -- Python
 vim.lsp.config("pylsp", {
@@ -128,13 +128,13 @@ vim.lsp.config("pylsp", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
-vim.lsp.enable('pylsp')
+vim.lsp.enable("pylsp")
 
 vim.lsp.config("ruff", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
-vim.lsp.enable('ruff')
+vim.lsp.enable("ruff")
 
 -- Go
 vim.lsp.config("gopls", {
@@ -154,21 +154,21 @@ vim.lsp.config("gopls", {
   },
   on_attach = on_attach,
 })
-vim.lsp.enable('gopls')
+vim.lsp.enable("gopls")
 
 -- Markdown
 vim.lsp.config("marksman", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
-vim.lsp.enable('marksman')
+vim.lsp.enable("marksman")
 
 -- Rust
 vim.lsp.config("rust_analyzer", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
-vim.lsp.enable('rust_analyzer')
+vim.lsp.enable("rust_analyzer")
 
 -- Helm
 vim.lsp.config("helm_ls", {
@@ -176,21 +176,21 @@ vim.lsp.config("helm_ls", {
   filetypes = { "helm", "gotmpl" },
   on_attach = on_attach,
 })
-vim.lsp.enable('helm_ls')
+vim.lsp.enable("helm_ls")
 
 -- Yaml
 vim.lsp.config("yamlls", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
-vim.lsp.enable('yamlls')
+vim.lsp.enable("yamlls")
 
 -- Terraform
 vim.lsp.config("terraformls", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
-vim.lsp.enable('terraformls')
+vim.lsp.enable("terraformls")
 
 -- Harper
 vim.lsp.config("harper_ls", {
@@ -215,7 +215,7 @@ vim.lsp.config("harper_ls", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
-vim.lsp.enable('harper_ls')
+vim.lsp.enable("harper_ls")
 
 local sign_to_configure = {
   Error = "",
@@ -247,4 +247,3 @@ for type, icon in pairs(signs_to_create) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
-
