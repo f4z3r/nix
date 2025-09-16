@@ -26,6 +26,8 @@ vim.diagnostic.config({
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 local lspconfig = require("lspconfig")
 
+vim.lsp.enable('beancount')
+
 lspconfig.lua_ls.setup({
   on_init = function(client, _)
     -- disable syntax highlighting via LSP for lua

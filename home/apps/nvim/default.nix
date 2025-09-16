@@ -184,6 +184,7 @@ in {
       revive
 
       gopls
+      beancount-language-server
       yaml-language-server
       helm-ls
       marksman
