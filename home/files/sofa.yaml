@@ -92,14 +92,8 @@ namespaces:
             choices: hyprctl monitors all -j | jq ".[].name" -r
           resolution:
             prompt: Resolution
-            exclusive: true
-            choices:
-            - 1920x1080
-            - 2560x1440
-            - 3440x1440
-            - 3840x2160
-            - 5120x1440
-            - preferred
+            exclusive: false
+            choices: hyprctl monitors -j | jq '.[] | select(.name=="{{ monitor }}") | .availableModes[]' -r | cut -d@ -f1 | uniq
           position:
             prompt: Position
             exclusive: true
