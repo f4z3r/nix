@@ -24,11 +24,10 @@ vim.diagnostic.config({
 })
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
-local lspconfig = require("lspconfig")
 
 vim.lsp.enable('beancount')
 
-lspconfig.lua_ls.setup({
+vim.lsp.config("lua_ls", {
   on_init = function(client, _)
     -- disable syntax highlighting via LSP for lua
     client.server_capabilities.semanticTokensProvider = nil
@@ -68,9 +67,10 @@ lspconfig.lua_ls.setup({
   },
   capabilities = capabilities,
 })
+vim.lsp.enable('lua_ls')
 
 -- Nix
-lspconfig.nil_ls.setup({
+vim.lsp.config("nil_ls", {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
@@ -81,9 +81,10 @@ lspconfig.nil_ls.setup({
     },
   },
 })
+vim.lsp.enable('nil_ls')
 
 -- dprint
-lspconfig.dprint.setup({
+vim.lsp.config("dprint", {
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = {
@@ -104,15 +105,17 @@ lspconfig.dprint.setup({
     "html",
   },
 })
+vim.lsp.enable('dprint')
 
 -- Typst
-lspconfig.tinymist.setup({
+vim.lsp.config("tinymist", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
+vim.lsp.enable('tinymist')
 
 -- Python
-lspconfig.pylsp.setup({
+vim.lsp.config("pylsp", {
   settings = {
     pylsp = {
       plugins = {
@@ -125,13 +128,16 @@ lspconfig.pylsp.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
-lspconfig.ruff.setup({
+vim.lsp.enable('pylsp')
+
+vim.lsp.config("ruff", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
+vim.lsp.enable('ruff')
 
 -- Go
-lspconfig.gopls.setup({
+vim.lsp.config("gopls", {
   capabilities = capabilities,
   settings = {
     gopls = {
@@ -148,40 +154,46 @@ lspconfig.gopls.setup({
   },
   on_attach = on_attach,
 })
+vim.lsp.enable('gopls')
 
 -- Markdown
-lspconfig.marksman.setup({
+vim.lsp.config("marksman", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
+vim.lsp.enable('marksman')
 
 -- Rust
-lspconfig.rust_analyzer.setup({
+vim.lsp.config("rust_analyzer", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
+vim.lsp.enable('rust_analyzer')
 
 -- Helm
-lspconfig.helm_ls.setup({
+vim.lsp.config("helm_ls", {
   capabilities = capabilities,
   filetypes = { "helm", "gotmpl" },
   on_attach = on_attach,
 })
+vim.lsp.enable('helm_ls')
 
 -- Yaml
-lspconfig.yamlls.setup({
+vim.lsp.config("yamlls", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
+vim.lsp.enable('yamlls')
 
 -- Terraform
-lspconfig.terraformls.setup({
+vim.lsp.config("terraformls", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
+vim.lsp.enable('terraformls')
 
 -- Harper
-lspconfig.harper_ls.setup({
+vim.lsp.config("harper_ls", {
   settings = {
     ["harper-ls"] = {
       userDictPath = "",
@@ -203,6 +215,7 @@ lspconfig.harper_ls.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
+vim.lsp.enable('harper_ls')
 
 local sign_to_configure = {
   Error = "",

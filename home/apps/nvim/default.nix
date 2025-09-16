@@ -170,6 +170,8 @@ in {
       require("misc")
     '';
     extraPackages = with pkgs; [
+      inotify-tools
+
       deadnix
       statix
       alejandra
