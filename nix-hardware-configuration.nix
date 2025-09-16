@@ -16,6 +16,7 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = [
     "kvm-intel"
+    "ip_tables"
     # "v4l2loopback"
   ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
