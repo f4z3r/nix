@@ -67,7 +67,7 @@ vim.lsp.config("lua_ls", {
   },
   capabilities = capabilities,
 })
-vim.lsp.enable("emmylua_ls")
+vim.lsp.enable("lua_ls")
 
 -- Nix
 vim.lsp.config("nil_ls", {
@@ -85,8 +85,6 @@ vim.lsp.enable("nil_ls")
 
 -- dprint
 vim.lsp.config("dprint", {
-  capabilities = capabilities,
-  on_attach = on_attach,
   filetypes = {
     "javascript",
     "javascriptreact",
@@ -129,12 +127,8 @@ vim.lsp.config("pylsp", {
   on_attach = on_attach,
 })
 vim.lsp.enable("pylsp")
-
-vim.lsp.config("ruff", {
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
 vim.lsp.enable("ruff")
+vim.lsp.enable("ty")
 
 -- Go
 vim.lsp.config("gopls", {
@@ -212,8 +206,6 @@ vim.lsp.config("harper_ls", {
       dialect = "British",
     },
   },
-  capabilities = capabilities,
-  on_attach = on_attach,
 })
 vim.lsp.enable("harper_ls")
 

@@ -191,6 +191,7 @@ in {
       deadnix
       statix
       alejandra
+      nil
 
       cbfmt
 
@@ -200,16 +201,25 @@ in {
       gofumpt
       goimports-reviser
       revive
-
       gopls
+
       beancount-language-server
+
       yaml-language-server
+      yamlfmt
+
       helm-ls
+
       marksman
+
+      ty
+
       rust-analyzer
       rustfmt
+
       terraform-ls
-      nil
+      tfsec
+
       harper
 
       universal-ctags
@@ -218,11 +228,7 @@ in {
 
       stylua
 
-      yamlfmt
-
       libxml2
-
-      tfsec
 
       fzf
 

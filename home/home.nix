@@ -194,7 +194,6 @@ in {
           setuptools
           python-lsp-server
           pylsp-rope
-          pylsp-mypy
           presenterm-export
           black
         ];
