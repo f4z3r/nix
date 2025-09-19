@@ -11,7 +11,6 @@ in {
     location = "center";
     terminal = "${pkgs.ghostty}/bin/ghostty";
     theme = "improved";
-    package = pkgs.rofi-wayland;
   };
 
   home.file = {

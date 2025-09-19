@@ -23,8 +23,8 @@
       link-url = true;
       theme =
         if theme == "dark"
-        then "GruvboxDark"
-        else "GruvboxLight";
+        then "Gruvbox Dark"
+        else "Gruvbox Light";
       keybind = [
         "ctrl+shift+v=paste_from_clipboard"
         "ctrl+shift+c=copy_to_clipboard"
