@@ -16,6 +16,13 @@ in {
           to-base (layer-switch colemakdh)
         )
 
+        ;; enable underscore on shifted escape, using both shifts as I don't have shift on thumb on
+        ;; virtual keyboard
+        (defoverrides
+          (lsft esc) (lsft -)
+          (rsft esc) (lsft -)
+        )
+
         (defalias
           ;; shot toggles
           lyd (tap-hold-release ${tap-timeout} ${hold-delay} esc (layer-while-held down))
