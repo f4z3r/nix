@@ -98,7 +98,7 @@ in {
         )
 
         (deflayer down
-          XX   f8   f9   f10  f11  f12   XX   7    8    9    ,    XX   XX
+          XX   f8   f9   f10  f11  f12   ,    7    8    9    .    XX   XX
           XX   f6   @all @cop @pas f7    S-'  4    5    6    S-;  XX   ret  ret
           XX   XX   f1   f2   f3   f4    f5   '    1    2    3    -    XX
           XX   del  @lyd           spc             0    bspc lft  down up   rght
