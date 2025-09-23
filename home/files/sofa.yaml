@@ -159,6 +159,28 @@ namespaces:
             prompt: Monitor
             exclusive: true
             choices: hyprctl monitors all -j | jq ".[].name" -r
+      generate-random:
+        command: cat /dev/urandom | tr -dc '{{ chars }}' | head -c {{ length }}; echo
+        description: Move current workspace to different monitor
+        interactive: true
+        parameters:
+          chars:
+            prompt: Characters
+            exclusive: true
+            default: symbols
+            choices:
+            - symbols
+            - numbers-only
+            - numbers
+            - letters
+            mapping:
+              symbols: "[:graph:]"
+              numbers-only: 0-9
+              numbers: A-Za-z0-9
+              letters: A-Za-z
+          length:
+            prompt: Length
+            default: 32
   nix:
     commands:
       rebuild:
