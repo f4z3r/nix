@@ -298,6 +298,11 @@ in {
         plugin = visual-whitespace-nvim;
         config = "require('visual-whitespace').setup({})";
       }
+      {
+        type = "lua";
+        plugin = smear-cursor-nvim;
+        config = builtins.readFile ./plugin/smear-cursor.lua;
+      }
 
       # git integration
       {
