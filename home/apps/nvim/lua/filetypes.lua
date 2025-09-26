@@ -2,11 +2,11 @@ vim.filetype.add({
   filename = {
     ["Justfile"] = "just",
     ["justfile"] = "just",
-    ["helmfile.yaml"] = "gotmpl",
+    ["helmfile.yaml"] = "helm",
   },
   pattern = {
-    [".*/templates/.*%.tpl"] = "gotmpl",
-    [".*/templates/.*%.yaml"] = "gotmpl",
+    [".*/templates/.*%.tpl"] = "helm",
+    [".*/templates/.*%.yaml"] = "helm",
   },
   extension = {
     http = "http",

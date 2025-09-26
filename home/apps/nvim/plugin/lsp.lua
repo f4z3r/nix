@@ -167,7 +167,6 @@ vim.lsp.enable("rust_analyzer")
 -- Helm
 vim.lsp.config("helm_ls", {
   capabilities = capabilities,
-  filetypes = { "helm", "gotmpl" },
   on_attach = on_attach,
 })
 vim.lsp.enable("helm_ls")
