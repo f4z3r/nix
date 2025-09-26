@@ -7,9 +7,9 @@ categories: [
 updated: {NOW}
 @end
 
-* ( ) {:$/areas/growth/deep-work.norg:}[Deep Work] session
+* {:$/areas/growth/deep-work.norg:}[Deep Work] sessions
   See: {:$/resources/methodology/productivity/hack.norg:}[Productivity Hacking]
-  x hours: {CURSOR}
+  - ( ) x hours: {CURSOR}
 
 * tenets
   - Focus deeply.
