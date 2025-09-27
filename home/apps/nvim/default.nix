@@ -221,6 +221,7 @@ in {
       tfsec
 
       harper
+      prettier
 
       universal-ctags
 

@@ -21,7 +21,6 @@
 > the build process. However, parts of the configuration can be useful to people (I hope), even if
 > it is tailored to my (sometimes very specific) needs.
 
-
 ## Screenshots
 
 ![](./assets/base.png)
@@ -71,8 +70,8 @@ reload the tmux configurations if a tmux instance is already running:
 ```
 
 and export `NIX_THEME="..."` for NeoVim to take over the theme if you do not which to restart
-shells. Ghostty will take over the theme dynamically. GTK themes typically reload only on application
-restart.
+shells. Ghostty will take over the theme dynamically. GTK themes typically reload only on
+application restart.
 
 ## Bootstrap New Computer
 

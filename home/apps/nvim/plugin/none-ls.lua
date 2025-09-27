@@ -27,6 +27,7 @@ null_ls.setup({
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.shellharden,
     null_ls.builtins.formatting.fish_indent,
+    null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.yamlfmt,
     null_ls.builtins.formatting.terraform_fmt,
     null_ls.builtins.formatting.tidy,
