@@ -20,7 +20,7 @@ local mappings = {
   {
     mode = "n",
     suffix = "t",
-    command = "<cmd>TodoLocList<cr>",
+    command = "<cmd>Trouble todo<cr>",
     desc = "Add todos to location list",
   },
   {

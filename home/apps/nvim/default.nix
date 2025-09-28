@@ -489,17 +489,7 @@ in {
       {
         type = "lua";
         plugin = todo-comments-nvim;
-        config = ''
-          require('todo-comments').setup({
-            highlight = {
-              multiline = false,
-              pattern = [[.*<(KEYWORDS).*:]],
-            },
-            search = {
-              pattern = [[\b(KEYWORDS):|\\b(KEYWORDS)\\(]],
-            }
-          })
-        '';
+        config = builtins.readFile ./plugin/todo-comments.lua;
       }
 
       # yanks
