@@ -36,11 +36,11 @@ require("nvim-treesitter.configs").setup({
       enable = true,
       set_jumps = false,
       goto_next_start = {
-        ["]]"] = "@function.outer",
+        ["]f"] = "@function.outer",
         ["]b"] = { query = "@block.outer", desc = "Next block start" },
       },
       goto_previous_start = {
-        ["[["] = "@function.outer",
+        ["[f"] = "@function.outer",
         ["[b"] = { query = "@block.outer", desc = "Preview block start" },
       },
     },

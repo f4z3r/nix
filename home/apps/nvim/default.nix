@@ -401,6 +401,11 @@ in {
         plugin = harpoon2;
         config = builtins.readFile ./plugin/harpoon.lua;
       }
+      {
+        type = "lua";
+        plugin = marks-nvim;
+        config = builtins.readFile ./plugin/marks.lua;
+      }
 
       # useful stuff
       {
