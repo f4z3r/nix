@@ -19,6 +19,12 @@ local mappings = {
   },
   {
     mode = "n",
+    suffix = "t",
+    command = "<cmd>TodoLocList<cr>",
+    desc = "Add todos to location list",
+  },
+  {
+    mode = "n",
     suffix = "s",
     command = function()
       require("telescope.builtin").loclist()

@@ -25,3 +25,14 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {
   desc = "Jump to next diagnostic",
 })
+
+vim.keymap.set("n", "[o", function()
+  require("todo-comments").jump_prev()
+end, {
+  desc = "Jump to previous todo item",
+})
+vim.keymap.set("n", "]o", function()
+  require("todo-comments").jump_next()
+end, {
+  desc = "Jump to next todo item",
+})

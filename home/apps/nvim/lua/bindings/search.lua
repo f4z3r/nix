@@ -22,10 +22,8 @@ local mappings = {
   {
     mode = "n",
     suffix = "T",
-    command = function()
-      require("telescope.builtin").current_buffer_tags()
-    end,
-    desc = "Search current buffer tags",
+    command = "<cmd>TodoTelescope<cr>",
+    desc = "Search Todos",
   },
   {
     mode = "n",
@@ -139,7 +137,7 @@ local mappings = {
     end,
     desc = "Search yank history",
   },
-  -- TODO search LSP stuff
+  -- TODO: search LSP stuff
 }
 
 vim.keymap.set("n", ";", "<cmd>noh<cr>")

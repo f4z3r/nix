@@ -87,7 +87,7 @@ in {
 
     gopass
 
-    # TODO: add clipboard selection if possiblk
+    # TODO: add clipboard selection if possible
     satty
     file
     bc

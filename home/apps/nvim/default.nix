@@ -486,6 +486,21 @@ in {
         plugin = comment-nvim;
         config = "require('Comment').setup()";
       }
+      {
+        type = "lua";
+        plugin = todo-comments-nvim;
+        config = ''
+          require('todo-comments').setup({
+            highlight = {
+              multiline = false,
+              pattern = [[.*<(KEYWORDS).*:]],
+            },
+            search = {
+              pattern = [[\b(KEYWORDS):|\\b(KEYWORDS)\\(]],
+            }
+          })
+        '';
+      }
 
       # yanks
       {
