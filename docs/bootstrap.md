@@ -45,12 +45,7 @@ boot.initrd.luks.devices."luks-61a8f812-0b86-4be9-9b69-9472960c08b8".keyFile = "
 In order to register the device in the flake, simply copy a `nixosConfigurations` block and add your
 new host.
 
-Download the `secrets.nix` file from Proton Drive and register it in git:
-
-```bash
-git add -N secrets.nix
-git update-index --assume-unchanged secrets.nix
-```
+Download the `secrets.nix` file from Proton Drive and put it in the project root.
 
 Finally, comment out the Restic, and ClamAV imports in `configuration.nix` on the first
 install.

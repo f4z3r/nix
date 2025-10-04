@@ -48,6 +48,9 @@ Supports quake terminals:
 - Prompt: `starship`
 - Audio: `pipewire`, `mpd`, `ncmpcpp`
 
+> **NOTE:** the entire setup is optimized for shortcuts to be nice with a Colemak Mod-DH setup.
+> Specifically I am running the following setup: https://github.com/f4z3r/zmk-config-piantor-bt
+
 ## Update
 
 ```sh
@@ -149,8 +152,3 @@ After which you can use `ns` to sync notes.
 
 This repository also offers some static configurations for environments where a basic shell is
 needed to work. These can be found under [`./static-configs/`](./static-configs/).
-
-## Technical Debt
-
-- Various nvim plugins are my own forks awaiting merging in the upstream.
-- Various nvim plugins are pinned to a version, and might want to be updated.
