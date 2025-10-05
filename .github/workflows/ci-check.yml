@@ -12,17 +12,17 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
           persist-credentials: false
 
       - name: Setup Alejandra CLI
-        uses: 0xc000022070/setup-alejandra@v4.0.0
+        uses: 0xc000022070/setup-alejandra@9be7eb076db32edb4608c6c8c48eb08681c4aad7 # v4.0.0
 
       - name: Lint Markdown and JSON files
-        uses: creyD/prettier_action@v4.6
+        uses: creyD/prettier_action@8c18391fdc98ed0d884c6345f03975edac71b8f0 # v4.6
         with:
           prettier_options: --ignore-unknown
           dry: True
