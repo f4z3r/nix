@@ -1,10 +1,4 @@
-{
-  pkgs,
-  theme,
-  ...
-}: let
-  colors = import ./../../../theme.nix {inherit theme;};
-in {
+{colors, ...}: {
   programs.k9s = {
     enable = true;
 

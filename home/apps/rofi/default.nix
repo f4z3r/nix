@@ -1,10 +1,8 @@
 {
   pkgs,
-  theme,
+  colors,
   ...
-}: let
-  colors = import ./../../../theme.nix {inherit theme;};
-in {
+}: {
   programs.rofi = {
     enable = true;
     cycle = true;

@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{...}: let
   tap-timeout = "150";
   home-row-hold-delay = "150";
   hold-delay = "170";

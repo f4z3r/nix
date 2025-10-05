@@ -1,8 +1,4 @@
-{
-  pkgs,
-  theme,
-  ...
-}: {
+{colors, ...}: {
   programs.broot = {
     enable = true;
     enableFishIntegration = true;
@@ -148,7 +144,7 @@
         }
       ];
       skin =
-        if theme == "dark"
+        if colors.theme == "dark"
         then {
           default = "rgb(235, 219, 178) none / rgb(189, 174, 147) none";
           tree = "rgb(70, 70, 80) None / rgb(60, 60, 60) None";

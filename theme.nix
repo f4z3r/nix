@@ -1,6 +1,7 @@
 {theme, ...}:
 if theme == "dark"
 then {
+  theme = "dark";
   foreground = "#d4be98";
   background = "#282828";
   background-alt = "#32302f";
@@ -17,6 +18,7 @@ then {
   purple = "#d3869b";
 }
 else {
+  theme = "light";
   foreground = "#654735";
   background = "#fbf1c7";
   background-alt = "#f2e5bc";

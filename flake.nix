@@ -46,16 +46,17 @@
     };
     inherit (nixpkgs) lib;
     pkgs-custom = {
-        norg-meta = norg-meta.defaultPackage.${system};
+      norg-meta = norg-meta.defaultPackage.${system};
     };
     inherit (pkgs) stdenv;
+    secrets = import ./secrets.nix;
+    colors = import ./theme.nix {inherit theme;};
 
     setup = {
       hostname,
       font_size,
       resolution,
       scale,
-      brain_backup,
       main_monitor,
       monitor_prefix,
       monitoring,
@@ -67,18 +68,18 @@
             system
             pkgs-stable
             pkgs-custom
-            theme
             hostname
             usernames
             default_user
-            brain_backup
             main_monitor
             monitor_prefix
             monitoring
+            secrets
+            colors
             ;
         };
         modules = [
-          ./configuration.nix
+          ./system
 
           home-manager.nixosModules.home-manager
           {
@@ -98,12 +99,12 @@
                       lib
                       stdenv
                       pkgs-custom
-                      theme
                       font_size
                       resolution
                       scale
                       main_monitor
                       monitor_prefix
+                      colors
                       ;
                     username = user;
                   });
@@ -118,7 +119,6 @@
         font_size = 11;
         resolution = "3840x2160";
         scale = 2;
-        brain_backup = true;
         # potential update to these when using nvidia sync
         main_monitor = "eDP-1";
         monitor_prefix = "DP";
@@ -129,7 +129,6 @@
         font_size = 11;
         resolution = "1920x1200";
         scale = 1;
-        brain_backup = true;
         main_monitor = "eDP-1";
         monitor_prefix = "DP";
         monitoring = false;

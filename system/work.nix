@@ -1,6 +1,8 @@
-{pkgs, ...}: let
-  secrets = import ../secrets.nix;
-in {
+{
+  pkgs,
+  secrets,
+  ...
+}: {
   programs = {
     nix-ld.enable = true;
     chromium = {

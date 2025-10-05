@@ -2,15 +2,15 @@
   pkgs,
   lib,
   stdenv,
-  theme,
+  colors,
   ...
 }: let
   fg_colour =
-    if theme == "dark"
+    if colors.theme == "dark"
     then "colour230"
     else "colour236";
   bg_colour =
-    if theme == "dark"
+    if colors.theme == "dark"
     then "colour236"
     else "colour180";
   focus_colour = "colour214";

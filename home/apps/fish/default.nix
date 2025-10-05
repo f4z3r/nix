@@ -1,7 +1,6 @@
 {
-  lib,
   pkgs,
-  theme,
+  colors,
   ...
 }: {
   programs.atuin = {
@@ -53,7 +52,7 @@
       imv = ''imv -b ffffff'';
     };
     shellInit = ''
-      set -x NIX_THEME "${theme}"
+      set -x NIX_THEME "${colors.theme}"
       set -x NIXPKGS_ALLOW_UNFREE 1
       set -x D2_LAYOUT "elk"
       set -x D2_THEME "200"

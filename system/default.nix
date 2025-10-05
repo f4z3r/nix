@@ -3,29 +3,27 @@
   lib,
   pkgs,
   pkgs-stable,
-  theme,
   hostname,
   usernames,
   default_user,
-  brain_backup,
   monitoring,
+  secrets,
+  colors,
   ...
 }: let
   tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
   session = "${pkgs.hyprland}/bin/Hyprland";
-  secrets = import ./secrets.nix;
 in {
   imports = [
-    ./${hostname}-hardware-configuration.nix
-    (import ./nixos/networking.nix {inherit config pkgs hostname;})
-    ./nixos/virtualisation.nix
-    (import ./nixos/clamav.nix {inherit config pkgs usernames;})
-    (import ./nixos/restic.nix {inherit config pkgs brain_backup usernames;})
-    ./nixos/tlp.nix
-    ./nixos/fish.nix
-    ./nixos/openvpn/default.nix
-    ./nixos/kanata.nix
-    (import ./nixos/work.nix {inherit pkgs;})
+    ./power-management.nix
+    ./kanata.nix
+    (import ./security {inherit lib pkgs hostname usernames secrets;})
+    ./virtualisation.nix
+    (import ./restic.nix {inherit usernames secrets;})
+    ./fish.nix
+    (import ./work.nix {inherit pkgs secrets;})
+    (import ./monitoring.nix {inherit config monitoring;})
+    ../hardware/${hostname}.nix
   ];
 
   boot = {
@@ -59,14 +57,6 @@ in {
       powerOnBoot = false;
       settings = {General = {Enable = "Source,Sink,Media,Socket";};};
     };
-  };
-
-  networking.useDHCP = lib.mkDefault true;
-
-  powerManagement = {
-    enable = true;
-    powertop.enable = true;
-    cpuFreqGovernor = lib.mkDefault "powersave";
   };
 
   nix = {
@@ -143,13 +133,6 @@ in {
       xwayland.enable = true;
     };
 
-    gnupg = {
-      agent = {
-        enable = true;
-        pinentryPackage = pkgs.pinentry-gtk2;
-      };
-    };
-
     dconf.enable = true;
     thunar.enable = true;
   };
@@ -159,7 +142,7 @@ in {
       DO_NOT_TRACK = "1";
       FZF_TMUX_OPTS = "-p80%,60%";
       FZF_DEFAULT_OPTS =
-        if theme == "dark"
+        if colors.theme == "dark"
         then "--color bg:#282828,bg+:#282828,fg:#d4be98,fg+:#d3869b,header:#7daea3,hl:#89b482,hl+:#d3869b,info:#e78a4e,marker:#a9b665,pointer:#d3869b,prompt:#ea6962,spinner:#e78a4e"
         else "--color bg:#fbf1c7,bg+:#fbf1c7,fg:#654735,fg+:#945e80,header:#45707a,hl:#4c7a5d,hl+:#945e80,info:#c35e0a,marker:#6c782e,pointer:#945e80,prompt:#c14a4a,spinner:#c35e0a";
       LIBVA_DRIVER_NAME = "iHD";
@@ -175,76 +158,9 @@ in {
       brightnessctl
       libnotify
     ];
-
-    etc = {
-      "nixos/restic-password" = {
-        mode = "0600";
-        text = secrets.restic.password;
-      };
-      "nixos/vpn/ca" = {
-        mode = "0600";
-        text = secrets.vpn.ca;
-      };
-      "nixos/vpn/tls-auth" = {
-        mode = "0600";
-        text = secrets.vpn.tls-auth;
-      };
-      "nixos/vpn/account.cred" = {
-        mode = "0600";
-        text = secrets.vpn.creds;
-      };
-    };
   };
 
   services = {
-    prometheus = {
-      enable = monitoring;
-      port = 9090;
-      globalConfig.scrape_interval = "10s"; # "1m"
-      scrapeConfigs = [
-        {
-          job_name = "node";
-          static_configs = [
-            {
-              targets = ["localhost:${toString config.services.prometheus.exporters.node.port}"];
-            }
-          ];
-        }
-      ];
-      exporters = {
-        node = {
-          enable = monitoring;
-          port = 9000;
-          # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/nixos/modules/services/monitoring/prometheus/exporters.nix
-          enabledCollectors = ["systemd"];
-          # /nix/store/zgsw0yx18v10xa58psanfabmg95nl2bb-node_exporter-1.8.1/bin/node_exporter  --help
-          extraFlags = ["--collector.ethtool" "--collector.softirqs" "--collector.tcpstat" "--collector.wifi"];
-        };
-      };
-    };
-
-    grafana = {
-      enable = monitoring;
-      provision.datasources.settings.datasources = [
-        {
-          name = "prometheus";
-          type = "prometheus";
-          url = "http://localhost:${toString config.services.prometheus.port}";
-        }
-      ];
-      settings = {
-        server = {
-          http_addr = "127.0.0.1";
-          http_port = 3000;
-          domain = "grafana.localhost";
-        };
-        security = {
-          admin_user = "admin";
-          admin_password = "admin";
-        };
-      };
-    };
-
     libinput = {
       enable = true;
       touchpad = {
@@ -282,15 +198,6 @@ in {
 
     blueman.enable = true;
     timesyncd.enable = true;
-    thermald.enable = true;
-
-    upower = {
-      enable = true;
-      percentageLow = 20;
-      percentageCritical = 10;
-      percentageAction = 3;
-      criticalPowerAction = "HybridSleep";
-    };
 
     locate = {
       enable = true;
@@ -324,11 +231,6 @@ in {
       webInterface = true;
       browsed.enable = true;
     };
-  };
-
-  security = {
-    polkit.enable = true;
-    pam.makeHomeDir.umask = "0077";
   };
 
   system.stateVersion = "22.11";

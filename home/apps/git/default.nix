@@ -1,6 +1,6 @@
 {
   pkgs,
-  theme,
+  colors,
   ...
 }: {
   programs = {
@@ -24,14 +24,14 @@
       delta = {
         enable = true;
         options = {
-          syntax-theme = "gruvbox-${theme}";
+          syntax-theme = "gruvbox-${colors.theme}";
           true-color = "always";
           plus-style =
-            if theme == "light"
+            if colors.theme == "light"
             then "syntax #cdffcc"
             else "syntax #012800";
           minus-style =
-            if theme == "light"
+            if colors.theme == "light"
             then "syntax #ff8ab6"
             else "syntax #340001";
           navigate = true;

@@ -97,7 +97,7 @@
   };
 
   home.file.".local/bin/songinfo" = {
-    source = ./songinfo;
+    source = ./scripts/songinfo;
     executable = true;
   };
 }

@@ -6,46 +6,43 @@
   pkgs-custom,
   scale,
   username,
-  theme ? "dark",
-  font_size,
   resolution,
   main_monitor,
   monitor_prefix,
+  colors,
   ...
 }:
-assert lib.asserts.assertOneOf "theme" theme ["dark" "light"]; let
+assert lib.asserts.assertOneOf "theme" colors.theme ["dark" "light"]; let
   gtkTheme =
-    if theme == "dark"
+    if colors.theme == "dark"
     then "Materia-dark"
     else "Materia-light";
   iconTheme =
-    if theme == "dark"
+    if colors.theme == "dark"
     then "Papirus-Dark"
     else "Papirus-Light";
   cursorTheme =
-    if theme == "dark"
+    if colors.theme == "dark"
     then "Capitaine Cursors (Gruvbox) - White"
     else "Capitaine Cursors (Gruvbox)";
-  colors = import ./../theme.nix {inherit theme;};
 in {
   imports = [
     (import ./langs/lua.nix {inherit pkgs lib username;})
-    (import ./apps/hyprland/default.nix {
-      inherit pkgs username resolution scale main_monitor monitor_prefix theme;
+    (import ./apps {
+      inherit
+        pkgs
+        pkgs-stable
+        lib
+        stdenv
+        pkgs-custom
+        scale
+        username
+        resolution
+        main_monitor
+        monitor_prefix
+        colors
+        ;
     })
-    (import ./apps/ghostty.nix {inherit pkgs theme;})
-    (import ./apps/rofi/default.nix {inherit pkgs theme;})
-    (import ./apps/git/default.nix {inherit pkgs theme;})
-    (import ./apps/lazygit.nix {inherit pkgs theme;})
-    (import ./apps/tmux/default.nix {inherit pkgs lib stdenv theme;})
-    (import ./apps/fish/default.nix {inherit lib pkgs theme;})
-    ./apps/starship.nix
-    ./apps/gpg.nix
-    (import ./apps/nvim/default.nix {inherit pkgs pkgs-stable pkgs-custom;})
-    (import ./apps/broot.nix {inherit pkgs theme;})
-    (import ./apps/k9s/default.nix {inherit pkgs theme;})
-    (import ./apps/bat.nix {inherit pkgs theme;})
-    (import ./apps/mpd/default.nix {inherit pkgs username;})
   ];
 
   programs = {

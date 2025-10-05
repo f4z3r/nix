@@ -1,0 +1,105 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "alejandra@4.0.0": {
+      "last_modified": "2025-09-18T16:33:27Z",
+      "resolved": "github:NixOS/nixpkgs/f4b140d5b253f5e2a1ff4e5506edbf8267724bde#alejandra",
+      "source": "devbox-search",
+      "version": "4.0.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/nn1j6xdl540yqs8vjxqyi116g4jjdaci-alejandra-4.0.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/nn1j6xdl540yqs8vjxqyi116g4jjdaci-alejandra-4.0.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/kgdvgs2ql5hny810ca8w32fpl2spmp1z-alejandra-4.0.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/kgdvgs2ql5hny810ca8w32fpl2spmp1z-alejandra-4.0.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/d2w9a6z5vwa9y0s5blq54szajf7l1ayl-alejandra-4.0.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/d2w9a6z5vwa9y0s5blq54szajf7l1ayl-alejandra-4.0.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/7lai03z9lri0vcgp2jbyj3wsk5cwy9dx-alejandra-4.0.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/7lai03z9lri0vcgp2jbyj3wsk5cwy9dx-alejandra-4.0.0"
+        }
+      }
+    },
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "last_modified": "2025-09-25T01:21:52Z",
+      "resolved": "github:NixOS/nixpkgs/e57b3b16ad8758fd681511a078f35c416a8cc939?lastModified=1758763312&narHash=sha256-puBMviZhYlqOdUUgEmMVJpXqC%2FToEqSvkyZ30qQ09xM%3D"
+    },
+    "prettier@3.6.2": {
+      "last_modified": "2025-09-18T16:33:27Z",
+      "resolved": "github:NixOS/nixpkgs/f4b140d5b253f5e2a1ff4e5506edbf8267724bde#prettier",
+      "source": "devbox-search",
+      "version": "3.6.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/s160mwzqzw1148h4vwq7pkys1bsflfmn-prettier-3.6.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/s160mwzqzw1148h4vwq7pkys1bsflfmn-prettier-3.6.2"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lksdp4x8sy3cydwz42nwbf1l4z5an8kr-prettier-3.6.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/lksdp4x8sy3cydwz42nwbf1l4z5an8kr-prettier-3.6.2"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/gw89c6hrs9lid718q8s7s9vd8y81211v-prettier-3.6.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/gw89c6hrs9lid718q8s7s9vd8y81211v-prettier-3.6.2"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/y051bmlqrpk345mv98nhfskvg1f2k4jq-prettier-3.6.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/y051bmlqrpk345mv98nhfskvg1f2k4jq-prettier-3.6.2"
+        }
+      }
+    }
+  }
+}

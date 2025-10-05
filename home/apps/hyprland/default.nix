@@ -5,21 +5,21 @@
   monitor_prefix,
   resolution,
   scale,
-  theme,
+  colors,
   ...
 }: let
   cursorTheme =
-    if theme == "dark"
+    if colors.theme == "dark"
     then "Capitaine Cursors (Gruvbox) - White"
     else "Capitaine Cursors (Gruvbox)";
   wallpaper =
-    if theme == "dark"
+    if colors.theme == "dark"
     then "~/.local/share/wallpapers/midnight-reflections-moonlit-sea.jpg"
     else "~/.local/share/wallpapers/mountains-with-sky.jpg";
   luajit = import ../../langs/luajit.nix {inherit pkgs;};
 in {
   imports = [
-    (import ./waybar/default.nix {inherit pkgs theme;})
+    (import ./waybar/default.nix {inherit pkgs colors;})
     (import ./hypridle.nix)
     (import ./hyprlock.nix)
   ];

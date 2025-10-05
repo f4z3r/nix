@@ -1,10 +1,10 @@
 {
   pkgs,
-  theme,
+  colors,
   ...
 }: let
   yellow =
-    if theme == "dark"
+    if colors.theme == "dark"
     then "#d8a657"
     else "#b47109";
   luajit = import ../../../langs/luajit.nix {inherit pkgs;};
@@ -13,7 +13,7 @@ in {
     waybar = {
       enable = true;
       style =
-        if theme == "light"
+        if colors.theme == "light"
         then
           builtins.replaceStrings
           ["#282828" "#d4be98" "#635850"]

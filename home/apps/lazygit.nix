@@ -1,8 +1,4 @@
-{
-  pkgs,
-  theme,
-  ...
-}: {
+{colors, ...}: {
   programs.lazygit = {
     enable = true;
     settings = {
@@ -17,7 +13,7 @@
       git = {
         paging = {
           colorArg = "always";
-          pager = "delta --paging=never --${theme}";
+          pager = "delta --paging=never --${colors.theme}";
           # externalDiffCommand = "delta";
         };
         merging = {
