@@ -1,0 +1,31 @@
+name: Check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+          persist-credentials: false
+
+      - name: Setup Alejandra CLI
+        uses: 0xc000022070/setup-alejandra@v4.0.0
+
+      - name: Lint Markdown and JSON files
+        uses: creyD/prettier_action@v4.6
+        with:
+          prettier_options: --ignore-unknown
+          dry: True
+
+      - name: Lint Nix lines
+        run: alejandra -e './.devbox/' --check .
