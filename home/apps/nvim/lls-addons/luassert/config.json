@@ -1,6 +1,5 @@
 {
-    "name": "Luassert",
-    "words" : [ "require[%s%(\"']+luassert[%)\"']" ],
-    "settings": {
-    }
+  "name": "Luassert",
+  "words": ["require[%s%(\"']+luassert[%)\"']"],
+  "settings": {}
 }

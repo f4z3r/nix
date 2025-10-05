@@ -1,6 +1,8 @@
 * {
   font-size: 13px;
-  font-family: FiraCode Nerd Font Mono, DemiBold;
+  font-family:
+    FiraCode Nerd Font Mono,
+    DemiBold;
   /* font-family: Arial; */
   border: none;
 }
@@ -98,7 +100,8 @@ window#waybar {
   color: #ea6962;
 }
 
-#clock, #pulseaudio {
+#clock,
+#pulseaudio {
   padding-right: 8px;
   padding-left: 8px;
 }

@@ -5,7 +5,7 @@ namespaces:
         command: nmcli con up {{ connection }}
         description: Connect to existing wifi network
         tags:
-        - network
+          - network
         parameters:
           connection:
             prompt: Connection
@@ -15,13 +15,13 @@ namespaces:
         command: luajit ~/.local/share/scripts/toggle-mute.lua
         description: Toggle microphone muting
         tags:
-        - audio
+          - audio
       restart-vpn:
         command: sudo systemctl restart openvpn-{{ cc }}.service
         description: Restart VPN service
         interactive: true
         tags:
-        - openvpn
+          - openvpn
         parameters:
           cc:
             prompt: Country
@@ -36,8 +36,8 @@ namespaces:
         description: Merge a git branch
         interactive: true
         tags:
-        - git
-        - ff
+          - git
+          - ff
         parameters:
           branch:
             prompt: Branch
@@ -47,10 +47,10 @@ namespaces:
         command: hyprctl dispatch layoutmsg orientation{{ orientation }}
         description: Change master layout orientation
         tags:
-        - hyprland
-        - hyprctl
-        - layout
-        - master
+          - hyprland
+          - hyprctl
+          - layout
+          - master
         parameters:
           orientation:
             prompt: Orientation
@@ -66,11 +66,11 @@ namespaces:
         command: hyprctl keyword general:layout {{ layout }}
         description: Update hyprctl layout
         tags:
-        - hyprland
-        - hyprctl
-        - layout
-        - master
-        - dwindle
+          - hyprland
+          - hyprctl
+          - layout
+          - master
+          - dwindle
         parameters:
           layout:
             prompt: Layout
@@ -82,9 +82,9 @@ namespaces:
         command: hyprctl keyword monitor {{ monitor }},{{ resolution }},{{ position }},{{ scale }}
         description: Dynamically configure monitors
         tags:
-        - hyprland
-        - hyprctl
-        - displays
+          - hyprland
+          - hyprctl
+          - displays
         parameters:
           monitor:
             prompt: Monitor
@@ -98,11 +98,11 @@ namespaces:
             prompt: Position
             exclusive: true
             choices:
-            - '0x0'
-            - auto-up
-            - auto-down
-            - auto-left
-            - auto-right
+              - "0x0"
+              - auto-up
+              - auto-down
+              - auto-left
+              - auto-right
           scale:
             prompt: Scale
             default: 1
@@ -110,21 +110,21 @@ namespaces:
         command: hyprctl keyword monitor eDP-1,{{ resolution }},auto,{{ scale }},mirror,{{ target }}
         description: Dynamically configure monitors
         tags:
-        - hyprland
-        - hyprctl
-        - displays
+          - hyprland
+          - hyprctl
+          - displays
         parameters:
           resolution:
             prompt: Resolution
             exclusive: true
             default: 2560x1440
             choices:
-            - 1920x1080
-            - 2560x1440
-            - 3440x1440
-            - 3840x2160
-            - 5120x1440
-            - preferred
+              - 1920x1080
+              - 2560x1440
+              - 3440x1440
+              - 3840x2160
+              - 5120x1440
+              - preferred
           scale:
             prompt: Scale
             default: 1
@@ -136,9 +136,9 @@ namespaces:
         command: hyprctl monitors -j | jq '.[] | select(.name=="{{ target }}") | .availableModes[]' -r | cut -d@ -f1
         description: Get supported resolutions for monitor
         tags:
-        - hyprland
-        - hyprctl
-        - displays
+          - hyprland
+          - hyprctl
+          - displays
         interactive: true
         parameters:
           target:
@@ -149,11 +149,11 @@ namespaces:
         command: hyprctl dispatch movecurrentworkspacetomonitor {{ monitor }}
         description: Move current workspace to different monitor
         tags:
-        - hyprland
-        - hyprctl
-        - displays
-        - workspace
-        - monitor
+          - hyprland
+          - hyprctl
+          - displays
+          - workspace
+          - monitor
         parameters:
           monitor:
             prompt: Monitor
@@ -169,10 +169,10 @@ namespaces:
             exclusive: true
             default: symbols
             choices:
-            - symbols
-            - numbers-only
-            - numbers
-            - letters
+              - symbols
+              - numbers-only
+              - numbers
+              - letters
             mapping:
               symbols: "[:graph:]"
               numbers-only: 0-9
@@ -188,23 +188,23 @@ namespaces:
         description: Rebuild nix setup
         interactive: true
         tags:
-        - sudo
+          - sudo
         parameters:
           type:
             default: switch
             prompt: How to rebuild
             exclusive: true
             choices:
-            - switch
-            - boot
+              - switch
+              - boot
       clean-generations:
         command: nix-collect-garbage --delete-older-than {{ days }}d
         description: Delete old nix generations
         interactive: true
         tags:
-        - clean
-        - rm
-        - remove
+          - clean
+          - rm
+          - remove
         parameters:
           days:
             default: 30
@@ -215,7 +215,7 @@ namespaces:
         command: brave "https://github.com/{{ user }}/{{ project }}"
         description: Open a GitHub project
         tags:
-        - brave
+          - brave
         parameters:
           user:
             default: f4z3r
@@ -226,7 +226,7 @@ namespaces:
         command: brave "https://gist.github.com/{{ user }}"
         description: Open Gists for user
         tags:
-        - brave
+          - brave
         parameters:
           user:
             default: f4z3r
@@ -235,126 +235,126 @@ namespaces:
         command: brave "https://search.nixos.org/packages?channel={{ channel }}"
         description: Open NixOS packages and versions
         tags:
-        - brave
+          - brave
         parameters:
           channel:
             default: unstable
             prompt: Choose channel
             choices:
-            - unstable
-            - "23.11"
+              - unstable
+              - "23.11"
       home-manager:
         command: brave "https://home-manager-options.extranix.com/?query=&release={{ release }}"
         description: Open Home-Manager options
         tags:
-        - brave
+          - brave
         parameters:
           release:
             default: master
             prompt: Choose release
             choices:
-            - master
-            - "release-23.11"
+              - master
+              - "release-23.11"
       printer-admin:
         command: brave "localhost:631"
         description: Open CUPS management GUI
         tags:
-        - brave
+          - brave
       lua-reference:
         command: brave "https://www.lua.org/manual/{{ version }}/"
         description: Open Lua reference in browser
         tags:
-        - brave
+          - brave
         parameters:
           version:
             default: "5.1"
             prompt: Choose version
             choices:
-            - "5.1"
-            - "5.2"
-            - "5.3"
-            - "5.4"
+              - "5.1"
+              - "5.2"
+              - "5.3"
+              - "5.4"
       lua-date:
         command: brave "https://tieske.github.io/date/"
         description: Open LuaDate documentation
         tags:
-        - brave
+          - brave
       lua-path:
         command: brave "https://moteus.github.io/path/index.html"
         description: Open Lua path documentation
         tags:
-        - brave
+          - brave
       lua-http:
         command: brave "https://daurnimator.github.io/lua-http/0.4/"
         description: Open lua-http documentation
         tags:
-        - brave
+          - brave
       lua-lsp-annotations:
         command: brave "https://luals.github.io/wiki/annotations/"
         description: Open Lua LSP annotation documentation
         tags:
-        - brave
+          - brave
   docker:
     commands:
       prune-containers:
         command: docker container list -a | perl -lane 'print @F[0] if ($_ =~ /Exited/ and $_ !~ /k3d/)' | xargs -r docker rm
         description: Delete all exited containers
         tags:
-        - local
-        - clean
-        - remove
-        - rm
+          - local
+          - clean
+          - remove
+          - rm
       prune-images:
         command: docker images | tail -n+2 | perl -lane 'print @F[2] if @F[1] =~ /<none>/' | xargs -r docker rmi
         description: Delete all container images missing a tag
         tags:
-        - local
-        - clean
-        - remove
-        - rm
+          - local
+          - clean
+          - remove
+          - rm
   podman:
     commands:
       prune-containers:
         command: podman container list -a --external | perl -lane 'print @F[0] if ($_ =~ /Exited/ and $_ !~ /k3d/)' | xargs -r podman rm
         description: Delete all exited containers
         tags:
-        - local
-        - clean
-        - remove
-        - rm
+          - local
+          - clean
+          - remove
+          - rm
       prune-images:
         command: podman images -a | tail -n+2 | perl -lane 'print @F[2] if @F[1] =~ /<none>/' | xargs -r podman rmi
         description: Delete all container images missing a tag
         tags:
-        - local
-        - clean
-        - remove
-        - rm
+          - local
+          - clean
+          - remove
+          - rm
   tmux:
     commands:
       kill-all-sessions:
         command: tmux kill-session -a
         description: Delete all sessions except the current one
         tags:
-        - delete
-        - clean
-        - remove
-        - rm
+          - delete
+          - clean
+          - remove
+          - rm
         interactive: true
       kill-session:
         command: tmux kill-session -t{{ session }}
         description: Delete a tmux session
         tags:
-        - delete
-        - clean
-        - remove
-        - rm
+          - delete
+          - clean
+          - remove
+          - rm
         interactive: true
         parameters:
           session:
             exclusive: true
             prompt: Session
-            choices: "tmux list-sessions -F '#S <span size=\"small\"><i>(#{session_attached} attached, #{session_windows} windows)</i></span>'"
+            choices: 'tmux list-sessions -F ''#S <span size="small"><i>(#{session_attached} attached, #{session_windows} windows)</i></span>'''
             mapping: "cut -d: -f1"
   lua:
     commands:
@@ -362,8 +362,8 @@ namespaces:
         command: luarocks --local make --deps-mode {{ deps_mode }} {{ rockspec }}
         description: Install rock locally
         tags:
-        - local
-        - luarocks
+          - local
+          - luarocks
         interactive: true
         parameters:
           deps_mode:
@@ -371,10 +371,10 @@ namespaces:
             exclusive: true
             prompt: Install dependencies
             choices:
-            - none
-            - one
-            - all
-            - order
+              - none
+              - one
+              - all
+              - order
           rockspec:
             prompt: Rockspec
             choices: fd -tf -c never '.*\.rockspec$' .
@@ -382,10 +382,10 @@ namespaces:
         command: luarocks --local remove {{ rock }}
         description: Remove local rock
         tags:
-        - local
-        - luarocks
-        - delete
-        - rm
+          - local
+          - luarocks
+          - delete
+          - rm
         interactive: true
         parameters:
           rock:
@@ -396,8 +396,8 @@ namespaces:
         command: luarocks upload {{ rockspec }}
         description: Upload rock to luarocks.org
         tags:
-        - remote
-        - luarocks
+          - remote
+          - luarocks
         interactive: true
         parameters:
           rockspec:

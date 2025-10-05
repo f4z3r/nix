@@ -47,8 +47,7 @@ new host.
 
 Download the `secrets.nix` file from Proton Drive and put it in the project root.
 
-Finally, comment out the Restic, and ClamAV imports in `configuration.nix` on the first
-install.
+Finally, comment out the Restic, and ClamAV imports in `configuration.nix` on the first install.
 
 Install the flake using:
 

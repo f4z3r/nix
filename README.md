@@ -8,18 +8,16 @@
 
 ### A flake configuring my entire setup, just the way I like it...
 
-[Screenshots](#screenshots) |
-[Software](#what-software-am-i-using) |
+[Screenshots](#screenshots) | [Software](#what-software-am-i-using) |
 [Static Configuration](#static-configuration)
 
 <hr />
 </div>
 
-> [!WARNING]
-> Use at your own risk. I am updating this repository continuously, and much stuff will not work for
-> you as I inject data (such as secrets, configs I want to protect, etc) only at runtime or during
-> the build process. However, parts of the configuration can be useful to people (I hope), even if
-> it is tailored to my (sometimes very specific) needs.
+> [!WARNING] Use at your own risk. I am updating this repository continuously, and much stuff will
+> not work for you as I inject data (such as secrets, configs I want to protect, etc) only at
+> runtime or during the build process. However, parts of the configuration can be useful to people
+> (I hope), even if it is tailored to my (sometimes very specific) needs.
 
 ## Screenshots
 
@@ -103,8 +101,7 @@ git add -N secrets.nix
 git update-index --assume-unchanged secrets.nix
 ```
 
-> [!NOTE]
-> If encountering issues when pulling, it might make sense to run:
+> [!NOTE] If encountering issues when pulling, it might make sense to run:
 >
 > ```bash
 > git update-index --really-refresh

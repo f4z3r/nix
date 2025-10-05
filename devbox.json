@@ -1,13 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.16.0/.schema/devbox.schema.json",
-  "packages": [
-    "alejandra@4.0.0",
-    "prettier@3.6.2"
-  ],
+  "packages": ["alejandra@4.0.0", "prettier@3.6.2"],
   "shell": {
     "scripts": {
-      "format": ["alejandra -e './.devbox/' ."],
-      "check": ["alejandra -e './.devbox/' -c ."]
+      "format": [
+        "alejandra -e './.devbox/' .",
+        "prettier --ignore-unknown -w  ."
+      ],
+      "check": [
+        "alejandra -e './.devbox/' -c .",
+        "prettier --ignore-unknown -c  ."
+      ]
     }
   }
 }
