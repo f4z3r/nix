@@ -1,8 +1,8 @@
 #!/usr/bin/env luajit
 
+local argparse = require("argparse")
 local os = require("os")
 local string = require("string")
-local argparse = require("argparse")
 
 local TARGETS = {
   github_ssh = "git@github.com:([^/]+)/(.+)%.git",
@@ -12,10 +12,7 @@ local TARGETS = {
 local BASE = "~/opt"
 
 local function parse()
-  local parser = argparse()
-    :name("gcl")
-    :description("Clone repositories into the correct folder.")
-    :add_complete()
+  local parser = argparse():name("gcl"):description("Clone repositories into the correct folder."):add_complete()
 
   parser:argument("uri", "The URI to clone via git.")
 
@@ -27,8 +24,8 @@ local function main()
   for _, target in pairs(TARGETS) do
     local project, repo = args.uri:match(target)
     if project ~= nil and repo ~= nil then
-      os.execute(string.format("mkdir %s/%s", BASE, project))
-      os.execute(string.format("git clone %s %s/%s/%s", args.uri, BASE, project, repo))
+      assert(os.execute(string.format("mkdir %s/%s", BASE, project)))
+      assert(os.execute(string.format("git clone %s %s/%s/%s", args.uri, BASE, project, repo)))
       return
     end
   end

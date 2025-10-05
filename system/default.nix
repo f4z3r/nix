@@ -15,15 +15,16 @@
   session = "${pkgs.hyprland}/bin/Hyprland";
 in {
   imports = [
+    ../hardware/common.nix
+    ../hardware/${hostname}.nix
+
     ./power-management.nix
     ./kanata.nix
     (import ./security {inherit lib pkgs hostname usernames secrets;})
     ./virtualisation.nix
     (import ./restic.nix {inherit usernames secrets;})
-    ./fish.nix
     (import ./work.nix {inherit pkgs secrets;})
     (import ./monitoring.nix {inherit config monitoring;})
-    ../hardware/${hostname}.nix
   ];
 
   boot = {
@@ -42,22 +43,6 @@ in {
 
   # due to security advisory, see: https://github.com/NixOS/nixpkgs/security/advisories/GHSA-m7pq-h9p4-8rr4
   systemd.shutdownRamfs.enable = false;
-
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
-  };
-  hardware = {
-    graphics = {
-      enable = true;
-      extraPackages = with pkgs; [intel-media-driver intel-vaapi-driver libvdpau-va-gl];
-    };
-
-    bluetooth = {
-      enable = true;
-      powerOnBoot = false;
-      settings = {General = {Enable = "Source,Sink,Media,Socket";};};
-    };
-  };
 
   nix = {
     extraOptions = ''
@@ -131,6 +116,11 @@ in {
     hyprland = {
       enable = true;
       xwayland.enable = true;
+    };
+
+    fish = {
+      enable = true;
+      useBabelfish = true;
     };
 
     dconf.enable = true;
