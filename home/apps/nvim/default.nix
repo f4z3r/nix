@@ -223,8 +223,6 @@ in {
       harper
       prettier
 
-      universal-ctags
-
       clippy
 
       stylua
@@ -458,9 +456,6 @@ in {
         plugin = timerly;
         config = builtins.readFile ./plugin/timerly.lua;
       }
-
-      # tag generation
-      vim-gutentags
 
       # neorg
       {

@@ -5,14 +5,6 @@ local leader = "<leader>/"
 local mappings = {
   {
     mode = "n",
-    suffix = "t",
-    command = function()
-      require("telescope.builtin").tags()
-    end,
-    desc = "Search all tags",
-  },
-  {
-    mode = "n",
     suffix = "s",
     command = function()
       require("telescope.builtin").treesitter()
@@ -21,7 +13,7 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "T",
+    suffix = "t",
     command = "<cmd>TodoTelescope<cr>",
     desc = "Search Todos",
   },
