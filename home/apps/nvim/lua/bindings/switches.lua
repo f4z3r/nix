@@ -36,3 +36,14 @@ vim.keymap.set("n", "]o", function()
 end, {
   desc = "Jump to next todo item",
 })
+
+vim.keymap.set("n", "[m", function()
+  require("marks").prev()
+end, {
+  desc = "Jump to previous mark, this is a duplicate of [[",
+})
+vim.keymap.set("n", "]m", function()
+  require("marks").next()
+end, {
+  desc = "Jump to next mark, this is a duplicate of ]]",
+})
