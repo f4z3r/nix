@@ -270,9 +270,7 @@ in {
       ffmpeg
 
       # programming
-      cargo
-      cargo-nextest
-      rustc
+      rustup
       go
       delve
       enhanced-python
