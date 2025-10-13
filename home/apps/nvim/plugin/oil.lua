@@ -81,6 +81,7 @@ require("oil").setup({
         "^%.devbox$",
         "^%.git$",
         "^tags$",
+        "^..$",
       }
       for _, pattern in ipairs(patterns) do
         local res = name:match(pattern)
