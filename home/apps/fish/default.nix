@@ -56,6 +56,7 @@
       set -x NIXPKGS_ALLOW_UNFREE 1
       set -x D2_LAYOUT "elk"
       set -x D2_THEME "200"
+      umask 0077
     '';
     interactiveShellInit = builtins.readFile ./config.fish;
     plugins = with pkgs.fishPlugins; [
