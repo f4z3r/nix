@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   username,
   main_monitor,
   monitor_prefix,
@@ -27,6 +28,7 @@ in {
     windowManager = {
       hyprland = {
         enable = true;
+        package = pkgs-stable.hyprland;
         settings = {
           debug = {
             disable_logs = true;

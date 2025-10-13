@@ -14,7 +14,7 @@
 }: {
   imports = [
     (import ./hyprland/default.nix {
-      inherit pkgs username resolution scale main_monitor monitor_prefix colors;
+      inherit pkgs pkgs-stable username resolution scale main_monitor monitor_prefix colors;
     })
     (import ./rofi/default.nix {inherit pkgs colors;})
     (import ./git/default.nix {inherit pkgs colors;})
