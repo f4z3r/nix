@@ -13,7 +13,13 @@ end
 
 require("neorg").setup({
   load = {
-    ["core.defaults"] = {},
+    ["core.defaults"] = {
+      config = {
+        disable = {
+          "core.clipboard.code-blocks",
+        },
+      },
+    },
     ["core.concealer"] = {
       config = {
         icons = {
