@@ -83,35 +83,35 @@ in {
           @hom  @q    @w   @f   @p   b    j    @l   @u   @y   @;   @grt  XX
           @atab a     r    s    t    g    m    n    e    i    o    @ctly ret  ret
           lsft  lsft  x    c    d    v    z    k    h    ,    .    -     rsft
-          XX   del    @lyd           spc            @lyu @nav lft  down  up   rght
+          XX   XX     @lyd           spc            @lyu @nav lft  down  up   rght
         )
 
         (deflayer nomods
           @hom  q    w    f    p    b    j    l    u    y    ;   @grt  XX
           @atab a    r    s    t    g    m    n    e    i    o   @ctly ret  ret
           lsft  lsft x    c    d    v    z    k    h    ,    .   -     rsft
-          XX   del  @lyd           spc            @lyu  @nav lft  down   up   rght
+          XX   XX   @lyd           spc            @lyu  @nav lft  down   up   rght
         )
 
         (deflayer down
           XX   f8   f9   f10  f11  f12   ,    7    8    9    .    XX   XX
           XX   f6   @all @cop @pas f7    S-'  4    5    6    S-;  XX   ret  ret
           XX   XX   f1   f2   f3   f4    f5   '    1    2    3    -    XX
-          XX   del  @lyd           spc             0    bspc lft  down up   rght
+          XX   XX   @lyd           spc             0    bspc lft  down up   rght
         )
 
         (deflayer up
           @arr S-7  [    ]    S-4  grv  XX   S-`  S-\  S-/  XX   XX   XX
           @dar S-8  S-9  S-0  /    S-5  S-6  =    S-1  S-=  S-2  @grt ret  ret
-          @not @not \    S-[  S-]  S-3  XX   XX   XX   XX   XX   @les XX
+          @not @not \    S-[  S-]  S-3  del  XX   XX   XX   XX   @les XX
           XX   @quo @dquo          spc            @lyu bspc lft  down up   rght
         )
 
         (deflayer nav
           XX   brup volu pgup home XX   XX   XX   up   XX   XX   XX   XX
-          del  brdn vold pgdn end  sys  XX   lft  down rght +    XX   XX   ret
+          XX   brdn vold pgdn end  sys  XX   lft  down rght +    XX   XX   ret
           pp   XX   XX   mute XX   XX   XX   XX   XX   XX   XX   XX   XX
-          XX   del  @lyd           spc            @lyu bspc lft  down up   rght
+          XX   XX   @lyd           spc            @lyu bspc lft  down up   rght
         )
       '';
       extraDefCfg = ''
