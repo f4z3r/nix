@@ -138,13 +138,11 @@ in {
             ''animation popin,rofi''
             ''dimaround,rofi''
           ];
-          windowrulev2 = [
+          windowrule = [
             # ensure pinentry grabs input
             ''animation popin,class:(Pinentry)''
             ''float,class:(Pinentry)''
             ''center,class:(Pinentry)''
-            ''pin,class:(Pinentry)''
-            ''stayfocused,class:(Pinentry)''
             # quake window sizing
             ''dimaround,title:(quake)''
             ''float,title:(quake)''
@@ -156,13 +154,21 @@ in {
             ''center,class:^(brave)$''
             ''animation popin,class:^(brave)$''
             ''size 70% 70%,class:^(brave)$''
+            # make chrome meet popups appear centrally floating
+            ''float,class:^(google-chrome)$,title:^(Meet –.*)''
+            ''pin,class:^(google-chrome)$,title:^(Meet –.*)''
+            ''content video,class:^(google-chrome)$,title:^(Meet –.*)''
+            ''center,class:^(google-chrome)$,title:^(Meet –.*)''
+            ''size 15% 100%,class:^(google-chrome)$,title:^(Meet –.*)''
+            ''noanim,class:^(google-chrome)$,title:^(Meet –.*)''
+            # set content types
+            ''content video,class:^(brave-browser)$,title:(.*YouTube.*)''
+            ''content video,class:^(brave-browser)$,title:(.*Netflix.*)''
             # disable idling when in full screen or playing video
             ''idleinhibit focus,fullscreen:1''
-            ''tag +video,class:^(brave-browser)$,title:(.*YouTube.*)''
-            ''tag +video,class:^(brave-browser)$,title:(.*Netflix.*)''
-            ''idleinhibit focus,tag:video''
+            ''idleinhibit focus,content:video''
             # do not dim windows that are playing videos even when inactive
-            ''nodim,tag:video''
+            ''nodim,content:video''
           ];
           workspace = [
             ''r[1-5], monitor:${main_monitor}''
