@@ -203,7 +203,7 @@ in {
       onlyoffice-bin
       vial
       inkscape-with-extensions
-      fava
+      pkgs-stable.fava
 
       # utils
       devbox
