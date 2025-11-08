@@ -200,7 +200,7 @@ in {
       gimp
       brave
       helvum
-      onlyoffice-bin
+      onlyoffice-desktopeditors
       vial
       inkscape-with-extensions
       pkgs-stable.fava
@@ -265,7 +265,7 @@ in {
       rofi-power-menu
       rofi-rbw
       alsa-utils
-      mpc-cli
+      mpc
       bc
       ffmpeg
 

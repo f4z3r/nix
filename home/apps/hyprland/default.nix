@@ -117,7 +117,7 @@ in {
           bindl = [
             '', XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle''
             '', XF86AudioMicMute, exec, ${luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua''
-            '', XF86AudioPlay, exec, ${pkgs.mpc-cli}/bin/mpc toggle''
+            '', XF86AudioPlay, exec, ${pkgs.mpc}/bin/mpc toggle''
           ];
           bindle = [
             '', XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+''
