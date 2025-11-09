@@ -8,6 +8,10 @@ local theme = "dark"
 if vim.env.NIX_THEME ~= "" then
   theme = vim.env.NIX_THEME
 end
+local theme_override = vim.fs.normalize("~/.config/theme")
+if vim.uv.fs_stat(theme_override) then
+  theme = vim.fn.readfile(theme_override)[1]
+end
 vim.o.background = theme
 
 -- encodings

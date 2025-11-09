@@ -203,6 +203,8 @@ in {
       bind-key -T copy-mode-vi k send-keys -X cursor-up
       bind-key -T copy-mode-vi h send-keys -X cursor-left
       bind-key -T copy-mode-vi l send-keys -X cursor-right
+
+      source-file ~/.config/tmux/overrides
     '';
   };
   home.file = {

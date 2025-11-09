@@ -57,7 +57,9 @@
           "ctrl+down=decrease_font_size:1"
           "ctrl+up=increase_font_size:1"
           "ctrl+equal=reset_font_size"
+          "ctrl+period=reload_config"
         ];
+        config-file = "?/home/${username}/.config/ghostty/overrides";
       };
     };
 

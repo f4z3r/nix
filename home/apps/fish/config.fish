@@ -9,6 +9,9 @@ set fish_greeting
 fish_add_path -p "$HOME/.local/bin/" "$HOME/.luarocks/bin/" "$HOME/.cargo/bin/"
 
 # use gruvbox theme
+if test -r $HOME/.config/theme
+  set NIX_THEME "$(cat $HOME/.config/theme)"
+end
 theme_gruvbox $NIX_THEME medium
 
 # key bindings
@@ -61,5 +64,21 @@ end
 
 function timer --argument time
   systemd-run --user --on-calendar "$time:00" /bin/sh -c 'notify-send -u critical "Timer" "Deep work timer expired."'
+end
+
+function light
+  echo "light" >~/.config/theme
+  echo "theme = Gruvbox Light" >~/.config/ghostty/overrides
+  echo "set-option -g status-style bg=colour180,fg=colour236" >~/.config/tmux/overrides
+  theme_gruvbox light medium
+  tmux source ~/.config/tmux/tmux.conf
+end
+
+function clight
+  rm ~/.config/theme
+  rm ~/.config/ghostty/overrides
+  rm ~/.config/tmux/overrides
+  theme_gruvbox dark medium
+  tmux source ~/.config/tmux/tmux.conf
 end
 

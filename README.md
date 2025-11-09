@@ -72,9 +72,19 @@ reload the tmux configurations if a tmux instance is already running:
 :source ~/.config/tmux/tmux.conf
 ```
 
-and export `NIX_THEME="..."` for NeoVim to take over the theme if you do not which to restart
-shells. Ghostty will take over the theme dynamically. GTK themes typically reload only on
-application restart.
+### Fast Switch
+
+This also supports a fast switch of a theme that does not require rebuilding the configuration. For
+this simply run `light` in any fish shell to swich the following applications to light theme:
+
+- nvim
+- ghostty
+- fish
+- tmux
+
+Ghostty will not reload the configuration automatically. This can be triggered by pressing `ctrl-.`.
+
+The override can be cleared using `clight`.
 
 ## Bootstrap New Computer
 
