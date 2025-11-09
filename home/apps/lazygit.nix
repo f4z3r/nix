@@ -11,11 +11,13 @@
         showCommandLog = false;
       };
       git = {
-        paging = {
-          colorArg = "always";
-          pager = "delta --paging=never --${colors.theme}";
-          # externalDiffCommand = "delta";
-        };
+        pagers = [
+          {
+            colorArg = "always";
+            pager = "delta --paging=never --${colors.theme}";
+            # externalDiffCommand = "delta";
+          }
+        ];
         merging = {
           args = "--ff-only";
         };
