@@ -1,0 +1,47 @@
+@document.meta
+title: {CURSOR}
+description:
+authors: f4z3r
+categories: [
+  project
+]
+created: {NOW}
+updated: {NOW}
+version: 1.1.1
+@end
+
+* driver
+  - cost/efficiency case
+  - revenue case
+  - infrastructure case
+  - customer value
+  - risk and regulation case
+  - strategy case
+
+* status
+** {TODAY}
+
+* goals
+** ( ) ...
+
+* roadmap
+** ...
+
+* notes
+** minutes
+*** {TODAY}
+
+** technical
+*** goals
+*** constraints
+*** context
+*** solution strategy
+*** building blocks
+*** crosscutting concerns
+*** risks
+
+* stakeholder
+
+* external resources
+  - ...
+
