@@ -178,6 +178,8 @@ local callback = function(args)
       vim.api.nvim_cmd({ cmd = "Neorg", args = { "templates", "fload", "journal" } }, {})
     elseif string.find(args.file, "/projects/") then
       vim.api.nvim_cmd({ cmd = "Neorg", args = { "templates", "fload", "project" } }, {})
+    elseif string.find(args.file, "/areas/") then
+      vim.api.nvim_cmd({ cmd = "Neorg", args = { "templates", "fload", "area" } }, {})
     else
       vim.api.nvim_cmd({ cmd = "Neorg", args = { "inject-metadata" } }, {})
     end

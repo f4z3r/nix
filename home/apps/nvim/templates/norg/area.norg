@@ -3,20 +3,12 @@ title: {CURSOR}
 description:
 authors: f4z3r
 categories: [
-  project
+  area
 ]
 created: {NOW}
 updated: {NOW}
 version: 1.1.1
 @end
-
-* driver
-  - cost/efficiency case
-  - revenue case
-  - infrastructure case
-  - customer value
-  - risk and regulation case
-  - strategy case
 
 * status
 ** {TODAY}
@@ -36,9 +28,6 @@ version: 1.1.1
 *** building blocks
 *** crosscutting concerns
 *** risks
-
-** minutes
-*** {TODAY}
 
 * stakeholders
 
