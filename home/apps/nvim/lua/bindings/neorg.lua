@@ -41,6 +41,17 @@ for _, mapping in ipairs(mappings) do
   vim.keymap.set(mapping.mode, leader .. mapping.suffix, mapping.command, { desc = mapping.desc })
 end
 
+local function insert_date()
+  vim.cmd.stopinsert()
+  local callback = function(osdate)
+    local date = string.format("%4d-%02d-%02d", osdate.year, osdate.month, osdate.day)
+    vim.api.nvim_put({ date }, "c", true, true)
+    vim.api.nvim_cmd({ cmd = "startinsert", bang = true }, {})
+  end
+  local neorg = require("neorg.core")
+  neorg.modules.get_module("core.ui.calendar").select_date({ callback = vim.schedule_wrap(callback) })
+end
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "norg",
   desc = "Load keyboard bindings for norg files",
@@ -58,6 +69,8 @@ vim.api.nvim_create_autocmd("FileType", {
     )
     -- insert stuff via telescope
     vim.keymap.set("i", "<C-l>", "<cmd>Telescope neorg insert_file_link<cr>", { buffer = true })
+    -- insert date
+    vim.keymap.set("i", "<C-t>", insert_date, { buffer = true, desc = "Insert custom date via calendar under cusor" })
     -- neorg return
     vim.keymap.set("n", leader .. "r", "<cmd>Neorg return<cr>", { buffer = true })
     -- insert metadata
