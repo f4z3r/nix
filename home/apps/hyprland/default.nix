@@ -56,7 +56,7 @@ in {
             # ''DP-2, 5120x1440@60, 1920x0, 1''
             ''${monitor_prefix}-1, highres, auto-left, 1''
             ''${monitor_prefix}-2, highres, auto-right, 1''
-            # monitor=desc:Chimei Innolux Corporation 0x150C,preferred,auto,1.5
+            ''monitor=desc:Philips Consumer Electronics Company PHL 499P9 AU02024017754,2560x1440,auto-left,1''
           ];
           bind = [
             ''$general, RETURN, exec, ghostty -e ${pkgs.tmux}/bin/tmux''

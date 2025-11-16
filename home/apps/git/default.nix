@@ -43,7 +43,6 @@
           keepBackup = false;
         };
         alias = {
-          t = ''tag -n1'';
           f = ''fetch -q'';
           b = ''branch -vv'';
           ba = ''branch -vva'';
@@ -51,19 +50,14 @@
           d = ''diff'';
           aa = ''add .'';
           a = ''add'';
-          acs = ''commit -aS -s'';
           cc = ''commit -S -s'';
           ca = ''commit --amend -S -s -C HEAD'';
           ce = ''commit --amend -S -s'';
           co = ''checkout'';
           sw = ''switch'';
-          re = ''reset'';
           rebase = ''rebase -S'';
           s = ''status -sb'';
-          st = ''stash list'';
-          sh = ''show HEAD'';
           lg = ''log --color --graph --pretty=format:'%Cred%h%Creset - %C(magenta)%G?%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit'';
-          rs = ''reflog show'';
           ph = ''push -q'';
           phf = ''push -q --force-with-lease'';
           pl = ''pull -q'';

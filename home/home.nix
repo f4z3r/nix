@@ -88,14 +88,6 @@ in {
       settings = {updates = {auto_update = false;};};
     };
 
-    rbw = {
-      enable = true;
-      settings = {
-        email = "jakobbeckmann@pm.me";
-        pinentry = pkgs.pinentry-gtk2;
-      };
-    };
-
     skim = {
       enable = true;
       enableFishIntegration = true;
@@ -106,7 +98,6 @@ in {
       enableFishIntegration = true;
     };
 
-    feh.enable = true;
     btop = {
       enable = true;
       settings = {
@@ -198,47 +189,40 @@ in {
     in [
       # GUI programs
       gimp
-      brave
-      helvum
+      pkgs-stable.brave
       onlyoffice-desktopeditors
       vial
-      inkscape-with-extensions
       pkgs-stable.fava
 
       # utils
-      devbox
-      zip
-      just
-      gnumake
-      gcc
-      openssl
-      rclone
-      mupdf
-      ripgrep
-      silver-searcher
-      procs
-      tree
-      jq
-      pkgs-stable.dprint
-      rsync
-      dogdns
-      fend
-      ouch
-      fd
-      dysk
-      erdtree
-      xcp
-      miniserve
-      vhs
-      presenterm
-      d2
-      tup
-      imagemagick
-      typst
-      step-cli
-      watchexec
-      imv
       beancount
+      devbox
+      dogdns
+      erdtree
+      fd
+      fend
+      gcc
+      gnumake
+      imagemagick
+      imv
+      jq
+      just
+      miniserve
+      mupdf
+      openssl
+      ouch
+      presenterm
+      procs
+      rclone
+      ripgrep
+      rsync
+      silver-searcher
+      tree
+      typst
+      vhs
+      watchexec
+      xcp
+      zip
 
       # stuff not used often, installed via nix-shell
       #tokei
@@ -253,32 +237,31 @@ in {
       gtk-engine-murrine
 
       # stuff used in the background
-      swww
-      grim
-      slurp
-      satty
-      cliphist
-      wl-clipboard
-      wl-screenrec
-      file
-      yt-dlp
-      rofi-power-menu
-      rofi-rbw
       alsa-utils
-      mpc
       bc
       ffmpeg
+      file
+      grim
+      mpc
+      satty
+      slurp
+      step-cli
+      swww
+      wl-clipboard
+      wl-screenrec
+      yt-dlp
 
       # programming
-      rustup
-      go
       delve
-      enhanced-python
-      ruff
       dive
+      enhanced-python
+      go
       kubectl
       kubectx
       kubernetes-helm
+      pkgs-stable.dprint
+      ruff
+      rustup
     ];
 
     file = {

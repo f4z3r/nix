@@ -66,7 +66,6 @@
     bat = {
       enable = true;
       config = {
-        theme = "gruvbox-${colors.theme}";
         style = "numbers,changes,header";
       };
     };
