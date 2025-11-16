@@ -69,6 +69,10 @@
           cmd = ":cd";
         }
         {
+          key = "ctrl-o";
+          internal = ":open_stay";
+        }
+        {
           name = "touch";
           shortcut = "t";
           invocation = "touch {new_file}";
@@ -83,28 +87,8 @@
           leave_broot = false;
         }
         {
-          name = "vimv";
-          shortcut = "v";
-          apply_to = "file";
-          external = ["vimv" "{file}"];
-          working_dir = "{directory}";
-          leave_broot = false;
-          switch_terminal = true;
-          panels = ["tree"];
-        }
-        {
-          name = "vimv";
-          shortcut = "v";
-          apply_to = "directory";
-          external = ["vimv"];
-          working_dir = "{directory}";
-          leave_broot = false;
-          switch_terminal = true;
-          panels = ["tree"];
-        }
-        {
           invocation = "edit";
-          shortcut = "ed";
+          shortcut = "e";
           key = "ctrl-e";
           apply_to = "file";
           external = ["nvim" "+{line}" "{file}"];
@@ -112,8 +96,17 @@
           leave_broot = false;
         }
         {
-          invocation = "edit_leave";
+          invocation = "edit";
           shortcut = "e";
+          key = "ctrl-e";
+          apply_to = "directory";
+          external = ["nvim" "{directory}"];
+          set_working_dir = true;
+          leave_broot = false;
+        }
+        {
+          invocation = "edit_leave";
+          shortcut = "el";
           apply_to = "file";
           external = ["nvim" "+{line}" "{file}"];
           set_working_dir = true;

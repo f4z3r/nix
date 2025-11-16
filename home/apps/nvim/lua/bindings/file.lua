@@ -49,18 +49,18 @@ local mappings = {
     mode = "n",
     suffix = "f",
     command = function()
-      require("lazy.utils").open_with_broot()
+      require("telescope.builtin").find_files({
+        find_command = { "rg", "--files", "--color", "never", "-g", "!archive/**" },
+      })
     end,
-    desc = "Open file with Broot",
+    desc = "Open file in workspace",
   },
 }
 
 vim.keymap.set("n", "<c-p>", function()
-  require("telescope.builtin").find_files({
-    find_command = { "rg", "--files", "--color", "never", "-g", "!archive/**" },
-  })
+  require("lazy.utils").open_with_broot()
 end, {
-  desc = "Open file in workspace",
+  desc = "Open file with Broot",
 })
 
 for _, mapping in ipairs(mappings) do
