@@ -323,4 +323,32 @@ in {
       size = 32;
     };
   };
+
+  xdg.desktopEntries = {
+    imv = {
+      name = "imv";
+      genericName = "Image Viewer";
+      exec = "imv %F";
+      terminal = false;
+      categories = ["Graphics" "Viewer"];
+      mimeType = [
+        "image/bmp"
+        "image/gif"
+        "image/jpeg"
+        "image/jpg"
+        "image/pjpeg"
+        "image/png"
+        "image/tiff"
+        "image/x-bmp"
+        "image/x-pcx"
+        "image/x-png"
+        "image/x-portable-anymap"
+        "image/x-portable-bitmap"
+        "image/x-portable-graymap"
+        "image/x-portable-pixmap"
+        "image/x-tga"
+        "image/x-xbitmap"
+      ];
+    };
+  };
 }

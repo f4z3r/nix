@@ -137,6 +137,7 @@ in {
         else "--color bg:#fbf1c7,bg+:#fbf1c7,fg:#654735,fg+:#945e80,header:#45707a,hl:#4c7a5d,hl+:#945e80,info:#c35e0a,marker:#6c782e,pointer:#945e80,prompt:#c14a4a,spinner:#c35e0a";
       LIBVA_DRIVER_NAME = "iHD";
       NIXOS_OZONE_WL = "1";
+      GDK_BACKEND = "wayland";
     };
 
     systemPackages = with pkgs; [
@@ -218,6 +219,31 @@ in {
       startWhenNeeded = true;
       webInterface = true;
       browsed.enable = true;
+    };
+  };
+
+  xdg = {
+    mime = {
+      enable = true;
+      defaultApplications = {
+        # see https://mimetype.io/all-types
+        "image/bmp" = "imv.desktop";
+        "image/gif" = "imv.desktop";
+        "image/jpeg" = "imv.desktop";
+        "image/jpg" = "imv.desktop";
+        "image/pjpeg" = "imv.desktop";
+        "image/png" = "imv.desktop";
+        "image/tiff" = "imv.desktop";
+        "image/x-bmp" = "imv.desktop";
+        "image/x-pcx" = "imv.desktop";
+        "image/x-png" = "imv.desktop";
+        "image/x-portable-anymap" = "imv.desktop";
+        "image/x-portable-bitmap" = "imv.desktop";
+        "image/x-portable-graymap" = "imv.desktop";
+        "image/x-portable-pixmap" = "imv.desktop";
+        "image/x-tga" = "imv.desktop";
+        "image/x-xbitmap" = "imv.desktop";
+      };
     };
   };
 
