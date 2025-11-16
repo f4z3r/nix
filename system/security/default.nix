@@ -24,5 +24,6 @@
   security = {
     polkit.enable = true;
     pam.makeHomeDir.umask = "0077";
+    apparmor.enable = true;
   };
 }
