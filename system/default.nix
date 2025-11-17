@@ -138,6 +138,7 @@ in {
       LIBVA_DRIVER_NAME = "iHD";
       NIXOS_OZONE_WL = "1";
       GDK_BACKEND = "wayland";
+      GTK_IM_MODULE = "simple";
     };
 
     systemPackages = with pkgs; [
