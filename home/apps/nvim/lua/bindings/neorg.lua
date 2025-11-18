@@ -70,7 +70,7 @@ vim.api.nvim_create_autocmd("FileType", {
     -- insert stuff via telescope
     vim.keymap.set("i", "<C-l>", "<cmd>Telescope neorg insert_file_link<cr>", { buffer = true })
     -- insert date
-    vim.keymap.set("i", "<C-t>", insert_date, { buffer = true, desc = "Insert custom date via calendar under cusor" })
+    vim.keymap.set("i", "<C-r>", insert_date, { buffer = true, desc = "Insert custom date via calendar under cusor" })
     -- neorg return
     vim.keymap.set("n", leader .. "r", "<cmd>Neorg return<cr>", { buffer = true })
     -- insert metadata
