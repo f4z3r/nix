@@ -137,6 +137,7 @@ in {
           layerrule = [
             ''animation popin,rofi''
             ''dimaround,rofi''
+            ''noanim,selection''
           ];
           windowrule = [
             # ensure pinentry grabs input
