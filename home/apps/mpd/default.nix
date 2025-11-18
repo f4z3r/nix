@@ -95,9 +95,4 @@
       }
     '';
   };
-
-  home.file.".local/bin/songinfo" = {
-    source = ./scripts/songinfo;
-    executable = true;
-  };
 }

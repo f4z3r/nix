@@ -34,9 +34,7 @@
             warn = 70;
           };
         };
-        screenDumpDir = "/tmp/k9s-screens-jakob";
-        currentContext = "ccp21-n";
-        currentCluster = "ccp21-n";
+        screenDumpDir = "/tmp/k9s-screens-f4z3r";
         clusters = {};
       };
     };
