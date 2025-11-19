@@ -196,6 +196,7 @@ in {
 
       # utils
       beancount
+      buildah
       devbox
       dogdns
       erdtree
