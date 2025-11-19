@@ -5,16 +5,17 @@ local os = require("os")
 local string = require("string")
 
 local TYPES = {
+  "build",
+  "chore",
+  "ci",
+  "docs",
   "feat",
   "fix",
-  "docs",
-  "chore",
-  "test",
-  "ci",
-  "refactor",
-  "style",
-  "build",
   "perf",
+  "refactor",
+  "revert",
+  "style",
+  "test",
 }
 
 local function log_error(msg, ...)
