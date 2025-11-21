@@ -154,10 +154,21 @@ Once this is done, you can perform an initial sync using:
 
 ```bash
 # you can also run with --dry-run first to check if the output matches your expectations
-rclone bisync gdrive-crypt:/ ~/notes --create-empty-src-dirs --compare size,modtime -MP --fix-case --resync
+rclone bisync gdrive-crypt:/ ~/notes \
+  --remove-empty-dirs \
+  --exclude '/.**' \
+  --exclude '**/.**' \
+  --exclude '**/tags' \
+  --compare size,modtime \
+  -MP --fix-case \
+  --conflict-suffix upstream,local \
+  --resync
 ```
 
 After which you can use `ns` to sync notes.
+
+> The above rlcone command can also be used when rclone runs into a larger issue and requires a
+> resync.
 
 ## Static Configuration
 
