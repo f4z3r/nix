@@ -42,6 +42,7 @@ in {
             "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist -max-dedupe-search 10 -max-items 500 store"
             "${pkgs.hyprland}/bin/hyprctl setcursor '${cursorTheme}' 24"
             "${luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua"
+            "${pkgs.hyprland}/bin/hyprctl dispatch workspace 4"
           ];
           env = [
             ''GTK_THEME,Materia-dark''
