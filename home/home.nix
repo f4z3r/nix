@@ -223,6 +223,7 @@ in {
       vhs
       watchexec
       xcp
+      yq-go
       zip
 
       # stuff not used often, installed via nix-shell
