@@ -53,7 +53,7 @@ Supports quake terminals:
 
 ## Update
 
-```sh
+```bash
 # update channels
 sudo nix-channel --update
 # update flake lock file
@@ -103,25 +103,8 @@ sudo freshclam
 
 ## Secrets
 
-Download the `secrets.nix` file from the encrypted storage. We do not use the standard way to add
-secrets to the staging area without committing them, as it is a pain when pulling changes from other
-machines. It is still documented here for completeness. A git hook will prevent committing the
-`secerts.nix` file either way.
-
-```bash
-git add -N secrets.nix
-git update-index --assume-unchanged secrets.nix
-```
-
-> [!NOTE]
->
-> If encountering issues when pulling, it might make sense to run:
->
-> ```bash
-> git update-index --really-refresh
-> ```
->
-> and continue from there.
+Download the `secrets.nix` file from the encrypted storage. These need to be staged to build. A git
+hook will prevent committing the `secerts.nix` file.
 
 ## Restic
 
@@ -169,8 +152,3 @@ After which you can use `ns` to sync notes.
 
 > The above rlcone command can also be used when rclone runs into a larger issue and requires a
 > resync.
-
-## Static Configuration
-
-This repository also offers some static configurations for environments where a basic shell is
-needed to work. These can be found under [`./static-configs/`](./static-configs/).
