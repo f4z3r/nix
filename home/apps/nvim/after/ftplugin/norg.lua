@@ -1,6 +1,12 @@
 local leader = "<leader>a"
 
 local mappings = {
+  {
+    mode = "n",
+    suffix = "h",
+    command = "<plug>(neorg.telescope.search_headings)",
+    desc = "Find headings in current file",
+  },
 }
 
 for _, mapping in ipairs(mappings) do

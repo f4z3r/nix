@@ -57,6 +57,9 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Load keyboard bindings for norg files",
   group = vim.api.nvim_create_augroup("NorgKeybindings", { clear = true }),
   callback = function()
+    -- set spelling
+    vim.opt_local.spell = true
+    -- todo cycles
     vim.keymap.set("n", "<C-t>", "<plug>(neorg.qol.todo-items.todo.task-cycle)", { buffer = true, silent = true })
     -- toc like symbols outline
     vim.keymap.set("n", "<leader>ts", "<cmd>Neorg toc right<cr>", { buffer = true })
@@ -67,7 +70,9 @@ vim.api.nvim_create_autocmd("FileType", {
       "<cmd>Neorg keybind all core.looking-glass.magnify-code-block<cr>",
       { buffer = true }
     )
-    -- insert stuff via telescope
+    -- demote recursively
+    vim.keymap.set("i", "<C-h>", "<plug>(neorg.promo.demote)", { buffer = true })
+    -- insert files via telescope
     vim.keymap.set("i", "<C-l>", "<cmd>Telescope neorg insert_file_link<cr>", { buffer = true })
     -- insert date
     vim.keymap.set("i", "<C-r>", insert_date, { buffer = true, desc = "Insert custom date via calendar under cusor" })
