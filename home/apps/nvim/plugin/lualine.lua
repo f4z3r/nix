@@ -10,19 +10,6 @@ theme.replace["x"] = { fg = colors.bg_statusline1, bg = colors.purple }
 theme.command["x"] = { fg = colors.bg_statusline1, bg = colors.purple }
 theme.inactive["x"] = { fg = colors.fg0, bg = "NONE" }
 
-local function get_timerly_status()
-  local state = require("timerly.state")
-  if state.progress == 0 then
-    return ""
-  end
-
-  local total = math.max(0, state.total_secs + 1) -- Add 1 to sync with timer display
-  local mins = math.floor(total / 60)
-  local secs = total % 60
-
-  return string.format("%s %02d:%02d", state.mode:gsub("^%l", string.upper), mins, secs)
-end
-
 require("lualine").setup({
   options = {
     theme = theme,
@@ -64,7 +51,6 @@ require("lualine").setup({
     lualine_y = {
       { "filetype", separator = { left = "" }, padding = { left = 2, right = 1 } },
       "overseer",
-      { get_timerly_status },
       "progress",
     },
     lualine_z = {

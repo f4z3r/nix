@@ -434,13 +434,6 @@ in {
         config = builtins.readFile ./plugin/oil-lsp.lua;
       }
 
-      # timer
-      {
-        type = "lua";
-        plugin = timerly;
-        config = builtins.readFile ./plugin/timerly.lua;
-      }
-
       # neorg
       {
         type = "lua";

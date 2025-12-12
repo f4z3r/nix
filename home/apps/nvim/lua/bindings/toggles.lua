@@ -24,14 +24,6 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "T",
-    command = function()
-      require("timerly").toggle()
-    end,
-    desc = "Toggle timerly timer",
-  },
-  {
-    mode = "n",
     suffix = "z",
     command = function()
       require("zen-mode").toggle()
