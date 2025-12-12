@@ -25,6 +25,7 @@ assert lib.asserts.assertOneOf "theme" colors.theme ["dark" "light"]; let
     if colors.theme == "dark"
     then "Capitaine Cursors (Gruvbox) - White"
     else "Capitaine Cursors (Gruvbox)";
+  python = import ./langs/python.nix {inherit pkgs;};
 in {
   imports = [
     (import ./langs/lua.nix {inherit pkgs lib username;})
@@ -173,20 +174,7 @@ in {
     username = "${username}";
     homeDirectory = "/home/${username}";
     stateVersion = "22.11";
-    packages = with pkgs; let
-      python-packages = ps:
-        with ps; [
-          debugpy
-          pip
-          virtualenv
-          setuptools
-          python-lsp-server
-          pylsp-rope
-          presenterm-export
-          black
-        ];
-      enhanced-python = pkgs.python313.withPackages python-packages;
-    in [
+    packages = with pkgs; [
       # GUI programs
       gimp
       pkgs-stable.brave
@@ -256,7 +244,7 @@ in {
       # programming
       delve
       dive
-      enhanced-python
+      python
       go
       kubectl
       kubectx
