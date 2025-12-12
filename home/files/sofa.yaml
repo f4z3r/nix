@@ -184,7 +184,7 @@ namespaces:
   nix:
     commands:
       rebuild:
-        command: sudo nixos-rebuild {{ type }} --impure --flake .#
+        command: sudo nixos-rebuild {{ type }} --impure --flake .# {{ substitute }}
         description: Rebuild nix setup
         interactive: true
         tags:
@@ -197,6 +197,16 @@ namespaces:
             choices:
               - switch
               - boot
+          substitute:
+            default: none
+            prompt: Enable substitutors
+            exclusive: true
+            choices:
+              - none
+              - all
+            mapping:
+              none: "--option substitute false"
+              all: ""
       clean-generations:
         command: nix-collect-garbage --delete-older-than {{ days }}d
         description: Delete old nix generations
