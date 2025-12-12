@@ -81,6 +81,7 @@ window#waybar {
 #workspaces,
 #backlight,
 #idle_inhibitor,
+#pulseaudio,
 #cpu,
 #memory,
 #disk,
@@ -101,7 +102,23 @@ window#waybar {
 }
 
 #clock,
-#pulseaudio {
+#custom-pomodoro {
   padding-right: 8px;
   padding-left: 8px;
+}
+
+#custom-pomodoro.inactive {
+  color: #7c6f64;
+}
+
+#custom-pomodoro.short-break {
+  color: #d8a657;
+}
+
+#custom-pomodoro.long-break {
+  color: #d3869b;
+}
+
+#custom-pomodoro.paused {
+  color: #ea6962;
 }

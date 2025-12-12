@@ -26,7 +26,13 @@ in {
           position = "top";
           height = 24;
           spacing = 4;
-          modules-left = ["hyprland/workspaces" "backlight" "idle_inhibitor" "pulseaudio"];
+          modules-left = [
+            "hyprland/workspaces"
+            "backlight"
+            "idle_inhibitor"
+            "pulseaudio"
+            "custom/pomodoro"
+          ];
           modules-right = ["cpu" "memory" "disk" "network" "custom/vpn" "battery" "clock"];
           "hyprland/workspaces" = {
             format = "<sub>{icon}</sub>{windows}";
@@ -78,6 +84,15 @@ in {
               car = "";
               default = ["" "" ""];
             };
+          };
+          "custom/pomodoro" = {
+            exec = "${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua";
+            return-type = "json";
+            interval = 5;
+            format = ''<span color="${yellow}">POM</span> {}'';
+            on-click = "${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua toggle";
+            on-click-right = "${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua skip";
+            on-click-middle = "${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua reset";
           };
           cpu = {
             format = ''<span color="${yellow}">CPU</span> {usage}%'';
@@ -132,6 +147,9 @@ in {
   home.file = {
     ".local/share/scripts/vpn.lua" = {
       source = ./../scripts/vpn.lua;
+    };
+    ".local/share/scripts/pomodoro.lua" = {
+      source = ./../scripts/pomodoro.lua;
     };
   };
 }
