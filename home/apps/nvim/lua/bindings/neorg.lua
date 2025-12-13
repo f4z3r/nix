@@ -1,6 +1,4 @@
--- Toggle bindings
---
--- Additional currently defined in plugin/gitsigns
+-- Neorg Bindings
 
 local leader = "<leader>u"
 

@@ -60,13 +60,6 @@ require("oil").setup({
     ["<leader>w|"] = { "actions.select", opts = { vertical = true } },
     ["<leader>ws"] = { "actions.select", opts = { horizontal = true } },
     ["<leader>w-"] = { "actions.select", opts = { horizontal = true } },
-    ["<leader>o"] = {
-      callback = function()
-        vim.cmd(string.format("e %s", require("lazy.utils").get_temp_file()))
-      end,
-      desc = "Open temporary file",
-      mode = "n",
-    },
     ["<C-c>"] = { "actions.close", mode = "n" },
     ["<C-r>"] = "actions.refresh",
     ["-"] = { "actions.parent", mode = "n" },
