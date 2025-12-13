@@ -13,8 +13,21 @@
         worktrees = {
           show = "never";
         };
+        target = {
+          list = "never";
+          sum = "never";
+        };
+        ".devbox" = {
+          list = "never";
+          sum = "never";
+        };
+        ".git" = {
+          list = "never";
+          sum = "never";
+        };
         build = {
-          show = "never";
+          list = "never";
+          sum = "never";
         };
       };
       ext_colors = {
