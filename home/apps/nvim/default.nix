@@ -222,13 +222,6 @@ in {
     ];
 
     plugins = with pkgs.vimPlugins; [
-      # startup stuff
-      {
-        type = "lua";
-        plugin = alpha-nvim;
-        config = builtins.readFile ./plugin/alpha.lua;
-      }
-
       # syntax highlighting
       plantuml-syntax
       vim-just

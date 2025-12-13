@@ -20,7 +20,9 @@ vim.keymap.set("i", "<c-x>", '<c-r>=strftime("&%Y-%m-%d %a %H:%M&")<c-m>')
 vim.keymap.set("n", "<c-q>", "<c-a>")
 
 -- Oil support
-vim.keymap.set("n", "-", "<cmd>Oil<cr>")
+vim.keymap.set("n", "-", function()
+  require("oil").open()
+end)
 
 vim.keymap.set("n", "z=", function()
   require("telescope.builtin").spell_suggest()

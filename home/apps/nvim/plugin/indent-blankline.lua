@@ -39,7 +39,6 @@ require("ibl").setup({
       "TelescopePrompt",
       "TelescopeResults",
       "''",
-      "alpha",
     },
   },
 })

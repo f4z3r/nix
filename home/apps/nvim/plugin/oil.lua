@@ -60,6 +60,13 @@ require("oil").setup({
     ["<leader>w|"] = { "actions.select", opts = { vertical = true } },
     ["<leader>ws"] = { "actions.select", opts = { horizontal = true } },
     ["<leader>w-"] = { "actions.select", opts = { horizontal = true } },
+    ["<leader>o"] = {
+      callback = function()
+        vim.cmd(string.format("e %s", require("lazy.utils").get_temp_file()))
+      end,
+      desc = "Open temporary file",
+      mode = "n",
+    },
     ["<C-c>"] = { "actions.close", mode = "n" },
     ["<C-r>"] = "actions.refresh",
     ["-"] = { "actions.parent", mode = "n" },
@@ -199,4 +206,17 @@ require("oil").setup({
   keymaps_help = {
     border = "rounded",
   },
+})
+
+-- disable the splash screen
+vim.opt.shortmess:append("I")
+-- launch oil on open if no file passed on open
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if vim.fn.argc() == 0 and vim.fn.expand("%") == "" then
+      vim.schedule(function()
+        require("oil").open(".")
+      end)
+    end
+  end,
 })
