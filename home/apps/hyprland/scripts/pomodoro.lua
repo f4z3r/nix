@@ -97,6 +97,21 @@ local function skip(state)
   dump_state(state)
 end
 
+local function change_duration(state, mins)
+  state.stop = state.stop + (mins * 60)
+  dump_state(state)
+end
+
+local function shorten(state, mins)
+  mins = mins or 1
+  change_duration(state, -mins)
+end
+
+local function lenghten(state, mins)
+  mins = mins or 1
+  change_duration(state, mins)
+end
+
 local function reset()
   local state = DEFAULT_STATE
   dump_state(state)
@@ -128,7 +143,7 @@ local function waybar_out(state)
   end
 
   if state.paused then
-    text = string.format("󰏤 %s", format_time(left))
+    text = string.format("󰼛 %s", format_time(left))
     tooltip = "Paused - Pomodoros: " .. state.pomodoros
   elseif state.status == STATUS.INACTIVE then
     text = "--:--"
@@ -137,13 +152,13 @@ local function waybar_out(state)
     text = string.format("󰔛 %s", format_time(left))
     tooltip = "Focus time - Pomodoros: " .. state.pomodoros
   elseif state.status == STATUS.SHORT_BREAK then
-    text = string.format("󰭹 %s", format_time(left))
+    text = string.format(" %s", format_time(left))
     tooltip = "Short break - Pomodoros: " .. state.pomodoros
   elseif state.status == STATUS.LONG_BREAK then
-    text = string.format("󰭹 %s", format_time(left))
+    text = string.format("󱁕 %s", format_time(left))
     tooltip = "Long break - Pomodoros: " .. state.pomodoros
   end
-  tooltip = tooltip .. "\nClick: Toggle | Right-click: Skip | Middle-click: Reset"
+  tooltip = tooltip .. "\nClick: Toggle | Right-click: Skip | Middle-click: Reset | Scoll: Change duration"
 
   return json.encode({
     text = text,
@@ -160,6 +175,10 @@ local function main()
     skip(state)
   elseif arg[1] == "reset" then
     state = reset()
+  elseif arg[1] == "minus" then
+    shorten(state)
+  elseif arg[1] == "plus" then
+    lenghten(state)
   end
   print(waybar_out(state))
 end

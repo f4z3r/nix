@@ -93,6 +93,8 @@ in {
             on-click = "${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua toggle";
             on-click-right = "${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua skip";
             on-click-middle = "${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua reset";
+            on-scroll-up = "${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua plus";
+            on-scroll-down = "${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua minus";
           };
           cpu = {
             format = ''<span color="${yellow}">CPU</span> {usage}%'';
