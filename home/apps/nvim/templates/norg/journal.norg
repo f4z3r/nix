@@ -9,7 +9,7 @@ updated: {NOW}
 
 * {:$/areas/growth/deep-work.norg:}[Deep Work] sessions
   See: {:$/resources/methodology/productivity/hack.norg:}[Productivity Hacking]
-  - (!) x hours:{CURSOR}
+  - (!) x pomodoros:{CURSOR}
 
 * tenets
   - Do one thing and do it well.
@@ -24,3 +24,5 @@ updated: {NOW}
 ** admin
 
 * reflection
+** planning
+** diary
