@@ -198,7 +198,7 @@ namespaces:
               - switch
               - boot
           substitute:
-            default: none
+            default: all
             prompt: Enable substitutors
             exclusive: true
             choices:
