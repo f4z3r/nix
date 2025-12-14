@@ -88,7 +88,7 @@ in {
           "custom/pomodoro" = {
             exec = "${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua";
             return-type = "json";
-            interval = 5;
+            interval = 1;
             format = ''<span color="${yellow}">POM</span> {}'';
             on-click = "${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua toggle";
             on-click-right = "${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua skip";
