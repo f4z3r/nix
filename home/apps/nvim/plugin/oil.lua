@@ -200,16 +200,3 @@ require("oil").setup({
     border = "rounded",
   },
 })
-
--- disable the splash screen
-vim.opt.shortmess:append("I")
--- launch oil on open if no file passed on open
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    if vim.fn.argc() == 0 and vim.fn.expand("%") == "" then
-      vim.schedule(function()
-        require("oil").open(".")
-      end)
-    end
-  end,
-})

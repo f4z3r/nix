@@ -46,3 +46,6 @@ local ok, mod = pcall(require, "notify")
 if ok then
   vim.notify = mod
 end
+
+-- disable the splash screen
+vim.opt.shortmess:append("I")
