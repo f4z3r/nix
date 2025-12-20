@@ -38,3 +38,10 @@ require("zen-mode").setup({
     vim.opt.sidescroll = 1
   end,
 })
+
+-- ensure zen mode is disabled when exiting vim
+vim.api.nvim_create_autocmd("ExitPre", {
+  callback = function()
+    require("zen-mode").close()
+  end,
+})
