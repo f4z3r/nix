@@ -113,20 +113,6 @@ vim.lsp.config("tinymist", {
 vim.lsp.enable("tinymist")
 
 -- Python
-vim.lsp.config("pylsp", {
-  settings = {
-    pylsp = {
-      plugins = {
-        rope_autoimport = {
-          enabled = true,
-        },
-      },
-    },
-  },
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
-vim.lsp.enable("pylsp")
 vim.lsp.enable("ruff")
 vim.lsp.enable("ty")
 

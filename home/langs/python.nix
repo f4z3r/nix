@@ -5,8 +5,6 @@
       pip
       virtualenv
       setuptools
-      python-lsp-server
-      pylsp-rope
       presenterm-export
       black
     ];
