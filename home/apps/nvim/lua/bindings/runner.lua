@@ -7,7 +7,7 @@ local mappings = {
     mode = "n",
     suffix = "r",
     command = function()
-      require("overseer").run_template()
+      require("overseer").run_task()
     end,
     desc = "Run a task from templates",
   },
@@ -16,6 +16,12 @@ local mappings = {
     suffix = "l",
     command = "<cmd>OverseerRestartLast<cr>",
     desc = "Run last task again",
+  },
+  {
+    mode = "n",
+    suffix = "t",
+    command = require("overseer").toggle,
+    desc = "Toggle task runner",
   },
 }
 

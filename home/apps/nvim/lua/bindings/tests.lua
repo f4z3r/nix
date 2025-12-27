@@ -13,7 +13,7 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "T",
+    suffix = "l",
     command = function()
       require("neotest").run.run_last()
     end,
