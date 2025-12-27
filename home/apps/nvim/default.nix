@@ -332,6 +332,13 @@ in {
       #   config = builtins.readFile ./plugin/kulala.lua;
       # }
 
+      # sessions
+      {
+        type = "lua";
+        plugin = resession-nvim;
+        config = builtins.readFile ./plugin/resession.lua;
+      }
+
       # completion
       friendly-snippets
       {
