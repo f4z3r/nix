@@ -20,6 +20,7 @@ onboarding
 offboard
 offboarding
 accessor
+whitelists
 whitelist
 pgp
 gpg
@@ -40,6 +41,7 @@ loadbalancer
 loadbalancers
 enablement
 mountpoint
+mountpoints
 datacenter
 datacenters
 OpenShift
@@ -48,3 +50,5 @@ Postgres
 PostgreSQL
 vCPU
 FTE
+ruleset
+rulesets
