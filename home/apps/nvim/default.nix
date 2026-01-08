@@ -227,11 +227,12 @@ in {
       vim-just
       d2
       rainbow-delimiters-nvim
-      nvim-treesitter-endwise
-      nvim-treesitter-textobjects
+      # TODO: f4z3r - add way to re-add this
+      # nvim-treesitter-endwise
+      # nvim-treesitter-textsubjects
       {
         type = "lua";
-        plugin = pkgs-stable.vimPlugins.nvim-treesitter.withPlugins (_: pkgs-stable.vimPlugins.nvim-treesitter.allGrammars ++ [pkgs-custom.norg-meta]);
+        plugin = nvim-treesitter.withAllGrammars;
         config = builtins.readFile ./plugin/treesitter.lua;
       }
       {

@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -11,12 +11,9 @@
     };
 
     neorg-overlay = {
-      url = "github:nvim-neorg/nixpkgs-neorg-overlay";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      url = "github:f4z3r/nixpkgs-neorg-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # fix due to bug not enabling the grammar
-    norg-meta.url = "github:nvim-neorg/tree-sitter-norg-meta";
   };
 
   outputs = {
@@ -25,7 +22,6 @@
     nixpkgs-stable,
     home-manager,
     neorg-overlay,
-    norg-meta,
     ...
   } @ inputs: let
     usernames = [
@@ -39,6 +35,7 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
+      overlays = [neorg-overlay.overlays.default];
     };
     pkgs-stable = import nixpkgs-stable {
       inherit system;
@@ -46,7 +43,6 @@
     };
     inherit (nixpkgs) lib;
     pkgs-custom = {
-      norg-meta = norg-meta.defaultPackage.${system};
     };
     inherit (pkgs) stdenv;
     secrets = import ./secrets.nix;
@@ -83,9 +79,6 @@
 
           home-manager.nixosModules.home-manager
           {
-            nixpkgs.overlays = [
-              neorg-overlay.overlays.default
-            ];
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
