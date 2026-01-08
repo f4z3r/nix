@@ -28,7 +28,7 @@ in {
     windowManager = {
       hyprland = {
         enable = true;
-        package = pkgs-stable.hyprland;
+        package = pkgs.hyprland;
         settings = {
           debug = {
             disable_logs = true;
@@ -150,35 +150,34 @@ in {
             ''dim_around on,match:title quake''
             ''float on,match:title quake''
             ''center on,match:title quake''
-            ''size 70% 70%,match:title quake''
+            ''size (monitor_w*0.7) (monitor_h*0.7),match:title quake''
             ''animation popin,match:title quake''
             # make brave popups appear centrally floating
-            ''float on,match:class ^(brave)$''
-            ''center on,match:class ^(brave)$''
-            ''animation popin,match:class ^(brave)$''
-            ''size 70% 70%,match:class ^(brave)$''
+            ''float on,match:class ^brave$''
+            ''center on,match:class ^brave$''
+            ''animation popin,match:class ^brave$''
+            ''size 70% 70%,match:class ^brave$''
             # make chrome meet popups appear centrally floating
-            ''float on,match:class ^(google-chrome)$,match:title ^(Meet –.*)''
-            ''pin on,match:class ^(google-chrome)$,match:title ^(Meet –.*)''
-            ''content video,match:class ^(google-chrome)$,match:title ^(Meet –.*)''
-            ''center on,match:class ^(google-chrome)$,match:title ^(Meet –.*)''
-            ''size 15% 100%,match:class ^(google-chrome)$,match:title ^(Meet –.*)''
-            ''no_anim on,match:class ^(google-chrome)$,match:title ^(Meet –.*)''
+            ''float on,match:class ^google-chrome$,match:title ^Meet –.*''
+            ''pin on,match:class ^google-chrome$,match:title ^Meet –.*''
+            ''content video,match:class ^google-chrome$,match:title ^Meet –.*''
+            ''center on,match:class ^google-chrome$,match:title ^Meet –.*''
+            ''size 15% 100%,match:class ^google-chrome$,match:title ^Meet –.*''
+            ''no_anim on,match:class ^google-chrome$,match:title ^Meet –.*''
             # set content types
-            ''content video,match:class ^(brave-browser)$,match:title (.*YouTube.*)''
-            ''content video,match:class ^(brave-browser)$,match:title (.*Netflix.*)''
+            ''idle_inhibit focus,match:class ^brave-browser$,match:title .*YouTube.*''
+            ''idle_inhibit focus,match:class ^brave-browser$,match:title .*Netflix.*''
+            ''no_dim on,match:class ^brave-browser$,match:title .*YouTube.*''
+            ''no_dim on,match:class ^brave-browser$,match:title .*Netflix.*''
             # disable idling when in full screen or playing video
             ''idle_inhibit focus,match:fullscreen true''
-            ''idle_inhibit focus,match:content 2''
-            # do not dim windows that are playing videos even when inactive
-            ''no_dim on,match:content 2''
           ];
           workspace = [
             ''r[1-5], monitor:${main_monitor}''
             ''r[6-10], monitor:${monitor_prefix}-1''
             ''r[6-10], monitor:${monitor_prefix}-2''
             # launch new terminal when opening special workspace and it is empty
-            ''special:quake, on-created-empty:[ float on; size 70% 70%; center on ] ghostty --title=quake --class=quake -e tmux new -s quake''
+            ''special:quake, on-created-empty:[ float on; size (monitor_w*0.7) (monitor_h*0.7); center on ] ghostty --title=quake --class=quake -e tmux new -s quake''
           ];
           general = {
             border_size = 2;
