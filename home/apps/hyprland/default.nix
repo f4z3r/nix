@@ -137,48 +137,48 @@ in {
             ''layers, 1, 1, easeOutExpo, popin''
           ];
           layerrule = [
-            ''animation popin,rofi''
-            ''dimaround,rofi''
-            ''noanim,selection''
+            ''animation popin,match:namespace rofi''
+            ''dim_around on,match:namespace rofi''
+            ''no_anim on,match:namespace selection''
           ];
           windowrule = [
             # ensure pinentry grabs input
-            ''animation popin,class:(Pinentry)''
-            ''float,class:(Pinentry)''
-            ''center,class:(Pinentry)''
+            ''animation popin,match:class Pinentry''
+            ''float on,match:class Pinentry''
+            ''center on,match:class Pinentry''
             # quake window sizing
-            ''dimaround,title:(quake)''
-            ''float,title:(quake)''
-            ''center,title:(quake)''
-            ''size 70% 70%,title:(quake)''
-            ''animation popin,title:(quake)''
+            ''dim_around on,match:title quake''
+            ''float on,match:title quake''
+            ''center on,match:title quake''
+            ''size 70% 70%,match:title quake''
+            ''animation popin,match:title quake''
             # make brave popups appear centrally floating
-            ''float,class:^(brave)$''
-            ''center,class:^(brave)$''
-            ''animation popin,class:^(brave)$''
-            ''size 70% 70%,class:^(brave)$''
+            ''float on,match:class ^(brave)$''
+            ''center on,match:class ^(brave)$''
+            ''animation popin,match:class ^(brave)$''
+            ''size 70% 70%,match:class ^(brave)$''
             # make chrome meet popups appear centrally floating
-            ''float,class:^(google-chrome)$,title:^(Meet –.*)''
-            ''pin,class:^(google-chrome)$,title:^(Meet –.*)''
-            ''content video,class:^(google-chrome)$,title:^(Meet –.*)''
-            ''center,class:^(google-chrome)$,title:^(Meet –.*)''
-            ''size 15% 100%,class:^(google-chrome)$,title:^(Meet –.*)''
-            ''noanim,class:^(google-chrome)$,title:^(Meet –.*)''
+            ''float on,match:class ^(google-chrome)$,match:title ^(Meet –.*)''
+            ''pin on,match:class ^(google-chrome)$,match:title ^(Meet –.*)''
+            ''content video,match:class ^(google-chrome)$,match:title ^(Meet –.*)''
+            ''center on,match:class ^(google-chrome)$,match:title ^(Meet –.*)''
+            ''size 15% 100%,match:class ^(google-chrome)$,match:title ^(Meet –.*)''
+            ''no_anim on,match:class ^(google-chrome)$,match:title ^(Meet –.*)''
             # set content types
-            ''content video,class:^(brave-browser)$,title:(.*YouTube.*)''
-            ''content video,class:^(brave-browser)$,title:(.*Netflix.*)''
+            ''content video,match:class ^(brave-browser)$,match:title (.*YouTube.*)''
+            ''content video,match:class ^(brave-browser)$,match:title (.*Netflix.*)''
             # disable idling when in full screen or playing video
-            ''idleinhibit focus,fullscreen:1''
-            ''idleinhibit focus,content:video''
+            ''idle_inhibit focus,match:fullscreen true''
+            ''idle_inhibit focus,match:content 2''
             # do not dim windows that are playing videos even when inactive
-            ''nodim,content:video''
+            ''no_dim on,match:content 2''
           ];
           workspace = [
             ''r[1-5], monitor:${main_monitor}''
             ''r[6-10], monitor:${monitor_prefix}-1''
             ''r[6-10], monitor:${monitor_prefix}-2''
             # launch new terminal when opening special workspace and it is empty
-            ''special:quake, on-created-empty:[ float; size 70% 70%; center ] ghostty --title=quake --class=quake -e tmux new -s quake''
+            ''special:quake, on-created-empty:[ float on; size 70% 70%; center on ] ghostty --title=quake --class=quake -e tmux new -s quake''
           ];
           general = {
             border_size = 2;

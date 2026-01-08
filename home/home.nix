@@ -186,7 +186,6 @@ in {
       beancount
       buildah
       devbox
-      dogdns
       erdtree
       fd
       fend
