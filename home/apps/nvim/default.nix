@@ -287,6 +287,11 @@ in {
         plugin = diffview-nvim;
         config = builtins.readFile ./plugin/diffview.lua;
       }
+      {
+        type = "lua";
+        plugin = gitlinker-nvim;
+        config = builtins.readFile ./plugin/gitlinker.lua;
+      }
 
       # lsp stuff
       {
@@ -364,11 +369,6 @@ in {
         type = "lua";
         plugin = neogen;
         config = ''require('neogen').setup({ snippet_engine = "luasnip" })'';
-      }
-      {
-        type = "lua";
-        plugin = tabout-nvim;
-        config = builtins.readFile ./plugin/tabout.lua;
       }
 
       # finder
