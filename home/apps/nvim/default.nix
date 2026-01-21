@@ -262,8 +262,8 @@ in {
       }
       {
         type = "lua";
-        plugin = symbols-outline-nvim;
-        config = builtins.readFile ./plugin/symbols-outline.lua;
+        plugin = outline-nvim;
+        config = builtins.readFile ./plugin/outline.lua;
       }
       {
         type = "lua";

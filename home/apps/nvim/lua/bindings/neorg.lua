@@ -59,8 +59,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = true
     -- todo cycles
     vim.keymap.set("n", "<C-t>", "<plug>(neorg.qol.todo-items.todo.task-cycle)", { buffer = true, silent = true })
-    -- toc like symbols outline
-    vim.keymap.set("n", "<leader>ts", "<cmd>Neorg toc right<cr>", { buffer = true })
     -- edit code block in different pannel
     vim.keymap.set(
       "n",
