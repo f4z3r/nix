@@ -69,6 +69,7 @@ in {
             };
           };
           pulseaudio = {
+            on-click = ''${luajit}/bin/luajit ~/.local/share/scripts/toggle-mute.lua'';
             format = ''<span color="${yellow}">VOL</span> {volume}% {icon} {format_source}'';
             format-bluetooth = ''<span color="${yellow}">VOL</span> 󰂯 {volume}% {icon} {format_source}'';
             format-bluetooth-muted = ''<span color="${yellow}">VOL</span> 󰂯 {volume}% {icon}  {format_source}'';
