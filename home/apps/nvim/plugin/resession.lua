@@ -1,6 +1,10 @@
 local resession = require("resession")
 resession.setup()
 
+local BLACKLIST = {
+  ".git/COMMIT_EDITMSG$"
+}
+
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
     -- Only load the session if nvim was started with no args and without reading from stdin
@@ -13,6 +17,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 vim.api.nvim_create_autocmd("VimLeavePre", {
   callback = function()
+    local filepath = vim.fn.expand('%:p')
+    for _, item in ipairs(BLACKLIST) do
+      if filepath:match(item) ~= nil then
+        return
+      end
+    end
     resession.save(vim.fn.getcwd(), { dir = "dirsession", notify = false })
   end,
 })
