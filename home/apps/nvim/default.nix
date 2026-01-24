@@ -160,7 +160,7 @@ in {
           dkjson
         ];
 
-    extraLuaConfig = ''
+    initLua = ''
 
       require("bindings")
       require("visualisation")
@@ -227,9 +227,13 @@ in {
       vim-just
       d2
       rainbow-delimiters-nvim
+      nvim-treesitter-endwise
       # TODO: f4z3r - add way to re-add this
-      # nvim-treesitter-endwise
-      # nvim-treesitter-textsubjects
+      # {
+      #   type = "lua";
+      #   plugin = nvim-treesitter-textsubjects;
+      #   config = builtins.readFile ./plugin/textsubjects.lua;
+      # }
       {
         type = "lua";
         plugin = nvim-treesitter.withAllGrammars;
