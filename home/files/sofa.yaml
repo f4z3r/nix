@@ -198,15 +198,15 @@ namespaces:
               - switch
               - boot
           substitute:
-            default: all
-            prompt: Enable substitutors
+            default: substitute
+            prompt: Enable substitution
             exclusive: true
             choices:
               - none
-              - all
+              - substitute
             mapping:
               none: "--option substitute false"
-              all: ""
+              substitute: ""
       clean-generations:
         command: nix-collect-garbage --delete-older-than {{ days }}d
         description: Delete old nix generations
