@@ -7,16 +7,19 @@ categories: [
 updated: {NOW}
 @end
 
-* {:$/areas/growth/deep-work.norg:}[Deep Work] sessions
-  See: {:$/resources/methodology/productivity/hack.norg:}[Productivity Hacking]
-  - (!) x pomodoros:{CURSOR}
-
 * tenets
   - *mental*: clarity is focus.
   - *intellectual*: simplicity is elegance.
   - *physical*: balance is health.
   - *social*: integrity is respect.
   - *opportunistic*: exploration is progress.
+
+* weekly goals
+** (!) ...
+
+* {:$/areas/growth/deep-work.norg:}[Deep Work] sessions
+  See: {:$/resources/methodology/productivity/hack.norg:}[Productivity Hacking]
+  - (!) x pomodoros:{CURSOR}
 
 * goals
 ** well-being
@@ -25,5 +28,3 @@ updated: {NOW}
 ** admin
 
 * reflection
-** planning
-** diary
