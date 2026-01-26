@@ -37,9 +37,6 @@ in {
             "${pkgs.dunst}/bin/dunst"
             "${pkgs.swww}/bin/swww-daemon"
             "${pkgs.swww}/bin/swww img ${wallpaper}"
-            # manually launch cliphist to store only text and images, no passwords (x-kde-passwordManagerHint)
-            "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.luajit}/bin/luajit ~/.local/share/scripts/cliphist-filter.lua"
-            "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist -max-dedupe-search 10 -max-items 500 store"
             "${pkgs.hyprland}/bin/hyprctl setcursor '${cursorTheme}' 24"
             "${luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua"
             "${pkgs.hyprland}/bin/hyprctl dispatch workspace 4"
@@ -106,7 +103,6 @@ in {
             ''$wm&$app, o, exec, /etc/profiles/per-user/${username}/bin/sofa''
             ''$wm&$app, w, exec, ${luajit}/bin/luajit /home/${username}/.local/share/scripts/fuzzy-bookmarks.lua''
             ''$wm&$app, r, exec, bash /home/${username}/.local/share/scripts/screen-record.sh''
-            ''$wm&$app, c, exec, ${pkgs.rofi}/bin/rofi -modi clipboard:/home/${username}/.local/bin/cliphist-rofi-img.sh -show clipboard -show-icons''
             ''$wm&$app, p, exec, ${pkgs.gopass}/bin/gopass ls --flat | ${pkgs.rofi}/bin/rofi -dmenu -p Gopass | xargs --no-run-if-empty ${pkgs.gopass}/bin/gopass show -o | head -n 1 | ${pkgs.wl-clipboard}/bin/wl-copy -t text/sensitive''
             ''$wm&$app, n, exec, ${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua toggle''
 
@@ -280,10 +276,6 @@ in {
     ".local/share/scripts/toggle-mute.lua" = {
       source = ./scripts/toggle-mute.lua;
     };
-    ".local/bin/cliphist-rofi-img.sh" = {
-      source = ./scripts/cliphist-rofi-img.sh;
-      executable = true;
-    };
     ".local/share/wallpapers/" = {
       source = ./../../../assets/wallpapers;
       recursive = true;
@@ -308,9 +300,6 @@ in {
             --filename "/home/${username}/screenshots/screenrec-$(date '+%Y%m%d-%H:%M:%S').mp4";
         fi
       '';
-    };
-    ".local/share/scripts/cliphist-filter.lua" = {
-      source = ./scripts/cliphist-filter.lua;
     };
   };
 }
