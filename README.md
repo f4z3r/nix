@@ -152,3 +152,6 @@ After which you can use `ns` to sync notes.
 
 > The above rlcone command can also be used when rclone runs into a larger issue and requires a
 > resync.
+>
+> **ATTENTION**: if the source of truth is your local copy, switch out the two targets in the above
+> command.
