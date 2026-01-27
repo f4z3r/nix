@@ -1,3 +1,5 @@
+local lspkind = require("lspkind")
+
 local opts = {
   outline_window = {
     position = 'right',
@@ -67,9 +69,9 @@ local opts = {
   keymaps = {
     show_help = '?',
     close = {'<Esc>', 'q'},
-    goto_location = '<Cr>',
+    goto_location = {},
     peek_location = 'o',
-    goto_and_close = '<S-Cr>',
+    goto_and_close = '<cr>',
     restore_location = '<C-g>',
     hover_symbol = '<S-space>',
     toggle_preview = 'K',
@@ -105,13 +107,18 @@ local opts = {
     ---@param kind string Key of the icons table below
     ---@param bufnr integer Code buffer
     ---@param symbol outline.Symbol The current symbol object
-    ---@returns string|boolean The icon string to display, such as "f", or `false`
-    ---                        to fallback to `icon_source`.
-    icon_fetcher = nil,
+    ---@return string|boolean The icon string to display, such as "f", or `false`
+    ---                       to fallback to `icon_source`.
+    icon_fetcher = function(kind)
+      -- XXX: f4z3r on 2026-01-27 - this is a workaround because the icon_source "lspkind" causes an error
+      -- See: https://github.com/onsails/lspkind.nvim/commit/eef4764679f691ead2d38ca82f16e9c2aa5f29f8
+      -- When commit present in setup, remove this workaround.
+      return lspkind.symbol_map[kind] or ""
+    end,
     -- 3rd party source for fetching icons. This is used as a fallback if
     -- icon_fetcher returned an empty string.
     -- Currently supported values: 'lspkind'
-    icon_source = "lspkind",
+    icon_source = "",
     -- The next fallback if both icon_fetcher and icon_source has failed, is
     -- the custom mapping of icons specified below. The icons table is also
     -- needed for specifying hl group.
