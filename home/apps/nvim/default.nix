@@ -381,7 +381,7 @@ in {
         plugin = telescope-nvim;
         config = builtins.readFile ./plugin/telescope.lua;
       }
-      fzfWrapper
+      fzf-wrapper
       telescope-fzf-native-nvim
       {
         type = "lua";
