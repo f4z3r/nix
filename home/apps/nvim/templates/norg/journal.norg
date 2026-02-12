@@ -7,24 +7,32 @@ categories: [
 updated: {NOW}
 @end
 
-* tenets
+* Tenets
   - *mental*: clarity is focus.
   - *intellectual*: simplicity is elegance.
   - *physical*: balance is health.
   - *social*: integrity is respect.
   - *opportunistic*: exploration is progress.
 
-* weekly goals
+* Method
+  See {:$/resources/methodology/productivity/hack.norg:}[Productivity Hacking] and
+  {:$/areas/reflection.norg:}[Reflection].
+
+* Weekly Goals
 ** (!) ...
 
-* {:$/areas/growth/deep-work.norg:}[Deep Work] sessions
-  See: {:$/resources/methodology/productivity/hack.norg:}[Productivity Hacking]
-  - (!) x pomodoros:{CURSOR}
-
-* goals
-** well-being
-** technical tasks
-** social tasks
-** admin
-
-* reflection
+* Timeline
+** ( ) 06:00
+** ( ) 07:00
+** ( ) 08:00
+** ( ) 09:00
+** ( ) 10:00
+** ( ) 11:00
+** ( ) 12:00
+** ( ) 13:00
+** ( ) 14:00
+** ( ) 15:00
+** ( ) 16:00
+** ( ) 17:00
+** ( ) 18:00
+** (?) unscheduled

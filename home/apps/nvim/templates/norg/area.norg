@@ -10,26 +10,14 @@ updated: {NOW}
 version: 1.1.1
 @end
 
-* status
-** {TODAY}
-
-* goals
+* Goals
 ** ( ) ...
 
-* roadmap
+* Roadmap
 ** ...
 
-* notes
-** technical
-*** goals
-*** constraints
-*** context
-*** solution strategy
-*** building blocks
-*** crosscutting concerns
-*** risks
+* Notes
 
-* stakeholders
+* Stakeholders
 
-* external resources
-  - ...
+* External Resources

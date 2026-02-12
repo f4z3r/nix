@@ -10,7 +10,7 @@ updated: {NOW}
 version: 1.1.1
 @end
 
-* driver
+* Driver
   - cost/efficiency case
   - revenue case
   - infrastructure case
@@ -18,29 +18,26 @@ version: 1.1.1
   - risk and regulation case
   - strategy case
 
+* External Tracking Link
+
+* Goals
+** ( ) ...
+
 * status
 ** {TODAY}
 
-* goals
-** ( ) ...
-
-* roadmap
-** ...
-
-* notes
-** technical
-*** goals
-*** constraints
-*** context
-*** solution strategy
-*** building blocks
-*** crosscutting concerns
-*** risks
-
-** minutes
+* Notes
+** Arc42
+*** Goals
+*** Constraints
+*** Context
+*** Solution strategy
+*** Building blocks
+*** Crosscutting concerns
+*** Risks
+** Minutes
 *** {TODAY}
 
-* stakeholders
+* Stakeholders
 
-* external resources
-  - ...
+* External Resources
