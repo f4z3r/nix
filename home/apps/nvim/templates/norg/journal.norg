@@ -1,9 +1,6 @@
 @document.meta
 title: Journal Entry {TODAY_OF_FILETREE}
 authors: f4z3r
-categories: [
-  journal
-]
 updated: {NOW}
 @end
 

@@ -2,28 +2,25 @@
 title: {CURSOR}
 description:
 authors: f4z3r
-categories: [
-  project
-]
 created: {NOW}
 updated: {NOW}
 version: 1.1.1
 @end
 
 * Driver
-  - cost/efficiency case
-  - revenue case
-  - infrastructure case
-  - customer value
-  - risk and regulation case
-  - strategy case
+  - Cost/efficiency case
+  - Revenue case
+  - Infrastructure case
+  - Customer value
+  - Risk and regulation case
+  - Strategy case
 
 * External Tracking Link
 
 * Goals
 ** ( ) ...
 
-* status
+* Status
 ** {TODAY}
 
 * Notes
