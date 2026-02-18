@@ -62,8 +62,24 @@
           internal = ":line_up";
         }
         {
+          key = "PageUp";
+          internal = ":line_up_no_cycle 5";
+        }
+        {
+          key = "ctrl-u";
+          internal = ":line_up_no_cycle 5";
+        }
+        {
           key = "ctrl-n";
           internal = ":line_down";
+        }
+        {
+          key = "PageDown";
+          internal = ":line_down_no_cycle 5";
+        }
+        {
+          key = "ctrl-d";
+          internal = ":line_down_no_cycle 5";
         }
         {
           key = "ctrl-l";
@@ -86,6 +102,10 @@
           internal = ":open_stay";
         }
         {
+          key = "ctrl-w";
+          internal = ":input_del_word_left";
+        }
+        {
           name = "touch";
           shortcut = "t";
           invocation = "touch {new_file}";
@@ -102,7 +122,6 @@
         {
           invocation = "edit";
           shortcut = "e";
-          key = "ctrl-e";
           apply_to = "file";
           external = ["nvim" "+{line}" "{file}"];
           set_working_dir = true;
@@ -111,7 +130,6 @@
         {
           invocation = "edit";
           shortcut = "e";
-          key = "ctrl-e";
           apply_to = "directory";
           external = ["nvim" "{directory}"];
           set_working_dir = true;
