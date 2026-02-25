@@ -2,7 +2,7 @@ require("zen-mode").setup({
   window = {
     width = function()
       if vim.opt_local.textwidth:get() > 0 then
-        return vim.opt_local.textwidth:get() + 7
+        return vim.opt_local.textwidth:get() + 20 -- need space for line numbers, diagnostics, etc
       end
       return 120
     end,
