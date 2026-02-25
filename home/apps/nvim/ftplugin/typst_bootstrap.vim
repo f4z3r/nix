@@ -2,5 +2,6 @@
 " ===================== Language Specific Settings ==========================
 " ===========================================================================
 
-setlocal textwidth=80
-
+setlocal textwidth=100
+setlocal formatoptions=nqjtc
+setlocal nojoinspaces
