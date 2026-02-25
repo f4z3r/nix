@@ -83,6 +83,7 @@ in {
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
+      vista-fonts
       nerd-fonts.fira-code
       nerd-fonts.sauce-code-pro
     ];
