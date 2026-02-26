@@ -156,6 +156,11 @@
           external = ["git" "diff" "{file}"];
         }
         {
+          invocation = "sh {command}";
+          external = ["{command}" "{file}"];
+          leave_broot = true;
+        }
+        {
           apply_to = "file";
           external = ["echo" "-n" "{file}"];
           key = "enter";
