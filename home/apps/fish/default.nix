@@ -45,6 +45,11 @@
       ns = ''rclone bisync gdrive-crypt:/ ~/notes --remove-empty-dirs --exclude '/.**' --exclude '**/.**' --exclude '**/tags' --compare size,modtime -MP --fix-case --conflict-suffix upstream,local'';
       jwt = ''wl-paste | step crypto jwt inspect --insecure | jq'';
       imv = ''imv -b ffffff'';
+      ".." = ''cd ..'';
+      "..." = ''cd ../..'';
+      "...." = ''cd ../../..'';
+      "....." = ''cd ../../../..'';
+      "......" = ''cd ../../../../..'';
     };
     shellInit = ''
       set -x NIX_THEME "${colors.theme}"
