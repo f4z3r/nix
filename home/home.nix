@@ -199,6 +199,7 @@ in {
       mupdf
       openssl
       ouch
+      parallel
       presenterm
       procs
       rclone
