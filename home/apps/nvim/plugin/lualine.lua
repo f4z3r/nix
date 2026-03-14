@@ -20,6 +20,7 @@ require("lualine").setup({
   sections = {
     lualine_a = {
       { "mode", separator = { left = "" } },
+      { "grapple" },
     },
     lualine_b = {
       {

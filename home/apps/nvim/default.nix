@@ -385,8 +385,8 @@ in {
       telescope-fzf-native-nvim
       {
         type = "lua";
-        plugin = harpoon2;
-        config = builtins.readFile ./plugin/harpoon.lua;
+        plugin = grapple-nvim;
+        config = builtins.readFile ./plugin/grapple.lua;
       }
       {
         type = "lua";
