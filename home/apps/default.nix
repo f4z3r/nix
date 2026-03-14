@@ -18,13 +18,14 @@
     })
     (import ./rofi/default.nix {inherit pkgs colors;})
     (import ./git/default.nix {inherit pkgs colors;})
-    (import ./lazygit.nix {inherit colors;})
+    (import ./lazygit.nix {inherit pkgs colors;})
     (import ./tmux/default.nix {inherit pkgs lib stdenv colors;})
     (import ./fish/default.nix {inherit pkgs colors;})
-    ./starship.nix
+    (import ./starship.nix {inherit pkgs lib;})
+    (import ./opencode.nix {inherit pkgs;})
     (import ./nvim/default.nix {inherit pkgs pkgs-stable pkgs-custom;})
-    (import ./broot.nix {inherit colors;})
-    (import ./k9s.nix {inherit colors;})
+    (import ./broot.nix {inherit pkgs colors;})
+    (import ./k9s.nix {inherit pkgs colors;})
     (import ./mpd/default.nix {inherit pkgs username;})
   ];
 

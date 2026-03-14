@@ -371,6 +371,14 @@ in {
       }
       {
         type = "lua";
+        plugin = snacks-nvim;
+      }
+      {
+        type = "lua";
+        plugin = opencode-nvim;
+      }
+      {
+        type = "lua";
         plugin = neogen;
         config = ''require('neogen').setup({ snippet_engine = "luasnip" })'';
       }
