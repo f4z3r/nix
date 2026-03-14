@@ -40,6 +40,7 @@ in {
           cop (multi lctl c)
           pas (multi lctl v)
           all (multi lctl a)
+          cut (multi lctl x)
 
           dquo (macro S-' spc)
           quo (macro ' spc)
@@ -94,9 +95,9 @@ in {
         )
 
         (deflayer down
-          XX   f8   f9   f10  f11  f12   ,    7    8    9    .    XX   XX
-          XX   f6   @all @cop @pas f7    S-'  4    5    6    S-;  XX   ret  ret
-          XX   XX   f1   f2   f3   f4    f5   '    1    2    3    -    XX
+          XX   brup home pgup up   volu  ,    7    8    9    .    XX   XX
+          XX   brdn end  pgdn down vold  S-'  4    5    6    S-;  XX   ret  ret
+          XX   XX   @cut @all @cop @pas  mute '    1    2    3    -    XX
           XX   XX   @lyd           spc             0    bspc lft  down up   rght
         )
 
@@ -108,9 +109,9 @@ in {
         )
 
         (deflayer nav
-          XX   brup volu pgup home XX   XX   XX   up   XX   XX   XX   XX
-          XX   brdn vold pgdn end  sys  XX   lft  down rght +    XX   XX   ret
-          pp   XX   XX   mute XX   XX   XX   XX   XX   XX   XX   XX   XX
+          XX   f9   f10  f11  f12  XX   XX   XX   up   XX   XX   XX   XX
+          XX   f5   f6   f7   f8   sys  XX   lft  down rght +    XX   XX   ret
+          pp   XX   f1   f2   f3   f4   XX   XX   XX   XX   XX   XX   XX
           XX   XX   @lyd           spc            @lyu bspc lft  down up   rght
         )
       '';
