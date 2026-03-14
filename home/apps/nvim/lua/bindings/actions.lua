@@ -15,6 +15,22 @@ local mappings = {
     end,
     desc = "Format current buffer",
   },
+  {
+    mode = { "n", "x" },
+    suffix = "o",
+    command = function()
+      require("opencode").ask("@this: ", { submit = true })
+    end,
+    desc = "Ask opencode",
+  },
+  {
+    mode = { "n", "x" },
+    suffix = "s",
+    command = function()
+      require("opencode").select()
+    end,
+    desc = "Execute selected opencode action",
+  },
 }
 
 for _, mapping in ipairs(mappings) do
