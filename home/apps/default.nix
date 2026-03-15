@@ -22,7 +22,6 @@
     (import ./tmux/default.nix {inherit pkgs lib stdenv colors;})
     (import ./fish/default.nix {inherit pkgs colors;})
     (import ./starship.nix {inherit pkgs lib;})
-    (import ./opencode.nix {inherit pkgs;})
     (import ./nvim/default.nix {inherit pkgs pkgs-stable pkgs-custom;})
     (import ./broot.nix {inherit pkgs colors;})
     (import ./k9s.nix {inherit pkgs colors;})

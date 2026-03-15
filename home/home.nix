@@ -197,6 +197,7 @@ in {
       just
       miniserve
       mupdf
+      opencode
       openssl
       ouch
       parallel
