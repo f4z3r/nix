@@ -95,8 +95,8 @@ in {
         )
 
         (deflayer down
-          XX   brup home pgup up   volu  ,    7    8    9    .    XX   XX
-          XX   brdn end  pgdn down vold  S-'  4    5    6    S-;  XX   ret  ret
+          XX   mrgt home pgup up   volu  ,    7    8    9    .    XX   XX
+          XX   mlft end  pgdn down vold  S-'  4    5    6    S-;  XX   ret  ret
           XX   XX   @cut @all @cop @pas  mute '    1    2    3    -    XX
           XX   XX   @lyd           spc             0    bspc lft  down up   rght
         )
@@ -109,9 +109,9 @@ in {
         )
 
         (deflayer nav
-          XX   f9   f10  f11  f12  XX   XX   XX   up   XX   XX   XX   XX
+          XX   f9   f10  f11  f12  brup XX   XX   up   XX   XX   XX   XX
           XX   f5   f6   f7   f8   sys  XX   lft  down rght +    XX   XX   ret
-          pp   XX   f1   f2   f3   f4   XX   XX   XX   XX   XX   XX   XX
+          pp   XX   f1   f2   f3   f4   brdn XX   XX   XX   XX   XX   XX
           XX   XX   @lyd           spc            @lyu bspc lft  down up   rght
         )
       '';
