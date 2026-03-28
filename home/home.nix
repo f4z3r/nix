@@ -173,7 +173,7 @@ in {
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
-    stateVersion = "22.11";
+    stateVersion = "26.05";
     packages = with pkgs; [
       # GUI programs
       gimp
