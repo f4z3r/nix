@@ -1,14 +1,6 @@
-local os = require("os")
-
-local transparent_background = true
-
-if os.getenv("NIX_OPAQUE_NVIM") then
-  transparent_background = false
-end
-
 require("gruvbox-material").setup({
   background = {
-    transparent = transparent_background,
+    transparent = true,
   },
 })
 
