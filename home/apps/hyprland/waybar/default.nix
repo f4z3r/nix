@@ -41,7 +41,7 @@ in {
               # "1" = "";
               # "2" = "";
               # "3" = "󰈹";
-              default = "󰺕";
+              default = "";
               empty = "";
               presistent = "󰺕";
               special = "";
@@ -64,8 +64,8 @@ in {
           idle_inhibitor = {
             format = ''<span color="${yellow}">IDL</span> {icon}'';
             format-icons = {
-              activated = "";
-              deactivated = "";
+              activated = "";
+              deactivated = "";
             };
           };
           pulseaudio = {
@@ -120,8 +120,8 @@ in {
             interface = "wlp0s20f3";
             interval = 3;
             format = ''<span color="${yellow}">NET</span> {ifname}'';
-            format-wifi = ''<span color="${yellow}">NET</span> <span color="#d3869b">{essid}</span> 󰖩 ({signalStrength}%) <span color="${yellow}">UP</span> {bandwidthUpBytes} <span color="${yellow}">DN</span> {bandwidthDownBytes}'';
-            format-ethernet = ''<span color="${yellow}">NET</span> <span color="#d3869b">{ipaddr}/{cidr}</span> <span color="${yellow}">UP</span> {bandwidthUpBytes} <span color="${yellow}">DN</span> {bandwidthDownBytes}'';
+            format-wifi = ''<span color="${yellow}">NET</span> <span color="#d3869b">{essid}</span> 󱚻 ({signalStrength}%) <span color="${yellow}">UP</span> {bandwidthUpBytes} <span color="${yellow}">DN</span> {bandwidthDownBytes}'';
+            format-ethernet = ''<span color="${yellow}">NET</span> <span color="#d3869b">{ipaddr}/{cidr}</span>  <span color="${yellow}">UP</span> {bandwidthUpBytes} <span color="${yellow}">DN</span> {bandwidthDownBytes}'';
             format-disconnected = ''<span color="${yellow}">NET</span> <span color="#7c6f64">disconnected</span>'';
           };
           "custom/vpn" = {

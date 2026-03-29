@@ -84,14 +84,14 @@ in {
     enableDefaultPackages = true;
     packages = with pkgs; [
       vista-fonts
-      nerd-fonts.fira-code
+      nerd-fonts.monaspace
       nerd-fonts.sauce-code-pro
     ];
 
     fontconfig = {
       defaultFonts = {
-        monospace = ["FiraCode Nerd Font Mono"];
-        sansSerif = ["FiraCode Nerd Font"];
+        monospace = ["MonaspiceNe Nerd Font Mono"];
+        sansSerif = ["MonaspiceNe Nerd Font"];
       };
     };
   };

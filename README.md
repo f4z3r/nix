@@ -47,6 +47,7 @@ Supports quake terminals:
 - Editor: `neovim`
 - Prompt: `starship`
 - Audio: `pipewire`, `mpd`, `ncmpcpp`
+- Fonts: Monaspace Nerd Fonts (Monaspice)
 
 > **NOTE:** the entire setup is optimized for shortcuts to be nice with a Colemak Mod-DH setup.
 > Specifically I am running the following setup: https://github.com/f4z3r/zmk-config-piantor-bt

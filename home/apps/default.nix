@@ -37,11 +37,25 @@
       installVimSyntax = true;
       clearDefaultKeybinds = true;
       settings = {
-        font-family = "FiraCode Nerd Font Mono Med";
-        font-family-bold = "FiraCode Nerd Font Mono Bold";
-        font-family-bold-italic = "FiraCode Nerd Font Mono Bold";
-        font-family-italic = "FiraCode Nerd Font Mono Light";
-        font-feature = "+ss02";
+        font-family = "MonaspiceNe Nerd Font Mono";
+        font-variation = "wght=450";
+        font-family-italic = "MonaspiceAr Nerd Font Mono";
+        font-variation-italic = "wght=450";
+        font-family-bold-italic = "MonaspiceAr Nerd Font Mono";
+        font-feature = [
+          "+calt"
+          "+ss01"
+          "+ss02"
+          "+ss03"
+          "+ss04"
+          "+ss05"
+          "+ss06"
+          "+ss07"
+          "+ss08"
+          "+ss09"
+          "+ss10"
+          "+liga"
+        ];
         cursor-invert-fg-bg = true;
         cursor-style-blink = false;
         cursor-style = "block";
