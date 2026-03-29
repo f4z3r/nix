@@ -97,7 +97,7 @@ in {
         extraConfig = ''
           set -g @tea-session-name "full-path"
           set -g @tea-bind "y"
-          set -g @tea-alt-bind "C-y"
+          set -g @tea-alt-bind "false"
           set -g @tea-find-path "$HOME/opt"
         '';
       }
@@ -203,12 +203,19 @@ in {
       bind-key -T copy-mode-vi h send-keys -X cursor-left
       bind-key -T copy-mode-vi l send-keys -X cursor-right
 
+      # quick switch to previous session
+      bind-key -n C-y run-shell -b ~/.local/bin/last-session.sh
+
       source-file -q ~/.config/tmux/overrides
     '';
   };
   home.file = {
     ".local/bin/tmux-popup.sh" = {
       source = ./scripts/tmux-popup.sh;
+      executable = true;
+    };
+    ".local/bin/last-session.sh" = {
+      source = ./scripts/last-session.sh;
       executable = true;
     };
   };
