@@ -75,14 +75,6 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "u",
-    command = function()
-      require("telescope").extensions.undo.undo()
-    end,
-    desc = "Search undo stack",
-  },
-  {
-    mode = "n",
     suffix = "m",
     command = function()
       require("telescope.builtin").marks()
@@ -109,9 +101,9 @@ local mappings = {
     mode = "n",
     suffix = "/",
     command = function()
-      require("telescope.builtin").current_buffer_fuzzy_find()
+      require("telescope.builtin").resume()
     end,
-    desc = "Fuzzy search current buffer",
+    desc = "Resume previous search",
   },
   {
     mode = "n",
