@@ -36,8 +36,6 @@ require("ibl").setup({
       "help",
       "man",
       "gitcommit",
-      "TelescopePrompt",
-      "TelescopeResults",
       "''",
     },
   },

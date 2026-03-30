@@ -17,14 +17,13 @@
       inherit pkgs pkgs-stable username resolution scale main_monitor monitor_prefix colors;
     })
     (import ./rofi/default.nix {inherit pkgs colors;})
-    (import ./tv/default.nix {inherit pkgs;})
+    (import ./tv/default.nix {inherit pkgs colors;})
     (import ./git/default.nix {inherit pkgs colors;})
     (import ./lazygit.nix {inherit pkgs colors;})
     (import ./tmux/default.nix {inherit pkgs lib stdenv colors;})
     (import ./fish/default.nix {inherit pkgs colors;})
     (import ./starship.nix {inherit pkgs lib;})
     (import ./nvim/default.nix {inherit pkgs pkgs-stable pkgs-custom;})
-    (import ./broot.nix {inherit pkgs colors;})
     (import ./k9s.nix {inherit pkgs colors;})
     (import ./mpd/default.nix {inherit pkgs username;})
   ];

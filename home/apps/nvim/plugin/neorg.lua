@@ -141,13 +141,6 @@ require("neorg").setup({
       },
     },
     -- integrations
-    ["core.integrations.telescope"] = {
-      config = {
-        insert_file_link = {
-          show_title_preview = false,
-        },
-      },
-    },
     ["external.templates"] = {
       config = {
         templates_dir = vim.fn.stdpath("config") .. "/templates/norg",

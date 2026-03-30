@@ -213,8 +213,6 @@ in {
 
       libxml2
 
-      fzf
-
       html-tidy
 
       tinymist
@@ -386,11 +384,9 @@ in {
       # finder
       {
         type = "lua";
-        plugin = telescope-nvim;
-        config = builtins.readFile ./plugin/telescope.lua;
+        plugin = tv-nvim;
+        config = builtins.readFile ./plugin/tv.lua;
       }
-      fzf-wrapper
-      telescope-fzf-native-nvim
       {
         type = "lua";
         plugin = grapple-nvim;
@@ -453,7 +449,6 @@ in {
         plugin = neorg;
         config = builtins.readFile ./plugin/neorg.lua;
       }
-      neorg-telescope
       neorg-templates
       {
         type = "lua";

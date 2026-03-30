@@ -23,7 +23,3 @@ vim.keymap.set("n", "<c-q>", "<c-a>")
 vim.keymap.set("n", "-", function()
   require("oil").open()
 end)
-
-vim.keymap.set("n", "z=", function()
-  require("telescope.builtin").spell_suggest()
-end)

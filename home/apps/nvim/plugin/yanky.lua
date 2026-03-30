@@ -1,5 +1,3 @@
-local mapping = require("yanky.telescope.mapping")
-
 require("yanky").setup({
   ring = {
     history_length = 50,
@@ -10,18 +8,6 @@ require("yanky").setup({
   picker = {
     select = {
       action = nil,
-    },
-    telescope = {
-      use_default_mappings = false,
-      mappings = {
-        default = mapping.put("p"),
-        i = {},
-        n = {
-          p = mapping.put("p"),
-          P = mapping.put("P"),
-          d = mapping.delete(),
-        },
-      },
     },
   },
   system_clipboard = {
@@ -45,5 +31,5 @@ vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 vim.keymap.set("n", "<leader>P", "<Plug>(YankyCycleBackward)")
 vim.keymap.set("n", "<leader>p", "<Plug>(YankyCycleForward)")
 
-vim.api.nvim_set_hl(0, "YankyYanked", { link = "TelescopeResultsDiffDelete", nocombine = true })
-vim.api.nvim_set_hl(0, "YankyPut", { link = "TelescopeResultsDiffChange", nocombine = true })
+vim.api.nvim_set_hl(0, "YankyYanked", { link = "DiffDelete", nocombine = true })
+vim.api.nvim_set_hl(0, "YankyPut", { link = "DiffChange", nocombine = true })

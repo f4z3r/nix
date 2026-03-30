@@ -1,22 +1,31 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  colors,
+  ...
+}: {
   programs = {
     television = {
       enable = true;
       # see: https://alexpasmantier.github.io/television/user-guide/configuration
       settings = {
         ui = {
-          theme = "gruvbox-dark"; # TODO: f4z3r - update to dynamic
+          theme = "gruvbox-${colors.theme}";
+        };
+        keybindings = {
+          ctrl-l = "cycle_sources";
+          ctrl-s = "";
+          ctrl-u = "select_prev_history";
+          ctrl-d = "select_next_history";
         };
       };
       channels = {
         norg = {
           metadata = {
-            description = "A channel to select norg files and provide links.";
+            description = "A channel to select norg files.";
             name = "norg";
             requirements = [
               "fd"
               "bat"
-              "luajit"
             ];
           };
           preview = {
@@ -24,16 +33,6 @@
           };
           source = {
             command = "fd '.*\.norg$' ~/notes/";
-          };
-          keybindings = {
-            enter = "actions:link";
-          };
-          actions = {
-            link = {
-              description = "Prints the norg link to the file.";
-              command = "luajit ~/.local/bin/tv-norg-action-link.lua '{}'";
-              mode = "execute";
-            };
           };
         };
       };
@@ -53,9 +52,5 @@
         ];
       };
     };
-  };
-
-  home.file = {
-    ".local/bin/tv-norg-action-link.lua" = {source = ./scripts/tv-norg-action-link.lua;};
   };
 }

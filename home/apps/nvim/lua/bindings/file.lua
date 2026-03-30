@@ -5,31 +5,9 @@ local leader = "<leader>f"
 local mappings = {
   {
     mode = "n",
-    suffix = "a",
-    command = "<cmd>A<cr>",
-    desc = "Switch to alternative file",
-  },
-  {
-    mode = "n",
     suffix = "s",
     command = "<cmd>update<cr>",
     desc = "Save file",
-  },
-  {
-    mode = "n",
-    suffix = "g",
-    command = function()
-      require("telescope.builtin").git_files()
-    end,
-    desc = "Open git tracked file",
-  },
-  {
-    mode = "n",
-    suffix = "c",
-    command = function()
-      require("telescope.builtin").live_grep()
-    end,
-    desc = "Open file with content",
   },
   {
     mode = "n",
@@ -49,18 +27,16 @@ local mappings = {
     mode = "n",
     suffix = "f",
     command = function()
-      require("telescope.builtin").find_files({
-        find_command = { "rg", "--files", "--color", "never", "-g", "!archive/**" },
-      })
+      require("tv").tv_channel("files")
     end,
     desc = "Open file in workspace",
   },
 }
 
 vim.keymap.set("n", "<c-p>", function()
-  require("lazy.utils").open_with_broot()
+  require("tv").tv_channel("files")
 end, {
-  desc = "Open file with Broot",
+  desc = "Search a file with tv",
 })
 
 for _, mapping in ipairs(mappings) do

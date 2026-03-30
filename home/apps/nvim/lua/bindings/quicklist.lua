@@ -11,22 +11,6 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "/",
-    command = function()
-      require("telescope.builtin").quickfix()
-    end,
-    desc = "Search quickfix list",
-  },
-  {
-    mode = "n",
-    suffix = "s",
-    command = function()
-      require("telescope.builtin").quickfix()
-    end,
-    desc = "Search quickfix list",
-  },
-  {
-    mode = "n",
     suffix = "o",
     command = "<cmd>copen<cr>",
     desc = "Open quickfix list",

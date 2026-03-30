@@ -5,123 +5,28 @@ local leader = "<leader>/"
 local mappings = {
   {
     mode = "n",
-    suffix = "s",
-    command = function()
-      require("telescope.builtin").treesitter()
-    end,
-    desc = "Search all tags (treesitter)",
-  },
-  {
-    mode = "n",
-    suffix = "t",
-    command = "<cmd>TodoTelescope<cr>",
-    desc = "Search Todos",
-  },
-  {
-    mode = "n",
     suffix = "g",
     command = function()
-      require("telescope.builtin").git_commits()
+      require("tv").tv_channel("git-log")
     end,
     desc = "Search git commits",
   },
   {
     mode = "n",
-    suffix = "c",
-    command = function()
-      require("telescope.builtin").commands()
-    end,
-    desc = "Search commands",
-  },
-  {
-    mode = "n",
-    suffix = "k",
-    command = function()
-      require("telescope.builtin").keymaps()
-    end,
-    desc = "Search keymaps",
-  },
-  {
-    mode = "n",
     suffix = "a",
     command = function()
-      require("telescope.builtin").live_grep()
+      require("tv").tv_channel("text")
     end,
     desc = "Search content",
   },
   {
     mode = "n",
-    suffix = "h",
+    suffix = "t",
     command = function()
-      require("telescope.builtin").command_history()
+      require("tv").tv_channel("text", " TODO: ")
     end,
-    desc = "Search command history",
+    desc = "Search todos",
   },
-  {
-    mode = "n",
-    suffix = "l",
-    command = function()
-      require("telescope.builtin").loclist()
-    end,
-    desc = "Search location list",
-  },
-  {
-    mode = "n",
-    suffix = "q",
-    command = function()
-      require("telescope.builtin").quickfix()
-    end,
-    desc = "Search quickfix list",
-  },
-  {
-    mode = "n",
-    suffix = "m",
-    command = function()
-      require("telescope.builtin").marks()
-    end,
-    desc = "Search marks",
-  },
-  {
-    mode = "n",
-    suffix = "j",
-    command = function()
-      require("telescope.builtin").jumplist()
-    end,
-    desc = "Search jumplist",
-  },
-  {
-    mode = "n",
-    suffix = "S",
-    command = function()
-      require("telescope.builtin").spell_suggest()
-    end,
-    desc = "Search spelling suggestions",
-  },
-  {
-    mode = "n",
-    suffix = "/",
-    command = function()
-      require("telescope.builtin").resume()
-    end,
-    desc = "Resume previous search",
-  },
-  {
-    mode = "n",
-    suffix = "b",
-    command = function()
-      require("telescope.builtin").buffers()
-    end,
-    desc = "Pick buffer",
-  },
-  {
-    mode = "n",
-    suffix = "y",
-    command = function()
-      require("telescope").extensions.yank_history.yank_history()
-    end,
-    desc = "Search yank history",
-  },
-  -- TODO: search LSP stuff
 }
 
 vim.keymap.set("n", ";", "<cmd>noh<cr>")

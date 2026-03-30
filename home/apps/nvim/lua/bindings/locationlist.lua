@@ -11,28 +11,6 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "/",
-    command = function()
-      require("telescope.builtin").loclist()
-    end,
-    desc = "Search location list",
-  },
-  {
-    mode = "n",
-    suffix = "t",
-    command = "<cmd>Trouble todo<cr>",
-    desc = "Add todos to location list",
-  },
-  {
-    mode = "n",
-    suffix = "s",
-    command = function()
-      require("telescope.builtin").loclist()
-    end,
-    desc = "Search location list",
-  },
-  {
-    mode = "n",
     suffix = "a",
     command = function()
       local item = {
@@ -44,7 +22,7 @@ local mappings = {
       }
       vim.fn.setloclist(0, {item}, "a")
     end,
-    desc = "Search location list",
+    desc = "Add current line to location list",
   },
   {
     mode = "n",
