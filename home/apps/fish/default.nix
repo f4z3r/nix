@@ -70,7 +70,4 @@
       }
     ];
   };
-  home.file.".config/fish/completions/wash.fish" = {
-    source = ./completions/wash.fish;
-  };
 }

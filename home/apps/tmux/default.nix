@@ -14,52 +14,6 @@
     then "colour236"
     else "colour180";
   focus_colour = "colour214";
-
-  rtpPath = "share/tmux-plugins";
-
-  addRtp = path: rtpFilePath: attrs: derivation:
-    derivation
-    // {rtp = "${derivation}/${path}/${rtpFilePath}";}
-    // {
-      overrideAttrs = f: mkTmuxPlugin (attrs // f attrs);
-    };
-
-  mkTmuxPlugin = a @ {
-    pluginName,
-    rtpFilePath ? (builtins.replaceStrings ["-"] ["_"] pluginName) + ".tmux",
-    namePrefix ? "tmuxplugin-",
-    src,
-    unpackPhase ? "",
-    configurePhase ? ":",
-    buildPhase ? ":",
-    addonInfo ? null,
-    preInstall ? "",
-    postInstall ? "",
-    path ? lib.getName pluginName,
-    ...
-  }:
-    if lib.hasAttr "dependencies" a
-    then throw "dependencies attribute is obselete. see NixOS/nixpkgs#118034" # added 2021-04-01
-    else
-      addRtp "${rtpPath}/${path}" rtpFilePath a (stdenv.mkDerivation (a
-        // {
-          pname = namePrefix + pluginName;
-
-          inherit pluginName unpackPhase configurePhase buildPhase addonInfo preInstall postInstall;
-
-          installPhase = ''
-            runHook preInstall
-
-            target=$out/${rtpPath}/${path}
-            mkdir -p $out/${rtpPath}
-            cp -r . $target
-            if [ -n "$addonInfo" ]; then
-              echo "$addonInfo" > $target/addon-info.json
-            fi
-
-            runHook postInstall
-          '';
-        }));
 in {
   programs.tmux = {
     enable = true;
@@ -81,24 +35,6 @@ in {
           set -g @yank_action 'copy-pipe'
           set -g @shell_mode 'vi'
           set -g @override_copy_command 'wl-copy'
-        '';
-      }
-      {
-        plugin = mkTmuxPlugin {
-          pluginName = "tea";
-          version = "unstable-2025-04-16";
-          src = pkgs.fetchFromGitHub {
-            owner = "f4z3r";
-            repo = "tmux-tea";
-            rev = "0660ba5a9ad09303295e1bc987949887f4b036a2";
-            hash = "sha256-qa0MvennbMa/fncfXWvItBj4ikJWy5tqx5h5GnwiA3s=";
-          };
-        };
-        extraConfig = ''
-          set -g @tea-session-name "full-path"
-          set -g @tea-bind "y"
-          set -g @tea-alt-bind "false"
-          set -g @tea-find-path "$HOME/opt"
         '';
       }
       {

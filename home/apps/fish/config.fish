@@ -48,15 +48,6 @@ end
 bind -M insert \ce edit_cmd
 bind \ce edit_cmd
 
-# interactive broot settings
-function __interactive_broot
-    set output (broot)
-    commandline -ij $output
-end
-
-bind \ct __interactive_broot
-bind -M insert \ct __interactive_broot
-
 # useful functions
 function backup --argument filename
   cp -r $filename $filename.bak

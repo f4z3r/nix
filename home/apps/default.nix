@@ -17,6 +17,7 @@
       inherit pkgs pkgs-stable username resolution scale main_monitor monitor_prefix colors;
     })
     (import ./rofi/default.nix {inherit pkgs colors;})
+    (import ./tv/default.nix {inherit pkgs;})
     (import ./git/default.nix {inherit pkgs colors;})
     (import ./lazygit.nix {inherit pkgs colors;})
     (import ./tmux/default.nix {inherit pkgs lib stdenv colors;})
