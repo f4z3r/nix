@@ -30,6 +30,20 @@ local function insert_norg_link_at_cursor(entries, _config)
   vim.api.nvim_set_current_line(new_line)
 end
 
+local function always_open(entries, _config)
+  for _, entry in ipairs(entries) do
+    local file = vim.fn.trim(entry)
+    vim.cmd("edit " .. vim.fn.fnameescape(file))
+  end
+end
+
+local function always_open_vsplit(entries, _config)
+  for _, entry in ipairs(entries) do
+    local file = vim.fn.trim(entry)
+    vim.cmd("vsplit " .. vim.fn.fnameescape(file))
+  end
+end
+
 tv.setup({
   window = {
     width = 0.8,
@@ -40,28 +54,28 @@ tv.setup({
   },
   channels = {
     files = {
-      -- keybinding = "<C-p>",
       handlers = {
         ["<CR>"] = h.open_as_files,
         ["<C-o>"] = h.send_to_quickfix,
         ["<C-v>"] = h.open_in_vsplit,
-        -- ["<C-y>"] = h.copy_to_clipboard,
+      },
+    },
+    dirs = {
+      handlers = {
+        ["<CR>"] = always_open,
+        ["<C-v>"] = always_open_vsplit,
       },
     },
     norg = {
-      -- keybinding = "<C-p>",
       handlers = {
         ["<CR>"] = insert_norg_link_at_cursor,
       },
     },
-    -- `text`: ripgrep search through file contents
     text = {
-      -- keybinding = leader .. "a",
       handlers = {
         ["<CR>"] = h.open_at_line,
         ["<C-o>"] = h.send_to_quickfix,
         ["<C-v>"] = h.open_in_vsplit,
-        -- ["<C-y>"] = h.copy_to_clipboard,
       },
     },
   },

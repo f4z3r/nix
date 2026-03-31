@@ -27,9 +27,9 @@ local mappings = {
     mode = "n",
     suffix = "f",
     command = function()
-      require("tv").tv_channel("files")
+      require("tv").tv_channel("dirs")
     end,
-    desc = "Open file in workspace",
+    desc = "Open a directory in the workspace",
   },
 }
 
