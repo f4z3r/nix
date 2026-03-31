@@ -2,31 +2,78 @@ local tv = require("tv")
 
 local h = tv.handlers
 
-local NOTES_DIR = "notes"
 local TITLE_PREFIX = "title: "
 
-local function get_link(link)
-  local home = os.getenv("HOME")
-  local notes_dir = home .. "/" .. NOTES_DIR
-  local relative_link = link:sub(#notes_dir + 1, -1)
-  for line in io.lines(link) do
-    if line:match(TITLE_PREFIX) then
-      local title = line:sub(#TITLE_PREFIX + 1, -1)
-      return string.format("{:$%s:}[%s]", relative_link, title)
+local function strip_todo_prefix(heading)
+  return heading:gsub(" %(.%) ", " ")
+end
+
+local function strip_heading_prefix(heading)
+  return heading:gsub("%*+ ", "")
+end
+
+local function get_file_and_line_from_entries(entries)
+  assert(#entries == 1, "this operation only support single entries")
+
+  local parts = vim.split(entries[1], ":", { plain = true })
+  local filename = vim.fn.trim(parts[1])
+  if #parts < 2 then
+    return filename, nil
+  end
+  assert(vim.fn.filereadable(filename) == 1, "file is not readable: " .. filename)
+  local lnum = tonumber(vim.fn.trim(parts[2])) or 1
+  return filename, lnum
+end
+
+local function read_line(file_path, line_number)
+  local file = assert(io.open(file_path, "r"), "failed to open file: " .. file_path)
+  local curr = 1
+  for line in file:lines() do
+    if curr == line_number then
+      file:close()
+      return line
+    end
+    curr = curr + 1
+    if curr > line_number then
+      file:close()
+      assert(false, "failed to find line in file")
+    end
+  end
+  file:close()
+  assert(false, "failed to find line in file")
+end
+
+local function get_link(link, heading)
+  -- need to add trailing slash for neorg
+  local absolute_link = "/" .. link:gsub("%./", "")
+  if heading then
+    heading = strip_todo_prefix(heading)
+    return string.format("{:$%s:%s}[%s]", absolute_link, heading, strip_heading_prefix(heading))
+  else
+    for line in io.lines(link) do
+      if line:match(TITLE_PREFIX) then
+        local title = line:sub(#TITLE_PREFIX + 1, -1)
+        return string.format("{:$%s:}[%s]", absolute_link, title)
+      end
     end
   end
   assert(false, "failed to find title in norg document")
 end
 
 local function insert_norg_link_at_cursor(entries, _config)
-  if #entries ~= 1 then
-    return -- only supports a single entry
-  end
+  local filename, lnum = get_file_and_line_from_entries(entries)
+
   local _row, col = unpack(vim.api.nvim_win_get_cursor(0))
   local line = vim.api.nvim_get_current_line()
 
+  local heading
+  if lnum ~= nil then
+    heading = read_line(filename, lnum)
+  end
+  local link = get_link(filename, heading)
+
   -- Insert first entry at cursor position
-  local new_line = line:sub(1, col) .. get_link(entries[1]) .. line:sub(col + 1)
+  local new_line = line:sub(1, col) .. link .. line:sub(col + 1)
   vim.api.nvim_set_current_line(new_line)
 end
 

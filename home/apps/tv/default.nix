@@ -57,21 +57,38 @@
             requirements = [
               "fd"
               "bat"
+              "rg"
             ];
           };
           preview = {
-            command = "bat -n --color=always '{}'";
+            command = "bat -n --color=always '{strip_ansi|split:\\::0}'";
+            offset = "{strip_ansi|split:\\::1}";
           };
           source = {
-            command = "fd '.*\.norg$' ~/notes/";
+            command = [
+              "fd '.norg' ."
+              "rg . --no-heading --line-number --colors 'match:fg:white' --colors 'path:fg:blue' --color=always"
+            ];
+            ansi = true;
+            output = "{strip_ansi|split:\\::..2}";
           };
           keybindings = {
             ctrl-e = "actions:edit";
           };
+          preview = {
+            env = {
+              BAT_THEME = "ansi";
+            };
+          };
+          ui = {
+            preview_panel = {
+              header = "{strip_ansi|split:\\::..2}";
+            };
+          };
           actions = {
             edit = {
-              description = "Edit directory";
-              command = "nvim '{}'";
+              description = "Edit file in editor at line";
+              command = "nvim '+{strip_ansi|split:\\::1}' '{strip_ansi|split:\\::0}'";
               mode = "execute";
             };
           };
