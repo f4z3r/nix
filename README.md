@@ -52,6 +52,24 @@ Supports quake terminals:
 > **NOTE:** the entire setup is optimized for shortcuts to be nice with a Colemak Mod-DH setup.
 > Specifically I am running the following setup: https://github.com/f4z3r/zmk-config-piantor-bt
 
+### More Details
+
+My workflow runs around the following principles:
+
+1. On the most top level I work with Hyperland as the window manager. Its alt-key is `alt` and the
+   focus is to reach workspaces with a single keystroke. On that level, `rofi` servers as a launcher
+   and interface by which other applications can be triggered using shortcuts. `sofa` servers me
+   quite well there.
+2. One level down, `ghostty` with `fish` in `tmux` should allow me to jump as quickly between
+   projects as possible. I want to at be able to jump between two different projects as fast as
+   possible. Here the alt-key is `control`. `television` plays a role as a selection engine/fuzzy
+   finder.
+3. On the lowest level, `nvim` is used to navigate within projects. It serves both as a file manager
+   and editor. Here `grapple` is used to move quickly between bookmarked files, `marks` are used to
+   jump within a file, and `television` is again used as a picker. `overseer` and `neotest` are used
+   as a task runner and testing harness respectively. a All other dependencies are only used for
+   visual niceties. Plugins providing additional functionality are avoided if possible.
+
 ## Update
 
 ```bash

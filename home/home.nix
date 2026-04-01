@@ -215,11 +215,6 @@ in {
       yq-go
       zip
 
-      # stuff not used often, installed via nix-shell
-      #tokei
-      #jless
-      #pastel
-
       # tunnel
       firefox
       gopass

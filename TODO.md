@@ -1,13 +1,5 @@
 # ToDos
 
-## Simplify this Repository
-
-I have many tools that I rarely use. It might make sense to remove these, or incorporate them more
-tightly in my setup. Examples are:
-
-- `broot`: I love the tool but don't use it that much. Especially its integration into nvim.
-- `mpd`: rarely listen to music I have locally anymore.
-
 ### Simplify the Structure
 
 Currently the structure of the repository is quite ad-hoc. I would like to split it more concretely
@@ -28,3 +20,11 @@ optimised. For instance:
 
 - Various nvim plugins are my own forks awaiting merging in the upstream.
 - Various nvim plugins are pinned to a version, and might want to be updated.
+
+## Tooling Choices
+
+### Niri
+
+Niri as a WM looks super nice. However it seems that it is not quite as far as Hyprland. Moreover it
+would lead to a large discrepancy between x11 systems and wayland unless I find a scrollable WM on
+x11 and reconfigure that one as well.
