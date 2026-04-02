@@ -38,20 +38,6 @@
     };
   };
 
-  neotest-busted = pkgs.vimUtils.buildVimPlugin {
-    name = "neotest-busted";
-    src = pkgs.fetchFromGitHub {
-      owner = "MisanthropicBit";
-      repo = "neotest-busted";
-      rev = "v1.2.1";
-      sha256 = "sha256-dGPIsaKsVd2qHGkyxXB/2ag6xgRYsKB3jvcsJI7nDJI=";
-    };
-    doCheck = false;
-    dependencies = [
-      pkgs.vimPlugins.neotest
-    ];
-  };
-
   oil-git-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "oil-git.nvim";
     src = pkgs.fetchFromGitHub {
@@ -317,22 +303,6 @@ in {
         config = "require('refactoring').setup()";
       }
 
-      # test and runner stuff
-      {
-        type = "lua";
-        plugin = overseer-nvim;
-        config = builtins.readFile ./plugin/overseer.lua;
-      }
-      {
-        type = "lua";
-        plugin = neotest;
-        config = builtins.readFile ./plugin/neotest.lua;
-      }
-      neotest-golang
-      neotest-python
-      neotest-rust
-      neotest-busted
-
       # http
       # {
       #   type = "lua";
@@ -533,11 +503,6 @@ in {
   home.file.".config/nvim/queries" = {
     source = ./queries;
     recursive = true;
-  };
-  # FIX(@f4z3r): due to nvim launcher from neotest-busted
-  home.file.".local/share/nvim/busted" = {
-    text = "require 'busted.runner'({ standalone = false })";
-    executable = true;
   };
   home.file.".config/nvim/spell/en.utf-8.add" = {
     source = ./spell/en.utf-8.add;

@@ -49,12 +49,6 @@ local mappings = {
   },
   {
     mode = "n",
-    suffix = "r",
-    command = require("overseer").toggle,
-    desc = "Toggle task runner",
-  },
-  {
-    mode = "n",
     suffix = "c",
     command = toggle_conceal,
     desc = "Toggle conceal",
@@ -70,14 +64,6 @@ local mappings = {
     suffix = "m",
     command = require("treesj").toggle,
     desc = "Toggle split/join",
-  },
-  {
-    mode = "n",
-    suffix = "n",
-    command = function()
-      require("neotest").summary.toggle()
-    end,
-    desc = "Toggle test outputs",
   },
   {
     mode = "n",

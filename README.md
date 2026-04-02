@@ -66,9 +66,8 @@ My workflow runs around the following principles:
    finder.
 3. On the lowest level, `nvim` is used to navigate within projects. It serves both as a file manager
    and editor. Here `grapple` is used to move quickly between bookmarked files, `marks` are used to
-   jump within a file, and `television` is again used as a picker. `overseer` and `neotest` are used
-   as a task runner and testing harness respectively. a All other dependencies are only used for
-   visual niceties. Plugins providing additional functionality are avoided if possible.
+   jump within a file, and `television` is again used as a picker. All other dependencies are only
+   used for visual niceties. Plugins providing additional functionality are avoided if possible.
 
 ## Update
 

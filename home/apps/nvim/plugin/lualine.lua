@@ -51,7 +51,6 @@ require("lualine").setup({
     },
     lualine_y = {
       { "filetype", separator = { left = "" }, padding = { left = 2, right = 1 } },
-      "overseer",
       "progress",
     },
     lualine_z = {
