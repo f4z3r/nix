@@ -368,6 +368,13 @@ in {
         config = builtins.readFile ./plugin/marks.lua;
       }
 
+      # runner
+      {
+        type = "lua";
+        plugin = executor-nvim;
+        config = builtins.readFile ./plugin/executor.lua;
+      }
+
       # useful stuff
       {
         type = "lua";
