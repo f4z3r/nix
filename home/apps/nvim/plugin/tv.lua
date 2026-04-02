@@ -129,4 +129,7 @@ tv.setup({
   global_keybindings = {
     -- channels = "<leader>tv", -- opens the channel selector
   },
+  quickfix = {
+    auto_open = false,
+  },
 })
