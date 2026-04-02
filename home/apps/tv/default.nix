@@ -93,6 +93,54 @@
             };
           };
         };
+        busted = {
+          metadata = {
+            description = "A channel to select a busted test.";
+            name = "busted";
+            requirements = [
+              "busted"
+              "bat"
+              "rg"
+            ];
+          };
+          preview = {
+            command = "bat -n --color=always '{strip_ansi|split:\\::0}'";
+            offset = "{strip_ansi|split:\\::1}";
+          };
+          source = {
+            command = [
+              "rg . -g '{tests,specs}/**/*.lua' -e 'it|describe|context|insulate|expose' --no-heading --line-number --colors 'match:fg:white' --colors 'path:fg:blue' --color=always"
+            ];
+            ansi = true;
+            output = "{strip_ansi}";
+          };
+          keybindings = {
+            enter = "actions:print";
+            ctrl-r = "actions:run";
+          };
+          preview = {
+            env = {
+              BAT_THEME = "ansi";
+            };
+          };
+          ui = {
+            preview_panel = {
+              header = "{strip_ansi|split:\\::..2}";
+            };
+          };
+          actions = {
+            print = {
+              description = "Run the test(s)";
+              command = "luajit ~/.local/share/scripts/tv-action-busted-run.lua echo '{strip_ansi}'";
+              mode = "execute";
+            };
+            run = {
+              description = "Run the test(s)";
+              command = "luajit ~/.local/share/scripts/tv-action-busted-run.lua run '{strip_ansi}'";
+              mode = "execute";
+            };
+          };
+        };
       };
     };
 
@@ -109,6 +157,12 @@
           }
         ];
       };
+    };
+  };
+
+  home.file = {
+    ".local/share/scripts/tv-action-busted-run.lua" = {
+      source = ./scripts/tv-action-busted-run.lua;
     };
   };
 }
