@@ -1,0 +1,24 @@
+[actions.edit]
+command = "nvim '{}'"
+description = "Edit directory"
+mode = "execute"
+
+[actions.go_to_parent_dir]
+command = "tv dirs .."
+description = "Open tv in parent dir."
+mode = "execute"
+
+[keybindings]
+ctrl-e = "actions:edit"
+ctrl-space = "actions:go_to_parent_dir"
+
+[metadata]
+description = "A channel to select from directories"
+name = "dirs"
+requirements = ["fd"]
+
+[preview]
+command = "eza -la --color=always '{}'"
+
+[source]
+command = ["fd -t d", "fd -t d --hidden"]

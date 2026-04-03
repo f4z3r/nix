@@ -1,0 +1,27 @@
+[actions.edit]
+command = "nvim '+{strip_ansi|split:\\::1}' '{strip_ansi|split:\\::0}'"
+description = "Edit file in editor at line"
+mode = "execute"
+
+[keybindings]
+ctrl-e = "actions:edit"
+
+[metadata]
+description = "A channel to select norg files."
+name = "norg"
+requirements = ["fd", "bat", "rg"]
+
+[preview]
+command = "bat -n --color=always '{strip_ansi|split:\\::0}'"
+offset = "{strip_ansi|split:\\::1}"
+
+[preview.env]
+BAT_THEME = "ansi"
+
+[source]
+ansi = true
+command = ["fd '.norg' .", "rg . --no-heading --line-number --colors 'match:fg:white' --colors 'path:fg:blue' --color=always"]
+output = "{strip_ansi|split:\\::..2}"
+
+[ui.preview_panel]
+header = "{strip_ansi|split:\\::..2}"
