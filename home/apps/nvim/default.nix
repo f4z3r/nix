@@ -14,6 +14,20 @@
     };
   };
 
+  executor-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "executor.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "f4z3r";
+      repo = "executor.nvim";
+      rev = "feat/set-command";
+      sha256 = "sha256-+L8ucPRi3W4BZCDKifkfba6lp1S/pZ5rs8giZjBQpic=";
+    };
+    nvimSkipModules = [
+      "executor"
+      "executor.executor"
+    ];
+  };
+
   neorg-templates = pkgs.vimUtils.buildVimPlugin {
     name = "neorg-templates";
     src = pkgs.fetchFromGitHub {

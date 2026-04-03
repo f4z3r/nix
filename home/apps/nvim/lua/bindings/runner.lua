@@ -35,6 +35,15 @@ local mappings = {
     end,
     desc = "Show runner history",
   },
+  {
+    mode = "n",
+    suffix = "s",
+    command = function()
+      local command = require("lazy.utils").select_with_tv("channels")
+      require("executor").commands.run_with_new_command(command)
+    end,
+    desc = "Select a command using tv",
+  },
 }
 
 for _, mapping in ipairs(mappings) do
