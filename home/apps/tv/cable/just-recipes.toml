@@ -1,0 +1,24 @@
+[metadata]
+name = "just-recipes"
+description = "A channel to select recipes from Justfiles"
+requirements = [ "just",]
+
+[source]
+command = [ "just --summary | tr '[:blank:]' '\n'",]
+
+[preview]
+command = "just -s {}"
+
+[keybindings]
+enter = "actions:echo"
+ctrl-r = "actions:run"
+
+[actions.echo]
+description = "Echo a justfile recipe"
+command = "echo -n 'just {}'"
+mode = "execute"
+
+[actions.run]
+description = "Run a justfile recipe"
+command = "just {}"
+mode = "execute"

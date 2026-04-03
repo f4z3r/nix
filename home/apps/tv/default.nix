@@ -20,6 +20,9 @@
         norg = builtins.fromTOML (builtins.readFile ./cable/norg.toml);
         channels = builtins.fromTOML (builtins.readFile ./cable/channels.toml);
         busted = builtins.fromTOML (builtins.readFile ./cable/busted.toml);
+        make-targets = builtins.fromTOML (builtins.readFile ./cable/make-targets.toml);
+        fish-history = builtins.fromTOML (builtins.readFile ./cable/fish-history.toml);
+        fish-recipes = builtins.fromTOML (builtins.readFile ./cable/just-recipes.toml);
       };
     };
 

@@ -1,21 +1,11 @@
-[actions.print]
-command = "luajit ~/.local/share/scripts/tv-action-busted-run.lua echo '{strip_ansi}'"
-description = "Run the test(s)"
-mode = "execute"
-
-[actions.run]
-command = "luajit ~/.local/share/scripts/tv-action-busted-run.lua run '{strip_ansi}'"
-description = "Run the test(s)"
-mode = "execute"
-
-[keybindings]
-ctrl-r = "actions:run"
-enter = "actions:print"
-
 [metadata]
 description = "A channel to select a busted test."
 name = "busted"
 requirements = ["busted", "bat", "rg"]
+
+[keybindings]
+enter = "actions:echo"
+ctrl-r = "actions:run"
 
 [preview]
 command = "bat -n --color=always '{strip_ansi|split:\\::0}'"
@@ -31,3 +21,13 @@ output = "{strip_ansi}"
 
 [ui.preview_panel]
 header = "{strip_ansi|split:\\::..2}"
+
+[actions.echo]
+command = "luajit ~/.local/share/scripts/tv-action-busted-run.lua echo '{strip_ansi}'"
+description = "Echo the test(s)"
+mode = "execute"
+
+[actions.run]
+command = "luajit ~/.local/share/scripts/tv-action-busted-run.lua run '{strip_ansi}'"
+description = "Run the test(s)"
+mode = "execute"
