@@ -26,6 +26,7 @@ local function main()
     if project ~= nil and repo ~= nil then
       assert(os.execute(string.format("mkdir %s/%s", BASE, project)))
       assert(os.execute(string.format("git clone %s %s/%s/%s", args.uri, BASE, project, repo)))
+      assert(os.execute(string.format("zoxide add %s/%s/%s", args.uri, BASE, project, repo)))
       return
     end
   end
