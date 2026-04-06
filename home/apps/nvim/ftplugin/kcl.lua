@@ -1,3 +1,3 @@
 -- KCL language specific settings
 
-vim.bo.commentstring = "#%s"
+vim.opt_local.commentstring = "#%s"
