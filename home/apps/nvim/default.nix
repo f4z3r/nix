@@ -189,6 +189,8 @@ in {
 
       beancount-language-server
 
+      kcl-language-server
+
       yaml-language-server
       yamlfmt
 

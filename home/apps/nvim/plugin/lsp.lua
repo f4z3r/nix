@@ -164,6 +164,13 @@ vim.lsp.config("yamlls", {
 })
 vim.lsp.enable("yamlls")
 
+-- KCL
+vim.lsp.config("kcl", {
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+vim.lsp.enable("kcl")
+
 -- Terraform
 vim.lsp.config("terraformls", {
   capabilities = capabilities,

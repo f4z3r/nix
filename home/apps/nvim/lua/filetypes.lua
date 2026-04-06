@@ -10,5 +10,6 @@ vim.filetype.add({
   },
   extension = {
     http = "http",
+    k = "kcl",
   }
 })

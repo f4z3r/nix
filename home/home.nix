@@ -240,12 +240,13 @@ in {
       # programming
       delve
       dive
-      python
       go
+      kcl
       kubectl
       kubectx
       kubernetes-helm
       pkgs-stable.dprint
+      python
       ruff
       rustup
     ];
