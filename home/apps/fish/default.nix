@@ -41,7 +41,7 @@
       egrep = ''egrep --color=auto'';
       fgrep = ''fgrep --color=auto'';
       nix-shell = ''nix-shell --run fish'';
-      wall = ''swww img (fd . ~/.local/share/wallpapers/ | shuf -n 1)'';
+      wall = ''awww img (fd . ~/.local/share/wallpapers/ | shuf -n 1)'';
       ns = ''rclone bisync gdrive-crypt:/ ~/notes --remove-empty-dirs --filter "- /.**" --filter "- **/.**" --filter "- **/tags"  --compare size,modtime -MP --fix-case --conflict-suffix upstream,local'';
       jwt = ''wl-paste | step crypto jwt inspect --insecure | jq'';
       imv = ''imv -b ffffff'';

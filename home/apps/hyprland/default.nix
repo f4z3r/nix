@@ -35,8 +35,8 @@ in {
           };
           exec-once = [
             "${pkgs.dunst}/bin/dunst"
-            "${pkgs.swww}/bin/swww-daemon"
-            "${pkgs.swww}/bin/swww img ${wallpaper}"
+            "${pkgs.awww}/bin/awww-daemon"
+            "${pkgs.awww}/bin/awww img ${wallpaper}"
             "${pkgs.hyprland}/bin/hyprctl setcursor '${cursorTheme}' 24"
             "${luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua"
             "${pkgs.hyprland}/bin/hyprctl dispatch workspace 4"

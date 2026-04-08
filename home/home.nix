@@ -232,7 +232,7 @@ in {
       satty
       slurp
       step-cli
-      swww
+      awww
       wl-clipboard
       wl-screenrec
       yt-dlp
