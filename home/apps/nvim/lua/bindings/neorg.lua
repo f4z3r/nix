@@ -5,12 +5,6 @@ local leader = "<leader>u"
 local mappings = {
   {
     mode = "n",
-    suffix = "i",
-    command = "<cmd>Neorg workspace notes<cr>",
-    desc = "Open neorg inbox",
-  },
-  {
-    mode = "n",
     suffix = "u",
     command = "<cmd>Neorg journal today<cr>",
     desc = "Open journal today",
