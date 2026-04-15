@@ -31,6 +31,22 @@ local mappings = {
     end,
     desc = "Execute selected opencode action",
   },
+  {
+    mode = { "n" },
+    suffix = "b",
+    command = function()
+      require("gitsigns").blame()
+    end,
+    desc = "Show git blame",
+  },
+  {
+    mode = { "n" },
+    suffix = "g",
+    command = function()
+      require("gitsigns").preview_hunk_inline()
+    end,
+    desc = "Preview current hunk",
+  },
 }
 
 for _, mapping in ipairs(mappings) do
