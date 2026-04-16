@@ -2,13 +2,13 @@ require("zen-mode").setup({
   window = {
     width = function()
       if vim.opt_local.textwidth:get() > 0 then
-        return vim.opt_local.textwidth:get() + 20 -- need space for line numbers, diagnostics, etc
+        return vim.opt_local.textwidth:get() + 10 -- need space for line numbers, diagnostics, etc
       end
       return 120
     end,
     options = {
-      -- signcolumn = "no", -- disable signcolumn
-      number = false, -- disable number column
+      signcolumn = "no", -- disable signcolumn
+      number = true, -- disable number column
       relativenumber = false, -- disable relative numbers
       cursorline = true, -- disable cursorline
       cursorcolumn = false, -- disable cursor column
