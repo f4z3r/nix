@@ -37,6 +37,11 @@
             path = "~/notes/";
             startup_command = "nvim";
           }
+          {
+            name = "btop";
+            path = "~/";
+            startup_command = "btop";
+          }
         ];
       };
     };
