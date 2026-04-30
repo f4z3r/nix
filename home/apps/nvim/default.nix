@@ -211,8 +211,6 @@ in {
 
       clippy
 
-      stylua
-
       libxml2
 
       html-tidy

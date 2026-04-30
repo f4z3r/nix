@@ -183,21 +183,14 @@ in {
       pkgs-stable.fava
 
       # utils
-      beancount
-      buildah
-      devbox
       erdtree
       fd
       fend
-      gcc
-      gnumake
       imagemagick
       imv
       jq
-      just
       miniserve
       mupdf
-      opencode
       openssl
       ouch
       parallel
@@ -208,7 +201,6 @@ in {
       rsync
       silver-searcher
       tree
-      typst
       vhs
       watchexec
       xcp
@@ -238,17 +230,26 @@ in {
       yt-dlp
 
       # programming
+      beancount
+      buildah
       delve
+      devbox
       dive
+      gcc
+      gnumake
       go
+      just
       kcl
       kubectl
       kubectx
       kubernetes-helm
+      opencode
       pkgs-stable.dprint
       python
       ruff
       rustup
+      stylua
+      typst
     ];
 
     file = {
