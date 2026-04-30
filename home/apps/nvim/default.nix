@@ -357,7 +357,8 @@ in {
       }
       {
         type = "lua";
-        plugin = opencode-nvim;
+        plugin = pi-nvim;
+        config = builtins.readFile ./plugin/pi.lua;
       }
       {
         type = "lua";

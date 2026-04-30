@@ -140,6 +140,7 @@ in {
       NIXOS_OZONE_WL = "1";
       GDK_BACKEND = "wayland";
       GTK_IM_MODULE = "simple";
+      OPENROUTER_API_KEY = secrets.ai.openrouter-api-key;
     };
 
     systemPackages = with pkgs; [

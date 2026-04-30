@@ -17,19 +17,19 @@ local mappings = {
   },
   {
     mode = { "n", "x" },
-    suffix = "o",
+    suffix = "i",
     command = function()
-      require("opencode").ask("@this: ", { submit = true })
+      vim.cmd("PiAsk")
     end,
-    desc = "Ask opencode",
+    desc = "Ask Pi",
   },
   {
-    mode = { "n", "x" },
-    suffix = "s",
+    mode = { "v" },
+    suffix = "i",
     command = function()
-      require("opencode").select()
+      vim.cmd("PiAskSelection")
     end,
-    desc = "Execute selected opencode action",
+    desc = "Ask Pi about a selection",
   },
   {
     mode = { "n" },

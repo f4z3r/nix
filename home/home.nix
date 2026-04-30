@@ -243,7 +243,7 @@ in {
       kubectl
       kubectx
       kubernetes-helm
-      opencode
+      pi-coding-agent
       pkgs-stable.dprint
       python
       ruff
