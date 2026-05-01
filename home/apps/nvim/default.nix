@@ -177,13 +177,6 @@ in {
       alejandra
       nil
 
-      cbfmt
-
-      shfmt
-      shellharden
-
-      gofumpt
-      goimports-reviser
       revive
       gopls
 
@@ -192,7 +185,6 @@ in {
       kcl-language-server
 
       yaml-language-server
-      yamlfmt
 
       helm-ls
 
@@ -207,7 +199,6 @@ in {
       tfsec
 
       harper
-      prettier
 
       clippy
 
@@ -216,7 +207,6 @@ in {
       html-tidy
 
       tinymist
-      typstyle
     ];
 
     plugins = with pkgs.vimPlugins; [

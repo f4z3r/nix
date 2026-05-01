@@ -232,12 +232,15 @@ in {
       # programming
       beancount
       buildah
+      cbfmt
       delve
       devbox
       dive
       gcc
       gnumake
       go
+      gofumpt
+      goimports-reviser
       just
       kcl
       kubectl
@@ -245,11 +248,16 @@ in {
       kubernetes-helm
       pi-coding-agent
       pkgs-stable.dprint
+      prettier
       python
       ruff
       rustup
+      shellharden
+      shfmt
       stylua
       typst
+      typstyle
+      yamlfmt
     ];
 
     file = {
