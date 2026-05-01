@@ -141,6 +141,7 @@ in {
       GDK_BACKEND = "wayland";
       GTK_IM_MODULE = "simple";
       OPENROUTER_API_KEY = secrets.ai.openrouter-api-key;
+      BRAVE_API_KEY = secrets.ai.brave-search-api-key;
     };
 
     systemPackages = with pkgs; [
