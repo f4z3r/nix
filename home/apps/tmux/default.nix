@@ -54,6 +54,8 @@ in {
       # turn of mouse
       set -g mouse off
 
+      set -g extended-keys on
+
       set -g status on
 
       set -g base-index 1
