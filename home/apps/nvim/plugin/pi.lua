@@ -1,6 +1,6 @@
 require("pi").setup({
   provider = "openrouter",
-  model = "qwen/qwen3-coder:free",
+  model = "mistralai/mistral-small-2603",
   max_context_lines = 300,
   max_context_bytes = 24000,
   selection_context_lines = 40,
