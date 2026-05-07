@@ -20,7 +20,10 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 vim.diagnostic.config({
   update_in_insert = false,
   virtual_text = false,
-  float = { border = border },
+  float = {
+    source = true,
+    border = border,
+  },
 })
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
