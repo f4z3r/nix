@@ -246,7 +246,6 @@ in {
       kubectl
       kubectx
       kubernetes-helm
-      pi-coding-agent
       pkgs-stable.dprint
       prettier
       python
