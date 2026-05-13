@@ -14,7 +14,7 @@ require("pi").setup({
     "/home/f4z3r/notes/resources/ai/:/home/f4z3r/notes/resources/ai",
     "-v",
     vim.fn.getcwd() .. ":/home/f4z3r/workspace",
-    "ghcr.io/f4z3r/pi-agent-image:v0.1.0",
+    "ghcr.io/f4z3r/pi-agent-image:v0.2.0",
     "pi",
   },
   provider = "openrouter",
