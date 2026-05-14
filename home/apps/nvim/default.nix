@@ -17,10 +17,10 @@
   pi-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "pi.nvim";
     src = pkgs.fetchFromGitHub {
-      owner = "f4z3r";
+      owner = "pablopunk";
       repo = "pi.nvim";
-      rev = "fbce0a151417ae9ce6e152388467c68004c10ada";
-      sha256 = "sha256-GxEqKhig79PYFxDSwVUk0AYCnl6SB1ApB7z+fV5NT8k=";
+      rev = "1922e69569fe8ca8219d7934201f00cd38a30565";
+      sha256 = "sha256-bS+x0jbzhj3FghGSuwfvn34ty3U8RpN1x3AwQdadS1o=";
     };
   };
 
