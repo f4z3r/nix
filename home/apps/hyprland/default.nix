@@ -15,8 +15,8 @@
     else "Capitaine Cursors (Gruvbox)";
   wallpaper =
     if colors.theme == "dark"
-    then "~/.local/share/wallpapers/midnight-reflections-moonlit-sea.jpg"
-    else "~/.local/share/wallpapers/mountains-with-sky.jpg";
+    then "midnight-reflections-moonlit-sea.jpg"
+    else "mountains-with-sky.jpg";
   luajit = import ../../langs/luajit.nix {inherit pkgs;};
 in {
   imports = [
@@ -29,238 +29,30 @@ in {
       hyprland = {
         enable = true;
         package = pkgs.hyprland;
-        settings = {
-          debug = {
-            disable_logs = true;
-          };
-          exec-once = [
-            "${pkgs.dunst}/bin/dunst"
-            "${pkgs.awww}/bin/awww-daemon"
-            "${pkgs.awww}/bin/awww img ${wallpaper}"
-            "${pkgs.hyprland}/bin/hyprctl setcursor '${cursorTheme}' 24"
-            "${luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua"
-            "${pkgs.hyprland}/bin/hyprctl dispatch workspace 4"
-          ];
-          env = [
-            ''GTK_THEME,Materia-dark''
-            ''XDG_SESSION_TYPE,wayland''
-          ];
-          "$general" = "SUPER";
-          "$wm" = "ALT";
-          "$app" = "CONTROL";
-          monitor = [
-            ''${main_monitor}, ${resolution}@60, 0x0,${toString scale}''
-            # ''DP-1, 5120x1440@60, -1920x0, 1''
-            # ''DP-2, 5120x1440@60, 1920x0, 1''
-            ''${monitor_prefix}-1, highres, auto-left, 1''
-            ''${monitor_prefix}-2, highres, auto-right, 1''
-            ''monitor=desc:Philips Consumer Electronics Company PHL 499P9 AU02024017754,2560x1440,auto-left,1''
-          ];
-          bind = [
-            ''$general, RETURN, exec, ghostty -e ${pkgs.tmux}/bin/tmux''
-
-            ''$app, RETURN, togglespecialworkspace, quake''
-
-            ''$wm, Space, exec, ${pkgs.rofi}/bin/rofi -combi-modi window,drun -show combi''
-
-            ''$wm, L, movefocus, r''
-            ''$wm, H, movefocus, l''
-            ''$wm, K, movefocus, u''
-            ''$wm, N, movefocus, d''
-            ''$wm SHIFT, L, movewindoworgroup, r''
-            ''$wm SHIFT, H, movewindoworgroup, l''
-            ''$wm SHIFT, K, movewindoworgroup, u''
-            ''$wm SHIFT, N, movewindoworgroup, d''
-
-            ''$wm SHIFT, Y, fullscreen''
-            ''$wm SHIFT, X, killactive''
-
-            ''$wm, Tab, workspace, previous_per_monitor''
-            ''$wm, A, workspace, 1''
-            ''$wm, R, workspace, 2''
-            ''$wm, S, workspace, 3''
-            ''$wm, T, workspace, 4''
-            ''$wm, G, workspace, 5''
-            ''$wm, Q, workspace, 6''
-            ''$wm, W, workspace, 7''
-            ''$wm, F, workspace, 8''
-            ''$wm, P, workspace, 9''
-            ''$wm, B, workspace, 0''
-            ''$wm SHIFT, Tab, movetoworkspace, special:quake''
-            ''$wm SHIFT, A, movetoworkspace, 1''
-            ''$wm SHIFT, R, movetoworkspace, 2''
-            ''$wm SHIFT, S, movetoworkspace, 3''
-            ''$wm SHIFT, T, movetoworkspace, 4''
-            ''$wm SHIFT, G, movetoworkspace, 5''
-            ''$wm SHIFT, Q, movetoworkspace, 6''
-            ''$wm SHIFT, W, movetoworkspace, 7''
-            ''$wm SHIFT, F, movetoworkspace, 8''
-            ''$wm SHIFT, P, movetoworkspace, 9''
-            ''$wm SHIFT, B, movetoworkspace, 0''
-
-            ''$wm&$app, x, exec, ${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu''
-            ''$wm&$app, l, exec, loginctl lock-session''
-            ''$wm&$app, o, exec, /etc/profiles/per-user/${username}/bin/sofa''
-            ''$wm&$app, w, exec, ${luajit}/bin/luajit /home/${username}/.local/share/scripts/fuzzy-bookmarks.lua''
-            ''$wm&$app, r, exec, bash /home/${username}/.local/share/scripts/screen-record.sh''
-            ''$wm&$app, p, exec, ${pkgs.gopass}/bin/gopass ls --flat | ${pkgs.rofi}/bin/rofi -dmenu -p Gopass | xargs --no-run-if-empty ${pkgs.gopass}/bin/gopass show -o | head -n 1 | ${pkgs.wl-clipboard}/bin/wl-copy -t text/sensitive''
-            ''$wm&$app, n, exec, ${luajit}/bin/luajit ~/.local/share/scripts/pomodoro.lua toggle''
-            ''$wm&$app, m, exec, ${luajit}/bin/luajit ~/.local/share/scripts/toggle-mute.lua''
-
-            '', Print, exec, bash /home/${username}/.local/share/scripts/screenshot.sh''
-          ];
-          bindm = [
-            ''$wm, mouse:272, movewindow''
-            ''$wm, mouse:273, resizewindow''
-          ];
-          bindl = [
-            '', XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle''
-            '', XF86AudioMicMute, exec, ${luajit}/bin/luajit /home/${username}/.local/share/scripts/toggle-mute.lua''
-            '', XF86AudioPlay, exec, ${pkgs.mpc}/bin/mpc toggle''
-          ];
-          bindle = [
-            '', XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+''
-            '', XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-''
-            '', XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl -c 'backlight' -d '*backlight*' s 5%-''
-            '', XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl -c 'backlight' -d '*backlight*' s +5%''
-          ];
-          bezier = [
-            ''easeOutExpo, 0.16, 1, 0.3, 1''
-          ];
-          animation = [
-            ''workspaces, 1, 2, easeOutExpo, fade''
-            ''windowsIn, 1, 2, easeOutExpo, slide''
-            ''windowsOut, 1, 2, easeOutExpo, popin''
-            ''layers, 1, 1, easeOutExpo, popin''
-          ];
-          layerrule = [
-            ''animation popin,match:namespace rofi''
-            ''dim_around on,match:namespace rofi''
-            ''no_anim on,match:namespace selection''
-          ];
-          windowrule = [
-            # ensure pinentry grabs input
-            ''animation popin,match:class Pinentry''
-            ''float on,match:class Pinentry''
-            ''center on,match:class Pinentry''
-            # quake window sizing
-            ''dim_around on,match:title quake''
-            ''float on,match:title quake''
-            ''center on,match:title quake''
-            ''size (monitor_w*0.7) (monitor_h*0.7),match:title quake''
-            ''animation popin,match:title quake''
-            # make brave popups appear centrally floating
-            ''float on,match:class ^brave$''
-            ''center on,match:class ^brave$''
-            ''animation popin,match:class ^brave$''
-            ''size 70% 70%,match:class ^brave$''
-            # make chrome meet popups appear centrally floating
-            ''float on,match:class ^google-chrome$,match:title ^Meet –.*''
-            ''pin on,match:class ^google-chrome$,match:title ^Meet –.*''
-            ''content video,match:class ^google-chrome$,match:title ^Meet –.*''
-            ''center on,match:class ^google-chrome$,match:title ^Meet –.*''
-            ''size 15% 100%,match:class ^google-chrome$,match:title ^Meet –.*''
-            ''no_anim on,match:class ^google-chrome$,match:title ^Meet –.*''
-            # set content types
-            ''idle_inhibit focus,match:class ^brave-browser$,match:title .*YouTube.*''
-            ''idle_inhibit focus,match:class ^brave-browser$,match:title .*Netflix.*''
-            ''no_dim on,match:class ^brave-browser$,match:title .*YouTube.*''
-            ''no_dim on,match:class ^brave-browser$,match:title .*Netflix.*''
-            # disable idling when in full screen or playing video
-            ''idle_inhibit focus,match:fullscreen true''
-          ];
-          workspace = [
-            ''r[1-5], monitor:${main_monitor}''
-            ''r[6-10], monitor:${monitor_prefix}-1''
-            ''r[6-10], monitor:${monitor_prefix}-2''
-            # launch new terminal when opening special workspace and it is empty
-            ''special:quake, on-created-empty:[ float on; size (monitor_w*0.7) (monitor_h*0.7); center on ] ghostty --title=quake --class=quake -e tmux new -s quake''
-          ];
-          general = {
-            border_size = 2;
-            gaps_in = 0;
-            gaps_out = 0;
-            "col.active_border" = "rgb(5900be)";
-            layout = "dwindle";
-          };
-          dwindle = {
-            preserve_split = true;
-            force_split = 2;
-            smart_split = false;
-            smart_resizing = false;
-          };
-          decoration = {
-            rounding = 3;
-            shadow = {
-              enabled = false;
-            };
-            dim_inactive = true;
-            dim_strength = 0.3;
-            blur = {
-              enabled = false;
-            };
-          };
-          input = {
-            kb_layout = "us";
-            kb_variant = "alt-intl";
-            follow_mouse = 0;
-            touchpad = {
-              disable_while_typing = true;
-              natural_scroll = false;
-            };
-          };
-          misc = {
-            vfr = true;
-            focus_on_activate = true;
-            disable_hyprland_logo = true;
-            disable_splash_rendering = true;
-          };
-          cursor = {
-            inactive_timeout = 5;
-          };
-          ecosystem = {
-            no_update_news = true;
-            no_donation_nag = true;
-          };
-        };
-        # importantPrefixes = "";
-        extraConfig = ''
-          bindp=$wm&$app, z, submap, resize
-          submap=resize
-          binde=, h, resizeactive, 10% 0
-          binde=, l, resizeactive, -10% 0
-          binde=, k, resizeactive, 0 -10%
-          binde=, n, resizeactive, 0 10%
-          binde=, right, resizeactive, 10% 0
-          binde=, left, resizeactive, -10% 0
-          binde=, up, resizeactive, 0 -10%
-          binde=, down, resizeactive, 0 10%
-          bind=, escape, submap, reset
-          bind=, catchall, submap, reset
-          submap=reset
-          bindp=$wm&$app, s, submap, split
-          submap=split
-          bind=, h, layoutmsg, preselect r
-          bind=, h, submap, reset
-          bind=, l, layoutmsg, preselect l
-          bind=, l, submap, reset
-          bind=, k, layoutmsg, preselect u
-          bind=, k, submap, reset
-          bind=, n, layoutmsg, preselect d
-          bind=, n, submap, reset
-          bind=, right, layoutmsg, preselect l
-          bind=, right, submap, reset
-          bind=, left, layoutmsg, preselect l
-          bind=, left, submap, reset
-          bind=, up, layoutmsg, preselect u
-          bind=, up, submap, reset
-          bind=, down, layoutmsg, preselect d
-          bind=, down, submap, reset
-          bind=, escape, submap, reset
-          bind=, h, submap, reset
-          bind=, catchall, submap, reset
-          submap=reset
-        '';
+        configType = "lua";
+        extraConfig =
+          builtins.replaceStrings
+          [
+            "@LUAJIT@"
+            "@ROFI_POWER_MENU@"
+            "@WALLPAPER@"
+            "@CURSOR_THEME@"
+            "@RESOLUTION@"
+            "@SCALE@"
+            "@MAIN_MONITOR@"
+            "@MONITOR_PREFIX@"
+          ]
+          [
+            "${luajit}/bin/luajit"
+            "${pkgs.rofi-power-menu}/bin/rofi-power-menu"
+            "${wallpaper}"
+            "${cursorTheme}"
+            "${resolution}"
+            "${toString scale}"
+            "${main_monitor}"
+            "${monitor_prefix}"
+          ]
+          (builtins.readFile ./config.lua);
         systemd = {
           enable = true;
         };
