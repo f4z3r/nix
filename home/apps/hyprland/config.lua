@@ -152,12 +152,13 @@ hl.bind(
     "gopass ls --flat | rofi -dmenu -p Gopass | xargs --no-run-if-empty gopass show -o | head -n 1 | wl-copy -t text/sensitive"
   )
 )
+-- Mnemonic pOmOdOrO
 hl.bind(
-  APP_MODIFIER .. " + N",
+  WM_MODIFIER .. " + O",
   hl.dsp.exec_cmd(string.format("@LUAJIT@ %s/.local/share/scripts/pomodoro.lua toggle", HOME))
 )
 hl.bind(
-  APP_MODIFIER .. " + M",
+  WM_MODIFIER .. " + M",
   hl.dsp.exec_cmd(string.format("@LUAJIT@ %s/.local/share/scripts/toggle-mute.lua", HOME))
 )
 
@@ -194,7 +195,8 @@ hl.bind(
   hl.dsp.exec_cmd("brightnessctl -c 'backlight' -d '*backlight*' s +5%"),
   { locked = true, repeating = true }
 )
-hl.bind(WM_MODIFIER .. " + Z", hl.dsp.submap("resize"))
+-- Mnemonic rEsizE
+hl.bind(WM_MODIFIER .. " + E", hl.dsp.submap("resize"))
 hl.define_submap("resize", function()
   hl.bind("L", hl.dsp.window.resize({ x = 40, y = 0, relative = true }), { repeating = true })
   hl.bind("H", hl.dsp.window.resize({ x = -40, y = 0, relative = true }), { repeating = true })
@@ -207,7 +209,8 @@ hl.define_submap("resize", function()
   hl.bind("escape", hl.dsp.submap("reset"))
   hl.bind("catchall", hl.dsp.submap("reset"))
 end)
-hl.bind(WM_MODIFIER .. " + E", hl.dsp.submap("split"))
+-- Mnemonic Vertical split
+hl.bind(WM_MODIFIER .. " + V", hl.dsp.submap("split"))
 hl.define_submap("split", "reset", function()
   hl.bind("L", hl.dsp.layout("preselect r"))
   hl.bind("H", hl.dsp.layout("preselect l"))
