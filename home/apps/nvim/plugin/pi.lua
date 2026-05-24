@@ -9,9 +9,9 @@ require("pi").setup({
     "-e",
     "BRAVE_API_KEY",
     "-v",
-    "/home/f4z3r/.pi:/home/f4z3r/.pi",
+    "/home/f4z3r/.pi:/home/f4z3r/.pi", -- Write permissions needed for lock files.
     "-v",
-    "/home/f4z3r/notes/resources/ai/:/home/f4z3r/notes/resources/ai",
+    "/home/f4z3r/notes/resources/ai/:/home/f4z3r/notes/resources/ai:ro",
     "-v",
     vim.fn.getcwd() .. ":/home/f4z3r/workspace",
     "ghcr.io/f4z3r/pi-agent-image:v0.2.1",
