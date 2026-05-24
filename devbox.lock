@@ -2,8 +2,8 @@
   "lockfile_version": "1",
   "packages": {
     "alejandra@4.0.0": {
-      "last_modified": "2025-09-18T16:33:27Z",
-      "resolved": "github:NixOS/nixpkgs/f4b140d5b253f5e2a1ff4e5506edbf8267724bde#alejandra",
+      "last_modified": "2026-04-23T13:07:47Z",
+      "resolved": "github:NixOS/nixpkgs/01fbdeef22b76df85ea168fbfe1bfd9e63681b30#alejandra",
       "source": "devbox-search",
       "version": "4.0.0",
       "systems": {
@@ -11,47 +11,47 @@
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/nn1j6xdl540yqs8vjxqyi116g4jjdaci-alejandra-4.0.0",
+              "path": "/nix/store/gr86xd3li3azsy6sdak2i1g46kfmy25j-alejandra-4.0.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/nn1j6xdl540yqs8vjxqyi116g4jjdaci-alejandra-4.0.0"
+          "store_path": "/nix/store/gr86xd3li3azsy6sdak2i1g46kfmy25j-alejandra-4.0.0"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/kgdvgs2ql5hny810ca8w32fpl2spmp1z-alejandra-4.0.0",
+              "path": "/nix/store/xi6bwh7qfrnmblfw02asx0fjglgrzzbx-alejandra-4.0.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/kgdvgs2ql5hny810ca8w32fpl2spmp1z-alejandra-4.0.0"
+          "store_path": "/nix/store/xi6bwh7qfrnmblfw02asx0fjglgrzzbx-alejandra-4.0.0"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/d2w9a6z5vwa9y0s5blq54szajf7l1ayl-alejandra-4.0.0",
+              "path": "/nix/store/pwflw3yqjahdh833aw9ggrskf7k32lg0-alejandra-4.0.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/d2w9a6z5vwa9y0s5blq54szajf7l1ayl-alejandra-4.0.0"
+          "store_path": "/nix/store/pwflw3yqjahdh833aw9ggrskf7k32lg0-alejandra-4.0.0"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/7lai03z9lri0vcgp2jbyj3wsk5cwy9dx-alejandra-4.0.0",
+              "path": "/nix/store/0bkrr4sszs4pnmvkzf2h8ilzjawjdkah-alejandra-4.0.0",
               "default": true
             }
           ],
-          "store_path": "/nix/store/7lai03z9lri0vcgp2jbyj3wsk5cwy9dx-alejandra-4.0.0"
+          "store_path": "/nix/store/0bkrr4sszs4pnmvkzf2h8ilzjawjdkah-alejandra-4.0.0"
         }
       }
     },
     "github:NixOS/nixpkgs/nixpkgs-unstable": {
-      "last_modified": "2025-09-25T01:21:52Z",
-      "resolved": "github:NixOS/nixpkgs/e57b3b16ad8758fd681511a078f35c416a8cc939?lastModified=1758763312&narHash=sha256-puBMviZhYlqOdUUgEmMVJpXqC%2FToEqSvkyZ30qQ09xM%3D"
+      "last_modified": "2026-05-23T11:35:32Z",
+      "resolved": "github:NixOS/nixpkgs/3d8f0f3f72a6cd4d93d0ad13203f2ea1cb7e1456?lastModified=1779536132&narHash=sha256-q%2BfF42iv%2FgeEbHfgSzy3tS0FF%2FEyD6XTZ98E6yxiBO8%3D"
     },
     "prettier@3.8.3": {
       "last_modified": "2026-05-20T06:38:13Z",
