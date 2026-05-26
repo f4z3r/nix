@@ -7,6 +7,12 @@
     alejandra -c .
     prettier --ignore-unknown -c  .
   '';
+  switch = pkgs.writeShellScriptBin "switch" ''
+    sudo nixos-rebuild switch --impure --flake .#
+  '';
+  boot = pkgs.writeShellScriptBin "boot" ''
+    sudo nixos-rebuild boot --impure --flake .#
+  '';
 in
   pkgs.mkShell {
     name = "devshell";
@@ -16,5 +22,7 @@ in
       pkgs.prettier
       format
       check
+      switch
+      boot
     ];
   }
