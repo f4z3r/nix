@@ -127,5 +127,6 @@
         monitoring = false;
       };
     };
+    devShells.${system}.default = import ./devshell.nix {inherit pkgs;};
   };
 }
