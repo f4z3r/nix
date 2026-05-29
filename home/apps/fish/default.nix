@@ -44,7 +44,7 @@
       wall = ''awww img (fd . ~/.local/share/wallpapers/ | shuf -n 1)'';
       ns = ''rclone bisync gdrive-crypt:/ ~/notes --remove-empty-dirs --filter "- /.**" --filter "- **/.**" --filter "- **/tags"  --compare size,modtime -MP --fix-case --conflict-suffix upstream,local'';
       jwt = ''wl-paste | step crypto jwt inspect --insecure | jq'';
-      pi = ''docker run --rm -it -e OPENROUTER_API_KEY -e BRAVE_API_KEY -v ~/.pi:/home/f4z3r/.pi -v ~/notes/resources/ai/:/home/f4z3r/notes/resources/ai -v .:/home/f4z3r/workspace ghcr.io/f4z3r/pi-agent-image:v0.2.2 pi'';
+      pi = ''docker run --rm -it -e OPENROUTER_API_KEY -e BRAVE_API_KEY -v ~/.pi:/home/f4z3r/.pi -v ~/notes/resources/ai/:/home/f4z3r/notes/resources/ai -v .:/home/f4z3r/workspace ghcr.io/f4z3r/pi-agent-image:v0.3.0 pi'';
       imv = ''imv -b ffffff'';
       ".." = ''cd ..'';
       "..." = ''cd ../..'';
