@@ -2,11 +2,12 @@ local resession = require("resession")
 resession.setup()
 
 local BLACKLIST_FILES = {
-  ".git/COMMIT_EDITMSG$"
+  ".git/COMMIT_EDITMSG$",
+  "tmp%.%S+$",
 }
 
 local BLACKLIST_DIRECTORIES = {
-  "^/home/f4z3r/?$"
+  "^/home/f4z3r/?$",
 }
 
 vim.api.nvim_create_autocmd("VimEnter", {
@@ -21,7 +22,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 vim.api.nvim_create_autocmd("VimLeavePre", {
   callback = function()
-    local filepath = vim.fn.expand('%:p')
+    local filepath = vim.fn.expand("%:p")
     for _, item in ipairs(BLACKLIST_FILES) do
       if filepath:match(item) ~= nil then
         return
@@ -36,7 +37,7 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
     resession.save(cwd, { dir = "dirsession", notify = false })
   end,
 })
-vim.api.nvim_create_autocmd('StdinReadPre', {
+vim.api.nvim_create_autocmd("StdinReadPre", {
   callback = function()
     -- Store this for later
     vim.g.using_stdin = true
