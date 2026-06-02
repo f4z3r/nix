@@ -22,6 +22,10 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 vim.api.nvim_create_autocmd("VimLeavePre", {
   callback = function()
+    if vim.wo.diff then
+      -- return if in merge tool
+      return
+    end
     local filepath = vim.fn.expand("%:p")
     for _, item in ipairs(BLACKLIST_FILES) do
       if filepath:match(item) ~= nil then
