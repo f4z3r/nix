@@ -199,7 +199,6 @@ in {
       rclone
       ripgrep
       rsync
-      silver-searcher
       tree
       vhs
       watchexec
