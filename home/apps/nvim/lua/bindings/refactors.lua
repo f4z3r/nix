@@ -1,13 +1,11 @@
--- Diagnostics bindings
+-- Refactoring bindings
 
-local leader = "<leader>d"
+local leader = "<leader>r"
 
 local mappings = {
-  -- dr taken for rename
-  -- others taken for signature show, see treesitter configuration for lsp_interop
   {
     mode = "n",
-    suffix = "d",
+    suffix = "r",
     command = vim.diagnostic.open_float,
     desc = "Show diagnostics in float",
   },
@@ -24,11 +22,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
     -- diagnostics (debug/errors/refactor) commands
-    vim.keymap.set("n", "<leader>dr", vim.lsp.buf.rename, {
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {
       buffer = ev.buf,
       desc = "rename symbol under cursor",
     })
-    vim.keymap.set({ "n", "v" }, "<leader>aa", vim.lsp.buf.code_action, {
+    vim.keymap.set({ "n", "v" }, "<leader>ra", vim.lsp.buf.code_action, {
       buffer = ev.buf,
       desc = "perform code action",
     })

@@ -390,6 +390,13 @@ in {
         config = builtins.readFile ./plugin/executor.lua;
       }
 
+      # debug
+      {
+        type = "lua";
+        plugin = nvim-dap;
+        config = builtins.readFile ./plugin/dap.lua;
+      }
+
       # useful stuff
       {
         type = "lua";

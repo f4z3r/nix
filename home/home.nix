@@ -245,6 +245,7 @@ in {
       kubectl
       kubectx
       kubernetes-helm
+      lldb
       pkgs-stable.dprint
       prettier
       python

@@ -1,6 +1,6 @@
 -- Runner bindings
 
-local leader = "<leader>r"
+local leader = "<leader>R"
 
 local mappings = {
   {
