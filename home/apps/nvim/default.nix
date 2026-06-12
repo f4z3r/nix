@@ -456,7 +456,7 @@ in {
       {
         type = "lua";
         plugin = comment-nvim;
-        config = "require('Comment').setup()";
+        config = "require('Comment').setup({ mappings = { extra = false } })";
       }
       {
         type = "lua";
