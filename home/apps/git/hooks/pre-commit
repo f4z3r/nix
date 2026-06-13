@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
+set -e
+
 if test -e /dev/tty; then
-	exec </dev/tty ~/.config/git/hooks/test-secrets.lua
+	luajit </dev/tty ~/.config/git/hooks/test-secrets.lua
+else
+	luajit ~/.config/git/hooks/test-secrets.lua
 fi
 
-exec ~/.config/git/hooks/test-secrets.lua
+prek hook-impl --hook-type pre-commit --skip-on-missing-config --

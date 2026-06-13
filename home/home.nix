@@ -194,6 +194,7 @@ in {
       openssl
       ouch
       parallel
+      prek
       presenterm
       procs
       rclone

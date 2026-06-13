@@ -1,0 +1,22 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-xml
+      - id: end-of-file-fixer
+      - id: check-case-conflict
+      - id: detect-private-key
+      - id: check-shebang-scripts-are-executable
+      - id: file-contents-sorter
+        files: "^requirements(-dev)?\\.txt$"
+  - repo: local
+    hooks:
+      - id: nix-devshell-format
+        name: nix devshell format
+        language: system
+        entry: "nix develop -c check"
+        files: "\\.nix$|\\.md$"

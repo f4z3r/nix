@@ -4,6 +4,7 @@
     prettier --ignore-unknown -w  .
   '';
   check = pkgs.writeShellScriptBin "check" ''
+    set -e
     alejandra -c .
     prettier --ignore-unknown -c  .
   '';
