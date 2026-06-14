@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -20,6 +21,7 @@
     self,
     nixpkgs,
     nixpkgs-stable,
+    nixpkgs-master,
     home-manager,
     neorg-overlay,
     ...
@@ -38,6 +40,10 @@
       overlays = [neorg-overlay.overlays.default];
     };
     pkgs-stable = import nixpkgs-stable {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    pkgs-master = import nixpkgs-master {
       inherit system;
       config.allowUnfree = true;
     };
@@ -63,6 +69,7 @@
           inherit
             system
             pkgs-stable
+            pkgs-master
             pkgs-custom
             hostname
             usernames

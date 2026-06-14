@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-master,
   secrets,
   ...
 }: {
@@ -78,7 +79,8 @@
     };
 
     systemPackages = with pkgs; [
-      google-chrome
+      # check version https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/go/google-chrome/package.nix#L182
+      pkgs-master.google-chrome
     ];
   };
 }

@@ -77,6 +77,8 @@ My workflow runs around the following principles:
 sudo nix-channel --update
 # update flake lock file
 nix flake update
+# OR update only a single input
+nix flake update nixpkgs-master
 # rebuild system (impure needed due to external credentials for rclone)
 sudo nixos-rebuild switch --impure --flake .#
 ```

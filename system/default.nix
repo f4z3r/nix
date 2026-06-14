@@ -3,6 +3,7 @@
   lib,
   pkgs,
   pkgs-stable,
+  pkgs-master,
   hostname,
   usernames,
   default_user,
@@ -23,7 +24,7 @@ in {
     (import ./security {inherit lib pkgs hostname usernames secrets;})
     ./virtualisation.nix
     (import ./restic.nix {inherit usernames secrets;})
-    (import ./work.nix {inherit pkgs secrets;})
+    (import ./work.nix {inherit pkgs pkgs-master secrets;})
     (import ./monitoring.nix {inherit config monitoring;})
   ];
 
