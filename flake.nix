@@ -71,6 +71,7 @@
             pkgs-stable
             pkgs-master
             pkgs-custom
+            stdenv
             hostname
             usernames
             default_user

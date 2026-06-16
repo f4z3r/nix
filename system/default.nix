@@ -4,6 +4,7 @@
   pkgs,
   pkgs-stable,
   pkgs-master,
+  stdenv,
   hostname,
   usernames,
   default_user,
@@ -26,6 +27,7 @@ in {
     (import ./restic.nix {inherit usernames secrets;})
     (import ./work.nix {inherit pkgs pkgs-master secrets;})
     (import ./monitoring.nix {inherit config monitoring;})
+    (import ./mise.nix {inherit pkgs stdenv;})
   ];
 
   boot = {

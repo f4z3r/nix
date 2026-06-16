@@ -26,6 +26,7 @@
     (import ./nvim/default.nix {inherit pkgs pkgs-stable pkgs-custom;})
     (import ./k9s.nix {inherit pkgs colors;})
     (import ./mpd/default.nix {inherit pkgs username;})
+    ./mise.nix
   ];
 
   programs = {

@@ -234,7 +234,6 @@ in {
       buildah
       cbfmt
       delve
-      devbox
       dive
       gcc
       gnumake
