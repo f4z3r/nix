@@ -1,6 +1,7 @@
 {
   pkgs,
   colors,
+  secrets,
   ...
 }: {
   programs.atuin = {
@@ -56,6 +57,8 @@
       set -x NIXPKGS_ALLOW_UNFREE 1
       set -x D2_LAYOUT "elk"
       set -x D2_THEME "200"
+      set -x OPENROUTER_API_KEY ${secrets.ai.openrouter-api-key}
+      set -x BRAVE_API_KEY ${secrets.ai.brave-search-api-key}
       umask 0077
     '';
     interactiveShellInit = builtins.readFile ./config.fish;

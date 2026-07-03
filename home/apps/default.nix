@@ -9,6 +9,7 @@
   resolution,
   main_monitor,
   monitor_prefix,
+  secrets,
   colors,
   ...
 }: {
@@ -21,7 +22,7 @@
     (import ./git/default.nix {inherit pkgs colors;})
     (import ./lazygit.nix {inherit pkgs colors;})
     (import ./tmux/default.nix {inherit pkgs lib stdenv colors;})
-    (import ./fish/default.nix {inherit pkgs colors;})
+    (import ./fish/default.nix {inherit pkgs colors secrets;})
     (import ./starship.nix {inherit pkgs lib;})
     (import ./nvim/default.nix {inherit pkgs pkgs-stable pkgs-custom;})
     (import ./k9s.nix {inherit pkgs colors;})

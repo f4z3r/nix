@@ -9,6 +9,7 @@
   resolution,
   main_monitor,
   monitor_prefix,
+  secrets,
   colors,
   ...
 }:
@@ -41,6 +42,7 @@ in {
         resolution
         main_monitor
         monitor_prefix
+        secrets
         colors
         ;
     })

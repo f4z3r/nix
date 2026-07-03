@@ -105,6 +105,7 @@
                       scale
                       main_monitor
                       monitor_prefix
+                      secrets
                       colors
                       ;
                     username = user;
