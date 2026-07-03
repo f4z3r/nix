@@ -51,7 +51,7 @@
     pkgs-custom = {
     };
     inherit (pkgs) stdenv;
-    secrets = import ./secrets.nix;
+    secrets = import /home/f4z3r/opt/system/secrets/secrets.nix;
     colors = import ./theme.nix {inherit theme;};
 
     setup = {
