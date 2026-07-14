@@ -56,6 +56,7 @@ in {
     fzf = {
       enable = true;
       enableFishIntegration = true;
+      historyWidget.command = "";
       colors = {
         bg = colors.background;
         fg = colors.foreground;
