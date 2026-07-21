@@ -4,21 +4,21 @@ authors: f4z3r
 updated: {NOW}
 @end
 
-* Tenets
+* tenets
   - *mental*: clarity is focus.
   - *intellectual*: simplicity is elegance.
   - *physical*: balance is health.
   - *social*: integrity is respect.
   - *opportunistic*: exploration is progress.
 
-* Method
+* method
   See {:$/resources/methodology/productivity/hack.norg:}[Productivity Hacking] and
   {:$/areas/reflection.norg:}[Reflection].
 
-* Weekly Goals
+* weekly goals
 ** (!) ...
 
-* Timeline
+* timeline
 ** ( ) 06:00
 ** ( ) 07:00
 ** ( ) 08:00
