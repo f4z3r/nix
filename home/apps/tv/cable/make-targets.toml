@@ -5,18 +5,13 @@ requirements = [ "make", "awk",]
 
 [source]
 command = "make -pRrq 2>/dev/null | awk -F: '/^[a-zA-Z0-9][^$#\\/\\t=]*:([^=]|$)/ {split($1,a,\" \"); print a[1]}' | sort -u | grep -v '^Makefile$'"
+output = "make {}"
 
 [preview]
 command = "awk '/^{}[[:space:]]*:/{found=1} found{print; if(/^[^\\t]/ && NR>1 && !/^{}[[:space:]]*:/) exit}' Makefile"
 
 [keybindings]
-enter = "actions:echo"
 ctrl-r = "actions:run"
-
-[actions.echo]
-description = "Echo the selected make target"
-command = "echo -n 'make {}'"
-mode = "execute"
 
 [actions.run]
 description = "Run the selected make target"

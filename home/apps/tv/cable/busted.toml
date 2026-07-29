@@ -4,7 +4,6 @@ name = "busted"
 requirements = ["busted", "bat", "rg"]
 
 [keybindings]
-enter = "actions:echo"
 ctrl-r = "actions:run"
 
 [preview]
@@ -17,15 +16,10 @@ BAT_THEME = "ansi"
 [source]
 ansi = true
 command = ["rg . -g '{tests,specs}/**/*.lua' -e 'it|describe|context|insulate|expose' --no-heading --line-number --colors 'match:fg:white' --colors 'path:fg:blue' --color=always"]
-output = "{strip_ansi}"
+output = "luajit ~/.local/share/scripts/tv-action-busted-run.lua echo '{strip_ansi}'"
 
 [ui.preview_panel]
 header = "{strip_ansi|split:\\::..2}"
-
-[actions.echo]
-command = "luajit ~/.local/share/scripts/tv-action-busted-run.lua echo '{strip_ansi}'"
-description = "Echo the test(s)"
-mode = "execute"
 
 [actions.run]
 command = "luajit ~/.local/share/scripts/tv-action-busted-run.lua run '{strip_ansi}'"

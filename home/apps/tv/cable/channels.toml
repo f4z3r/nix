@@ -10,9 +10,9 @@ command = [ "tv list-channels",]
 command = "bat -pn --color always ${XDG_CONFIG_HOME:-$HOME/.config}/television/cable/**/{}.toml"
 
 [keybindings]
-enter = "actions:channel-enter"
+ctrl-r = "actions:run"
 
-[actions.channel-enter]
+[actions.run]
 description = "Enter a television channel"
 command = "tv {}"
 mode = "execute"

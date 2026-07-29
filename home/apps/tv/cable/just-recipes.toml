@@ -5,18 +5,13 @@ requirements = [ "just",]
 
 [source]
 command = [ "just --summary | tr '[:blank:]' '\n'",]
+output = "just {}"
 
 [preview]
 command = "just -s {}"
 
 [keybindings]
-enter = "actions:echo"
 ctrl-r = "actions:run"
-
-[actions.echo]
-description = "Echo a justfile recipe"
-command = "echo -n 'just {}'"
-mode = "execute"
 
 [actions.run]
 description = "Run a justfile recipe"

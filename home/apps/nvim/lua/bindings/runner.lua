@@ -39,7 +39,9 @@ local mappings = {
     mode = "n",
     suffix = "s",
     command = function()
-      local command = require("lazy.utils").select_with_tv("channels")
+      local utils = require("lazy.utils")
+      local channel = vim.fn.trim(utils.select_with_tv("channels"))
+      local command = vim.fn.trim(utils.select_with_tv(channel))
       local executor = require("executor")
       executor.api.set_task_command(command)
       executor.api.run_task()
