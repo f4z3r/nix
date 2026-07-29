@@ -289,7 +289,7 @@
         luaposix
 
         # needed for publishing rocks
-        luarocks-nix
+        # luarocks-nix compatibility issues with compat53
         cjson
 
         # dependencies required elsewhere
