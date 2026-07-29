@@ -40,7 +40,9 @@ local mappings = {
     suffix = "s",
     command = function()
       local command = require("lazy.utils").select_with_tv("channels")
-      require("executor").commands.run_with_new_command(command)
+      local executor = require("executor")
+      executor.api.set_task_command(command)
+      executor.api.run_task()
     end,
     desc = "Select a command using tv",
   },
