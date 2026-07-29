@@ -1,6 +1,6 @@
--- Debug Adapter Protocol bindings
+-- Debug Adapter Protocol bindings (T)est
 
-local leader = "<leader>d"
+local leader = "<leader>t"
 
 local dap = require('dap')
 

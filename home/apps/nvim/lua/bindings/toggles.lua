@@ -2,7 +2,7 @@
 --
 -- Additional currently defined in plugin/gitsigns
 
-local leader = "<leader>t"
+local leader = "<leader>T"
 
 local function toggle_conceal()
   local conceal = vim.opt_local.conceallevel:get()

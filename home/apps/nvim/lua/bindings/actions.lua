@@ -47,6 +47,14 @@ local mappings = {
     end,
     desc = "Preview current hunk",
   },
+  {
+    mode = { "n" },
+    suffix = "n",
+    command = function()
+      require("neogen").generate()
+    end,
+    desc = "Annotate",
+  },
 }
 
 for _, mapping in ipairs(mappings) do

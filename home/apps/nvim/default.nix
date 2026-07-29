@@ -311,11 +311,6 @@ in {
         plugin = none-ls-nvim;
         config = builtins.readFile ./plugin/none-ls.lua;
       }
-      {
-        type = "lua";
-        plugin = refactoring-nvim;
-        config = "require('refactoring').setup()";
-      }
 
       # http
       # {

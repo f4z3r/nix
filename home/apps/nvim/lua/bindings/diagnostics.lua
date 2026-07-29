@@ -1,11 +1,11 @@
--- Refactoring bindings
+-- Diagnostics bindings
 
-local leader = "<leader>r"
+local leader = "<leader>d"
 
 local mappings = {
   {
     mode = "n",
-    suffix = "r",
+    suffix = "d",
     command = vim.diagnostic.open_float,
     desc = "Show diagnostics in float",
   },
@@ -25,10 +25,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {
       buffer = ev.buf,
       desc = "rename symbol under cursor",
-    })
-    vim.keymap.set({ "n", "v" }, "<leader>ra", vim.lsp.buf.code_action, {
-      buffer = ev.buf,
-      desc = "perform code action",
     })
     vim.keymap.set({ "n", "v" }, "<leader>aa", vim.lsp.buf.code_action, {
       buffer = ev.buf,
