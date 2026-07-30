@@ -22,12 +22,13 @@
         busted = builtins.fromTOML (builtins.readFile ./cable/busted.toml);
         make-targets = builtins.fromTOML (builtins.readFile ./cable/make-targets.toml);
         fish-history = builtins.fromTOML (builtins.readFile ./cable/fish-history.toml);
-        fish-recipes = builtins.fromTOML (builtins.readFile ./cable/just-recipes.toml);
+        just-recipes = builtins.fromTOML (builtins.readFile ./cable/just-recipes.toml);
       };
     };
 
     sesh = {
       enable = true;
+      tmuxKey = "s";
       settings = {
         dir_length = 2;
         blacklist = ["quake" "popup-.*"];
