@@ -1,7 +1,7 @@
 {...}: let
   tap-timeout = "150";
   home-row-hold-delay = "150";
-  hold-delay = "170";
+  hold-delay = "130";
 in {
   services.kanata = {
     enable = true;
