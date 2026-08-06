@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     home-manager = {
@@ -34,10 +34,27 @@
     default_user = "f4z3r";
     theme = "dark"; # one of "light" or "dark"
     system = "x86_64-linux";
+    # XXX: f4z3r - remove when fixed upstream
+    hyprlandGlazeOverlay = _final: prev: {
+      hyprland = prev.hyprland.overrideAttrs (old: {
+        postPatch =
+          (old.postPatch or "")
+          + ''
+            substituteInPlace \
+              CMakeLists.txt \
+              start/CMakeLists.txt \
+              hyprpm/CMakeLists.txt \
+              --replace-fail "glaze 7...<8" "glaze"
+          '';
+      });
+    };
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [neorg-overlay.overlays.default];
+      overlays = [
+        neorg-overlay.overlays.default
+        hyprlandGlazeOverlay
+      ];
     };
     pkgs-stable = import nixpkgs-stable {
       inherit system;
@@ -83,8 +100,13 @@
             ;
         };
         modules = [
+          {
+            nixpkgs.overlays = [
+              neorg-overlay.overlays.default
+              hyprlandGlazeOverlay
+            ];
+          }
           ./system
-
           home-manager.nixosModules.home-manager
           {
             home-manager = {
