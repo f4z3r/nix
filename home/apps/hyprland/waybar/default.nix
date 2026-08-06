@@ -43,6 +43,7 @@ in {
               # "3" = "󰈹";
               default = "";
               empty = "";
+              active = "";
               presistent = "󰺕";
               special = "";
               urgent = "";
