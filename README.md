@@ -39,7 +39,7 @@ Supports quake terminals:
 - Bar: `waybar`
 - Layered Keyboard Mapping: `kanata`
 - Launcher: `rofi`
-- GTK Theme: `Materia Material Dark`
+- GTK Theme: `Orchis Black`
 - GTK Icon Theme: `Papirus Dark`
 - Terminal: `ghostty`
 - Multiplexer: `tmux`

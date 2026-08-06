@@ -143,7 +143,6 @@ in {
       NIXOS_OZONE_WL = "1";
       GDK_BACKEND = "wayland";
       GTK_IM_MODULE = "simple";
-      GTK_THEME = "Materia-dark";
       XDG_SESSION_TYPE = "wayland";
     };
 

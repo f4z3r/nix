@@ -14,10 +14,17 @@
   ...
 }:
 assert lib.asserts.assertOneOf "theme" colors.theme ["dark" "light"]; let
+  orchis = pkgs-stable.orchis-theme.override {
+    tweaks = [
+      "black"
+      "submenu"
+      "primary"
+    ];
+  };
   gtkTheme =
     if colors.theme == "dark"
-    then "Materia-dark"
-    else "Materia-light";
+    then "Orchis-Purple-Dark"
+    else "Orchis-Purple-Light";
   iconTheme =
     if colors.theme == "dark"
     then "Papirus-Dark"
@@ -214,9 +221,6 @@ in {
       firefox
       gopass
 
-      # stuff used for GTK theming
-      gtk-engine-murrine
-
       # stuff used in the background
       alsa-utils
       bc
@@ -290,8 +294,13 @@ in {
 
   gtk = {
     enable = true;
+    colorScheme = colors.theme;
     theme = {
-      package = pkgs.materia-theme;
+      package = orchis;
+      name = gtkTheme;
+    };
+    gtk4.theme = {
+      package = orchis;
       name = gtkTheme;
     };
     iconTheme = {
