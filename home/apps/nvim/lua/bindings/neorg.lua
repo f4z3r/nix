@@ -64,7 +64,8 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("i", "<C-h>", "<plug>(neorg.promo.demote)", { buffer = true })
     -- insert files via tv
     vim.keymap.set("i", "<C-l>", function()
-      vim.fn.trim(require("tv").tv_channel("norg"))
+      local file = require("tv").tv_channel("norg")
+      return vim.fn.trim(file)
     end, { buffer = true })
     -- insert date
     vim.keymap.set("i", "<C-r>", insert_date, { buffer = true, desc = "Insert custom date via calendar under cusor" })
