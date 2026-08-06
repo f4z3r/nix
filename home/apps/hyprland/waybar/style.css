@@ -20,6 +20,8 @@ window#waybar {
 
 #workspaces button {
   padding: 0 0.2em;
+  color: #635850;
+  background: transparent;
 }
 
 #workspaces button:hover {
@@ -28,14 +30,6 @@ window#waybar {
 
 #workspaces button.active {
   color: #d3869b;
-}
-
-#workspaces button.emtpy {
-  color: #635850;
-}
-
-#workspaces button.persistent button:not(.active) button:not(.urgent) {
-  color: #635850;
 }
 
 #workspaces button.urgent {
@@ -48,6 +42,11 @@ window#waybar {
 
 #battery.plugged {
   color: #d3869b;
+}
+
+#workspaces button.empty,
+#workspaces button.persistent:not(.active):not(.urgent) {
+  color: #d4be98;
 }
 
 @keyframes blink {
