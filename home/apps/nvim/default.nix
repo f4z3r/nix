@@ -14,16 +14,6 @@
     };
   };
 
-  pi-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "pi.nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "pablopunk";
-      repo = "pi.nvim";
-      rev = "1922e69569fe8ca8219d7934201f00cd38a30565";
-      sha256 = "sha256-bS+x0jbzhj3FghGSuwfvn34ty3U8RpN1x3AwQdadS1o=";
-    };
-  };
-
   executor-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "executor.nvim";
     src = pkgs.fetchFromGitHub {
@@ -289,11 +279,6 @@ in {
         plugin = diffview-nvim;
         config = builtins.readFile ./plugin/diffview.lua;
       }
-      {
-        type = "lua";
-        plugin = gitlinker-nvim;
-        config = builtins.readFile ./plugin/gitlinker.lua;
-      }
 
       # lsp stuff
       {
@@ -349,11 +334,6 @@ in {
       {
         type = "lua";
         plugin = snacks-nvim;
-      }
-      {
-        type = "lua";
-        plugin = pi-nvim;
-        config = builtins.readFile ./plugin/pi.lua;
       }
       {
         type = "lua";
@@ -471,6 +451,11 @@ in {
         type = "lua";
         plugin = yanky-nvim;
         config = builtins.readFile ./plugin/yanky.lua;
+      }
+      {
+        type = "lua";
+        plugin = gitlinker-nvim;
+        config = builtins.readFile ./plugin/gitlinker.lua;
       }
 
       # alignment

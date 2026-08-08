@@ -16,22 +16,6 @@ local mappings = {
     desc = "Format current buffer",
   },
   {
-    mode = { "n", "x" },
-    suffix = "i",
-    command = function()
-      vim.cmd("PiAsk")
-    end,
-    desc = "Ask Pi",
-  },
-  {
-    mode = { "v" },
-    suffix = "i",
-    command = function()
-      vim.cmd("PiAskSelection")
-    end,
-    desc = "Ask Pi about a selection",
-  },
-  {
     mode = { "n" },
     suffix = "b",
     command = function()
