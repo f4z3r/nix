@@ -28,8 +28,25 @@ vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
 vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
 vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
 vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-vim.keymap.set("n", "<leader>P", "<Plug>(YankyCycleBackward)")
-vim.keymap.set("n", "<leader>p", "<Plug>(YankyCycleForward)")
+
+local function put_history_to_reg()
+  local history = {}
+  for _, value in pairs(require("yanky.history").all()) do
+    if #history > 40 then
+      break
+    elseif value.regcontents then
+      -- switch newlines to avoid splitting into two options
+      history[#history + 1] = value.regcontents:gsub("\n", "<cr>")
+    end
+  end
+  local utils = require("lazy.utils")
+  local selected = assert(utils.select_with_tv(history), "tv did not resturn anything")
+  selected = selected:match("^(.-)\n$")
+  local text = selected:gsub("<cr>", "\n")
+  vim.fn.setreg('"', text)
+end
+
+vim.keymap.set("n", "<leader>p", put_history_to_reg)
 
 vim.api.nvim_set_hl(0, "YankyYanked", { link = "DiffDelete", nocombine = true })
 vim.api.nvim_set_hl(0, "YankyPut", { link = "DiffChange", nocombine = true })

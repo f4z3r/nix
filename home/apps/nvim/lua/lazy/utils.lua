@@ -26,6 +26,20 @@ function utils.copy_to_clipboard()
   })
 end
 
+function utils.split(str, sep)
+  sep = sep or "%s"
+  local result = {}
+  local from = 1
+  local delim_from, delim_to = str:find(sep, from)
+  while delim_from do
+    table.insert(result, str:sub(from, delim_from - 1))
+    from = delim_to + 1
+    delim_from, delim_to = str:find(sep, from)
+  end
+  table.insert(result, str:sub(from))
+  return result
+end
+
 function utils.select_with_tv(items)
   if type(items) == "string" then
     -- handle channel
@@ -38,15 +52,20 @@ function utils.select_with_tv(items)
       )
     )
   else
-    -- handle item list
+    -- handle item list, use input file to avoid quote issues with bash
+    local fh_writer, err = io.open("/tmp/tv-input", "w")
+    if err then
+      return
+    end
+    fh_writer = assert(fh_writer, "could not open tv input")
+    fh_writer:write(table.concat(items, "\n"))
+    fh_writer:close()
     assert(
       os.execute(
-        string.format(
-          [[tmux display-popup -d "#{pane_current_path}" -xC -yC -w 80%% -h 75%% -E 'echo -e "%s" | tv > /tmp/tv-capture']],
-          table.concat(items, "\n")
-        )
+        [[tmux display-popup -d "#{pane_current_path}" -xC -yC -w 80% -h 75% -E 'cat /tmp/tv-input | tv > /tmp/tv-capture']]
       )
     )
+    assert(os.execute([[rm "/tmp/tv-input"]]))
   end
   local fh_reader, err = io.open("/tmp/tv-capture", "r")
   if err then
