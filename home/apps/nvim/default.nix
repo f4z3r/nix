@@ -14,6 +14,16 @@
     };
   };
 
+  yankcraft-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "yankcraft.nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "f4z3r";
+      repo = "yankcraft.nvim";
+      rev = "74bad480b2867bf69de0d26e00f16c3cdf908a59";
+      sha256 = "sha256-bcQNgFVE6VZJjzk91oAbjUjEeStOiSUqHl20y9kvvWg=";
+    };
+  };
+
   executor-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "executor.nvim";
     src = pkgs.fetchFromGitHub {
@@ -451,6 +461,11 @@ in {
         type = "lua";
         plugin = yanky-nvim;
         config = builtins.readFile ./plugin/yanky.lua;
+      }
+      {
+        type = "lua";
+        plugin = yankcraft-nvim;
+        config = ''require("yankcraft").setup({})'';
       }
       {
         type = "lua";

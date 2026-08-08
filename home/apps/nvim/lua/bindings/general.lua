@@ -1,11 +1,5 @@
 -- General bindings
 
-vim.keymap.set("n", "<leader>y", function()
-  require("lazy.utils").copy_to_clipboard()
-end, {
-  desc = "Copy to system clipboard",
-})
-
 -- easy update and close
 vim.keymap.set("n", "<leader>x", "<cmd>xa<cr>")
 
