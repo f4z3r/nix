@@ -17,27 +17,34 @@ local mappings = {
     suffix = "l",
     command = function()
       require("yankcraft").filepath(true)
+      vim.cmd("normal! \27")
     end,
     desc = "Copy filepath and lines to system clipboard",
   },
   {
-    mode = { "n", "x" },
+    mode = "n",
     suffix = "f",
-    command = require("yankcraft").filepath,
+    command = function()
+      require("yankcraft").filepath()
+    end,
     desc = "Copy filepath to system clipboard",
   },
   {
     mode = { "n", "x" },
     suffix = "m",
-    command = require("yankcraft").content,
+    command = function()
+      require("yankcraft").content()
+      vim.cmd("normal! \27")
+    end,
     desc = "Copy content as markdown to system clipboard",
   },
   {
     mode = { "n", "x" },
     suffix = "n",
     command = function()
-      local norg = require("yankcraft.fences.norg")
-      require("yankcraft").content({ fence = norg })
+      local norg = require("yankcraft.formatters.norg")
+      require("yankcraft").content({ formatter = norg })
+      vim.cmd("normal! \27")
     end,
     desc = "Copy content as norg to system clipboard",
   },
