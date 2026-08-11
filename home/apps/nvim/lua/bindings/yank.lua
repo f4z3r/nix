@@ -16,7 +16,8 @@ local mappings = {
     mode = { "n", "x" },
     suffix = "l",
     command = function()
-      require("yankcraft").filepath(true)
+      local formatter = require("yankcraft.formatters.filepath_with_line_range")
+      require("yankcraft").copy({ formatter = formatter })
       vim.cmd("normal! \27")
     end,
     desc = "Copy filepath and lines to system clipboard",
@@ -25,7 +26,9 @@ local mappings = {
     mode = "n",
     suffix = "f",
     command = function()
-      require("yankcraft").filepath()
+      local formatter = require("yankcraft.formatters.filepath")
+      require("yankcraft").copy({ formatter = formatter })
+      vim.cmd("normal! \27")
     end,
     desc = "Copy filepath to system clipboard",
   },
@@ -33,20 +36,21 @@ local mappings = {
     mode = { "n", "x" },
     suffix = "m",
     command = function()
-      require("yankcraft").content()
+      local formatter = require("yankcraft.formatters.markdown")
+      require("yankcraft").copy({ formatter = formatter })
       vim.cmd("normal! \27")
     end,
-    desc = "Copy content as markdown to system clipboard",
+    desc = "Copy content as Markdown to system clipboard",
   },
   {
     mode = { "n", "x" },
     suffix = "n",
     command = function()
-      local norg = require("yankcraft.formatters.norg")
-      require("yankcraft").content({ formatter = norg })
+      local formatter = require("yankcraft.formatters.norg")
+      require("yankcraft").copy({ formatter = formatter })
       vim.cmd("normal! \27")
     end,
-    desc = "Copy content as norg to system clipboard",
+    desc = "Copy content as Norg to system clipboard",
   },
 }
 

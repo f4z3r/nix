@@ -19,8 +19,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "f4z3r";
       repo = "yankcraft.nvim";
-      rev = "7fb7389923e7bbeb5b6f0dd31103da5306bec876";
-      sha256 = "sha256-KzpwDWl1lYgsGWdf7lNG2Sg3Yc93y2VlPtGs0zhDGeA=";
+      rev = "v0.2.0";
+      sha256 = "sha256-m5XoftGwJB2YB7MuVxryYq4dolzZrHlxwJ1KLvkp9HM=";
     };
   };
 
