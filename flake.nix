@@ -34,26 +34,11 @@
     default_user = "f4z3r";
     theme = "dark"; # one of "light" or "dark"
     system = "x86_64-linux";
-    # XXX: f4z3r - remove when fixed upstream
-    hyprlandGlazeOverlay = _final: prev: {
-      hyprland = prev.hyprland.overrideAttrs (old: {
-        postPatch =
-          (old.postPatch or "")
-          + ''
-            substituteInPlace \
-              CMakeLists.txt \
-              start/CMakeLists.txt \
-              hyprpm/CMakeLists.txt \
-              --replace-fail "glaze 7...<8" "glaze"
-          '';
-      });
-    };
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
       overlays = [
         neorg-overlay.overlays.default
-        hyprlandGlazeOverlay
       ];
     };
     pkgs-stable = import nixpkgs-stable {
@@ -103,7 +88,6 @@
           {
             nixpkgs.overlays = [
               neorg-overlay.overlays.default
-              hyprlandGlazeOverlay
             ];
           }
           ./system
