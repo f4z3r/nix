@@ -124,8 +124,11 @@ sudo freshclam
 
 ## Secrets
 
-Download the `secrets.nix` file from the encrypted storage. These need to be staged to build. A git
-hook will prevent committing the `secerts.nix` file.
+Download the `secrets.nix` file from the encrypted storage. For security reasons this file is
+expected not to be in the build context. It should be placed under
+`/home/f4z3r/opt/system/secrets/secrets.nix`. A symlink is then placed in the repo root. This avoids
+leaking it if the file is commited as it needs to be staged to build. A git hook will stillprevent
+committing the `secerts.nix` symlink in the build context.
 
 ## Restic
 
