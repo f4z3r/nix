@@ -284,12 +284,11 @@
         rapidjson
         basexx
         busted
-        compat53
         luafilesystem
         luaposix
 
         # needed for publishing rocks
-        # luarocks-nix compatibility issues with compat53
+        (pkgs.lib.lowPrio luarocks-nix)
         cjson
 
         # dependencies required elsewhere
