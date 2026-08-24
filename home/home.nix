@@ -267,7 +267,6 @@ in {
     ];
 
     file = {
-      ".config/ruff/pyproject.toml" = {source = ./files/ruff.toml;};
       "revive.toml" = {source = ./files/revive.toml;};
       ".local/bin/mip" = {
         source = ./scripts/mip;
