@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set(
       "n",
       leader .. "e",
-      "<cmd>Neorg keybind all core.looking-glass.magnify-code-block<cr>",
+      "<Plug>(neorg.looking-glass.magnify-code-block)",
       { buffer = true }
     )
     -- demote recursively
