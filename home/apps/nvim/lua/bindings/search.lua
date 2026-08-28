@@ -27,6 +27,14 @@ local mappings = {
     end,
     desc = "Search todos",
   },
+  {
+    mode = "n",
+    suffix = "o",
+    command = function()
+      require("tv").tv_channel("text", "** ( ) ")
+    end,
+    desc = "Search neorg todos",
+  },
 }
 
 vim.keymap.set("n", ";", "<cmd>noh<cr>")
