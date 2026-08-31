@@ -81,6 +81,8 @@
     systemPackages = with pkgs; [
       # check version https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/go/google-chrome/package.nix#L182
       pkgs-master.google-chrome
+      # BIT citrix
+      pkgs.citrix-workspace
     ];
   };
 }
