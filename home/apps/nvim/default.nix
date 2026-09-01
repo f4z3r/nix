@@ -30,7 +30,7 @@
       owner = "f4z3r";
       repo = "executor.nvim";
       rev = "feat/set-command";
-      sha256 = "sha256-aRUtlVWo2EAcj7DHK9/RdNV/dgnFiwKFWLA8xgbm2WY=";
+      sha256 = "sha256-UaBqJzR+s4DgtMJ2JDKhr+jJekPr8LspQvVdfgU9x/8=";
     };
     nvimSkipModules = [
       "executor"
