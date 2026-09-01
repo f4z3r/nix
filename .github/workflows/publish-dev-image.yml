@@ -3,7 +3,7 @@ name: Publish dev image
 on:
   push:
     tags:
-      - "v*"
+      - "v**"
 
 permissions:
   contents: read
