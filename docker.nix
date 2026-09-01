@@ -63,6 +63,55 @@
       ${home.activationPackage}/home-files/. \
       "$out${homeDirectory}/"
   '';
+
+  nixLdLibraries = with pkgs; [
+    # Your additions from system/mise.nix
+    stdenv.cc.cc
+    zlib
+    openssl
+    readline
+    bzip2
+    sqlite
+    libffi
+    xz
+    ncurses
+
+    # nix-ld's normal NixOS defaults
+    zstd
+    curl
+    attr
+    libssh
+    libxml2
+    acl
+    libsodium
+    util-linux
+    systemd
+  ];
+
+  nixLdEnv = pkgs.buildEnv {
+    name = "nix-ld-library-path";
+
+    paths = map lib.getLib nixLdLibraries;
+    pathsToLink = ["/lib"];
+
+    # This means the libraries end up under:
+    #
+    #   /share/nix-ld/lib
+    #
+    # when copied to the image root.
+    extraPrefix = "/share/nix-ld";
+
+    ignoreCollisions = true;
+
+    postBuild = ''
+      ln -s \
+        ${pkgs.stdenv.cc.bintools.dynamicLinker} \
+        $out/share/nix-ld/lib/ld.so
+    '';
+  };
+
+  ldsoDir = pkgs.stdenv.hostPlatform.libDir;
+  ldsoName = builtins.baseNameOf pkgs.stdenv.cc.bintools.dynamicLinker;
 in
   pkgs.dockerTools.buildLayeredImage {
     name = "f4z3r-dev";
@@ -81,6 +130,10 @@ in
 
       pkgs.coreutils
       pkgs.findutils
+
+      pkgs.bash
+      pkgs.nix-ld
+      nixLdEnv
 
       # Conventional Linux paths that programs/scripts often expect.
       pkgs.dockerTools.binSh
@@ -138,6 +191,12 @@ in
       services: files
       protocols: files
       EOF
+
+      mkdir -p /${ldsoDir}
+
+      ln -s \
+        ${pkgs.nix-ld}/libexec/nix-ld \
+        /${ldsoDir}/${ldsoName}
     '';
 
     config = {
@@ -163,6 +222,9 @@ in
         "LANG=C.UTF-8"
 
         "SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt"
+
+        "NIX_LD=/share/nix-ld/lib/ld.so"
+        "NIX_LD_LIBRARY_PATH=/share/nix-ld/lib"
       ];
 
       Cmd = [
