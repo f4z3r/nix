@@ -80,6 +80,7 @@ in
       homeRoot
 
       pkgs.coreutils
+      pkgs.findutils
 
       # Conventional Linux paths that programs/scripts often expect.
       pkgs.dockerTools.binSh

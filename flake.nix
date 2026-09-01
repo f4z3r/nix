@@ -53,7 +53,6 @@
     pkgs-custom = {
     };
     inherit (pkgs) stdenv;
-    secrets = import /home/f4z3r/opt/system/secrets/secrets.nix;
     colors = import ./theme.nix {inherit theme;};
 
     setup = {
@@ -80,7 +79,6 @@
             main_monitor
             monitor_prefix
             monitoring
-            secrets
             colors
             ;
         };
@@ -111,7 +109,6 @@
                       scale
                       main_monitor
                       monitor_prefix
-                      secrets
                       colors
                       ;
                     username = user;

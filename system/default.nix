@@ -9,12 +9,12 @@
   usernames,
   default_user,
   monitoring,
-  secrets,
   colors,
   ...
 }: let
   tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
   session = "${pkgs.hyprland}/bin/start-hyprland";
+  secrets = import /home/f4z3r/opt/system/secrets/secrets.nix;
 in {
   imports = [
     ../hardware/common.nix
