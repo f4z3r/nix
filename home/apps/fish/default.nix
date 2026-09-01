@@ -1,7 +1,6 @@
 {
   pkgs,
   colors,
-  secrets,
   ...
 }: {
   programs.atuin = {
@@ -35,17 +34,11 @@
       kn = ''kubens'';
       kc = ''kubectx'';
       tree = ''tree -C'';
-      pdf = ''mupdf'';
       lg = ''lazygit'';
       grep = ''grep --color=auto'';
       egrep = ''egrep --color=auto'';
       fgrep = ''fgrep --color=auto'';
       nix-shell = ''nix-shell --run fish'';
-      wall = ''awww img (fd . ~/.local/share/wallpapers/ | shuf -n 1)'';
-      ns = ''rclone bisync gdrive-crypt:/ ~/notes --remove-empty-dirs --filter "- /.**" --filter "- **/.**" --filter "- **/tags"  --compare size,modtime -MP --fix-case --conflict-suffix upstream,local'';
-      jwt = ''wl-paste | step crypto jwt inspect --insecure | jq'';
-      pi = ''docker run --rm -it -e OPENROUTER_API_KEY -e BRAVE_API_KEY -v ~/.pi:/home/f4z3r/.pi -v ~/notes/resources/ai/:/home/f4z3r/notes/resources/ai -v .:/home/f4z3r/workspace ghcr.io/f4z3r/pi-agent-image:v0.5.4 pi'';
-      imv = ''imv -b ffffff'';
       ".." = ''cd ..'';
       "..." = ''cd ../..'';
       "...." = ''cd ../../..'';
@@ -57,8 +50,6 @@
       set -x NIXPKGS_ALLOW_UNFREE 1
       set -x D2_LAYOUT "elk"
       set -x D2_THEME "200"
-      set -x OPENROUTER_API_KEY ${secrets.ai.openrouter-api-key}
-      set -x BRAVE_API_KEY ${secrets.ai.brave-search-api-key}
       umask 0077
     '';
     interactiveShellInit = builtins.readFile ./config.fish;

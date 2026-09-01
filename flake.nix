@@ -12,7 +12,7 @@
     };
 
     neorg-overlay = {
-      url = "github:f4z3r/nixpkgs-neorg-overlay";
+      url = "github:nvim-neorg/nixpkgs-neorg-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -143,5 +143,14 @@
       };
     };
     devShells.${system}.default = import ./devshell.nix {inherit pkgs;};
+    packages.${system}.dev-image = import ./docker.nix {
+      inherit
+        pkgs
+        pkgs-stable
+        pkgs-custom
+        home-manager
+        colors
+        ;
+    };
   };
 }

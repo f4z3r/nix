@@ -107,6 +107,18 @@ Ghostty will not reload the configuration automatically. This can be triggered b
 
 The override can be cleared using `clight`.
 
+## Build a Dev Image
+
+This repository also contains a Docker image definition with a part of the setup. This can be built
+with:
+
+```bash
+nix build .#dev-image
+docker load < result
+```
+
+The image is defined in `docker.nix`.
+
 ## Bootstrap New Computer
 
 See [`docs/bootstrap.md`](./docs/bootstrap.md).
@@ -129,6 +141,14 @@ expected not to be in the build context. It should be placed under
 `/home/f4z3r/opt/system/secrets/secrets.nix`. A symlink is then placed in the repo root. This avoids
 leaking it if the file is commited as it needs to be staged to build. A git hook will stillprevent
 committing the `secerts.nix` symlink in the build context.
+
+On top of that, some secrets such as a Brave search API key and OpenRouter key are put under
+`~/.config/f4z3r/secrets.fish`:
+
+```fish
+set -gx OPENROUTER_API_KEY '...'
+set -gx BRAVE_API_KEY '...'
+```
 
 ## Restic
 

@@ -190,10 +190,6 @@ in {
       revive
       gopls
 
-      beancount-language-server
-
-      kcl-language-server
-
       yaml-language-server
 
       helm-ls
@@ -202,21 +198,14 @@ in {
 
       ty
 
-      rust-analyzer
-      rustfmt
-
       terraform-ls
       tfsec
 
       harper
 
-      clippy
-
       libxml2
 
       html-tidy
-
-      tinymist
     ];
 
     plugins = with pkgs.vimPlugins; [
