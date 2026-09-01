@@ -1,0 +1,959 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### <!-- 0 -->Features
+- Refined a lot of configuration by @f4z3r
+- Improve vim nerdfont support in fern by @f4z3r
+- Configure gtk theme but do not enable by @f4z3r
+- Update delta theme to gruvbox-dark by @f4z3r
+- Add minimal tmux status bar and override suspend by @f4z3r
+- Reduced padding in wezterm windows by @f4z3r
+- Support quake terminal by @f4z3r
+- Add bitwarden setup by @f4z3r
+- Add protonvpn configuration by @f4z3r
+- Add ruff configuration by @f4z3r
+- Add vpn to polybar by @f4z3r
+- Configure gtk theme by @f4z3r
+- Implement direnv by @f4z3r
+- Update sxhkd shortcuts by @f4z3r
+- Add git hooks to configuration by @f4z3r
+- Implement theming and correct various small issues by @f4z3r
+- Add helvum to manage audio input and output graphically by @f4z3r
+- Add nvidia support, fix bluetooth, update tlp, remove geenclip by @f4z3r
+- Add cursor theme for gtk based applications by @f4z3r
+- Add some cli tools by @f4z3r
+- Setup clamav with scan on access by @f4z3r
+- Add correct mpd and ncmpcpp setup by @f4z3r
+- Add clamav notification to user by @f4z3r
+- Update git bindings for new fugitive version by @f4z3r
+- Add vimspector base configuration with bindings by @f4z3r
+- Add support for org-mode in vim by @f4z3r
+- Update spelling and archving in orgmode by @f4z3r
+- Improve org mode abbrev by @f4z3r
+- Improve orgmode and add journal capture by @f4z3r
+- Upade dev-shell setup and improve bindings on sxhkd by @f4z3r
+- Use treesitter instaed of polyglot for highlighting by @f4z3r
+- Major rewamp of neovim by @f4z3r
+- Add quickfix and locationlist bindings by @f4z3r
+- Continue lua configuration of neovim by @f4z3r
+- Improve nvim setup with trouble by @f4z3r
+- Change configuration to be correctly separable between devices by @f4z3r
+- Add marksman and update documentation on bootstrapping by @f4z3r
+- Use universal ctags and update tag search bindings by @f4z3r
+- Add lualine to setup by @f4z3r
+- Improve colours in lualine and add light support on vim by @f4z3r
+- Better picom and polybar setup, some updates to hardware configuration on nix by @f4z3r
+- Add maximize plugin to nvim by @f4z3r
+- Various improvements on polybar side, nvim, lsps, clamav, upower by @f4z3r
+- Moving git commit check to luaJIT by @f4z3r
+- Add second-brain sync by @f4z3r
+- Add bash language server to nvim by @f4z3r
+- Add support for null-ls and improve diagnostics preview by @f4z3r
+- Improve null-ls configuration with more useful tooling by @f4z3r
+- Start integrating DAP, and update easymotion to hop by @f4z3r
+- Move back to original gruvbox repo for nvim by @f4z3r
+- Improve lua support, start integrating neotest by @f4z3r
+- Add neotest and overseer setup by @f4z3r
+- Improve neotest and add docs for rust dev shell by @f4z3r
+- Improve bindings for window resize and cmp abort by @f4z3r
+- Support additional custom luajit packages by @f4z3r
+- Add additional lua packages for scripting by @f4z3r
+- Make spelling sharable across instances via spell files managed by nix by @f4z3r
+- Add symbol viewer by @f4z3r
+- Use encryption layer for sb sync by @f4z3r
+- Add lua version of startify by @f4z3r
+- Add lua lanes to setup for concurrency with luajit by @f4z3r
+- Allow to fail to import notify in nvim for git rebase commit message by @f4z3r
+- Add orgmode to nvim darshboard by @f4z3r
+- Disable a lot of useless stuff on starship, add tmux popup by @f4z3r
+- Add helm support to nvim by @f4z3r
+- Initial setup by @f4z3r
+- Add action to send telescope search to arg list by @f4z3r
+- Install yanky, remove quotes, change tmux binding to C-w by @f4z3r
+- Add all treesitter grammars for simplicity by @f4z3r
+- Update bindings by @f4z3r
+- Add illuminate and update highlighting by @f4z3r
+- Improve polybar looks and distribution by @f4z3r
+- Add revive config to setup by @f4z3r
+- Update global configuration by @f4z3r
+- Add timestamp handling shortcut for orgmode by @f4z3r
+- Update tab width to 4 for golang by @f4z3r
+- Improve prompt by @f4z3r
+- Add yt-dlp to utils by @f4z3r
+- Disable default key bindings by @f4z3r
+- Add key bindings again for copy/paste by @f4z3r
+- Add trailer support to git config by @f4z3r
+- No longer update diagnostics by @f4z3r
+- Improve mic mute toggle to also update keyboard indicator by @f4z3r
+- Use upstream neotest again, supported via overseer anyways by @f4z3r
+- Improve indenting by @f4z3r
+- Add hatch to setup by @f4z3r
+- Add mpv as media player to setup by @f4z3r
+- Update default locations for inbox and journal by @f4z3r
+- Update git trailer commands to support custom values by @f4z3r
+- Improve inbox structure and capturing by @f4z3r
+- Add flameshot shortcut by @f4z3r
+- Add luakit setup by @f4z3r
+- Update tab switching with c-t by @f4z3r
+- Add binding to close all tabs except current one by @f4z3r
+- Enable movement during completion menu by @f4z3r
+- Enable fuzzy search everything, edit urls in neovim by @f4z3r
+- Update bookmark and history shortcuts to not open new tabs by @f4z3r
+- Update sync to only update newer files by @f4z3r
+- Update settings by @f4z3r
+- Enable full sync on revenge by @f4z3r
+- Add hoard to setup by @f4z3r
+- Replace hop by flash by @f4z3r
+- Improve bullets and reduce deadline warning to 4 days by @f4z3r
+- Improve pomodoro notification with sound by @f4z3r
+- Update pomodoro logs and add pandoc for org mode exports by @f4z3r
+- Remove luakit and add fuzzy bookmarks on brave by @f4z3r
+- Add basic kubernetes tooling to setup by @f4z3r
+- Update broot and nvim movement by @f4z3r
+- Add broot shortcut to tmux and improve esc remap by @f4z3r
+- Enable modal mode by @f4z3r
+- Fully integrate broot into nvim setup by @f4z3r
+- Add terraform setup and k9s configuration by @f4z3r
+- Add docker oneliners to trove by @f4z3r
+- Improve orgmode handling by @f4z3r
+- Be more stringent with what does not get stored to zsh history by @f4z3r
+- Remove floating window due to issues with windowing by @f4z3r
+- Simplify usage for better integration with vim by @f4z3r
+- Add more useful aliases by @f4z3r
+- Move to eza fork by @f4z3r
+- Add branch flag for worktree alias by @f4z3r
+- Add markdown table handling and pre-commit hook by @f4z3r
+- Make control-p ignore archive files in sb by @f4z3r
+- Add better support for date and time insert for orgmode by @f4z3r
+- Add fzf to support fuzzy searching of kubectx commands by @f4z3r
+- Add slides to setup by @f4z3r
+- Add delayed state to orgmode by @f4z3r
+- Update system and migrate to new APIs for major changes by @f4z3r
+- Use new alignment and splitjoin modules by @f4z3r
+- Add binding to toggle flash search by @f4z3r
+- Add in-progress state to orgmode by @f4z3r
+- Update compositor and improve annimations by @f4z3r
+- Add plantuml for diagramming in orgmode by @f4z3r
+- Enable printing GUI, disable ipu6 midi camera, update plantuml, add stuff to hoard trove by @f4z3r
+- Add support for random org mode file in alpha by @f4z3r
+- Add support for custom package versions by @f4z3r
+- Update fixes in new system versions, lifecycles by @f4z3r
+- Add docker remove images to trove by @f4z3r
+- Add wont-do option by @f4z3r
+- Add goal and reminder type by @f4z3r
+- Add obs-studios for screen capture by @f4z3r
+- Add flowblade for video editing by @f4z3r
+- Add signal desktop to setup by @f4z3r
+- Add splitjoin config to handle commas better by @f4z3r
+- Improve splitjoin for better padding on join of curly brackets by @f4z3r
+- Improve k9s skin by @f4z3r
+- Improve sxhkd bindings by @f4z3r
+- Improve sxhkd desktop handling by @f4z3r
+- Add ssd to polybar by @f4z3r
+- Improve launcher keybindings by @f4z3r
+- Improve tmux quake keybinding by @f4z3r
+- Enable tmux popups that are unique to the session by @f4z3r
+- Make tmux popup be bound to window instead of session by @f4z3r
+- Enable suspend from sxhkd by @f4z3r
+- Improve xsecurelock by @f4z3r
+- Add justfile syntax highlighting for nvim by @f4z3r
+- Add luastatic by @f4z3r
+- Add just by @f4z3r
+- Add bindings for luasnip by @f4z3r
+- Add local bin to path by @f4z3r
+- Enable lua-language-server in the shell to generate documentation by @f4z3r
+- Improve setup to develop lua by @f4z3r
+- Do not story api keys into shell history by @f4z3r
+- Add treesitter context to setup by @f4z3r
+- Replace lua ansicolors by luatext by @f4z3r
+- Add luautf8 module to setup by @f4z3r
+- Improve trouble shortcuts by @f4z3r
+- Add vhs to setup by @f4z3r
+- Improve python setup by removing node stuff and integrating ruff via lsp, adding snippets by @f4z3r
+- Move lua into its own nix module by @f4z3r
+- Changed nix lsp by @f4z3r
+- Add busted and luassert to lls library by @f4z3r
+- Improve lua setup and add nd tool by @f4z3r
+- Update dunst settings, update nd by @f4z3r
+- Enable italic fonts within tmux by @f4z3r
+- Add yaml injections into gotmpl and move helm chart highlighting to treesitter by @f4z3r
+- Add http library and remove secondary dependencies by @f4z3r
+- Add mip tooling for ip information retrieval by @f4z3r
+- Add neorg by @f4z3r
+- Properly setup neorg by @f4z3r
+- Backup neorg instead of old brain by @f4z3r
+- Improve setup by @f4z3r
+- Enable true-zen mode by @f4z3r
+- Make local lua binaries available by @f4z3r
+- Replace hoard with sofa by @f4z3r
+- Make polybar theming dynamic by @f4z3r
+- Add key binding for font size reset by @f4z3r
+- Update neorg for new features by @f4z3r
+- Remove unnecessary stuff from nvim config by @f4z3r
+- Add neogen configuration by @f4z3r
+- Add git-worktree to setup by @f4z3r
+- Improve handling of sessions by @f4z3r
+- Improve window picking by @f4z3r
+- Improve support for luasnip on gitcommit by @f4z3r
+- Auto open nvim choices by @f4z3r
+- Remove custom command and change keybinding to ease commit with editor by @f4z3r
+- Add support for mergetool via nvim by @f4z3r
+- Update jump keybinding within luasnips by @f4z3r
+- Update toggles for harpoon by @f4z3r
+- Show commit signature validation in log by @f4z3r
+- Improve lualine by @f4z3r
+- Enable tinting of inactive windows by @f4z3r
+- Dim inactive windows by @f4z3r
+- Update window creation bindings to be in line with tmux by @f4z3r
+- Update split join to better solution by @f4z3r
+- Support endwise via treesitter by @f4z3r
+- Replace zsh with fish by @f4z3r
+- Enable signoff trailer by @f4z3r
+- Update bindings for new esc by @f4z3r
+- Update bindings to be more intuitive by @f4z3r
+- Initial implementation for wayland by @f4z3r
+- Improve hyprland setup with better shortcuts and config by @f4z3r
+- Finish configuration of waybar by @f4z3r
+- Configure wallpapers by @f4z3r
+- Complete wayland setup by @f4z3r
+- Add lazygit alias by @f4z3r
+- Update window rules for inhibitor and volume binds by @f4z3r
+- Update color when mic muted by @f4z3r
+- Update bindings to allow volume control in locked state by @f4z3r
+- Update config to support hyprland monitor configuration by @f4z3r
+- Update window rules to correctly handle brave pop-ups by @f4z3r
+- Improve starship with direnv and better nix support by @f4z3r
+- Add keybind to send to quake by @f4z3r
+- Update colors for gruvbox by @f4z3r
+- Update workspace binding rules by @f4z3r
+- Enable via and the needed udev rules by @f4z3r
+- Improve window movement by @f4z3r
+- Update configuration to support moving workspaces by @f4z3r
+- Add shortcut for opening custom date journal by @f4z3r
+- Add devbox to setup by @f4z3r
+- Improve window rules and quake relaunch rules by @f4z3r
+- Add script to clone repositories into the correct location by @f4z3r
+- Add ultra wide screen resolution for monitor setup by @f4z3r
+- Update http highlighting and file detection by @f4z3r
+- Add rest plugin to run requests in http format by @f4z3r
+- Add headlines plugin by @f4z3r
+- Update gruvbox to have better play between neorg and headlines by @f4z3r
+- Make waybar colours dynamic with theme by @f4z3r
+- Do not force dark when setting light theme by @f4z3r
+- Add tidy to formatting and diagnostics by @f4z3r
+- Add inkscape to setup by @f4z3r
+- Add plantuml syntax highlighting by @f4z3r
+- Update headlines to not use fat formatting by @f4z3r
+- Do not use bullets on markdown by @f4z3r
+- Update heading highlights for norg using headlines.nvim by @f4z3r
+- Enable environment picking for rest.nvim by @f4z3r
+- Improve tmux scrolling by @f4z3r
+- Fix wayland issues and replace wezterm with foot by @f4z3r
+- Fix window rules and workspace placement by @f4z3r
+- Update rofi to wayland version by @f4z3r
+- Update pinentry workspace rules by @f4z3r
+- Disable semantic lsp syntax for lua by @f4z3r
+- Add monitor identifier by @f4z3r
+- Make monitor choice dynamic based on connected monitors by @f4z3r
+- Update setup to fit better with revenge setup by @f4z3r
+- Support setting executable bit on files easier by @f4z3r
+- Replace camelcasemotion with spider by @f4z3r
+- Add tabout to completion by @f4z3r
+- Remove harpoon by @f4z3r
+- Add markit, remove vim-signature and maximize by @f4z3r
+- Keep beautiful nvim inconsistencies in spider by @f4z3r
+- Improve spider operator pending movements by @f4z3r
+- Remove dpms switch on idle due to bug with xps15 by @f4z3r
+- Full disable mouse by @f4z3r
+- Improve mark handling by @f4z3r
+- Add D2 grammar to treesitter by @f4z3r
+- Add tup to setup by @f4z3r
+- Enable multiuser support via single array by @f4z3r
+- Update keybinding for clipboard history by @f4z3r
+- Add navic to setup and breadcrumbs on lualine by @f4z3r
+- Add typst support by @f4z3r
+- Improve usage of loclist instead of argument list by @f4z3r
+- Change default wallpaper by @f4z3r
+- Update git hook to prevent pushing some files by @f4z3r
+- Update sections by @f4z3r
+- Update notes sync to use bisync to improve conflict handling by @f4z3r
+- Update backup function to support directories by @f4z3r
+- Make theme dynamic by @f4z3r
+- Update colors for theme to be cleaner by @f4z3r
+- Update hyprctl monitor commands by @f4z3r
+- Integrate vimv into broot and improve configuration by @f4z3r
+- Improve broot integration by @f4z3r
+- Improve broot integration with fish by @f4z3r
+- Add shortcuts for hyprctl layouts by @f4z3r
+- Add default todo to check neorg inbox by @f4z3r
+- Update bookmark launcher to support other browsers by @f4z3r
+- Update waybar to be more flexible by @f4z3r
+- Update fuzzy bookmarks to launch in brave by default by @f4z3r
+- Update screen mirroring to be more intuitive by @f4z3r
+- Allow to choose country in vpn command by @f4z3r
+- Add dprint lsp and format some files by @f4z3r
+- Add rust-analyzer setup by @f4z3r
+- Update journal for new productivity setup by @f4z3r
+- Improve window resizing and grouping by @f4z3r
+- Update journal template by @f4z3r
+- Update jumping between prompt by @f4z3r
+- Add podman commands by @f4z3r
+- Update configuration to update refs on rebase by @f4z3r
+- Create toggle for spelling by @f4z3r
+- Add btop to setup by @f4z3r
+- Add gists bookmark by @f4z3r
+- Improve zen-mode width by @f4z3r
+- Improve toggles and add spelling toggle by @f4z3r
+- Remove never used git bindings by @f4z3r
+- Add ollama to setup by @f4z3r
+- Add gc alias by @f4z3r
+- Add posix library to setup by @f4z3r
+- Add firenvim to setup by @f4z3r
+- Switch from rest.nvim to kulala.nvim by @f4z3r
+- Change foot to ghostty with startup fix by @f4z3r
+- Use pinned version of ghostty by @f4z3r
+- Update terminal logo to follow ghostty and not foot by @f4z3r
+- Update to new gruvbox theme to test lualine integration by @f4z3r
+- Update version and add presenterm-export by @f4z3r
+- Update view for topics to show name of the topic by @f4z3r
+- Improve commit message validation by @f4z3r
+- Update wallpaper to change on light theme by @f4z3r
+- Make theme dynamic by @f4z3r
+- Update theme isolation and make rofi theme dependent by @f4z3r
+- Replace cmp nvim with blink for performance by @f4z3r
+- Add tooling to locally decode jwts by @f4z3r
+- Improve blink priorities and emoji support by @f4z3r
+- Update gruvbox to better support pop-up menus by @f4z3r
+- Add way to print resolutions of monitors by @f4z3r
+- Improve keybindings for update and exit by @f4z3r
+- Update window close keybinding by @f4z3r
+- Update gruvbox to test new icon styles by @f4z3r
+- Update gruvbox to integrate changes from navic by @f4z3r
+- Update gruvbox to version 1.6.0 by @f4z3r
+- Improve integration by @f4z3r
+- Add watchexec as executor by @f4z3r
+- Improve theming by @f4z3r
+- Add toggle for lsp information in trouble by @f4z3r
+- Remove broot floating window binding by @f4z3r
+- Setup harpoon by @f4z3r
+- Update git bindings by @f4z3r
+- Add path copy command by @f4z3r
+- Increase search depth for directory selector by @f4z3r
+- Add base harper integration by @f4z3r
+- Update harper rules by @f4z3r
+- Enable harper for comments everywhere by @f4z3r
+- Update to newest version and improve on some stuff by @f4z3r
+- Add wash completions by @f4z3r
+- Always signoff commits by @f4z3r
+- Update rclone file sync to not contain dotfiles by @f4z3r
+- Update journal template to focus on deep work by @f4z3r
+- Add timer shortcut with notification by @f4z3r
+- Update vpn script to improve waybar feedback by @f4z3r
+- Play sound on notification by @f4z3r
+- Add feed.nvim to setup by @f4z3r
+- Update journal template for deepwork strategy by @f4z3r
+- Add imv image viewer and remove ollama by @f4z3r
+- Support image rendering in norg and md files by @f4z3r
+- Update zen mode width to avoid shift during completion by @f4z3r
+- Update commit aliases to allow editing in editor and signoff by @f4z3r
+- Add proxy alias by @f4z3r
+- Update to version 0.8.0 by @f4z3r
+- Improve support for tunnelling by @f4z3r
+- Enable hostname over ssh by @f4z3r
+- Enable local only password manager by @f4z3r
+- Update harpoon keybinds for better control by @f4z3r
+- Improve zen and wrap toggles by @f4z3r
+- Update journal template to support block planning by @f4z3r
+- Allow mouse to move and resize floating windows by @f4z3r
+- Disable image rendering by default by @f4z3r
+- Update journal structure to be less restrictive by @f4z3r
+- Add todo abbreviation by @f4z3r
+- Update class logos for brave and firefox by @f4z3r
+- Add default settings by @f4z3r
+- Add flake result dir to gitignore by @f4z3r
+- Enable atuin for history searches by @f4z3r
+- Update how dwindle works to allow splitting control by @f4z3r
+- Update to latest gruvbox material version by @f4z3r
+- Enable link clicking in terminal by @f4z3r
+- Add visual whitespace setup by @f4z3r
+- Update gruvbox to lastest version by @f4z3r
+- Add timerly setup to nvim by @f4z3r
+- Reduce notify timeout for copy to clipboard by @f4z3r
+- Update notification on nvim timer by @f4z3r
+- Add diffview plugin to setup by @f4z3r
+- Add shortcut to access entry in diffview file panel by @f4z3r
+- Enable batsignal for battery notifications by @f4z3r
+- Remove markit and improve treesitter objects by @f4z3r
+- Update layout for telescope to vertical by @f4z3r
+- Add fava and beancount to setup by @f4z3r
+- Add beancount formatting and diagnostics by @f4z3r
+- Use OSC52 for clipboard management via Ghostty by @f4z3r
+- Add ftcsv to setup by @f4z3r
+- Update journal template by @f4z3r
+- Add luarocks installs as usable dependencies by @f4z3r
+- Improve neovim formatting shortcut trigger by @f4z3r
+- Add timerly to lualine by @f4z3r
+- Remove image.nvim again by @f4z3r
+- Add toggle mic command due to potentially missing key by @f4z3r
+- Improve rofi layer presentation by @f4z3r
+- Add cargo binaries to path by @f4z3r
+- Improve zen mode width computation by @f4z3r
+- Replace neo-tree with oil by @f4z3r
+- Remove feed.nvim from setup by @f4z3r
+- Improve harpoon bindings to be easier to use by @f4z3r
+- Add system notification to timerly by @f4z3r
+- Update neotest to golang instead of older go by @f4z3r
+- Remove vimv, no longer required due to oil.nvim by @f4z3r
+- Update journal template by @f4z3r
+- Integrate entire nvim setup into image by @f4z3r
+- Use homerow and smaller tips closer to cursor for thumbs by @f4z3r
+- Switch back to nixpkgs release of headlines.nvim by @f4z3r
+- Add time to lock screen by @f4z3r
+- Make screen mirroring use proven default by @f4z3r
+- Enable for easier presenterm stuff by @f4z3r
+- Remove default config to ensure reproducible slides by @f4z3r
+- Use unstable analyzer since fixed by @f4z3r
+- Add neotest-busted by @f4z3r
+- Pull resolutions directly from monitor settings by @f4z3r
+- Add beancount lsp to setup by @f4z3r
+- Improve integration of neotest-busted by @f4z3r
+- Add command to generate random stuff by @f4z3r
+- Add git-cliff by @f4z3r
+- Add smear-cursor plugin by @f4z3r
+- Upate focus time in timerly to 50 minutes by @f4z3r
+- Update journal template to use todo in deep work session by @f4z3r
+- Add flash integration for telescope by @f4z3r
+- Add prettier setup by @f4z3r
+- Re-introduce marks for intra buffer jumps by @f4z3r
+- Add todo comment plugin by @f4z3r
+- Update oil config to show hidden files by default by @f4z3r
+- Update to use rustup instead of direct cargo, etc install by @f4z3r
+- Fully hide .. on oil dir listings by @f4z3r
+- Update journal template for important deep work by @f4z3r
+- Improve abbreviation for todos and fixes by @f4z3r
+- Improve meet floating windows by @f4z3r
+- Add support to switch to light theme without rebuilding by @f4z3r
+- Update journal template by @f4z3r
+- Add neorg project template by @f4z3r
+- Add neorg area template by @f4z3r
+- Add neorg insert keybind to add custom date via calendar by @f4z3r
+- Improve usage of broot in setup by @f4z3r
+- Add buildah by @f4z3r
+- Jump to monitor 4 by default on startup by @f4z3r
+- Add yq as standard utility by @f4z3r
+- Improve bindings a little by @f4z3r
+- Refactor how python is handled by @f4z3r
+- Enable pomodoro timer on waybar by @f4z3r
+- Remove timerly from setup by @f4z3r
+- Allow rebuild offline by @f4z3r
+- Remove alpha and launch oil on empty command by @f4z3r
+- Add pomodoro toggle binding and switch interval to 1 by @f4z3r
+- Update journal template by @f4z3r
+- Support changing times of pomodoro timer by @f4z3r
+- Disable oil on startup by @f4z3r
+- Force exit zen-mode on vim exit by @f4z3r
+- Remove pylsp and fully switch to ty by @f4z3r
+- Update bindings for overseer by @f4z3r
+- Add resession to setup by @f4z3r
+- Update treesitter to newest version by @f4z3r
+- Add gitlinker and remove tabout from setup by @f4z3r
+- Update template for journal for new tenets by @f4z3r
+- Replace symbols-outline with outline by @f4z3r
+- Click to mute mic on pulse audio by @f4z3r
+- Improve blacklists on resession by @f4z3r
+- Update journal template by @f4z3r
+- Remove cliphist, as it is unused by @f4z3r
+- Enable toggling mic via global shortcut by @f4z3r
+- Update neorg templates by @f4z3r
+- Improve navigation by @f4z3r
+- Improve typst configuration by @f4z3r
+- Add verb to execute shell command if needed by @f4z3r
+- Make resizing a function of window size by @f4z3r
+- Add .. aliases by @f4z3r
+- Add shortcut for small terminal at bottom of pane by @f4z3r
+- Add gnu parallel to setup by @f4z3r
+- Replace harpoon with grapple by @f4z3r
+- Move configuration out of nix for faster iterations by @f4z3r
+- Update fonts generally to Monaspice by @f4z3r
+- Enable telescope search resume by @f4z3r
+- Enable shortcut to jump to last session by @f4z3r
+- Add initial version of tv for tmux session management by @f4z3r
+- Update nvim to better support tv without broot and telescope by @f4z3r
+- Add better dirs support by @f4z3r
+- Update gruvbox-material.nvim to v1.8.1 by @f4z3r
+- Update templates for new structure by @f4z3r
+- Add neorg link to heading by @f4z3r
+- Update project and area templates by @f4z3r
+- Do not open quickfix list on tv add to quickfix by @f4z3r
+- Remove overseer and neotest because never used by @f4z3r
+- Add busted test channel by @f4z3r
+- Add executor for command dispatching by @f4z3r
+- Add clone path to zoxide by @f4z3r
+- Move channels to toml files for easier management by @f4z3r
+- Support setting runner commands via tv by @f4z3r
+- Add additional channels for running dev commands by @f4z3r
+- Add support for kcl by @f4z3r
+- Remove binding to jump to inbox by @f4z3r
+- Add git shortcuts by @f4z3r
+- Update zen-mode to avoid sign column flickering by @f4z3r
+- Add btop default session by @f4z3r
+- Test replacing opencode with pi by @f4z3r
+- Add extended keys for pi to be happy by @f4z3r
+- Move to master on pi.nvim for latest updates by @f4z3r
+- Use an alias that allows isolating Pi in a Docker container by @f4z3r
+- Remove pi-coding-agent to avoid accidental non-isolation by @f4z3r
+- Move to version image v0.2.0 by @f4z3r
+- Update journal template by @f4z3r
+- Improve mnemonics on shortcuts by @f4z3r
+- Improve how comments are handled by @f4z3r
+- Setup DAP again for Rust debugging by @f4z3r
+- Enable prek on the system and in this repo by @f4z3r
+- Remove devbox and move to mise instead by @f4z3r
+- Update executor.nvim api usage based on updated branch by @f4z3r
+- Improve bindings by @f4z3r
+- Update to orchis theme by @f4z3r
+- Improve active workspace icon by @f4z3r
+- Remove pi extension by @f4z3r
+- Add tv support for yanky ring by @f4z3r
+- Add yankcraft to setup by @f4z3r
+- Improve yankcraft usage by @f4z3r
+- Update yankcraft and fix bindings by @f4z3r
+- Add neorg todo prefix search by @f4z3r
+- Split setup into docker image dev-env and desktop by @f4z3r
+- Improve docker build information by @f4z3r
+- Add mise nix-ld support by @f4z3r
+
+### <!-- 1 -->Bug Fixes
+- Update layout keys to fix sequences by @f4z3r
+- Move locate service to root configuration by @f4z3r
+- Remove sxhkd keyboard shortcut conflicts by @f4z3r
+- Update broot to correctly display themes by @f4z3r
+- Update coc settings and add a couple coc extensions by @f4z3r
+- Update bspwm to have more monitors setup by @f4z3r
+- Remove unneeded markdown pair correction for coc by @f4z3r
+- Update tmux bindings by @f4z3r
+- Update ncmpcpp hotkey by @f4z3r
+- Make notification script for music generate its preview directory by @f4z3r
+- Update fonts for new fira code nerd font update by @f4z3r
+- Update coc-pyright settings to reflect testing provider by @f4z3r
+- Let vim-test perform tests for python instead of pyright by @f4z3r
+- Remove typos from kubernetes setup in starship by @f4z3r
+- Update shell level on starship to not always be triggered by @f4z3r
+- Decrease tmux resize steps to be more friendly on non 4k screens by @f4z3r
+- Update polybar due to battery charging settings by @f4z3r
+- Update camelcase motion bindings by @f4z3r
+- Improve completion mappings by @f4z3r
+- Change commit hook to not require penlight anymore by @f4z3r
+- Update cmp mappings to avoid jump on selection update by @f4z3r
+- Do not add blank line before org heading automatically by @f4z3r
+- Fully disable the mouse in nvim by @f4z3r
+- Dashboard shortcut update to agenda by @f4z3r
+- Change to gtk2 pinentry to allow unlock on search by @f4z3r
+- Remove link to non-existing package by @f4z3r
+- Improve startup time and change from dashboard to alpha splash by @f4z3r
+- Update hint on toggle for maximization by @f4z3r
+- Update hint on toggle for test summary by @f4z3r
+- Update orgmode delegated shortcut by @f4z3r
+- Change alsa widget due to alsa boot delay by @f4z3r
+- Update toggle bindings to avoid collisions by @f4z3r
+- Update bindings for test output window in neotest by @f4z3r
+- Update bullets unicode by @f4z3r
+- Update previous tab for switching, fix typo in label maker for hints by @f4z3r
+- Update menu navigation with c-p and c-n by @f4z3r
+- Update luakit commands to be more representative and patch tabopen by @f4z3r
+- Bat colours in manpage by @f4z3r
+- Update templates for captures for whitespace by @f4z3r
+- Allow fuzzy searching only on branch name and do not reverse search by @f4z3r
+- Archive files properly by @f4z3r
+- Improve worktree pruning to respect main branch by @f4z3r
+- Fix git local branch pruning by @f4z3r
+- Update on hold label to work properly in org mode by @f4z3r
+- Update k9s skin name by @f4z3r
+- Remove hadolint from none-ls setup by @f4z3r
+- Temporary fix to update gruvbox to new treesitter version by @f4z3r
+- Update gruvbox highlights due to treesitter breaking changes by @f4z3r
+- Fix tmux keybinding conflicting with auto-fill by @f4z3r
+- Update exa shortcut by @f4z3r
+- Update xsecurelock to work properly on suspend by @f4z3r
+- Allow lua to load modules from the current directory by @f4z3r
+- Update bindings to allow proper input in luasnippets by @f4z3r
+- Update toggle description by @f4z3r
+- Fix lua ls configuration by @f4z3r
+- Update nd to working version by @f4z3r
+- Update none ls configuration and tooling by @f4z3r
+- Update scratchpad script to work after shellharden by @f4z3r
+- Remove gruvbox extra mappings by @f4z3r
+- Revert zsh shortcuts for autocomplete by @f4z3r
+- Implement journal template and fix icons by @f4z3r
+- Update markdown conceal by @f4z3r
+- Remove deprecated cmp stuff by @f4z3r
+- Remove obsolete nd stuff by @f4z3r
+- Remove parent update due to issues by @f4z3r
+- Update time insertion keymaps to be better suited for neorg by @f4z3r
+- Set default fold level to 10 by @f4z3r
+- Allow unused locals by @f4z3r
+- Fix binding shortcut by @f4z3r
+- Update zsh config for sofa by @f4z3r
+- Update config for newer version by @f4z3r
+- Update autocompletion by @f4z3r
+- Remove pomodoro from journal template by @f4z3r
+- Update configuration to contain correct choices by @f4z3r
+- Add background color to nvim notify by @f4z3r
+- Improve lualine background configuration by @f4z3r
+- Improve zen mode to have full width for my coding by @f4z3r
+- Update volume to work on single digit volume levels by @f4z3r
+- Neotree title display by @f4z3r
+- Do not create dummy session on rofi abort for tmux-session-finder by @f4z3r
+- Improve occupied recognition on symbol by @f4z3r
+- Use correct neovim installation on git requests by @f4z3r
+- Remove unnececessary prefix for nvim commands by @f4z3r
+- Remove impr from conventional commit type by @f4z3r
+- Remove collision with snippet jump and norg link insert by @f4z3r
+- Add boarders to lsp hover information by @f4z3r
+- Remove background force on floats by @f4z3r
+- Remove buggy treesitter-context by @f4z3r
+- Update trouble for deprecation notice by @f4z3r
+- Fix gitcommit snippets by @f4z3r
+- Remove c-t conflict in telescope by @f4z3r
+- Improve configuration integration by @f4z3r
+- Ensure fish integration is always enabled by @f4z3r
+- Stop using universal variables by @f4z3r
+- Readd coloured man pages by @f4z3r
+- Stabilize keybinding for fifc by @f4z3r
+- Switch to materia theme to support gtk4 by @f4z3r
+- Fix client move to other desktops by @f4z3r
+- Remove anyrun from setup by @f4z3r
+- Disable natural scrolling by @f4z3r
+- Update pinentry animation by @f4z3r
+- Update bindings for vim motion focus movement by @f4z3r
+- Update bindings to new neorg structure by @f4z3r
+- Remove initial start of tmux quake session by @f4z3r
+- Update treesitter to install grammars due to nix bug by @f4z3r
+- Improve initial mic toggle setup by @f4z3r
+- Update diagnostics toggles by @f4z3r
+- Use new trouble commands by @f4z3r
+- Do not disable tabout on markdown by @f4z3r
+- Update shortcuts to avoid conflict by @f4z3r
+- Disable none-ls todo diagnostics to fix line join issues by @f4z3r
+- Make hyprland use the correct version of ghostty by @f4z3r
+- Remove unnecessary ghostty pre-run by @f4z3r
+- Remove superfluous argument in directory creation by @f4z3r
+- Improve scoping of gitignores by @f4z3r
+- Remove unecessary stuff by @f4z3r
+- Update typo in configuration by @f4z3r
+- Remove group keybindings by @f4z3r
+- Remove update short cut again due to repeated undo operations by @f4z3r
+- Ensure window decorations are never used by @f4z3r
+- Remove fifc plugin by @f4z3r
+- Handle broot cancels with dignity by @f4z3r
+- Remove firenvim from setup by @f4z3r
+- Follow mouse instead of keyboard by @f4z3r
+- Update empty workspace styling by @f4z3r
+- Fix linking path for dynamic object files by @f4z3r
+- Update configuration due to breaking change by @f4z3r
+- Update gitignore to corretly support nix results by @f4z3r
+- Position cursor where needed in neorg journal template by @f4z3r
+- Update shortcuts to ensure that branch switches work always by @f4z3r
+- Change treesitter config to silence ro fs error on startup by @f4z3r
+- Temporarily disable kulala due to ld issue by @f4z3r
+- Update background of whitespace visual highlights by @f4z3r
+- Remove unnecessary aliases by @f4z3r
+- Temporarily disable neotest due to bug in their test suite by @f4z3r
+- Update pane switch shortcut by @f4z3r
+- Ensure all libraries are available to hyprland by @f4z3r
+- Do not store passwords in cliphist by @f4z3r
+- Fix norg meta treesitter parser not registering by @f4z3r
+- Do not sync tag files due to addition of code in second brain by @f4z3r
+- Update refresh binding for oil.nvim by @f4z3r
+- Remove deprecated way of configuring standard signs by @f4z3r
+- Refix refresh for oil binding by @f4z3r
+- Improve lsp configuration and file watching by @f4z3r
+- Improve integration of LSPs by @f4z3r
+- Properly integrate helm lsp by @f4z3r
+- Improve todo list integration by @f4z3r
+- Provide duplicate switch for marks as some LSPs use [[ by @f4z3r
+- Pin to stable version to avoid annoying bugs by @f4z3r
+- Move umask to initialisation where umask available by @f4z3r
+- Remove neorg code block clipboard utilities bc they suck by @f4z3r
+- Alias configuration by @f4z3r
+- Ignore parent directories correctly by @f4z3r
+- Improve mime types by @f4z3r
+- Avoid animations on screenshot selections by @f4z3r
+- Remove keybind conflict with indent increase by @f4z3r
+- Add revert as commit type by @f4z3r
+- Don't print error msg if colour override file does not exist by @f4z3r
+- Do not enter build directories but show them by @f4z3r
+- Remove actually superflous oil binding by @f4z3r
+- Rebuild sub defaults to all by @f4z3r
+- Update configuration for new version by @f4z3r
+- Increase default foldlevel to 12 by @f4z3r
+- Do not store session on git commit entries by @f4z3r
+- Re-enable endwise by @f4z3r
+- Update default selection on nix rebuild by @f4z3r
+- Update outline symbol lookup due to lspkind bug by @f4z3r
+- Update neorg template to not contain categories by @f4z3r
+- Improve zen-mode width to account for diagnostics by @f4z3r
+- Remove wrong URL prefix on zoxide command by @f4z3r
+- Make stylua available in the shell by @f4z3r
+- Update extended keys to improve pi support by @f4z3r
+- Improve diagnostics from LSP to show the source by @f4z3r
+- Move configuration to lua by @f4z3r
+- Avoid error on retag for grapple by @f4z3r
+- Mount skills etc for pi as read-only by @f4z3r
+- Do not resession if exit file is tmp fish file by @f4z3r
+- Do not store session in git diff scenario by @f4z3r
+- Updating code action bindings to be on aa as well by @f4z3r
+- Move some keys into fish shell configuration only by @f4z3r
+- Use more natural ordering in project arc42 structure by @f4z3r
+- Remove uppercase in journal templates by @f4z3r
+- Enable control-a to be passed through by @f4z3r
+- Fix integration between tv and nvim by @f4z3r
+- Fix channel file name for just by @f4z3r
+- Enable move to quake workspace shortcut by @f4z3r
+- Update neorg bindings to avoid warning by @f4z3r
+- Update styling by @f4z3r
+- Remove global ruff config to avoid conflicts in projects by @f4z3r
+- Fix compat32 priority issues by @f4z3r
+- Update looking glass bindings by @f4z3r
+
+### <!-- 10 -->Other
+- Increase border width for bspwm by @f4z3r
+- Tmux a with control allowed to go to last window by @f4z3r
+- Improve rofi theme by @f4z3r
+- Type and not copy passwords by default using rofi-rbw by @f4z3r
+- Add lock and better password capabilities to sxhkd by @f4z3r
+- Improve dual/triple monitor setup by @f4z3r
+- Improve nix shell and file editing by @f4z3r
+- Add ouch to used tooling by @f4z3r
+- Add correct dog package, update git alias, improve tmux config by @f4z3r
+- Add vim binding to list yank stack by @f4z3r
+- Update some bindings for broot, zsh, and vim by @f4z3r
+- Update wallpaper by @f4z3r
+- Add icon themes and configure dunst by @f4z3r
+- Add network speed to polybar by @f4z3r
+- Use fancier picom package for improved animations and rounded corners by @f4z3r
+- Update polybar design to contain signal strength by @f4z3r
+- Fix fullscreen on bspwm to toggle by @f4z3r
+- Update linenumber setup to not use relative numbers by @f4z3r
+- Change wezterm cursor foreground by @f4z3r
+- Remove xwindow window name from polybar setup by @f4z3r
+- Update icon for pomodorro notification by @f4z3r
+- Remove fold level column in vim setup by @f4z3r
+- Add simple bind to remove search highlight by @f4z3r
+- Move org tags further right by @f4z3r
+- Update some nvim stuff and improve light delta colours by @f4z3r
+- Various other improvements on nvim setup by @f4z3r
+- Replace easy-align with more powerfull lua alternative by @f4z3r
+- Update vim notify renderer by @f4z3r
+- Add toggle for dap ui by @f4z3r
+- Skip showing deadlines for already completed tasks in orgmode agenda by @f4z3r
+- Add highlighting to vim notify, prepare for yank stack, add unto tree by @f4z3r
+- Add quotes to startup screen by @f4z3r
+- Add path completion to orgmode by @f4z3r
+- Improve treesitter support a little by @f4z3r
+- Improve overseer setup by @f4z3r
+- Setup helm ls on gotmpl files by @f4z3r
+- Improve twilight setup by @f4z3r
+- Only run busted tests in tests directory by @f4z3r
+- Make nd use a path within the second brain by @f4z3r
+- Update color schemes in terminal by @f4z3r
+- Add harpoon setup by @f4z3r
+- Improve journaling by @f4z3r
+- Disable treesitter context except for yaml files for performance by @f4z3r
+- Add luatables to setup by @f4z3r
+- Update script to write table to output by @f4z3r
+- Add plugin for better quick yanks by @f4z3r
+- Improve completion engine by @f4z3r
+- Add ropeproject to global ignore by @f4z3r
+- Reduce delay for autocomplete again by @f4z3r
+- Add d2 to setup by @f4z3r
+- Switch slides for presenterm by @f4z3r
+- Improve concealer icons by @f4z3r
+- Improve rofi theme by @f4z3r
+- Improve configuration by @f4z3r
+- Move to unstable version, add some sofa commands by @f4z3r
+- Add way to delete harpoon items from telescope by @f4z3r
+- Add more commands by @f4z3r
+- Improve the output of the fuzzy bookmark searching by @f4z3r
+- Remove pomodoro setup by @f4z3r
+- Update journal template by @f4z3r
+- Add shortcut to switch windows easier by @f4z3r
+- Add startofline option by @f4z3r
+- Update git to sign commits on rebase by @f4z3r
+- Basic check for curl and xh in zsh history by @f4z3r
+- Update neotree colouring by @f4z3r
+- Update sofa configuration to have autorandr stuff by @f4z3r
+- New journal template by @f4z3r
+- Add new kill sessions option in sofa for tmux by @f4z3r
+- Only generate a single popup per session by @f4z3r
+- Move away from custom session management to tmux-tea by @f4z3r
+- Name quake session correctly by @f4z3r
+- Use temporary patched version for tmux-tea by @f4z3r
+- Improve tmux kill command by @f4z3r
+- Use custom version of tmux-tea that does not allow to switch to quake or popup session by @f4z3r
+- Increase zen mode width to 105 by @f4z3r
+- Update binding for popup by @f4z3r
+- Add lazygit to setup by @f4z3r
+- Add key headers to pre-commit check by @f4z3r
+
+### <!-- 2 -->Refactor
+- Improve repository structure by @f4z3r
+- Update system structure a little by @f4z3r
+- Remove some tooling that is no longer necessary by @f4z3r
+- Move tools to from vim to home to make usable by pi by @f4z3r
+
+### <!-- 3 -->Documentation
+- Fix command description to match document diagnostics by @f4z3r
+- Improve luasnip descriptions by @f4z3r
+- Add a bit more details on the structure of system by @f4z3r
+
+### <!-- 4 -->Performance
+- Remove ctags from setup, as rarely used and slow on large repos by @f4z3r
+
+### <!-- 5 -->Styling
+- Update cmp windows and update lua styling by @f4z3r
+- Reformat files and update broot behaviour by @f4z3r
+- Make rofi window wider by @f4z3r
+- Format polybar configuration by @f4z3r
+- Fix weird naming in authors luasnip by @f4z3r
+- Add prettier formatting and format code by @f4z3r
+
+### <!-- 6 -->Testing
+- Try out opencode as an agent next to nvim by @f4z3r
+- Try to use pi wrapper for pi.nvim by @f4z3r
+
+### <!-- 7 -->Miscellaneous Tasks
+- Init commit by @f4z3r
+- Add thunar by @f4z3r
+- Added flameshot by @f4z3r
+- Delete unused file for tmux by @f4z3r
+- Add onlyoffice as office replacement by @f4z3r
+- Cleanup, remove vimspector from setup again by @f4z3r
+- Improve nix app structure by @f4z3r
+- Cleanup nixos hardware config after enabling nix by @f4z3r
+- Add spelling by @f4z3r
+- Add spelling by @f4z3r
+- Spelling update by @f4z3r
+- Add GNU make to setup by @f4z3r
+- Add openssl to setup by @f4z3r
+- Revert commit 5ed4143 by @f4z3r
+- Update nix wallpaper by @f4z3r
+- Add spellcheck by @f4z3r
+- Update system and disable hadolint due to broken dependency by @f4z3r
+- Update spelling by @f4z3r
+- Remove unecessary alias by @f4z3r
+- Update spelling by @f4z3r
+- Update spelling by @f4z3r
+- Update spelling by @f4z3r
+- Switch from lfs to dysk due to name change by @f4z3r
+- Update spell files by @f4z3r
+- Update spelling by @f4z3r
+- System update by @f4z3r
+- Update plantuml by @f4z3r
+- System update by @f4z3r
+- Update spell files by @f4z3r
+- Update system by @f4z3r
+- Update luatext to newer version by @f4z3r
+- Update spelling by @f4z3r
+- Update luatext to version 1.0.0 by @f4z3r
+- Update luatext to version 1.1.0 by @f4z3r
+- Update luatext to version 1.1.1 by @f4z3r
+- Remove dead code by @f4z3r
+- Remove plantuml from nvim setup and update nvim plugins by @f4z3r
+- Update to new gruvbox upstream by @f4z3r
+- Update theme to new version by @f4z3r
+- Update gruvbox-material depedency by @f4z3r
+- System update by @f4z3r
+- Update gruvbox by @f4z3r
+- Remove orgmode stuff by @f4z3r
+- Remove final orgmode stuff, update neorg shortcuts by @f4z3r
+- Update by @f4z3r
+- Update by @f4z3r
+- Update by @f4z3r
+- Add imagemagick to setup by @f4z3r
+- Update config by @f4z3r
+- Update sofa and configs by @f4z3r
+- Update sofa config by @f4z3r
+- Update sofa configuration by @f4z3r
+- Update sofa configuration by @f4z3r
+- Update git email by @f4z3r
+- Update sofa to latest unstable version by @f4z3r
+- Update gruvbox-material version by @f4z3r
+- Add ticktick to setup by @f4z3r
+- Add pandoc to setup by @f4z3r
+- Update sofa by @f4z3r
+- System update by @f4z3r
+- Update luatext to version 1.2.0 by @f4z3r
+- Update sofa to 0.5.0 by @f4z3r
+- Update gruvbox-material version by @f4z3r
+- Update gruvbox-material version by @f4z3r
+- Update gruvbox-material version by @f4z3r
+- Update gruvbox-material version by @f4z3r
+- Update gruvbox-material version by @f4z3r
+- Replace true-zen with zen-mode and fix some git neo-tree stuff by @f4z3r
+- Readd harpoon to setup by @f4z3r
+- System update by @f4z3r
+- Use new sofa version 0.5.2 by @f4z3r
+- Update tmux-tea to new version by @f4z3r
+- Remove luasnip_choice plugin by @f4z3r
+- System update by @f4z3r
+- Update gruvbox theme by @f4z3r
+- System update, attempt to fix gtk by @f4z3r
+- Update spelling by @f4z3r
+- Update gruvbox to use fixed tag of newly released version by @f4z3r
+- Update headlines to original repo by @f4z3r
+- Update journal template with goals by @f4z3r
+- System update by @f4z3r
+- System update by @f4z3r
+- System update by @f4z3r
+- Remove various tech debt by @f4z3r
+- System update by @f4z3r
+- Update rest configuration for new version by @f4z3r
+- System update by @f4z3r
+- Update gruvbox-material version to 1.5.0 by @f4z3r
+- Update headlines setup by @f4z3r
+- System update by @f4z3r
+- Update vim specific plugins by @f4z3r
+- System update by @f4z3r
+- Remove obsolete nd package by @f4z3r
+- System update by @f4z3r
+- System update by @f4z3r
+- System update by @f4z3r
+- System update by @f4z3r
+- System update by @f4z3r
+- System update by @f4z3r
+- System update by @f4z3r
+- System update by @f4z3r
+- Update neotest-busted to new upstream version by @f4z3r
+- System update by @f4z3r
+- System update by @f4z3r
+- Some cleanup by @f4z3r
+- System update by @f4z3r
+- Update spelling file by @f4z3r
+- System update by @f4z3r
+- Upate stateversions to 26.05 by @f4z3r
+- Remove obsolete stuff from gruvbox configuration by @f4z3r
+- Move ftplugin configuration to Lua by @f4z3r
+- System update by @f4z3r
+- Update to pre-release version of gruvbox by @f4z3r
+- Update pi to use qwen coder free in vim by @f4z3r
+- Use mistralai/mistral-small-2603 for embedded pi by @f4z3r
+- Update pi image version to not pre-release 0.1.0 by @f4z3r
+- Move back to pablopunk's pi.nvim by @f4z3r
+- Update to version 0.2.1 of sandbox image by @f4z3r
+- Update to version 0.2.2 by @f4z3r
+- Update to version 0.3.0 by @f4z3r
+- System update by @f4z3r
+- System update by @f4z3r
+- Update pi agent to 0.5.2 by @f4z3r
+- System update by @f4z3r
+- System update by @f4z3r
+
+[unreleased]: https://github.com/f4z3r/nix
+
+<!-- generated by git-cliff -->
