@@ -51,6 +51,9 @@ footer = """
         {% if release.previous.version -%}
             [{{ release.version | trim_start_matches(pat="v") }}]: \
                 {{ self::remote_url() }}/compare/{{ release.previous.version }}...{{ release.version }}
+        {% else -%}
+            [{{ release.version | trim_start_matches(pat="v") }}]: \
+                {{ self::remote_url() }}/tree/{{ release.version }}
         {% endif -%}
     {% elif release.version.previous -%}
         [unreleased]: {{ self::remote_url() }}/compare/{{ release.previous.version }}...HEAD
