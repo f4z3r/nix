@@ -40,6 +40,12 @@ jobs:
           nix shell --inputs-from . nixpkgs#skopeo -c \
             skopeo copy \
               --dest-creds "${GITHUB_ACTOR}:${GHCR_TOKEN}" \
-              --additional-tag latest \
               "docker-archive:${PWD}/result" \
               "docker://${image}:${tag}"
+
+          nix shell --inputs-from . nixpkgs#skopeo -c \
+            skopeo copy \
+              --src-creds "${GITHUB_ACTOR}:${GHCR_TOKEN}" \
+              --dest-creds "${GITHUB_ACTOR}:${GHCR_TOKEN}" \
+              "docker://${image}:${tag}" \
+              "docker://${image}:latest"
