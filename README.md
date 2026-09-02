@@ -119,6 +119,18 @@ docker load < result
 
 The image is defined in `docker.nix`.
 
+You can then run the image:
+
+```bash
+docker run \
+  -v ./:/home/f4z3r/workspace/ \
+  -it \
+  ghcr.io/f4z3r/dev-environment:latest
+```
+
+Building a new image is done by adding a tag. Ensure that the tag is applied to a commit that
+actually modifies the image and is the latest commit on `master`.
+
 ## Bootstrap New Computer
 
 See [`docs/bootstrap.md`](./docs/bootstrap.md).
