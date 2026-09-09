@@ -25,4 +25,8 @@ vim.o.startofline = true
 vim.o.secure = true
 vim.o.mouse = ""
 
-vim.g.clipboard = 'osc52'
+if vim.env.TMUX then
+  vim.g.clipboard = "tmux"
+else
+  vim.g.clipboard = "osc52"
+end

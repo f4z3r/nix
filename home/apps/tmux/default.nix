@@ -68,7 +68,7 @@ in {
 
       # passthrough for zen-mode and nvim clipboard
       set-option -gq allow-passthrough on
-      set-option -gq set-clipboard on
+      set-option -gq set-clipboard external
 
       # minimal status bar
       set-option -g status-style bg=${bg_colour},fg=${fg_colour}

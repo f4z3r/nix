@@ -50,6 +50,8 @@ in {
       installVimSyntax = true;
       clearDefaultKeybinds = true;
       settings = {
+        clipboard-read = "allow";
+        clipboard-write = "allow";
         font-family = "MonaspiceNe Nerd Font Mono";
         font-variation = "wght=450";
         font-family-italic = "MonaspiceAr Nerd Font Mono";
