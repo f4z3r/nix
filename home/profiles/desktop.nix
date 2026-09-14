@@ -81,6 +81,8 @@ in {
           then "Gruvbox Dark"
           else "Gruvbox Light";
         keybind = [
+          # The line below is needed for pi to handle shift enter.
+          "shift+enter=text:\\n"
           "ctrl+shift+v=paste_from_clipboard"
           "ctrl+shift+c=copy_to_clipboard"
           "ctrl+down=decrease_font_size:1"
