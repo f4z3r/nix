@@ -5,9 +5,11 @@
 }: {
   programs.rofi = {
     enable = true;
-    cycle = true;
-    location = "center";
-    terminal = "${pkgs.ghostty}/bin/ghostty";
+    settings = {
+      cycle = true;
+      location = 0;
+      terminal = "${pkgs.ghostty}/bin/ghostty";
+    };
     theme = "improved";
   };
 
