@@ -16,7 +16,7 @@
           -v ~/.pi:/home/f4z3r/.pi \
           -v ~/notes/resources/ai/:/home/f4z3r/notes/resources/ai \
           -v .:/home/f4z3r/workspace \
-          ghcr.io/f4z3r/pi-agent-image:v0.5.4 pi
+          ghcr.io/f4z3r/pi-agent-image:v0.6.0 pi
       '';
     };
 
