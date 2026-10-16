@@ -107,6 +107,7 @@ in {
     openssh
     more
     gnupg
+    curl
 
     # development
     cbfmt
