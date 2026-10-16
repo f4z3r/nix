@@ -88,7 +88,7 @@ in {
           pkill wl-screenrec;
         else
           ${pkgs.wl-screenrec}/bin/wl-screenrec \
-            --dri-device /dev/dri/card1 \
+            --dri-device /dev/dri/card0 \
             -g "$(${pkgs.slurp}/bin/slurp)" \
             --filename "/home/${username}/screenshots/screenrec-$(date '+%Y%m%d-%H:%M:%S').mp4";
         fi
