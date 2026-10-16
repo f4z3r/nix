@@ -138,6 +138,15 @@
         monitor_prefix = "DP";
         monitoring = false;
       };
+      "framework" = setup {
+        hostname = "framework";
+        font_size = 13;
+        resolution = "2880x1920";
+        scale = 1.5;
+        main_monitor = "eDP-1";
+        monitor_prefix = "DP";
+        monitoring = false;
+      };
     };
     devShells.${system}.default = import ./devshell.nix {inherit pkgs;};
     packages.${system}.dev-image = import ./docker.nix {
