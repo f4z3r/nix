@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.6] - 2026-10-16
+
+### <!-- 0 -->Features
+- Move pinentry to ncurses by @f4z3r
+
+### <!-- 1 -->Bug Fixes
+- Do not manage git configuration in image by @f4z3r
+
 ## [0.1.5] - 2026-10-16
 
 ### <!-- 0 -->Features
@@ -992,6 +1000,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - System update by @f4z3r
 - Update executor.nvim by @f4z3r
 
+[0.1.6]: https://github.com/f4z3r/nix/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/f4z3r/nix/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/f4z3r/nix/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/f4z3r/nix/compare/v0.1.2...v0.1.3
