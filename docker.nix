@@ -175,11 +175,14 @@ in
         /tmp
 
       chown -R \
-        ${toString uid}:${toString gid} \
+        ${toString uid}:0 \
         ${lib.escapeShellArg homeDirectory} \
         /workspace
 
-      chmod 0700 ${lib.escapeShellArg homeDirectory}
+      chmod -R u+rwX,g+rwX \
+        ${lib.escapeShellArg homeDirectory} \
+        /workspace
+
       chmod 1777 /tmp
 
       cat > /etc/nsswitch.conf <<'EOF'
@@ -200,7 +203,7 @@ in
     '';
 
     config = {
-      User = "${toString uid}:${toString gid}";
+      User = "${toString uid}:0";
 
       WorkingDir = homeDirectory;
 
