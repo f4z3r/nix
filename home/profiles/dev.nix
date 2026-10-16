@@ -14,7 +14,6 @@ in {
     (import ../langs/lua.nix {inherit lib pkgs username;})
 
     (import ../apps/fish {inherit pkgs colors;})
-    (import ../apps/git {inherit pkgs colors;})
     (import ../apps/k9s.nix {inherit colors;})
     (import ../apps/lazygit.nix {inherit colors;})
     ../apps/mise.nix
@@ -104,6 +103,7 @@ in {
     step-cli
 
     # general dependencies
+    git
     openssh
     more
     gnupg

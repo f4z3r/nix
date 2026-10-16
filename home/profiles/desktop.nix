@@ -36,6 +36,7 @@ in {
     (import ../apps/hyprland {inherit pkgs pkgs-stable username main_monitor monitor_prefix resolution scale colors;})
     (import ../apps/rofi {inherit pkgs colors;})
     (import ../apps/mpd {inherit pkgs username;})
+    (import ../apps/git {inherit pkgs colors;})
   ];
 
   programs = {
