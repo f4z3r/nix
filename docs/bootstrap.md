@@ -45,14 +45,20 @@ boot.initrd.luks.devices."luks-61a8f812-0b86-4be9-9b69-9472960c08b8".keyFile = "
 In order to register the device in the flake, simply copy a `nixosConfigurations` block and add your
 new host.
 
-Download the `secrets.nix` file from Proton Drive and put it in the project root.
+Download the `secrets.nix` file from Proton Drive and put it in
+`/home/f4z3r/opt/system/secrets/secrets.nix` and create a symbolic link:
 
-Finally, comment out the Restic, and ClamAV imports in `configuration.nix` on the first install.
+```bash
+ln -s ../secrets/secrets.nix secrets.nix
+```
+
+Finally, comment out the Restic, and ClamAV imports in `system/default.nix` and
+`system/security/default.nix` on the first install.
 
 Install the flake using:
 
 ```bash
-sudo nixos-rebuild boot --flake .#<host>
+sudo nixos-rebuild boot --impure --flake .#<host>
 ```
 
 Once installed, reboot.
