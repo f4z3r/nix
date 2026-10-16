@@ -103,6 +103,11 @@ in {
     file
     step-cli
 
+    # general dependencies
+    openssh
+    more
+    gnupg
+
     # development
     cbfmt
     delve
