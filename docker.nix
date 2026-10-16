@@ -128,7 +128,7 @@ in
       home.config.home.path
       homeRoot
 
-      pkgs.pinentry-ncurses
+      pkgs.pinentry-curses
       pkgs.ncurses
       pkgs.inetutils
       pkgs.dig
