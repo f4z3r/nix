@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.7] - 2026-10-16
+
+### <!-- 1 -->Bug Fixes
+- Fix pinentry pkgs name by @f4z3r
+- Ensure theming is nicely respected at all times by @f4z3r
+- Update screen recording to new device card by @f4z3r
+
 ## [0.1.6] - 2026-10-16
 
 ### <!-- 0 -->Features
@@ -1000,6 +1007,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - System update by @f4z3r
 - Update executor.nvim by @f4z3r
 
+[0.1.7]: https://github.com/f4z3r/nix/compare/v0.1.6...v0.1.7
 [0.1.6]: https://github.com/f4z3r/nix/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/f4z3r/nix/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/f4z3r/nix/compare/v0.1.3...v0.1.4
