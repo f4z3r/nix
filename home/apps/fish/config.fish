@@ -13,6 +13,9 @@ if test -r $HOME/.config/theme
   set NIX_THEME "$(cat $HOME/.config/theme)"
 end
 theme_gruvbox $NIX_THEME medium
+set -g fish_color_command brblue
+set -g fish_color_builtin brcyan
+set -g fish_color_function brgreen
 
 # key bindings
 fish_vi_key_bindings insert
@@ -72,4 +75,3 @@ function clight
   theme_gruvbox dark medium
   tmux source ~/.config/tmux/tmux.conf
 end
-
