@@ -130,6 +130,8 @@ in
 
       pkgs.pinentry-tty
       pkgs.ncurses
+      pkgs.inetutils
+      pkgs.dig
 
       pkgs.coreutils
       pkgs.findutils
