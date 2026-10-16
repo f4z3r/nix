@@ -128,6 +128,8 @@ in
       home.config.home.path
       homeRoot
 
+      pkgs.pinentry-tty
+
       pkgs.coreutils
       pkgs.findutils
 
