@@ -129,6 +129,7 @@ in
       homeRoot
 
       pkgs.pinentry-tty
+      pkgs.ncurses
 
       pkgs.coreutils
       pkgs.findutils
