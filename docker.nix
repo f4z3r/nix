@@ -132,6 +132,7 @@ in
       pkgs.ncurses
       pkgs.inetutils
       pkgs.dig
+      pkgs.delta
 
       pkgs.coreutils
       pkgs.findutils
