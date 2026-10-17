@@ -10,9 +10,9 @@
 
     upower = {
       enable = true;
-      percentageLow = 20;
-      percentageCritical = 10;
-      percentageAction = 3;
+      percentageLow = 25;
+      percentageCritical = 15;
+      percentageAction = 7;
       criticalPowerAction = "HybridSleep";
     };
 
