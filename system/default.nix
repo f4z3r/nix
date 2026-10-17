@@ -200,8 +200,8 @@ in {
     };
 
     logind.settings.Login = {
-      lidSwitch = "ignore";
-      lidSwitchExternalPower = "ignore";
+      HandleLidSwitch = "ignore";
+      HandleLidSwitchExternalPower = "ignore";
       HandlePowerKey = "ignore";
     };
 
