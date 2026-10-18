@@ -16,6 +16,9 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
+  boot.kernelParams = [
+    "intel_pstate=passive"
+  ];
 
   fileSystems."/" = {
     device = "/dev/mapper/luks-391f012c-2319-4d19-a0bf-42bd4859fd3f";
@@ -37,5 +40,5 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.npu.enable = true;
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = true;
 }
