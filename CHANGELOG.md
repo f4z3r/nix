@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.8] - 2026-10-19
+
+### <!-- 0 -->Features
+- Add delta for better lazygit support by @f4z3r
+- Add openldap to support LDAP searches by @f4z3r
+
+### <!-- 7 -->Miscellaneous Tasks
+- Update executor-nvim to pull from upstream again by @f4z3r
+
 ## [0.1.7] - 2026-10-16
 
 ### <!-- 1 -->Bug Fixes
@@ -1007,6 +1016,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - System update by @f4z3r
 - Update executor.nvim by @f4z3r
 
+[0.1.8]: https://github.com/f4z3r/nix/compare/v0.1.7...v0.1.8
 [0.1.7]: https://github.com/f4z3r/nix/compare/v0.1.6...v0.1.7
 [0.1.6]: https://github.com/f4z3r/nix/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/f4z3r/nix/compare/v0.1.4...v0.1.5
