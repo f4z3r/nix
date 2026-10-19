@@ -24,21 +24,6 @@
     };
   };
 
-  # XXX: f4z3r - move to official nixpkgs when released
-  executor-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "executor.nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "google";
-      repo = "executor.nvim";
-      rev = "f40ff80b0831c34e8feae92b996477b4bba67764";
-      sha256 = "sha256-UaBqJzR+s4DgtMJ2JDKhr+jJekPr8LspQvVdfgU9x/8=";
-    };
-    nvimSkipModules = [
-      "executor"
-      "executor.executor"
-    ];
-  };
-
   neorg-templates = pkgs.vimUtils.buildVimPlugin {
     name = "neorg-templates";
     src = pkgs.fetchFromGitHub {
