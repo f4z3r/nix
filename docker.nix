@@ -133,6 +133,7 @@ in
       pkgs.inetutils
       pkgs.dig
       pkgs.delta
+      pkgs.openldap
 
       pkgs.coreutils
       pkgs.findutils
