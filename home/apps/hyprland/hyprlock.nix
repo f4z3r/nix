@@ -24,6 +24,12 @@
           }
         ];
 
+        auth = {
+          "pam:enabled" = true;
+          "pam:module" = "hyprlock";
+          "fingerprint:enabled" = true;
+        };
+
         input-field = [
           {
             size = "200, 50";

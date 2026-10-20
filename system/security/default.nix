@@ -21,9 +21,14 @@
     };
   };
 
+  services.fprintd.enable = true;
+
   security = {
     polkit.enable = true;
-    pam.makeHomeDir.umask = "0077";
+    pam = {
+      makeHomeDir.umask = "0077";
+      services.hyprlock.fprintAuth = false;
+    };
     apparmor.enable = true;
   };
 }
