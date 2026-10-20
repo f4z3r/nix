@@ -134,6 +134,7 @@ in
       pkgs.dig
       pkgs.delta
       pkgs.openldap
+      pkgs.busybox
 
       pkgs.coreutils
       pkgs.findutils
