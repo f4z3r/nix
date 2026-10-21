@@ -34,11 +34,6 @@ in {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       timeout = 1;
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 20;
-        editor = false;
-      };
       efi = {canTouchEfiVariables = true;};
     };
     tmp = {cleanOnBoot = true;};

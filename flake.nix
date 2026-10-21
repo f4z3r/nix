@@ -15,6 +15,11 @@
       url = "github:nvim-neorg/nixpkgs-neorg-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.2.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -24,6 +29,7 @@
     nixpkgs-master,
     home-manager,
     neorg-overlay,
+    lanzaboote,
     ...
   } @ inputs: let
     usernames = [
@@ -88,6 +94,22 @@
               neorg-overlay.overlays.default
             ];
           }
+          lanzaboote.nixosModules.lanzaboote
+          ({
+            lib,
+            pkgs,
+            ...
+          }: {
+            # Lanzaboote handles installation of systemd-boot.
+            boot.loader.systemd-boot.enable = lib.mkForce false;
+
+            boot.lanzaboote = {
+              enable = true;
+              pkiBundle = "/var/lib/sbctl";
+            };
+
+            environment.systemPackages = [pkgs.sbctl];
+          })
           ./system
           home-manager.nixosModules.home-manager
           {

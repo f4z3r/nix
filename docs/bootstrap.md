@@ -55,6 +55,8 @@ ln -s ../secrets/secrets.nix secrets.nix
 Finally, comment out the Restic, and ClamAV imports in `system/default.nix` and
 `system/security/default.nix` on the first install.
 
+You might also want to disable lanzaboote secure boot.
+
 Install the flake using:
 
 ```bash
@@ -71,6 +73,21 @@ Once installed, reboot.
 In order to setup Restic, and ClamAV, follow the instructions in the `README.md`.
 
 You might also want to sync Brave with an existing device.
+
+### Secure boot
+
+Then, create secure boot keys, or download them from Proton drive:
+
+```bash
+sudo nix run nixpkgs#sbctl -- create-keys
+```
+
+Backup the keys if you have created new ones.
+
+You can then rebuild and follow the instructions here to enter secure boot setup mode:
+https://nix-community.github.io/lanzaboote/getting-started/enable-secure-boot.html
+
+Then enroll the keys and reboot in secure mode (and set a BIOS password).
 
 ## Battery Management
 
