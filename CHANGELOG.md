@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.9] - 2026-10-20
+
+### <!-- 0 -->Features
+- Add fingerprint reader for authentication by @f4z3r
+- Add busybox to ensure more tools are available by @f4z3r
+
 ## [0.1.8] - 2026-10-19
 
 ### <!-- 0 -->Features
@@ -1016,6 +1022,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - System update by @f4z3r
 - Update executor.nvim by @f4z3r
 
+[0.1.9]: https://github.com/f4z3r/nix/compare/v0.1.8...v0.1.9
 [0.1.8]: https://github.com/f4z3r/nix/compare/v0.1.7...v0.1.8
 [0.1.7]: https://github.com/f4z3r/nix/compare/v0.1.6...v0.1.7
 [0.1.6]: https://github.com/f4z3r/nix/compare/v0.1.5...v0.1.6
