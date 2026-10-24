@@ -249,9 +249,25 @@ hl.window_rule({
   center = true,
 })
 hl.window_rule({
+  name = "save file popups",
+  match = { class = "^xdg-desktop-portal-gtk$" },
+  animation = "popin",
+  size = { "(monitor_w*0.7)", "(monitor_h*0.7)" },
+  float = true,
+  center = true,
+})
+hl.window_rule({
+  name = "screenshot popups",
+  match = { class = "^com.gabm.satty$" },
+  animation = "popin",
+  size = { "(monitor_w*0.7)", "(monitor_h*0.7)" },
+  float = true,
+  center = true,
+})
+hl.window_rule({
   name = "google meet",
   match = { class = "^google-chrome$", title = "^Meet .*" },
-  size = { "(monitor_w*0.15)", "(monitor_h*0.95)" },
+  size = { "(monitor_w*0.20)", "(monitor_h*0.95)" },
   float = true,
   pin = true,
   content = "video",
