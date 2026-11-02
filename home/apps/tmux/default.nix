@@ -66,6 +66,10 @@ in {
       set-option -gq allow-passthrough on
       set-option -gq set-clipboard external
 
+      # colorscheme
+      set-option -g popup-style 'bg=default,fg=default'
+      set-option -g popup-border-style 'bg=default,fg=default'
+
       # minimal status bar
       set-option -g status-style bg=${bg_colour},fg=${fg_colour}
       set-option -g status-left ""

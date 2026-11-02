@@ -157,10 +157,7 @@ hl.bind(
   WM_MODIFIER .. " + O",
   hl.dsp.exec_cmd(string.format("@LUAJIT@ %s/.local/share/scripts/pomodoro.lua toggle", HOME))
 )
-hl.bind(
-  WM_MODIFIER .. " + M",
-  hl.dsp.exec_cmd(string.format("@LUAJIT@ %s/.local/share/scripts/toggle-mute.lua", HOME))
-)
+hl.bind(WM_MODIFIER .. " + M", hl.dsp.exec_cmd(string.format("@LUAJIT@ %s/.local/share/scripts/toggle-mute.lua", HOME)))
 
 hl.bind("Print", hl.dsp.exec_cmd(string.format("bash %s/.local/share/scripts/screenshot.sh", HOME)))
 
@@ -302,10 +299,17 @@ hl.layer_rule({
 hl.workspace_rule({ workspace = "r[1-5]", monitor = MAIN_MONITOR })
 -- TODO: f4z3r - update to check if device connected
 hl.workspace_rule({ workspace = "r[6-10]", monitor = MONITOR_PREFIX .. "-1" })
-hl.workspace_rule({
-  workspace = "special:quake",
-  on_created_empty = "[ float on; size (monitor_w*0.7) (monitor_h*0.7); center on ] ghostty --title=quake --class=quake -e tmux new -s quake",
-})
+
+hl.on("workspace.created", function(ws)
+  if ws.name ~= "special:quake" then
+    return
+  end
+  if not ws.is_empty then
+    return
+  end
+  local cmd = "ghostty --title=quake --class=quake -e tmux new -s quake"
+  hl.exec_cmd(cmd, { float = true, size = { "(monitor_w*0.7)", "(monitor_h*0.7)" }, center = true })
+end)
 
 hl.curve("easeOutExpo", { type = "bezier", points = { { 0.16, 1 }, { 0.3, 1 } } })
 
