@@ -30,7 +30,11 @@ hl.config({
     gaps_in = 0,
     gaps_out = 0,
     ["col.active_border"] = "rgb(5900be)",
-    layout = "dwindle",
+    layout = "master",
+  },
+  master = {
+    mfact = 0.6,
+    focus_master_on_close = true,
   },
   dwindle = {
     preserve_split = true,
@@ -206,20 +210,10 @@ hl.define_submap("resize", function()
   hl.bind("escape", hl.dsp.submap("reset"))
   hl.bind("catchall", hl.dsp.submap("reset"))
 end)
--- Mnemonic Vertical split
-hl.bind(WM_MODIFIER .. " + V", hl.dsp.submap("split"))
-hl.define_submap("split", "reset", function()
-  hl.bind("L", hl.dsp.layout("preselect r"))
-  hl.bind("H", hl.dsp.layout("preselect l"))
-  hl.bind("K", hl.dsp.layout("preselect u"))
-  hl.bind("N", hl.dsp.layout("preselect d"))
-  hl.bind("right", hl.dsp.layout("preselect r"))
-  hl.bind("left", hl.dsp.layout("preselect l"))
-  hl.bind("up", hl.dsp.layout("preselect u"))
-  hl.bind("down", hl.dsp.layout("preselect d"))
-  hl.bind("escape", hl.dsp.submap("reset"))
-  hl.bind("catchall", hl.dsp.submap("reset"))
-end)
+
+-- Mnemonic reVerse
+hl.bind(WM_MODIFIER .. " + V", hl.dsp.layout("swapwithmaster master"))
+-- XCD are still free
 
 hl.window_rule({
   name = "pinentry animation",
@@ -317,3 +311,5 @@ hl.animation({ leaf = "workspaces", enabled = true, bezier = "easeOutExpo", spee
 hl.animation({ leaf = "windowsIn", enabled = true, bezier = "easeOutExpo", speed = 2, style = "slide" })
 hl.animation({ leaf = "windowsOut", enabled = true, bezier = "easeOutExpo", speed = 2, style = "popin" })
 hl.animation({ leaf = "layers", enabled = true, bezier = "easeOutExpo", speed = 1, style = "popin" })
+-- disable window move to have snappier feel
+hl.animation({ leaf = "windowsMove", enabled = false })
