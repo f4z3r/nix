@@ -79,8 +79,8 @@ in {
         link-url = true;
         theme =
           if colors.theme == "dark"
-          then "Gruvbox Material Dark"
-          else "Gruvbox Material Light";
+          then "Gruvbox Dark"
+          else "Gruvbox Light";
         keybind = [
           # The line below is needed for pi to handle shift enter.
           "shift+enter=text:\\n"
