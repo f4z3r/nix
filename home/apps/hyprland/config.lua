@@ -256,6 +256,14 @@ hl.window_rule({
   center = true,
 })
 hl.window_rule({
+  name = "hyprland popups",
+  match = { class = "^hyprland-share-picker$" },
+  animation = "popin",
+  size = { "(monitor_w*0.7)", "(monitor_h*0.7)" },
+  float = true,
+  center = true,
+})
+hl.window_rule({
   name = "google meet",
   match = { class = "^google-chrome$", title = "^Meet .*" },
   size = { "(monitor_w*0.20)", "(monitor_h*0.95)" },
