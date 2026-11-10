@@ -86,7 +86,6 @@ in {
     ouch
     parallel
     prek
-    presenterm
     procs
     rclone
     ripgrep
