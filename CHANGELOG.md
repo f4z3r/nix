@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### <!-- 0 -->Features
+- Switch to master layout by default by @f4z3r
+- Make screen selection from hyprland float in center by @f4z3r
+- Remove presenterm for setup by @f4z3r
+
+### <!-- 1 -->Bug Fixes
+- Improve pop-ups positioning by @f4z3r
+- Rollback to non material colours by @f4z3r
+
+### <!-- 7 -->Miscellaneous Tasks
+- System update by @f4z3r
+
 ## [0.1.9] - 2026-10-20
 
 ### <!-- 0 -->Features
@@ -1022,6 +1036,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - System update by @f4z3r
 - Update executor.nvim by @f4z3r
 
+[unreleased]: https://github.com/f4z3r/nix
 [0.1.9]: https://github.com/f4z3r/nix/compare/v0.1.8...v0.1.9
 [0.1.8]: https://github.com/f4z3r/nix/compare/v0.1.7...v0.1.8
 [0.1.7]: https://github.com/f4z3r/nix/compare/v0.1.6...v0.1.7
