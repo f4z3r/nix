@@ -1,0 +1,54 @@
+host: example.com
+ingress:
+  className: ""
+  annotations: {}
+  tlsSecretName: ""
+image:
+  registry: ghcr.io
+  repository: f4z3r/dev-environment
+  tag: "v0.1.10"
+  pullPolicy: IfNotPresent
+resources:
+  limits:
+    cpu: "4"
+    memory: 8Gi
+  requests:
+    cpu: "200m"
+    memory: 1Gi
+# certificateAuthorities:
+#   configmap: org-ca-certificates
+#   subPath: ca-bundle.crt
+env:
+  TEST: this
+  # https_proxy: test
+  # http_proxy: test
+  # ftp_proxy: test
+  # rsync_proxy: test
+  # no_proxy: test
+storage:
+  className: ""
+  volumes:
+    - name: workspace
+      path: /workspace
+      size: 50Gi
+    - name: mise-cache
+      path: /home/f4z3r/.local/share/mise
+      size: 20Gi
+    - name: ssh
+      path: /home/f4z3r/.ssh
+      size: 1Gi
+    - name: gnupg
+      path: /home/f4z3r/.gnupg
+      size: 1Gi
+    - name: pi
+      path: /home/f4z3r/.pi
+      size: 5Gi
+    - name: luarocks
+      path: /home/f4z3r/.luarocks
+      size: 1Gi
+    - name: git
+      path: /home/f4z3r/.config/git
+      size: 1Gi
+    - name: rclone
+      path: /home/f4z3r/.config/rclone
+      size: 1Gi

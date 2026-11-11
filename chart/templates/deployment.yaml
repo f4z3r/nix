@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ include "dev-env.fullname" . }}"
+  namespace: "{{ .Release.Namespace }}"
+  labels:
+    {{- include "dev-env.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      {{- include "dev-env.selector-labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "dev-env.labels" . | nindent 8 }}
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        fsGroupChangePolicy: Always
+      containers:
+      - name: dev-env-main
+        stdin: true
+        tty: true
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            umask 0002
+            exec /bin/fish -l
+        env:
+        - name: NODE_USE_SYSTEM_CA
+          value: "1"
+        {{- if .Values.certificateAuthorities }}
+        - name: REQUESTS_CA_BUNDLE
+          value: "/etc/ssl/certs/ca-bundle.crt"
+        {{- end }}
+        envFrom:
+        - configMapRef:
+            name: "{{ include "dev-env.fullname" . }}-env"
+        image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: "{{ .Values.image.pullPolicy }}"
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          {{- .Values.resources | toYaml | nindent 10 }}
+        volumeMounts:
+        - mountPath: /home/f4z3r/.kube
+          name: kube-cache
+        {{- if .Values.certificateAuthorities }}
+        - mountPath: /etc/ssl/certs/ca-bundle.crt
+          subPath: {{ .Values.certificateAuthorities.subPath }}
+          name: certificate-authorities
+          readOnly: true
+        {{- end }}
+        {{- range $vol := .Values.storage.volumes }}
+        - name: "{{ $vol.name }}"
+          mountPath: "{{ $vol.path }}"
+        {{- end }}
+      volumes:
+      {{- range $vol := .Values.storage.volumes }}
+      - name: "{{ $vol.name }}"
+        persistentVolumeClaim:
+          claimName: "{{ $vol.name }}"
+      {{- end }}
+      {{- if .Values.certificateAuthorities }}
+      - configMap:
+          defaultMode: 420
+          name: "{{ .Values.certificateAuthorities.configmap }}"
+        name: certificate-authorities
+      {{- end }}
+      - emptyDir:
+          sizeLimit: 500Mi
+          medium: Memory
+        name: kube-cache

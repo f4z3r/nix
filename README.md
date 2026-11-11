@@ -211,3 +211,9 @@ After which you can use `ns` to sync notes.
 >
 > **ATTENTION**: if the source of truth is your local copy, switch out the two targets in the above
 > command.
+
+## Chart
+
+This repository provides a Helm chart to deploy a containerized setup of this NixOS configuration
+into a Kubernetes/OpenShift cluster. This allows executing into the Pod and then have a fully
+featured development environment. The Helm chart can be found under [`chart/`](./chart/).

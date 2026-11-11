@@ -1,0 +1,5 @@
+apiVersion: v2
+name: dev-env
+description: A personalized development environment for f4z3r.
+type: application
+version: 0.1.0
