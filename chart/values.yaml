@@ -6,7 +6,7 @@ ingress:
 image:
   registry: ghcr.io
   repository: f4z3r/dev-environment
-  tag: "v0.1.10"
+  tag: "v0.1.10@sha256:f7afcc4adf6665bf851e213758ed5f3e9d6b1881228fb4dcdb9d76999825713b"
   pullPolicy: IfNotPresent
 resources:
   limits:
