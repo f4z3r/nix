@@ -81,6 +81,7 @@ hl.monitor({
   mode = MAIN_MONITOR_RESOLUTION .. "@60",
   position = "0x0",
   scale = tonumber(MAIN_MONITOR_SCALE),
+  bitdepth = 10,
 })
 
 hl.monitor({
