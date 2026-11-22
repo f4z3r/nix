@@ -9,15 +9,9 @@
       jwt = "wl-paste | step crypto jwt inspect --insecure | jq";
       ns = ''rclone bisync gdrive-crypt:/ ~/notes --remove-empty-dirs --filter "- /.**" --filter "- **/.**" --filter "- **/tags"  --compare size,modtime -MP --fix-case --conflict-suffix upstream,local'';
 
-      pi = ''
-        docker run --rm -it \
-          -e OPENROUTER_API_KEY \
-          -e BRAVE_API_KEY \
-          -v ~/.pi:/home/f4z3r/.pi \
-          -v ~/notes/resources/ai/:/home/f4z3r/notes/resources/ai \
-          -v .:/home/f4z3r/workspace \
-          ghcr.io/f4z3r/pi-agent-image:v0.6.0 pi
-      '';
+      gateway-up = ''podman compose -f /home/f4z3r/opt/f4z3r/agentic-factory/compose.yaml up -d'';
+      gateway-down = ''podman compose -f /home/f4z3r/opt/f4z3r/agentic-factory/compose.yaml down'';
+      pi = ''PI_WORKSPACE="$PWD" podman compose -f /home/f4z3r/opt/f4z3r/agentic-factory/compose.yaml --profile agent run --rm pi'';
     };
 
     shellInit = lib.mkAfter ''

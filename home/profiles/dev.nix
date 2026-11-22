@@ -121,6 +121,7 @@ in {
     kubectx
     kubernetes-helm
     pkgs-stable.dprint
+    podman-compose
     prettier
     python
     ruff
